@@ -1,7 +1,0 @@
-<a data-role="button" href="index.php?page=view-address&id=<?php echo $_GET['id']; ?>&ex=<?php echo $ex; ?>" >Summary</a>
-       <?php if($GLOBALS['nameCount'] > 0){ ?><a data-role="button" href="index.php?page=view-address&id=<?php echo $_GET['id']; ?>&ex=<?php echo $ex; ?>&d=names" >Names (<?php echo $GLOBALS['nameCount']; ?>)</a><?php } ?>
-       <?php if($GLOBALS['requestCount'] > 0){ ?><a data-role="button" href="index.php?page=view-address&id=<?php echo $_GET['id']; ?>&ex=<?php echo $ex; ?>&d=requests" >Requests (<?php echo $GLOBALS['requestCount']; ?>)</a><?php } ?>
-       <?php if($GLOBALS['aliasCount'] > 0){ ?><a data-role="button" href="index.php?page=view-address&id=<?php echo $_GET['id']; ?>&ex=<?php echo $ex; ?>&d=aliases" >Aliases</a><?php } ?>
-       <?php if($GLOBALS['assocCount'] > 0){ ?><a data-role="button" href="index.php?page=view-address&id=<?php echo $_GET['id']; ?>&ex=<?php echo $ex; ?>&d=assoc" >Associations</a><?php } ?>
-       <?php if($GLOBALS['attribCount'] > 0){ ?><a data-role="button" href="index.php?page=view-address&id=<?php echo $_GET['id']; ?>&ex=<?php echo $ex; ?>&d=attribs" >Attributes</a></p><?php } ?>
-        <a data-role="button" href="#demo-links" data-rel="close" data-role="button" data-theme="c" data-icon="delete" data-inline="true">Close panel</a>
