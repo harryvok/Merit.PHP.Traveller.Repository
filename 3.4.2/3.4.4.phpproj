@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Name>_3.4.2</Name>
+    <Name>3.4.4</Name>
     <ProjectGuid>{9f3ece1e-6c4b-4c1d-a385-d2aa452b783f}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>_3.4.2</RootNamespace>
@@ -15,6 +15,7 @@
     <PublishEvent>None</PublishEvent>
     <PHPDevAutoPort>True</PHPDevAutoPort>
     <PHPDevPort>50768</PHPDevPort>
+    <ProjectHome />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <IncludeDebugInformation>true</IncludeDebugInformation>
