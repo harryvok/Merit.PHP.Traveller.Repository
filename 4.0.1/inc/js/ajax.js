@@ -10,7 +10,7 @@ function getIntray(intray, i) {
             intray: intray,
             filterCode: i
         },
-        timeout: 30000,
+        timeout: 30000, 
         success: function (data) {
             Unload();
             $("#" + intray + "Intray").html(data);

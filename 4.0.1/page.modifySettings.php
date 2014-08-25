@@ -46,7 +46,7 @@ else{
         
               <label  for="password">Page refresh time</label> 
               <input class="text" name='refreshtable' value='<?php echo defined("REFRESHTABLE") ? REFRESHTABLE : ""; ?>'><br />
-              <span class="small">(The time in minutes between table refresh. Optional.)</span><p>&nbsp;</p><p>&nbsp;</p>
+              <span class="small">(The time in seconds between table refresh. Optional.)</span><p>&nbsp;</p><p>&nbsp;</p>
 
             
               <h2>Website</h2>

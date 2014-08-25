@@ -1,4 +1,5 @@
 
+
 var eventName;
 if ('ontouchstart' in document) {
     eventName = 'touchstart';

@@ -1,5 +1,7 @@
 
 <script type="text/javascript">
+
+
 $(document).ready(function() {
     var oTable = $('#actionIntrayTable').dataTable({
         "aaSorting": [[ 5, "asc" ]],
@@ -19,7 +21,7 @@ $(document).ready(function() {
             null
         ]
     });
-    
+  
     $("#export").click(function(){
         $("#export").prop({
           disabled: true
@@ -48,12 +50,12 @@ $(document).ready(function() {
         
         oSettings._iDisplayLength = current;
         oTable.fnDraw();
-
         $("#tableArray").val(JSON.stringify(rowsArray));
-        
         $("#exportForm").submit();
     });
 });
+
+
 </script>
 <?php
 if(isset($_GET['filter'])){
@@ -92,6 +94,7 @@ else{
 
     <tbody>
         <?php
+        
 		$number=0;
         if(isset($GLOBALS['result']->action_intray_details)){
             if(count($GLOBALS['result']->action_intray_details) > 1){
@@ -102,12 +105,12 @@ else{
                         <td id="<?php echo $change; ?>" style="width:70px;"><?php if(strlen($action_details->request_id) > 0){ echo $action_details->request_id; } else { echo ""; } ?></td>
                         <td><?php if(strlen($action_details->assign_name) > 0){ echo $action_details->assign_name; } else { echo ""; } ?></td>
                         <td><?php echo $action_details->service_name . " - " .$action_details->request_name; if(isset($action_details->function_name)) echo " - " . $action_details->function_name;?></td>
-                         <td><?php if(isset($action_details->facility_name)){ echo $action_details->facility_name; } ?></td>
+                        <td><?php if(isset($action_details->facility_name)){ echo $action_details->facility_name; } ?></td>
                         <td><?php if(isset($action_details->location_house_suffix) && isset($action_details->location_house_no) && strlen($action_details->location_house_no) > 0 && strlen($action_details->location_house_suffix) > 0 && $action_details->location_house_no != $action_details->location_house_suffix){ echo $action_details->location_house_suffix; } else { echo $action_details->location_house_no; } if(isset($action_details->location_street_name)){ echo " " .$action_details->location_street_name; } if(isset($action_details->location_street_type)){ echo " " .$action_details->location_street_type; } ?></td>
                         <td><?php if(isset($action_details->location_locality_name)){ echo " " .$action_details->location_locality_name; } ?></td>
-                    <td><?php if(isset($action_details->customer_given_name)){ if($action_details->customer_given_name != "Used") echo $action_details->customer_given_name; } if(isset($action_details->customer_surname)){ if($action_details->customer_surname != "Not") echo " " .$action_details->customer_surname; } ?></td>
-                    <td><?php if(isset($action_details->assign_date) && $action_details->assign_date != "1970-01-01T00:00:00" && strlen($action_details->assign_date) > 0){ echo date('d/m/Y',strtotime($action_details->assign_date)); } else { echo ""; }  ?></td>
-                    <td><?php if(isset($action_details->due_time) && $action_details->due_time != "1970-01-01T00:00:00" && strlen($action_details->due_time) > 0){ echo date('d/m/Y h:i A',strtotime($action_details->due_time)); } else { echo ""; }  ?></td>
+                        <td><?php if(isset($action_details->customer_given_name)){ if($action_details->customer_given_name != "Used") echo $action_details->customer_given_name; } if(isset($action_details->customer_surname)){ if($action_details->customer_surname != "Not") echo " " .$action_details->customer_surname; } ?></td>
+                        <td><?php if(isset($action_details->assign_date) && $action_details->assign_date != "1970-01-01T00:00:00" && strlen($action_details->assign_date) > 0){ echo date('d/m/Y',strtotime($action_details->assign_date)); } else { echo ""; }  ?></td>
+                        <td><?php if(isset($action_details->due_time) && $action_details->due_time != "1970-01-01T00:00:00" && strlen($action_details->due_time) > 0){ echo date('d/m/Y h:i A',strtotime($action_details->due_time)); } else { echo ""; }  ?></td>
                         <td><?php if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo '<div class="dotGreen" title="Open"></div>'; } elseif($action_details->status_code == "SUSPENDED"){ echo '<div class="dotYellow" title="Suspended"></div>'; } else { echo '<div class="dotRed" tile="Finalised"></div>'; } ?></td>
                     </tr>
                     <?php
@@ -115,10 +118,7 @@ else{
             }           
         }
         ?>
+       
         </tbody>
-
-    <!-- REFRESH FROM BODY TO HERE ///////////////////////////////////////////// -->
-
-
     </table>
 </div>
