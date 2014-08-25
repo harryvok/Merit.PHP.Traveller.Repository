@@ -1,0 +1,26 @@
+/*
+Traveller Mobile CSS
+*/
+
+/* BASE 
+--------------------------------------------------------------------*/
+
+label {
+    font-size: 14px;
+    color: #152848;
+    display: block;
+    width: auto;
+    text-align: left;
+    line-height: 14px;
+    padding-top: 5px;
+    
+    font-weight: bold;
+}
+
+
+body .ui-li .ui-li-desc {
+  white-space: normal !important;
+}
+
+
+

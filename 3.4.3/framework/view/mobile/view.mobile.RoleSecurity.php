@@ -1,0 +1,1 @@
+<ul class="pageitem"><li class="textbox">You do not have permission to view section code: "<?php echo $GLOBALS['action']; ?>".</li></ul>

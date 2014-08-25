@@ -1,0 +1,126 @@
+/*
+Traveller Desktop CSS
+*/
+
+/* STATE 
+--------------------------------------------------------------------*/
+
+/* Float */
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+    width: 100%;
+}
+
+.float-right {
+    float: right;
+}
+
+/* Text */
+.bold {
+    font-weight: bold;
+}
+
+.small {
+    font-size: 11px ;
+}
+
+.hiddenCheckbox {
+   -moz-opacity: 0;
+    opacity:0;
+    filter: alpha(opacity=0);
+    position:absolute;
+}
+
+.cname-logged-in {
+    font-size:14px !important;
+    line-height:25px !important;
+}
+.red {
+    color:red !important;
+    font-weight:normal !important;
+}
+.purple {
+    color:purple !important;
+    font-weight:normal !important;
+}
+.intime {
+    color:black !important;
+    font-weight:bold !important;
+}
+
+.text-align-center {
+    text-align:center;
+}
+
+
+/* Layout */
+div#fixed-position {
+    text-align: left;
+    height: 100%;
+}
+
+div#pad-fix {
+    padding: 7px 7px 7px 7px;
+}
+
+div#push {
+    height: 25px;
+}
+
+/* Forms */
+div.column-end {
+    padding-right: 0px;
+}
+
+input.left {
+    float: left;
+}
+
+div.dropdown {
+    float: left;
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+}
+.processing {
+    background-image: url(../../images/ajax-loader-big.gif);
+    background-repeat: no-repeat;
+    background-position: 95% 5%;
+}
+
+/* States */
+div.dotGreen {
+    width: 10px;
+    height: 9px;
+    background: url(../../images/dotGreen.png) no-repeat;
+}
+
+div.dotRed {
+    width: 10px;
+    height: 9px;
+    background: url(../../images/dotRed.png) no-repeat;
+}
+
+div.dotYellow {
+    width: 9px;
+    height: 9px;
+    background: url(../../images/dotYellow.png) no-repeat;
+}
+
+div.status_code {
+    padding-top: 5px;
+    padding-right: 4px;
+    float: left;
+}
+
+
+.inline {
+    width:auto;
+}

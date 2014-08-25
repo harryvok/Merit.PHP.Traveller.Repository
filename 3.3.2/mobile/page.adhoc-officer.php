@@ -1,0 +1,53 @@
+<script type="text/javascript" src="inc/js/pages/js.adhoc-officer.js"></script>
+
+<?php
+if(isset($_COOKIE['user_id'])){
+	if($_SESSION['adhoc-true'] == 1){
+	?>
+	<div id="topbar">
+		<div id="title">Adhoc Officer</div>
+	</div>
+	<div id="wrapper">
+		<div id="scroller">
+			<div id="content">
+				<ul class='pageitem'>
+					<li class='textbox'>Please choose an adhoc officer which will be associated with the next action.</li>
+					<li class='textbox'><strong>Action Name:</strong> <?php echo $_SESSION['reason_assigned']; ?></li>
+				</ul>
+				<form  enctype='multipart/form-data' action='process.php' id="adhocOfficer" method='post'>
+					<span class="graytitle">Officer<span style="color:red;">*</span></span>
+					<ul class="pageitem">
+						<li class="bigfield"><input id="new_officer_text" id="new_officer_text" class="required"  placeholder="Search..." /> 
+						  <input type="hidden" id="new_officer_code" name="resp_officer"  class="required" /></li>
+					</ul>
+					<input type="hidden" name="page" value="action" />
+					<input type="hidden" name="action" value="AdhocOfficer" />
+					<input type="hidden" name="action_id" id="action_id" value="<?php echo $_SESSION['action_id']; ?>" />
+					<input type="hidden" name="request_id" id="request_id" value="<?php echo $_SESSION['request_id']; ?>" />
+					<input type="hidden" name="bypass" id="bypass" value="<?php echo $_SESSION['bypass']; ?>" />
+					<input type="hidden" name="reason_assigned" id="reason_assigned" value="<?php echo $_SESSION['reason_assigned']; ?>" />
+					<input type="hidden" name="email" id="email" value="<?php echo $_SESSION['email']; ?>" />
+					<input type="hidden" name="due_datetime" id="due_datetime" value="<?php echo $_SESSION['due_date']; ?>" />
+					<input type="hidden" name="priority" id="priority" value="<?php echo $_SESSION['priority']; ?>" />
+					<input type="hidden" name="officer_type" id="officer_type" value="<?php echo $_SESSION['officer_type']; ?>" />
+					<input type="hidden" name="position_no" id="position_no" value="<?php echo $_SESSION['position_no']; ?>" />
+					<ul class="pageitem">
+						<li class="button"><input name="Submit input" type="submit" id="submit"  value="Submit" /></li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	<?php
+	}
+	else{
+		header("Location: page.error.php");
+	}
+	
+}
+else{
+	$_SESSION['not_logged_in'] = 1;
+	header("Location: index.php");	
+}
+?>
+
