@@ -6,12 +6,24 @@ if(isset($_SESSION['user_id'])){
 	$(document).ready(function(){
 		getIntray("action", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['act_back_filter'])) echo $_SESSION['act_back_filter']; ?>");
 	});
-	
+
+	    var time = REFRESHTABLE;
+	        setTimeout(function () {
+	            location.reload(true);
+	        }, 100000000);
+	    
+	    
+       
+
 	</script>
 	
 	<div style="float:left">
 		 <img width="10" height="9" src="images/dotGreen.png" /> <span class="small"><b>Open Action</b></span> <img width="10" height="9" src="images/dotRed.png" /> <span class="small"><b>Finalised Action</b></span> <img width="10" height="9" src="images/dotYellow.png" /> <span class="small"><b>Suspended Action</b></span><br />
-		 
+		 <b><?php echo REFRESHTABLE ?></b>
+        <script>
+            var time = REFRESHTABLE;
+            document.write(time);
+        </script>
 		<br />
 		<b>Filter:</b> <?php
 		$controller->Dropdown("Filters", "Filters", array("filter" => "A", "filter_type" => "action"));
