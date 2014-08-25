@@ -479,11 +479,12 @@ class Model {
         if(strlen($cust_phone) > 0){
             $telephone =  $cust_phone;
         }
-        elseif(strlen($cust_work) > 0){
-            $telephone = $cust_work;
+        if(strlen($cust_work) > 0){
+            $telephone_work = $cust_work;
         }
-        elseif(strlen($cust_mobile) > 0){
-            $telephone = $cust_mobile;
+        else $telephone_work = "";
+        if(strlen($cust_mobile) > 0){
+            $telephone_mobile = $cust_mobile;
         }
         $parameters = array(
         "user_id" => $_SESSION['user_id'],
@@ -495,8 +496,8 @@ class Model {
                 "initials" => '',
                 "pref_title" => $pref_title,
                 "telephone" => $telephone,
-                "work_phone" => '',
-                "mobile_no" => '',
+                "work_phone" => $telephone_work,
+                "mobile_no" => $telephone_mobile,
                 "fax_no" => '',
                 "email_address" => $email_address,
                 "company_name" => $company_name,
