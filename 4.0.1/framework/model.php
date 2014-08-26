@@ -476,16 +476,16 @@ class Model {
         if(isset($_POST['cust_mobile'])) $cust_mobile = $_POST['cust_mobile']; else $cust_mobile='';
         if(isset($_POST['email_address'])) $email_address = $_POST['email_address']; else $email_address='';
         if(isset($_POST['company_name'])) $company_name = $_POST['company_name']; else $company_name='';
-        if(strlen($cust_phone) > 0){
-            $telephone =  $cust_phone;
-        }
-        if(strlen($cust_work) > 0){
-            $telephone_work = $cust_work;
-        }
-        else $telephone_work = "";
-        if(strlen($cust_mobile) > 0){
-            $telephone_mobile = $cust_mobile;
-        }
+        //if(strlen($cust_phone) > 0){
+        //    $telephone =  $cust_phone;
+        //}
+        //if(strlen($cust_work) > 0){
+        //    $telephone_work = $cust_work;
+        //}
+        //else $telephone_work = "";
+        //if(strlen($cust_mobile) > 0){
+        //    $telephone_mobile = $cust_mobile;
+        //}
         $parameters = array(
         "user_id" => $_SESSION['user_id'],
         "password" => $_SESSION['password'],
@@ -495,9 +495,9 @@ class Model {
                 "given_names" => $given,
                 "initials" => '',
                 "pref_title" => $pref_title,
-                "telephone" => $telephone,
-                "work_phone" => $telephone_work,
-                "mobile_no" => $telephone_mobile,
+                "telephone" => $cust_phone,
+                "work_phone" => $cust_work,
+                "mobile_no" => $cust_mobile,
                 "fax_no" => '',
                 "email_address" => $email_address,
                 "company_name" => $company_name,
