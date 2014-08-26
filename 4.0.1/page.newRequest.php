@@ -26,7 +26,7 @@ if(!isset($_GET['d'])){
                         <input class="text" name='keyword' id="keywordSearch" maxlength='15' placeholder="Search...">
                     </div>
                     <div class="column r25">
-                        <label for="service">Service<span style="color: red;">*</span> </label>
+                        <label for="service" style="color: red;">Service<span style="color: black;"> **</span> </label>
                         <div class="info">
                             <img src="images/Info.png" class="infoHover" id="service_help" />
                         </div>
@@ -37,7 +37,7 @@ if(!isset($_GET['d'])){
 
                     </div>
                     <div class="column r25">
-                        <label for="request">Request<span style="color: red;">*</span></label>
+                        <label for="request" style="color: red;">Request<span style="color: black;"> **</span></label>
                         <div class="info">
                             <img src="images/Info.png" class="infoHover" id="request_help" />
                         </div>
@@ -48,7 +48,7 @@ if(!isset($_GET['d'])){
 
                     </div>
                     <div class="column r25">
-                        <label for="function">Function<span id="functionRequired" style="color: red;">*</span></label>
+                        <label for="function" style="color: red;">Function<span id="functionRequired" style="color: black;"> **</span></label>
                         <div class="info">
                             <img src="images/Info.png" class="infoHover" id="function_help" />
                         </div>
@@ -99,7 +99,7 @@ if(!isset($_GET['d'])){
 
                 <br />
                 <div class="float-left">
-                    <label for="issue">Request Description<span class="request_description_label mandLabel" style="color: red; display:none;">*</span></label>
+                    <label for="issue" style="color: red">Request Description<span class="request_description_label mandLabel" style="color: black""> **</span></label>
                     <textarea rows="2" spellcheck="true" class="text request-issue" name='issue' id='textareaissue' data-mand="request_description" maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
                 </div>
             </div>
@@ -164,16 +164,16 @@ if(!isset($_GET['d'])){
                     </div>
                     
                     <div class="column r25">
-                        <label for="lstreet">Street Name<span class="location_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                        <label for="lstreet">Street Name<span class="location_address_label mandLabel" style="color: black; display:none;"> **</span></label>
                         <input class="text checkNone" name='lstreet' onChange="" id="lstreet" data-mand="location_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_lstreet'])){ echo $_SESSION['rem_lstreet']; } ?>'>
                     </div>
                     <div class="column r25">
-                        <label for="ltype">Street Type<span class="location_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                        <label for="ltype">Street Type<span class="location_address_label mandLabel" style="color: black; display:none;"> **</span></label>
                         <input class="text checkNone" name='ltype' onChange="" id="ltype" data-mand="location_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_ltype'])){ echo $_SESSION['rem_ltype']; } ?>'>
                     </div>
                     <div class="float-left">
                         <div class="column r25">
-                            <label for="lsuburb">Suburb<span class="location_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                            <label for="lsuburb">Suburb<span class="location_address_label mandLabel" style="color: black; display:none;"> **</span></label>
                             <input class="text checkNone" name='lsuburb' onChange="" id="lsuburb" data-mand="location_address"  disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'>
                         </div>
                         <div class="column r25">
