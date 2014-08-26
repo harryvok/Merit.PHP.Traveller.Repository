@@ -2,49 +2,60 @@
 $GLOBALS['result'] = $GLOBALS['result']->officer_det;
 ?>
 
+
 <div class="summaryContainer">
+    <h1>Officer Details</h1>
+
     <div class="float-left">
         <div class="column r50">
+
             <div class="column r25"> 
                 <span class="summaryColumnTitle">Given Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']->given_names)) echo $GLOBALS['result']->given_names; ?>
                 </div>
-          </div>
-          <div class="column r25"> 
+            </div>
+
+            <div class="column r25"> 
                 <span class="summaryColumnTitle">Surname</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']->surname)) echo $GLOBALS['result']->surname; ?>
-             </div>
-          </div>
-          <div class="column r25"> 
+                </div>
+            </div>
+
+            <div class="column r25"> 
                 <span class="summaryColumnTitle">Officer Title</span>
                 <div class="summaryColumn">
                    <?php if(isset($GLOBALS['result']->class_name)) echo $GLOBALS['result']->class_name; ?>
                 </div>
-          </div>
-          <p>&nbsp;</p>
+            </div>
+
       </div>
-  </div>
-    <p>&nbsp;</p>
- <div class="float-left">
-     <div class="column r50">
-            <div class="column r50"> 
+   </div>
+</div>
+
+<div class="summaryContainer">
+    <h1>Organization</h1>
+        <div class="float-left">
+           <div class="column r50">
+            <div class="column r50">
                 <span class="summaryColumnTitle">Location</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']->location)) echo $GLOBALS['result']->location; ?>
                 </div>
-          </div>
-          <div class="column r50"> 
+            </div>
+
+            <div class="column r50"> 
                 <span class="summaryColumnTitle">Division</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']->div_name)) echo $GLOBALS['result']->div_name; ?>
                 </div>
-          </div>
-          
-      </div>
-        
+            </div>
+
+      </div>    
   </div>
+
+
   <div class="float-left">
      <div class="column r50">
   <div class="column r50"> 
