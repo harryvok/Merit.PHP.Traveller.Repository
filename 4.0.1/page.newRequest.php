@@ -229,6 +229,7 @@ if(!isset($_GET['d'])){
                             <?php $controller->Dropdown("CustomerTypes", "CustomerTypes"); ?>
                             <input type="button" name="myDetails" id="myDetails" value="My Details" />
                             <input type="button" name="clearDetails" id="clearDetails" value="Clear" />
+                             <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()"  />
                         </div>
                         <div class="float-left">
                             <div class="column r25">
