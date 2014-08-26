@@ -174,7 +174,7 @@ class Controller {
 			 }
 		 }
 		 else{
-			if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y" || !isset($_SESSION['roleSecurityArray'][$action])){
+			if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y" ){
 				$GLOBALS['result'] = $this->model->{"get".$action}($params);
 				include("view/".$this->device."/view.".$this->device.".".$view.".php"); 
 			}
