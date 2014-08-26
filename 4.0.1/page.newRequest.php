@@ -23,14 +23,15 @@ if(!isset($_GET['d'])){
                 <div class="column r60">
                     <div class="column r25">
                         <label for="service">Keyword</label>
-
                         <input class="text" name='keyword' id="keywordSearch" maxlength='15' placeholder="Search...">
                     </div>
+
                     <div class="column r25">
                         <label for="service">Service<span style="color: red;"> *</span> </label>
                         <div class="info">
                             <img src="images/Info.png" class="infoHover" id="service_help" />
                         </div>
+
                         <input class="text required" name='serviceInput' id="serviceInput"  placeholder="Search..." value='<?php if(isset($_SESSION['rem_serviceInput'])){ echo $_SESSION['rem_serviceInput']; } ?>'>
                         <input type="hidden" name='service' id="service">
                         <input type="hidden" id="service_helpText" />
