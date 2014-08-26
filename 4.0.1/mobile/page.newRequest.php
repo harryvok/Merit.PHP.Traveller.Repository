@@ -16,7 +16,7 @@ if(isset($_SESSION['user_id'])){
             include("mobile/page.output.php");
             ?>
             <script src="inc/js/pages/js.new-request.js"></script>
-            <?php echo COMPULSORY; ?>
+            <span style="color: red;"><b><?php echo COMPULSORY ?></b></span><br />
             <div style="float: left; width: 100%; display: block;">
                 
             </div>
