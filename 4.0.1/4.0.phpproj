@@ -1175,6 +1175,7 @@
     <Compile Include="page.view-action.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.view-customer.php" />
     <Compile Include="page.view-address.php">
       <SubType>Code</SubType>
     </Compile>
