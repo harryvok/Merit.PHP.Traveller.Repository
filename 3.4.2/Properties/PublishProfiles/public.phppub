@@ -3,7 +3,7 @@
   <PropertyGroup>
     <DeleteExistingFiles>False</DeleteExistingFiles>
     <SkipRemoteFilesCheck>True</SkipRemoteFilesCheck>
-    <publishUrl>\\MERIT-LAPTOP-3\wwwroot\CRM\3.4.2</publishUrl>
+    <publishUrl>\\MERIT-LAPTOP-3\wwwroot\CRM\3.4.4</publishUrl>
     <WebPublishMethod>FileSystem</WebPublishMethod>
   </PropertyGroup>
 </Project>
