@@ -501,7 +501,6 @@ class Model {
                 "email_address" => $email_address,
                 "company_name" => $company_name,
                 "name_ctr" => '0',
-                "search_property_rating"=> true,
                 "name_origin" => ''
             )
         );
