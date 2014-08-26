@@ -14,8 +14,8 @@ $(document).ready(function(){
 	getIntray("request", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['req_back_filter'])) echo $_SESSION['req_back_filter']; ?>");
 });
 
-    setTimeout(function () {
-        location.reload(true);
+    setInterval(function () {
+        getIntray("request", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['req_back_filter'])) echo $_SESSION['req_back_filter']; ?>");
     }, settime);
 </script>
 
