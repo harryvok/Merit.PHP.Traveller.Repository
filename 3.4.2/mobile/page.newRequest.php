@@ -89,7 +89,7 @@ if(isset($_SESSION['user_id'])){
       <?php
       include("mobile/page.output.php");
       ?>
-      <?php echo COMPULSORY; ?>
+      <span style="color: red;"><b><?php echo COMPULSORY ?></b></span><br />
       <form  enctype='multipart/form-data' id='newrequest' name="newrequest" action='process.php' method='post'>
       <div id="hoverDiv">
        <input type="hidden" name="lookup_enabled" id="lookup_enabled" value="<?php echo $_SESSION['roleSecurity']->maint_name_match; ?>" />
@@ -143,13 +143,13 @@ if(isset($_SESSION['user_id'])){
               <label>Reference Number</label>
               <input name='refno' maxlength='15' value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
               <?php
-                if(isset($_SESSION['roleSecurity']->maint_priority) && $_SESSION['roleSecurity']->maint_priority == "Y"){
-                    ?>
+    if(isset($_SESSION['roleSecurity']->maint_priority) && $_SESSION['roleSecurity']->maint_priority == "Y"){
+              ?>
                    <label>Priority</label>
                   <?php $controller->Dropdown("Priorities", "Priorities"); ?>
               <?php
-                }
-                ?>
+    }
+              ?>
               <label>Request Description<span style="color:red;">*</span></label>
               <textarea id="add-request-textarea" rows="4" class="text request-issue required" name='issue' id='textareaissue' maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
               </p>
@@ -162,17 +162,17 @@ if(isset($_SESSION['user_id'])){
               </div>
               <input type='hidden' name='udfs_exist' id='udfs_exist' value='0' />
               <?php
-              if(isset($_SESSION['rem_service'])){
-                  if(strlen($_SESSION['rem_service']) > 1){
-                      ?>
+    if(isset($_SESSION['rem_service'])){
+        if(strlen($_SESSION['rem_service']) > 1){
+              ?>
                       <script type="text/javascript">
                           QueryUDFs('<?php echo $_SESSION['rem_function']; ?>','<?php echo $_SESSION['rem_request']; ?>','<?php echo $_SESSION['rem_service']; ?>');  	
                           document.getElementById('udfs_exist').value = '1';
                       </script>
                       <?php
-                  }
-              }
-              ?>
+        }
+    }
+                      ?>
        </div>
         
        <div data-role="collapsible" class="col" data-content-theme="c">
