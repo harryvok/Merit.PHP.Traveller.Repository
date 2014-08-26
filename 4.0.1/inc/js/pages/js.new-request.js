@@ -682,6 +682,7 @@ $(document).ready(function () {
 
     /* CUSTOMER DETAILS */
 
+   
     // Clear Customer Details
     $("#clearDetails").on(eventName, function (event) {
         $("#surname").val("");
@@ -717,6 +718,9 @@ $(document).ready(function () {
             }
         });
     });
+
+        $("#CustSummary").removeAttr("disabled");
+    
 
     /* */
 
