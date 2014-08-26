@@ -9,7 +9,7 @@ define("DEV", 1);
 define("SITE_TITLE","Merit Traveller");
 define("COUNCIL_NAME", "Merit Technology"); // Your council name
 define("INACTIVITY", ""); // The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.
-define("REFRESHTABLE", "1"); // The time Before a table refresh occurs
+define("REFRESHTABLE", "0"); // The time Before a table refresh occurs
 
 //WEB SERVICES AND LINKS
 define("SITE_LINK", "http://traveller/4.0/");
