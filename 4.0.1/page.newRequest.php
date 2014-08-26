@@ -7,7 +7,8 @@ if(!isset($_GET['d'])){
 <div id="error">
 </div>
 <div id="newRequest">
-    <?php echo "<B>".COMPULSORY."</b><br />"; ?>
+    <span style="color: red;"><b><?php echo COMPULSORY ?></b></span><br />
+
     <form enctype='multipart/form-data' id='newrequest' name="newrequest" action='process.php' method='post'>
         <input type="hidden" name="lookup_enabled" id="lookup_enabled" value="<?php echo $_SESSION['roleSecurity']->maint_name_match; ?>" />
         <input type='hidden' name='udfs_exist' id='udfs_exist' value='0' />
@@ -26,7 +27,7 @@ if(!isset($_GET['d'])){
                         <input class="text" name='keyword' id="keywordSearch" maxlength='15' placeholder="Search...">
                     </div>
                     <div class="column r25">
-                        <label for="service" style="color: red;">Service<span style="color: black;"> **</span> </label>
+                        <label for="service">Service<span style="color: red;"> *</span> </label>
                         <div class="info">
                             <img src="images/Info.png" class="infoHover" id="service_help" />
                         </div>
@@ -37,7 +38,7 @@ if(!isset($_GET['d'])){
 
                     </div>
                     <div class="column r25">
-                        <label for="request" style="color: red;">Request<span style="color: black;"> **</span></label>
+                        <label for="request">Request<span style="color: red;"> *</span></label>
                         <div class="info">
                             <img src="images/Info.png" class="infoHover" id="request_help" />
                         </div>
@@ -48,7 +49,7 @@ if(!isset($_GET['d'])){
 
                     </div>
                     <div class="column r25">
-                        <label for="function" style="color: red;">Function<span id="functionRequired" style="color: black;"> **</span></label>
+                        <label for="function">Function<span id="functionRequired" style="color: red;"> *</span></label>
                         <div class="info">
                             <img src="images/Info.png" class="infoHover" id="function_help" />
                         </div>
@@ -63,7 +64,7 @@ if(!isset($_GET['d'])){
                     <div class="float-left">
                        
                         <div class="column r25">
-                            <label for="refno">Reference Number<span class="refer_no_label mandLabel" style="color: red; display: none;">*</span></label>
+                            <label for="refno">Reference Number<span class="refer_no_label mandLabel" style="color: red; display: none;"> *</span></label>
                             <input  class="text"name='refno'id="refno" data-mand="refer_no" maxlength='15' value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
                         </div>
                         <?php
@@ -78,7 +79,7 @@ if(!isset($_GET['d'])){
                         ?>
 
                         <div class="column r25">
-                            <label for="refno">Request Type<span class="request_type_label mandLabel" style="color:red;display:none;">*</span></label>
+                            <label for="refno">Request Type<span class="request_type_label mandLabel" style="color:red;display:none;"> *</span></label>
                             <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
                         </div>
                     </div>
@@ -99,7 +100,7 @@ if(!isset($_GET['d'])){
 
                 <br />
                 <div class="float-left">
-                    <label for="issue" style="color: red">Request Description<span class="request_description_label mandLabel" style="color: black""> **</span></label>
+                    <label for="issue">Request Description<span class="request_description_label mandLabel" style="color: red""> *</span></label>
                     <textarea rows="2" spellcheck="true" class="text request-issue" name='issue' id='textareaissue' data-mand="request_description" maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
                 </div>
             </div>
@@ -138,7 +139,7 @@ if(!isset($_GET['d'])){
                             <input type="hidden" name='facilityTypeId' id="facilityTypeId">
                         </div>
                         <div class="column r25">
-                            <label for="facilityInput">Facility Name<span class="facility_label mandLabel" style="color: red; display:none;">*</span></label>
+                            <label for="facilityInput">Facility Name<span class="facility_label mandLabel" style="color: red; display:none;"> *</span></label>
                             <input class="text" name='facilityInput' id="facilityInput" data-mand="facility" placeholder="Search..." value='<?php if(isset($_SESSION['rem_facility'])){ echo $_SESSION['rem_facility']; } ?>'>
                             <input type="hidden" name='facilityId' id="facilityId">
                             <input type="hidden" name='addressId' id="addressId" />
@@ -164,16 +165,16 @@ if(!isset($_GET['d'])){
                     </div>
                     
                     <div class="column r25">
-                        <label for="lstreet">Street Name<span class="location_address_label mandLabel" style="color: black; display:none;"> **</span></label>
+                        <label for="lstreet">Street Name<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                         <input class="text checkNone" name='lstreet' onChange="" id="lstreet" data-mand="location_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_lstreet'])){ echo $_SESSION['rem_lstreet']; } ?>'>
                     </div>
                     <div class="column r25">
-                        <label for="ltype">Street Type<span class="location_address_label mandLabel" style="color: black; display:none;"> **</span></label>
+                        <label for="ltype">Street Type<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                         <input class="text checkNone" name='ltype' onChange="" id="ltype" data-mand="location_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_ltype'])){ echo $_SESSION['rem_ltype']; } ?>'>
                     </div>
                     <div class="float-left">
                         <div class="column r25">
-                            <label for="lsuburb">Suburb<span class="location_address_label mandLabel" style="color: black; display:none;"> **</span></label>
+                            <label for="lsuburb">Suburb<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                             <input class="text checkNone" name='lsuburb' onChange="" id="lsuburb" data-mand="location_address"  disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'>
                         </div>
                         <div class="column r25">
@@ -233,37 +234,37 @@ if(!isset($_GET['d'])){
                         </div>
                         <div class="float-left">
                             <div class="column r25">
-                                <label for="pref_title">Title<span class="pref_title_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="pref_title">Title<span class="pref_title_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input  class="text getlist" name='cust_title' data-mand="pref_title" id="pref_title" maxlength='5' value='<?php if(isset($_SESSION['rem_cust_title'])){ echo $_SESSION['rem_cust_title']; } ?>' onChange="capitalise('pref_title')">
                             </div>
                             <div class="column r25">
-                                <label for="given">Given<span class="given_name_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="given">Given<span class="given_name_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist" name='cust_given' data-mand="given_name" id="given" maxlength='30' value='<?php if(isset($_SESSION['rem_cust_given'])){ echo $_SESSION['rem_cust_given']; } ?>' onChange="capitalise('given')">
                             </div>
                             <div class="column r25">
-                                <label for="surname">Surname<span class="surname_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="surname">Surname<span class="surname_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist" name='cust_surname' data-mand="surname" id="surname" maxlength='30' value='<?php if(isset($_SESSION['rem_cust_surname'])){ echo $_SESSION['rem_cust_surname']; } ?>' onChange="capitalise('surname')">
                             </div>
                             <div class="column r25">
-                                <label for="company">Company<span class="company_name_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="company">Company<span class="company_name_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist" name='cust_company' id="company" data-mand="company_name" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_company'])){ echo $_SESSION['rem_cust_company']; } ?>' onChange="capitalise('company')">
                             </div>
                         </div>
                         <div class="float-left">
                             <div class="column r25">
-                                <label for="mobile">Mobile<span class="mobile_no_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="mobile">Mobile<span class="mobile_no_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist" name='cust_mobile' id="cust_mobile" data-mand="mobile_no" maxlength='12' value='<?php if(isset($_SESSION['rem_cust_mobile'])){ echo $_SESSION['rem_cust_mobile']; } ?>'>
                             </div>
                             <div class="column r25">    
-                                <label for="phone">Phone<span class="telephone_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="phone">Phone<span class="telephone_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist" name='cust_phone' id="cust_phone" data-mand="telephone" maxlength='12' value='<?php if(isset($_SESSION['rem_cust_phone'])){ echo $_SESSION['rem_cust_phone']; } ?>'>
                             </div>
                             <div class="column r25">    
-                                <label for="work">Work<span class="work_phone_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="work">Work<span class="work_phone_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist" name='cust_work' id="cust_work" data-mand="work_phone" maxlength='12' value='<?php if(isset($_SESSION['rem_cust_work'])){ echo $_SESSION['rem_cust_work']; } ?>'>
                             </div>
                             <div class="column r25">  
-                                <label for="email">Email<span class="email_address_label mandLabel" style="color:red; display:none;">*</span></label>
+                                <label for="email">Email<span class="email_address_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist email" name='cust_email' id='email_address' data-mand="email_address" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_email'])){ echo $_SESSION['rem_cust_email']; } ?>'>
                             </div>
                         </div>
@@ -329,16 +330,16 @@ if(!isset($_GET['d'])){
                                 <input class="text cadd" name='i_cno' onChange="" id="i_cno"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
                             </div>
                             <div class="column r25">
-                                <label for="i_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                                <label for="i_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                 <input class="text cadd checkNone" name='i_cstreet'  id="i_cstreet" data-mand="customer_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_cstreet'])){ echo $_SESSION['rem_i_cstreet']; } ?>'>
                             </div>
                             <div class="column r25">
-                                <label for="i_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                                <label for="i_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                 <input class="text cadd checkNone" name='i_ctype'  id="i_ctype" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_ctype'])){ echo $_SESSION['rem_i_ctype']; } ?>'>
                             </div>
                             <div class="float-left">
                                 <div class="column r25">
-                                    <label for="i_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                                    <label for="i_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                     <input class="text cadd checkNone" name='i_csuburb'  id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; } ?>'>
                                 </div>
                                 <div class="column r10">
@@ -370,16 +371,16 @@ if(!isset($_GET['d'])){
                                 <input class="text" name='o_cno' onChange="changeLocationType()" id="o_cno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cfaddno'])){ echo $_SESSION['rem_o_cfaddno']; } ?>'>
                             </div>
                             <div class="column r25">
-                                <label for="o_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                                <label for="o_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                 <input class="text" name='o_cstreet' onChange="changeLocationType();remstname();" data-mand="customer_address" id="o_cstreet" maxlength='100' value='<?php if(isset($_SESSION['rem_o_cstreet'])){ echo $_SESSION['rem_o_cstreet']; } ?>'>
                             </div>
                             <div class="column r25">
-                                <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                                <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                 <input class="text" name='o_ctype' onChange="changeLocationType()" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; } ?>'>
                             </div>
                             <div class="float-left">
                                 <div class="column r25">
-                                    <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;">*</span></label>
+                                    <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                     <input class="text" name='o_csuburb' onChange="changeLocationType()" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
                                 </div>
                                 <div class="column r10">
