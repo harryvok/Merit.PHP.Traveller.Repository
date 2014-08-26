@@ -1,11 +1,10 @@
 
 <?php
 // Otherwise, display the "stars are complusory message"
-
-echo "<b>".COMPULSORY."</b>";
-
-// If there is no tracked result, display the form to lodge requests
 ?>
+<span style="color: red;"><b><?php echo COMPULSORY ?></b></span><br />
+
+
 <script type="text/javascript" src="inc/js/pages/js.new-request.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
