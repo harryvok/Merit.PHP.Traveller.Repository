@@ -1167,6 +1167,10 @@ function ViewAddressDetails() {
         window.open("index.php?page=view-address&id=" + $("#addressId").val(), "_blank");
 }
 
+function ViewCustomerDetails() {
+    window.open("index.php?page=view-customer&id=" + $("#customerId").val(), "_blank");
+}
+
 // GOOGLE MAPS
 
 var geocoder;

@@ -13,7 +13,7 @@ if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); }
 if(isset($_GET['ref'])){ $ref = strip_tags($_GET['ref']); }
 if(isset($_GET['ref_page'])){ $page = strip_tags($_GET['ref_page']); }
 
-$controller->Display("Address", "AddressHeader", $address_id);
+    $controller->Display("Address", "AddressHeader", $address_id);
  if(isset($_GET['d']) && $_GET['d'] == "summary" || !isset($_GET['d'])){
 	 $controller->Display("Address", "Address", $address_id);
  }
