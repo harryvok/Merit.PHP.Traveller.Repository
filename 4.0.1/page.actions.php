@@ -15,7 +15,7 @@ if(isset($_SESSION['user_id'])){
 
 	        setInterval(function () {
 	            getIntray("action", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['act_back_filter'])) echo $_SESSION['act_back_filter']; ?>");
-	        }, $timeset);
+	        }, settime);
 	</script>
 
     
