@@ -178,9 +178,8 @@ div.column {
     box-sizing: border-box; /* Opera/IE 8+ */
     padding-right: 15px;
 }
-    div.column:last-child {
-        padding-right:0;
-    }
+   
+
 div.r5 {width: 5% !important;}
 div.r10 {width: 10% !important;}
 div.r15 {width: 15% !important;}
@@ -198,6 +197,8 @@ div.r80 {width:80% !important;}
 div.r85 {width:85% !important;}
 div.r95 {width:95% !important;}
 div.r100 {width:100% !important;}
+div.Fieldx2 {width:35% !important;}
+div.Fieldx1 {width:70% !important;}
 
 div.last-child {
     margin:0px;
