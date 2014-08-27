@@ -6,6 +6,7 @@
 		window.location = "index.php?page=view-request&id="+id;
 	}
 </script>
+
 <?php
 $name_id = strip_tags($_GET['id']);
 if(isset($_GET['ref'])){ $ref = strip_tags($_GET['ref']); }
