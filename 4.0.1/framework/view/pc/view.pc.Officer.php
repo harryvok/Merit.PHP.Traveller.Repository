@@ -4,14 +4,14 @@ $GLOBALS['result'] = $GLOBALS['result']->officer_det;
    <div class="summaryContainer">
        <h1>Details</h1>
           <div class="float-left">
-          <div class="column Fieldx1">
-            <div class="column r30"> 
+          <div class="column r50">
+            <div class="column Fieldx2"> 
                 <span class="summaryColumnTitle">Given Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']->given_names)) echo $GLOBALS['result']->given_names; ?>
                 </div>
             </div>
-            <div class="column r30"> 
+            <div class="column Fieldx2"> 
                 <span class="summaryColumnTitle">Surname</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']->surname)) echo $GLOBALS['result']->surname; ?>
@@ -20,29 +20,29 @@ $GLOBALS['result'] = $GLOBALS['result']->officer_det;
         </div>
         </div>
     </div>
-    <div class="summaryContainer">
+    <div class="summaryContainer" style="display:inline">
         <h1>Organisation</h1>
              <div class="float-left">
-             <div class="column Fieldx1">
-                <div class="column r50"> 
+             <div class="column r50">
+                <div class="column Fieldx1"> 
                     <span class="summaryColumnTitle">Division</span>
                     <div class="summaryColumn">
                         <?php if(isset($GLOBALS['result']->div_name)) echo $GLOBALS['result']->div_name; ?>
                     </div>
                 </div>
-                <div class="column r50"> 
+                <div class="column Fieldx1"> 
                     <span class="summaryColumnTitle">Department</span>
                     <div class="summaryColumn">
                         <?php if(isset($GLOBALS['result']->dep_name)) echo $GLOBALS['result']->dep_name; ?>
                     </div>
                 </div>
-                <div class="column r50"> 
+                <div class="column Fieldx1"> 
                     <span class="summaryColumnTitle">Centre</span>
                     <div class="summaryColumn">
                         <?php if(isset($GLOBALS['result']->centre_name)) echo $GLOBALS['result']->centre_name; ?>
                     </div>
                 </div>
-                <div class="column r50"> 
+                <div class="column Fieldx1"> 
                     <span class="summaryColumnTitle">Location</span>
                     <div class="summaryColumn">
                         <?php if(isset($GLOBALS['result']->location)) echo $GLOBALS['result']->location; ?>
@@ -50,7 +50,7 @@ $GLOBALS['result'] = $GLOBALS['result']->officer_det;
                 </div>
                 <div class="column r50"></div>
             </div>
-            </div>
+           </div>  
         </div>
         <div class="summaryContainer">
            <h1>Contact</h1>
@@ -73,5 +73,5 @@ $GLOBALS['result'] = $GLOBALS['result']->officer_det;
                         <div class="summaryColumn"><?php if(isset($GLOBALS['result']->mail_id)) echo $GLOBALS['result']->mail_id; ?></div>
                    </div>
                </div>
-               </div>
+               </div>              
         </div>
