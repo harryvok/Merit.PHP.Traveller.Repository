@@ -95,17 +95,23 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 			}
 			elseif($count_udf == 1){
 				$udf =$GLOBALS['result']['udfs']->udf_details;
-						if($udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
-							?>
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+
+                    if($udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
+                            ?>
                             <li>
-							<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>" href="#" class="ViewFile"> <?php } } } ?><p>
+							<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
+                                                                                                                           if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>" href="#" class="ViewFile"> <?php }
+                                                                                                                       }
+                                                                                                                                                 } ?><p>
                             	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?>
 								<b><?php if($udf->udf_action_id == 0){ echo "(Request)</b>"; } else { echo "(Action ".$udf->udf_action_id.") - </b>".$udf->action_required; } ?><br />
 								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
                                   </p></a>
 							   </li>
 							<?php  
-						}
+                    }
+                }
 			}
 			?>
 		</ul>
