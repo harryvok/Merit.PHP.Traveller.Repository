@@ -235,6 +235,14 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
         </div>
         <div class="float-left">
           <div class="column half">
+           <span class="summaryColumnTitle">Customer Email</span>
+            <div class="summaryColumn">
+            	<?php if(isset($GLOBALS['result']->customer_name_det->customer_name_details->email_address)){ echo $GLOBALS['result']->customer_name_det->customer_name_details->email_address; }?>
+                </div>
+            </div>
+      </div>
+        <div class="float-left">
+          <div class="column half">
            <span class="summaryColumnTitle">Customer Address</span>
             <div class="summaryColumn">
             	<?php 
@@ -260,14 +268,7 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
                 </div>
           </div>
       </div>
-      <div class="float-left">
-          <div class="column half">
-           <span class="summaryColumnTitle">Customer Email</span>
-            <div class="summaryColumn">
-            	<?php if(isset($GLOBALS['result']->customer_name_det->customer_name_details->email_address)){ echo $GLOBALS['result']->customer_name_det->customer_name_details->email_address; }?>
-                </div>
-            </div>
-      </div>
+      
 
      
  </div>

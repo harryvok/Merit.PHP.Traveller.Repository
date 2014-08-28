@@ -58,6 +58,8 @@ $(document).ready(function () {
         $("#function").val("");
         $("#functionInput").val("").attr("disabled", true).removeClass("required").textInputState('disable');
 
+        $("#service").val("");
+        $("#function").val("");
         //if readonly, it means the only option in the list has been selected
         if (!$("#serviceInput").is('[readonly]')) {
             $("#service").val("");

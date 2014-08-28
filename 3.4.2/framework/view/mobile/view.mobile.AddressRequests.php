@@ -54,7 +54,7 @@ else{
                                 
                                 <p><b>Request ID:</b> <?php echo $result_a_ar->request_id; ?></p>
                                 <p><b>Received Date:</b> <?php if(strlen($result_a_ar->request_datetime) > 0){ echo date('d/m/Y',strtotime($result_a_ar->request_datetime)); } ?></p>
-                                <p><b>Completed Date:</b> <?php if(strlen($result_a_ar->status_datetime) > 0 && $result_a_ar->status_datetime != "1900-01-01T00:00:00" && $result_a_ar->status != "Open"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $result_a_ar->status_datetime))); } ?></p>
+                                 <p><b>Completed Date:</b> <?php if($result_a_ar->finalised_ind == "Y"){ if(strlen($result_a_ar->status_datetime) > 0 && $result_a_ar->status_datetime != "1900-01-01T00:00:00" && $result_a_ar->status != "Open"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $result_a_ar->status_datetime))); }} ?></p>
                             
                                 </a>
                             </li>
@@ -92,7 +92,7 @@ else{
                     
                     <p><b>Request ID:</b> <?php echo $result_a_ar->request_id; ?></p>
                     <p><b>Received Date:</b> <?php if(strlen($result_a_ar->request_datetime) > 0){ echo date('d/m/Y',strtotime($result_a_ar->request_datetime)); } ?></p>
-                    <p><b>Completed Date:</b> <?php if(strlen($result_a_ar->status_datetime) > 0 && $result_a_ar->status_datetime != "1900-01-01T00:00:00" && $result_a_ar->status != "Open"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $result_a_ar->status_datetime))); } ?></p>
+                    <p><b>Completed Date:</b> <?php if($result_a_ar->finalised_ind == "Y"){ if(strlen($result_a_ar->status_datetime) > 0 && $result_a_ar->status_datetime != "1900-01-01T00:00:00" && $result_a_ar->status != "Open"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $result_a_ar->status_datetime))); }} ?></p>
                 
                     </a>
                 </li>

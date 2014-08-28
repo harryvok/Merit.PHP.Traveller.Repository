@@ -51,12 +51,15 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             <input type="hidden" id="ret_<?php echo $set; ?>_confidential" value="<?php if(isset($result_n_ar->confidential)){ echo $result_n_ar->confidential; } else { echo ""; } ?>" />
                 <li class=" address_row" id="<?php echo $set; ?>">
                 	<a>
-                    <?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>
+                    <?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){
+                              $flat = explode("/", $result_n_ar->house_suffix); 
+                             // echo $result_n_ar->house_suffix;
+                    } ?>
                     <?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)){ ?>
-                              <p><b>House Number:</b> <?php echo $result_n_ar->house_suffix;  ?>
+                              <p><b>House Number:</b> <?php /*echo $result_n_ar->house_suffix;*/  echo $result_n_ar->house_suffix; ?>
                     <?php   }else{ ?>
                               
-                              <p><b>House Number:</b><?php echo $result_n_ar->house_number;?> 
+                              <p><b>House Number:</b><?php echo $result_n_ar->house_suffix;?> 
                     <?php }?>
                    <?php if(isset($result_n_ar->street_name) && strlen($result_n_ar->street_name) > 0){ ?><p><b>Street Name:</b> <?php echo $result_n_ar->street_name."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->street_type) && strlen($result_n_ar->street_type) > 0){ ?><p><b>Street Type:</b> <?php echo $result_n_ar->street_type."</p>"; } else { echo ""; } ?>
@@ -84,12 +87,15 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             <input type="hidden" id="ret_<?php echo $set; ?>_confidential" value="<?php if(isset($result_n_ar->confidential)){ echo $result_n_ar->confidential; } else { echo ""; } ?>" />
              <li class="address_row" id="<?php echo $set; ?>">
              	<a>
-                 <?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>
+                 <?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){
+                              $flat = explode("/", $result_n_ar->house_suffix); 
+                             // echo $result_n_ar->house_suffix;
+                    } ?>
                     <?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)){ ?>
-                              <p><b>House Number:</b> <?php echo $result_n_ar->house_suffix;  ?>
+                              <p><b>House Number:</b> <?php /*echo $result_n_ar->house_suffix;*/  echo $result_n_ar->house_suffix; ?>
                     <?php   }else{ ?>
                               
-                              <p><b>House Number:</b><?php echo $result_n_ar->house_number;?> 
+                              <p><b>House Number:</b><?php echo $result_n_ar->house_suffix;?> 
                     <?php }?>
                    <?php if(isset($result_n_ar->street_name) && strlen($result_n_ar->street_name) > 0){ ?><p><b>Street Name:</b> <?php echo $result_n_ar->street_name."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->street_type) && strlen($result_n_ar->street_type) > 0){ ?><p><b>Street Type:</b> <?php echo $result_n_ar->street_type."</p>"; } else { echo ""; } ?>
