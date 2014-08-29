@@ -235,6 +235,7 @@ $(document).ready(function () {
     }
 
     function functionSuccess(data) {
+        $("#textareaissue").focus();
         if (data.length === 0) {
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             return false;

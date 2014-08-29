@@ -1,3 +1,7 @@
+  <?php
+  if($_SESSION['roleSecurity']->view_attachment == "Y") 
+  {
+  ?>
 <?php
 
 if(isset($_SESSION['request_id'])){
@@ -124,4 +128,7 @@ if(isset($_SESSION['request_id'])){
 else{
 	echo "Could not retrieve attachments.";	
 }
+?>
+<?php
+  }
 ?>

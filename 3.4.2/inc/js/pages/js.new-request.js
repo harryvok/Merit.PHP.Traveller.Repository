@@ -210,9 +210,11 @@ $(document).ready(function () {
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val());
             CheckCountOnly($("#service").val(), $("#request").val(), $("#function").val());
             $("#functionInput").autocomplete("close");
+            
         }
     }
     function functionSuccess(data) {
+        $("#textareaissue").focus();
         if (data.length === 0) {
             if ($("#chkCount").val() === "0") {
                 $("#chkCount").val("1");

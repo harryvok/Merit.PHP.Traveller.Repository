@@ -1,4 +1,7 @@
-
+<?php
+   if($_SESSION['roleSecurity']->view_attachment == "Y")
+    {
+?>
 <div class="float-left">
              <input type="hidden" name="val-at" id="val-at" value="0" />
             <div style="float:left;">
@@ -117,3 +120,6 @@
         
 </div>
 </div>
+<?php
+    }
+?>

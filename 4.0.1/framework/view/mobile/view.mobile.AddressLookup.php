@@ -51,6 +51,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             <input type="hidden" id="ret_<?php echo $set; ?>_confidential" value="<?php if(isset($result_n_ar->confidential)){ echo $result_n_ar->confidential; } else { echo ""; } ?>" />
                 <li class=" address_row" id="<?php echo $set; ?>">
                 	<a>
+                    <?php if(isset($result_n_ar->origin_name) && strlen($result_n_ar->origin_name) > 0){ ?><p><b>Origin:</b> <?php echo $result_n_ar->origin_name."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){
                               $flat = explode("/", $result_n_ar->house_suffix); 
                              // echo $result_n_ar->house_suffix;
@@ -87,6 +88,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             <input type="hidden" id="ret_<?php echo $set; ?>_confidential" value="<?php if(isset($result_n_ar->confidential)){ echo $result_n_ar->confidential; } else { echo ""; } ?>" />
              <li class="address_row" id="<?php echo $set; ?>">
              	<a>
+                 <?php if(isset($result_n_ar->origin_name) && strlen($result_n_ar->origin_name) > 0){ ?><p><b>Origin:</b> <?php echo $result_n_ar->origin_name."</p>"; } else { echo ""; } ?>
                  <?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ 
                            $flat = explode("/", $result_n_ar->house_suffix); 
                            /*echo $result_n_ar->house_suffix;*/
