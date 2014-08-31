@@ -277,7 +277,7 @@ if(!isset($_GET['d'])){
                     <div>
                         <div class="float-left">
 
-                            <div class="fieldset">
+                            <div class="column r50">
                                 <label for="same">Customer Resides</label>
                                 <br/>
                                 <select class="text" name="same" id="same" onchange="changeLocationType();" style="width:200px">
@@ -315,6 +315,7 @@ if(!isset($_GET['d'])){
                                     ?>
                                 </select>
                                 <input type="button" value="Clear" onclick="clearCustomerAddress()" />
+                                <input type="button" value="Summary" disabled id="CustAddSummary" onclick="ViewCustomerAddDetails()"  />
                             </div>
                         </div>
                         <div id="inside_ca" style="display: block;">
