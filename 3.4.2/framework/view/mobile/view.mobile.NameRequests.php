@@ -28,10 +28,10 @@ else{
                           <p>
                               <div class="status_code">
                               <?php 
-                              if($result_a_ar->status == "Open"){ 
+                              if($result_a_ar->status_code == "OPEN"){ 
                                         echo '<img width="10" height="9" src="images/dotGreen.png" />';
                                     }
-                                    elseif($result_a_ar->status == "Suspended"){ 
+                                    elseif($result_a_ar->status_code == "SUSPENDED"){ 
                                         echo '<img width="10" height="9" src="images/dotYellow.png" />';
                                     } 
                                     else{
@@ -64,10 +64,10 @@ else{
                           <p>
                               <div class="status_code">
                               <?php 
-                              if($result_a_ar->status == "Open"){ 
+                              if($result_a_ar->status_code == "OPEN"){ 
                                         echo '<img width="10" height="9" src="images/dotGreen.png" />';
                                     }
-                                    elseif($result_a_ar->status == "Suspended"){ 
+                                    elseif($result_a_ar->status_code == "SUSPENDED"){ 
                                         echo '<img width="10" height="9" src="images/dotYellow.png" />';
                                     } 
                                     else{

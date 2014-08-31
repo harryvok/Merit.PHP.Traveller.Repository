@@ -64,15 +64,15 @@
                                     <td><?php if(strlen($result_a_ar->request_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $result_a_ar->request_datetime))); } else { echo "N"; } ?></td>
                                    <td><?php if(isset($result_a_ar->status_datetime) && strlen($result_a_ar->status_datetime) > 0 && $result_a_ar->status_datetime != "1900-01-01T00:00:00" && $result_a_ar->finalised_ind == "Y"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $result_a_ar->status_datetime))); } ?></td>
                                 <td><?php 
-                                            if($result_a_ar->status == "Open"){ 
+                                        if($result_a_ar->status_code == "OPEN"){ 
                                             echo '<img width="10" height="9" src="images/dotGreen.png" />';
                                         }
-                                        elseif($result_a_ar->status == "Suspended"){ 
+                                        elseif($result_a_ar->status_code == "SUSPENDED"){ 
                                             echo '<img width="10" height="9" src="images/dotYellow.png" />';
                                         } 
-										else{
-											echo '<img width="10" height="9" src="images/dotRed.png" />';
-										}
+                                        else{
+                                            echo '<img width="10" height="9" src="images/dotRed.png" />';
+                                        }
                                             ?>
                                 </td>
                                 </tr>
@@ -89,15 +89,15 @@
                                 <td><?php if(strlen($GLOBALS['result']->req_dets->request_details->request_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $GLOBALS['result']->req_dets->request_details->request_datetime))); } else { echo "N"; } ?></td>
                                 <td><?php if(isset($GLOBALS['result']->req_dets->request_details->status_datetime) && strlen($GLOBALS['result']->req_dets->request_details->status_datetime) > 0 && $GLOBALS['result']->req_dets->request_details->status_datetime != "1900-01-01T00:00:00" && $GLOBALS['result']->req_dets->request_details->finalised_ind == "Y"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $GLOBALS['result']->req_dets->request_details->status_datetime))); } ?></td>
                                 <td><?php 
-                                            if($GLOBALS['result']->req_dets->request_details->status == "Open"){ 
+                                        if($GLOBALS['result']->req_dets->request_details->status_code == "OPEN"){ 
                                             echo '<img width="10" height="9" src="images/dotGreen.png" />';
                                         }
-                                        elseif($GLOBALS['result']->req_dets->request_details->status == "Suspended"){ 
+                                        elseif($GLOBALS['result']->req_dets->request_details->status_code == "SUSPENDED"){
                                             echo '<img width="10" height="9" src="images/dotYellow.png" />';
+                                        }
+                                        else{
+                                            echo '<img width="10" height="9" src="images/dotRed.png" />';
                                         } 
-										else{
-											echo '<img width="10" height="9" src="images/dotRed.png" />';
-										}
                                             ?>
                                 </td>
                             </tr>

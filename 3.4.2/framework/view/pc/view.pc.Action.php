@@ -232,6 +232,12 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
         
         
      </div>
+         <div class="float-left">
+           <span class="summaryColumnTitle">Customer Email</span>
+            <div class="summaryColumn">
+            	<?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; }?>
+            </div>
+      </div>
      <div class="float-left">
      		<div class="column half">
                <span class="summaryColumnTitle">Customer Address</span>
@@ -258,9 +264,4 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
                 </div>
             </div>
       </div>
-      <div class="float-left">
-           <span class="summaryColumnTitle">Customer Email</span>
-            <div class="summaryColumn">
-            	<?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; }?>
-            </div>
-      </div>
+     

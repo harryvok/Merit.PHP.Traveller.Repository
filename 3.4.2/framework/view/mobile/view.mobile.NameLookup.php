@@ -32,10 +32,11 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 
 				},
 				success: function(data) {
-					
-					$('#popup').html(data);	
-					$("#popup").popup("open");
-					$("#default").page('destroy').page();
+				    if (data) {
+				        $('#popup').html(data);
+				        $("#popup").popup("open");
+				    }
+				    $("#default").page('destroy').page();
 				}
 				
 			});
@@ -70,7 +71,12 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
             <input type="hidden" id="ret_<?php echo $set; ?>_name_origin_code" value="<?php if(isset($result_n_ar->name_origin_code)){ echo $result_n_ar->name_origin_code; } else { echo ""; } ?>" />
                <li class="name_row" id="<?php echo $set; ?>">
                	<a>
-                    <?php if(isset($result_n_ar->name_origin) && strlen($result_n_ar->name_origin) > 0){ ?><p><b>Origin:</b> <?php  echo $result_n_ar->name_origin."</p>"; } else { echo ""; } ?>
+                    <?php if(isset($result_n_ar->name_origin) && strlen($result_n_ar->name_origin) > 0){ ?>
+                        <p><b>Origin:</b>
+                        <?php  echo $result_n_ar->name_origin."</p>"; 
+                          } else {
+                              echo ""; 
+                          } ?>
                     <?php if(isset($result_n_ar->given_names) && strlen($result_n_ar->given_names) > 0 || isset($result_n_ar->surname) && strlen($result_n_ar->surname) > 0){ ?><p><b>Name:</b> <?php  echo $result_n_ar->given_names." ".$result_n_ar->surname."</p>"; } else { echo ""; } ?>
                    <?php if(isset($result_n_ar->telephone) && strlen($result_n_ar->telephone) > 0){ ?><p><b>Phone:</b> <?php echo $result_n_ar->telephone."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->work_phone) && strlen($result_n_ar->work_phone) > 0){ ?><p><b>Work Phone:</b> <?php echo $result_n_ar->work_phone."</p>"; } else { echo ""; } ?>

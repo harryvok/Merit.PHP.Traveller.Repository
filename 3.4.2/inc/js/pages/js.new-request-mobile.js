@@ -451,7 +451,8 @@ $(document).ready(function(){
 					service_code: $("#service").val(),
 					request_code: $("#request").val()
 				},
-				success: function(data) {
+				success: function (data) {
+				    
 				    if (data.length === 0) {
 				        if ($("#chkCount").val() === 0) {
 				            $("#chkCount").val("1");
