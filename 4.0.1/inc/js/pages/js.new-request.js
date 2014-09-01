@@ -1093,14 +1093,14 @@ function changeLocationType() {
         if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); $("#CustAddSummary").prop("disabled", false); }
     }
     else if ($('#same').val() == "i") {
-        $('#o_cno').val("");
-        $('#o_cfno').val("");
-        $('#o_cstreet').val("");
-        $('#o_ctype').val("");
-        $('#o_csuburb').val("");
-        $('#o_cdesc').val("");
-        $("#o_cpostcode").val("");
-        $("#cust_address_id").val("");
+        $('#o_cno').val($("#o_cno");
+        $('#o_cfno').val($("#o_cfno");
+        $('#o_cstreet').val($("#o_cstreet");
+        $('#o_ctype').val($("#o_ctype");
+        $('#o_csuburb').val($("#o_csuburb");
+        $('#o_cdesc').val($("#o_cdesc");
+        $("#o_cpostcode").val($("#o_cpostcode");
+        $("#cust_address_id").val($("#cust_address_id");
 
         $('#inside_ca').show();
         $('#outside_ca').hide();
