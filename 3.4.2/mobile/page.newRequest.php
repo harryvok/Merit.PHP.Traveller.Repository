@@ -20,15 +20,16 @@ if(isset($_SESSION['user_id'])){
 		
         if ($("#lookup_enabled").val() == "Y") {
            function check_fields(){
-			var i=0;
+               var i = 0;
+            if (($('#pref_title').val().length) > 0) i++;
 			if(($('#given').val().length) > 0) i++;
 			if(($('#surname').val().length) > 0) i++;
 			if(($('#cust_mobile').val().length) > 0){ i=i+2; }
 			if(($('#cust_phone').val().length) > 0){ i=i+2; }
 			if(($("#cust_work").val().length) > 0){ i=i+2; }
 			if(($('#email_address').val().length) > 0){ i=i+2; }
-			if(($('#company').val().length) > 0) i++;
-			if(i>=1) return true; 
+			if(($('#company').val().length) > 0) { i = i + 2; }
+			if(i>=2) return true; 
 		   }
            
             $('.getlist').change(function(){
