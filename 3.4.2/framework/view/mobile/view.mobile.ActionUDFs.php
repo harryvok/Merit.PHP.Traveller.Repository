@@ -90,6 +90,7 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 				}
 			}
 			elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
 				$udf =$GLOBALS['result']['udfs']->udf_details;
 				if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
 				?>
@@ -99,6 +100,7 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 				<?php  
 				}
 			}
+            }
 			
 			?>
 		</ul>
@@ -152,6 +154,7 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 				}
 			}
 			elseif($count_udf == 1){
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
 				$udf =$GLOBALS['result']['udfs']->udf_details;
 						if($udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
 							?>
@@ -164,6 +167,7 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 							   </li>
 							<?php  
 						}
+                }
 			}
 			?>
 		</ul>
