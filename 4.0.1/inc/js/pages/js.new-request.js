@@ -772,11 +772,11 @@ $(document).ready(function () {
         }
     }
 
-    // Customer Street Suburb
     function cSuburbInit() {
         $("#i_csuburb").attr("readonly", false).val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
         return $("#i_ctype").val();
     }
+   
     var cSuburbResponse = function (event, ui) {
         var label = "";
         var postcode = "";
@@ -788,7 +788,7 @@ $(document).ready(function () {
             $("#i_cpostcode").val(postcode)//.attr("readonly", true).removeClass("ui-autocomplete-loading");
             GetCustomerAddressDetails();
             $("#i_csuburb").autocomplete("close");
-            $("#AddrSummary").removeAttr("disabled");
+            $("#CustAddSummary").removeAttr("disabled");
         }
     }
 
@@ -1029,6 +1029,7 @@ $(document).ready(function () {
     $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
     $("#facilityInput").autoCompleteInitSeq(facilityInit, "inc/ajax/ajax.getFacilitiesLookup.php", { term: "", facilitiesName: function () { return $("#facilityInput").val(); }, facilitiesType: function () { return $("#facilityTypeInput").val(); } }, facilityResponse);
+  
 
     /* */
     $("#reset").on(eventName, function (event) {
@@ -1073,6 +1074,9 @@ $(document).ready(function () {
 /* OTHER FUNCTIONS */
 
 function changeLocationType() {
+
+    $("#CustAddSummary").prop("disabled", true);
+
     if ($('#same').val() == "s") {
         $('#inside_ca').show();
         $('#outside_ca').hide();
@@ -1086,7 +1090,7 @@ function changeLocationType() {
         $("#cust_address_id").val($("#addressId").val());
 
         if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
-        if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
+        if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); $("#CustAddSummary").prop("disabled", false); }
     }
     else if ($('#same').val() == "i") {
         $('#o_cno').val("");
@@ -1102,8 +1106,9 @@ function changeLocationType() {
         $('#outside_ca').hide();
     }
     else if ($('#same').val() == "o") {
+        $('#o_csuburb').val();
         $('#inside_ca').hide();
-        $('#outside_ca').show();
+        $('#outside_ca').show();       
     }
 
     if ($('#same').val() == "i") {
@@ -1116,10 +1121,20 @@ function changeLocationType() {
         $("#i_cpostcode").val("");
         $("#cust_address_id").val("");
         if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); }
-        if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable"); }
+        if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable"); $("#CustAddSummary").prop("disabled", false); }
     }
 
-
+    if ($('#same').val() == "o") {
+        $('#o_cno').val();
+        $('#o_cfno').val();
+        $('#o_cstreet').val();
+        $('#o_ctype').val();
+        $('#o_csuburb').val();
+        $('#o_cdesc').val();
+        $("#o_cpostcode").val();
+        $("#cust_address_id").val();         
+        if ($('#o_csuburb').val().length > 0) { $("#CustAddSummary").prop("disabled", false); }
+    }
 
     if ($("#historyaddrtype").val() == "C" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
 }
@@ -1144,6 +1159,7 @@ function clearCustomerAddress() {
     $('#o_cdesc').val("");
     $("#o_cpostcode").val("");
     $("#cust_address_id").val("");
+    $("#CustAddSummary").prop("disabled", true);
   
     $('#inside_ca').show();
     $('#outside_ca').hide();
@@ -1170,7 +1186,11 @@ function clearLocationAddress() {
 }
 
 function ViewAddressDetails() {
-        window.open("index.php?page=view-address&id=" + $("#addressId").val(), "_blank");
+        window.open("index.php?page=view-address&action=location_add&id=" + $("#addressId").val(), "_blank");
+}
+
+function ViewCustomerAddDetails() {
+    window.open("index.php?page=view-address&action=customer_add&id=" + $("#cust_address_id").val(), "_blank");
 }
 
 function ViewCustomerDetails() {

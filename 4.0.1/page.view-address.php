@@ -9,6 +9,9 @@
 
 <?php
 $address_id = strip_tags($_GET['id']);
+$action = strip_tags($_GET['action']);
+if($action == "location_add")
+{
 if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); }
 if(isset($_GET['ref'])){ $ref = strip_tags($_GET['ref']); }
 if(isset($_GET['ref_page'])){ $page = strip_tags($_GET['ref_page']); }
@@ -32,5 +35,6 @@ if(isset($_GET['ref_page'])){ $page = strip_tags($_GET['ref_page']); }
  if(isset($_GET['d']) && $_GET['d'] == "attrib"){
 	 $controller->Display("AddressAttributes", "AddressAttributes");
  }
+}
 
 ?>

@@ -346,7 +346,7 @@ if(!isset($_GET['d'])){
                                     <input class="text cadd checkNone" name='i_csuburb'  id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; } ?>'>
                                 </div>
                                 <div class="column r10">
-                                    <label for="i_csuburb">Postcode</label>
+                                    <label for="i_cpostcode">Postcode</label>
                                     <input class="text cadd" name='i_cpostcode'  id="i_cpostcode" maxlength='6'>
                                 </div>
                                 <div class="column r25">
@@ -389,8 +389,8 @@ if(!isset($_GET['d'])){
                                     <input class="text" name='o_csuburb' onChange="changeLocationType()" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
                                 </div>
                                 <div class="column r10">
-                                    <label for="i_csuburb">Postcode</label>
-                                    <input class="text cadd" onChange="changeLocationType()" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
+                                    <label for="o_cpostcode">Postcode</label>
+                                    <input class="text" onChange="changeLocationType()" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
                                 </div>
                                 <div class="column r60">
                                     <label for="o_cdesc">Description</label>
