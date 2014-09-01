@@ -453,6 +453,7 @@ class Model {
         $parameters->street_name = isset($_POST['streetName']) ? $_POST['streetName'] : "";
         $parameters->street_type = isset($_POST['streetType']) ? $_POST['streetType'] : "";
         $parameters->locality_name = isset($_POST['streetSuburb']) ? $_POST['streetSuburb'] : "";
+        $parameters->search_property = true;
         $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_get_address", $parameters);
         
         return $result;
