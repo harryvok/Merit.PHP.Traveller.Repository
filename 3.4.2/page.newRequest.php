@@ -20,7 +20,7 @@
             if (($("#cust_work").val().length) > 0) { i = i + 2; }
             if (($('#email_address').val().length) > 0) { i = i + 2; }
             if (($('#company').val().length) > 0) i++;
-            if (i >= 2) return true;
+            if (i >= 1) return true;
             else return false;
         }
         $('.getlist').change(function () {
