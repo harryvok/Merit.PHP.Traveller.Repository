@@ -308,7 +308,7 @@ if(isset($_SESSION['user_id'])){
                           
                           
                           <label>Description</label>
-                          <textarea id="i_cdesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000'value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
+                          <textarea id="i_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000'value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
                         
                           <input type="hidden" name="cust_address_id" id="cust_address_id" value="0" />
                           <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" value="0" />
