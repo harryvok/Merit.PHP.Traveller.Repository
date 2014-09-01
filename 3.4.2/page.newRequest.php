@@ -233,7 +233,7 @@
 					</div>
                     <div class="large-fieldset">
                     <label  for="ldesc">Description</label>
-				<input style="width:650px;" class="text" name='ldesc' onChange="changeLocationType()" id="ldesc" maxlength='1000' value='<?php if(isset($_SESSION['rem_ldesc'])){ echo $_SESSION['rem_ldesc']; } ?>'>
+                        <textarea id="ldesc" onChange="changeLocationType()" style="resize:none; height:3em; width:430px" maxlength='1000' value='<?php if(isset($_SESSION['rem_ldesc'])){ echo $_SESSION['rem_ldesc']; } ?>'></textarea>
                 </div>
 			</div>
             </div>
@@ -366,7 +366,8 @@
 					                    </div>
                                       <div class="large-fieldset last-child">
 					                    <label  for="i_cdesc">Description</label>
-					                    <input style="width:650px;" class="text cadd" name='i_cdesc' onChange="" id="i_cdesc" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'>
+                                        <textarea id="i_cdesc" onChange="changeLocationType()" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
+					      
 				                    </div>
                                     </div>
 			                    </div>

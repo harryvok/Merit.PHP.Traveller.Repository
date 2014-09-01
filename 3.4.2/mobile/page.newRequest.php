@@ -224,7 +224,8 @@ if(isset($_SESSION['user_id'])){
                       
                       
                       <label>Description</label>
-                      <input name='ldesc' onChange="changeLocationType()" id="ldesc" maxlength='1000' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'>
+                      <textarea id="ldesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'></textarea>
+                      
             </P>
            </div>
            <div data-role="collapsible" class="col" data-content-theme="c">
@@ -306,8 +307,8 @@ if(isset($_SESSION['user_id'])){
                           
                           
                           <label>Description</label>
-                          <input name='i_cdesc' id="i_cdesc" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'>
-                          
+                          <textarea id="i_cdesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000'value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
+                        
                           <input type="hidden" name="cust_address_id" id="cust_address_id" value="0" />
                           <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" value="0" />
                       </div>

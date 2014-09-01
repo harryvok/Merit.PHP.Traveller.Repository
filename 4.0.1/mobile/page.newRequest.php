@@ -174,7 +174,7 @@ if(isset($_SESSION['user_id'])){
                         <input readonly="readonly" name='property_no' id="property_no" maxlength='100'>
 
                         <label>Description</label>
-                        <input name='ldesc' onChange="changeLocationType()" id="ldesc"  maxlength='50' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'>
+                        <textarea id="ldesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'></textarea>
 
 
                         <input type="hidden" name="lpostcode" id="lpostcode" />
@@ -262,7 +262,7 @@ if(isset($_SESSION['user_id'])){
 
 
                             <label>Description</label>
-                            <input name='i_cdesc' id="i_cdesc"  maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'>
+                            <textarea id="i_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
 
                             <input type="button" data-role="button" value="Clear" onclick="clearCustomerAddress()" />
 

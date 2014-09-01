@@ -182,11 +182,16 @@ if(!isset($_GET['d'])){
                         <label>Property Number</label>
                         <input readonly="readonly" name='property_no' id="property_no" maxlength='100'>
                             <input type="hidden" name="lpostcode" id="lpostcode" />
-                    </div>
+                        </div>
+
+
+          
+		
                         <div class="column r100">
                             <label for="ldesc">Description</label>
-                            <input class="text" name='ldesc' onChange="changeLocationType()" id="ldesc" maxlength='100' value='<?php if(isset($_SESSION['rem_ldesc'])){ echo $_SESSION['rem_ldesc']; } ?>'>
+                            <textarea name="ldesc" id="ldesc" onChange="changeLocationType()" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_ldesc'])){ echo $_SESSION['rem_ldesc']; } ?>'></textarea>
                         </div>
+
                         <div class="column r100">
                             <br />
                             <input type="button" value="Clear" onclick="clearLocationAddress()" />
@@ -348,15 +353,17 @@ if(!isset($_GET['d'])){
                                     <label for="i_cpropertynumber">Property Number</label>
                                     <input class="text cadd" name='i_cpropertynumber'  id="i_cpropertynumber" >
                                 </div>
-                                <div class="column r40">
+                                <div class="column r100">
                                     <label for="i_cdesc">Description</label>
-                                    <input class="text cadd" name='i_cdesc' onChange="" id="i_cdesc" maxlength='100' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'>
+                                    <textarea id="i_cdesc" onchange="" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
                                 </div>
+                                <!--
                                 <div class="column r100">
                                     <br />
-                                    <!--input type="button" id="caddhistory" value="History" class="checkHistoryC" onclick="CheckHistoryDirect('C', 'N')" disabled="disabled" />
-                                    <input type="button" id="caddsummary" disabled="disabled" value="Summary" onclick="" />-->
+                                    <input type="button" id="caddhistory" value="History" class="checkHistoryC" onclick="CheckHistoryDirect('C', 'N')" disabled="disabled" />
+                                    <input type="button" id="caddsummary" disabled="disabled" value="Summary" onclick="" />
                                 </div>
+                                -->
                             </div>
                         </div>
                         <div id="outside_ca" style="display: none;">
