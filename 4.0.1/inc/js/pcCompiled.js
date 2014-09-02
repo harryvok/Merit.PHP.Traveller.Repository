@@ -5326,6 +5326,7 @@ function getIntray(intray, i) {
 }
 
 function GetAddressDetails() {
+    alert("location add");
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
@@ -5348,26 +5349,46 @@ function GetAddressDetails() {
 }
 
 function GetCustomerAddressDetails() {
-    if ($("#same").val() == "s" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
-        || $("#same").val() == "i" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
-        $.ajax({
-            url: 'inc/ajax/ajax.getAddressBasic.php',
-            type: 'POST',
-            dataType: "json",
-            data: {
-                flatNumber: function () { return $("#i_cfno").val() },
-                streetNumber: function () { return $("#i_cno").val() },
-                streetName: function () { return $("#i_cstreet").val() },
-                streetType: function () { return $("#i_ctype").val() },
-                streetSuburb: function () { return $("#i_csuburb").val() }
-            },
-            success: function (data) {
-                //$("#i_cpostcode").val(data.postcode);
-                $("#cust_address_id").val(data.address_id);
-                $("#i_cpropertynumber").val(data.property_no);
-            }
-        });
-    }
+    alert("ok");
+        if ($("#same").val() == "s" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
+            || $("#same").val() == "i" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
+            $.ajax({
+                url: 'inc/ajax/ajax.getAddressBasic.php',
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    flatNumber: function () { return $("#i_cfno").val() },
+                    streetNumber: function () { return $("#i_cno").val() },
+                    streetName: function () { return $("#i_cstreet").val() },
+                    streetType: function () { return $("#i_ctype").val() },
+                    streetSuburb: function () { return $("#i_csuburb").val() }
+                },
+                success: function (data) {
+                    //$("#i_cpostcode").val(data.postcode);
+                    $("#cust_address_id").val(data.address_id);
+                    $("#i_cpropertynumber").val(data.property_no);
+                }
+            });
+        }
+        if ($("#same").val() == "o" && $("#o_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
+            $.ajax({
+                url: 'inc/ajax/ajax.getAddressBasic.php',
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    flatNumber: function () { return $("#o_cfno").val() },
+                    streetNumber: function () { return $("#o_cno").val() },
+                    streetName: function () { return $("#o_cstreet").val() },
+                    streetType: function () { return $("#o_ctype").val() },
+                    streetSuburb: function () { return $("#o_csuburb").val() }
+                },
+                success: function (data) {
+                    //$("#i_cpostcode").val(data.postcode);
+                    $("#cust_address_id").val(data.address_id);
+                    $("#i_cpropertynumber").val(data.property_no);
+                }
+            });
+        }
 }
 
 function Search(sear) {
