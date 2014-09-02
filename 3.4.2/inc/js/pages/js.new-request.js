@@ -67,6 +67,7 @@ $(document).ready(function () {
 
     }
 
+
     var serviceResponse = function (event, ui) {
         var label = "";
         var code = "";
@@ -136,8 +137,6 @@ $(document).ready(function () {
             priority = ui.item.priority;
         }
         if (label.length > 0 || code.length > 0) {
-            
-                
             $(this).removeClass("ui-autocomplete-loading");
             $("#request").val(code);
             $("#function").val("");
@@ -740,6 +739,7 @@ $(document).ready(function () {
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
     $("#facilityInput").autoCompleteInitSeq(facilityInit, "inc/ajax/ajax.getFacilitiesLookup.php", { term: "", facilitiesName: function () { return $("#facilityInput").val(); }, facilitiesType: function () { return $("#facilityTypeInput").val(); } }, facilityResponse);
 
+    
     /* */
 });
 if (typeof $("#map-canvas").gmap == 'function') {

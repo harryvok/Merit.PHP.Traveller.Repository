@@ -530,6 +530,7 @@ a.ui-link-inherit {
     -moz-box-shadow: inset 0px 0px 3px #387bbe,0px 0px 9px #387bbe;
     -webkit-box-shadow: inset 0px 0px 3px #387bbe,0px 0px 9px #387bbe;
     box-shadow: inset 0px 0px 3px #387bbe,0px 0px 9px #387bbe;
+    background-color:#FFFFCC;
 }
 
 .ui-input-text.ui-focus, .ui-input-search.ui-focus {

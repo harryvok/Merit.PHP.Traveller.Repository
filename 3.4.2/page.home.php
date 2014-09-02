@@ -79,6 +79,8 @@
         if(isset($user)){ 
         ?>
          <div id="bottomBar">
+
+         <input type="hidden" id="inactivitytime" value="<?php echo INACTIVITY ?>"/>
     <script type="text/javascript">  
 		$(document).ready(function(){
 		  $('#searchInput').keydown(function(event){
@@ -87,9 +89,16 @@
 				  $("#searchInput").attr("disabled", true);
 			  }
 			  
-		  }); 
+		  });
+
+		  var inactivitytime = $("#inactivitytime").val() * 60000;
+		    if (inactivitytime > 0) {
+		      setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		  }
 		});
 		</script>
+        
+
     	<div style=" width: 50% !important;  min-width: 400px;" class="column r50"><div class="profImage"><img src="images/pc/prof.gif" width="20" height="20"></div><div class="welcome"><h3><b><?php if(isset($_SESSION['given_name'])) echo $_SESSION['given_name']; ?></b></h3></div><div class="bottomButtons"><?php if(defined('CHANGE_PASSWORD') && CHANGE_PASSWORD == 1 && $_SESSION['roleSecurity']->allow_cpwd == "Y"){ ?><a href="index.php?page=changePassword">CHANGE PASSWORD</a><?php } ?><?php if($_SESSION['roleSecurity']->allow_settings == "Y") { ?><a href="index.php?page=modifySettings">MODIFY SETTINGS</a><?php } ?></div></div>
         <div style=" width: 50% !important;  min-width: 400px;" class="column r50"><div class="version"><h3>v<?php if(isset($version)){ echo $version; } ?> &copy; Merit 2013</h3></div><div class="searchBar" style="width:290px"><b style="color:white">
         <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?>

@@ -31,7 +31,9 @@
     $("#adhocOfficer").validate();
 
     $("#adhocOfficer").submit(function () {
-        if ($(this).validate().numberOfInvalids() == 0) { $("#submit").attr("disabled", true); }
+        if ($(this).validate().numberOfInvalids() == 0) {
+            $("#submit").attr("disabled", true);
+        }
     });
 
 });
