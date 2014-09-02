@@ -380,7 +380,7 @@ $(document).ready(function () {
                         $("#lstreet").val(data.street_name).attr("readonly", true);
                         $("#ltype").val(data.street_type).attr("readonly", true).attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
                         $("#lsuburb").val(data.locality).attr("readonly", true).attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
-                        $("#ldesc").val(data.address_desc).attr("readonly", true);
+                        //$("#ldesc").val(data.address_desc).attr("readonly", true);
 
                         if (data.house_number.length > 0) {
                             $("#lno").val(data.house_number);

@@ -500,7 +500,7 @@ $(document).ready(function () {
                         $("#lstreet").val(data.street_name).attr("readonly", true);
                         $("#ltype").val(data.street_type).attr("readonly", true).attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
                         $("#lsuburb").val(data.locality).attr("readonly", true).attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
-                        $("#ldesc").val(data.address_desc).attr("readonly", true);
+                        //$("#ldesc").val(data.address_desc).attr("readonly", true);
                         $("#property_no").val(data.property_no);
                         $("#lpostcode").val(data.postcode);
                         if ($("#addressId").val(data.address_id) != 0 || $("#addressId").val(data.address_id) != '0' || $("#addressId").val(data.address_id) != "") {
