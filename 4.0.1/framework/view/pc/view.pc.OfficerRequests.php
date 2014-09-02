@@ -1,4 +1,7 @@
+
+
 <div class="summaryContainer">
+    <?php $result_re = $GLOBALS['result']->request_det; ?>
         <h1>Requests (<?php if(isset($result_re->request_details)) echo count($result_re->request_details); else { echo 0; } ?>)</h1>
            <div>
               <input type="hidden" name="val-c" id="val-c" value="0" />

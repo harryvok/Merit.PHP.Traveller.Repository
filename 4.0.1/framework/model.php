@@ -469,14 +469,14 @@ class Model {
     }
 
     public function getNames($params = NULL){
-        if(isset($_POST['surname'])) $surname = $_POST['surname']; else $surname='';
-        if(isset($_POST['given'])) $given = $_POST['given']; else $given='';
-        if(isset($_POST['pref_title'])) $pref_title = $_POST['pref_title']; else $pref_title='';
-        if(isset($_POST['cust_phone'])) $cust_phone = $_POST['cust_phone']; else $cust_phone='';
-        if(isset($_POST['cust_work'])) $cust_work = $_POST['cust_work']; else $cust_work='';
-        if(isset($_POST['cust_mobile'])) $cust_mobile = $_POST['cust_mobile']; else $cust_mobile='';
-        if(isset($_POST['email_address'])) $email_address = $_POST['email_address']; else $email_address='';
-        if(isset($_POST['company_name'])) $company_name = $_POST['company_name']; else $company_name='';
+        if(isset($_POST['surname'])){ $surname = $_POST['surname'];} else{ $surname='';}
+        if(isset($_POST['given'])) {$given = $_POST['given'];} else {$given='';}
+        if(isset($_POST['pref_title'])) {$pref_title = $_POST['pref_title'];} else {$pref_title='';}
+        if(isset($_POST['cust_phone'])) {$cust_phone = $_POST['cust_phone'];} else {$cust_phone='';}
+        if(isset($_POST['cust_work'])) {$cust_work = $_POST['cust_work'];} else {$cust_work='';}
+        if(isset($_POST['cust_mobile'])) {$cust_mobile = $_POST['cust_mobile'];} else {$cust_mobile='';}
+        if(isset($_POST['email_address'])) {$email_address = $_POST['email_address'];} else {$email_address='';}
+        if(isset($_POST['company_name'])) {$company_name = $_POST['company_name'];} else {$company_name='';}
         //if(strlen($cust_phone) > 0){
         //    $telephone =  $cust_phone;
         //}
@@ -487,6 +487,7 @@ class Model {
         //if(strlen($cust_mobile) > 0){
         //    $telephone_mobile = $cust_mobile;
         //}
+        
         $parameters = array(
         "user_id" => $_SESSION['user_id'],
         "password" => $_SESSION['password'],
@@ -503,8 +504,9 @@ class Model {
                 "email_address" => $email_address,
                 "company_name" => $company_name,
                 "name_ctr" => '0',
-                "search_property_rating"=> true,
-                "name_origin" => ''
+                "name_origin" => '',
+                "name_origin_code" => '',
+                "search_property_rating"=> true                
             )
         );
         $parameters = array_to_objecttree($parameters);

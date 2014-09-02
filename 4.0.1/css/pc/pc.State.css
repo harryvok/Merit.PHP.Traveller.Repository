@@ -16,10 +16,6 @@ Traveller Desktop CSS
     width: 100%;
 }
 
-.float-right {
-    float: right;
-}
-
 /* Text */
 .bold {
     font-weight: bold;

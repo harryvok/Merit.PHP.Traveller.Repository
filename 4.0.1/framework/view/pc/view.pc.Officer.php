@@ -1,6 +1,8 @@
 <?php
 $GLOBALS['result'] = $GLOBALS['result']->officer_det;
 ?>
+
+
    <div class="summaryContainer">
        <h1>Details</h1>
           <div class="float-left">
