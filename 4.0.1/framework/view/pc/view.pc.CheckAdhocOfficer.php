@@ -6,7 +6,10 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
     $(document).ready(function () {
         $("#popup").fadeIn("fast");
 
-          
+        // This function triggers on the first click of save
+        // Prompts user to select a adhoc officer
+        // On clicking "submit", it renables the save button, clicks it, unbinds the submit button so multiple officers can't be added and disables savemore
+        // and save/count. and then disables the save button whilst the system proccess the request.
          
         $("#submitAdhoc").click(function () {
             if ($(".newOfficerText").val().length > 0 && $(".officer").val().length > 0) {
@@ -20,12 +23,13 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                 });
 
                 $("#submit").prop('disabled', false).buttonState("enable");
+                $("#submit").click();
                 $("#newrequest").unbind("submit");
-                $("#newrequest INPUT[type=submit]").click();
                 $(this).attr("disabled", true).buttonState("disable");
                 $("#saveMore").attr("disabled", true).buttonState("disable");
                 $("#saveCountOnly").attr("disabled", true).buttonState("disable");
-                $("#submit").prop('disabled', true).buttonState("disable");
+                $("#submit").prop('disabled', true).buttonState("enable");
+
 
             }
             else {
@@ -88,7 +92,6 @@ else{
     $(this).attr("disabled", true).buttonState("disable");
     $("#saveMore").attr("disabled", true).buttonState("disable");
     $("#saveCountOnly").attr("disabled", true).buttonState("disable");
-    $("#submit").prop('disabled', true).buttonState("disable");
 </script>
 <?php	
 }

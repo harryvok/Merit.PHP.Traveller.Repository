@@ -4,5 +4,4 @@
   <?php
   $GLOBALS['addressCount'] = count($GLOBALS['result']->address_det->address_details);
   $GLOBALS['requestCount'] = count($GLOBALS['result']->req_dets->request_details);
-  echo $GLOBALS['requestCount'];
  ?>
