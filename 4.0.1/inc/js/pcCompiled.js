@@ -5326,7 +5326,7 @@ function getIntray(intray, i) {
 }
 
 function GetAddressDetails() {
-    alert("location add");
+    //alert("location add");
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
@@ -5349,7 +5349,7 @@ function GetAddressDetails() {
 }
 
 function GetCustomerAddressDetails() {
-    alert("ok");
+    //alert("ok");
         if ($("#same").val() == "s" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
             || $("#same").val() == "i" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
             $.ajax({
