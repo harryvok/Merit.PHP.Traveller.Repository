@@ -1,20 +1,25 @@
+
 <script type="text/javascript" src="inc/js/pages/js.adhocOfficer.js"></script>
 
 <?php
 if(isset($_SESSION['user_id'])){
 	if($_SESSION['adhoc-true'] == 1){
 		?>
-		Please choose an officer to be assigned to the next action.
+
+		
 			<form  enctype='multipart/form-data' action='process.php' id="adhocOfficer" method='post'>
-			<br />
+            <b>Please choose an officer to be assigned to the next action.</b><br />
+            <br />
 			<b>Action Name:</b> <?php echo $_SESSION['reason_assigned']; ?>
-			<div class="float-left">
-			<label  for="resp_officer">Officer<span style="color:red;">*</span></label>
+			
+            <div class="float-left">
+			        <label  for="resp_officer">Officer<span style="color:red;">*</span></label>
 			</div>
 			<div class="float-left">
-			<input id="new_officer_text" class="required" placeholder="Search..." />
-		  <input type="hidden" id="new_officer_code" name="resp_officer"  class="required" />
+			        <input id="new_officer_text" class="required" placeholder="Search..." />
+		            <input type="hidden" id="new_officer_code" name="resp_officer"  class="required" />
 			</div>
+
 			<input type="hidden" name="page" value="action" />
 			<input type="hidden" name="action" value="AdhocOfficer" />
 			<input type="hidden" name="action_id" id="action_id" value="<?php echo $_SESSION['action_id']; ?>" />

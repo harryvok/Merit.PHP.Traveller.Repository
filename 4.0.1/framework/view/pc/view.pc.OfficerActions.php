@@ -15,8 +15,9 @@
                 <table id="officerActionsTable" class=" sortable" title="" cellspacing="0">
                 <thead>
                 <tr>
-                    <th class="job-id sortable">Action ID</th>
+                    <th class="job-id sortable">Request ID</th>
                     <th class="job-name sortable">Action Required</th>
+                    <th class="job-type sortable">Category</th>
                     <th class="date sortable">Date Assigned</th>
                     <th class="date sortable">Due Date</th>
                     <th class="date sortable">Status</th>
@@ -38,7 +39,7 @@
                         }
                         ?>
                             <tr class="<?php echo $class; ?>" onClick="change('<?php echo $change; ?>')" title="">
-                                <td id="<?php echo $change; ?>"><?php if(strlen($result_ar->action_id) > 0){ echo $result_ar->action_id; } else { echo ""; } ?></td>
+                                <td id="<?php echo $change; ?>"><?php if(strlen($result_ar->request_id) > 0){ echo $result_ar->request_id; } else { echo ""; } ?></td>
                                 <td class="job-name"><?php if(strlen($result_ar->reason_assigned_name) > 0){ echo $result_ar->reason_assigned_name; } else { echo ""; } ?></td>
                                 <td><?php if(strlen($result_ar->assign_datetime) > 0){ echo substr($result_ar->assign_datetime, 0, 10); } else { echo ""; } ?></td>
                                 <td><?php if(strlen($result_ar->due_datetime) > 0){ echo substr($result_ar->due_datetime, 0, 10); } else { echo ""; }  ?></td>

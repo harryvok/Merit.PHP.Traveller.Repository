@@ -11,8 +11,9 @@
                       <thead>
                       <tr>
                           <th class="job-id sortable">Request ID</th>
-                          <th class="description sortable">Issue</th>
-                          <th class="date sortable">Date Input</th>
+                          <th class="description sortable">Category</th>
+                          <th class="date sortable">Date Assigned</th>
+                          <th class="date sortable">Request Due Date</th>
                           <th>Status</th>
                       </tr>
                       </thead>
@@ -36,12 +37,15 @@
                                       <td id="<?php echo $change; ?>"><?php if(strlen($result_arr->request_id) > 0){ echo $result_arr->request_id; } else { echo ""; } ?></td>
                                       <td><?php if(strlen($result_arr->service_name) > 0){ echo $result_arr->service_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->request_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->function_name; } else { echo ""; } ?></td>
                                       <td><?php if(strlen($result_arr->request_datetime) > 0){ echo str_ireplace("T", " ", $result_arr->request_datetime); } else { echo "N"; } ?></td>
+                                      <td><?php if(strlen($result_arr->due_datetime) > 0){ echo str_ireplace("T", " ", $result_arr->due_datetime); } else { echo "N"; } ?></td> 
                                       <td><?php 
-                              if($result_arr->finalised_ind == "N"){ 
+                              if($result_arr->finalised_ind == "N"){
                                   echo '<img width="10" height="9" src="images/dotGreen.png" />';
+                                  echo ' Open ';
                               }
-                              elseif($result_arr->finalised_ind == "Y"){ 
+                              elseif($result_arr->finalised_ind == "Y"){  
                                   echo '<img width="10" height="9" src="images/dotRed.png" />';
+                                  echo ' Closed ';
                               } 
                                     ?></td>
                                   </tr>
@@ -58,10 +62,12 @@
                                   <td><?php if(strlen($result_arr->request_datetime) > 0){ echo str_ireplace("T", " ", $result_arr->request_datetime); } else { echo "N"; } ?></td>
                                   <td><?php 
                           if($result_arr->finalised_ind == "N"){ 
-                              echo '<img width="10" height="9" src="images/dotGreen.png" />';
+                              echo 'Open';
+                              //echo '<img width="10" height="9" src="images/dotGreen.png" />';
                           }
-                          elseif($result_arr->finalised_ind == "Y"){ 
-                              echo '<img width="10" height="9" src="images/dotRed.png" />';
+                          elseif($result_arr->finalised_ind == "Y"){
+                              echo 'Closed';
+                              //echo '<img width="10" height="9" src="images/dotRed.png" />';
                           } 
                                     ?></td>
                               </tr>
