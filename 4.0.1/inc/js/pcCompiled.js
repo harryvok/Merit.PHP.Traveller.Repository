@@ -5344,6 +5344,9 @@ function GetAddressDetails() {
                 $("#addressId").val(data.address_id);
             }
         });
+        if ($('#addressId').val() == 0 || $('#addressId').val() == null) {
+            $("#AddrSummary").attr("disabled", true);
+        }
     }
 }
 
@@ -5367,6 +5370,9 @@ function GetCustomerAddressDetails() {
                 $("#i_cpropertynumber").val(data.property_no);
             }
         });
+        if ($('#cust_address_id').val() == 0 || $('#addressId').val() == null) {
+            $("#CustAddSummary").attr("disabled", true);
+        }
     }
 }
 
