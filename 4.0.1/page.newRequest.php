@@ -276,7 +276,8 @@ if(!isset($_GET['d'])){
                     </div>
                 </div>
             </div>
-            <div class="column r50">
+            
+            <div class="column r50forceright">
                 <div class="summaryContainer">
                     <h1>Customer Address</h1>
                     <div>
@@ -345,7 +346,7 @@ if(!isset($_GET['d'])){
                                     <label for="i_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                     <input class="text cadd checkNone" name='i_csuburb' onchange="GetCustomerAddressDetails();" id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; } ?>'>
                                 </div>
-                                <div class="column r10">
+                                <div class="column r25">
                                     <label for="i_cpostcode">Postcode</label>
                                     <input class="text cadd" name='i_cpostcode'  id="i_cpostcode" maxlength='6'>
                                 </div>
@@ -355,7 +356,7 @@ if(!isset($_GET['d'])){
                                 </div>
                                 <div class="column r100">
                                     <label for="i_cdesc">Description</label>
-                                    <textarea id="i_cdesc" onchange="" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
+                                    <textarea id="i_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
                                 </div>
                                 <!--
                                 <div class="column r100">
@@ -388,26 +389,21 @@ if(!isset($_GET['d'])){
                                     <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                                     <input class="text" name='o_csuburb' onChange="changeLocationType()" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
                                 </div>
-                                <div class="column r10">
+                                <div class="column r25">
                                     <label for="o_cpostcode">Postcode</label>
                                     <input class="text" onChange="changeLocationType();GetCustomerAddressDetails();" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
                                 </div>
-                                <div class="column r60">
-                                    <label for="o_cdesc">Description</label>
-                                    <input class="text" name='o_cdesc' onChange="changeLocationType()" id="o_cdesc" maxlength='100' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'>
-                                </div>
                                 <div class="column r100">
-                                    <br />
-                                    <!--<input type="button" value="History" class="checkHistoryC" onclick="CheckHistoryDirect('C', 'N')" disabled="disabled" /> <input type="button" value="Clear" onclick="    clearCustomerAddress()" />-->
-                                    <!--<input type="button" value="Clear" onclick="clearCustomerAddress()" />
-                                    <input type="button" value="Summary" onclick="" />-->
-                                    </div>
+                                    <label for="o_cdesc">Description</label>
+                                    <textarea id="o_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'></textarea>
+                                </div>
                             </div>
                         </div>
                         <input type="hidden" name="cust_address_id" id="cust_address_id" />
                         <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" />
                     </div>
                 </div>
+               </div>
             </div>
         </div>
         <br />

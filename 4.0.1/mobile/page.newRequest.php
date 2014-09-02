@@ -288,7 +288,7 @@ if(isset($_SESSION['user_id'])){
                             <input name='o_cpostcode' id="o_cpostcode" onChange="changeLocationType()" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'>
 
                             <label>Description</label>
-                            <input name='o_cdesc' id="o_cdesc"   onChange="changeLocationType()" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'>
+                            <textarea id="o_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
 
                             <input type="button" data-role="button" value="Clear" onclick="clearCustomerAddress()" />
                         </div>
