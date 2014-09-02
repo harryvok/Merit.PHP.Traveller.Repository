@@ -1,4 +1,8 @@
-﻿$(document).ready(function () {
+﻿
+
+$(document).ready(function() {
+
+
     var officerResponse = function (event, ui) {
         var label = "";
         var index = "";
@@ -31,7 +35,9 @@
     $("#adhocOfficer").validate();
 
     $("#adhocOfficer").submit(function () {
-        if ($(this).validate().numberOfInvalids() == 0) { $("#submit").attr("disabled", true); }
+        if ($(this).validate().numberOfInvalids() == 0) {
+            $("#submit").attr("disabled", true);
+        }
     });
 
 });

@@ -536,6 +536,7 @@ a.ui-link-inherit {
     -moz-box-shadow: 0px 0px 12px #387bbe;
     -webkit-box-shadow: 0px 0px 12px #387bbe;
     box-shadow: 0px 0px 12px #387bbe;
+    background-color:#FFFFCC;
 }
 
 .ui-mobile-nosupport-boxshadow * {

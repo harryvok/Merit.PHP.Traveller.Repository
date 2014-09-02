@@ -269,6 +269,13 @@ if(!isset($_GET['d'])){
                                 <label for="email">Email<span class="email_address_label mandLabel" style="color:red; display:none;"> *</span></label>
                                 <input class="text getlist email" name='cust_email' id='email_address' data-mand="email_address" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_email'])){ echo $_SESSION['rem_cust_email']; } ?>'>
                             </div>
+                            <div class="column r100">
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
                         </div>
                         <input type="hidden" name="name_id" id="name_id" value="0" />
                         <input type="hidden" name="name_origin" id="name_origin" />
