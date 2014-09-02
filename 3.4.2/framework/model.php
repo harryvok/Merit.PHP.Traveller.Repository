@@ -366,35 +366,36 @@ class Model {
         if(isset($_POST['cust_mobile'])) $cust_mobile = $_POST['cust_mobile']; else $cust_mobile='';
         if(isset($_POST['email_address'])) $email_address = $_POST['email_address']; else $email_address='';
         if(isset($_POST['company_name'])) $company_name = $_POST['company_name']; else $company_name='';
-        if(strlen($cust_phone) > 0){
-            $telephone =  $cust_phone;
-        }
-        elseif(strlen($cust_work) > 0){
-            $telephone = $cust_work;
-        }
-        elseif(strlen($cust_mobile) > 0){
-            $telephone = $cust_mobile;
-        }
+        //if(strlen($cust_phone) > 0){
+        //    $telephone =  $cust_phone;
+        //}
+        //elseif(strlen($cust_work) > 0){
+        //    $telephone = $cust_work;
+        //}
+        //elseif(strlen($cust_mobile) > 0){
+        //    $telephone = $cust_mobile;
+        //}
         $parameters = array(
-        "user_id" => $_SESSION['user_id'],
-        "password" => $_SESSION['password'],
-            "search_param" => array(
-                "name_id" => '0',
-                "surname" => $surname,
-                "given_names" => $given,
-                "initials" => '',
-                "pref_title" => $pref_title,
-                "telephone" => $telephone,
-                "work_phone" => '',
-                "mobile_no" => '',
-                "fax_no" => '',
-                "email_address" => $email_address,
-                "company_name" => $company_name,
-                "search_property_rating"=> true,
-                "name_ctr" => '0',
-                "name_origin" => ''
-            )
-        );
+       "user_id" => $_SESSION['user_id'],
+       "password" => $_SESSION['password'],
+           "search_param" => array(
+               "name_id" => '0',
+               "surname" => $surname,
+               "given_names" => $given,
+               "initials" => '',
+               "pref_title" => $pref_title,
+               "telephone" => $cust_phone,
+               "work_phone" => $cust_work,
+               "mobile_no" => $cust_mobile,
+               "fax_no" => '',
+               "email_address" => $email_address,
+               "company_name" => $company_name,
+               "name_ctr" => '0',
+               "name_origin" => '',
+               "name_origin_code" => '',
+               "search_property_rating"=> true                
+           )
+       );
         $parameters = array_to_objecttree($parameters);
 
         $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_name_lookup", $parameters);

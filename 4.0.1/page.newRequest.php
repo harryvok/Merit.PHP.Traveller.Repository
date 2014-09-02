@@ -327,7 +327,7 @@ if(!isset($_GET['d'])){
                         <div id="inside_ca" style="display: block;">
                             <div class="column r25">
                                 <label for="i_cfno">Flat/Unit Number</label>
-                                <input class="text cadd" name='i_cfno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
+                                <input class="text cadd" name='i_cfaddno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="i_cno">Street Number</label>
@@ -387,11 +387,11 @@ if(!isset($_GET['d'])){
                             <div class="float-left">
                                 <div class="column r25">
                                     <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                    <input class="text" name='o_csuburb' onChange="changeLocationType()" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
+                                    <input class="text" name='o_csuburb' onChange="changeLocationType();GetCustomerAddressDetails();" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
                                 </div>
                                 <div class="column r25">
                                     <label for="o_cpostcode">Postcode</label>
-                                    <input class="text" onChange="changeLocationType();GetCustomerAddressDetails();" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
+                                    <input class="text" onChange="changeLocationType();" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
                                 </div>
                                 <div class="column r100">
                                     <label for="o_cdesc">Description</label>
