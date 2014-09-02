@@ -1,7 +1,7 @@
 
  <script type="text/javascript">
 $(document).ready(function() {
-    var oTable = $('#requestIntrayTable').dataTable({ stateSave:true
+    var oTable = $('#requestIntrayTable').dataTable({
     "oLanguage": {
                 "sSearch": "Intray Filter: "
          },
