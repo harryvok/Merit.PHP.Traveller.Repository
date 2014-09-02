@@ -30,6 +30,8 @@ float:left;
 body .ui-li .ui-li-desc {
   white-space: normal !important;
 }
-
+select {
+    background-color:#FFFFCC;
+}
 
 

@@ -286,10 +286,28 @@ function ClearHelpNotes() {
                     delay: 0,
                     minLength: 0,
                     select: response,
-                    response: response
+                    response: response,
+                    //added by harry
+                    create: function (event, ui) {
+
+                        //autopopulate if there is one service
+                        if ($(self).attr('id') == "serviceInput") {
+                            $.ajax({
+                                url: ajax,
+                                dataType: "json",
+                                data: dataPass,
+                                success: function (data) {
+                                    if(data.length ==1)
+                                        //$("#serviceInput").click();
+                                        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
+                                }
+                            });
+                        }
+                    }
+                    //end addition by harry
                 });
             }
-        });
+        })
     };
 
     
@@ -331,6 +349,7 @@ function ClearHelpNotes() {
                                     minLength: 0,
                                     select: response,
                                     response: response
+                                    
                                 });
                                 $(self).autocomplete("search", "");
                                 $(self).trigger("focus");

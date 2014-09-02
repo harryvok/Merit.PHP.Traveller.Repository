@@ -7,7 +7,7 @@ define("SETUP", 1);
 //SETTINGS
 define("SITE_TITLE","Merit Traveller");
 define("COUNCIL_NAME", "Merit Technology"); // Your council name
-define("INACTIVITY", ""); // The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.
+define("INACTIVITY", "2"); // The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.
 
 //WEB SERVICES AND LINKS
 define("SITE_LINK", "http://traveller/3.4.3/");
