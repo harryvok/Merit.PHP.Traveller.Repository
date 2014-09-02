@@ -809,7 +809,6 @@ $(document).ready(function () {
     // Adhoc Officer
     $("#newrequest").validate({
         submitHandler: function (form) {
-            //$("#submit").buttonState("disable");
             $("#submit").prop('disabled', true).buttonState("disable");
             $("#saveMore").prop('disabled', true).buttonState("disable");
             $("#saveCountOnly").prop('disabled', true).buttonState("disable");
