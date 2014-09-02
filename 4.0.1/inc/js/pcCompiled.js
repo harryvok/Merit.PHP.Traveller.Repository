@@ -5343,13 +5343,14 @@ function GetAddressDetails() {
                 $("#property_no").val(data.property_no);
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
+                //else $("#AddrSummary").attr("disabled","");
             }
         });
+        
     }
 }
 
 function GetCustomerAddressDetails() {
-    //alert("ok");
         if ($("#same").val() == "s" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
             || $("#same").val() == "i" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
             $.ajax({
@@ -5388,6 +5389,9 @@ function GetCustomerAddressDetails() {
                     $("#i_cpropertynumber").val(data.property_no);
                 }
             });
+            if ($("#cust_address_id").val() == 0 || $("#addressId").val() == null) {
+                $("#CustAddSummary").prop("disabled", true);
+            }
         }
 }
 
