@@ -1,4 +1,8 @@
-﻿$(document).ready(function () {
+﻿
+
+$(document).ready(function() {
+
+
     var officerResponse = function (event, ui) {
         var label = "";
         var index = "";
