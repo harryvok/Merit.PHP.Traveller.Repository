@@ -1077,9 +1077,15 @@ function changeLocationType() {
 
     $("#CustAddSummary").prop("disabled", true);
 
+    /* IF SAME = S, (SAME AS LOCATION PICKED) */
+
     if ($('#same').val() == "s") {
+
+        // Show inside, hide outside
         $('#inside_ca').show();
         $('#outside_ca').hide();
+
+        // Set Inside area to location var's
         $('#i_cno').val($('#lno').val());
         $('#i_cfno').val($('#lfno').val());
         $('#i_cstreet').val($('#lstreet').val());
@@ -1092,26 +1098,32 @@ function changeLocationType() {
         if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
         if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); $("#CustAddSummary").prop("disabled", false); }
     }
-    else if ($('#same').val() == "i") {
-        $('#o_cno').val($("#o_cno");
-        $('#o_cfno').val($("#o_cfno");
-        $('#o_cstreet').val($("#o_cstreet");
-        $('#o_ctype').val($("#o_ctype");
-        $('#o_csuburb').val($("#o_csuburb");
-        $('#o_cdesc').val($("#o_cdesc");
-        $("#o_cpostcode").val($("#o_cpostcode");
-        $("#cust_address_id").val($("#cust_address_id");
 
+    else if ($('#same').val() == "i") {
+        // Set Outside area to nothing
+        $('#o_cno').val('');
+        $('#o_cfno').val('');
+        $('#o_cstreet').val('');
+        $('#o_ctype').val('');
+        $('#o_csuburb').val('');
+        $('#o_cdesc').val('');
+        $("#o_cpostcode").val('');
+        $("#cust_address_id").val('');
+
+        // Show inside, hide outside
         $('#inside_ca').show();
         $('#outside_ca').hide();
+
+        if ($("#i_ctype").val().length > 0) { 
+            $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); 
+        }
+        if ($("#i_csuburb").val().length > 0) {  
+            $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable"); $("#CustAddSummary").prop("disabled", false);
+        }
+    
     }
     else if ($('#same').val() == "o") {
-        $('#o_csuburb').val();
-        $('#inside_ca').hide();
-        $('#outside_ca').show();       
-    }
-
-    if ($('#same').val() == "i") {
+        // Set inside area to nothing
         $('#i_cno').val('');
         $('#i_cfno').val('');
         $('#i_cstreet').val('');
@@ -1120,11 +1132,11 @@ function changeLocationType() {
         $('#i_cdesc').val('');
         $("#i_cpostcode").val("");
         $("#cust_address_id").val("");
-        if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); }
-        if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable"); $("#CustAddSummary").prop("disabled", false); }
-    }
 
-    if ($('#same').val() == "o") {
+        // Show inside, hide outside
+        $('#inside_ca').hide();
+        $('#outside_ca').show();
+        
         $('#o_cno').val();
         $('#o_cfno').val();
         $('#o_cstreet').val();

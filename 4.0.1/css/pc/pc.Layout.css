@@ -190,6 +190,7 @@ div.r33 {width: 33.333% !important;}
 div.r40 {width: 40% !important;}
 div.r45 {width: 45% !important;}
 div.r50 {width: 50% !important;min-width:400px;}
+div.r50forceright {width: 50% !important; min-width:400px; float: right; padding-right: 0px;}
 div.r60 {width:60% !important;}
 div.r70 {width:70% !important;}
 div.r75 {width:75% !important;}

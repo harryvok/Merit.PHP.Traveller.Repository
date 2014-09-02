@@ -396,7 +396,7 @@
                                        </div>
                                        <div class="large-fieldset last-child">
 					                    <label  for="o_cdesc">Description</label>
-					                    <input class="text" name='o_cdesc' onChange="changeLocationType()" id="o_cdesc" maxlength='1000' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'>
+					                    <textarea id="o_cdesc" onChange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'></textarea>
                                        </div>
 				                    </div>
 			                    </div>
