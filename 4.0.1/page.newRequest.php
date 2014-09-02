@@ -271,8 +271,8 @@ if(!isset($_GET['d'])){
                             </div>
                         </div>
                         <input type="hidden" name="name_id" id="name_id" value="0" />
-                        <input type="hidden" name="name_origin" id="name_origin" value="" />
-                        <input type="hidden" name="name_ctr" id="name_ctr" value="0" />
+                        <input type="hidden" name="name_origin" id="name_origin" />
+                        <input type="hidden" name="name_ctr" id="name_ctr"  />
                     </div>
                 </div>
             </div>
@@ -326,7 +326,7 @@ if(!isset($_GET['d'])){
                         <div id="inside_ca" style="display: block;">
                             <div class="column r25">
                                 <label for="i_cfno">Flat/Unit Number</label>
-                                <input class="text cadd" name='i_cfaddno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
+                                <input class="text cadd" name='i_cfno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="i_cno">Street Number</label>
@@ -343,7 +343,7 @@ if(!isset($_GET['d'])){
                             <div class="float-left">
                                 <div class="column r25">
                                     <label for="i_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                    <input class="text cadd checkNone" name='i_csuburb'  id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; } ?>'>
+                                    <input class="text cadd checkNone" name='i_csuburb' onchange="GetCustomerAddressDetails();" id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; } ?>'>
                                 </div>
                                 <div class="column r10">
                                     <label for="i_cpostcode">Postcode</label>
@@ -390,7 +390,7 @@ if(!isset($_GET['d'])){
                                 </div>
                                 <div class="column r10">
                                     <label for="o_cpostcode">Postcode</label>
-                                    <input class="text" onChange="changeLocationType()" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
+                                    <input class="text" onChange="changeLocationType();GetCustomerAddressDetails();" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
                                 </div>
                                 <div class="column r60">
                                     <label for="o_cdesc">Description</label>
@@ -404,8 +404,8 @@ if(!isset($_GET['d'])){
                                     </div>
                             </div>
                         </div>
-                        <input type="hidden" name="cust_address_id" id="cust_address_id" value="0" />
-                        <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" value="0" />
+                        <input type="hidden" name="cust_address_id" id="cust_address_id" />
+                        <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" />
                     </div>
                 </div>
             </div>

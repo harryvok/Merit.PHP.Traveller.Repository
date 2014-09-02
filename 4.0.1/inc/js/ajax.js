@@ -68,6 +68,25 @@ function GetCustomerAddressDetails() {
             }
         });
     }
+    if ($("#same").val() == "o" && $("#0_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
+        $.ajax({
+            url: 'inc/ajax/ajax.getAddressBasic.php',
+            type: 'POST',
+            dataType: "json",
+            data: {
+                flatNumber: function () { return $("#o_cfno").val() },
+                streetNumber: function () { return $("#o_cno").val() },
+                streetName: function () { return $("#o_cstreet").val() },
+                streetType: function () { return $("#o_ctype").val() },
+                streetSuburb: function () { return $("#o_csuburb").val() }
+            },
+            success: function (data) {
+                //$("#i_cpostcode").val(data.postcode);
+                $("#cust_address_id").val(data.address_id);
+                $("#i_cpropertynumber").val(data.property_no);
+            }
+        });
+    }
 }
 
 function Search(sear) {

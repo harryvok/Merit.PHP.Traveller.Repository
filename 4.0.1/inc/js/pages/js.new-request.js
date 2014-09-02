@@ -279,9 +279,9 @@ $(document).ready(function () {
             if (($('#pref_title').val().length) > 0) i++;
             if (($('#given').val().length) > 0) i++;
             if (($('#surname').val().length) > 0) i++;
-            if (($('#cust_mobile').val().length) > 0) { i = i + 2; }
-            if (($('#cust_phone').val().length) > 0) { i = i + 2; }
-            if (($("#cust_work").val().length) > 0) { i = i + 2; }
+            if (($('#cust_mobile').val().length) > 0) { i = i + 2;}
+            if (($('#cust_phone').val().length) > 0) { i = i + 2;}
+            if (($("#cust_work").val().length) > 0) { i = i + 2;}
             if (($('#email_address').val().length) > 0) { i = i + 2; }
             if (($('#company').val().length) > 0) { i = i + 2; }
             if (i >= 2) return true;
@@ -296,8 +296,8 @@ $(document).ready(function () {
                 var self = this;
                 $(this).addClass("ui-autocomplete-loading");
                 var mobile = $('#cust_mobile').val();
-                var phone = $('#cust_mobile').val();
-                var work = $('#cust_mobile').val();
+                var phone = $('#cust_phone').val();
+                var work = $('#cust_work').val();
                 $.ajax({
                     url: 'inc/ajax/ajax.getNameLookup.php',
                     type: 'post',
@@ -794,8 +794,9 @@ $(document).ready(function () {
 
     // Customer Details Change
     $('.cadd').change(function () {
-        $('#cust_address_id').val('0');
-        $('#cust_address_ctr').val('0');
+        GetCustomerAddressDetails();
+        //$('#cust_address_id').val() = ;
+        //$('#cust_address_ctr').val('0');
 
 
         
@@ -1131,8 +1132,7 @@ function changeLocationType() {
         $('#o_ctype').val();
         $('#o_csuburb').val();
         $('#o_cdesc').val();
-        $("#o_cpostcode").val();
-        $("#cust_address_id").val();         
+        $("#o_cpostcode").val();      
         if ($('#o_csuburb').val().length > 0) { $("#CustAddSummary").prop("disabled", false); }
     }
 
@@ -1186,11 +1186,11 @@ function clearLocationAddress() {
 }
 
 function ViewAddressDetails() {
-        window.open("index.php?page=view-address&action=location_add&id=" + $("#addressId").val(), "_blank");
+        window.open("index.php?page=view-address&id=" + $("#addressId").val(), "_blank");
 }
 
 function ViewCustomerAddDetails() {
-    window.open("index.php?page=view-address&action=customer_add&id=" + $("#cust_address_id").val(), "_blank");
+    window.open("index.php?page=view-address&id=" + $("#cust_address_id").val(), "_blank");
 }
 
 function ViewCustomerDetails() {

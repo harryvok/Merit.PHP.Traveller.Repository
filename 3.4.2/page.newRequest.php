@@ -32,8 +32,8 @@
                 var self = this;
                 $(this).addClass("ui-autocomplete-loading");
                 var mobile = $('#cust_mobile').val();
-                var phone = $('#cust_mobile').val();
-                var work = $('#cust_mobile').val();
+                var phone = $('#cust_phone').val();
+                var work = $('#cust_work').val();
                 $.ajax({
                     url: 'inc/ajax/ajax.getNameLookup.php',
                     type: 'post',
