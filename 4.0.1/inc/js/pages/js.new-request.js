@@ -476,6 +476,7 @@ $(document).ready(function () {
 
             
             $("#addressId").val(address);
+
             if (address !== 0 && address !== "") {
                 $("#lstreet").addClass("ui-autocomplete-loading");
                 $("#ltype").addClass("ui-autocomplete-loading");
@@ -503,9 +504,7 @@ $(document).ready(function () {
                         //$("#ldesc").val(data.address_desc).attr("readonly", true);
                         $("#property_no").val(data.property_no);
                         $("#lpostcode").val(data.postcode);
-                        if ($("#addressId").val(data.address_id) != 0 || $("#addressId").val(data.address_id) != '0' || $("#addressId").val(data.address_id) != "") {
-                            $("#AddrSummary").removeAttr("disabled");
-                        }
+                        $("#addressId").val(data.address_id);
                         if (data.house_number.length > 0) {
                             $("#lno").val(data.house_number);
                             $("#lno").val($("#lno").val().replace(/[A-Za-z$-]/g, ""));
@@ -639,8 +638,7 @@ $(document).ready(function () {
             $("#lsuburb").textInputState('enable');
             $("#ltype").autocomplete("close");
             $("#lsuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
-
-        }
+             }
     }
 
     // Location Street Suburb
@@ -661,7 +659,7 @@ $(document).ready(function () {
     }
 
     function streetSuburbResponse(event, ui) {
-        var label = "";
+         var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; postcode = ui.content[0].postcode; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; postcode = ui.item.postcode; }
         if (label.length > 0) {
@@ -672,13 +670,8 @@ $(document).ready(function () {
             GetAddressDetails();
             $("#lsuburb").autocomplete("close");
             $("#lpostcode").val(postcode);
-            alert("data" + $("#addressId").val(data.address_id));
-            if ($("#addressId").val(data.address_id) != 0 || $("#addressId").val(data.address_id) != '0' || $("#addressId").val(data.address_id) != "") {
-                $("#AddrSummary").removeAttr("disabled");
             }
-        }
     }
-
     $("#lno").facClick();
     $("#lfno").facClick();
     $("#ldesc").facClick();
@@ -1098,7 +1091,12 @@ function changeLocationType() {
         $("#cust_address_id").val($("#addressId").val());
 
         if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
-        if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); $("#CustAddSummary").prop("disabled", false); }
+        if ($("#i_csuburb").val().length > 0) {
+            $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+            if ($("#cust_address_id").val() > 0) {
+                $("#CustAddSummary").prop("disabled", false);
+            }
+        }
     }
 
     else if ($('#same').val() == "i") {
@@ -1116,21 +1114,14 @@ function changeLocationType() {
         $('#inside_ca').show();
         $('#outside_ca').hide();
 
-        //clear field values
-          $('#i_cno').val('');
-        $('#i_cfno').val('');
-        $('#i_cstreet').val('');
-        $('#i_ctype').val('');
-        $('#i_csuburb').val('');
-        $('#i_cdesc').val('');
-        $("#i_cpostcode").val("");
-        $("#cust_address_id").val("");
-
         if ($("#i_ctype").val().length > 0) { 
             $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); 
         }
-        if ($("#i_csuburb").val().length > 0) {  
-            $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable"); $("#CustAddSummary").prop("disabled", false);
+        if ($("#i_csuburb").val().length > 0) {
+            $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable");
+            if ($("#cust_address_id").val() > 0) {
+                $("#CustAddSummary").prop("disabled", false);
+            }
         }
     
     }
@@ -1155,8 +1146,16 @@ function changeLocationType() {
         $('#o_ctype').val();
         $('#o_csuburb').val();
         $('#o_cdesc').val();
-        $("#o_cpostcode").val();      
-        if ($('#o_csuburb').val().length > 0) { $("#CustAddSummary").prop("disabled", false); }
+        $("#o_cpostcode").val();
+        if ($("#o_ctype").val().length > 0) {
+            $("#o_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable");
+        }
+        if ($('#o_csuburb').val().length > 0) {
+            $("#o_csuburb").prop("disabled", true); ("#o_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#o_csuburb").textInputState("disable");
+            if ($("#cust_address_id").val() > 0) {
+                $("#CustAddSummary").prop("disabled", false);
+            }
+        }
     }
 
     if ($("#historyaddrtype").val() == "C" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
@@ -1203,7 +1202,7 @@ function clearLocationAddress() {
     $('#ldesc').val('');
     $("#lpostcode").val("");
     $("#property_no").val("");
-    $("#AddrSummary").attr("disabled", "disabled");
+    $("#").attr("disabled", "disabled");
     $("#responsible").val("");
     $("#facilitydescription").val("");
 }

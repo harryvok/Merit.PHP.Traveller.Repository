@@ -26,6 +26,7 @@ function getIntray(intray, i) {
 }
 
 function GetAddressDetails() {
+    
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
@@ -42,6 +43,9 @@ function GetAddressDetails() {
                 $("#property_no").val(data.property_no);
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
+                if (data.address_id > 0) {
+                    $("#AddrSummary").removeAttr("disabled");
+                }
             }
         });
     }
@@ -65,10 +69,13 @@ function GetCustomerAddressDetails() {
                 //$("#i_cpostcode").val(data.postcode);
                 $("#cust_address_id").val(data.address_id);
                 $("#i_cpropertynumber").val(data.property_no);
+                if (data.address_id > 0) {
+                    $("#CustAddSummary").removeAttr("disabled");
+                }
             }
         });
     }
-    if ($("#same").val() == "o" && $("#0_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
+    else if ($("#same").val() == "o" && $("#o_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
             type: 'POST',
@@ -81,9 +88,12 @@ function GetCustomerAddressDetails() {
                 streetSuburb: function () { return $("#o_csuburb").val() }
             },
             success: function (data) {
-                //$("#i_cpostcode").val(data.postcode);
+                $("#o_cpostcode").val(data.postcode);
                 $("#cust_address_id").val(data.address_id);
-                $("#i_cpropertynumber").val(data.property_no);
+                $("#o_cpropertynumber").val(data.property_no);
+                if (data.address_id > 0) {
+                    $("#CustAddSummary").removeAttr("disabled");
+                }
             }
         });
     }
