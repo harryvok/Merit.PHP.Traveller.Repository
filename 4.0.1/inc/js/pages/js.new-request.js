@@ -311,8 +311,8 @@ $(document).ready(function () {
                         company_name: $('#company').val(),
                         email_address: $('#email_address').val()
                     },
-                    success: function (data) {
-                        $('#popup').html(data);
+                    success: function (data) {                       
+                        $('#popup').html(data);                      
                         $(self).removeClass("ui-autocomplete-loading");
 
                     }
