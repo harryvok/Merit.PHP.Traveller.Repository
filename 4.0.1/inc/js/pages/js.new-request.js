@@ -1116,16 +1116,6 @@ function changeLocationType() {
         $('#inside_ca').show();
         $('#outside_ca').hide();
 
-        //clear field values
-          $('#i_cno').val('');
-        $('#i_cfno').val('');
-        $('#i_cstreet').val('');
-        $('#i_ctype').val('');
-        $('#i_csuburb').val('');
-        $('#i_cdesc').val('');
-        $("#i_cpostcode").val("");
-        $("#cust_address_id").val("");
-
         if ($("#i_ctype").val().length > 0) { 
             $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); 
         }
@@ -1145,7 +1135,7 @@ function changeLocationType() {
         $("#i_cpostcode").val("");
         $("#cust_address_id").val("");
 
-        // Show inside, hide outside
+        // Show outside, hide inside
         $('#inside_ca').hide();
         $('#outside_ca').show();
         
