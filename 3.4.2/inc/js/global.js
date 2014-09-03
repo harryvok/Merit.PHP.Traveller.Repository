@@ -194,7 +194,7 @@ function changeLocationType() {
         document.getElementById('i_csuburb').value = '';
         document.getElementById('i_cdesc').value = '';
 
-        // Show inside, hide outside
+        // Show outside, hide inside
         document.getElementById('inside_ca').style.display = "none";
         document.getElementById('outside_ca').style.display = "block";
     }

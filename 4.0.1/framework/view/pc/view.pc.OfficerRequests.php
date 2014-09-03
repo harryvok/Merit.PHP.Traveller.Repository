@@ -35,17 +35,21 @@
                               ?>
                                   <tr class="<?php echo $class; ?>" onClick="change_req('<?php echo $change; ?>')" title="">
                                       <td id="<?php echo $change; ?>"><?php if(strlen($result_arr->request_id) > 0){ echo $result_arr->request_id; } else { echo ""; } ?></td>
-                                      <td><?php if(strlen($result_arr->service_name) > 0){ echo $result_arr->service_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->request_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->function_name; } else { echo ""; } ?></td>
-                                      <td><?php if(strlen($result_arr->request_datetime) > 0){ echo str_ireplace("T", " ", $result_arr->request_datetime); } else { echo "N"; } ?></td>
-                                      <td><?php if(strlen($result_arr->due_datetime) > 0){ echo str_ireplace("T", " ", $result_arr->due_datetime); } else { echo "N"; } ?></td> 
+                                      <td>
+                                          <?php if(strlen($result_arr->service_name) > 0){ echo $result_arr->service_name; } else { echo ""; } ?>
+                                          <?php if(strlen($result_arr->request_name) > 0){ echo " / ".$result_arr->request_name; } else { echo ""; } ?>
+                                          <?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->function_name; } else { echo ""; } ?>
+                                      </td>
+                                      <td><?php if(strlen($result_arr->request_datetime) > 0 && $result_arr->request_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $result_arr->request_datetime))); }?></td>
+                                      <td><?php if(strlen($result_arr->due_datetime) > 0 && $result_arr->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $result_arr->due_datetime))); }?></td>
                                       <td><?php 
                               if($result_arr->finalised_ind == "N"){
-                                  echo '<img width="10" height="9" src="images/dotGreen.png" />';
                                   echo ' Open ';
+                                  echo ' <img class="officerdot" width="10" height="9" src="images/dotGreen.png" />';
                               }
                               elseif($result_arr->finalised_ind == "Y"){  
-                                  echo '<img width="10" height="9" src="images/dotRed.png" />';
                                   echo ' Closed ';
+                                  echo ' <img class="officerdot" width="10" height="9" src="images/dotRed.png" />';
                               } 
                                     ?></td>
                                   </tr>
@@ -58,17 +62,18 @@
                           ?>
                               <tr class="dark" onClick="change_req('<?php echo $change; ?>')" title="">
                                   <td id="<?php echo $change; ?>"><?php if(strlen($result_arr->request_id) > 0){ echo $result_arr->request_id; } else { echo ""; } ?></td>
-                                  <td><?php if(strlen($result_arr->service_name) > 0){ echo $result_arr->service_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->request_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->function_name; } else { echo ""; } ?></td>
-                                  <td><?php if(strlen($result_arr->request_datetime) > 0){ echo str_ireplace("T", " ", $result_arr->request_datetime); } else { echo "N"; } ?></td>
-                                  <td><?php 
-                          if($result_arr->finalised_ind == "N"){ 
-                              echo 'Open';
-                              //echo '<img width="10" height="9" src="images/dotGreen.png" />';
+                                      <td><?php if(strlen($result_arr->service_name) > 0){ echo $result_arr->service_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->request_name; } else { echo ""; } ?><?php if(strlen($result_arr->function_name) > 0){ echo " / ".$result_arr->function_name; } else { echo ""; } ?></td>
+                                      <td><?php if(strlen($result_arr->request_datetime) > 0 && $result_arr->request_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $result_arr->request_datetime))); }?></td>
+                                      <td><?php if(strlen($result_arr->due_datetime) > 0 && $result_arr->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $result_arr->due_datetime))); }?></td>
+                                      <td><?php 
+                          if($result_arr->finalised_ind == "N"){
+                              echo ' Open ';
+                              echo ' <img class="officerdot" width="10" height="9"  src="images/dotGreen.png" />';
                           }
-                          elseif($result_arr->finalised_ind == "Y"){
-                              echo 'Closed';
-                              //echo '<img width="10" height="9" src="images/dotRed.png" />';
-                          } 
+                          elseif($result_arr->finalised_ind == "Y"){  
+                              echo ' Closed ';
+                              echo ' <img class="officerdot" width="10" height="9" src="images/dotRed.png" />';
+                          }  
                                     ?></td>
                               </tr>
                               <?php

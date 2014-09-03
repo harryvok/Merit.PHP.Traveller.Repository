@@ -1136,7 +1136,7 @@ function changeLocationType() {
         $("#i_cpostcode").val("");
         $("#cust_address_id").val("");
 
-        // Show inside, hide outside
+        // Show outside, hide inside
         $('#inside_ca').hide();
         $('#outside_ca').show();
         
