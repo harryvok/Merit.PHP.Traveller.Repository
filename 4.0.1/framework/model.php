@@ -1,6 +1,5 @@
 <?php
 
-
 class Model {
 
 	/* Generic functions */
