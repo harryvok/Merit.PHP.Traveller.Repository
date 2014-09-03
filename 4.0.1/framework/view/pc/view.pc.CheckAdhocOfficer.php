@@ -1,5 +1,5 @@
 <?php
-if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adhoc_officer_det) >0){
+if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adhoc_officer_det) > 0){
 ?>
 <script type="text/javascript">
 
