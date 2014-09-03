@@ -176,11 +176,11 @@ if(!isset($_GET['d'])){
                         </div>
                         <div class="column r25">
                             <label for="lpostcode">Postcode</label>
-                            <input class="text checkNone" name='lpostcode' onChange="" id="lpostcode" data-mand="location_postcode" maxlength='100' value=''>
+                            <input onChange="changeLocationType()" class="text checkNone" name='lpostcode' onChange="" id="lpostcode" data-mand="location_postcode" maxlength='100' value=''>
                         </div>
                         <div class="column r25">
                         <label>Property Number</label>
-                        <input readonly="readonly" name='property_no' id="property_no" maxlength='100'>
+                        <input onChange="changeLocationType()" readonly="readonly" name='property_no' id="property_no" maxlength='100'>
                             <input type="hidden" name="lpostcode" id="lpostcode" />
                         </div>
 
