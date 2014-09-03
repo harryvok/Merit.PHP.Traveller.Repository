@@ -5326,7 +5326,7 @@ function getIntray(intray, i) {
 }
 
 function GetAddressDetails() {
-    //alert("location add");
+    alert("location add");
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
@@ -5343,7 +5343,6 @@ function GetAddressDetails() {
                 $("#property_no").val(data.property_no);
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
-                //else $("#AddrSummary").attr("disabled","");
             }
         });
         
@@ -5389,9 +5388,6 @@ function GetCustomerAddressDetails() {
                     $("#i_cpropertynumber").val(data.property_no);
                 }
             });
-            if ($("#cust_address_id").val() == 0 || $("#addressId").val() == null) {
-                $("#CustAddSummary").prop("disabled", true);
-            }
         }
 }
 

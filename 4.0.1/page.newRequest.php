@@ -377,28 +377,28 @@ if(!isset($_GET['d'])){
                         <div id="outside_ca" style="display: none;">
                             <div class="column r25">
                                 <label for="o_cfno">Flat/Unit Number</label>
-                                <input class="text" name='o_cfaddno' onChange="changeLocationType()" id="o_cfno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cno'])){ echo $_SESSION['rem_o_cno']; } ?>'>
+                                <input class="text" name='o_cfaddno' onChange="" id="o_cfno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cno'])){ echo $_SESSION['rem_o_cno']; } ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="o_cno">Street Number</label>
-                                <input class="text" name='o_cno' onChange="changeLocationType()" id="o_cno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cfaddno'])){ echo $_SESSION['rem_o_cfaddno']; } ?>'>
+                                <input class="text" name='o_cno' onChange="" id="o_cno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cfaddno'])){ echo $_SESSION['rem_o_cfaddno']; } ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="o_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text" name='o_cstreet' onChange="changeLocationType();remstname();" data-mand="customer_address" id="o_cstreet" maxlength='100' value='<?php if(isset($_SESSION['rem_o_cstreet'])){ echo $_SESSION['rem_o_cstreet']; } ?>'>
+                                <input class="text" name='o_cstreet' onChange="" data-mand="customer_address" id="o_cstreet" maxlength='100' value='<?php if(isset($_SESSION['rem_o_cstreet'])){ echo $_SESSION['rem_o_cstreet']; } ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text" name='o_ctype' onChange="changeLocationType()" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; } ?>'>
+                                <input class="text" name='o_ctype' onChange="" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; } ?>'>
                             </div>
                             <div class="float-left">
                                 <div class="column r25">
                                     <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                    <input class="text" name='o_csuburb' onChange="changeLocationType();GetCustomerAddressDetails();" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
+                                    <input class="text" name='o_csuburb' onChange="GetCustomerAddressDetails();" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
                                 </div>
                                 <div class="column r25">
                                     <label for="o_cpostcode">Postcode</label>
-                                    <input class="text" onChange="changeLocationType();" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
+                                    <input class="text" onChange="" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
                                 </div>
                                 <div class="column r100">
                                     <label for="o_cdesc">Description</label>
