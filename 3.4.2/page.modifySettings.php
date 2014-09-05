@@ -44,6 +44,10 @@ else{
               <input class="text" name='inactivity' value='<?php echo defined("INACTIVITY") ? INACTIVITY : ""; ?>'><br />
               <span class="small">(The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.)</span><p>&nbsp;</p><p>&nbsp;</p>
         
+              <label  for="password">Page refresh time</label> 
+              <input class="text" name='refreshtable' value='<?php echo defined("REFRESHTABLE") ? REFRESHTABLE : ""; ?>'><br />
+              <span class="small">(The time in minutes between refresh of Action and Request Intrays. Optional.)</span><p>&nbsp;</p><p>&nbsp;</p>
+
               <h2>Website</h2>
               <label  for="site_title">Site Title<span style="color:red;">*</span></label> 
               <input class="text required" name='site_title' maxlength='50' value='<?php echo SITE_TITLE; ?>'><br />

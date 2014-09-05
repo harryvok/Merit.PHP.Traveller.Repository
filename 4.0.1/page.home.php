@@ -118,7 +118,22 @@
 				          $("#searchInput").attr("disabled", true);
 			          }
 			  
-		          }); 
+		          });
+		            //logout code for inactive session
+		          var refreshIntervalId;
+		          var inactivitytime = $("#inactivitytime").val() * 60000;
+		          if (inactivitytime > 0) {
+		              refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		          }
+
+		          $(document).click(function () {
+		              clearInterval(refreshIntervalId);
+		              refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		          });
+		          $(document).keypress(function () {
+		              clearInterval(refreshIntervalId);
+		              refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		          });
 		        });
 		    </script>
     	    <div class="column r50"><div class="profImage"><img src="images/pc/prof.gif" width="20" height="20"></div><div class="welcome"><h3><b><?php if(isset($_SESSION['given_name'])) echo $_SESSION['given_name']; ?></b></h3></div><div class="bottomButtons"><a href="index.php?page=myPreferences">MY PREFERENCES</a><?php if($_SESSION['roleSecurity']->allow_settings == "Y") { ?><!--<?php if(defined('CHANGE_PASSWORD') && CHANGE_PASSWORD == 1 && $_SESSION['roleSecurity']->allow_cpwd == "Y"){ ?><a href="index.php?page=changePassword">CHANGE PASSWORD</a><?php } ?>--><a href="index.php?page=modifySettings">MODIFY SETTINGS</a><?php } ?></div></div>

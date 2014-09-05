@@ -1,3 +1,7 @@
+ <?php
+     if($_SESSION['roleSecurity']->view_comment == "Y") 
+     {
+ ?>
 <?php
 
 if(isset($_SESSION['request_id'])){
@@ -128,3 +132,7 @@ if(isset($_SESSION['request_id'])){
 else{
 	echo "Could not retrieve comments.";	
 }
+    ?>
+<?php 
+ }
+?>

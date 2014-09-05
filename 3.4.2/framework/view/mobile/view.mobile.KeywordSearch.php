@@ -58,8 +58,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             GetHelpNotes($("#function").val(),$("#request").val(),$("#service").val());
             GetHelpNotes("",$("#request").val(),$("#service").val());
             GetHelpNotes("","",$("#service").val());
-			CheckCountOnly($("#service").val(), $("#request").val(), $("#function").val());
-			$("#popup").popup("close");
+            CheckCountOnly($("#service").val(), $("#request").val(), $("#function").val());
+            $("#popup").popup("close");
+            $("#add-request-textarea").focus();
 			
 		});
 		 });

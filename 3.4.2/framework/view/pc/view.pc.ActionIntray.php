@@ -2,6 +2,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
     var oTable = $('#actionIntrayTable').dataTable({
+        iDisplayLength: "50",
         "aaSorting": [[ 5, "asc" ]],
         "oLanguage": {
                 "sSearch": "Intray Filter: "

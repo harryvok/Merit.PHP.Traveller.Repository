@@ -1,10 +1,22 @@
+<?php 
 
+$timeset = REFRESHTABLE;
+$timeset = $timeset * 60000;            
+if ($timeset < 1)
+    $timeset = 999999999;
+echo '<script type="text/javascript"> var settime = '.json_encode($timeset).'; </script>';
+?>
 <?php
 if(isset($_SESSION['user_id'])){
 	?>
     <script type="text/javascript">
 $(document).on('pageinit', function(){
-	getIntray("request", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['req_back_filter'])) echo $_SESSION['req_back_filter']; ?>");
+    getIntray("request", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['req_back_filter'])) echo $_SESSION['req_back_filter']; ?>");
+
+    setInterval(function () {
+        var filtercode = $("#filter").val();
+        getIntray("request", filtercode);
+    }, settime);
 });
 </script>
 	

@@ -452,7 +452,7 @@ $(document).ready(function(){
 					request_code: $("#request").val()
 				},
 				success: function (data) {
-				    
+				    $("#add-request-textarea").focus();
 				    if (data.length === 0) {
 				        if ($("#chkCount").val() === 0) {
 				            $("#chkCount").val("1");

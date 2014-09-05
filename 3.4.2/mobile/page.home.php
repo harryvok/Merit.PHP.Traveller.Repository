@@ -21,11 +21,14 @@
      <script type="text/javascript">
 	$(document).bind("mobileinit", function () {
 
-            $.mobile.ajaxEnabled = false;
+	    $.mobile.ajaxEnabled = false;
+	});
 
-      });
+	
 	  </script>
-	<script type="text/javascript" src="inc/js/libraries/jquery-mobile.js"></script>
+    <script type="text/javascript" src="inc/js/libraries/jquery-mobile.js"></script>
+    
+	
     <?php
     if(isset($user)){
         ?>
@@ -48,6 +51,17 @@
                 }
               });
           
+            //logout code for inactive session
+            var refreshIntervalId;
+            var inactivitytime = $("#inactivitytime").val() * 60000;
+            if (inactivitytime > 0) {
+                refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+            }
+            $(document).bind("tap", function () {
+                clearInterval(refreshIntervalId);
+                refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+            });
+
             });
         </script>
     <?php
@@ -66,6 +80,7 @@
 			?>
             <div data-role="page"  data-dom-cache="true">
                 <div data-role="header" data-position="fixed">
+                    <input type="hidden" id="inactivitytime" value="<?php echo INACTIVITY ?>"/>
                 	<h1><img alt="list" src="images/favicon.png" width="16" height="16" /> Merit Traveller</h1>
                 </div>
                 <div data-role="content" id="contentBox">
@@ -170,6 +185,7 @@
   </div>
   </div>
   <a name="bottomAnc" title="bottomAnc"></a>
+    
 </body>
 </html>
 

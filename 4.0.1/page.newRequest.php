@@ -61,11 +61,15 @@ if(!isset($_GET['d'])){
                     </div>
 
                     <div class="float-left">
+                        <?php
+                        if(isset($_SESSION['roleSecurity']->show_reference_no) && $_SESSION['roleSecurity']->show_reference_no == "Y"){
+                         ?>
                         <div class="column r25">
                             <label for="refno">Reference Number<span class="refer_no_label mandLabel" style="color: red; display: none;"> *</span></label>
                             <input  class="text"name='refno'id="refno" data-mand="refer_no" maxlength='15' value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
                         </div>
-
+                        <?php }
+                        ?>
                         <?php if(isset($_SESSION['roleSecurity']->maint_priority) && $_SESSION['roleSecurity']->maint_priority == "Y"){
                         ?>
                         <div class="column r25">
