@@ -47,12 +47,12 @@
                     var inactivitytime = $("#inactivitytime").val() * 60000;
                     if (inactivitytime > 0) {
                         refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
-                    }
-                    $(document).bind("tap", function () {
-                        clearInterval(refreshIntervalId);
-                        refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
-                    });
 
+                        $(document).bind("tap", function () {
+                            clearInterval(refreshIntervalId);
+                            refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+                        });
+                    }
                 });
             </script><?php
         }
