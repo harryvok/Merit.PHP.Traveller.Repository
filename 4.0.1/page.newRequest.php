@@ -417,16 +417,17 @@ if(!isset($_GET['d'])){
 
         <div class="summaryContainer">
             <h1>Attachment</h1>
-            <div>
-                <div class="column r25">
-                    <label for="desc">File</label>
-                    <input id="attachment" type="file" name="attachment" id="attachFile" />
+                <div>
+                    <div class="column r25">
+                        <label for="desc">File</label>
+                        <input id="attachment" type="file" name="attachment" id="attachFile" />
+                    </div>
+                    <div class="column r25">
+                        <label for="desc">Description</label>
+                        <input type="text" id="attachDesc" maxlength="50" name="desc" />
+                    </div>
+                    
                 </div>
-                <div class="column r25">
-                    <label for="desc">Description</label>
-                    <input type="text" id="attachDesc" maxlength="50" name="desc" />
-                </div>
-            </div>
         </div>
         <p>&nbsp;</p>
         <input type="hidden" name="action" value="CreateRequest" />
