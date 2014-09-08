@@ -1,5 +1,8 @@
 <?php $result_re = $GLOBALS['result']->request_det; ?>
-    <ul class="no-ellipses" data-role="listview" data-count-theme="b" data-inset="true" data-filter="true" data-filter-placeholder="Search requests...">
+   
+
+     <ul class="no-ellipses" data-role="listview" data-count-theme="b" data-inset="true" data-filter="true" data-filter-placeholder="Search requests...">
+         <li data-role="list-divider">Requests</li>
             <?php
             if(isset($result_re->request_details) && count($result_re->request_details) > 1){
                 foreach($result_re->request_details as $result_arr){
@@ -16,17 +19,20 @@
                                         echo '<img width="10" height="9" src="images/dotRed.png" />';
                                     } 
                                     ?>
-                            <?php 
+                            <b><?php 
                             echo $result_arr->service_name . " - " .
                             $result_arr->request_name . " - " . 
                             $result_arr->function_name;
                             ?>
+                            </b>
                         </p>
                         
                          <p><b>Request ID:</b> <?php echo $result_arr->request_id; ?></p>
-                         <p><b>Date Input:</b> <?php if(strlen($result_arr->request_datetime) > 0){ echo date('d/m/Y',strtotime($result_arr->request_datetime)); } ?></p>
-                        <p> <b>Completed Date:</b> <?php if(strlen($result_arr->status_datetime) > 0 && $result_arr->status_datetime != "1900-01-01T00:00:00" && $result_arr->status != "Open"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T", " ", $result_arr->status_datetime))); } ?></p>
+                         <p><b>Date Input:</b> <?php if(strlen($result_arr->request_datetime) > 0 && $result_arr->request_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $result_arr->request_datetime))); }?></p>
+                         <p><b>Due Date:</b> <?php if(strlen($result_arr->due_datetime) > 0 && $result_arr->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $result_arr->due_datetime))); }?></p>
                    
+                              <td></td>
+                                <td></td>
                        
                             
                         </a>
