@@ -351,7 +351,7 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
       <table id="filterTableJobs" class=" sortable" title="" cellspacing="0">
         <tr>
            <th>Name</th>
-           <th >Value</th>
+           <th>Value</th>
         </tr>
         <?php
         $number=0;
@@ -899,12 +899,12 @@ if($count_udf > 0 && $GLOBALS['act_finalised_ind'] == "N" && $_SESSION['roleSecu
  <?php
 }
  ?>
-<div id="Div2" class="dropdown">
+<div id="udf" class="dropdown">
 
-<table id="Table1" class=" sortable" title="" cellspacing="0">
+<table id="filterTableJobs" class=" sortable" title="" cellspacing="0">
 <tr>
  <th>Name</th>
- <th >Value</th>
+ <th>Value</th>
 </tr>
 <?php
 $number=0;
@@ -1431,14 +1431,14 @@ if(isset($GLOBALS['result']['udfs']->udf_details)){
               
                       </span>
                   </div>
-        <div id="Div5" class="dropdown">
+        <div id="udf" class="dropdown">
 
-      <table id="Table2" class=" sortable" title="" cellspacing="0">
+      <table id="filterTableJobs" class=" sortable" title="" cellspacing="0">
         <tr>
           <th class="id">Type</th>
           <th>Required Name</th>
            <th>Name</th>
-           <th >Value</th>
+           <th>Value</th>
         </tr>
         <?php
         $number=0;
