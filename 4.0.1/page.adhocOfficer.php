@@ -1,20 +1,20 @@
 
+<?php if(isset($_SESSION['user_id'])){ if($_SESSION['adhoc-true'] == 1){ ?>
+
 <script type="text/javascript" src="inc/js/pages/js.adhocOfficer.js"></script>
 
-<?php
-if(isset($_SESSION['user_id'])){
-	if($_SESSION['adhoc-true'] == 1){
-		?>
-
-		
-			<form  enctype='multipart/form-data' action='process.php' id="adhocOfficer" method='post'>
-            <b>Please choose an officer to be assigned to the next action.</b><br />
-            <br />
-			<b>Action Name:</b> <?php echo $_SESSION['reason_assigned']; ?>
-			
+       <div class="summaryContainer">
+        <h1>Please choose an officer to be assigned to the next action.</h1>
             <div class="float-left">
-			        <label  for="resp_officer">Officer<span style="color:red;">*</span></label>
-			</div>
+                <div class="column Fieldx1">
+
+                            
+                    
+		<form style='display:inline;' enctype='multipart/form-data' action='process.php' id="adhocOfficer" method='post'>
+            
+			    <b>Action Name:</b> <?php echo $_SESSION['reason_assigned']; ?>
+			
+            <div class="float-left"> <label  for="resp_officer">Officer<span style="color:red;">*</span></label></div>
 			<div class="float-left">
 			        <input id="new_officer_text" class="required" placeholder="Search..." />
 		            <input type="hidden" id="new_officer_code" name="resp_officer"  class="required" />
@@ -31,18 +31,15 @@ if(isset($_SESSION['user_id'])){
 			<input type="hidden" name="priority" id="priority" value="<?php echo $_SESSION['priority']; ?>" />
 			<input type="hidden" name="officer_type" id="officer_type" value="<?php echo $_SESSION['officer_type']; ?>" />
 			<input type="hidden" name="position_no" id="position_no" value="<?php echo $_SESSION['position_no']; ?>" />
-			<input id="submit" class="button left" type='submit' value='Submit' />
+			<input id="submit" class="button left" type='submit' value='Submit' />   
 		</form>
-	<?php
-	}	
-	else{
-		header("Location: page.error.php");
-	}
-	
-}
-else{
+                </div>
+           </div>
+       </div>
+    <?php }	else { header("Location: page.error.php"); }
+    } else {
 	$_SESSION['not_logged_in'] = 1;
-	header("Location: index.php");	
-}
-?>
+	header("Location: index.php");	}
+    ?>
+
 

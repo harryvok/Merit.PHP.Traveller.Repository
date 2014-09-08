@@ -392,8 +392,7 @@ class Model {
 
         return $result;
     }
-    public function getPartialStreets(){
-        $parameters = new stdClass();
+    public function getPartialStreets(){        $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
         $parameters->partial_street = $_GET['term'];
@@ -1787,6 +1786,7 @@ class Model {
             if($ws_status != -1){
                 $attachment = $_FILES['attachment'];
 
+                
                 $GLOBALS['request_id'] = $result->request_id;
                 if(strlen($attachment['tmp_name'])>0){
                     $this->processDirectAttachment($attachment, $GLOBALS['request_id']);
@@ -2043,7 +2043,7 @@ class Model {
             try {
                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
                 $_SESSION['success'] = 1;
-                $_SESSION['success_attach'] = 1;
+                //$_SESSION['success_attach'] = 1;
                 $_SESSION['done'] = 1;
             }
             catch(Exception $e){
@@ -3146,6 +3146,8 @@ class Model {
                 if(strlen($result->sms_msg_on_comp) > 0) $_SESSION['sms_msg'] = $result->sms_msg_on_comp;
                 if($result->sms_sent_on_comp == true) $_SESSION['success_sms'] = 1;
 
+                
+                #Adhoc stuff Below ---------------------------------------------------->
                 if($result->ws_message == "adhoc" && $result->ws_status == 2){
                     $_SESSION['action_id'] = $result->action_id;
                     $_SESSION['request_id'] = $result->request_id;
@@ -3174,6 +3176,9 @@ class Model {
                     $_SESSION['adhoc-true'] = 1;
                     $_SESSION['redirect'] = "index.php?page=adhocOfficer&id=".$action_id;
                 }
+                #Adhoc stuff Above ----------------------------------------------------->
+                
+                
                 else{
                     $_SESSION['action-id'] = $action_id;
                     $_SESSION['request-id'] = $request_id;

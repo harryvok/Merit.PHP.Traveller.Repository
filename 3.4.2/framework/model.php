@@ -1339,7 +1339,7 @@ class Model {
             try {
                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
                 $_SESSION['success'] = 1;
-                $_SESSION['success_attach'] = 1;
+                //$_SESSION['success_attach'] = 1;
                 $_SESSION['done'] = 1;
             }
             catch(Exception $e){

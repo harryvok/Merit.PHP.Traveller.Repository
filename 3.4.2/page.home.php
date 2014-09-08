@@ -90,11 +90,24 @@
 			  }
 			  
 		  });
-
-		  var inactivitytime = $("#inactivitytime").val() * 60000;
+          
+            //logout code for inactive session
+		    var refreshIntervalId;
+		    var inactivitytime = $("#inactivitytime").val() * 60000;
 		    if (inactivitytime > 0) {
-		      setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
-		  }
+		        refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		    
+
+		        $(document).click(function () {
+		            clearInterval(refreshIntervalId);
+		            refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		        });
+		        $(document).keypress(function () {
+		            clearInterval(refreshIntervalId);
+		            refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		        });
+
+		    }
 		});
 		</script>
         

@@ -28,9 +28,15 @@ $(document).ready(function () {
                 success: function (data) {
                     Unload();
                     $('#popup').html(data);
+                    if ($("#textareaissue").length) {
+                        $("#textareaissue").focus();
+                    } else {
+                        $("#add-request-textarea").focus();
+                    }
                 }
             });
         }
+
     }
 
     // Service Input
@@ -153,17 +159,21 @@ $(document).ready(function () {
             if (need_function == "Y") {
                 $("#functionInput").addClass("required");
                 $("#functionRequired").show();
+                $("#functionInput").focus();
 
             }
             else {
                 $("#functionRequired").hide();
                 $("#functionInput").removeClass("required");
+                
             }
                 
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
             $("#functionInput").textInputState('enable');
             $("#requestInput").autocomplete("close");
             $("#functionInput").trigger("click");
+            
+            
         }
     }
 
@@ -181,6 +191,7 @@ $(document).ready(function () {
         $("#function_helpText").val("");
         $("#function_helpURL").val("");
         $("#functionInput").trigger("focus");
+        $("#functionInput").focus();
         return $("#requestInput").val();
     }
     var functionResponse = function (event, ui) {
@@ -210,10 +221,23 @@ $(document).ready(function () {
             CheckCountOnly($("#service").val(), $("#request").val(), $("#function").val());
             $("#functionInput").autocomplete("close");
             
+            if ($("#textareaissue").length) {
+                $("#textareaissue").focus();
+            } else {
+                $("#add-request-textarea").focus();
+            }
+            
         }
     }
     function functionSuccess(data) {
-        $("#textareaissue").focus();
+
+        
+
+        if ($("#textareaissue").length) {
+            $("#textareaissue").focus();
+        } else {
+            $("#add-request-textarea").focus();
+        }
         if (data.length === 0) {
             if ($("#chkCount").val() === "0") {
                 $("#chkCount").val("1");

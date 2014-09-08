@@ -1,4 +1,8 @@
- <div data-role="collapsible">
+  <?php
+  if($_SESSION['roleSecurity']->view_attachment == "Y") 
+  {
+  ?>
+<div data-role="collapsible">
 	<h4>Attachments <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?></span></h4>
     <p>
      <div data-role="collapsible">
@@ -87,3 +91,6 @@
   </p>
   </div>
 
+<?php
+  }
+?>

@@ -1,7 +1,20 @@
 ﻿
 
-$(document).ready(function() {
+$(document).ready(function () {
+    enableBeforeUnload();
 
+    function enableBeforeUnload() {
+        window.onbeforeunload = function (e) {
+            return "You must select an Adhoc Officer.";
+        };
+    }
+    function disableBeforeUnload() {
+        window.onbeforeunload = null;
+    }
+
+    $("form").on("submit", function() {
+        window.onbeforeunload = null;
+    });
 
     var officerResponse = function (event, ui) {
         var label = "";
@@ -31,9 +44,7 @@ $(document).ready(function() {
         $("#new_officer_text").attr("readonly", false);
         $("#new_officer_text").autocomplete("search", "");
     });
-
     $("#adhocOfficer").validate();
-
     $("#adhocOfficer").submit(function () {
         if ($(this).validate().numberOfInvalids() == 0) {
             $("#submit").attr("disabled", true);

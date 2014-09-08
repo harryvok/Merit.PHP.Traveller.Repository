@@ -354,6 +354,24 @@ function ClearHelpNotes() {
                                 $(self).autocomplete("search", "");
                                 $(self).trigger("focus");
                                 
+                                if ($(self).attr('id') == "functionInput") {
+                                    if (data.length == 1) {
+                                        if ($("#textareaissue").length) {
+                                            $("#textareaissue").focus();
+                                        } else {
+                                            $("#add-request-textarea").focus();
+                                        }
+                                    } else {
+                                        $(self).focus();
+                                    }
+                                }
+                                /*if ($("#requestInput").val() != "" && $("#serviceInput").val() ) {
+                                    if ($("#textareaissue").length) {
+                                        $("#textareaissue").focus();
+                                    } else {
+                                        $("#add-request-textarea").focus();
+                                    }
+                                }*/
                             }
                         }
                     });

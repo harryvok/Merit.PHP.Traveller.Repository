@@ -11,12 +11,15 @@ echo '<script type="text/javascript"> var settime = '.json_encode($timeset).'; <
 
 <script type="text/javascript">
 $(document).ready(function(){
-	getIntray("request", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['req_back_filter'])) echo $_SESSION['req_back_filter']; ?>");
-});
+    getIntray("request", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['req_back_filter'])) echo $_SESSION['req_back_filter']; ?>");
 
     setInterval(function () {
-        getIntray("request", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['req_back_filter'])) echo $_SESSION['req_back_filter']; ?>");
+        var filtercode = $("#filter").val();
+        getIntray("request", filtercode);
     }, settime);
+});
+
+    
 </script>
 
 

@@ -1,4 +1,7 @@
-
+<?php
+    if($_SESSION['roleSecurity']->view_comment == "Y") 
+    {
+ ?>
 
     <div class="summaryContainer">
 
@@ -120,3 +123,6 @@
 					</script>
                 </div>
 </div>
+        <?php
+    }
+?>

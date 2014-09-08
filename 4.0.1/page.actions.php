@@ -10,12 +10,15 @@ if(isset($_SESSION['user_id'])){
 
 	<script type="text/javascript">
 	$(document).ready(function(){
-		getIntray("action", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['act_back_filter'])) echo $_SESSION['act_back_filter']; ?>");
+	    getIntray("action", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['act_back_filter'])) echo $_SESSION['act_back_filter']; ?>");
+
+	    setInterval(function () {
+	        var filtercode = $("#filter").val();
+	        getIntray("action", filtercode);
+	    }, settime);
 	});
 
-	        setInterval(function () {
-	            getIntray("action", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['act_back_filter'])) echo $_SESSION['act_back_filter']; ?>");
-	        }, settime);
+	       
 	</script>
 
     

@@ -132,10 +132,14 @@
             
             <br/>
             <div class="float-left">
-            <div class="column quarter">
-	        <label  for="refno">Reference Number</label>
-            <input  class="text"name='refno' maxlength='15' value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
-	        </div>
+                <?php
+                if(isset($_SESSION['roleSecurity']->show_reference_no) && $_SESSION['roleSecurity']->show_reference_no == "Y"){
+                 ?>
+                    <div class="column quarter">
+	                <label  for="refno">Reference Number</label>
+                    <input  class="text"name='refno' maxlength='15' value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
+	                </div>
+                <?php } ?>
             <?php
             if(isset($_SESSION['roleSecurity']->maint_priority) && $_SESSION['roleSecurity']->maint_priority == "Y"){
                  ?>

@@ -57,6 +57,8 @@
 		    </script>
             <form id="completeaction" method="post" class="completeaction" enctype="multipart/form-data"  action="process.php">
                 <label  id="lab1">Outcome:</label>
+
+                <!-- this is the dropdown for outcomes, add a dropdown for adhoc officers here -->
                 <select class="text required" id="requirement" name="requirement">
                     <option value="">Select</option>
                     <?php
@@ -64,6 +66,11 @@
                         <option id="<?php if(isset($result_outcomes->note_ind)){ echo $result_outcomes->note_ind; } else { echo "N"; } ?>" value="<?php echo $result_outcomes->note_ind."_".$result_outcomes->action_code; ?>"><?php echo $result_outcomes->action_name; ?></option>
                     <?php } ?>
                 </select>
+                
+                <!-- adhoc label here -->
+                <!-- adhoc select here -->
+
+
                   <label  id="lab2">Comment: <span id="indMand" style="color:red; display:none;">*</span></label> 
                   <textarea spellcheck="true" name="comment_act" class="text" id="desc" style="width:100%; height:40px; padding:5px;"></textarea>
                 <div id="outcome-udfs" style="display:none">

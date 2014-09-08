@@ -61,11 +61,15 @@ if(!isset($_GET['d'])){
                     </div>
 
                     <div class="float-left">
+                        <?php
+                        if(isset($_SESSION['roleSecurity']->show_reference_no) && $_SESSION['roleSecurity']->show_reference_no == "Y"){
+                         ?>
                         <div class="column r25">
                             <label for="refno">Reference Number<span class="refer_no_label mandLabel" style="color: red; display: none;"> *</span></label>
                             <input  class="text"name='refno'id="refno" data-mand="refer_no" maxlength='15' value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
                         </div>
-
+                        <?php }
+                        ?>
                         <?php if(isset($_SESSION['roleSecurity']->maint_priority) && $_SESSION['roleSecurity']->maint_priority == "Y"){
                         ?>
                         <div class="column r25">
@@ -158,7 +162,7 @@ if(!isset($_GET['d'])){
                     </div>
                     <div class="column r25">
                         <label for="lfno">Street Number</label>
-                        <input class="text" name='lno' onChange=" GetAddressDetails();" id="lno" maxlength='15' value='<?php if(isset($_SESSION['rem_lno'])){ echo $_SESSION['rem_lno']; } ?>'>
+                        <input class="text" name='lno' onChange="" id="lno" maxlength='15' value='<?php if(isset($_SESSION['rem_lno'])){ echo $_SESSION['rem_lno']; } ?>'>
                     </div>
                     
                     <div class="column r25">
@@ -172,21 +176,17 @@ if(!isset($_GET['d'])){
                     <div class="float-left">
                         <div class="column r25">
                             <label for="lsuburb">Suburb<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                            <input class="text checkNone" name='lsuburb' onChange="" id="lsuburb" data-mand="location_address"  disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'>
+                            <input class="text checkNone" name='lsuburb' onChange="GetAddressDetails();" id="lsuburb" data-mand="location_address"  disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'>
                         </div>
                         <div class="column r25">
                             <label for="lpostcode">Postcode</label>
-                            <input onChange="changeLocationType()" class="text checkNone" name='lpostcode' onChange="" id="lpostcode" data-mand="location_postcode" maxlength='100' value=''>
+                            <input class="text checkNone" name='lpostcode' onChange="" id="lpostcode" data-mand="location_postcode" maxlength='100' value=''>
                         </div>
                         <div class="column r25">
                         <label>Property Number</label>
-                        <input onChange="changeLocationType()" readonly="readonly" name='property_no' id="property_no" maxlength='100'>
+                        <input readonly="readonly" name='property_no' id="property_no" maxlength='100' value="">
                             <input type="hidden" name="lpostcode" id="lpostcode" />
-                        </div>
-
-
-          
-		
+                        </div>	
                         <div class="column r100">
                             <label for="ldesc">Description</label>
                             <textarea name="ldesc" id="ldesc" onChange="changeLocationType()" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_ldesc'])){ echo $_SESSION['rem_ldesc']; } ?>'></textarea>
@@ -417,16 +417,17 @@ if(!isset($_GET['d'])){
 
         <div class="summaryContainer">
             <h1>Attachment</h1>
-            <div>
-                <div class="column r25">
-                    <label for="desc">File</label>
-                    <input id="attachment" type="file" name="attachment" id="attachFile" />
+                <div>
+                    <div class="column r25">
+                        <label for="desc">File</label>
+                        <input id="attachment" type="file" name="attachment" id="attachFile" />
+                    </div>
+                    <div class="column r25">
+                        <label for="desc">Description</label>
+                        <input type="text" id="attachDesc" maxlength="50" name="desc" />
+                    </div>
+                    
                 </div>
-                <div class="column r25">
-                    <label for="desc">Description</label>
-                    <input type="text" id="attachDesc" maxlength="50" name="desc" />
-                </div>
-            </div>
         </div>
         <p>&nbsp;</p>
         <input type="hidden" name="action" value="CreateRequest" />

@@ -81,8 +81,12 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" name="countOnly" id="countOnly" value="0">
 
                         <input type="hidden" id="chkCount" val="0" />
+                        <?php
+                        if(isset($_SESSION['roleSecurity']->show_reference_no) && $_SESSION['roleSecurity']->show_reference_no == "Y"){
+                            ?>
                         <label>Reference Number<span class="refer_no_label mandLabel" style="color: red; display: none;">*</span></label>
                         <input name='refno' maxlength='15' data-mand="refer_no" value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
+                        <?php } ?>
                         <?php
     if(isset($_SESSION['roleSecurity']->maint_priority) && $_SESSION['roleSecurity']->maint_priority == "Y"){
                         ?>
@@ -118,7 +122,7 @@ if(isset($_SESSION['user_id'])){
                     ?>
                 </div>
 
-                <div data-role="collapsible" class="col" data-content-theme="c">
+                <div data-role="collapsible" class="col" data-collapsed="false" data-content-theme="c">
                     <h4>Location Details</h4>
 
                     <p>
