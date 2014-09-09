@@ -55,11 +55,10 @@
             var refreshIntervalId;
             var inactivitytime = $("#inactivitytime").val() * 60000;
             if (inactivitytime > 0) {
-                refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
-
-                $(document).bind("tap", function () {
+                refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout&timeout=y" }, inactivitytime);
+                $(document).click(function () {
                     clearInterval(refreshIntervalId);
-                    refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+                    refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout&?timeout=y" }, inactivitytime);
                 });
             }
             });
@@ -71,7 +70,7 @@
 </head>
 <body onload="initFastButtons();">
 <span id="fastclick">
-
+<input type="hidden" id="inactivitytime" value="<?php echo INACTIVITY ?>"/>
 <a name="topAnc" title="topAnc"></a>
 <div id="contentBox">
 	<?php
@@ -80,7 +79,7 @@
 			?>
             <div data-role="page"  data-dom-cache="true">
                 <div data-role="header" data-position="fixed">
-                    <input type="hidden" id="inactivitytime" value="<?php echo INACTIVITY ?>"/>
+                    
                 	<h1><img alt="list" src="images/favicon.png" width="16" height="16" /> Merit Traveller</h1>
                 </div>
                 <div data-role="content" id="contentBox">
@@ -145,6 +144,14 @@
         if ($controller->supportedOS == true){
                                 ?>
                  <p><center>Please login to access this page.</center></p>
+                    <?php
+                                    if(isset($_GET["timeout"]) && $_GET["timeout"]== "y"){
+                                        $_SESSION['done'] = 1;
+                                        $_SESSION['error'] = 1;
+                                        $_SESSION['error_logged_out'] = 1;
+                                    }
+                                     
+                                ?>
 					  <?php
             include("page.output.php");
 					  ?>
