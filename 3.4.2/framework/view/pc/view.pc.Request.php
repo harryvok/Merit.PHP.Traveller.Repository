@@ -286,17 +286,29 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
     }
     elseif(count($GLOBALS['result']['udfs']->udf_details) > 1){
         foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+<<<<<<< HEAD
             if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+=======
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+>>>>>>> origin/poonam-edits
                 $show_hide = $show_hide + 1;
             }					
         }
     }
     elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
         $udf = $GLOBALS['result']['udfs']->udf_details;
+<<<<<<< HEAD
         if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
             $show_hide = $show_hide + 1;
         }		
     }
+=======
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+            $show_hide = $show_hide + 1;
+        }		
+    }
+
+>>>>>>> origin/poonam-edits
     if ($show_hide > 0)
     {
         ?>  
@@ -1022,7 +1034,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         <input type="hidden" name="val-u" id="Hidden4" value="0" />
         <div style="float:left;">
         <span class="summaryTableTitle"  style="float:left;">
+<<<<<<< HEAD
         <div style="float:left;">All Action User Defined Fields For Request</div>
+=======
+        <div style="float:left;">Action User Defined Fields For Request</div>
+>>>>>>> origin/poonam-edits
               
         </span>
         </div>
@@ -1084,8 +1100,16 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         </div>
 
         </div> 
+<<<<<<< HEAD
 
     <?php
         }
     }?>       
 </div>
+=======
+<?php
+            }
+       
+    }?>       
+</div>           
+>>>>>>> origin/poonam-edits
