@@ -1,8 +1,9 @@
-
+  
 <?php
 if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
 	foreach($GLOBALS['result']['request']->address_det->address_details as $address)
 	{
+        #test
 		if($address->address_type == "Customer"){
 			$cust_address_id = $address->address_id;
 			$cust_house_number = $address->house_number;
