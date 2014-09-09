@@ -1551,8 +1551,8 @@
 
         <table id="filterTableJobs" class=" sortable" title="" cellspacing="0">
         <tr>
-        <th class="id">Type</th>
-        <th>Required Name</th>
+        <th class="id">Action ID</th>
+        <th>Action Name</th>
         <th>Name</th>
         <th>Value</th>
         </tr>
@@ -1571,7 +1571,7 @@
         }
         ?>
         <tr class="<?php echo $class; ?>_nocur">
-        <td><?php echo "Action ".$udf->udf_action_id; ?></td>
+        <td><?php echo $udf->udf_action_id; ?></td>
         <td><?php echo $udf->action_required; ?></td>
         <?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td><?php } ?>
         <td <?php if($udf->udf_type == "C" || $udf->udf_type == "E"){ ?>colspan="2"<?php } ?>><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
