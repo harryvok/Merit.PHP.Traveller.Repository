@@ -1053,8 +1053,10 @@ table.dataTable {
 .dataTables_info {
     clear: both;
     float: left;
-    font-weight:bold;
-    margin-top:10px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 100px;
 }
 
 

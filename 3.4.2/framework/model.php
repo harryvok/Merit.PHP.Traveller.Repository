@@ -2082,6 +2082,7 @@ class Model {
 
                     $_SESSION['completed_code'] = $completed_code;
                     $_SESSION['adhoc-true'] = 1;
+                    $_SESSION['success'] = 0;
                     $_SESSION['redirect'] = "index.php?page=adhocOfficer&id=".$action_id;
                 }
                 else{

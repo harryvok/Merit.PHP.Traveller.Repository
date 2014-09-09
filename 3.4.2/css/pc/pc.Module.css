@@ -857,6 +857,11 @@ table.dataTable {
 .dataTables_info {
     clear: both;
     float: left;
+    font-weight:bold;
+    margin-top:10px;
+    position: absolute;
+    top: 10px;
+    left: 100px;
 }
 
 
