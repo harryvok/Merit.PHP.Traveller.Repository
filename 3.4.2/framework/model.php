@@ -908,7 +908,10 @@ class Model {
         session_unset();     // unset $_SESSION variable for the run-time
         session_destroy();   // destroy session data in storage
 
-        $_SESSION['redirect'] = "index.php";
+        if(isset($_GET["timeout"])&& $_GET["timeout"]== "y")
+            $_SESSION['redirect'] = "index.php?timeout=y";
+        else
+            $_SESSION['redirect'] = "index.php";
     }
 
     public function processLogin($params = NULL){
@@ -1391,7 +1394,7 @@ class Model {
 
     public function processEditActionUDFs($params = NULL){
         if(isset($_POST['id'])) $id = $_POST['id'];
-        else $id = $GLOBALS['request_id'];
+        else $id = $_POST['request_id'];
         $result_get_udfs = $this->getRequestUDFs($id);
         $result_get_udfs = $result_get_udfs['udfs'];
 

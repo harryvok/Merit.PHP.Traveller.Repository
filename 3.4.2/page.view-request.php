@@ -148,7 +148,7 @@ $actionData= $model->WebService(MERIT_ACTION_FILE, "ws_get_action_details", $par
 $parameters_r = new stdClass();
 $parameters_r->user_id = $_SESSION['user_id'];
 $parameters_r->password = $_SESSION['password'];
-$parameters_r->request_id = $actionData->request_id;
+$parameters_r->request_id = $_GET['id'];
 $requestData = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters_r);
 
 

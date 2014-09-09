@@ -95,16 +95,16 @@
 		    var refreshIntervalId;
 		    var inactivitytime = $("#inactivitytime").val() * 60000;
 		    if (inactivitytime > 0) {
-		        refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		        refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout&timeout=y" }, inactivitytime);
 		    
 
 		        $(document).click(function () {
 		            clearInterval(refreshIntervalId);
-		            refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		            refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout&timeout=y" }, inactivitytime);
 		        });
 		        $(document).keypress(function () {
 		            clearInterval(refreshIntervalId);
-		            refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout" }, inactivitytime);
+		            refreshIntervalId = setInterval(function () { window.location.href = "process.php?action=logout&?timeout=y" }, inactivitytime);
 		        });
 
 		    }
@@ -165,6 +165,14 @@
                             
                             
                             <div id="login-box">
+                                <?php
+                                    if(isset($_GET["timeout"]) && $_GET["timeout"]== "y"){
+                                        $_SESSION['done'] = 1;
+                                        $_SESSION['error'] = 1;
+                                        $_SESSION['error_logged_out'] = 1;
+                                    }
+                                     
+                                ?>
                                 <?php include("page.output.php"); ?>
                                     Please login to access this page.
                                     <form class="normal" action="process.php" id="login" method="post">
