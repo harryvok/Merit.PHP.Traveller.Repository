@@ -26,7 +26,7 @@ if(isset($GLOBALS['result']['request']->address_det->address_details) && count($
 		}
 	}
 }
-elseif(isset($GLOBALS['result']['request']['request']->address_det->address_details) && count($GLOBALS['result']['request']['request']->address_det->address_details) == 1){
+elseif(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) == 1){
 	$address = $GLOBALS['result']['request']->address_det->address_details;
 	if($address->address_type == "Customer"){
 		$cust_address_id = $address->address_id;

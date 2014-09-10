@@ -146,6 +146,7 @@ $requestData = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", 
 
 
 Display("Action", "ActionHeader",$model,$device,$actionData, $requestData);
+
 if(isset($_GET['d']) && $_GET['d'] == "summary" || !isset($_GET['d'])){
 	Display("Action", "Action",$model,$device,$actionData, $requestData);
 }
