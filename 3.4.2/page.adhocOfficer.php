@@ -30,7 +30,7 @@ if(isset($_SESSION['user_id'])){
 			                <input type="hidden" name="priority" id="priority" value="<?php echo $_SESSION['priority']; ?>" />
 			                <input type="hidden" name="officer_type" id="officer_type" value="<?php echo $_SESSION['officer_type']; ?>" />
 			                <input type="hidden" name="position_no" id="position_no" value="<?php echo $_SESSION['position_no']; ?>" />
-			                <input id="submit" class="button left" type='submit' value='Submit' />
+			                <input id="submit" name="submitbutton" class="button left" type='submit' value='Submit' />
 		                </form>
                  </div>
            </div>

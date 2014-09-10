@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
     enableBeforeUnload();
+    window.onunload = document.getElementById('submitbutton').click();
 
     function enableBeforeUnload() {
         window.onbeforeunload = function (e) {
@@ -10,7 +11,7 @@ $(document).ready(function () {
     function disableBeforeUnload() {
         window.onbeforeunload = null;
     }
-
+    
     $("form").on("submit", function () {
         window.onbeforeunload = null;
     });
