@@ -140,15 +140,6 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
                 <a class="editClose" id="EditDescriptionClose">Close</a>
             </div>
         </div>
-        <span class="summaryColumnTitle">Request Instructions <?php if($_SESSION['roleSecurity']->maint_desc == "Y") { ?><a class="edit" id="EditInstructions"><img src="images/modify-icon.png"></a><?php } ?></span>
-        <div class="summaryColumn">
-            <div id="EditInstructionsLabel"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></div>
-            <div id="EditInstructionsEdit" class="editTextDiv">
-                <textarea spellcheck="true" name="EditInstructionsText" id="EditInstructionsTextVal" data-request-id="<?php echo $GLOBALS['result']['action']->request_id; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></textarea>
-                <input type="button" id="EditInstructionsSubmit" value="Save" data-action="Request" />
-                <a class="editClose" id="EditInstructionsClose">Close</a>
-            </div>
-        </div>
     </div>
 </div>
 <div class="summaryContainer">
