@@ -140,15 +140,6 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
                 <a class="editClose" id="EditDescriptionClose">Close</a>
             </div>
         </div>
-        <span class="summaryColumnTitle">Request Instructions <?php if($_SESSION['roleSecurity']->maint_desc == "Y") { ?><a class="edit" id="EditInstructions"><img src="images/modify-icon.png"></a><?php } ?></span>
-        <div class="summaryColumn">
-            <div id="EditInstructionsLabel"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></div>
-            <div id="EditInstructionsEdit" class="editTextDiv">
-                <textarea spellcheck="true" name="EditInstructionsText" id="EditInstructionsTextVal" data-request-id="<?php echo $GLOBALS['result']['action']->request_id; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></textarea>
-                <input type="button" id="EditInstructionsSubmit" value="Save" data-action="Request" />
-                <a class="editClose" id="EditInstructionsClose">Close</a>
-            </div>
-        </div>
     </div>
 </div>
 <div class="summaryContainer">
@@ -170,7 +161,6 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
         <div class="column r50">
             <span class="summaryColumnTitle">Location Address Descr</span>
             <div class="summaryColumn">
-
                 <?php 
                 if(isset($loc_address_id)){
                     if(isset($loc_desc)){ echo " ".$loc_desc; }
@@ -178,65 +168,65 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
                 ?>
             </div>
         </div>
+        <?php            
+        if(isset($GLOBALS['result']['request']->facility_det) && count($GLOBALS['result']['request']->facility_det) > 1){
+            $i=1;
+            echo "There are <strong>".count($GLOBALS['result']['request']->facility_det)."</strong> facilities.<br />";                
+            foreach($GLOBALS['result']['request']->facility_det as $facility){
+                ?>
+                <div class="float-left">
+                    <div class="column r50">
+                        <span class="summaryColumnTitle">Facility Name</span>
+                        <div class="summaryColumn" style="width: 100%;">
+                            <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
+                        </div>
+                    </div>
+                    <div class="column r50">
+                        <span class="summaryColumnTitle">Facility Type</span>
+                        <div class="summaryColumn" style="width: 100%;">
+                            <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-left">
+                    <span class="summaryColumnTitle">Facility Description</span>
+                    <div class="summaryColumn" style="width: 100%;">
+                        <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?>
+                    </div>
+                    <?php if($i != count($GLOBALS['result']->facility_det)){ ?><hr /><?php }?>
+                </div>
+                <?php
+                $i++;
+            }
+        }
+        elseif(isset($GLOBALS['result']['request']->facility_det->facility_details) && count($GLOBALS['result']['request']->facility_det->facility_details) == 1){
+            $facility = $GLOBALS['result']['request']->facility_det->facility_details;
+            ?>
+            <div class="float-left">
+                <div class="column r50">
+                    <span class="summaryColumnTitle">Facility Name</span>
+                    <div class="summaryColumn" style="width: 100%;">
+                        <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
+                    </div>
+                </div>
+                <div class="column r50">
+                    <span class="summaryColumnTitle">Facility Type</span>
+                    <div class="summaryColumn" style="width: 100%;">
+                        <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
+                    </div>
+                </div>
+            </div>
+            <div class="float-left">
+                <span class="summaryColumnTitle">Facility Description</span>
+                <div class="summaryColumn" style="width: 100%;">
+                    <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
     </div>
 </div>
-<?php            
-if(isset($GLOBALS['result']['request']->facility_det) && count($GLOBALS['result']['request']->facility_det) > 1){
-    $i=1;
-    echo "There are <strong>".count($GLOBALS['result']['request']->facility_det)."</strong> facilities.<br />";                
-    foreach($GLOBALS['result']['request']->facility_det as $facility){
-    ?>
-    <div class="float-left">
-        <div class="column r50">
-            <span class="summaryColumnTitle">Facility Name</span>
-            <div class="summaryColumn" style="width: 100%;">
-                <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
-            </div>
-        </div>
-        <div class="column r50">
-            <span class="summaryColumnTitle">Facility Type</span>
-            <div class="summaryColumn" style="width: 100%;">
-                <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
-            </div>
-        </div>
-    </div>
-    <div class="float-left">
-        <span class="summaryColumnTitle">Facility Description</span>
-        <div class="summaryColumn" style="width: 100%;">
-            <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?>
-        </div>
-        <?php if($i != count($GLOBALS['result']->facility_det)){ ?><hr /><?php }?>
-    </div>
-    <?php
-            $i++;
-        }
-    }
-    elseif(isset($GLOBALS['result']['request']->facility_det->facility_details) && count($GLOBALS['result']['request']->facility_det->facility_details) == 1){
-        $facility = $GLOBALS['result']['request']->facility_det->facility_details;
-    ?>
-    <div class="float-left">
-        <div class="column r50">
-            <span class="summaryColumnTitle">Facility Name</span>
-            <div class="summaryColumn" style="width: 100%;">
-                <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
-            </div>
-        </div>
-        <div class="column r50">
-            <span class="summaryColumnTitle">Facility Type</span>
-            <div class="summaryColumn" style="width: 100%;">
-                <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
-            </div>
-        </div>
-    </div>
-    <div class="float-left">
-        <span class="summaryColumnTitle">Facility Description</span>
-        <div class="summaryColumn" style="width: 100%;">
-            <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?>
-        </div>
-    </div>
-    <?php
-    }
-    ?>
 <div class="summaryContainer">
     <h1>Customer Details</h1>
     <div>

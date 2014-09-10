@@ -26,7 +26,7 @@ if(isset($GLOBALS['result']['request']->address_det->address_details) && count($
 		}
 	}
 }
-elseif(isset($GLOBALS['result']['request']['request']->address_det->address_details) && count($GLOBALS['result']['request']['request']->address_det->address_details) == 1){
+elseif(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) == 1){
 	$address = $GLOBALS['result']['request']->address_det->address_details;
 	if($address->address_type == "Customer"){
 		$cust_address_id = $address->address_id;
@@ -137,15 +137,6 @@ elseif(isset($GLOBALS['result']['request']['request']->address_det->address_deta
                 <textarea spellcheck="true" name="EditDescriptionText" id="EditDescriptionTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo base64_decode($GLOBALS['result']['request']->request_description); } ?></textarea>
                 <input type="button" id="EditDescriptionSubmit" data-action="Request" value="Save" />
                 <a class="editClose" id="EditDescriptionClose">Close</a>
-            </div>
-        </div>
-        <span class="summaryColumnTitle">Request Instructions <?php if($_SESSION['roleSecurity']->maint_desc == "Y") { ?><a class="edit" id="EditInstructions"><img src="images/modify-icon.png"></a><?php } ?></span>
-        <div class="summaryColumn">
-            <div id="EditInstructionsLabel"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></div>
-            <div id="EditInstructionsEdit" class="editTextDiv">
-                <textarea spellcheck="true" name="EditInstructionsText" id="EditInstructionsTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></textarea>
-                <input type="button" id="EditInstructionsSubmit" data-action="Request" value="Save" />
-                <a class="editClose" id="EditInstructionsClose">Close</a>
             </div>
         </div>
     </div>
