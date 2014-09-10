@@ -882,8 +882,10 @@ div#popup {
     left: 10%;
     right: 10%;
     color: #132847;
+    background-color: #bcc8dd;
   display:none;
-  z-index:9001;
+  z-index:1001;
+  padding: 24px;
   border: 10px solid rgba(16, 44, 91, .5);
     -webkit-background-clip: padding-box; /* for Safari */
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
@@ -895,6 +897,7 @@ div#popup {
 border-radius: 8px;
 max-height:600px !important;
 }
+
 
 div#popup h1+div {
     
