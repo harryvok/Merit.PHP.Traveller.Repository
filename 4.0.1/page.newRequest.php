@@ -429,11 +429,11 @@ if(!isset($_GET['d'])){
                     </div>
                     <div class="column r70">
                         <label for="desc">Description</label>
-                        <input type="text" id="attachDesc" maxlength="50" name="desc" />
+                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
                         <label for="desc">Description 2</label>
-                        <input type="text" id="attachDesc" maxlength="50" name="desc" />
+                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
                         <label for="desc">Description 3</label>
-                        <input type="text" id="attachDesc" maxlength="50" name="desc" />
+                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
                     </div>
                 </div>
                      

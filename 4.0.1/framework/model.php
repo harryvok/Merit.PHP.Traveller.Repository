@@ -1785,6 +1785,8 @@ class Model {
             $ws_message = $result->ws_message;
             if($ws_status != -1){
 
+                $filenamearray= array();
+                $filedescriptionarray= array();
                 
                 $GLOBALS['request_id'] = $result->request_id;
                 $totalfiles=count($_FILES['attachment']['name']);
@@ -1798,12 +1800,28 @@ class Model {
                             'size' => $_FILES['attachment']['size'][$i]
                             
                    );
-                        $this->processnewRequestAttachment($attachment, $GLOBALS['request_id']);
+
+                        $rand = rand(0,100);
+                        $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
+                        $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$_FILES['attachment']['name'][$i]);
+                        array_push($filenamearray, $tempname);
+                        array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
+                        
                    }
+                     
+                     
                 }
                  
                  if ($totalfiles > 0) {
 
+                     $parameters_att = array(
+                      'user_id' => $_SESSION['user_id'],
+                      'password' => $_SESSION['password'],
+                      'request_id' => $GLOBALS['request_id'],
+                      'filename'=>$filenamearray,
+                      'descriptions'=>$filedescriptionarray
+                  );
+                     
                      try {
                          $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
                          $_SESSION['success'] = 1;
@@ -2092,8 +2110,8 @@ class Model {
         }
     }
     
-    public function processnewRequestAttachment($attachment, $requestID, $description = ''){
-        $rand = rand(0,100);
+    public function processnewRequestAttachment($attachment, $requestID, $description = '',$rand){
+        
         $max_upload = (int)(ini_get('upload_max_filesize'));
         $max_post = (int)(ini_get('post_max_size'));
         $memory_limit = (int)(ini_get('memory_limit'));

@@ -121,7 +121,7 @@ else{
                 $change = $action_details->action_id;
                 ?>
                 <tr data-link="index.php?page=view-action&id=<?php if(strlen($action_details->action_id) > 0){ echo $action_details->action_id; } else { echo ""; } ?>&filter=<?php echo $filter; ?>"  class="<?php echo $action_details->in_time_ind == "Y" ? "intime" : ''; ?> <?php echo $action_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime($action_details->due_time) < time() ? "red" : ''; ?>" onclick="change('<?php echo $change; ?>')" title="">
-                    <td id="<?php echo $change; ?>"><?php if(strlen($action_details->action_id) > 0){ echo $action_details->action_id; } else { echo ""; } ?></td>
+                    <td id="<?php echo $change; ?>"><?php if(strlen($action_details->request_id) > 0){ echo $action_details->request_id; } else { echo ""; } ?></td>
                     <td><?php if(strlen($action_details->assign_name) > 0){ echo $action_details->assign_name; } else { echo ""; } ?></td>
                     <td><?php echo $action_details->service_name . " - " .$action_details->request_name . " - " . $action_details->function_name;?></td>
                      <td><?php if(isset($action_details->facility_name)){ echo $action_details->facility_name; } ?></td>
