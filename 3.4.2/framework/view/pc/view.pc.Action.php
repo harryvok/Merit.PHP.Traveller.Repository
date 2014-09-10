@@ -96,8 +96,6 @@
         <h5>Issue Details</h5>
         <span class="summaryColumnTitle">Request Description</span>
         <div class="summaryColumn"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo base64_decode($GLOBALS['result']['request']->request_description); } ?></div>
-        <span class="summaryColumnTitle">Request Instructions</span>
-        <div class="summaryColumn"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></div>
     </div>
     <div class="float-left">
         <p>&nbsp;</p>
