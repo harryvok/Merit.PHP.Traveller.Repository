@@ -104,10 +104,19 @@
                     });
                 </script>
                 <form method="post" enctype="multipart/form-data" id="addattach" action="process.php">
-                    <input id="attachment" type="file" class="required" name="attachment" />
+                        <label for="desc">File</label>
+                        <input id="attachment" type="file" name="attachment[]" id="attachFile" />
+                        <label for="desc">File 2</label>
+                        <input id="attachment" type="file" name="attachment[]" id="attachFile" />
+                        <label for="desc">File 3</label>
+                        <input id="attachment" type="file" name="attachment[]" id="attachFile" />
                     <p>&nbsp;</p>
-                    <label class="title-left" for="desc">Description</label>
-                    <input type="text" id="desc" maxlength="50" name="desc" />
+                    <label for="desc">Description</label>
+                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
+                        <label for="desc">Description 2</label>
+                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
+                        <label for="desc">Description 3</label>
+                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
 
                     <input id="submit" class="button left" type='submit' value='Add Attachment' />
                     <input type="hidden" name="request_id" id="request_id" value="<?php echo $_GET['id']; ?>" />
