@@ -14,4 +14,5 @@
 </p>
 <?php
 $GLOBALS['finalised_ind'] = $GLOBALS['result']->finalised_ind;
+$GLOBALS['count_only'] = $GLOBALS['result']->count_only;
 ?>

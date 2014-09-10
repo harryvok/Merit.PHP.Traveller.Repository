@@ -129,7 +129,7 @@ else{
               <label  for="property_password">Password<span style="color:red;">*</span></label> 
               <input class="text required" name='property_password' type="password" value='<?php echo PROP_PASS; ?>'><br />
               <span class="small">(The database password)</span><p>&nbsp;</p><p>&nbsp;</p>
-              <h2>Email</h2>
+              <!--<h2>Email</h2>
               <label  for="email_address">Support Email Address<span style="color:red;">*</span></label>
               <input class="text email" name='email_address' value='<?php echo YOUR_EMAIL; ?>'><br />
               <span class="small">(The email address that emails will be sent to after certain events occur such as the completion of actions, eg support@merit.com.au)</span><br/>
@@ -144,7 +144,7 @@ else{
               <span class="small">(The SMTP server username. Leave empty if none.)</span><br/>
               <label  for="smtp_pass">SMTP Password</label>
               <input class="text" name='smtp_pass' type="password" value='<?php echo SMTP_PASS; ?>'><br />
-              <span class="small">(The SMTP server password. Leave empty if none.)</span><p>&nbsp;</p><p>&nbsp;</p>
+              <span class="small">(The SMTP server password. Leave empty if none.)</span><p>&nbsp;</p><p>&nbsp;</p>-->
             <input type="hidden" name="purpose" id="purpose" value="modify"/>
             <input  type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['modify_user_id']; ?>" />
             <input  type="hidden" name="password" id="password" value="<?php echo $_SESSION['modify_password']; ?>" />

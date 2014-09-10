@@ -203,7 +203,7 @@ $success_array = array(
               <input class="text" name='external_intramaps_mobile' type="text" value='<?php if(isset($_SESSION['rem_external_intramaps_mobile'])){ echo $_SESSION['rem_external_intramaps_mobile']; } ?>'><br />
               <span class="small">(If you wish to embed mobile Intramaps into Traveller please state it's URL without the Lot and Property Number on the end of the URL. Keep mapkey=.)</span><p>&nbsp;</p><p>&nbsp;</p>
 
-              <h2>Email</h2>
+              <!--<h2>Email</h2>
               <label  for="email_address">Support Email Address<span style="color:red;">*</span></label>
               <input class="text email" name='email_address' value='<?php if(isset($_SESSION['rem_email_address'])){ echo $_SESSION['rem_email_address']; } else { echo "support@yourcompany.com.au"; } ?>'><br />
               <span class="small">(The email address that emails will be sent to after certain events occur such as the completion of actions, eg support@merit.com.au)</span><br>
@@ -218,7 +218,7 @@ $success_array = array(
               <span class="small">(The SMTP server username. Leave empty if none.)</span><br>
               <label  for="smtp_pass">SMTP Password</label>
               <input class="text" name='smtp_pass' type="password" value='<?php if(isset($_SESSION['rem_smtp_pass'])){ echo $_SESSION['rem_smtp_pass']; } ?>'><br />
-              <span class="small">(The SMTP server password. Leave empty if none.)</span><p>&nbsp;</p><p>&nbsp;</p>
+              <span class="small">(The SMTP server password. Leave empty if none.)</span><p>&nbsp;</p><p>&nbsp;</p>-->
           
               That's it! Click submit and start using Merit Traveller!<p>&nbsp;</p>
               

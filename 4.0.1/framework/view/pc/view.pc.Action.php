@@ -306,48 +306,49 @@ if(isset($GLOBALS['result']['request']->facility_det) && count($GLOBALS['result'
     </div>
 </div>
 <?php
-$show_hide = 0;
-if(count($GLOBALS['result']['udfs']->udf_details) > 1){
-foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-    if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
-        $show_hide = $show_hide + 1;
-    }					
-}
-}
-elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-$udf = $GLOBALS['result']['udfs']->udf_details;
-if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
-    $show_hide = $show_hide + 1;
-}		
-}
-elseif(count($GLOBALS['result']['udfs']->udf_details) > 1){
-foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-    if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
-        $show_hide = $show_hide + 1;
-    }					
-}
-}
-elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-$udf = $GLOBALS['result']['udfs']->udf_details;
-if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
-    $show_hide = $show_hide + 1;
-}		
-}
-elseif(count($GLOBALS['result']['udfs']->udf_details) > 1){
-foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-    if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
-        $show_hide = $show_hide + 1;
-    }					
-}
-}
-elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-$udf = $GLOBALS['result']['udfs']->udf_details;
-if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
-    $show_hide = $show_hide + 1;
-}		
-}  
-if ($show_hide > 0)
-{
+if( $_SESSION['roleSecurity']->maint_udf == "Y"){
+    $show_hide = 0;
+    if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+                $show_hide = $show_hide + 1;
+            }					
+        }
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+        $udf = $GLOBALS['result']['udfs']->udf_details;
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+            $show_hide = $show_hide + 1;
+        }		
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) > 1){
+        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+                $show_hide = $show_hide + 1;
+            }					
+        }
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+        $udf = $GLOBALS['result']['udfs']->udf_details;
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+            $show_hide = $show_hide + 1;
+        }		
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) > 1){
+        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+                $show_hide = $show_hide + 1;
+            }					
+        }
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+        $udf = $GLOBALS['result']['udfs']->udf_details;
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+            $show_hide = $show_hide + 1;
+        }		
+    }  
+    if ($show_hide > 0)
+    {
 ?>  
 <div class="summaryContainer">
     <h1>User Defined Fileds</h1>
@@ -369,7 +370,7 @@ if ($show_hide > 0)
         }
         if($count_udf > 0)
         {
-            ?>
+        ?>
             <input type="hidden" name="val-u" id="val-u" value="0" />
             <span class="summaryColumnTitle">Request User Defined Fields</span>
             <?php
@@ -383,7 +384,7 @@ if ($show_hide > 0)
                 </div>
                 <?php
             }
-            ?>
+                ?>
             <div id="udf" class="dropdown">
                 <table id="filterTableJobs" class=" sortable" title="" cellspacing="0">
                     <tr>
@@ -391,83 +392,84 @@ if ($show_hide > 0)
                         <th>Value</th>
                     </tr>
                     <?php
-                    $number=0;
-                    if(count($GLOBALS['result']['udfs']->udf_details) > 1){
-                        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-                            if($udf->udf_active_ind == "Y"  && $udf->udf_action_id == 0){
-                                $number = $number+1;
-                                if($number == 2){
-                                    $class = "dark";
-                                    $number = 0;
-                                }
-                                else{
-                                $class = "light";
-                                }
-                                ?>
+            $number=0;
+            if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                    if($udf->udf_active_ind == "Y"  && $udf->udf_action_id == 0){
+                        $number = $number+1;
+                        if($number == 2){
+                            $class = "dark";
+                            $number = 0;
+                        }
+                        else{
+                            $class = "light";
+                        }
+                    ?>
                                 <tr class="<?php echo $class; ?>_nocur">
                                     <?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td><?php } ?>
                                     <td <?php 
-                                        if($udf->udf_type == "C" || $udf->udf_type == "E"){ 
-                                            ?>colspan="2"<?php 
-                                        } ?>><?php 
-                                        if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ 
-                                            ?><?php 
-                                            if(isset($udf->udf_data)) {
-                                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View</a> <?php }
-                                            }
-                                        }
-                                        elseif($udf->udf_type == "D"){ 
-                                            echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; 
-                                        } 
-                                        elseif($udf->udf_type == "V"){
-                                            echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; 
-                                        }
-                                        else{
-                                            echo $udf->udf_data; }
-                                        ?>
+                        if($udf->udf_type == "C" || $udf->udf_type == "E"){ 
+                                        ?>colspan="2"<?php 
+                        } ?>><?php 
+                        if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ 
+                                             ?><?php 
+                            if(isset($udf->udf_data)) {
+                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View</a> <?php }
+                            }
+                        }
+                        elseif($udf->udf_type == "D"){ 
+                            echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; 
+                        } 
+                        elseif($udf->udf_type == "V"){
+                            echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; 
+                        }
+                        else{
+                            echo $udf->udf_data;
+                        }
+                                                                                                                                                                                                                    ?>
                                     </td>
                                 </tr>
                                 <?php  
-                            }
-				        }
                     }
-                    elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-                        $udf = $GLOBALS['result']['udfs']->udf_details;
-                        if($udf->udf_active_ind == "Y"){
-                            ?>
+                }
+            }
+            elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+                $udf = $GLOBALS['result']['udfs']->udf_details;
+                if($udf->udf_active_ind == "Y"){
+                                ?>
                             <tr class="light_nocur">
                                 <?php 
-                                if($udf->udf_type != "C" && $udf->udf_type != "E"){
-                                    ?><td><?php echo $udf->udf_name; ?><?php 
-                                    if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                        echo "<span style='color:red;'>*</span>"; ?></td><?php 
-                                } ?>
+                    if($udf->udf_type != "C" && $udf->udf_type != "E"){
+                                ?><td><?php echo $udf->udf_name; ?><?php 
+                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                            echo "<span style='color:red;'>*</span>"; ?></td><?php 
+                    } ?>
                                 <td <?php 
-                                if($udf->udf_type == "C" || $udf->udf_type == "E"){ 
+                    if($udf->udf_type == "C" || $udf->udf_type == "E"){ 
                                     ?>colspan="2"<?php 
-                                } ?>><?php 
-                                if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ 
-                                    ?><?php 
-                                    if(isset($udf->udf_data)) {
-                                        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                            ?><a id="A1" class="ViewFile">View</a> <?php 
-                                        }
-                                    }
-                                } 
-                                elseif($udf->udf_type == "D"){ 
-                                    echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; 
-                                }
-                                elseif($udf->udf_type == "V"){ 
-                                    echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; 
-                                }
-                                else{
-                                    echo $udf->udf_data; 
-                                } ?></td>
-                            </tr>
-                            <?php
+                    } ?>><?php 
+                    if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ 
+                                     ?><?php 
+                        if(isset($udf->udf_data)) {
+                            if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
+                                      ?><a id="A1" class="ViewFile">View</a> <?php 
                             }
                         }
-                    ?>
+                    } 
+                    elseif($udf->udf_type == "D"){ 
+                        echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; 
+                    }
+                    elseif($udf->udf_type == "V"){ 
+                        echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; 
+                    }
+                    else{
+                        echo $udf->udf_data; 
+                    } ?></td>
+                            </tr>
+                            <?php
+                }
+            }
+                            ?>
             </table>
         </div>
         <div class="popupDetail" id="ActionUDFsPopup">
@@ -482,257 +484,258 @@ if ($show_hide > 0)
                 </script>    
                 <form method="post"  enctype="multipart/form-data" id="actionudf" action="process.php">
                 <?php
-                if(isset($GLOBALS['result']['udfs']->udf_details)){
-                    if(count($GLOBALS['result']['udfs']->udf_details)> 1){
-                        $i=0;
-                        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-                            if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
-                                if($udf->udf_depends != 0){
-                                    ?>
+            if(isset($GLOBALS['result']['udfs']->udf_details)){
+                if(count($GLOBALS['result']['udfs']->udf_details)> 1){
+                    $i=0;
+                    foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+                            if($udf->udf_depends != 0){
+                ?>
                                     <div id="depends_<?php echo $udf->udf_order; ?>" class="udfDependant">
                                     <?php
-                                }
-                                if($udf->udf_type == "L"){
-                                    $i=$i+1;
-                                    //Begin Web Service Call UDFs
-                                    $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
-                                    $client2 = new SoapClient ($wsdl2);
-                                    $parameters2 = new stdClass();
-                                    $parameters2->user_id = $_SESSION['user_id'];
-                                    $parameters2->password = $_SESSION['password'];
-                                    $parameters2->look_type = $udf->udf_looktype;
-                                    $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
-                                    $udf_ddld = array();
+                            }
+                            if($udf->udf_type == "L"){
+                                $i=$i+1;
+                                //Begin Web Service Call UDFs
+                                $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
+                                $client2 = new SoapClient ($wsdl2);
+                                $parameters2 = new stdClass();
+                                $parameters2->user_id = $_SESSION['user_id'];
+                                $parameters2->password = $_SESSION['password'];
+                                $parameters2->look_type = $udf->udf_looktype;
+                                $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
+                                $udf_ddld = array();
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <select class="text-popup_udf <?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>">
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>">
                                             <option value="">Select</option>
                                             <?php
-                                            if(count($result2->udf_ddlb_det->string) > 1){
-                                                foreach($result2->udf_ddlb_det->string as $udf_ddld){
-                                                    ?>
+                                if(count($result2->udf_ddlb_det->string) > 1){
+                                    foreach($result2->udf_ddlb_det->string as $udf_ddld){
+                                            ?>
                                                     <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                     <?php	
-                                                }
-                                            }
-                                            elseif(count($result2->udf_ddlb_det->string) == 1){
-                                                $udf_ddld =  $result2->udf_ddlb_det->string
-                                                ?>
+                                    }
+                                }
+                                elseif(count($result2->udf_ddlb_det->string) == 1){
+                                    $udf_ddld =  $result2->udf_ddlb_det->string
+                                                    ?>
                                                 <option <?php
-                                                if(isset($udf->udf_data)){ 
-                                                    if($udf->udf_data == $udf_ddld){ 
-                                                        echo "selected"; 
-                                                    }
-                                                }
-                                                ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                    if(isset($udf->udf_data)){ 
+                                        if($udf->udf_data == $udf_ddld){ 
+                                            echo "selected"; 
+                                        }
+                                    }
+                                                        ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                 <?php
-                                            }
-                                            ?>
+                                }
+                                                ?>
                                         </select>
                                     </div>
                                 <?php	
-                                }
-                                elseif($udf->udf_type == "I"){
-                                    $i=$i+1;
-                                    ?>
+                            }
+                            elseif($udf->udf_type == "I"){
+                                $i=$i+1;
+                                ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text1" class="text-popup_udf <?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "required"; ?> digits" value="<?php 
-                                            if(isset($udf->udf_data)) 
-                                                echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?> digits" value="<?php 
+                                if(isset($udf->udf_data)) 
+                                    echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                     </div>
                                     <?php
-                                }
-                                elseif($udf->udf_type == "A"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "A"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         $<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text2" class="text-popup_udf <?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                     </div>
                                     <?php
-                                }
-                                elseif($udf->udf_type == "T"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "T"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text3" class="text-popup_udf <?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "required"; ?>" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                     </div>
                                     <?php
-                                }
-                                elseif($udf->udf_type == "D"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "D"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                     <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                     <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text4" class="dateField text-popup_udf <?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10"  >
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10"  >
                                     </div>
                                     <?php	
-                                }
-                                elseif($udf->udf_type == "Y"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "Y"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <b>Yes</b> <input class="<?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php 
-                                            if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
-                                                echo "checked"; 
-                                            } ?>  value="Y" /> <b>No</b> <input class="<?php 
-                                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                echo "required"; ?>" type="radio" <?php 
-                                            if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
-                                                echo "checked"; 
-                                            } ?> name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php 
+                                if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
+                                    echo "checked"; 
+                                } ?>  value="Y" /> <b>No</b> <input class="<?php 
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" type="radio" <?php 
+                                if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
+                                    echo "checked"; 
+                                } ?> name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
                                     </div>
                                     <?php	
-                                }
-                                elseif($udf->udf_type == "M"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "M"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text5" class="timeField text-popup_udf <?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "required"; ?>" value="<?php 
-                                        if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) 
-                                            echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" value="<?php 
+                                if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) 
+                                    echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
                                     </div>
                                     <?php	
-                                }
-                                elseif($udf->udf_type == "V"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "V"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <?php 
-                                        $udfdata = explode(" ", $udf->udf_data);
-                                        if(isset($udfdata[0]) && !isset($udfdata[1])){
-                                            $udfdata[1] = substr($udfdata[0],10,15);
-                                            $udfdata[0] = substr($udfdata[0],0,10);
-                                        }
+                                $udfdata = explode(" ", $udf->udf_data);
+                                if(isset($udfdata[0]) && !isset($udfdata[1])){
+                                    $udfdata[1] = substr($udfdata[0],10,15);
+                                    $udfdata[0] = substr($udfdata[0],0,10);
+                                }
                                         ?>
                                         Date: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_date" id="udf_<?php echo $udf->udf_order; ?>_date" class="dateField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[0]) && strlen($udfdata[0]) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udfdata[0]))); ?>" size="5" maxlength="10" >
                                         Time: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_time" id="udf_<?php echo $udf->udf_order; ?>_time" class="timeField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[1]) && strlen($udfdata[1]) > 0) echo date("h:i A", strtotime($udfdata[1])); ?>" size="5" maxlength="10">
 					                </div>
                                     <?php	
-                                }
-                                elseif($udf->udf_type == "G"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "G"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <?php 
-                                        if(isset($udf->udf_data)){
-                                            if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                                ?><a id="A2" class="ViewFile">View Attachment</a> <?php 
-                                            } 
-                                            else{ 
-                                                echo $udf->udf_data; 
-                                            }                                
-                                        }  ?><br />
+                                if(isset($udf->udf_data)){
+                                    if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
+                                        ?><a id="A2" class="ViewFile">View Attachment</a> <?php 
+                                    } 
+                                    else{ 
+                                        echo $udf->udf_data; 
+                                    }                                
+                                }  ?><br />
                                         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File1" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                     </div>
                                 <?php
-                                }
-                                elseif($udf->udf_type == "B"){
-                                    $i=$i+1;
-                                    ?>
+                            }
+                            elseif($udf->udf_type == "B"){
+                                $i=$i+1;
+                                ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <?php 
-                                        if(isset($udf->udf_data)){
-                                            if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                                ?><a id="A3" class="ViewFile">View Attachment</a> <?php 
-                                            } 
-                                            else{ 
-                                                echo $udf->udf_data; 
-                                            }
-                                        }  ?><br />
+                                if(isset($udf->udf_data)){
+                                    if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
+                                        ?><a id="A3" class="ViewFile">View Attachment</a> <?php 
+                                    } 
+                                    else{ 
+                                        echo $udf->udf_data; 
+                                    }
+                                }  ?><br />
                                         ng>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File2" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                     </div>
                                     <?php
-                                }
-                                elseif($udf->udf_type == "P"){
-                                    $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "P"){
+                                $i=$i+1;
                                     ?>
                                     <div class="float-left">
                                         <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                        if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                            echo "<span style='color:red;'>*</span>"; ?></label>
+                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
                                         <?php 
-                                        if(isset($udf->udf_data)){
-                                            if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
-                                                ?><a id="A4" class="ViewFile">View Attachment</a> <?php 
-                                            } 
-                                            else{ echo $udf->udf_data; 
-                                            }
-                                        }  ?><br />
+                                if(isset($udf->udf_data)){
+                                    if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
+                                        ?><a id="A4" class="ViewFile">View Attachment</a> <?php 
+                                    } 
+                                    else{
+                                        echo $udf->udf_data; 
+                                    }
+                                }  ?><br />
                                         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File3" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                     </div>
                                     <?php
-                                }
-                                else{
+                            }
+                            else{
                                     ?>
                                     <input type="hidden" name="udf_<?php echo $udf->udf_name; ?>" value="<?php echo $udf->udf_data; ?>" />
                                     <?php	
-                                }
-                                if($udf->udf_depends != 0){
+                            }
+                            if($udf->udf_depends != 0){
                                     ?>
                                     </div>
                                         <script type="text/javascript">
@@ -759,246 +762,246 @@ if ($show_hide > 0)
                                             });
                                         </script>
                                         <?php
-                                        }
-                                    }
-                                }        
                             }
-                            elseif(count($GLOBALS['result']['udfs']->udf_details)== 1){
-                                $udf = $GLOBALS['result']['udfs']->udf_details;
-                                $i=0;        
-                                    if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
-                                        if($udf->udf_depends != 0){
-                                            ?>
+                        }
+                    }        
+                }
+                elseif(count($GLOBALS['result']['udfs']->udf_details)== 1){
+                    $udf = $GLOBALS['result']['udfs']->udf_details;
+                    $i=0;        
+                    if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+                        if($udf->udf_depends != 0){
+                                        ?>
                                             <div id="Div1" class="udfDependant">
                                             <?php
-                                        }
-                                        if($udf->udf_type == "L"){
-                                            $i=$i+1;
-                                            //Begin Web Service Call
-                                            //UDFs
-                                            $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
-                                            $client2 = new SoapClient ($wsdl2);
-                                            $parameters2 = new stdClass();
-                                            $parameters2->user_id = $_SESSION['user_id'];
-                                            $parameters2->password = $_SESSION['password'];
-                                            $parameters2->look_type = $udf->udf_looktype;
-                                            $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
-                                            $udf_ddld = array();
+                        }
+                        if($udf->udf_type == "L"){
+                            $i=$i+1;
+                            //Begin Web Service Call
+                            //UDFs
+                            $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
+                            $client2 = new SoapClient ($wsdl2);
+                            $parameters2 = new stdClass();
+                            $parameters2->user_id = $_SESSION['user_id'];
+                            $parameters2->password = $_SESSION['password'];
+                            $parameters2->look_type = $udf->udf_looktype;
+                            $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
+                            $udf_ddld = array();
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "<span style='color:red;'>*</span>"; ?></label>
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                                 <select class="text-popup_udf <?php 
-                                                    if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                        echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="Select1">
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="Select1">
                                                     <option value="">Select</option>
                                                     <?php
-                                                    if(count($result2->udf_ddlb_det->string) > 1){
-                                                        foreach($result2->udf_ddlb_det->string as $udf_ddld){
-                                                            ?>
+                            if(count($result2->udf_ddlb_det->string) > 1){
+                                foreach($result2->udf_ddlb_det->string as $udf_ddld){
+                                                    ?>
                                                             <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                             <?php	
-                                                        }
-                                                    }
-                                                    elseif(count($result2->udf_ddlb_det->string) == 1){
-                                                        $udf_ddld =  $result2->udf_ddlb_det->string
-                                                        ?>
+                                }
+                            }
+                            elseif(count($result2->udf_ddlb_det->string) == 1){
+                                $udf_ddld =  $result2->udf_ddlb_det->string
+                                                            ?>
                                                         <option <?php 
-                                                        if(isset($udf->udf_data)){
-                                                            if($udf->udf_data == $udf_ddld){ 
-                                                                echo "selected"; 
-                                                            } 
-                                                        } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                if(isset($udf->udf_data)){
+                                    if($udf->udf_data == $udf_ddld){ 
+                                        echo "selected"; 
+                                    } 
+                                } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                         <?php
-                                                    }
-                                                    ?>
+                            }
+                                                        ?>
                                                 </select>
                                             </div>
                                             <?php	
-                                        }
-                                        elseif($udf->udf_type == "I"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "I"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "<span style='color:red;'>*</span>"; ?></label>
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                                 <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text6" class="text-popup_udf <?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "required"; ?> digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?> digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                             </div>
                                             <?php
-                                        }
-                                        elseif($udf->udf_type == "A"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "A"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "<span style='color:red;'>*</span>"; ?></label>
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                                 <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text7" class="text-popup_udf <?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                             </div>
                                             <?php
-                                        }
-                                        elseif($udf->udf_type == "T"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "T"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "<span style='color:red;'>*</span>"; ?></label>
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                                 <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text8" class="text-popup_udf <?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "required"; ?>" value="<?php 
-                                                    if(isset($udf->udf_data)) 
-                                                        echo $udf->udf_data; ?>" size="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?>" value="<?php 
+                            if(isset($udf->udf_data)) 
+                                echo $udf->udf_data; ?>" size="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                             </div>
                                             <?php
-                                        }
-                                        elseif($udf->udf_type == "D"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "D"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "<span style='color:red;'>*</span>"; ?></label>
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                                 <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text9" class="dateField text-popup_udf <?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10"  >
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10"  >
                                             </div>
                                             <?php	
-                                        }
-                                        elseif($udf->udf_type == "Y"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "Y"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "<span style='color:red;'>*</span>"; ?></label>
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                                 <b>Yes</b> <input class="<?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="Radio1" <?php 
-                                                    if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
-                                                        echo "checked"; 
-                                                    } ?>  value="Y" /> <b>No</b> 
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="Radio1" <?php 
+                            if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
+                                echo "checked"; 
+                            } ?>  value="Y" /> <b>No</b> 
                                                     <input class="<?php 
-                                                    if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                        echo "required"; ?>" type="radio" <?php 
-                                                        if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
-                                                            echo "checked"; 
-                                                        } ?> name="udf_<?php echo $udf->udf_name; ?>" id="Radio2"  value="N" /> 
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?>" type="radio" <?php 
+                            if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
+                                echo "checked"; 
+                            } ?> name="udf_<?php echo $udf->udf_name; ?>" id="Radio2"  value="N" /> 
                                             </div>
                                             <?php	
-                                        }
-                                        elseif($udf->udf_type == "M"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "M"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "<span style='color:red;'>*</span>"; ?></label>
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                                 <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text10" class="timeField text-popup_udf <?php 
-                                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                                    echo "required"; ?>" value="<?php 
-                                                if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) 
-                                                    echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
+                            if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                echo "required"; ?>" value="<?php 
+                            if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) 
+                                echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
                                             </div>
                                             <?php	
-                                        }
-                                        elseif($udf->udf_type == "V"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "V"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                             <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                             <?php 
-                                            $udfdata = explode(" ", $udf->udf_data);
-                                            if(isset($udfdata[0]) && !isset($udfdata[1])){
-                                            $udfdata[1] = substr($udfdata[0],10,15);
-                                            $udfdata[0] = substr($udfdata[0],0,10);
-                                            }
+                            $udfdata = explode(" ", $udf->udf_data);
+                            if(isset($udfdata[0]) && !isset($udfdata[1])){
+                                $udfdata[1] = substr($udfdata[0],10,15);
+                                $udfdata[0] = substr($udfdata[0],0,10);
+                            }
                                             ?>
                                             Date: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_date" id="Text11" class="dateField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[0]) && strlen($udfdata[0]) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udfdata[0]))); ?>" size="5" maxlength="10" >
                                             Time: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_time" id="Text12" class="timeField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[1]) && strlen($udfdata[1]) > 0) echo date("h:i A", strtotime($udfdata[1])); ?>" size="5" maxlength="10">
                                             </div>
                                             <?php
-                                        }
-                                        elseif($udf->udf_type == "G"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "G"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">  <?php 
-                                                if(isset($udf->udf_data)){
-                                                    if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
-                                                        ?><a id="A5" class="ViewFile">View Attachment</a> <?php 
-                                                    } 
-                                                    else{
-                                                        echo $udf->udf_data; 
-                                                    }
-                                                }  ?><br />
+                            if(isset($udf->udf_data)){
+                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
+                                                                      ?><a id="A5" class="ViewFile">View Attachment</a> <?php 
+                                } 
+                                else{
+                                    echo $udf->udf_data; 
+                                }
+                            }  ?><br />
                                                 <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File4" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                             </div>
                                             <?php
-                                        }
-                                        elseif($udf->udf_type == "B"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "B"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                                 <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left"><?php 
-                                                if(isset($udf->udf_data)){
-                                                    if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
-                                                        ?><a id="A6" class="ViewFile">View</a> <?php 
-                                                    } 
-                                                    else{
-                                                        echo $udf->udf_data; 
-                                                    }
-                                                } ?>
+                            if(isset($udf->udf_data)){
+                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
+                                                                    ?><a id="A6" class="ViewFile">View</a> <?php 
+                                } 
+                                else{
+                                    echo $udf->udf_data; 
+                                }
+                            } ?>
                                                 <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File5" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                             </div>
                                             <?php
-                                        }
-                                        elseif($udf->udf_type == "P"){
-                                            $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "P"){
+                            $i=$i+1;
                                             ?>
                                             <div class="float-left">
                                             <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
                                             </div>
                                             <div class="float-left">
                                             <?php if(isset($udf->udf_data)){
-                                            if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A7" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
-                                            }  ?><br />
+                                                      if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A7" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                                                  }  ?><br />
                                             <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File6" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                             </div>
                                             <?php
-                                        }
-                                        else{
-                                        ?>
+                        }
+                        else{
+                                            ?>
                                         <input type="hidden" name="udf_<?php echo $udf->udf_name; ?>" value="<?php echo $udf->udf_data; ?>" />
                                         <?php	
-                                        }
-                                        if($udf->udf_depends != 0){
+                        }
+                        if($udf->udf_depends != 0){
                                         ?>
                                         </div>
                                         <script type="text/javascript">
@@ -1026,9 +1029,9 @@ if ($show_hide > 0)
             });
             </script>
             <?php
-            }
-            }
-            }    
+                        }
+                    }
+                }    
             }
             ?>
             <p>&nbsp;</p>
@@ -1045,29 +1048,29 @@ if ($show_hide > 0)
             </div>
 
             <?php
-            }
-            
+        }
+        
         $count_udf = 0;
         if(count($GLOBALS['result']['udfs']->udf_details) > 1){
-        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
-        $count_udf = $count_udf+1;
-        }					
-        }
+            foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+                    $count_udf = $count_udf+1;
+                }					
+            }
         }
         elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-        $udf = $GLOBALS['result']['udfs']->udf_details;
-        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
-        $count_udf = $count_udf+1;
-        }		
+            $udf = $GLOBALS['result']['udfs']->udf_details;
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+                $count_udf = $count_udf+1;
+            }		
         }
         if($count_udf > 0)
         {
-        ?>
+            ?>
         <input type="hidden" name="val-u" id="Hidden1" value="0" />
         <span class="summaryColumnTitle">Action User Defined Fields   </span>
         <?php
-        if($count_udf > 0 && $GLOBALS['act_finalised_ind'] == "N" && $_SESSION['roleSecurity']->mod_udf == "Y"){
+            if($count_udf > 0 && $GLOBALS['act_finalised_ind'] == "N" && $_SESSION['roleSecurity']->mod_udf == "Y"){
         ?>
         <div style="float:right;" class="openPopup">
         <span style="text-decoration:none;">
@@ -1076,7 +1079,7 @@ if ($show_hide > 0)
         <span  class="openPopup" id="RequestUDFs">Modify</span>
         </div>
         <?php
-        }
+            }
         ?>
         <div id="Div2" class="dropdown">
 
@@ -1086,45 +1089,45 @@ if ($show_hide > 0)
         <th>Value</th>
         </tr>
         <?php
-        $number=0;
-        if(count($GLOBALS['result']['udfs']->udf_details) > 1){
-        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
-        $number = $number+1;
-        if($number == 2){
-        $class = "dark";
-        $number = 0;
-        }
-        else{
-        $class = "light";
-        }
+            $number=0;
+            if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                    if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+                        $number = $number+1;
+                        if($number == 2){
+                            $class = "dark";
+                            $number = 0;
+                        }
+                        else{
+                            $class = "light";
+                        }
         ?>
         <tr class="<?php echo $class; ?>_nocur">
         <td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td>
         <td><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A8" class="ViewFile">View</a> <?php }
-        }
-        } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
+                                                                                                           if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A8" class="ViewFile">View</a> <?php }
+                                                                                                       }
+                                                                                                                 } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
         </tr>
         <?php  
-        }
-        
-        }
-        }
-        elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-        $udf = $GLOBALS['result']['udfs']->udf_details;
-        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+                    }
+                    
+                }
+            }
+            elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+                $udf = $GLOBALS['result']['udfs']->udf_details;
+                if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
         ?>
         <tr class="light_nocur">
         <td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td>
         <td><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A9" class="ViewFile">View</a> <?php }
-        }
-        } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
+                                                                                                           if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A9" class="ViewFile">View</a> <?php }
+                                                                                                       }
+                                                                                                                 } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
         </tr>
         <?php
-        }
-        }
+                }
+            }
         ?>
         </table>
         </div>
@@ -1149,28 +1152,28 @@ if ($show_hide > 0)
     
         <form method="post"  enctype="multipart/form-data" id="actionudf" action="process.php">
         <?php
-        if(isset($GLOBALS['result']['udfs']->udf_details)){
-        if(count($GLOBALS['result']['udfs']->udf_details)> 1){
-        $i=0;
-        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] && $udf->udf_action_comp == ""){
-        if($udf->udf_depends != 0){
+            if(isset($GLOBALS['result']['udfs']->udf_details)){
+                if(count($GLOBALS['result']['udfs']->udf_details)> 1){
+                    $i=0;
+                    foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] && $udf->udf_action_comp == ""){
+                            if($udf->udf_depends != 0){
         ?>
         <div id="act_depends_<?php echo $udf->udf_order; ?>" class="udfDependant">
         <?php
-        }
-        if($udf->udf_type == "L"){
-        $i=$i+1;
-        //Begin Web Service Call
-        //UDFs
-        $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
-        $client2 = new SoapClient ($wsdl2);
-        $parameters2 = new stdClass();
-        $parameters2->user_id = $_SESSION['user_id'];
-        $parameters2->password = $_SESSION['password'];
-        $parameters2->look_type = $udf->udf_looktype;
-        $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
-        $udf_ddld = array();
+                            }
+                            if($udf->udf_type == "L"){
+                                $i=$i+1;
+                                //Begin Web Service Call
+                                //UDFs
+                                $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
+                                $client2 = new SoapClient ($wsdl2);
+                                $parameters2 = new stdClass();
+                                $parameters2->user_id = $_SESSION['user_id'];
+                                $parameters2->password = $_SESSION['password'];
+                                $parameters2->look_type = $udf->udf_looktype;
+                                $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
+                                $udf_ddld = array();
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1179,26 +1182,26 @@ if ($show_hide > 0)
         <select class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="act_udf_<?php echo $udf->udf_order; ?>">
         <option value="">Select</option>
         <?php
-        if(count($result2->udf_ddlb_det->string) > 1){
-        foreach($result2->udf_ddlb_det->string as $udf_ddld){
+                                if(count($result2->udf_ddlb_det->string) > 1){
+                                    foreach($result2->udf_ddlb_det->string as $udf_ddld){
         ?>
         <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
         <?php	
-        }
-        }
-        elseif(count($result2->udf_ddlb_det->string) == 1){
-        $udf_ddld =  $result2->udf_ddlb_det->string
+                                    }
+                                }
+                                elseif(count($result2->udf_ddlb_det->string) == 1){
+                                    $udf_ddld =  $result2->udf_ddlb_det->string
         ?>
         <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
         <?php
-        }
+                                }
         ?>
         </select>
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "I"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "I"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1207,9 +1210,9 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text13" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?> digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "A"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "A"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1218,9 +1221,9 @@ if ($show_hide > 0)
         $<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text14" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "T"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "T"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1229,9 +1232,9 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text15" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "D"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "D"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1240,9 +1243,9 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text16" class="dateField text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10"  >
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "Y"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "Y"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1251,9 +1254,9 @@ if ($show_hide > 0)
         <b>Yes</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="act_udf_<?php echo $udf->udf_order; ?>_Y" <?php if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ echo "checked"; } ?>  value="Y" /> <b>No</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" type="radio" <?php if(isset($udf->udf_data) && $udf->udf_data == 'N'){ echo "checked"; } ?> name="udf_<?php echo $udf->udf_name; ?>" id="act_udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "M"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "M"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1262,75 +1265,75 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text17" class="timeField text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "V"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "V"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php 
-        $udfdata = explode(" ", $udf->udf_data);
-        if(isset($udfdata[0]) && !isset($udfdata[1])){
-        $udfdata[1] = substr($udfdata[0],10,15);
-        $udfdata[0] = substr($udfdata[0],0,10);
-        }
+                                $udfdata = explode(" ", $udf->udf_data);
+                                if(isset($udfdata[0]) && !isset($udfdata[1])){
+                                    $udfdata[1] = substr($udfdata[0],10,15);
+                                    $udfdata[0] = substr($udfdata[0],0,10);
+                                }
         ?>
         Date: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_date" id="Text18" class="dateField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[0]) && strlen($udfdata[0]) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udfdata[0]))); ?>" size="5" maxlength="10" >
         Time: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_time" id="Text19" class="timeField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[1]) && strlen($udfdata[1]) > 0) echo date("h:i A", strtotime($udfdata[1])); ?>" size="5" maxlength="10">
 					    
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "G"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "G"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A10" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
-        }  ?><br />
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A10" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+              }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File7" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "B"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "B"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A11" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
-        }  ?><br />
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A11" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+              }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File8" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "P"){
-        $i=$i+1;
+                            }
+                            elseif($udf->udf_type == "P"){
+                                $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A12" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
-        }  ?><br />
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A12" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+              }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File9" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
         <?php
-        }
-        else{
+                            }
+                            else{
         ?>
         <input type="hidden" name="udf_<?php echo $udf->udf_name; ?>" value="<?php echo $udf->udf_data; ?>" />
         <?php	
-        }
-        if($udf->udf_depends != 0){
+                            }
+                            if($udf->udf_depends != 0){
         ?>
         </div>
         <script type="text/javascript">
@@ -1358,33 +1361,33 @@ if ($show_hide > 0)
         });
         </script>
         <?php
-        }
-        }
-        }
-        
-        }
-        elseif(count($GLOBALS['result']['udfs']->udf_details)== 1){
-        $udf = $GLOBALS['result']['udfs']->udf_details;
-        $i=0;
-        
-        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] && $udf->udf_action_comp == ""){
-        if($udf->udf_depends != 0){
+                            }
+                        }
+                    }
+                    
+                }
+                elseif(count($GLOBALS['result']['udfs']->udf_details)== 1){
+                    $udf = $GLOBALS['result']['udfs']->udf_details;
+                    $i=0;
+                    
+                    if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] && $udf->udf_action_comp == ""){
+                        if($udf->udf_depends != 0){
         ?>
         <div id="Div4" class="udfDependant">
         <?php
-        }
-        if($udf->udf_type == "L"){
-        $i=$i+1;
-        //Begin Web Service Call
-        //UDFs
-        $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
-        $client2 = new SoapClient ($wsdl2);
-        $parameters2 = new stdClass();
-        $parameters2->user_id = $_SESSION['user_id'];
-        $parameters2->password = $_SESSION['password'];
-        $parameters2->look_type = $udf->udf_looktype;
-        $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
-        $udf_ddld = array();
+                        }
+                        if($udf->udf_type == "L"){
+                            $i=$i+1;
+                            //Begin Web Service Call
+                            //UDFs
+                            $wsdl2 = WEB_SERVICES_PATH.MERIT_REQUEST_FILE."?wsdl";
+                            $client2 = new SoapClient ($wsdl2);
+                            $parameters2 = new stdClass();
+                            $parameters2->user_id = $_SESSION['user_id'];
+                            $parameters2->password = $_SESSION['password'];
+                            $parameters2->look_type = $udf->udf_looktype;
+                            $result2 = $client2->ws_get_udf_ddlb_dets($parameters2)->ws_get_udf_ddlb_detsResult;
+                            $udf_ddld = array();
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1393,26 +1396,26 @@ if ($show_hide > 0)
         <select class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="Select2">
         <option value="">Select</option>
         <?php
-        if(count($result2->udf_ddlb_det->string) > 1){
-        foreach($result2->udf_ddlb_det->string as $udf_ddld){
+                            if(count($result2->udf_ddlb_det->string) > 1){
+                                foreach($result2->udf_ddlb_det->string as $udf_ddld){
         ?>
         <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
         <?php	
-        }
-        }
-        elseif(count($result2->udf_ddlb_det->string) == 1){
-        $udf_ddld =  $result2->udf_ddlb_det->string
+                                }
+                            }
+                            elseif(count($result2->udf_ddlb_det->string) == 1){
+                                $udf_ddld =  $result2->udf_ddlb_det->string
         ?>
         <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
         <?php
-        }
+                            }
         ?>
         </select>
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "I"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "I"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1421,9 +1424,9 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text20" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?> digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "A"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "A"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1432,9 +1435,9 @@ if ($show_hide > 0)
         $<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text21" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "T"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "T"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1443,9 +1446,9 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text22" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "D"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "D"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1454,9 +1457,9 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text23" class="dateField text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10"  >
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "Y"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "Y"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1465,9 +1468,9 @@ if ($show_hide > 0)
         <b>Yes</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="Radio3" <?php if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ echo "checked"; } ?>  value="Y" /> <b>No</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" type="radio" <?php if(isset($udf->udf_data) && $udf->udf_data == 'N'){ echo "checked"; } ?> name="udf_<?php echo $udf->udf_name; ?>" id="Radio4"  value="N" /> 
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "M"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "M"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
@@ -1476,75 +1479,75 @@ if ($show_hide > 0)
         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text24" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "V"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "V"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php 
-        $udfdata = explode(" ", $udf->udf_data);
-        if(isset($udfdata[0]) && !isset($udfdata[1])){
-        $udfdata[1] = substr($udfdata[0],10,15);
-        $udfdata[0] = substr($udfdata[0],0,10);
-        }
+                            $udfdata = explode(" ", $udf->udf_data);
+                            if(isset($udfdata[0]) && !isset($udfdata[1])){
+                                $udfdata[1] = substr($udfdata[0],10,15);
+                                $udfdata[0] = substr($udfdata[0],0,10);
+                            }
         ?>
         Date: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_date" id="Text25" class="dateField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[0]) && strlen($udfdata[0]) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udfdata[0]))); ?>" size="5" maxlength="10" >
         Time: <input type="text" name="udf_<?php echo $udf->udf_name; ?>_time" id="Text26" class="timeField text_udf_small <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udfdata[1]) && strlen($udfdata[1]) > 0) echo date("h:i A", strtotime($udfdata[1])); ?>" size="5" maxlength="10">
 					    
         </div>
         <?php	
-        }
-        elseif($udf->udf_type == "G"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "G"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A13" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
-        }  ?><br />
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A13" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+              }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File10" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "B"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "B"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A14" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
-        }  ?><br />
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A14" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+              }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File11" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
         <?php
-        }
-        elseif($udf->udf_type == "P"){
-        $i=$i+1;
+                        }
+                        elseif($udf->udf_type == "P"){
+                            $i=$i+1;
         ?>
         <div class="float-left">
         <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A15" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
-        }  ?><br />
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A15" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+              }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File12" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
         <?php
-        }
-        else{
+                        }
+                        else{
         ?>
         <input type="hidden" name="udf_<?php echo $udf->udf_name; ?>" value="<?php echo $udf->udf_data; ?>" />
         <?php	
-        }
-        if($udf->udf_depends != 0){
+                        }
+                        if($udf->udf_depends != 0){
         ?>
         </div>
         <script type="text/javascript">
@@ -1563,11 +1566,11 @@ if ($show_hide > 0)
         });
         </script>
         <?php
-        }
-        }
-        }
-    
-        }
+                        }
+                    }
+                }
+                
+            }
         ?>
         <p>&nbsp;</p>
         <input id="submit1" class="button left" type='submit' value='Save' />
@@ -1584,24 +1587,24 @@ if ($show_hide > 0)
 
         </div>
         <?php
-            }
-            ?>
+        }
+        ?>
         <div class="summaryContainer">
 
         <?php
         $count_udf = 0;
         if(count($GLOBALS['result']['udfs']->udf_details) > 1){
-        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
-        $count_udf = $count_udf+1;
-        }					
-        }
+            foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+                    $count_udf = $count_udf+1;
+                }					
+            }
         }
         elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-        $udf = $GLOBALS['result']['udfs']->udf_details;
-        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
-        $count_udf = $count_udf+1;
-        }		
+            $udf = $GLOBALS['result']['udfs']->udf_details;
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+                $count_udf = $count_udf+1;
+            }		
         }
         if($count_udf > 0)
         {
@@ -1623,48 +1626,48 @@ if ($show_hide > 0)
         <th>Value</th>
         </tr>
         <?php
-        $number=0;
-        if(count($GLOBALS['result']['udfs']->udf_details) > 1){
-        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-        if($udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
-        $number = $number+1;
-        if($number == 2){
-        $class = "dark";
-        $number = 0;
-        }
-        else{
-        $class = "light";
-        }
+            $number=0;
+            if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                    if($udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+                        $number = $number+1;
+                        if($number == 2){
+                            $class = "dark";
+                            $number = 0;
+                        }
+                        else{
+                            $class = "light";
+                        }
         ?>
         <tr class="<?php echo $class; ?>_nocur">
         <td><?php echo $udf->udf_action_id; ?></td>
         <td><?php echo $udf->action_required; ?></td>
         <?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td><?php } ?>
         <td <?php if($udf->udf_type == "C" || $udf->udf_type == "E"){ ?>colspan="2"<?php } ?>><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A16" class="ViewFile">View</a> <?php }
-        }
-        } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
+                                                                                                                                                                                             if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A16" class="ViewFile">View</a> <?php }
+                                                                                                                                                                                         }
+                                                                                                                                                                                                                                                                                     } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
         </tr>
         <?php  
-        }
-        }
-        }
-        elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
-        $udf = $GLOBALS['result']['udfs']->udf_details;
-        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+                    }
+                }
+            }
+            elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+                $udf = $GLOBALS['result']['udfs']->udf_details;
+                if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
         ?>
         <tr class="light_nocur">
         <td><?php echo "Action ".$udf->udf_action_id; ?></td>
         <td><?php echo $udf->action_required;  ?></td>
         <?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td><?php } ?>
         <td <?php if($udf->udf_type == "C" || $udf->udf_type == "E"){ ?>colspan="2"<?php } ?>><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
-        if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A17" class="ViewFile">View</a> <?php }
-        }
-        } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
+                                                                                                                                                                                             if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A17" class="ViewFile">View</a> <?php }
+                                                                                                                                                                                         }
+                                                                                                                                                                                                                                                                                     } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
         </tr>
         <?php
-        }
-        }
+                }
+            }
         ?>
         </table>
 
@@ -1676,5 +1679,6 @@ if ($show_hide > 0)
 
         <?php
         }
-        }?> 
+    }
+}?> 
       
