@@ -130,6 +130,11 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             ) {
             CheckHistory($("#historyaddrtype").val());
         }
+        if ($("#textareaissue").length) {
+            $("#textareaissue").focus();
+        } else {
+            $("#add-request-textarea").focus();
+        }
         <?php } ?>
     });
 </script>

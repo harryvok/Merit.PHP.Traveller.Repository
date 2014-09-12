@@ -24,6 +24,11 @@ $(document).ready(function () {
                 success: function (data) {
                     Unload();
                     $('#popup').html(data);
+                    if ($("#textareaissue").length) {
+                        $("#textareaissue").focus();
+                    } else {
+                        $("#add-request-textarea").focus();
+                    }
                 }
             });
         }
@@ -267,11 +272,23 @@ $(document).ready(function () {
             CheckCountOnly(count_only);
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
+
+            if ($("#textareaissue").length) {
+                $("#textareaissue").focus();
+            } else {
+                $("#add-request-textarea").focus();
+            }
         }
     }
 
     function functionSuccess(data) {
-        $("#textareaissue").focus();
+
+        if ($("#textareaissue").length) {
+            $("#textareaissue").focus();
+        } else {
+            $("#add-request-textarea").focus();
+        }
+        //$("#textareaissue").focus();
         if (data.length === 0) {
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             return false;

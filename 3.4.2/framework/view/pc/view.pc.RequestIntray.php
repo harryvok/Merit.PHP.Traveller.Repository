@@ -5,7 +5,8 @@ $(document).ready(function() {
         iDisplayLength: "50",
     "oLanguage": {
                 "sSearch": "Intray Filter: "
-         },
+    },
+    "aaSorting": [[0, "desc"]],
         "aoColumns": [
             null,
             null,
