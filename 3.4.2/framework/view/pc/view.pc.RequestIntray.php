@@ -7,8 +7,7 @@ $(document).ready(function() {
     "oLanguage": {
                 "sSearch": "Intray Filter: "
     },
-
-    "aoColumns": [
+        "aoColumns": [
             null,
             null,
             null,
