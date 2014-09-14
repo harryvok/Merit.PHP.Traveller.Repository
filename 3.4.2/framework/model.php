@@ -1224,7 +1224,7 @@ class Model {
                          }
 
                      }
-                }else if($totalfiles == 1) {
+                }elseif($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     $attachment = array(
                                'name' => $_FILES['attachment']['name'],
                                'type' => $_FILES['attachment']['type'],
@@ -1241,7 +1241,7 @@ class Model {
                 }
                 
                 
-                 if ($totalfiles > 0) {
+                if ($totalfiles > 0 && $_FILES['attachment']['name'][0] != "") {
 
                      $parameters_att = array(
                       'user_id' => $_SESSION['user_id'],
@@ -1324,9 +1324,9 @@ class Model {
                 imagejpeg($attachment['tmp_name'], $attachment['tmp_name'], 75);
             }
         }
-        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
+        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]);
         
-        if(move_uploaded_file($attachment['tmp_name'], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']))){
+        if(move_uploaded_file($attachment['tmp_name'][0], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]))){
 
             $parameters_att = new stdClass();
             $parameters_att->user_id = $_SESSION['user_id'];

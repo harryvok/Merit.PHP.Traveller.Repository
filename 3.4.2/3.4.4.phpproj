@@ -16,6 +16,7 @@
     <PHPDevAutoPort>True</PHPDevAutoPort>
     <PHPDevPort>50768</PHPDevPort>
     <ProjectHome />
+    <PHPDevHostName>localhost</PHPDevHostName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <IncludeDebugInformation>true</IncludeDebugInformation>
