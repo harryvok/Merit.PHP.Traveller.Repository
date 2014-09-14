@@ -63,7 +63,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
 		    
 			<?php } ?>
-			$("#popup").popup("close");
+		    $("#popup").popup("close");
+		    $("#add-request-textarea").focus();
 		
 		});
 		 });

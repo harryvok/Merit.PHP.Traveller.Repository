@@ -1790,37 +1790,52 @@ class Model {
                 
                 $GLOBALS['request_id'] = $result->request_id;
                 $totalfiles=count($_FILES['attachment']['name']);
-                 for ($i=0; $i< $totalfiles;$i++) {
-                     if($_FILES['attachment']['name'][$i] !=""){
-                    $attachment = array(
-                            'name' => $_FILES['attachment']['name'][$i],
-                            'type' => $_FILES['attachment']['type'][$i],
-                            'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
-                            'error' => $_FILES['attachment']['error'][$i],
-                            'size' => $_FILES['attachment']['size'][$i]
+                if($totalfiles > 1){
+                    for ($i=0; $i< $totalfiles;$i++) {
+                        if($_FILES['attachment']['name'][$i] !=""){
+                            $attachment = array(
+                                    'name' => $_FILES['attachment']['name'][$i],
+                                    'type' => $_FILES['attachment']['type'][$i],
+                                    'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
+                                    'error' => $_FILES['attachment']['error'][$i],
+                                    'size' => $_FILES['attachment']['size'][$i]
+                                
+                           );
+                            $rand = rand(0,100);
                             
-                   );
+                            $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
+                            $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][$i]);
+                            array_push($filenamearray, $tempname);
+                            array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
+                            
+                        }
 
-                        $rand = rand(0,100);
-                        $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
-                        $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$_FILES['attachment']['name'][$i]);
-                        array_push($filenamearray, $tempname);
-                        array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
-                        
-                   }
-                     
-                     
+                    }
+                }else if($totalfiles == 1) {
+                    $attachment = array(
+                               'name' => $_FILES['attachment']['name'],
+                               'type' => $_FILES['attachment']['type'],
+                               'tmp_name' => $_FILES['attachment']['tmp_name'],
+                               'error' => $_FILES['attachment']['error'],
+                               'size' => $_FILES['attachment']['size']
+                           
+                      );
+                    $rand = rand(0,100);
+                    $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name']);
+                    array_push($filenamearray, $tempname);
+                    array_push($filedescriptionarray,$_POST["attachDesc"]);
                 }
                  
-                 if ($totalfiles > 0) {
+                if ($totalfiles > 0) {
 
-                     $parameters_att = array(
-                      'user_id' => $_SESSION['user_id'],
-                      'password' => $_SESSION['password'],
-                      'request_id' => $GLOBALS['request_id'],
-                      'filename'=>$filenamearray,
-                      'descriptions'=>$filedescriptionarray
-                  );
+                    $parameters_att = array(
+                     'user_id' => $_SESSION['user_id'],
+                     'password' => $_SESSION['password'],
+                     'request_id' => $GLOBALS['request_id'],
+                     'filename'=>$filenamearray,
+                     'description'=>$filedescriptionarray
+                 );
                      
                      try {
                          $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
@@ -1964,8 +1979,9 @@ class Model {
         else{
             $_SESSION['redirect'] = 'index.php?page='.$page.'&id='.$ref."&d=ca";
         }
-
-        $this->processDirectAttachment($attachment, $request_id, $description);
+        //used to be process direct attachment over here.
+        $this->processDirectAttachment($attachment, $request_id, $description);  
+       
     }
     
     public function processEditAttachment($params = NULL){
@@ -2021,7 +2037,7 @@ class Model {
                 $_SESSION['success'] = 1;
                 $_SESSION['success_edit_attach'] = 1;
                 $_SESSION['done'] = 1;
-                $this->processDirectAttachment($attachment, $request_id, $description);
+                $this->processDirectAttachment($attachment, $request_id, $description);  
             }
             else{
                 $_SESSION['error'] = 1;
@@ -2090,7 +2106,7 @@ class Model {
             try {
                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
                 $_SESSION['success'] = 1;
-                //$_SESSION['success_attach'] = 1;
+                $_SESSION['success_attach'] = 1;
                 $_SESSION['done'] = 1;
             }
             catch(Exception $e){
@@ -2110,9 +2126,7 @@ class Model {
         }
     }
     
-    public function processnewRequestAttachment($attachment, $requestID, $description = '',$rand){
-        
-        
+    public function processnewRequestAttachment($attachment, $requestID,$rand, $description = ''){
         
         $max_upload = (int)(ini_get('upload_max_filesize'));
         $max_post = (int)(ini_get('post_max_size'));

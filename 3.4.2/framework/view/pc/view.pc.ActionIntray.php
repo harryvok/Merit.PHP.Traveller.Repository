@@ -3,7 +3,7 @@
 $(document).ready(function() {
     var oTable = $('#actionIntrayTable').dataTable({
         iDisplayLength: "50",
-        "aaSorting": [[ 5, "asc" ]],
+        "aaSorting": [[ 0, "desc" ]],
         "oLanguage": {
                 "sSearch": "Intray Filter: "
          },
