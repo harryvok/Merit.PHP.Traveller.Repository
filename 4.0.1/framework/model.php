@@ -3525,9 +3525,19 @@ class Model {
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
         $parameters->request_id = $_POST['requestID'];
-        $parameters->action_id = $_POST['actionID'];
-        $parameters->comment_text = $_POST['comment_text'];
-        
+        $parameters->comment_text = $_POST['comment_text']; 
+        if(isset($_POST['actionOfficer'])){
+            $parameters -> email_act_officers = "Y";
+        }
+        else{
+            $parameters -> email_act_officers = "N";
+        }
+        if(isset($_POST['responsibleOfficer'])){
+            $parameters -> email_resp_officer = "Y";
+        }
+        else{
+            $parameters -> email_resp_officer = "N";
+        }        
         $_SESSION['request_id'] = $_POST['requestID'];
 
         try {

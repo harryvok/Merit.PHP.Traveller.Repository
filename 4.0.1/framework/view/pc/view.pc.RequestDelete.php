@@ -28,12 +28,11 @@
             <textarea name="comment_text" class="required"></textarea>
             <br />
             <br />
-            <strong>Email notify:</strong>   <input type="checkbox" id="actionOfficer" value="<?php echo $GLOBALS['action_officer']; ?>"/> Current Action Officer 
-            <input type="checkbox" id="responsibleOfficer" value="<?php echo $GLOBALS['officer_responsible_name']; ?>" />Responsible Officer<br /><br />
+            <strong>Email notify:</strong>   <input type="checkbox" id="actionOfficer" name="actionOfficer" /> Current Action Officer 
+            <input type="checkbox" id="responsibleOfficer" name="responsibleOfficer" />Responsible Officer<br /><br />
             <input type="submit" value="Delete" id="submit" />
-            <input type="hidden" name="actionID" value="<?php echo $_GET['id']; ?>" />
             <input type="hidden" name="requestID" value="<?php echo $GLOBALS['request_id']; ?>" />
-            <input type="hidden" name="request" value="DeleteRequest" />
+            <input type="hidden" name="action" value="DeleteRequest" />
         </form>
     </div>
 </div>
