@@ -381,7 +381,7 @@ $(document).ready(function () {
         if (confirm("This will clear your current chosen facility. Continue?")) {
             $("#checkHistory").prop("disabled", true).buttonState("disable");
             $("#facilityTypeInput").val("");
-            $("#facilityInput").val("").attr("readonly", false).attr("disabled", false).textInputState('disable');
+            $("#facilityInput").val("");
             $("#facilityTypeId").val("");
             $("#facilityId").val("");
             $("#responsible").val("");
