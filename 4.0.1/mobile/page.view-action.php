@@ -204,6 +204,8 @@ $_SESSION['act_back_filter'] = $filter;
         }
         
         function Display($action, $view, $model, $device,$actionData, $requestData, $params = NULL){
+            $actionData=$actionData;
+            $requestData=$requestData;
             $GLOBALS['action'] = $action;
             if(isset($_SESSION['roleSecurityArray'][$action]) && is_array($_SESSION['roleSecurityArray'][$action])){
                 $ok = 1;
@@ -214,14 +216,19 @@ $_SESSION['act_back_filter'] = $filter;
                 }
                 if($ok == 1){
                     if($action=="Action"){
-                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData);
+                        $parameters_udf = new stdClass();
+                        $parameters_udf->user_id = $_SESSION['user_id'];
+                        $parameters_udf->password = $_SESSION['password'];
+                        $parameters_udf->request_id = $requestData->request_id;
+                        $result_udf = $model->WebService(MERIT_REQUEST_FILE,"ws_get_request_udfs",$parameters_udf)->udf_dets;
+                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData, "udfs" =>$result_udf);
                     }else if($action=="RequestUDFs"){
                         $parameters_udf = new stdClass();
                         $parameters_udf->user_id = $_SESSION['user_id'];
                         $parameters_udf->password = $_SESSION['password'];
                         $parameters_udf->request_id = $requestData->request_id;
                         $result_udf = $model->WebService(MERIT_REQUEST_FILE,"ws_get_request_udfs",$parameters_udf)->udf_dets;
-                        $GLOBALS['result'] = array("udfs" => $result_udf, "request" => $requestData);
+                        $GLOBALS['result'] = array("udfs" => $result_udf, "request" => $requestData, "udfs" =>$result_udf);
                     }else if($action=="Comments"){
                         $id = $requestData->request_id;
                         $parameters_c = new stdClass();
@@ -253,13 +260,52 @@ $_SESSION['act_back_filter'] = $filter;
                         $result_out = $model->WebService(MERIT_ACTION_FILE, "ws_get_action_completed", $parameters_out);
                         //$result_udfs = $model->getRequestUDFs($_SESSION['request_id']);
                         $GLOBALS['result'] = array("action"=>$actionData ,"outcomes" => $result_out/*, "udfs" => $result_udfs['udfs']*/);
+                    }else if($action == "ActionReopen"){
+                        $GLOBALS['action_officer_code'] = $actionData->action_officer_code;
+                        if(isset($GLOBALS['action_officer_code'])){
+                            $code = $GLOBALS['action_officer_code'];
+                        }
+                        elseif(isset($_GET['id'])){
+                            $code = $_GET['id'];
+                        }
+                        elseif(isset($GLOBALS['officer_id'])){
+                            $code = $GLOBALS['officer_id'];
+                        }
+                        else{
+                            $code = $_SESSION['responsible_code'];
+                        }
+
+                        $parameters_o = new stdClass();
+                        $parameters_o->user_id = $_SESSION['user_id'];
+                        $parameters_o->password = $_SESSION['password'];
+                        $parameters_o->responsible_code = $code;
+                        $result_o = $model->WebService(MERIT_ADMIN_FILE, "ws_get_specific_officer", $parameters_o)->merit_officer_details->officer_details;
                         
-                        
+                        $GLOBALS['result'] =$result_o;
+                    }else if($action == "ActionDelete"){
+                        $GLOBALS['result'] = 0;
+                    }else if($action == "Audit"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $parameters->a_id = $_GET['id'];
+                        $parameters->a_type = $params;
+                        $result = $model->WebService(MERIT_REQUEST_FILE, "ws_get_audit_details", $parameters)->audit_dets;
+                        $GLOBALS['result'] =$result;
+                    }
+                    else if($action == "ActionNotifications"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $parameters->request_id = $_SESSION['request_id'];
+                        $parameters->action_id = $_GET['id'];
+                        $result = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_notifications", $parameters)->notification_dets;
+                        $GLOBALS['result'] = array("notifications" => $result, "notify_officers" => $model->getNotifyOfficers(array("request_id" => $_SESSION['request_id'], "action_id" => $_GET['id'])));
                     }
                     else
                         $GLOBALS['result'] = $model->{"get".$action}($params);
                     
-                    $temp = "framework/view/".$device."/view.".$device.".".$view.".php";
+                    $temp = "view/".$device."/view.".$device.".".$view.".php";
                     include("framework/view/".$device."/view.".$device.".".$view.".php"); 
                 }
                 else{
@@ -273,7 +319,7 @@ $_SESSION['act_back_filter'] = $filter;
                     }
                     else{
                         if(!isset($GLOBALS['roleSecurityShown'])){
-                            include("framework/view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
+                            include("framework/view/".device."/view.".device.".RoleSecurity.php"); 
                             $GLOBALS['roleSecurityShown'] = true;
                         }
                     }
@@ -282,14 +328,18 @@ $_SESSION['act_back_filter'] = $filter;
             else{
                 if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y" || !isset($_SESSION['roleSecurityArray'][$action])){
                     if($action=="Action"){
-                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData);
+                        $parameters_udf->user_id = $_SESSION['user_id'];
+                        $parameters_udf->password = $_SESSION['password'];
+                        $parameters_udf->request_id = $requestData->request_id;
+                        $result_udf = $model->WebService(MERIT_REQUEST_FILE,"ws_get_request_udfs",$parameters_udf)->udf_dets;
+                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData, "udfs" => $result_udf);
                     }else if($action=="RequestUDFs"){
                         $parameters_udf = new stdClass();
                         $parameters_udf->user_id = $_SESSION['user_id'];
                         $parameters_udf->password = $_SESSION['password'];
                         $parameters_udf->request_id = $requestData->request_id;
                         $result_udf = $model->WebService(MERIT_REQUEST_FILE,"ws_get_request_udfs",$parameters_udf)->udf_dets;
-                        $GLOBALS['result'] = array("udfs" => $result_udf, "request" => $requestData);
+                        $GLOBALS['result'] = array("udfs" => $result_udf, "request" => $requestData, "udfs" =>$result_udf);
                     }else if($action=="Comments"){
                         $id = $requestData->request_id;
                         $parameters_c = new stdClass();
@@ -319,10 +369,53 @@ $_SESSION['act_back_filter'] = $filter;
                         $parameters_out->request_id =$_SESSION['request_id'];
                         $parameters_out->action_id =$_GET['id'];
                         $result_out = $model->WebService(MERIT_ACTION_FILE, "ws_get_action_completed", $parameters_out);
-                        $GLOBALS['result'] = array("outcomes" => $result_out);
+                        //$result_udfs = $model->getRequestUDFs($_SESSION['request_id']);
+                        $GLOBALS['result'] = array("action"=>$actionData ,"outcomes" => $result_out/*, "udfs" => $result_udfs['udfs']*/);
+                    }else if($action == "ActionReopen"){
+                        $GLOBALS['action_officer_code'] = $actionData->action_officer_code;
+                        if(isset($GLOBALS['action_officer_code'])){
+                            $code = $GLOBALS['action_officer_code'];
+                        }
+                        elseif(isset($_GET['id'])){
+                            $code = $_GET['id'];
+                        }
+                        elseif(isset($GLOBALS['officer_id'])){
+                            $code = $GLOBALS['officer_id'];
+                        }
+                        else{
+                            $code = $_SESSION['responsible_code'];
+                        }
+
+                        $parameters_o = new stdClass();
+                        $parameters_o->user_id = $_SESSION['user_id'];
+                        $parameters_o->password = $_SESSION['password'];
+                        $parameters_o->responsible_code = $code;
+                        $result_o = $model->WebService(MERIT_ADMIN_FILE, "ws_get_specific_officer", $parameters_o)->merit_officer_details->officer_details;
+                        
+                        $GLOBALS['result'] =$result_o;
+                    }else if($action == "ActionDelete"){
+                        $GLOBALS['result'] = 0;
+                    }else if($action == "Audit"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $parameters->a_id = $_GET['id'];
+                        $parameters->a_type = $params;
+                        $result = $model->WebService(MERIT_REQUEST_FILE, "ws_get_audit_details", $parameters)->audit_dets;
+                        $GLOBALS['result'] =$result;
+                    }
+                    else if($action == "ActionNotifications"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $parameters->request_id = $_SESSION['request_id'];
+                        $parameters->action_id = $_GET['id'];
+                        $result = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_notifications", $parameters)->notification_dets;
+                        $GLOBALS['result'] = array("notifications" => $result, "notify_officers" => $model->getNotifyOfficers(array("request_id" => $_SESSION['request_id'], "action_id" => $_GET['id'])));
                     }
                     else
                         $GLOBALS['result'] = $model->{"get".$action}($params);
+                    
                     
                     $temp = "framework/view/".$device."/view.".$device.".".$view.".php";
                     include("framework/view/".$device."/view.".$device.".".$view.".php"); 
