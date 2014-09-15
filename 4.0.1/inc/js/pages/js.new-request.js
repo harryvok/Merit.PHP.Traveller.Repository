@@ -35,6 +35,7 @@ $(document).ready(function () {
     }
 
     // Location Street Name Typealong
+
     $("#lstreet").autocomplete({
         source: function (request, response) {
             $.ajax({
@@ -646,14 +647,26 @@ $(document).ready(function () {
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#ltype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             $("#lsuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-            $("#lstreet").attr("readonly", false).val("").autocomplete("search", "");
+            $("#lstreet").attr("readonly", false).val("").autocomplete(
+
+                $.ui.autocomplete.filter = function (array, term) {
+                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+                return $.grep(array, function (value) {
+                    return matcher.test(value.label || value.value || value);
+                });
+            })
         }
     });
 
-    function streetResponse(event, ui) {
+        var streetResponse = function (event, ui) {
         var label = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
+        if (typeof ui.content != "undefined" && ui.content.length === 1) {
+            label = ui.content[0].label;
+        }
+
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) {
+            label = ui.item.label;
+        }
         if (label.length > 0) {
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete("close").textInputState('enable');

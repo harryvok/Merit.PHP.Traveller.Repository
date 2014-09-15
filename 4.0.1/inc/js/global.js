@@ -12,14 +12,16 @@ $(document).ready(function () {
         dateFormat: 'yy-mm-dd',
         constrainInput: true
     });
-
+    
     //this thing controls wildcard searching
-    /*$.ui.autocomplete.filter = function (array, term) {
+    /*
+    $.ui.autocomplete.filter = function (array, term) {
         var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
         return $.grep(array, function (value) {
             return matcher.test(value.label || value.value || value);
         });
-    };*/
+    };
+    */
 
     generateDateTime();
 
