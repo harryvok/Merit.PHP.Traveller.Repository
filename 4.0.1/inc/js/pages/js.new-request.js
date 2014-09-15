@@ -669,7 +669,16 @@ $(document).ready(function () {
         }
         if (label.length > 0) {
             $("#property_no").val(""); $("#lpostcode").val("");
-            $("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete("close").textInputState('enable');
+            $("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete(
+
+                $.ui.autocomplete.filter = function (array, term) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(term));
+                    return $.grep(array, function (value) {
+                        return matcher.test(value.label || value.value || value);
+                    });
+                },
+                
+                "close").textInputState('enable');
             $("#ltype").textInputState('enable');
             $("#ltype").attr("disabled", false).removeClass("ui-disabled").trigger("click");
         }
