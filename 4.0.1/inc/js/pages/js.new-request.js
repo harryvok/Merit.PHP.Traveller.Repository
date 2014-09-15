@@ -817,7 +817,14 @@ $(document).ready(function () {
         $("#i_ctype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
         $("#i_csuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
         //$("#i_cpostcode").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-        $("#i_cstreet").val("").attr("readonly", false).autocomplete("search", $("#i_cstreet").val());
+        $("#i_cstreet").val("").attr("readonly", false).autocomplete(
+
+                $.ui.autocomplete.filter = function (array, term) {
+                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+                    return $.grep(array, function (value) {
+                        return matcher.test(value.label || value.value || value);
+                    });
+                }, $("#i_cstreet").val());
     });
     var cStreetResponse = function (event, ui) {
         var label = "";
