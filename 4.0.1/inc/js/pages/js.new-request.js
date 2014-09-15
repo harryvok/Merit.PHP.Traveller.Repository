@@ -384,6 +384,7 @@ $(document).ready(function () {
             $("#facilityInput").val("").attr("readonly", false).attr("disabled", false).textInputState('disable');
             $("#facilityTypeId").val("");
             $("#facilityId").val("");
+            $("#responsible").val("");
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#address_id").val("");
             $("#lno").val("").attr("readonly", false);
@@ -489,6 +490,15 @@ $(document).ready(function () {
             $("#lfno").val("").attr("readonly", false);
             $("#facilityInput").attr("readonly", false).val("");
         }
+
+
+                $.ui.autocomplete.filter = function (array, term) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
+                    return $.grep(array, function (value) {
+                        return matcher.test(value.label || value.value || value);
+                    });
+                }
+
 
         return $("#facilityTypeInput").val();
     }
@@ -672,7 +682,7 @@ $(document).ready(function () {
             $("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete(
 
                 $.ui.autocomplete.filter = function (array, term) {
-                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(term));
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
                     return $.grep(array, function (value) {
                         return matcher.test(value.label || value.value || value);
                     });
