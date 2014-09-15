@@ -170,6 +170,9 @@ if(isset($_GET['d']) && $_GET['d'] == "notifications"){
 if(isset($_GET['d']) && $_GET['d'] == "reopenRequest"){
     $controller->Display("RequestReopen", "RequestReopen");
 }
+if(isset($_GET['d']) && $_GET['d'] == "deleteRequest"){
+    Display("RequestDelete", "RequestDelete",$model,$device,$actionData, $requestData);
+}
 if(isset($_GET['d']) && $_GET['d'] == "processRequest"){
     $controller->Display("RequestProcess", "RequestProcess");
 }
@@ -185,6 +188,8 @@ if(isset($_GET['d']) && $_GET['d'] == "ca"){
 }
 
 function Display($action, $view, $model, $device,$actionData, $requestData, $params = NULL){
+    $actionData=$actionData;
+    $requestData=$requestData;
     $GLOBALS['action'] = $action;
     if(isset($_SESSION['roleSecurityArray'][$action]) && is_array($_SESSION['roleSecurityArray'][$action])){
         $ok = 1;
@@ -200,8 +205,7 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                 $parameters_udf->password = $_SESSION['password'];
                 $parameters_udf->request_id = $requestData->request_id;
                 $result_udf = $this->WebService(MERIT_REQUEST_FILE,"ws_get_request_udfs",$parameters_udf)->udf_dets;
-                
-                $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData, "udfs" =>$result_udf);
+                                $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData, "udfs" =>$result_udf);
             }else if($action=="RequestUDFs"){
                 $parameters_udf = new stdClass();
                 $parameters_udf->user_id = $_SESSION['user_id'];
@@ -313,6 +317,9 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                 $parameters_out->action_id =$_GET['id'];
                 $result_out = $model->WebService(MERIT_ACTION_FILE, "ws_get_action_completed", $parameters_out);
                 $GLOBALS['result'] = array("outcomes" => $result_out);
+            }
+            else if($action == "RequestDelete"){
+                $GLOBALS['result'] = 0;
             }
             else
                 $GLOBALS['result'] = $model->{"get".$action}($params);

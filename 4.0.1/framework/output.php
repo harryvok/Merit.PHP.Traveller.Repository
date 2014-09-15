@@ -148,6 +148,7 @@ $realNameArray = array(
      "processRequest" => "Process Request",
      "reopenAction" => "Reopen Action",
      "deleteAction" => "Delete Action",
+     "deleteRequest" => "Delete Request",
      "advanced" => "Advanced Search",
      "audit" => "Audit"
 );

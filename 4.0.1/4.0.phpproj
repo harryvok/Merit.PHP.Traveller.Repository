@@ -1202,6 +1202,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Script1.php" />
+    <Compile Include="view.pc.RequestDelete.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="attachments\" />
