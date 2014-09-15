@@ -95,12 +95,6 @@ define("INTRAMAPS_MOBILE", "'.$external_intramaps_mobile.'");
 define("AU1", "'.$user_id.'");
 define("AU2", "'.$password.'");
 
-// EMAILING
-define("YOUR_EMAIL", "'.$email_address.'"); // your support email
-define("EMAIL_FROM", "'.$email_address_name.'"); // name of person/company emails will be from (merit support)
-define("SMTP_HOST", "'.$smtp_host.'");
-define("SMTP_USER", "'.$smtp_user.'");
-define("SMTP_PASS", "'.$smtp_pass.'");
 
 // OTHER
 define("COMPULSORY", "The fields with an asterisk are mandatory!"); // main message at top of form
@@ -125,6 +119,15 @@ $validMimes = array( // Allowed file types for uploads (note these a mimes, goog
 	  "application/pdf"
 );
 ?>';
+            /* reapply this to the string if emails required again
+             * // EMAILING
+            define("YOUR_EMAIL", "'.$email_address.'"); // your support email
+            define("EMAIL_FROM", "'.$email_address_name.'"); // name of person/company emails will be from (merit support)
+            define("SMTP_HOST", "'.$smtp_host.'");
+            define("SMTP_USER", "'.$smtp_user.'");
+            define("SMTP_PASS", "'.$smtp_pass.'");
+             * 
+             * */
             
 			$fp = fopen("framework/settings.php", "w");
 			fwrite($fp, $string);

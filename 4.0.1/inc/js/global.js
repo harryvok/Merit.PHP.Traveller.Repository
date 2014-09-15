@@ -12,14 +12,16 @@ $(document).ready(function () {
         dateFormat: 'yy-mm-dd',
         constrainInput: true
     });
-
+    
     //this thing controls wildcard searching
-    /*$.ui.autocomplete.filter = function (array, term) {
+    /*
+    $.ui.autocomplete.filter = function (array, term) {
         var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
         return $.grep(array, function (value) {
             return matcher.test(value.label || value.value || value);
         });
-    };*/
+    };
+    */
 
     generateDateTime();
 
@@ -387,7 +389,26 @@ $(document).on("click", ".closePopup", function () {
                     delay: 0,
                     minLength: 0,
                     select: response,
-                    response: response
+                    response: response,
+                    //added by harry
+                    create: function (event, ui) {
+
+                        //if this is the serviceInput
+                        //autopopulate if there is one service
+                        if ($(self).attr('id') == "serviceInput") {
+                            $.ajax({
+                                url: ajax,
+                                dataType: "json",
+                                data: dataPass,
+                                success: function (data) {
+                                    if (data.length == 1)
+                                        //$("#serviceInput").click();
+                                        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
+                                }
+                            });
+                        }
+                    }
+                    //end addition by harry
                 });
             }
         });
@@ -438,6 +459,17 @@ $(document).on("click", ".closePopup", function () {
                                 if (autoOpen == true) $(self).autocomplete("search", $(self).val());
                                 $(self).trigger("focus");
 
+                                if ($(self).attr('id') == "functionInput") {
+                                    if (data.length == 1) {
+                                        if ($("#textareaissue").length) {
+                                            $("#textareaissue").focus();
+                                        } else {
+                                            $("#add-request-textarea").focus();
+                                        }
+                                    } else {
+                                        $(self).focus();
+                                    }
+                                }
                             }
                         }
                     });

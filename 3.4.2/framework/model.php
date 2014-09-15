@@ -1197,12 +1197,73 @@ class Model {
             $ws_status = $result->ws_status;
             $ws_message = $result->ws_message;
             if($ws_status != -1){
-                $attachment = $_FILES['attachment'];
 
+                $filenamearray= array();
+                $filedescriptionarray= array();
+                
                 $GLOBALS['request_id'] = $result->request_id;
-                if(strlen($attachment['tmp_name'])>0){
-                    $this->processUploadAttachment($attachment);
+                $totalfiles=count($_FILES['attachment']['name']);
+                if($totalfiles > 1){
+                     for ($i=0; $i< $totalfiles;$i++) {
+                         if($_FILES['attachment']['name'][$i] !=""){
+                        $attachment = array(
+                                'name' => $_FILES['attachment']['name'][$i],
+                                'type' => $_FILES['attachment']['type'][$i],
+                                'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
+                                'error' => $_FILES['attachment']['error'][$i],
+                                'size' => $_FILES['attachment']['size'][$i]
+                            
+                       );
+                        $rand = rand(0,100);
+                    
+                        $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
+                        $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][$i]);
+                        array_push($filenamearray, $tempname);
+                        array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
+                    
+                         }
+
+                     }
+                }elseif($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
+                    $attachment = array(
+                               'name' => $_FILES['attachment']['name'],
+                               'type' => $_FILES['attachment']['type'],
+                               'tmp_name' => $_FILES['attachment']['tmp_name'],
+                               'error' => $_FILES['attachment']['error'],
+                               'size' => $_FILES['attachment']['size']
+                           
+                      );
+                    $rand = rand(0,100);
+                    $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name']);
+                    array_push($filenamearray, $tempname);
+                    array_push($filedescriptionarray,$_POST["attachDesc"]);
                 }
+                
+                
+                if ($totalfiles > 0 && $_FILES['attachment']['name'][0] != "") {
+
+                     $parameters_att = array(
+                      'user_id' => $_SESSION['user_id'],
+                      'password' => $_SESSION['password'],
+                      'request_id' => $GLOBALS['request_id'],
+                      'filename'=>$filenamearray,
+                      'description'=>$filedescriptionarray
+                  );
+                     
+                     try {
+                         $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file_multiple", $parameters_att);
+                         $_SESSION['success'] = 1;
+                         $_SESSION['done'] = 1;
+                     }
+                     catch(Exception $e){
+                         $_SESSION['error'] = 1;
+                         $_SESSION['error_attach'] = 1;
+                         $_SESSION['done'] = 1;
+                         $_SESSION['error_custom'] = 1;
+                         $_SESSION['custom_error'] = $e->getMessage();
+                     }
+                 }
 
                 if($_POST['udfs_exist'] == 1){
                     $GLOBALS['udf-create'] = 1;
@@ -1248,6 +1309,39 @@ class Model {
             $_SESSION['redirect'] = "index.php?page=newRequest";
         }
 
+    }
+    public function processnewRequestAttachment($attachment, $requestID,$rand, $description = ''){
+        
+        $max_upload = (int)(ini_get('upload_max_filesize'));
+        $max_post = (int)(ini_get('post_max_size'));
+        $memory_limit = (int)(ini_get('memory_limit'));
+        $upload_mb = min($max_upload, $max_post, $memory_limit);
+        if ($attachment['type'] == "image/jpeg"
+            || $attachment['type'] == "image/png"
+            || $attachment['type'] == "image/gif")
+        {
+            if($attachment['size'] > 300000){
+                imagejpeg($attachment['tmp_name'], $attachment['tmp_name'], 75);
+            }
+        }
+        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]);
+        
+        if(move_uploaded_file($attachment['tmp_name'][0], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]))){
+
+            $parameters_att = new stdClass();
+            $parameters_att->user_id = $_SESSION['user_id'];
+            $parameters_att->password = $_SESSION['password'];
+            $parameters_att->request_id = $requestID;
+            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
+            $parameters_att->description = $description;
+        }
+        else{
+            $_SESSION['error'] = 1;
+            $_SESSION['error_attach'] = 1;
+            $_SESSION['done'] = 1;
+            $_SESSION['error_custom'] = 1;
+            $_SESSION['custom_error'] = "Please ensure your attachment's file size is below ".$upload_mb."MB";
+        }
     }
 
     public function processAttachment($params = NULL){

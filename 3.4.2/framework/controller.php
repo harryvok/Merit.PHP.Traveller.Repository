@@ -173,7 +173,13 @@ class Controller {
 			 }
 		 }
 		 else{
-			if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y" || !isset($_SESSION['roleSecurityArray'][$action])){
+             //special case for outcome UDFs. Ignore role security
+             if(isset($_POST["view"]) && $_POST["view"]=="OutcomeUDFs" ){
+                 $GLOBALS['result'] = $this->model->{"get".$action}($params);
+                 $temp = "view/".$this->device."/view.".$this->device.".".$view.".php";
+                 include("view/".$this->device."/view.".$this->device.".".$view.".php"); 
+             }
+			else if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y" || !isset($_SESSION['roleSecurityArray'][$action])){
 				$GLOBALS['result'] = $this->model->{"get".$action}($params);
                 $temp = "view/".$this->device."/view.".$this->device.".".$view.".php";
 				include("view/".$this->device."/view.".$this->device.".".$view.".php"); 

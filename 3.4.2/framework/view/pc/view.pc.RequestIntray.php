@@ -3,9 +3,10 @@
 $(document).ready(function() {
     var oTable = $('#requestIntrayTable').dataTable({
         iDisplayLength: "50",
+        "aaSorting": [[0, "desc"]],
     "oLanguage": {
                 "sSearch": "Intray Filter: "
-         },
+    },
         "aoColumns": [
             null,
             null,
@@ -13,10 +14,10 @@ $(document).ready(function() {
             null,
             null,
             null,
-            {"sType": "date-euro" },
-            {"sType": "date-euro" },
+            { "sType": "date-euro" },
+            { "sType": "date-euro" },
             null
-        ]
+    ]
     });
     
     $("#export").click(function(){

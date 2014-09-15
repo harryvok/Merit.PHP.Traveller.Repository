@@ -421,19 +421,19 @@ if(!isset($_GET['d'])){
                     <div class="column r25">
                         <label for="desc">File</label>
                         <input id="attachment" type="file" name="attachment[]" id="attachFile" />
-                        <label for="desc">File 2</label>
+                        <!--<label for="desc">File 2</label>
                         <input id="attachment" type="file" name="attachment[]" id="attachFile" />
                         <label for="desc">File 3</label>
-                        <input id="attachment" type="file" name="attachment[]" id="attachFile" />
+                        <input id="attachment" type="file" name="attachment[]" id="attachFile" />-->
 
                     </div>
                     <div class="column r70">
                         <label for="desc">Description</label>
                         <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
-                        <label for="desc">Description 2</label>
+                        <!--<label for="desc">Description 2</label>
                         <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
                         <label for="desc">Description 3</label>
-                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
+                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />-->
                     </div>
                 </div>
                      

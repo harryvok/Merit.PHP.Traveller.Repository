@@ -418,12 +418,28 @@
 		<div class="summaryContainer">
         	<div class="column half">
 				<label for="desc">File</label>
-                <input id="attachment" type="file" name="attachment"  />
+                <input id="attachment" type="file" name="attachment[]"  />
 			</div>
             <div class="column half">
 				<label for="desc">Description</label> 
-				<input type="text" id="desc" maxlength="50"  name="desc" />
+				<input type="text" id="attachDesc" maxlength="50"  name="attachDesc[]" />
               </div>
+            <!--<div class="column half">
+				<label for="desc">File 2</label>
+                <input id="attachment" type="file" name="attachment[]"  />
+			</div>
+            <div class="column half">
+				<label for="desc">Description</label> 
+				<input type="text" id="attachDesc" maxlength="50"  name="attachDesc[]" />
+              </div>
+            <div class="column half">
+				<label for="desc">File 3</label>
+                <input id="attachment" type="file" name="attachment[]"  />
+			</div>
+            <div class="column half">
+				<label for="desc">Description</label> 
+				<input type="text" id="attachDesc" maxlength="50"  name="attachDesc[]" />
+              </div>-->
 		 </div>
 	
 	<input type="hidden" name="action" value="CreateRequest" />

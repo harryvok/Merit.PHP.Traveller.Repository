@@ -1,18 +1,8 @@
-// New Request Common JS
 
 $(document).ready(function () {
 
 
     /* SRF */
-
-    // Service Input
-    $("#serviceInput").on(eventName, function (event) {
-        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
-        setTimeout(function () {
-            serviceReset();
-        }, 0);
-    });
-
     function serviceReset() {
         window.clicked["requestInput"] = false;
         window.clicked["functionInput"] = false;
@@ -33,10 +23,18 @@ $(document).ready(function () {
         $("#workflowSRF").prop("disabled", true);
     }
 
+    // Service Input
+    $("#serviceInput").on(eventName, function (event) {
+        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
+        setTimeout(function () {
+            serviceReset();
+        }, 0);
+    });
+
     var serviceResponse = function (event, ui) {
         var label = ""; var code = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; }
+        /* if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; }
+        else  */ if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; }
         if (label.length > 0 || code.length > 0) {
             $("#service").val(code);
             $("#request").val("");
@@ -62,8 +60,8 @@ $(document).ready(function () {
     }
     var requestResponse = function (event, ui) {
         var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; }
+        /* if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; }
+        else */ if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; }
         
         if (label.length > 0 || code.length > 0) {
 
@@ -102,8 +100,8 @@ $(document).ready(function () {
     }
     var functionResponse = function (event, ui) {
         var label = ""; var code = ""; var priority = ""; var count_only = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; }
+        /* if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; }
+        else */ if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; }
         if (label.length > 0 || code.length > 0) {
             
             $("#functionInput").removeClass("ui-autocomplete-loading");

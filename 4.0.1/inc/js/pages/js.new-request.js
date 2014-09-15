@@ -24,12 +24,18 @@ $(document).ready(function () {
                 success: function (data) {
                     Unload();
                     $('#popup').html(data);
+                    if ($("#textareaissue").length) {
+                        $("#textareaissue").focus();
+                    } else {
+                        $("#add-request-textarea").focus();
+                    }
                 }
             });
         }
     }
 
     // Location Street Name Typealong
+
     $("#lstreet").autocomplete({
         source: function (request, response) {
             $.ajax({
@@ -267,11 +273,23 @@ $(document).ready(function () {
             CheckCountOnly(count_only);
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
+
+            if ($("#textareaissue").length) {
+                $("#textareaissue").focus();
+            } else {
+                $("#add-request-textarea").focus();
+            }
         }
     }
 
     function functionSuccess(data) {
-        $("#textareaissue").focus();
+
+        if ($("#textareaissue").length) {
+            $("#textareaissue").focus();
+        } else {
+            $("#add-request-textarea").focus();
+        }
+        //$("#textareaissue").focus();
         if (data.length === 0) {
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             return false;
@@ -363,9 +381,10 @@ $(document).ready(function () {
         if (confirm("This will clear your current chosen facility. Continue?")) {
             $("#checkHistory").prop("disabled", true).buttonState("disable");
             $("#facilityTypeInput").val("");
-            $("#facilityInput").val("").attr("readonly", false).attr("disabled", false).textInputState('disable');
+            $("#facilityInput").val("");
             $("#facilityTypeId").val("");
             $("#facilityId").val("");
+            $("#responsible").val("");
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#address_id").val("");
             $("#lno").val("").attr("readonly", false);
@@ -471,6 +490,15 @@ $(document).ready(function () {
             $("#lfno").val("").attr("readonly", false);
             $("#facilityInput").attr("readonly", false).val("");
         }
+
+
+                $.ui.autocomplete.filter = function (array, term) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
+                    return $.grep(array, function (value) {
+                        return matcher.test(value.label || value.value || value);
+                    });
+                }
+
 
         return $("#facilityTypeInput").val();
     }
@@ -629,17 +657,38 @@ $(document).ready(function () {
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#ltype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             $("#lsuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-            $("#lstreet").attr("readonly", false).val("").autocomplete("search", "");
+            $("#lstreet").attr("readonly", false).val("").autocomplete(
+
+                $.ui.autocomplete.filter = function (array, term) {
+                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+                return $.grep(array, function (value) {
+                    return matcher.test(value.label || value.value || value);
+                });
+            })
         }
     });
 
-    function streetResponse(event, ui) {
+        var streetResponse = function (event, ui) {
         var label = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
+        if (typeof ui.content != "undefined" && ui.content.length === 1) {
+            label = ui.content[0].label;
+        }
+
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) {
+            label = ui.item.label;
+        }
         if (label.length > 0) {
             $("#property_no").val(""); $("#lpostcode").val("");
-            $("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete("close").textInputState('enable');
+            $("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete(
+
+                $.ui.autocomplete.filter = function (array, term) {
+                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
+                    return $.grep(array, function (value) {
+                        return matcher.test(value.label || value.value || value);
+                    });
+                },
+                
+                "close").textInputState('enable');
             $("#ltype").textInputState('enable');
             $("#ltype").attr("disabled", false).removeClass("ui-disabled").trigger("click");
         }
@@ -768,7 +817,14 @@ $(document).ready(function () {
         $("#i_ctype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
         $("#i_csuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
         //$("#i_cpostcode").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-        $("#i_cstreet").val("").attr("readonly", false).autocomplete("search", $("#i_cstreet").val());
+        $("#i_cstreet").val("").attr("readonly", false).autocomplete(
+
+                $.ui.autocomplete.filter = function (array, term) {
+                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+                    return $.grep(array, function (value) {
+                        return matcher.test(value.label || value.value || value);
+                    });
+                }, $("#i_cstreet").val());
     });
     var cStreetResponse = function (event, ui) {
         var label = "";
