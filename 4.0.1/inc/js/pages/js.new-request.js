@@ -36,7 +36,12 @@ $(document).ready(function () {
 
     // Location Street Name Typealong
 
-    $("#lstreet").autocomplete({
+    $("#lstreet").autocomplete($.ui.autocomplete.filter = function (array, term) {
+        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+        return $.grep(array, function (value) {
+            return matcher.test(value.label || value.value || value);
+        });
+    },{
         source: function (request, response) {
             $.ajax({
                 url: "inc/ajax/ajax.getStreets.php",
@@ -69,6 +74,7 @@ $(document).ready(function () {
             $("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
             $("#ltype").click();
         }
+
     });
 
     // Service Input

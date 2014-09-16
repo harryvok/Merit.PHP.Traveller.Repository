@@ -1,13 +1,31 @@
 ﻿// Start Document
 $(document).ready(function () {
 
-    /* Does something ------------------------------------------------------- */
+    /* Does something ----------------------------------------------------- */
                                 $("input[data-name]").click(function () {
                                         var id = $(this).attr("id");
                                         $("#" + id + "Type").trigger("click");
                                         $("#" + id + "Name").trigger("click");
                                         $("#" + id + "Email").trigger("click");
-                                 });
+                                });
+
+
+    // Initialize -----------------------------------------------------------
+                    $("#sendbutton").prop("disabled", true);
+                    $("#sendbutton").addClass("disabled");
+                    var email = 0;
+                    var sms = 0;
+
+                        if (sms > 0 || email > 0) {
+                            $("#sendbutton").prop("disabled", false);
+                            $("#sendbutton").removeClass("disabled");
+                        } else {
+                            $("#sendbutton").prop("disabled", true);
+                            $("#sendbutton").addClass("disabled");
+                        }
+                    }
+    // ----------------------------------------------------------------------
+
 
     // From My Email --------------------------------------------------------
                                     $("#fromEmail").click(function () {
@@ -45,7 +63,7 @@ $(document).ready(function () {
             });
     // -----------------------------------------------------------------------
     // ADD Email -------------------------------------------------------------
-            var email = 0;
+            
             $("#emailAdd").click(function () {
                 $("#emailAdd").hide();
                 $("#emailOfficerAdd").hide();
@@ -165,7 +183,7 @@ $(document).ready(function () {
             });
     // -----------------------------------------------------------------------
     // Add SMS ---------------------------------------------------------------
-            var sms = 0;
+
             $("#smsAdd").click(function () {
                 $("#smsAdd").hide();
                 $("#smsOfficerAdd").hide();
