@@ -14,8 +14,7 @@ $_SESSION['act_back_filter'] = $filter;
       <h1>View Action</h1>
       <a href="#actionPanel" class="iphone" data-role="button" data-icon="bars" data-iconpos="notext">Menu</a>
   </div>
-  <div data-role="content">
-    
+  <div data-role="content">    
     <div class="content-primary">
   	<div data-role="popup" id="popup" class="ui-corner-all photopopup" data-overlay-theme="a" data-theme="c"  data-tolerance="15,15" data-rel="back">
     		<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>

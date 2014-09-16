@@ -1,16 +1,16 @@
 <?php
 
 /**
- * This page has been added to delete request with all the validations and confirmation on pc.
+ * This page has been added to delete request with all the validations and confirmation on mobile.
  * No email notification required after request delete.
  *
  * @version 1.0
  * @author phirpara
  */
-    ?>
-<div class="summaryContainer">
+?>
+<div data-role="collapsible" data-collapsed="false">
     <h1>Delete Request</h1>
-    <div>
+    <p>
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#deleteRequest").validate();
@@ -24,16 +24,35 @@
             <strong>Service Name:</strong> <?php echo $GLOBALS['service_name']; ?> <br /> 
             <strong>Request Name:</strong> <?php echo $GLOBALS['request_name']; ?> <br />
             <strong>Function Name:</strong> <?php echo $GLOBALS['function_name']; ?> <br />
-            <label>Reason<span style="color: red;">*</span></label>
+            <strong>Reason<span style="color: red;">*</span></strong>
             <textarea name="comment_text" class="required"></textarea>
             <br />
-            <br />
-            <strong>Email notify:</strong>   <input type="checkbox" id="actionOfficer" name="actionOfficer" /> Current Action Officer 
-            <input type="checkbox" id="responsibleOfficer" name="responsibleOfficer" />Responsible Officer<br /><br />
+            <strong>Email notify:</strong> 
+            <table>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="actionOfficer" name="actionOfficer" />
+                    </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                        Current Action Officer
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="responsibleOfficer" name="responsibleOfficer" />
+                    </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                        Responsible Officer
+                    </td>
+                </tr>
+            </table>              
+            <br /><br />
             <input type="submit" value="Delete" id="submit" />
             <input type="hidden" name="requestID" value="<?php echo $GLOBALS['request_id']; ?>" />
             <input type="hidden" name="action" value="DeleteRequest" />
         </form>
-    </div>
+    </p>
 </div>
 
