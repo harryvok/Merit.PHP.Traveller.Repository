@@ -17,11 +17,8 @@
 $GLOBALS['finalised_ind'] = $GLOBALS['result']->finalised_ind;
 $GLOBALS['count_only'] = $GLOBALS['result']->count_only;
 $GLOBALS['audit_count'] = $GLOBALS['result']->audit_count;
-//$_SESSION['sidebar_action_status'] = $GLOBALS['result']['request']->status_code;
 $GLOBALS['request_id'] = $GLOBALS['result']->request_id;
 $_SESSION['request_id'] = $GLOBALS['result']->request_id;
-//$GLOBALS['finalised_ind'] = $GLOBALS['result']['request']->finalised_ind;
-//$GLOBALS['req_finalised_ind'] = $GLOBALS['result']['request']->finalised_ind;
 $_SESSION['service_name'] = $GLOBALS['result']->service_name;
 $GLOBALS['service_name'] = $GLOBALS['result']->service_name;
 $GLOBALS['request_name'] = $GLOBALS['result']->request_name;
