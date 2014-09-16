@@ -26,7 +26,7 @@ function getIntray(intray, i) {
 }
 
 function GetAddressDetails() {
-    
+    alert("coming ajax");
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
@@ -40,6 +40,7 @@ function GetAddressDetails() {
                 streetSuburb: function () { return $("#lsuburb").val() }
             },
             success: function (data) {
+                alert("prop: " +data.property_no);
                 $("#property_no").val(data.property_no);
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
