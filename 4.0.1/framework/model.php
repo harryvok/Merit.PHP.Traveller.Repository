@@ -3539,6 +3539,39 @@ class Model {
     }
     
     public function processDeleteRequest($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_POST['requestID'];
+        $parameters->comment_text = $_POST['comment_text']; 
+        if(isset($_POST['actionOfficer'])){
+            $parameters -> email_act_officers = "Y";
+        }
+        else{
+            $parameters -> email_act_officers = "N";
+        }
+        if(isset($_POST['responsibleOfficer'])){
+            $parameters -> email_resp_officer = "Y";
+        }
+        else{
+            $parameters -> email_resp_officer = "N";
+        }        
+        $_SESSION['request_id'] = $_POST['requestID'];
+
+        try {
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_delete_request",$parameters);
+            $_SESSION['done'] = 1;
+            $_SESSION['success'] = 1;
+            $_SESSION['success_delete_action'] = 1;
+            $_SESSION['redirect'] = "index.php";
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $_SESSION['done'] = 1;
+            $_SESSION['error'];
+            $_SESSION['error_delete_action'] = 1;
+            $_SESSION['redirect'] = "index.php?page=view-request&id=".$_POST['requestID']."&d=deleteRequest";
+        }
         
     }
     

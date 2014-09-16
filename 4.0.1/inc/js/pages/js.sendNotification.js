@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
 
-    
-
 
     $("input[data-name]").click(function () {
         var id = $(this).attr("id");
@@ -28,14 +26,17 @@
         $('#notificationForm').submit();
 
     });*/
+
     $("form").submit(function () {
         $("#sendbutton").prop("disabled", true);
         $("#sendbutton").addClass("disabled");
         return true;
     });
+
     /*$("#emailText0Name").on("keyup", function () {
                     alert("you have typed something");
                 });*/
+
 
     var email = 0;
     $("#emailAdd").click(function () {
@@ -80,6 +81,9 @@
         });
     });
 
+    // ---------------------------------------------------------------------------------------------------------------------------
+    // Add officer Email
+    // ---------------------------------------------------------------------------------------------------------------------------
     $("#emailOfficerAdd").click(function () {
         $("#emailAdd").hide();
         $("#emailOfficerAdd").hide();

@@ -1,4 +1,3 @@
-
 <div class="summaryContainer">
     <h1>Delete Action</h1>
     <div>

@@ -16,6 +16,16 @@
 $GLOBALS['finalised_ind'] = $GLOBALS['result']->finalised_ind;
 $GLOBALS['count_only'] = $GLOBALS['result']->count_only;
 $GLOBALS['audit_count'] = $GLOBALS['result']->audit_count;
+$GLOBALS['request_id'] = $GLOBALS['result']->request_id;
+$_SESSION['request_id'] = $GLOBALS['result']->request_id;
+$_SESSION['service_name'] = $GLOBALS['result']->service_name;
+$GLOBALS['service_name'] = $GLOBALS['result']->service_name;
+$GLOBALS['request_name'] = $GLOBALS['result']->request_name;
+$GLOBALS['function_name'] = $GLOBALS['result']->function_name;
+$GLOBALS['action_officer'] = $GLOBALS['result']->action_officer;
+$GLOBALS['officer_responsible_name'] = $GLOBALS['result']->officer_responsible_name;
+$GLOBALS['officer_responsible_code'] = $GLOBALS['result']->officer_responsible_code;
+
 ?>
 
 <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET['id']; ?>" />

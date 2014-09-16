@@ -499,8 +499,7 @@ $(document).ready(function(){
 				},
 				success: function(data) {
 					if(data.length == 1){
-						$("#lstreet").val(data[0]);
-						
+						$("#lstreet").val(data[0]);						
 						$("#lstreet").attr("readonly", true);
 						$("#ltype").textinput('enable').addClass("ui-disabled");	
 						$("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
