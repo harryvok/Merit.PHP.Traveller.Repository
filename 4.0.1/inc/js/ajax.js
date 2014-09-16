@@ -40,7 +40,7 @@ function GetAddressDetails() {
                 streetSuburb: function () { return $("#lsuburb").val() }
             },
             success: function (data) {
-                alert("address id:" + data.address_id);
+                //alert("address id:" + data.address_id);
                 $("#property_no").val(data.property_no);
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
@@ -67,10 +67,10 @@ function GetCustomerAddressDetails() {
                 streetSuburb: function () { return $("#i_csuburb").val() }
             },
             success: function (data) {
-                //$("#i_cpostcode").val(data.postcode);
+                $("#i_cpostcode").val(data.postcode);
                 $("#cust_address_id").val(data.address_id);
                 $("#i_cpropertynumber").val(data.property_no);
-                if (data.address_id > 0) {
+                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
                     $("#CustAddSummary").removeAttr("disabled");
                 }
             }
@@ -92,7 +92,7 @@ function GetCustomerAddressDetails() {
                 $("#o_cpostcode").val(data.postcode);
                 $("#cust_address_id").val(data.address_id);
                 $("#o_cpropertynumber").val(data.property_no);
-                if (data.address_id > 0) {
+                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
                     $("#CustAddSummary").removeAttr("disabled");
                 }
             }

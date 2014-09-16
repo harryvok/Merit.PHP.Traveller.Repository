@@ -874,20 +874,14 @@ $(document).ready(function () {
             if ($("#historyaddrtype").val() == "C" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
             $("#i_csuburb").val(label).attr("readonly", true).removeClass("ui-autocomplete-loading");
             $("#i_cpostcode").val(postcode)//.attr("readonly", true).removeClass("ui-autocomplete-loading");
-            //GetCustomerAddressDetails();
+            GetCustomerAddressDetails();
             $("#i_csuburb").autocomplete("close");
-            //$("#CustAddSummary").removeAttr("disabled");
         }
     }
 
     // Customer Details Change
     $('.cadd').change(function () {
         GetCustomerAddressDetails();
-        //$('#cust_address_id').val('0') = ;
-        //$('#cust_address_ctr').val('0');
-
-
-        
     });
 
     /* */
