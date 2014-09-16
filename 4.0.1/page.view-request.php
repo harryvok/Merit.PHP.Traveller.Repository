@@ -183,6 +183,9 @@ if(isset($_GET['d']) && $_GET['d'] == "ca"){
 	$controller->Display("Comments", "RequestComments");
 	$controller->Display("Attachments", "RequestAttachments");
 }
+if(isset($_GET['d']) && $_GET['d'] == "documents"){
+    Display("RequestDocuments", "RequestDocuments",$model,$device,$actionData, $requestData);
+}
 
 function Display($action, $view, $model, $device,$actionData, $requestData, $params = NULL){
     $GLOBALS['action'] = $action;
@@ -227,6 +230,22 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                 $result_at = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_attach", $parameters_at)->req_remark_dets;
                 $GLOBALS['request_id'] = $id;
                 $GLOBALS['result'] = $result_at;
+            }else if($action == "RequestDocuments"){
+                $parameters = new stdClass();
+                $parameters->user_id = $_SESSION['user_id'];
+                $parameters->password = $_SESSION['password'];
+                $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+                $rere = $result->ws_status;
+                if($result->ws_status != "0")
+                    $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+                else{
+                    $parameters = new stdClass();
+                    $parameters->user_id = $_SESSION['user_id'];
+                    $parameters->password = $_SESSION['password'];
+                    $parameters->request_id = $_GET['id'];
+                    $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                    $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+                }
             }else if($action == "ActionReassign"){
                 $GLOBALS['action_officer_code'] = $actionData->action_officer_code;
                 $result_o = $model->getSpecificOfficer();
@@ -301,6 +320,22 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                 $result_at = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_attach", $parameters_at)->req_remark_dets;
                 $GLOBALS['request_id'] = $id;
                 $GLOBALS['result'] = $result_at;
+            }else if($action == "RequestDocuments"){
+                $parameters = new stdClass();
+                $parameters->user_id = $_SESSION['user_id'];
+                $parameters->password = $_SESSION['password'];
+                $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+                $rere = $result->ws_status;
+                if($result->ws_status != "0")
+                    $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+                else{
+                    $parameters = new stdClass();
+                    $parameters->user_id = $_SESSION['user_id'];
+                    $parameters->password = $_SESSION['password'];
+                    $parameters->request_id = $_GET['id'];
+                    $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                    $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+                }
             }else if($action == "ActionReassign"){
                 $GLOBALS['action_officer_code'] = $actionData->action_officer_code;
                 $result_o = $model->getSpecificOfficer();

@@ -149,6 +149,8 @@ $realNameArray = array(
      "reopenAction" => "Reopen Action",
      "deleteAction" => "Delete Action",
      "advanced" => "Advanced Search",
-     "audit" => "Audit"
+     "audit" => "Audit",
+     "documents" => "Documents"
+     
 );
 ?>

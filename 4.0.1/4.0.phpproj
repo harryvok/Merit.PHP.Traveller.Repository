@@ -290,9 +290,11 @@
     <Compile Include="framework\view\pc\view.pc.ActionAttachments.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
     <Compile Include="framework\view\pc\view.pc.NotifyOfficerList.php" />
+    <Compile Include="framework\view\pc\view.pc.RequestDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.RequestHistory.php" />
     <Compile Include="framework\view\pc\view.pc.RequestProcess.php" />
     <Compile Include="framework\view\pc\view.pc.RequestRecategorise.php" />

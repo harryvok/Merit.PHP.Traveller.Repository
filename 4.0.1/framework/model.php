@@ -733,6 +733,24 @@ class Model {
         $result_ovr = $this->getOverrideInd();
         return array("actions" => $result_a, "officers" => $result_of, "actionreq" => $result_ar, "override_ind" => $result_ovr);
     }
+    public function getRequestDocuments($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+        $rere = $result->ws_status;
+        if($result->ws_status != "0")
+            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+        else{
+            $parameters = new stdClass();
+            $parameters->user_id = $_SESSION['user_id'];
+            $parameters->password = $_SESSION['password'];
+            $parameters->request_id = $_GET['id'];
+            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+        }
+        
+    }
     
     public function getAudit($params = NULL){
         $parameters = new stdClass();
