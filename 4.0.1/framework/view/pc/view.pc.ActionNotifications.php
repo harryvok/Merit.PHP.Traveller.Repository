@@ -10,7 +10,7 @@
             $(document).ready(function () {
                 $("#notificationsTable").dataTable({
                     bPaginate: false,
-                    "sDom": 'W<"clear">lfrtip',
+                    "sDom": 'W<"clear">lfrtp',
                     oColumnFilterWidgets: {
                         aiExclude: [0, 1, 2, 3, 5],
                         sSeparator: ',  ',
