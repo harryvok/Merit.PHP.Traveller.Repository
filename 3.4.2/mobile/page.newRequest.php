@@ -341,7 +341,7 @@ if(isset($_SESSION['user_id'])){
 			</div>
              <?php
             $dev = new Mobile_Detect();
-            if(!$dev->isWindowsMobileOS()){
+            //if(!$dev->isWindowsMobileOS()){
                 ?>
           <div data-role="collapsible" class="col" data-content-theme="c">
          	<h4>Attachment</h4>
@@ -352,7 +352,7 @@ if(isset($_SESSION['user_id'])){
           </p>
           </div>
           <?php
-            }
+            //}
                 ?>
           <input type="hidden" name="action" value="CreateRequest" />
           <div id="adhocOfficer">

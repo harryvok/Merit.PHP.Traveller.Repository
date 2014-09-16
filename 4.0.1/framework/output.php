@@ -150,6 +150,8 @@ $realNameArray = array(
      "deleteAction" => "Delete Action",
      "deleteRequest" => "Delete Request",
      "advanced" => "Advanced Search",
-     "audit" => "Audit"
+     "audit" => "Audit",
+     "documents" => "Documents"
+     
 );
 ?>
