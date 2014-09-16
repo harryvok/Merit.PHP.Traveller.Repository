@@ -40,7 +40,6 @@ function GetAddressDetails() {
                 streetSuburb: function () { return $("#lsuburb").val() }
             },
             success: function (data) {
-                alert("prop: " +data.property_no);
                 alert("address id:" + data.address_id);
                 $("#property_no").val(data.property_no);
                 $("#address").val(data.address_id);
