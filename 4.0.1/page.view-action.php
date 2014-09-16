@@ -279,7 +279,21 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                 $GLOBALS['result'] = array("notifications" => $result, "notify_officers" => $model->getNotifyOfficers(array("request_id" => $_SESSION['request_id'], "action_id" => $_GET['id'])));
             }
             else if($action == "ActionDocuments"){
-                
+                $parameters = new stdClass();
+                $parameters->user_id = $_SESSION['user_id'];
+                $parameters->password = $_SESSION['password'];
+                $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+                $rere = $result->ws_status;
+                if($result->ws_status != "0")
+                    $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+                else{
+                    $parameters = new stdClass();
+                    $parameters->user_id = $_SESSION['user_id'];
+                    $parameters->password = $_SESSION['password'];
+                    $parameters->request_id =$_SESSION['request_id'];
+                    $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                    $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+                }
             }
             else
                 $GLOBALS['result'] = $model->{"get".$action}($params);
@@ -392,7 +406,7 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                 $result = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_notifications", $parameters)->notification_dets;
                 $GLOBALS['result'] = array("notifications" => $result, "notify_officers" => $model->getNotifyOfficers(array("request_id" => $_SESSION['request_id'], "action_id" => $_GET['id'])));
             }
-            else if($action == "ActionDocuments"){
+             else if($action == "ActionDocuments"){
                 $parameters = new stdClass();
                 $parameters->user_id = $_SESSION['user_id'];
                 $parameters->password = $_SESSION['password'];
@@ -404,10 +418,10 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                     $parameters = new stdClass();
                     $parameters->user_id = $_SESSION['user_id'];
                     $parameters->password = $_SESSION['password'];
-                    $parameters->request_id = $_SESSION['request_id'];
+                    $parameters->request_id =$_SESSION['request_id'];
                     $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                    $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
                 }
-                
             }
             else
                 $GLOBALS['result'] = $model->{"get".$action}($params);
