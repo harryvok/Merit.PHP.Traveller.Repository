@@ -36,12 +36,7 @@ $(document).ready(function () {
 
     // Location Street Name Typealong
 
-    $("#lstreet").autocomplete($.ui.autocomplete.filter = function (array, term) {
-        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-        return $.grep(array, function (value) {
-            return matcher.test(value.label || value.value || value);
-        });
-    },{
+    $("#lstreet").autocomplete({
         source: function (request, response) {
             $.ajax({
                 url: "inc/ajax/ajax.getStreets.php",
@@ -74,7 +69,6 @@ $(document).ready(function () {
             $("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
             $("#ltype").click();
         }
-
     });
 
     // Service Input
@@ -1187,6 +1181,7 @@ function changeLocationType() {
         $('#i_cdesc').val($('#ldesc').val());
         $("#i_cpostcode").val($("#lpostcode").val());
         $("#cust_address_id").val($("#addressId").val());
+        $("#i_cpropertynumber").val($("#property_no").val());
 
         if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
         if ($("#i_csuburb").val().length > 0) {
@@ -1261,7 +1256,6 @@ function changeLocationType() {
 
 function clearCustomerAddress() {
     $('#same').val("i");
-
     $('#i_cno').val('');
     $('#i_cfno').val('');
     $('#i_cstreet').val('');
@@ -1269,8 +1263,7 @@ function clearCustomerAddress() {
     $('#i_csuburb').val('');
     $('#i_cdesc').val('');
     $("#i_cpostcode").val("");
-    $("#i_cpropertynumber").val("");
-    
+    $("#i_cpropertynumber").val("");    
     $('#o_cno').val("");
     $('#o_cfno').val("");
     $('#o_cstreet').val("");
@@ -1279,8 +1272,7 @@ function clearCustomerAddress() {
     $('#o_cdesc').val("");
     $("#o_cpostcode").val("");
     $("#cust_address_id").val("");
-    $("#CustAddSummary").prop("disabled", true);
-  
+    $("#CustAddSummary").prop("disabled", true);  
     $('#inside_ca').show();
     $('#outside_ca').hide();
 }
@@ -1300,7 +1292,7 @@ function clearLocationAddress() {
     $('#ldesc').val('');
     $("#lpostcode").val("");
     $("#property_no").val("");
-    $("#").attr("disabled", "disabled");
+    //$("#").attr("disabled", "disabled");
     $("#responsible").val("");
     $("#facilitydescription").val("");
 }
