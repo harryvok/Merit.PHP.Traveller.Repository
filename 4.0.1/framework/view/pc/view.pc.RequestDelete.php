@@ -28,7 +28,7 @@
             <textarea name="comment_text" class="required"></textarea>
             <br />
             <br />
-            <strong>Email notify:</strong>   <input type="checkbox" id="actionOfficer" name="actionOfficer" /> Current Action Officer 
+            <strong>Email notify:</strong>   <input type="checkbox" id="actionOfficer" name="actionOfficer" /> Action Officers 
             <input type="checkbox" id="responsibleOfficer" name="responsibleOfficer" />Responsible Officer<br /><br />
             <input type="submit" value="Delete" id="submit" />
             <input type="hidden" name="requestID" value="<?php echo $GLOBALS['request_id']; ?>" />
