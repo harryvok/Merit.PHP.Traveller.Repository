@@ -758,7 +758,7 @@ $(document).ready(function () {
             // need to get property number
             if ($("#historyaddrtype").val() == "L" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
             showOnMap();
-            //GetAddressDetails();
+            GetAddressDetails();
             $("#lsuburb").autocomplete("close");
             $("#lpostcode").val(postcode);
             }
