@@ -200,7 +200,7 @@
                     </div>
                     <div class="float-left">
                         <label for="from">Message:</label>
-                        <textarea name="message"></textarea>
+                        <textarea id="message" name="message"></textarea>
                     </div>
                     <div class="float-left">
                         <div class="column r25">
@@ -230,7 +230,7 @@
             <p>&nbsp;</p>
             <span <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == ""){ ?> style="color: red; font-weight: bold; display: none;" <?php } else { ?> style="color: red; font-weight: bold;" <?php } ?> id="note">NOTE: Email will be sent via Merit Engine for the selected From email address.</span>
             <div class="float-right">
-                <input id="sendbutton" type="submit" value="Send" />
+                <input id="sendbutton" type="submit" value="Send"/>
                 <input type="reset" value="Reset" />
             </div>
             <input type="hidden" name="request_id" value="<?php echo $_SESSION['request_id']; ?>" />

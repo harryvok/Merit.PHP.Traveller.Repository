@@ -41,10 +41,11 @@ function GetAddressDetails() {
             },
             success: function (data) {
                 alert("prop: " +data.property_no);
+                alert("address id:" + data.address_id);
                 $("#property_no").val(data.property_no);
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
-                if (data.address_id > 0) {
+                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0 ) {
                     $("#AddrSummary").removeAttr("disabled");
                 }
             }
