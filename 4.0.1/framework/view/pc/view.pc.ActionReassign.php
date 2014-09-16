@@ -35,11 +35,12 @@
               <p>&nbsp</p><span class="summaryColumnTitle">Assign to new Officer:</span>
               
               <form id="view-job-form" method="post"  enctype="multipart/form-data"  action="process.php">
-                  <input  data-officer="true" id="new_officer_text" class="required" placeholder="Search..." />
+                  <input  data-officer="true" id="new_officer_text" class="required" style="width:80%;" placeholder="Search..." />
                   <input type="hidden" id="new_officer_textCode" name="new_officer"  class="required" />
+                  <label for="new_officer_textCode" class="error" style="font-size:0;height:0;"></label>
                   
                       <p>&nbsp</p><span class="summaryColumnTitle">Reason:</span>
-                      <textarea name="reason"  style="width:100%; height:40px; padding:5px;"></textarea>
+                      <textarea name="reason"  style="width:80%; height:40px; padding:5px;"></textarea>
 
                   <div class="column r50">
                       <p>&nbsp</p><span class="summaryColumnTitle">Reassign What?</span>
