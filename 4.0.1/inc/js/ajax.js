@@ -26,7 +26,7 @@ function getIntray(intray, i) {
 }
 
 function GetAddressDetails() {
-    alert("coming ajax");
+    //alert("coming ajax");
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
