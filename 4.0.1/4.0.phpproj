@@ -103,6 +103,7 @@
     <Compile Include="framework\view\mobile\view.mobile.ActionDelete.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionReopen.php" />
     <Compile Include="framework\view\mobile\view.mobile.Audit.php" />
+    <Compile Include="framework\view\mobile\view.mobile.RequestDelete.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestProcess.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestReopen.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestRecategorise.php" />
@@ -294,6 +295,7 @@
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
     <Compile Include="framework\view\pc\view.pc.NotifyOfficerList.php" />
+    <Compile Include="framework\view\pc\view.pc.RequestDelete.php" />
     <Compile Include="framework\view\pc\view.pc.RequestDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.RequestHistory.php" />
     <Compile Include="framework\view\pc\view.pc.RequestProcess.php" />
