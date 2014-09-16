@@ -757,6 +757,20 @@ border-top-right-radius: 4px;
         padding-right:3px;
     }
 
+    div.summaryContainer input[type=radio] {
+
+            background: none;
+            border: none;
+
+            padding: 0;
+
+            display:inline-block;
+    width:15px;
+    height:15px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle
+        }
+
 div#popup div.summaryContainer h1 + div {
     background: #eee !important;
     overflow:auto;

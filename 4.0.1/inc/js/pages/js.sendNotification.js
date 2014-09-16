@@ -23,7 +23,7 @@ $(document).ready(function () {
                             $("#sendbutton").prop("disabled", true);
                             $("#sendbutton").addClass("disabled");
                         }
-                    }
+                    
     // ----------------------------------------------------------------------
 
 
