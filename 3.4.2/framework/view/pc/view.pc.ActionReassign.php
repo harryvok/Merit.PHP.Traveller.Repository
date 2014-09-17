@@ -61,8 +61,7 @@ $("#clearOfficer").hide();
                
                if($_SESSION['responsible_code'] == $GLOBALS['result']['action']->action_officer_code){
               ?>
-              <b>This action is assigned to you.</b>
-              <br /><br />
+              <b>This action is assigned to you.</b><br /><br />
               <?php
                }
               ?>
@@ -93,39 +92,39 @@ $("#clearOfficer").hide();
               <input id="submit" class="button left" type='submit' value='Reassign' />
               <?php
            }
-           else{
-               if($_SESSION['responsible_code'] == $GLOBALS['result']['action']->action_officer_code){
-              ?>
-              <b>This action is assigned to you.</b>
-              <br /><br />
-              <?php
-               }
-              ?>
-              <b>Assign to Officer:</b> 
+                           else {
+                               if($_SESSION['responsible_code'] == $GLOBALS['result']['action']->action_officer_code){
+                              ?>
+                              <b>This action is assigned to you.</b>
+                              <br /><br />
+                              <?php
+                               }
+                              ?>
+                              <b>Assign to Officer:</b> 
               
-               <form id="view-job-form" method="post"  enctype="multipart/form-data"  action="process.php">
-              <input id="new_officer_text" id="new_officer_text" class="required" disabled="disabled" />
-              <input type="hidden" id="new_officer_code" name="new_officer"disabled="disabled"  class="required" />
-              <p>&nbsp;</p>
-              <b>Reason:</b><br />
-              <textarea name="reason"  style="width:100%; height:40px; padding:5px;" disabled="disabled"></textarea>
-              <p>&nbsp;</p>
-              <div class="column half">
-              <b>Reassign What?</b><br />
-              <input disabled="disabled" name="reassign_type" type="radio" value="O" checked /> This action only<br />
-              <input disabled="disabled" name="reassign_type" type="radio" value="P" /> All actions for this officer (this, open, pending)<br />
-              <input disabled="disabled" name="reassign_type" type="radio" value="A" /> All actions for this request (this, open, pending)
-              </div>
-              <div class="column half">
-              <b>Reassign To</b><br />
-              <input disabled="disabled" name="reassign_to_type" type="radio" value="O" checked /> Officer specified above<br />
-              <input disabled="disabled" name="reassign_to_type" type="radio" value="P" /> Previous action officer<br />
-              <input disabled="disabled" name="reassign_to_type" type="radio" value="I" /> Request input officer
-              </div>
-              <div class="float-left" style="width:100%">
-              <p>&nbsp;</p>
+                               <form id="view-job-form" method="post"  enctype="multipart/form-data"  action="process.php">
+                              <input id="new_officer_text" id="new_officer_text" class="required" disabled="disabled" />
+                              <input type="hidden" id="new_officer_code" name="new_officer"disabled="disabled"  class="required" />
+                              <p>&nbsp;</p>
+                              <b>Reason:</b><br />
+                              <textarea name="reason"  style="width:100%; height:40px; padding:5px;" disabled="disabled"></textarea>
+                              <p>&nbsp;</p>
+                              <div class="column half">
+                              <b>Reassign What?</b><br />
+                              <input disabled="disabled" name="reassign_type" type="radio" value="O" checked /> This action only<br />
+                              <input disabled="disabled" name="reassign_type" type="radio" value="P" /> All actions for this officer (this, open, pending)<br />
+                              <input disabled="disabled" name="reassign_type" type="radio" value="A" /> All actions for this request (this, open, pending)
+                              </div>
+                              <div class="column half">
+                              <b>Reassign To</b><br />
+                              <input disabled="disabled" name="reassign_to_type" type="radio" value="O" checked /> Officer specified above<br />
+                              <input disabled="disabled" name="reassign_to_type" type="radio" value="P" /> Previous action officer<br />
+                              <input disabled="disabled" name="reassign_to_type" type="radio" value="I" /> Request input officer
+                              </div>
+                              <div class="float-left" style="width:100%">
+                              <p>&nbsp;</p>
 
-              <input class="grey left" type='submit' value='Submit' disabled="disabled" value="Reassign" />
+                              <input class="grey left" type='submit' value='Submit' disabled="disabled" value="Reassign" />
               <?php
            }
               ?>
