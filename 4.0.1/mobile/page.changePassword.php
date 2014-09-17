@@ -17,14 +17,14 @@
 				$("#changePassword").validate();
 			});*/
 		 </script>
-          <label for="password">Current Password</label>
+          <label for="password">Current Password:</label>
           <input type="password" name='current' class="required" maxlength='15'>
-          <label for="password">New Password</label>
+          <label for="password">New Password:</label>
           <input type="password" name='new' class="required" maxlength='15'>
-          <label for="password">Repeat Password</label>
+          <label for="password">Repeat Password:</label>
           <input type="password" name='repeat' class="required" maxlength='15'>
           <input type="hidden" name="action" value="ChangePassword" />
-          <input type="submit" value="submit"/>
+          <input type="submit" value="Submit"/>
           </div>
       </div>
   </form>
