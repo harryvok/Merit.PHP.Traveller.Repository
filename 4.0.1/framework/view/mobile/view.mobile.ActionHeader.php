@@ -10,7 +10,8 @@
         echo '<img width="10" height="9" src="images/dotRed.png" />'; 
     } 
     ?> 
-    <b><?php echo $GLOBALS['result']['action']->reason_assigned_name; ?></b>
+    <b>Action: <?php echo $GLOBALS['result']['action']->action_id; ?></b>
+    <b> - <?php echo $GLOBALS['result']['action']->reason_assigned_name; ?></b>
 </p>
 
 <?php

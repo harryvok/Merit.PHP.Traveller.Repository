@@ -57,8 +57,8 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
 $action_id = $GLOBALS['result']['action']->action_id;
 ?>
 
-<ul class="no-ellipses" data-role="listview" data-inset="true" data-divider-theme="d">
-    <li data-role="list-divider">Request Details</li>
+<ul class="no-ellipses" data-role="listview" data-inset="true" data-divider-theme="b">
+    <li data-role="list-divider">Officer Details</li>
     <li>
         <p><strong>Category:</strong> <?php echo $GLOBALS['result']['request']->service_name . " - " .$GLOBALS['result']['request']->request_name; if(isset($GLOBALS['result']['request']->function_name) && $GLOBALS['result']['request']->function_name != '') echo " - " . $GLOBALS['result']['request']->function_name; ?></p>
     </li>

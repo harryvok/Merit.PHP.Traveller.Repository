@@ -44,7 +44,8 @@
 
                   <div class="column r50">
                       <p>&nbsp</p><span class="summaryColumnTitle">Reassign What?</span>
-                      <input name="reassign_type" type="radio" value="O" checked /> This action only<br />
+                      <input name="reassign_type" type="radio" value="O" checked /> This action only
+                      <input name="reassign_to_type" type="hidden" value="O"/><br />
                       <input name="reassign_type" type="radio" value="A" /> All actions for this request (this, open, pending)<br />
                       <input name="reassign_type" type="radio" value="P" /> All actions for this officer (this, open, pending)<br /><br />
                       <input id="submit" class="button left" type='submit' value='Reassign' />
