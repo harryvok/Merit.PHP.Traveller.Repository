@@ -10,23 +10,6 @@ $(document).ready(function () {
                                 });
 
 
-    // Initialize -----------------------------------------------------------
-                    $("#sendbutton").prop("disabled", true);
-                    $("#sendbutton").addClass("disabled");
-                    var email = 0;
-                    var sms = 0;
-
-                        if (sms > 0 || email > 0) {
-                            $("#sendbutton").prop("disabled", false);
-                            $("#sendbutton").removeClass("disabled");
-                        } else {
-                            $("#sendbutton").prop("disabled", true);
-                            $("#sendbutton").addClass("disabled");
-                        }
-                    
-    // ----------------------------------------------------------------------
-
-
     // From My Email --------------------------------------------------------
                                     $("#fromEmail").click(function () {
                                         $("#note").toggle();

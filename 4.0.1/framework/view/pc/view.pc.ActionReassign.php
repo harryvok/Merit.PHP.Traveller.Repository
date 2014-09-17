@@ -39,7 +39,7 @@
                   <input type="hidden" id="new_officer_textCode" name="new_officer"  class="required" />
                   <label for="new_officer_textCode" class="error" style="font-size:0;height:0;"></label>
                   
-                      <p>&nbsp</p><span class="summaryColumnTitle">Reason:</span>
+                      <p>&nbsp</p><span class="summaryColumnTitle">Reason: <strong style="color:red; font-size:larger;">* </strong> </span>
                       <textarea name="reason"class="required"  style="width:80%; height:40px; padding:5px;"></textarea>
 
                   <div class="column r50">
