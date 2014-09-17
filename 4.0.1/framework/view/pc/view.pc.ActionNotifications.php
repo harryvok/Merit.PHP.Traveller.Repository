@@ -38,6 +38,7 @@
             </thead>
             <tbody>
                 <?php
+                $email = 0;
                 $number=0;
                 if(isset($GLOBALS['result']['notifications']->notification_details) && count($GLOBALS['result']['notifications']->notification_details) > 1){
                     $i=-1;
@@ -200,7 +201,7 @@
                     </div>
                     <div class="float-left">
                         <label for="from">Message:</label>
-                        <textarea id="message" name="message"></textarea>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
                     <div class="float-left">
                         <div class="column r25">
@@ -238,5 +239,12 @@
             <input type="hidden" name="page" value="action" />
             <input type="hidden" name="action" value="SendNotification" />
         </form>
+        <script>
+            var email = "<?php echo $email ?>";
+            $("#notificationForm").validate();
+            if (email < 1) {
+                $("#message").rules("remove", "required");
+            }
+    </script>
     </div>
 </div>

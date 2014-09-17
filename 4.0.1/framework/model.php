@@ -344,6 +344,9 @@ class Model {
         
         return $result;
     }
+    public function getDocumentSearch(){
+        
+    }
 
     public function getIfWorkflow(){
         if(isset($_GET['service_code']) && strlen($_GET['service_code']) > 0){ $service_code = $_GET['service_code']; } else { $service_code = ''; }
