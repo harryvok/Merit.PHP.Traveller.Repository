@@ -3560,7 +3560,7 @@ class Model {
 
         try {
             $result = $this->WebService(MERIT_REQUEST_FILE, "ws_delete_request",$parameters);
-            $_SESSION['done'] = 1;
+            //$_SESSION['done'] = 1;
             //$_SESSION['success'] = 1;
             $_SESSION['success_delete_action'] = 1;
             $_SESSION['redirect'] = "index.php?page=requests";
@@ -3587,7 +3587,7 @@ class Model {
 
         try {
             $result = $this->WebService(MERIT_ACTION_FILE, "ws_delete_action",$parameters);
-            $_SESSION['done'] = 1;
+            //$_SESSION['done'] = 1;
             //$_SESSION['success'] = 1;
             $_SESSION['success_delete_action'] = 1;
             $_SESSION['redirect'] = "index.php?page=view-request&id=".$_POST['requestID']."&d=actions";
