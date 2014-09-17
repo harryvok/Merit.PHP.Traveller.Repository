@@ -3213,7 +3213,7 @@ class Model {
                 $_SESSION['success_reassigned'] = 1;
                 $_SESSION['success'] = 1;
             }
-            $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=reassign";
+            $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=summary";
         }
     }
 

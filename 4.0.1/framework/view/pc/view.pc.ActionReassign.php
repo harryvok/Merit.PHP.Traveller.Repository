@@ -40,7 +40,7 @@
                   <label for="new_officer_textCode" class="error" style="font-size:0;height:0;"></label>
                   
                       <p>&nbsp</p><span class="summaryColumnTitle">Reason:</span>
-                      <textarea name="reason"  style="width:80%; height:40px; padding:5px;"></textarea>
+                      <textarea name="reason"class="required"  style="width:80%; height:40px; padding:5px;"></textarea>
 
                   <div class="column r50">
                       <p>&nbsp</p><span class="summaryColumnTitle">Reassign What?</span>
