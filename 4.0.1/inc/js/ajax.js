@@ -479,3 +479,20 @@ function CheckMandatoryFields(ser, req, func) {
         }
     });
 }
+
+function searchDocument() {
+    var search_param = $("#searchterm").val();
+    var search_type = $('input:radio[name=Search_type]:checked').val();
+    
+    $.ajax({
+        url: "inc/ajax/ajax.getDocumentSearch.php",
+        type: 'post',
+        data: {
+            search_param: search_param,
+            search_type: search_type,
+        },
+        success: function (data) {
+            $("#popup").html(data);
+        }
+    });
+}

@@ -13,11 +13,16 @@ if($GLOBALS['result']['errorConnecting']== false){
             $(".Document" + id + "MetaData").show();
         });
 
+        
+
+        
     });
 </script>
 <div class="summaryContainer">
     <h1>Documents</h1>
     <div>
+        <input type="button"  class="openPopup" id="Documents" value="Link Document"/>
+        
         <table id="requestDocumentTable" class=" sortable" title="" cellspacing="0">
             <thead>
                 <tr>
@@ -51,7 +56,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                             <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
                                  <td><?php echo $document->document_id; ?></td>
                                  <td><?php echo $document->document_desc; ?></td>
-                                 <td><a href="<?php echo $document->document_url; ?>"><?php echo $document->document_url; ?></a></td>
+                                 <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a></td>
                             </tr>
                              <?php
                             for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
@@ -66,7 +71,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                 <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
                      <td><?php echo $document->document_id; ?></td>
                      <td><?php echo $document->document_desc; ?></td>
-                     <td><a href="<?php echo $document->document_url; ?>"><?php echo $document->document_url; ?></a></td>
+                     <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a></td>
                 </tr>
                 <?php
                         for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
@@ -114,6 +119,42 @@ if($GLOBALS['result']['errorConnecting']== false){
         
     </div>
     
+</div>
+<div class="popupDetail" id="DocumentsPopup">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //hide search button if no value
+                $('#searchDocument').attr('disabled', 'disabled');
+                $('#searchterm').keyup(function () {
+                    if ($(this).val() != '') {
+                        $('#searchDocument').removeAttr('disabled');
+                    } else {
+                        $('#searchDocument').attr('disabled', 'disabled');
+                    }
+                });
+                $("#searchDocument").click(function () {
+                    searchDocument();
+                });
+            });
+        </script>
+      <h1>Link Document <span class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
+      <a title="Link Document"></a>
+
+      <form method="post" enctype="multipart/form-data" id="linkdocument" action="process.php">
+        <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Correspondent</b></label>
+        <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Document Name</b></label>
+        <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Document ID</b></label>
+        <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b>Company</b></label>
+        <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b>Keyword</b></label>
+        <input type="button" id="searchDocument" value="Search"/>
+        <div class="column r55"><input type="text" id="searchterm" placeholder="Search...."/></div>
+        <div class="summaryContainer">
+            <h1>Documents</h1>
+            <div id="searchResults">
+
+            </div>
+        </div>
+      </form>
 </div>
 <?php 
 }else{

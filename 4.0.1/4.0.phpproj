@@ -433,6 +433,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="inc\ajax\ajax.adhocOfficerList.php" />
+    <Compile Include="inc\ajax\ajax.getDocumentSearch.php" />
     <Compile Include="inc\ajax\ajax.getOfficer.php" />
     <Compile Include="inc\ajax\ajax.getAddressBasic.php" />
     <Compile Include="inc\ajax\ajax.getRequestHistoryCount.php" />
