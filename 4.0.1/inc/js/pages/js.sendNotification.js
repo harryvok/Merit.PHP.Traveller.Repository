@@ -30,12 +30,9 @@ $(document).ready(function () {
     // -----------------------------------------------------------------------
     // SUBMIT BUTTON ---------------------------------------------------------
                 $("form").submit(function () {
-                    $("#sendbutton").prop("disabled", true);
-                    $("#sendbutton").addClass("disabled");
                     return true;
                 });
     // -----------------------------------------------------------------------
-
     // DELETE Email/sms ------------------------------------------------------
             $(document).on("click", "[data-delete]", function (event) {
                 $("#" + $(this).data("delete")).remove();
