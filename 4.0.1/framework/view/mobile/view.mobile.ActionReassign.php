@@ -35,13 +35,13 @@
 
         <ul class="no-ellipses" data-role="listview" data-inset="true">
             <li data-role="list-divider">Reassign What?</li>
-            <li><p><input id="tao" name="reassign_type" type="radio" value="O" checked /></p></li>         
-            <li><p><input id="tao2" name="reassign_type" type="radio" value="A" /></p></li>
-            <li><p><input id="tao3" name="reassign_type" type="radio" value="P" /></p></li>
+            <li><p><input id="tao" name="reassign_type" type="radio" value="O" required/></p></li>         
+            <li><p><input id="tao1" name="reassign_type" type="radio" value="A" /></p></li>
+            <li><p><input id="tao2" name="reassign_type" type="radio" value="P" /></p></li>
         </ul>
           <label for="tao">This action only</label>
-          <label for="tao2">All actions for this request</label>
-          <label for="tao3">All actions for this officer</label>         
+          <label for="tao1">All actions for this request</label>
+          <label for="tao2">All actions for this officer</label>         
             
      
       <input type="hidden" name="action_id" id="action_id" value="<?php echo $GLOBALS['result']['action']->action_id; ?>" />
