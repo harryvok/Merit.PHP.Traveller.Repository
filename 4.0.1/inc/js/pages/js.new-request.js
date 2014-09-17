@@ -668,7 +668,7 @@ $(document).ready(function () {
         }
     });
 
-        var streetResponse = function (event, ui) {
+    function streetResponse (event, ui) {
         var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) {
             label = ui.content[0].label;
@@ -1304,7 +1304,7 @@ function clearLocationAddress() {
     $("#facilityInput").val("");
     $("#addressId").val("");
     $('#lfno').val('');
-    $('#lno').val('');
+    $('#lno').val('');    
     $('#lstreet').val('');
     $('#ltype').val('');
     $('#lsuburb').val('');
