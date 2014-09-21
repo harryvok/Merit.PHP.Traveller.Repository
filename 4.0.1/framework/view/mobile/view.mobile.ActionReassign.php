@@ -35,7 +35,7 @@
 
         <ul class="no-ellipses" data-role="listview" data-inset="true">
             <li data-role="list-divider">Reassign What?</li>
-            <li><p><input id="tao" name="reassign_type" type="radio" value="O" required/></p></li>         
+            <li><p><input id="tao" name="reassign_type" type="radio" value="O" checked/></p></li>         
             <li><p><input id="tao1" name="reassign_type" type="radio" value="A" /></p></li>
             <li><p><input id="tao2" name="reassign_type" type="radio" value="P" /></p></li>
         </ul>
