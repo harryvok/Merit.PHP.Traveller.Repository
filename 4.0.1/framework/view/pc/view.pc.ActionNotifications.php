@@ -182,7 +182,7 @@
                 </div>
             </div>
             <p>&nbsp;</p>
-            <div class="summaryContainer">
+            <div class="summaryContainer" id="emailContainer">
                 <h1>Email Details</h1>
                 <div>
                     <div class="float-left">
@@ -219,7 +219,7 @@
                 </div>
             </div>
             <p>&nbsp;</p>
-            <div class="summaryContainer">
+            <div class="summaryContainer" id="smsContainer">
                 <h1>SMS Details</h1>
                 <div>
                     <div class="float-left">
@@ -238,6 +238,8 @@
             <input type="hidden" name="action_id" value="<?php echo $_GET['id']; ?>" />
             <input type="hidden" name="page" value="action" />
             <input type="hidden" name="action" value="SendNotification" />
+            <input type="hidden" name="emailCount" id="emailCount" value="0"/>
+            <input type="hidden" name="smsCount" id="smsCount" value="0"/>
         </form>
         <script>
             var email = "<?php echo $email ?>";
