@@ -35,18 +35,7 @@ $(document).ready(function () {
     }
 
     // Location Street Name Typealong
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-    $("#lstreet").autocomplete($.ui.autocomplete.filter = function (array, term) {
-        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-        return $.grep(array, function (value) {
-            return matcher.test(value.label || value.value || value);
-        });
-    }, {
-=======
     $("#lstreet").autocomplete({
->>>>>>> parent of ef1aa64... clear location get street names faster
         source: function (request, response) {
             $.ajax({
                 url: "inc/ajax/ajax.getStreets.php",
@@ -68,16 +57,6 @@ $(document).ready(function () {
                         response(data);
                     }
                 }
-<<<<<<< HEAD
-=======
-    $("#lstreet").autocomplete(
-        $.ui.autocomplete.filter = function (array, term) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-            return $.grep(array, function (value) {
-                return matcher.test(value.label || value.value || value);
->>>>>>> origin/poonam-edits
-=======
->>>>>>> parent of ef1aa64... clear location get street names faster
             });
         },
         delay: 0,
