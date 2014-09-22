@@ -44,7 +44,7 @@ $(document).ready(function () {
                 $("#smsAdd").show();
                 $("#smsOfficerAdd").show();
 
-
+                document.getElementById("sendbutton").disabled = true;
         });
     });
     // -----------------------------------------------------------------------

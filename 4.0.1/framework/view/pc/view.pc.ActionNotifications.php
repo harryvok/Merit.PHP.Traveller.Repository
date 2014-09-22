@@ -93,7 +93,7 @@
         <script type="text/javascript" src="inc/js/pages/js.sendNotification.js"></script>
         <form id="notificationForm" method="post" action="process.php" enctype='multipart/form-data'>
             <div class="summaryContainer">
-                <h1>Send</h1>
+                <h1>Select Recipients</h1>
                 <div>
                     <div class="float-left">
                         <div class="column r50">
@@ -224,7 +224,7 @@
                 <div>
                     <div class="float-left">
                         <label for="from">Message:</label>
-                        <textarea name="SMSmessage"></textarea>
+                        <textarea name="SMSmessage" required></textarea>
                     </div>
                 </div>
             </div>
@@ -243,9 +243,13 @@
         </form>
         <script>
             var email = "<?php echo $email ?>";
+            var sms = "<?php echo $sms ?>";
             $("#notificationForm").validate();
             if (email < 1) {
                 $("#message").rules("remove", "required");
+            }
+            else if (sms < 1) {
+                $("#SMSmessage").rules("remove", "required");
             }
     </script>
     </div>
