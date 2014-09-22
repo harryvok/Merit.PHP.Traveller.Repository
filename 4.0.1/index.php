@@ -3,6 +3,7 @@ set_time_limit(60*60);
 // index.php
 // The central part of the website.
 // Other pages embed themselves in this page when a user requests it.
+//
 
 // Scripted by Jonathan Cleary.
 
