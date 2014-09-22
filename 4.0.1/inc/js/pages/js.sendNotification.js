@@ -4,6 +4,7 @@ $(document).ready(function () {
     var smsCount = $("#smsCount").val();
     $("#smsContainer").hide();
     $("#emailContainer").hide();
+    document.getElementById("sendbutton").disabled = true;
 
     /* Does something ------------------------------------------------------- */
     $("input[data-name]").click(function () {
