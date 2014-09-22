@@ -69,6 +69,10 @@ $(document).ready(function () {
         if (smsCount == 0) {
             $("#smsContainer").hide();
         }
+        
+        if (smsCount == 0 & emailCount == 0) {
+            document.getElementById("sendbutton").disabled = true;
+        }
  
     });
    
