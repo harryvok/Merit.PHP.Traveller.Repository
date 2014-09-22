@@ -38,41 +38,12 @@ $(document).ready(function () {
 
     // Location Street Name Typealong
 
-<<<<<<< HEAD
-    $("#lstreet").autocomplete($.ui.autocomplete.filter = function (array, term) {
-        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-        return $.grep(array, function (value) {
-            return matcher.test(value.label || value.value || value);
-        });
-    }, {
-        source: function (request, response) {
-            $.ajax({
-                url: "inc/ajax/ajax.getStreets.php",
-                dataType: "json",
-                data: {
-                    term: request.term,
-                    id: "lstreet"
-                },
-                success: function (data) {
-                    if (data.length == 1) {
-                        $("#lstreet").val(data[0]);
-
-                        $("#lstreet").attr("readonly", true);
-                        $("#ltype").textinput('enable').addClass("ui-disabled");
-                        $("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
-                        $("#ltype").click();
-                    }
-                    else {
-                        response(data);
-                    }
-                }
-=======
     $("#lstreet").autocomplete(
+
         $.ui.autocomplete.filter = function (array, term) {
             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
             return $.grep(array, function (value) {
                 return matcher.test(value.label || value.value || value);
->>>>>>> origin/poonam-edits
             });
         })
 
