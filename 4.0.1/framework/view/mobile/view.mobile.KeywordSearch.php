@@ -57,6 +57,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 			QueryUDFs($("#function").val(),$("#request").val(),$("#service").val()); 
 			<?php if (!isset($_POST['lite'])) { ?>
 		    ClearHelpNotes();
+		    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
 		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val());
 		    GetHelpNotes("", $("#request").val(), $("#service").val());
 		    GetHelpNotes("", "", $("#service").val());
@@ -158,6 +159,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 			QueryUDFs($("#function").val(),$("#request").val(),$("#service").val());
 			<?php  if (!isset($_POST['lite'])) { ?>
 		    ClearHelpNotes();
+		    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
 		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val());
 		    GetHelpNotes("", $("#request").val(), $("#service").val());
 		    GetHelpNotes("", "", $("#service").val());

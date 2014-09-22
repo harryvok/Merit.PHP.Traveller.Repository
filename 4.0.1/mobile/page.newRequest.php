@@ -85,7 +85,7 @@ if(isset($_SESSION['user_id'])){
                         if(isset($_SESSION['roleSecurity']->show_reference_no) && $_SESSION['roleSecurity']->show_reference_no == "Y"){
                             ?>
                         <label>Reference Number<span class="refer_no_label mandLabel" style="color: red; display: none;">*</span></label>
-                        <input name='refno' maxlength='15' data-mand="refer_no" value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
+                        <input name='refno' id="refno" maxlength='15' data-mand="refer_no" value='<?php if(isset($_SESSION['rem_refno'])){ echo $_SESSION['rem_refno']; } ?>'>
                         <?php } ?>
                         <?php
     if(isset($_SESSION['roleSecurity']->maint_priority) && $_SESSION['roleSecurity']->maint_priority == "Y"){
@@ -160,17 +160,17 @@ if(isset($_SESSION['user_id'])){
                         <label>Street Number</label>
                         <input name='lno' onChange="changeLocationType()" class="" id="lno"  maxlength='15' value='<?php if(isset($_SESSION['rem_loc_address_fnumber'])){ echo $_SESSION['rem_loc_address_fnumber']; } ?>'>
 
-                        <label>Street<span class="street_name_label mandLabel" style="color: red; display: none;">*</span></label>
+                        <label>Street<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
 
                         <input class="" placeholder="Search..." name='lstreet' onChange="changeLocationType()" id="lstreet" data-mand="location_address" maxlength='100' value='<?php if(isset($_SESSION['rem_lstreet'])){ echo $_SESSION['rem_lstreet']; } ?>'></label>
                       
                       
-                      <label>Type<span class="street_type_label mandLabel" style="color: red; display: none;">*</span></label>
+                      <label>Type<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
 
                         <input class="" placeholder="Search..." disabled="disabled" name='ltype' onChange="changeLocationType()" id="ltype" data-mand="location_address" maxlength='100' value='<?php if(isset($_SESSION['rem_ltype'])){ echo $_SESSION['rem_ltype']; } ?>'></label>
                       
                       
-                      <label>Suburb<span class="locality_label mandLabel" style="color: red; display: none;">*</span></label>
+                      <label>Suburb<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
 
                         <input class="" placeholder="Search..."disabled="disabled" name='lsuburb' onChange="changeLocationType()" id="lsuburb" data-mand="location_address" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'></label>
                       
