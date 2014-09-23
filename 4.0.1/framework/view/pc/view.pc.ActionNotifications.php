@@ -105,7 +105,7 @@
                                         <th>SMS</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="officers">
                                     <?php
                                     $number=0;
                                     if(isset($GLOBALS['result']['notify_officers']->officer_notify_details) && count($GLOBALS['result']['notify_officers']->officer_notify_details) > 1){
@@ -147,7 +147,7 @@
                                     <tr class="dark" title="">
                                         <td><?php if(isset($result->officer_name)) echo $result->officer_name; ?></td>
                                         <td>
-                                            <input type="checkbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox'"; ?> name="email_name_code[]" id="Checkbox1" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
+                                            <input type="checkbox" onchange="handleChange(this)" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox'"; ?> name="email_name_code[]" id="Checkbox1" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
                                             <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="Checkbox2" value="<?php echo $result->officer_type; ?>" />
                                             <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="Checkbox3" value="<?php echo $result->officer_name; ?>" />
                                             <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="Checkbox4" value="<?php echo $result->officer_email; ?>" />
