@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
+
     /* SRF */
 
     // Keyword Typealong
