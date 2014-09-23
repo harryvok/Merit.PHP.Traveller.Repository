@@ -51,16 +51,16 @@
                         else{
                             $class = "light";
                         }
-                        ?>
-                        <tr class="<?php echo $class; ?>">
-                            <td><?php if(isset($result_c_get->escalate_time) && $result_c_get->escalate_time != "1970-01-01T00:00:00" && strlen($result_c_get->escalate_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_c_get->escalate_time)); } else { echo ""; }  ?></td>
+                  ?>
+                  <tr class="<?php echo $class; ?>">
+                    <td><?php if(isset($result_c_get->escalate_time) && $result_c_get->escalate_time != "1970-01-01T00:00:00" && strlen($result_c_get->escalate_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_c_get->escalate_time)); } else { echo ""; }  ?></td>
                     <td><?php if(isset($result_c_get->reason_sent)) echo $result_c_get->reason_sent; ?></td>
                     <td><?php if(isset($result_c_get->sent_to)) echo $result_c_get->sent_to; ?></td>
                     <td><?php if(isset($result_c_get->sent_by)) echo $result_c_get->sent_by; ?></td>
                     <td class="filterTypeValue"><?php if(isset($result_c_get->officer_type)) echo $result_c_get->officer_type; ?></td>
                     <td><?php if(isset($result_c_get->comments)) echo base64_decode($result_c_get->comments); ?></td>
-                        </tr>
-                        <?php
+                 </tr>
+                 <?php
                               
                     }
                 }
@@ -74,8 +74,8 @@
                     <td><?php if(isset($result_c_get->sent_by)) echo $result_c_get->sent_by; ?></td>
                     <td class="filterTypeValue"><?php if(isset($result_c_get->officer_type)) echo $result_c_get->officer_type; ?></td>
                     <td><?php if(isset($result_c_get->comments)) echo base64_decode($result_c_get->comments); ?></td>
-                    </tr>
-                    <?php
+                </tr>
+                <?php
                               
                 }
                 
@@ -93,7 +93,7 @@
         <script type="text/javascript" src="inc/js/pages/js.sendNotification.js"></script>
         <form id="notificationForm" method="post" action="process.php" enctype='multipart/form-data'>
             <div class="summaryContainer">
-                <h1>Send</h1>
+                <h1>Select Recipients</h1>
                 <div>
                     <div class="float-left">
                         <div class="column r50">
@@ -105,7 +105,7 @@
                                         <th>SMS</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="officers">
                                     <?php
                                     $number=0;
                                     if(isset($GLOBALS['result']['notify_officers']->officer_notify_details) && count($GLOBALS['result']['notify_officers']->officer_notify_details) > 1){
@@ -147,7 +147,7 @@
                                     <tr class="dark" title="">
                                         <td><?php if(isset($result->officer_name)) echo $result->officer_name; ?></td>
                                         <td>
-                                            <input type="checkbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox'"; ?> name="email_name_code[]" id="Checkbox1" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
+                                            <input type="checkbox" onchange="handleChange(this)" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox'"; ?> name="email_name_code[]" id="Checkbox1" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
                                             <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="Checkbox2" value="<?php echo $result->officer_type; ?>" />
                                             <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="Checkbox3" value="<?php echo $result->officer_name; ?>" />
                                             <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="Checkbox4" value="<?php echo $result->officer_email; ?>" />
@@ -224,7 +224,7 @@
                 <div>
                     <div class="float-left">
                         <label for="from">Message:</label>
-                        <textarea name="SMSmessage"></textarea>
+                        <textarea name="SMSmessage" required></textarea>
                     </div>
                 </div>
             </div>
@@ -243,9 +243,13 @@
         </form>
         <script>
             var email = "<?php echo $email ?>";
+            var sms = "<?php echo $sms ?>";
             $("#notificationForm").validate();
             if (email < 1) {
                 $("#message").rules("remove", "required");
+            }
+            else if (sms < 1) {
+                $("#SMSmessage").rules("remove", "required");
             }
     </script>
     </div>

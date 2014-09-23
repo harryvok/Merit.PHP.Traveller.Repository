@@ -4,14 +4,74 @@ $(document).ready(function () {
     var smsCount = $("#smsCount").val();
     $("#smsContainer").hide();
     $("#emailContainer").hide();
+    document.getElementById("sendbutton").disabled = true;
 
-    /* Does something ------------------------------------------------------- */
+    /* On action do stuff ------------------------------------------------------- */
     $("input[data-name]").click(function () {
         var id = $(this).attr("id");
         $("#" + id + "Type").trigger("click");
         $("#" + id + "Name").trigger("click");
         $("#" + id + "Email").trigger("click");
+        
+        // On check
+        if ($("#" + id + "Type").prop("checked")) {
+            var datatype = $(this).attr("data-type");
+            if (datatype == 'Email') {
+                // Increase Counter
+                emailCount = $("#emailCount").val();
+                emailCount++;
+                $("#emailCount").val(emailCount);
+                // Show Container
+                if (emailCount > 0) {
+                    $("#emailContainer").show();
+                    document.getElementById("sendbutton").disabled = false;
+                }
+            }
+            else if(datatype =='SMS') {
+                // Increase Counter
+                smsCount = $("#smsCount").val();
+                smsCount++;
+                $("#smsCount").val(smsCount);
+                // Show Container
+                if (smsCount > 0) {
+                    $("#smsContainer").show();
+                    document.getElementById("sendbutton").disabled = false;
+                }
+            }
+        }
+        // On uncheck
+        else {
+            var datatype = $(this).attr("data-type");
+            // If checkbox was Email
+            if (datatype == 'Email') {
+                // Reduce Counter
+                emailCount = $("#emailCount").val();
+                emailCount--;
+                $("#emailCount").val(emailCount);
+                // Hide Container
+                if (emailCount == 0) {
+                    $("#emailContainer").hide();
+                }
+            }
+            // If checkbox was SMS
+            else if (datatype == 'SMS') {
+                // Reduce Counter
+                smsCount = $("#smsCount").val();
+                smsCount--;
+                $("#smsCount").val(smsCount);
+                // Hide Container
+                if (smsCount == 0) {
+                    $("#smsContainer").hide();
+                }
+            }
+            // Disable Submission Button
+            if (smsCount == 0 & emailCount == 0) {
+                document.getElementById("sendbutton").disabled = true;
+            }
+        }
+ 
     });
+
 
     // From My Email --------------------------------------------------------
     $("#fromEmail").click(function () {
@@ -44,7 +104,7 @@ $(document).ready(function () {
                 $("#smsAdd").show();
                 $("#smsOfficerAdd").show();
 
-
+                document.getElementById("sendbutton").disabled = true;
         });
     });
     // -----------------------------------------------------------------------
@@ -68,6 +128,9 @@ $(document).ready(function () {
         }
         if (smsCount == 0) {
             $("#smsContainer").hide();
+        }
+        if (smsCount == 0 & emailCount == 0) {
+            document.getElementById("sendbutton").disabled = true;
         }
  
     });
@@ -119,6 +182,7 @@ $(document).ready(function () {
                 emailCount = $("#emailCount").val();
                 if (emailCount > 0) {
                     $("#emailContainer").show();
+                    document.getElementById("sendbutton").disabled = false;
                 }
 
             }
@@ -193,6 +257,7 @@ $(document).ready(function () {
                                     emailCount = $("#emailCount").val();
                                     if (emailCount > 0) {
                                         $("#emailContainer").show();
+                                        document.getElementById("sendbutton").disabled = false;
                                     }
                                     
                                 }
@@ -256,6 +321,7 @@ $(document).ready(function () {
                 smsCount = $("#smsCount").val();
                 if (smsCount > 0) {
                     $("#smsContainer").show();
+                    document.getElementById("sendbutton").disabled = false;
                 }
                 
             }
@@ -327,6 +393,7 @@ $(document).ready(function () {
                                     smsCount = $("#smsCount").val();
                                     if (smsCount > 0) {
                                         $("#smsContainer").show();
+                                        document.getElementById("sendbutton").disabled = false;
                                     }
                                 }
                                 else {
