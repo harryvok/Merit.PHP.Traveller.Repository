@@ -1,3 +1,4 @@
+
 <div class="summaryContainer">
     <h1>Notifications (<?php if(isset($GLOBALS['result']['notifications']->notification_details)) echo count($GLOBALS['result']['notifications']->notification_details); else echo 0; ?>)
         <span class="openPopup" id="SendNotification">
@@ -13,8 +14,8 @@
                     oColumnFilterWidgets: {
                         aiExclude: [0,1,2,3,5],
                         sSeparator: ',  ',
-                        "iMaxSelections": 1,
                         bGroupTerms: true,
+                        "iMaxSelections": 1,
 
                     },
                     "aaSorting": [[ 0, "desc" ]]
@@ -36,6 +37,7 @@
             </thead>
             <tbody>
                 <?php
+                $email-0;
                 $number=0;
                 if(isset($GLOBALS['result']['notifications']->notification_details) && count($GLOBALS['result']['notifications']->notification_details) > 1){
                     $i=-1;
@@ -88,9 +90,9 @@
         Close</span></h1>
     <div>
         <script type="text/javascript" src="inc/js/pages/js.sendNotification.js"></script>
-        <form method="post" action="process.php" enctype='multipart/form-data'>
+        <form id="notificationForm" method="post" action="process.php" enctype='multipart/form-data'>
             <div class="summaryContainer">
-                <h1>Send</h1>
+                <h1>Select Recipients</h1>
                 <div>
                     <div class="float-left">
                         <div class="column r50">
@@ -102,7 +104,7 @@
                                         <th>SMS</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="officers">
                                     <?php
                                     $number=0;
                                     if(isset($GLOBALS['result']['notify_officers']->officer_notify_details) && count($GLOBALS['result']['notify_officers']->officer_notify_details) > 1){
@@ -144,16 +146,16 @@
                                     <tr class="dark" title="">
                                         <td><?php if(isset($result->officer_name)) echo $result->officer_name; ?></td>
                                         <td>
-                                            <input type="checkbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox'"; ?> name="email_name_code[]" id="officerEmail<?php echo $i; ?>" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="officerEmail<?php echo $i; ?>Type" value="<?php echo $result->officer_type; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="officerEmail<?php echo $i; ?>Name" value="<?php echo $result->officer_name; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="officerEmail<?php echo $i; ?>Email" value="<?php echo $result->officer_email; ?>" />
+                                            <input type="checkbox" onchange="handleChange(this)" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox'"; ?> name="email_name_code[]" id="Checkbox1" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
+                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="Checkbox2" value="<?php echo $result->officer_type; ?>" />
+                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="Checkbox3" value="<?php echo $result->officer_name; ?>" />
+                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="Checkbox4" value="<?php echo $result->officer_email; ?>" />
                                         </td>
                                         <td>
-                                            <input type="checkbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "class='hiddenCheckbox'"; ?> name="sms_name_code[]" id="officerSMS<?php echo $i; ?>" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="SMS" />
-                                            <input type="checkbox" class="hiddenCheckbox"" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name_type[]" id="officerSMS<?php echo $i; ?>Type" value="<?php echo $result->officer_type; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name[]" id="officerSMS<?php echo $i; ?>Name" value="<?php echo $result->officer_name; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_mobile_no[]" id="officerSMS<?php echo $i; ?>Email" value="<?php echo $result->officer_mobile; ?>" />
+                                            <input type="checkbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "class='hiddenCheckbox'"; ?> name="sms_name_code[]" id="Checkbox5" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="SMS" />
+                                            <input type="checkbox" class="hiddenCheckbox"" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name_type[]" id="Checkbox6" value="<?php echo $result->officer_type; ?>" />
+                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name[]" id="Checkbox7" value="<?php echo $result->officer_name; ?>" />
+                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_mobile_no[]" id="Checkbox8" value="<?php echo $result->officer_mobile; ?>" />
                                         </td>
                                     </tr>
                                     <?php          
@@ -179,7 +181,7 @@
                 </div>
             </div>
             <p>&nbsp;</p>
-            <div class="summaryContainer">
+            <div class="summaryContainer" id="emailContainer">
                 <h1>Email Details</h1>
                 <div>
                     <div class="float-left">
@@ -194,11 +196,11 @@
                     </div>
                     <div class="float-left">
                         <label for="from">Subject:</label>
-                        <input class="text" name='subject' id="subject" value="Request: <?php echo $_GET['id']; ?>">
+                        <input class="text" name='subject' id="subject" value="Request: <?php echo $_SESSION['request_id']; ?>">
                     </div>
                     <div class="float-left">
                         <label for="from">Message:</label>
-                        <textarea name="message"></textarea>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
                     <div class="float-left">
                         <div class="column r25">
@@ -206,35 +208,48 @@
                             <input id="attachment" type="file" name="attachment" id="attachFile" />
                         </div>
                         <div class="column r25">
-                            <!--<label for="desc">Merit Link</label>
+                            <label for="desc">Merit Link</label>
                             <select name="meritLink">
                                 <option value="">No Link</option>
                                 <option value="Request Summary">View Request</option>
-                            </select>-->
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
             <p>&nbsp;</p>
-            <div class="summaryContainer">
+            <div class="summaryContainer" id="smsContainer">
                 <h1>SMS Details</h1>
                 <div>
                     <div class="float-left">
                         <label for="from">Message:</label>
-                        <textarea name="SMSmessage"></textarea>
+                        <textarea name="SMSmessage" required></textarea>
                     </div>
                 </div>
             </div>
             <p>&nbsp;</p>
             <span <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == ""){ ?> style="color: red; font-weight: bold; display: none;" <?php } else { ?> style="color: red; font-weight: bold;" <?php } ?> id="note">NOTE: Email will be sent via Merit Engine for the selected From email address.</span>
             <div class="float-right">
-                <input type="submit" value="Send" id="sendbutton"/>
+                <input id="sendbutton" type="submit" value="Send"/>
                 <input type="reset" value="Reset" />
             </div>
-            <input type="hidden" name="request_id" value="<?php echo $_GET['id']; ?>" />
-            <input type="hidden" name="action_id" value="" />
-            <input type="hidden" name="page" value="request" />
+            <input type="hidden" name="request_id" value="<?php echo $_SESSION['request_id']; ?>" />
+            <input type="hidden" name="action_id" value="<?php echo $_GET['id']; ?>" />
+            <input type="hidden" name="page" value="action" />
             <input type="hidden" name="action" value="SendNotification" />
+            <input type="hidden" name="emailCount" id="emailCount" value="0"/>
+            <input type="hidden" name="smsCount" id="smsCount" value="0"/>
         </form>
+        <script>
+            var email = "<?php echo $email ?>";
+            var sms = "<?php echo $sms ?>";
+            $("#notificationForm").validate();
+            if (email < 1) {
+                $("#message").rules("remove", "required");
+            }
+            else if (sms < 1) {
+                $("#SMSmessage").rules("remove", "required");
+            }
+    </script>
     </div>
 </div>
