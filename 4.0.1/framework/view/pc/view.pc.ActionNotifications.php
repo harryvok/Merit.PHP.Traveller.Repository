@@ -51,16 +51,16 @@
                         else{
                             $class = "light";
                         }
-                        ?>
-                        <tr class="<?php echo $class; ?>">
-                            <td><?php if(isset($result_c_get->escalate_time) && $result_c_get->escalate_time != "1970-01-01T00:00:00" && strlen($result_c_get->escalate_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_c_get->escalate_time)); } else { echo ""; }  ?></td>
+                  ?>
+                  <tr class="<?php echo $class; ?>">
+                    <td><?php if(isset($result_c_get->escalate_time) && $result_c_get->escalate_time != "1970-01-01T00:00:00" && strlen($result_c_get->escalate_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_c_get->escalate_time)); } else { echo ""; }  ?></td>
                     <td><?php if(isset($result_c_get->reason_sent)) echo $result_c_get->reason_sent; ?></td>
                     <td><?php if(isset($result_c_get->sent_to)) echo $result_c_get->sent_to; ?></td>
                     <td><?php if(isset($result_c_get->sent_by)) echo $result_c_get->sent_by; ?></td>
                     <td class="filterTypeValue"><?php if(isset($result_c_get->officer_type)) echo $result_c_get->officer_type; ?></td>
                     <td><?php if(isset($result_c_get->comments)) echo base64_decode($result_c_get->comments); ?></td>
-                        </tr>
-                        <?php
+                 </tr>
+                 <?php
                               
                     }
                 }
@@ -74,8 +74,8 @@
                     <td><?php if(isset($result_c_get->sent_by)) echo $result_c_get->sent_by; ?></td>
                     <td class="filterTypeValue"><?php if(isset($result_c_get->officer_type)) echo $result_c_get->officer_type; ?></td>
                     <td><?php if(isset($result_c_get->comments)) echo base64_decode($result_c_get->comments); ?></td>
-                    </tr>
-                    <?php
+                </tr>
+                <?php
                               
                 }
                 
