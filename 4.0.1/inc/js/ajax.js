@@ -10,7 +10,7 @@ function getIntray(intray, i) {
             intray: intray,
             filterCode: i
         },
-        timeout: 30000, 
+        timeout: 30000000, 
         success: function (data) {
             Unload();
             $("#" + intray + "Intray").html(data);
@@ -189,11 +189,19 @@ function CheckCountOnlyAjax(ser, req, func) {
         },
         success: function (data) {
             if (data.flag_value == "Y") {
-                $("#countOnlyInd").val("Y");
-                $("#submit").prop('disabled', true).buttonState("disable");
-                $("#saveMore").prop('disabled', true).buttonState("disable");
-                $("#saveCountOnly").prop('disabled', false).buttonState("enable");
-                $("#workflowSRF").prop('disabled', true).buttonState("disable");
+                if (!confirm("This is a count only request so there is no workflow associated and the request will be closed upon save. Do you want to continue?")) {
+                        $("#countOnlyInd").val("N");
+                        $("#submit").prop('disabled', false).buttonState("enable");
+                        $("#saveMore").prop('disabled', false).buttonState("enable");
+                        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                        $("#workflowSRF").prop('disabled', false).buttonState("enable");
+                    }else{
+                        $("#countOnlyInd").val("Y");
+                        $("#submit").prop('disabled', true).buttonState("disable");
+                        $("#saveMore").prop('disabled', true).buttonState("disable");
+                        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                        $("#workflowSRF").prop('disabled', true).buttonState("disable");
+                    }
             }
             else if (data.flag_value == "N") {
                 $("#countOnlyInd").val("N");
@@ -483,7 +491,7 @@ function CheckMandatoryFields(ser, req, func) {
 function searchDocument() {
     var search_param = $("#searchterm").val();
     var search_type = $('input:radio[name=Search_type]:checked').val();
-    
+    Load()
     $.ajax({
         url: "inc/ajax/ajax.getDocumentSearch.php",
         type: 'post',
@@ -492,7 +500,8 @@ function searchDocument() {
             search_type: search_type,
         },
         success: function (data) {
-            $("#popup").html(data);
+            Unload();
+            $("#searchResults").html(data);
         }
     });
 }

@@ -17,8 +17,7 @@ if(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['result']-
         
         <li>
          <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $request_details->request_id; ?>&ref_page=requests&filter=<?php echo $filter; ?>">
-              <p><div class="status_code">
-              
+              <p><div class="status_code" style="padding-right: 4px;padding-top:0px;">
 					  <?php 
                   if($request_details->status_code == "OPEN"){ 
                       echo '<img width="10" height="9" src="images/dotGreen.png" />';
@@ -54,8 +53,7 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
     ?>
     <li>
          <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $request_details->request_id; ?>&ref_page=requests&filter=<?php echo $filter; ?>">
-              <p>
-              <div class="status-code">
+              <p><div class="status-code" style="float:left;padding-right: 4px;">
 					  <?php 
                   if($request_details->status_code == "OPEN"){ 
                       echo '<img width="10" height="9" src="images/dotGreen.png" />';

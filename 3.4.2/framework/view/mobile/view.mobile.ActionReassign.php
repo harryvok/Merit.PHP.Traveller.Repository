@@ -1,5 +1,5 @@
 <?php
-if($GLOBALS['result']['action']['action']->status_code == "OPEN"&& $_SESSION['roleSecurity']->maint_reassign_action == "Y"){ 
+if($GLOBALS['result']['action']->status_code == "OPEN"&& $_SESSION['roleSecurity']->maint_reassign_action == "Y"){ 
 ?>
 	<script type="text/javascript">
     $(document).ready(function(){
@@ -79,9 +79,9 @@ if($GLOBALS['result']['action']['action']->status_code == "OPEN"&& $_SESSION['ro
       <input id="osa3" name="reassign_to_type" type="radio" value="I" />
       <input id="submit" class="button left" type='submit' value='Reassign' />
      
-      <input type="hidden" name="action_id" id="action_id" value="<?php echo $GLOBALS['result']['action']['action']->action_id; ?>" />
-      <input type="hidden" name="request_id" id="request_id" value="<?php echo $GLOBALS['result']['action']['action']->request_id; ?>" />
-      <input type="hidden" name="action_officer_code" value="<?php echo $GLOBALS['result']['action']['action']->action_officer_code; ?>" />
+      <input type="hidden" name="action_id" id="action_id" value="<?php echo $GLOBALS['result']['action']->action_id; ?>" />
+      <input type="hidden" name="request_id" id="request_id" value="<?php echo $GLOBALS['result']['action']->request_id; ?>" />
+      <input type="hidden" name="action_officer_code" value="<?php echo $GLOBALS['result']['action']->action_officer_code; ?>" />
       <input type="hidden" name="page" value="action" />
       <input type="hidden" name="action" value="ReassignAction" />
     </form>

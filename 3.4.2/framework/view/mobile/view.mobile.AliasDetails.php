@@ -42,6 +42,6 @@
 </ul>
 <script type="text/javascript">
 	$(document).ready(function() {
-		Unload();
+	    Unload();
 	});
 </script>

@@ -42,6 +42,8 @@ copy /A %vers%\inc\js\mobileCompiled.js+%vers%\inc\js\libraries\jquery.validate.
 echo. >>%vers%\inc\js\mobileCompiled.js
 copy /A %vers%\inc\js\mobileCompiled.js+%vers%\inc\js\libraries\jquery.ui.map.min.js %vers%\inc\js\mobileCompiled.js
 echo. >>%vers%\inc\js\mobileCompiled.js
+copy /A %vers%\inc\js\mobileCompiled.js+%vers%\inc\js\libraries\jquery-ui-map.extensions.js %vers%\inc\js\mobileCompiled.js
+echo. >>%vers%\inc\js\mobileCompiled.js
 copy /A %vers%\inc\js\mobileCompiled.js+%vers%\inc\js\libraries\fastclick.js %vers%\inc\js\mobileCompiled.js
 echo. >>%vers%\inc\js\mobileCompiled.js
 copy /A %vers%\inc\js\mobileCompiled.js+%vers%\inc\js\ajax.js %vers%\inc\js\mobileCompiled.js

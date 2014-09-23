@@ -71,6 +71,12 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 else {
                     $("#keyword_helpURL").html("");
                 }
+
+                if ($("#textareaissue").length) {
+                    $("#textareaissue").focus();
+                } else {
+                    $("#add-request-textarea").focus();
+                }
             }
         });
     });
@@ -130,6 +136,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             ) {
             CheckHistory($("#historyaddrtype").val());
         }
+
         if ($("#textareaissue").length) {
             $("#textareaissue").focus();
         } else {

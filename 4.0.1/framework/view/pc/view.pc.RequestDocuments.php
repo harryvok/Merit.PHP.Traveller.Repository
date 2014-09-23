@@ -12,9 +12,6 @@ if($GLOBALS['result']['errorConnecting']== false){
             var id = $(this).find("td:first-child").html();
             $(".Document" + id + "MetaData").show();
         });
-
-        
-
         
     });
 </script>
@@ -125,6 +122,7 @@ if($GLOBALS['result']['errorConnecting']== false){
             $(document).ready(function () {
                 //hide search button if no value
                 $('#searchDocument').attr('disabled', 'disabled');
+                $('#linkbutton').attr('disabled', 'disabled');
                 $('#searchterm').keyup(function () {
                     if ($(this).val() != '') {
                         $('#searchDocument').removeAttr('disabled');
@@ -149,11 +147,14 @@ if($GLOBALS['result']['errorConnecting']== false){
         <input type="button" id="searchDocument" value="Search"/>
         <div class="column r55"><input type="text" id="searchterm" placeholder="Search...."/></div>
         <div class="summaryContainer">
-            <h1>Documents</h1>
+            <input type="hidden" name="selectedDocument" id="selectedDocument"/>
             <div id="searchResults">
 
             </div>
+            <input type="submit" id="linkbutton" value="Link"/>
+            <span id="selectedDocDesc">Selected Doc: </span>
         </div>
+          <input type="hidden" name="action" value="RequestLinkDocument" />
       </form>
 </div>
 <?php 

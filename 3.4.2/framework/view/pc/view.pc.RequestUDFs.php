@@ -97,7 +97,8 @@
                <script type="text/javascript">
 			  	$(document).ready(function(){
 					// validate signup form on keyup and submit
-					$("#requestudf").validate();
+			  	    $("#requestudf").validate();
+			  	    
 				});
 			  </script>
               

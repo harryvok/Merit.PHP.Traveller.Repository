@@ -15,6 +15,7 @@ if(isset($_SESSION['user_id'])){
                 
             </div>
       	<script type="text/javascript" src="inc/js/pages/js.new-request.js"></script>
+        <script type="text/javascript" src="inc/js/libraries/jquery-ui-map.extensions.js"></script>
 		<script type="text/javascript">
         $(document).on('pageinit', function(){
 		
@@ -347,8 +348,8 @@ if(isset($_SESSION['user_id'])){
          	<h4>Attachment</h4>
             
           <p>
-          <input id="attachment" type="file" name="attachment" />
-         <label>Description:</label><input type="text" id="desc" maxlength="50"  name="desc" />
+          <input id="attachment" type="file" name="attachment[]" />
+         <label>Description:</label><input type="text" id="desc" maxlength="50"  name="attachDesc[]" />
           </p>
           </div>
           <?php

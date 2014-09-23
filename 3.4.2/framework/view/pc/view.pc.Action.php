@@ -408,6 +408,9 @@
                 $(document).ready(function () {
                     // validate signup form on keyup and submit
                     $("#actionudf").validate();
+                    $("#actionudf").submit(function () {
+                        if ($(this).validate().numberOfInvalids() == 0) { $("#submit").attr("disabled", "disabled"); }
+                    });
                 });
                 </script>    
                 <form method="post"  enctype="multipart/form-data" id="actionudf" action="process.php">
@@ -604,7 +607,7 @@
                                         <?php 
                                     if(isset($udf->udf_data)){
                                         if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                        ?><a id="A2" class="ViewFile">View Attachment</a> <?php 
+                                        ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php 
                                         } 
                                         else{ 
                                             echo $udf->udf_data; 
@@ -626,7 +629,7 @@
                                         <?php 
                                     if(isset($udf->udf_data)){
                                         if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                        ?><a id="A3" class="ViewFile">View Attachment</a> <?php 
+                                        ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php 
                                         } 
                                         else{ 
                                             echo $udf->udf_data; 
@@ -648,7 +651,7 @@
                                         <?php 
                                     if(isset($udf->udf_data)){
                                         if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
-                                        ?><a id="A4" class="ViewFile">View Attachment</a> <?php 
+                                        ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php 
                                         } 
                                         else{
                                             echo $udf->udf_data; 
@@ -881,7 +884,7 @@
             </div>
             <div class="float-left">
             <?php if(isset($udf->udf_data)){
-                      if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A5" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                      if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
                   }  ?><br />
             <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File4" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
             </div>
@@ -909,7 +912,7 @@
             </div>
             <div class="float-left">
             <?php if(isset($udf->udf_data)){
-                      if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A7" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                      if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
                   }  ?><br />
             <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File6" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
             </div>
@@ -1079,7 +1082,10 @@
         <script type="text/javascript">
         $(document).ready(function () {
         // validate signup form on keyup and submit
-        $("#actionudf1").validate();
+            $("#actionudf1").validate();
+            $("#actionudf1").submit(function () {
+                if ($(this).validate().numberOfInvalids() == 0) { $("#submit1").attr("disabled", "disabled"); }
+            });
         });
         </script>
     
@@ -1089,7 +1095,7 @@
                     if(count($GLOBALS['result']['udfs']->udf_details)> 1){
                         $i=0;
                         foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-                            if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] && $udf->udf_action_comp == ""){
+                            if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] /*&& $udf->udf_action_comp == ""*/){
                                 if($udf->udf_depends != 0){
         ?>
         <div id="act_depends_<?php echo $udf->udf_order; ?>" class="udfDependant">
@@ -1227,7 +1233,7 @@
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A10" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File7" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1241,7 +1247,7 @@
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A11" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File8" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1255,7 +1261,7 @@
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A12" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File9" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1303,7 +1309,7 @@
                         $udf = $GLOBALS['result']['udfs']->udf_details;
                         $i=0;
                         
-                        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] && $udf->udf_action_comp == ""){
+                        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] /*&& $udf->udf_action_comp == ""*/){
                             if($udf->udf_depends != 0){
         ?>
         <div id="Div4" class="udfDependant">
@@ -1441,7 +1447,7 @@
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A13" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File10" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1455,7 +1461,7 @@
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A14" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File11" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1469,7 +1475,7 @@
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A15" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="<?php echo $udf->udf_data?>" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File12" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>

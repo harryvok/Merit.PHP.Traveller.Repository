@@ -767,6 +767,7 @@ $(document).ready(function () {
     /* */
 });
 if (typeof $("#map-canvas").gmap == 'function') {
+
     function generateGoogleMaps() {
         var geocoder;
         var map;
@@ -778,15 +779,22 @@ if (typeof $("#map-canvas").gmap == 'function') {
         var browserSupportFlag = new Boolean();
         var markersArray = [];
 
-        $('#map-canvas').gmap().bind('init', function (event, map) {
+        function initialize() {
+
+            geocoder = new google.maps.Geocoder();
+            var myOptions = {
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
             // Try W3C Geolocation (Preferred)
             if (navigator.geolocation) {
 
                 browserSupportFlag = true;
-                $('#map-canvas').gmap('getCurrentPosition', function (position, status) {
-                    if (status === 'OK') {
-                        placeMarker(map, position.coords.latitude, position.coords.longitude)
-                    }
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    //place marker on map with coordinates of device
+                    placeMarker(map, position.coords.latitude, position.coords.longitude)
                 }, function () {
                     handleNoGeolocation(map, browserSupportFlag);
                 });
@@ -803,7 +811,8 @@ if (typeof $("#map-canvas").gmap == 'function') {
 
                 placeMarker(map, event.latLng.lat(), event.latLng.lng());
             });
-        });
+
+        }
 
         function placeMarker(map, lat, long) {
 
@@ -817,18 +826,19 @@ if (typeof $("#map-canvas").gmap == 'function') {
             $("#gmaps_Suburb").val("");
 
             var initialLocation = new google.maps.LatLng(lat, long);
-
+            map.setCenter(initialLocation);
             var latlng = initialLocation;
             setTimeout(function () {
-                $("#map-canvas").search({ 'location': latlng }, function (results, status) {
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         if (results[0]) {
-                            $('#map-canvas').gmap('addMarker', { 'position': latlng, 'bounds': false },
-                                function (map, marker) {
-                                    marker.setTitle(results[0].formatted_address);
-                                    markersArray.push(marker);
-                                }
-                            );
+                            marker = new google.maps.Marker({
+                                position: latlng,
+                                map: map
+                            });
+
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(map, marker);
 
                             for (var i = 0; i <= results[0].address_components.length - 1; i++) {
 
@@ -837,6 +847,7 @@ if (typeof $("#map-canvas").gmap == 'function') {
                                     //$("#gmaps_FNumber").val(results[0].address_components[i].long_name);
                                 }
                                 if (results[0].address_components[i].types[0] == "route") {
+
                                     var streetDetails = results[0].address_components[i].long_name.split(" ");
                                     var lastIndex = results[0].address_components[i].short_name.lastIndexOf(" ");
                                     $("#gmaps_StreetName").val(results[0].address_components[i].short_name.substring(0, lastIndex));
@@ -853,6 +864,10 @@ if (typeof $("#map-canvas").gmap == 'function') {
                             $("#gmaps_x").val(lat);
                             $("#gmaps_y").val(long);
                             $("#address_gps").val(results[0].formatted_address);
+
+                            markersArray.push(marker);
+
+
                         } else {
                             alert('No results found');
                         }
@@ -885,6 +900,8 @@ if (typeof $("#map-canvas").gmap == 'function') {
             }
 
         }
+
+        initialize();
     }
 }
 else {

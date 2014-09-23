@@ -133,7 +133,7 @@ if(isset($GLOBALS['result']->udf_details)){
 					?>
 						<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
 							
-								<?php $dev = new Mobile_Detect(); if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
+								<?php $dev = new Mobile_Detect(); if(true/*!$dev->isWindowsMobileOS()*/){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
 							
 					<?php
 					}
@@ -143,7 +143,7 @@ if(isset($GLOBALS['result']->udf_details)){
 						<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
 							
 								<?php $dev = new Mobile_Detect();
-                                      if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
+                                      if(true/*!$dev->isWindowsMobileOS()*/){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
 							
 					<?php
 					}
@@ -153,7 +153,7 @@ if(isset($GLOBALS['result']->udf_details)){
 						<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
 							
 								<?php $dev = new Mobile_Detect();
-                                      if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
+                                      if(true/*!$dev->isWindowsMobileOS()*/){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
 							
 					<?php
 					}
@@ -170,10 +170,18 @@ if(isset($GLOBALS['result']->udf_details)){
 										var rand = Math.floor(Math.random() * 10000) + 2; vo[rand] = new VarOperator("="); vo[rand].operation = "<?php echo $udf->udf_op_code; ?>";
 										$("[id^=udf_<?php echo $udf->udf_depends; ?>]").change(function(){
 											if(vo[rand].evaluate($(this).val(),"<?php echo $udf->udf_dep_value; ?>")){
-												$("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");	
+											    $("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");
+											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("wasrequired")) {
+											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("wasrequired");
+                                                    $("#udf_<?php echo $udf->udf_order; ?>").addClass("required");
+                                                }
 											}
 											else{
-												$("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
+											    $("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
+											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("required")) {
+											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("required");
+                                                	$("#udf_<?php echo $udf->udf_order; ?>").addClass("wasrequired");
+                                                }
 											}
 										});
 									});
@@ -331,7 +339,7 @@ if(isset($GLOBALS['result']->udf_details)){
 				?>
 					<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
 						
-							<?php $dev = new Mobile_Detect(); if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
+							<?php $dev = new Mobile_Detect(); if(true/*!$dev->isWindowsMobileOS()*/){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
 						
 				<?php
 				}
@@ -340,7 +348,7 @@ if(isset($GLOBALS['result']->udf_details)){
 				?>
 					<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
 						
-							<?php $dev = new Mobile_Detect(); if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
+							<?php $dev = new Mobile_Detect(); if(true/*!$dev->isWindowsMobileOS()*/){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
 						
 				<?php
 				}
@@ -349,7 +357,7 @@ if(isset($GLOBALS['result']->udf_details)){
 				?>
 					<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
 						
-							<?php $dev = new Mobile_Detect(); if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
+							<?php $dev = new Mobile_Detect(); if(true/*!$dev->isWindowsMobileOS()*/){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
 						
 				<?php
 				}
@@ -365,10 +373,18 @@ if(isset($GLOBALS['result']->udf_details)){
 									$(document).ready(function(){
 										$("[id^=udf_<?php echo $udf->udf_depends; ?>]").change(function(){
 											if($(this).val() == "<?php echo $udf->udf_dep_value; ?>"){
-												$("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");	
+											    $("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");
+											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("wasrequired")) {
+											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("wasrequired");
+                                                    $("#udf_<?php echo $udf->udf_order; ?>").addClass("required");
+                                                }
 											}
 											else{
-												$("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
+											    $("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
+											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("required")) {
+											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("required");
+                                                    $("#udf_<?php echo $udf->udf_order; ?>").addClass("wasrequired");
+                                                }
 											}
 										});
 									});

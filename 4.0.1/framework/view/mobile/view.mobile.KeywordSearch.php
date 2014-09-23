@@ -65,7 +65,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    
 			<?php } ?>
 		    $("#popup").popup("close");
-		    $("#add-request-textarea").focus();
+		    $("#textareaissue").focus();
 		
 		});
 		 });
