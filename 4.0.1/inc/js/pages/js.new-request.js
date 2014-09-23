@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-
+    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
     /* SRF */
 
     // Keyword Typealong
@@ -39,7 +39,6 @@ $(document).ready(function () {
     // Location Street Name Typealong
 
     $("#lstreet").autocomplete(
-
         $.ui.autocomplete.filter = function (array, term) {
             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
             return $.grep(array, function (value) {

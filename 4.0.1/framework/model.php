@@ -395,6 +395,7 @@ class Model {
 
         return $result;
     }
+    
     public function getPartialStreets(){        
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
