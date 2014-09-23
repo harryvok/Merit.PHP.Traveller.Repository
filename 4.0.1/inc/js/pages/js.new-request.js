@@ -34,41 +34,40 @@ $(document).ready(function () {
         }
     }
 
-    // Location Street Name Typealong
     $("#lstreet").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: "inc/ajax/ajax.getStreets.php",
-                dataType: "json",
-                data: {
-                    term: request.term,
-                    id: "lstreet"
-                },
-                success: function (data) {
-                    if (data.length == 1) {
-                        $("#lstreet").val(data[0]);
+            source: function (request, response) {
+                $.ajax({
+                    url: "inc/ajax/ajax.getStreets.php",
+                    dataType: "json",
+                    data: {
+                        term: request.term,
+                        id: "lstreet"
+                    },
+                    success: function (data) {
+                        if (data.length == 1) {
+                            $("#lstreet").val(data[0]);
 
-                        $("#lstreet").attr("readonly", true);
-                        $("#ltype").textinput('enable').addClass("ui-disabled");
-                        $("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
-                        $("#ltype").click();
+                            $("#lstreet").attr("readonly", true);
+                            $("#ltype").textinput('enable').addClass("ui-disabled");
+                            $("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
+                            $("#ltype").click();
+                        }
+                        else {
+                            response(data);
+                        }
                     }
-                    else {
-                        response(data);
-                    }
-                }
-            });
-        },
-        delay: 0,
-        minLength: 0,
-        select: function (event, ui) {
+                });
+            },
+            delay: 0,
+            minLength: 0,
+            select: function (event, ui) {
 
-            $("#lstreet").attr("readonly", true);
-            $("#ltype").textinput('enable').addClass("ui-disabled");
-            $("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
-            $("#ltype").click();
-        }
-    });
+                $("#lstreet").attr("readonly", true);
+                $("#ltype").textinput('enable').addClass("ui-disabled");
+                $("#ltype").removeClass("ui-disabled").removeClass("ui-state-disabled").removeClass("mobile-textinput-disabled");
+                $("#ltype").click();
+            }
+        });
 
     // Service Input
     $("#serviceInput").on(eventName, function (event) {
