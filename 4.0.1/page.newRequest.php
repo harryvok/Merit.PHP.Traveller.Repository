@@ -16,9 +16,12 @@ if(!isset($_GET['d'])){
         <input type="hidden" name="historysearchautoopenoff" id="historysearchautoopenoff" value="<?php echo $_SESSION['meritIni']['HISTORYSEARCHAUTOOPENOFF']; ?>" />
         <input type="hidden" name="historysearchopenclosed" id="historysearchopenclosed" value="<?php echo $_SESSION['meritIni']['HISTORYSEARCHOPENCLOSED']; ?>" />
         <input type="hidden" name="historyaddrtype" id="historyaddrtype" value="<?php echo $_SESSION['meritIni']['HISTORYADDRTYPE']; ?>" />
-        <div class="summaryContainer">
+        <div class="summaryContainer">  
             <h1>Request Details</h1>
             <div>
+                <div class="notes">
+                            <span style="color: red;"><b><?php echo $result->function_types_details; ?></b></span>
+            </div>
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
                 <div class="column r60">
                     <div class="column r25">
