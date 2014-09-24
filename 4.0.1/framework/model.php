@@ -1549,8 +1549,11 @@ class Model {
             $_SESSION['success_send_notification'] = 1;
 
             // Redirect to the request
-            if(strlen($_POST['action_id']) > 0) $id = $_POST['action_id']; else $id = $_POST['request_id'];
-            $_SESSION['redirect'] = "index.php?page=view-".$_POST['page']."&id=".$id;
+            if($_SESSION['typecode'] == 0){ 
+                $id = $_POST['action_id']; $_SESSION['redirect'] = "index.php?page=view-"."action"."&id=".$id;
+            } else { 
+                $id = $_POST['request_id']; $_SESSION['redirect'] = "index.php?page=view-"."request"."&id=".$id;
+            }
 
         }
         catch (Exception $e) {

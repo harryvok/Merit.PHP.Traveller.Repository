@@ -235,6 +235,7 @@
             <input type="hidden" name="emailCount" id="emailCount" value="0"/>
             <input type="hidden" name="smsCount" id="smsCount" value="0"/>
         </form>
+        <?php $_SESSION['typecode'] = 1; ?>
         <script>
             var email = "<?php echo $email ?>";
             var sms = "<?php echo $sms ?>";

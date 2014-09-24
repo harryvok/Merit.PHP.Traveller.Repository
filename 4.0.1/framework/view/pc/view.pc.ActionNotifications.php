@@ -209,13 +209,6 @@
                             <label for="desc">File</label>
                             <input id="attachment" type="file" name="attachment" id="attachFile" />
                         </div>
-                        <div class="column r25">
-                            <label for="desc">Merit Link</label>
-                            <select name="meritLink">
-                                <option value="">No Link</option>
-                                <option value="Request Summary">View Request</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -243,6 +236,7 @@
             <input type="hidden" name="emailCount" id="emailCount" value="0"/>
             <input type="hidden" name="smsCount" id="smsCount" value="0"/>
         </form>
+        <?php $_SESSION['typecode'] = 0; ?>
         <script>
             var email = "<?php echo $email ?>";
             var sms = "<?php echo $sms ?>";
