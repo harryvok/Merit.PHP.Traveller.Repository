@@ -1,9 +1,8 @@
 
 <div class="summaryContainer">
     <h1>Notifications (<?php if(isset($GLOBALS['result']['notifications']->notification_details)) echo count($GLOBALS['result']['notifications']->notification_details); else echo 0; ?>)
-        <span class="openPopup" id="SendNotification">
-            <img src="images/iconAdd.png" />
-            Send Notification</span>
+        
+        
     </h1>
     <div>
         <script type="text/javascript">
@@ -185,6 +184,7 @@
             <div class="summaryContainer" id="emailContainer">
                 <h1>Email Details</h1>
                 <div>
+                    <span <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == ""){ ?> style="color: red; font-weight: bold; display: none;" <?php } else { ?> style="color: red; font-weight: bold;" <?php } ?> id="note">NOTE: Email will be sent via Merit Engine for the selected From email address.</span>
                     <div class="float-left">
                         <div class="column r25">
                             <label for="from">From:</label>
@@ -208,13 +208,6 @@
                             <label for="desc">File</label>
                             <input id="attachment" type="file" name="attachment" id="attachFile" />
                         </div>
-                        <div class="column r25">
-                            <label for="desc">Merit Link</label>
-                            <select name="meritLink">
-                                <option value="">No Link</option>
-                                <option value="Request Summary">View Request</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -229,11 +222,12 @@
                 </div>
             </div>
             <p>&nbsp;</p>
-            <span <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == ""){ ?> style="color: red; font-weight: bold; display: none;" <?php } else { ?> style="color: red; font-weight: bold;" <?php } ?> id="note">NOTE: Email will be sent via Merit Engine for the selected From email address.</span>
+
             <div class="float-right">
                 <input id="sendbutton" type="submit" value="Send"/>
                 <input type="reset" value="Reset" />
             </div>
+            
             <input type="hidden" name="request_id" value="<?php echo $_SESSION['request_id']; ?>" />
             <input type="hidden" name="action_id" value="<?php echo $_GET['id']; ?>" />
             <input type="hidden" name="page" value="action" />
@@ -241,10 +235,17 @@
             <input type="hidden" name="emailCount" id="emailCount" value="0"/>
             <input type="hidden" name="smsCount" id="smsCount" value="0"/>
         </form>
+        <?php $_SESSION['typecode'] = 0; ?>
         <script>
             var email = "<?php echo $email ?>";
             var sms = "<?php echo $sms ?>";
-            $("#notificationForm").validate();
+            $(document).ready(function () {
+                $("#notificationForm").validate();
+                    $("#notificationForm").submit(function () {
+                        if ($(this).validate().numberOfInvalids() == 0) { $("#sendbutton").attr("disabled", true); }
+                        });
+            });
+
             if (email < 1) {
                 $("#message").rules("remove", "required");
             }

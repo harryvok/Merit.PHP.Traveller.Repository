@@ -17,7 +17,6 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                 $("#saveMore").attr("disabled", true).button("disable");
                 $("#saveCountOnly").attr("disabled", true).button("disable");
                 $("#submit").prop('disabled', true).button("disable");
-
             }
             else {
                 alert("Please type and choose a valid officer");
@@ -87,7 +86,7 @@ else{
     $("#newrequest INPUT[type=submit]").trigger("click");
     $("#saveMore").attr("disabled", true).button("disable");
     $("#saveCountOnly").attr("disabled", true).button("disable");
-    $("#submit").prop('disabled', true).button("disable");  
+    $("#submit").prop('disabled', true).button("disable");
 </script>
 <?php	
 }

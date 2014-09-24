@@ -18,7 +18,7 @@ else{
     $count=0;	
 }
               ?>
-        <h1>Requests (<?php echo $count; ?>)</h1>
+        <h1>Requests (<?php echo $GLOBALS['requestCount']; ?>)</h1>
            <div>
           <input type="hidden" name="val" id="val" value="0" />
           
@@ -37,7 +37,7 @@ else{
                   <?php
                   $number=0;
                   
-                  if(isset($GLOBALS['result']->req_dets->request_details) && count($GLOBALS['result']->req_dets->request_details) > 1){
+                  if(isset($GLOBALS['result']->req_dets->request_details) && $GLOBALS['requestCount'] > 1){
                       $added_addresses = array();
                       foreach($GLOBALS['result']->req_dets->request_details as $result_a_ar){
                           if(in_array($result_a_ar->request_id, $added_addresses) == false){
