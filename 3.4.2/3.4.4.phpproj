@@ -11,7 +11,7 @@
     <AssemblyName>3.4.2</AssemblyName>
     <IISProjectUrl>http://localhost:52856/</IISProjectUrl>
     <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-    <Server>PHPDev</Server>
+    <Server>IISExpress</Server>
     <PublishEvent>None</PublishEvent>
     <PHPDevAutoPort>True</PHPDevAutoPort>
     <PHPDevPort>50768</PHPDevPort>
@@ -1800,7 +1800,6 @@
     <Content Include="inc\js\libraries\jquery-ui-1.10.3.custom.js">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="inc\js\libraries\jquery-ui-map.extensions.js" />
     <Content Include="inc\js\libraries\jquery.dataTables.js">
       <SubType>Content</SubType>
     </Content>

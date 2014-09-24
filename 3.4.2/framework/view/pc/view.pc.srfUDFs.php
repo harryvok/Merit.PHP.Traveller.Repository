@@ -173,18 +173,10 @@ if(isset($GLOBALS['result']->udf_details)){
 										var rand = Math.floor(Math.random() * 10000) + 2; vo[rand] = new VarOperator("="); vo[rand].operation = "<?php echo $udf->udf_op_code; ?>";
 										$("[id^=udf_<?php echo $udf->udf_depends; ?>]").change(function(){
 											if(vo[rand].evaluate($(this).val(),"<?php echo $udf->udf_dep_value; ?>")){
-											    $("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");
-											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("wasrequired")) {
-											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("wasrequired");
-											        $("#udf_<?php echo $udf->udf_order; ?>").addClass("required");
-                                                }
+												$("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");	
 											}
 											else{
-											    $("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
-											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("required")) {
-											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("required");
-											        $("#udf_<?php echo $udf->udf_order; ?>").addClass("wasrequired");
-                                                }
+												$("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
 											}
 										});
 									});
@@ -385,18 +377,10 @@ if(isset($GLOBALS['result']->udf_details)){
 										var rand = Math.floor(Math.random() * 10000) + 2; vo[rand] = new VarOperator("="); vo[rand].operation = "<?php echo $udf->udf_op_code; ?>";
 										$("[id^=udf_<?php echo $udf->udf_depends; ?>]").change(function(){
 											if(vo[rand].evaluate($(this).val(),"<?php echo $udf->udf_dep_value; ?>")){
-											    $("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");	
-											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("wasrequired")) {
-											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("wasrequired");
-											        $("#udf_<?php echo $udf->udf_order; ?>").addClass("required");
-                                                }
+												$("#depends_<?php echo $udf->udf_order; ?>").fadeIn("fast");	
 											}
 											else{
-											    $("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
-											    if ($("#udf_<?php echo $udf->udf_order; ?>").hasClass("required")) {
-											        $("#udf_<?php echo $udf->udf_order; ?>").removeClass("required");
-											        $("#udf_<?php echo $udf->udf_order; ?>").addClass("wasrequired");
-											    }
+												$("#depends_<?php echo $udf->udf_order; ?>").fadeOut("fast");
 											}
 										});
 									});

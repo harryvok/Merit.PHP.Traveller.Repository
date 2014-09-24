@@ -8,7 +8,7 @@ try{
 	if(copy($_POST['path'], "../../attachments/".$rand.basename($_POST['path']))){
 		?>
         <script type="text/javascript">
-            /*setTimeout(function () {
+            setTimeout(function () {
                 var startY = 0;
                 var startX = 0;
                 var b = document.body;
@@ -30,12 +30,11 @@ try{
                     startY = posy;
                     startX = posx;
                 });
-            }, 1000);*/
+            }, 1000);
         </script>
         <div style="font-size:11px; text-align:center; padding:10px;"><a target="_blank" href="<?php echo WEBSITE."attachments/".$rand.basename($_POST['path']); ?>">View Full (Closes app)</a></div>
         <div id="scroller" style="width:100%; display: block; height:400px; overflow: auto; -webkit-overflow-scrolling:touch;">
 		    <iframe width="0" height="0" src="<?php echo WEBSITE."attachments/".$rand.basename($_POST['path']); ?>"></iframe>
-            <!--<img src="<?php echo WEBSITE."attachments/".$rand.basename($_POST['path']); ?>" >-->
         </div>
 		<?php
 	}

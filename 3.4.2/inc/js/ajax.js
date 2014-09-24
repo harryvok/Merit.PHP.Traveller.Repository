@@ -55,17 +55,6 @@ function GetAliasDetails(address_id,type_txt,type_desc,type_cnt,type_key,type_co
 	}, "html");
 	
 }
-function GetAliasDetails_iphone(id, address_id, type_txt, type_desc, type_cnt, type_key, type_code) {
-    Load();
-    $.post("inc/ajax/ajax.getAliasDetails.php", { address_id: address_id, type_txt: type_txt, type_desc: type_desc, type_cnt: type_cnt, type_key: type_key, type_code: type_code },
-	function (data) {
-	    $('#alias_details' + id).html(data);
-	    $("#showhide-" + id).removeAttr('style');
-	    //$("#popup").popup("open");
-	    //$("#view-address").page('destroy').page();
-	}, "html");
-
-}
 
 function GetAttributeDetails(address_id,type_txt,type_desc,type_cnt,type_key,type_code,status_ind){
 	Load();
@@ -76,6 +65,16 @@ function GetAttributeDetails(address_id,type_txt,type_desc,type_cnt,type_key,typ
 	
 }
 
+function GetAliasDetails_iphone(id,address_id,type_txt,type_desc,type_cnt,type_key,type_code){
+	Load();
+	$.post("inc/ajax/ajax.getAliasDetails.php",{ address_id : address_id, type_txt : type_txt, type_desc : type_desc, type_cnt : type_cnt, type_key : type_key, type_code : type_code  },
+	function(data){
+	    $('#popup').html(data);
+	    $("#popup").popup("open");
+	    $("#view-address").page('destroy').page();
+	}, "html");
+	
+}
 function GetAssociationDetails_iphone(id,type_txt,type_desc,type_cnt,type_key,type_code,form_name,key_name,address_id){
 	Load();
 	$.post("inc/ajax/ajax.getAssociationDetails.php",{ type_txt : type_txt, type_desc : type_desc, type_cnt : type_cnt, type_key : type_key, type_code : type_code, form_name : form_name, key_name : key_name, address_id : address_id },

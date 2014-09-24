@@ -1222,6 +1222,7 @@ class Model {
                         array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
                     
                          }
+
                      }
                 }elseif($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     $attachment = array(
@@ -1234,10 +1235,9 @@ class Model {
                       );
                     $rand = rand(0,100);
                     $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
-                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][0]);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name']);
                     array_push($filenamearray, $tempname);
-                    array_push($filedescriptionarray,$_POST["attachDesc"][0]);
-                    
+                    array_push($filedescriptionarray,$_POST["attachDesc"]);
                 }
                 
                 
@@ -1472,7 +1472,6 @@ class Model {
                         imagejpeg($attachment['tmp_name'], $attachment['tmp_name'], 75);
                     }
                 }
-                $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $rand."-".$attachment['name']);
                 move_uploaded_file($attachment['tmp_name'], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $rand."-".$attachment['name']));
                 return str_ireplace("/", "\\", ATTACHMENT_FOLDER).str_ireplace(" ", "_", $rand."-".$attachment['name']);
             }
@@ -1710,7 +1709,7 @@ class Model {
 
         }
 
-        $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'];
+        $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'&d=udfs';
     }
 
     public function processEditUDFs($params = NULL){
@@ -1941,8 +1940,8 @@ class Model {
             $_SESSION['error_udfs']=1;
 
         }
-        if(isset($_POST['act_id'])) $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'];
-        else $_SESSION['redirect'] = 'index.php?page=view-request&id='.$_POST['id'];
+        if(isset($_POST['act_id'])) $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'&d=udfs';
+        else $_SESSION['redirect'] = 'index.php?page=view-request&id='.$_POST['id'].'&d=udfs';
     }
 
     public function processAddAction($params = NULL){

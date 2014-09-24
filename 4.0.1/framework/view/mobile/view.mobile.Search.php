@@ -25,7 +25,7 @@ if(isset($GLOBALS['result']->search_details)){
                     </li>
                     <?php
                 }
-                elseif($result_search->result_type == "Address" || $result_search->result_type == "Linked Address"){
+                elseif($result_search->result_type == "Address"){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
@@ -34,7 +34,7 @@ if(isset($GLOBALS['result']->search_details)){
                     </li>
                     <?php
                 }
-                elseif($result_search->result_type == "Name" || $result_search->result_type == "Linked Name"){
+                elseif($result_search->result_type == "Name"){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">
@@ -102,7 +102,7 @@ if(isset($GLOBALS['result']->search_details)){
                     </li>
                     <?php
                 }
-                elseif($result_search->result_type == "Address" || $result_search->result_type == "Linked Address"){
+                elseif($result_search->result_type == "Address"){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
@@ -111,7 +111,7 @@ if(isset($GLOBALS['result']->search_details)){
                     </li>
                     <?php
                 }
-                elseif($result_search->result_type == "Name" || $result_search->result_type == "Linked Name"){
+                elseif($result_search->result_type == "Name"){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">

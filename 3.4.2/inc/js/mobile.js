@@ -86,10 +86,8 @@ $(document).on("click", ".ViewFile", function(){
 		  type: 'post',
 		  data: { path: path, req_id: request_id, act_id: action_id },
 		  success: function(data) {
-		      Unload();
-		      $("#popupContent").html(data);
-		      //var lll = "#imageViewer" + path.replace(/\//g, '');
-		      //$(lll).html(data);
+			  Unload();
+			  $("#popupContent").html(data);
 			  $("#popup").popup("open");
 			  $("#default").page('destroy');
 			  $("#default").page();
@@ -97,7 +95,6 @@ $(document).on("click", ".ViewFile", function(){
 	  });
 	  return false;
 });
-
 
 $(document).on("pageinit", function () {
     $("#popup iframe")
