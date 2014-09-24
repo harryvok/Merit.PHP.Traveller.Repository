@@ -987,7 +987,6 @@ $(document).ready(function () {
     $('#saveMore').on(eventName, function (event) {
         $("#newrequest").valid();
         if ($("#newrequest").validate().numberOfInvalids() == 0) {
-            alert("validate");
             $("#submit").prop('disabled', true).buttonState("disable");
             $("#saveMore").prop('disabled', true).buttonState("disable");
             $("#saveCountOnly").prop('disabled', true).buttonState("disable");
@@ -1015,7 +1014,6 @@ $(document).ready(function () {
                         $(".mandLabel").hide();
                         $("[data-mand]").removeClass("required");
                         $("#refno").val("");
-                        alert(data);
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");
                         $("#saveCountOnly").prop('disabled', false).buttonState("enable");
