@@ -19,9 +19,7 @@ if(!isset($_GET['d'])){
         <div class="summaryContainer">  
             <h1>Request Details</h1>
             <div>
-                <div class="notes">
-                            <span style="color: red;"><b><?php echo $result->function_types_details; ?></b></span>
-            </div>
+                
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
                 <div class="column r60">
                     <div class="column r25">
