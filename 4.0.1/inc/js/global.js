@@ -47,7 +47,7 @@ $(document).ready(function () {
     }
     
     
-    $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
+    $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
 
     $("body").on("click", "input[data-officer]", function () {
         if ($(this).hasClass("ui-autocomplete-input")) {
@@ -55,12 +55,12 @@ $(document).ready(function () {
             $(this).val("");
             $(this).attr("readonly", false);
 
-            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
+            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
             $(this).autocomplete("search", "");
             
         }
         else{
-            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
+            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
         }
     });
 

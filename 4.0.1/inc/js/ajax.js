@@ -189,7 +189,7 @@ function CheckCountOnlyAjax(ser, req, func) {
         },
         success: function (data) {
             if (data.flag_value == "Y") {
-                if (!confirm("This is a count only request so there is no workflow associated and the request will be closed upon save. Do you want to continue?")) {
+                if (confirm("This is a count only request so there is no workflow associated and the request will be closed upon save. Do you want to continue?")) {
                         $("#countOnlyInd").val("N");
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");

@@ -1847,7 +1847,7 @@ class Model {
                         }
 
                     }
-                }else if($totalfiles == 1) {
+                }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     $attachment = array(
                                'name' => $_FILES['attachment']['name'],
                                'type' => $_FILES['attachment']['type'],
@@ -1858,9 +1858,9 @@ class Model {
                       );
                     $rand = rand(0,100);
                     $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
-                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name']);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][0]);
                     array_push($filenamearray, $tempname);
-                    array_push($filedescriptionarray,$_POST["attachDesc"]);
+                    array_push($filedescriptionarray,$_POST["attachDesc"][0]);
                 }
                  
                 if ($totalfiles > 0) {
