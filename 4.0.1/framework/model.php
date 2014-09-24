@@ -1536,8 +1536,11 @@ class Model {
             $_SESSION['success_send_notification'] = 1;
 
             // Redirect to the request
-            if(strlen($_POST['action_id']) > 0) $id = $_POST['action_id']; else $id = $_POST['request_id'];
-            $_SESSION['redirect'] = "index.php?page=view-".$_POST['page']."&id=".$id;
+            if($_SESSION['typecode'] == 0){ 
+                $id = $_POST['action_id']; $_SESSION['redirect'] = "index.php?page=view-"."action"."&id=".$id;
+            } else { 
+                $id = $_POST['request_id']; $_SESSION['redirect'] = "index.php?page=view-"."request"."&id=".$id;
+            }
 
         }
         catch (Exception $e) {
@@ -1834,7 +1837,7 @@ class Model {
                         }
 
                     }
-                }else if($totalfiles == 1) {
+                }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     $attachment = array(
                                'name' => $_FILES['attachment']['name'],
                                'type' => $_FILES['attachment']['type'],
@@ -1845,9 +1848,9 @@ class Model {
                       );
                     $rand = rand(0,100);
                     $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
-                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name']);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][0]);
                     array_push($filenamearray, $tempname);
-                    array_push($filedescriptionarray,$_POST["attachDesc"]);
+                    array_push($filedescriptionarray,$_POST["attachDesc"][0]);
                 }
                  
                 if ($totalfiles > 0) {

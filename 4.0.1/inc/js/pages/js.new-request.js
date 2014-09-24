@@ -238,7 +238,8 @@ $(document).ready(function () {
             CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
             QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val());
-            CheckCountOnly(count_only);
+            //CheckCountOnly(count_only);
+            CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
 
@@ -260,6 +261,7 @@ $(document).ready(function () {
         //$("#textareaissue").focus();
         if (data.length === 0) {
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
+            CheckCountOnlyAjax($("#service").val(), $("#request").val(), '');
             return false;
         }
         return true;
