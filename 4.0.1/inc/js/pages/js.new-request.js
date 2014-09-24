@@ -238,7 +238,8 @@ $(document).ready(function () {
             CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
             QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val());
-            CheckCountOnly(count_only);
+            //CheckCountOnly(count_only);
+            CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
 
@@ -260,6 +261,7 @@ $(document).ready(function () {
         //$("#textareaissue").focus();
         if (data.length === 0) {
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
+            CheckCountOnlyAjax($("#service").val(), $("#request").val(), '');
             return false;
         }
         return true;
@@ -680,15 +682,15 @@ $(document).ready(function () {
             $("#lpostcode").val("");
             $("#ltype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             $("#lsuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-            $("#lstreet").attr("readonly", false).autocomplete("search", "");
-            //$("#lstreet").attr("readonly", false).val("").autocomplete(
+            //$("#lstreet").attr("readonly", false).autocomplete("search", "");
+            $("#lstreet").attr("readonly", false).val("").autocomplete(
 
-            //    $.ui.autocomplete.filter = function (array, term) {
-            //    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-            //    return $.grep(array, function (value) {
-            //        return matcher.test(value.label || value.value || value);
-            //    });
-            //})
+                $.ui.autocomplete.filter = function (array, term) {
+                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+                return $.grep(array, function (value) {
+                    return matcher.test(value.label || value.value || value);
+                });
+            })
         }
     });
 
@@ -1338,7 +1340,7 @@ function clearLocationAddress() {
     $("#addressId").val("");
     $('#lfno').val('');
     $('#lno').val('');    
-    $('#lstreet').val('').attr("readonly", false);
+    $('#lstreet').val('').attr("readonly", false).trigger("click");
     $("#ltype").val("").attr("readonly", true);
     $("#lsuburb").val("");
     $('#ldesc').val('');
