@@ -1,10 +1,11 @@
 <?php 
-if(isset($GLOBALS['result']->doc_dets->document_details)){
+if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['result']->doc_dets->document_details) > 0){
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
         //hide all rows at the beginning
         $("#requestDocumentMetadataTable tbody tr").hide();
+
 
         //show rows based on user click event
         $("#requestDocumentTable tbody tr ").click(function () {
@@ -15,6 +16,11 @@ if(isset($GLOBALS['result']->doc_dets->document_details)){
             $("#selectedDocument").val(id);
             $("#selectedDocDesc").html("Selected: <b>" + desc+"</b>");
             $('#linkbutton').removeAttr('disabled');
+
+            //for use in new request customer documents popup
+            $("#cust_selectedDocument").val(id);
+            $("#cust_selectedDocDesc").html("Selected: <b>" + desc + "</b>");
+            $('#cust_linkbutton').removeAttr('disabled');
 
         });  
     });
@@ -64,9 +70,9 @@ if(isset($GLOBALS['result']->doc_dets->document_details)){
                         }
                     }
                 }elseif(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['result']->doc_dets->document_details) == 1){
-                    $document = $GLOBALS['result']->doc_dets->document_details[0];
+                    $document = $GLOBALS['result']->doc_dets->document_details;
                              ?>
-                <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
+                <tr class="light_nocur" id="Document<?php echo $i; ?>ParentObject">
                      <td><?php echo $document->document_id; ?></td>
                      <td><?php echo $document->document_desc; ?></td>
                      <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a></td>
@@ -117,7 +123,6 @@ if(isset($GLOBALS['result']->doc_dets->document_details)){
         </table>
         
     </div>
-    
 </div>
 <?php }else{ ?>
 No Results found

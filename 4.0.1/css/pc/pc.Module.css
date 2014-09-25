@@ -215,7 +215,7 @@ div#loadingbar {
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
     opacity: 0.9;
     display: none;
-    z-index: 1001;
+    z-index: 2001;
     -webkit-border-radius: 25px;
 -moz-border-radius: 25px;
 border-radius: 25px;

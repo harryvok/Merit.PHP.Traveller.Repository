@@ -12,6 +12,14 @@ if($GLOBALS['result']['errorConnecting']== false){
             var id = $(this).find("td:first-child").html();
             $(".Document" + id + "MetaData").show();
         });
+
+        $(".unlinkbutton").click(function () {
+            var buttonID = $(this).attr("id");
+            var documentID = buttonID.replace(/unlink/gi, '');
+            unlinkDocument(documentID);
+        });
+
+        
         
     });
 </script>
@@ -53,7 +61,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                             <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
                                  <td><?php echo $document->document_id; ?></td>
                                  <td><?php echo $document->document_desc; ?></td>
-                                 <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a></td>
+                                 <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a>&nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_id; ?>" value="Unlink"/></td>
                             </tr>
                              <?php
                             for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
@@ -63,12 +71,12 @@ if($GLOBALS['result']['errorConnecting']== false){
                             }
                         }
                     }elseif(isset($GLOBALS['result']['docdets']->document_details) && count($GLOBALS['result']['docdets']->document_details) == 1){
-                        $document = $GLOBALS['result']['docdets']->document_details[0];
+                        $document = $GLOBALS['result']['docdets']->document_details;
                     ?>
-                <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
+                <tr class="light_nocur" id="Document<?php echo $i; ?>ParentObject">
                      <td><?php echo $document->document_id; ?></td>
                      <td><?php echo $document->document_desc; ?></td>
-                     <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a></td>
+                     <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a>&nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_id; ?>" value="Unlink"/></td>
                 </tr>
                 <?php
                         for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
@@ -139,11 +147,11 @@ if($GLOBALS['result']['errorConnecting']== false){
       <a title="Link Document"></a>
 
       <form method="post" enctype="multipart/form-data" id="linkdocument" action="process.php">
-        <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Correspondent</b></label>
-        <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Document Name</b></label>
-        <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Document ID</b></label>
-        <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b>Company</b></label>
-        <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b>Keyword</b></label>
+        <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Correspondent (surname,given)</b></label>&nbsp
+        <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Document Name/Description</b></label>&nbsp
+        <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Document ID</b></label>&nbsp
+        <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b>Company</b></label>&nbsp
+        <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b>Full text</b></label>&nbsp
         <input type="button" id="searchDocument" value="Search"/>
         <div class="column r55"><input type="text" id="searchterm" placeholder="Search...."/></div>
         <div class="summaryContainer">
@@ -151,7 +159,7 @@ if($GLOBALS['result']['errorConnecting']== false){
             <div id="searchResults">
 
             </div>
-            <input type="submit" id="linkbutton" value="Link"/>
+            <input type="submit" id="linkbutton" value="Link Document"/>
             <span id="selectedDocDesc">Selected Doc: </span>
         </div>
           <input type="hidden" name="action" value="RequestLinkDocument" />

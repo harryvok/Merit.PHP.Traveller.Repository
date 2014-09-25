@@ -358,6 +358,15 @@ $(document).ready(function () {
             $('#name_id').val('0');
             $('#name_ctr').val('0');
             $('#name_origin').val('');
+            if ($("#given").val() == "" || $("#surname").val() == "") {
+                $("#customerInfoXpert").attr("disabled", "disabled");
+                
+            } else {
+                var searchTerm = $("#surname").val() + "," + $("#given").val();
+                searchCustomerDocument(searchTerm, "cust_searchResults");
+
+            }
+
             if (check_fields()) {
                 var self = this;
                 $(this).addClass("ui-autocomplete-loading");
