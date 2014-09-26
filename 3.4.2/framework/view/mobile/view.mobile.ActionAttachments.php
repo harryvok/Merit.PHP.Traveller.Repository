@@ -14,7 +14,7 @@
    <input type="hidden" name="ref" value="<?php echo $_GET['id']; ?>" />
    <input type="hidden" name="ref_page" value="view-action" />
     <input type="hidden" name="action" value="Attachment" />
-    <?php $dev = new Mobile_Detect(); if(true/*!$dev->isWindowsMobileOS()*/){?>
+    <?php $dev = new Mobile_Detect(); if(!$dev->isWindowsMobileOS()){?>
 <label>Attachment</label>
   <input id="attachment" type="file" class="required" name="attachment"/></li>
   <label>Description:</label><input type="text"  id="desc" maxlength="50"  name="desc" /></li>

@@ -7,7 +7,7 @@ rmdir /s /q "C:\Temp\CRM\%vers%"
 
 mkdir C:\Temp\CRM\%vers%
 
-XCOPY C:\projects\Merit2013\Merit.PHP.Traveller\Merit.PHP.Traveller.Repository\%vers% C:\Temp\CRM\%vers% /E 
+XCOPY C:\projects\Merit2013\Merit.PHP.Traveller\%vers% C:\Temp\CRM\%vers% /E 
 
 rmdir /s /q "C:\Temp\CRM\%vers%\attachments"
 rmdir /s /q "C:\Temp\CRM\%vers%\Properties"
@@ -15,7 +15,7 @@ DEL C:\Temp\CRM\%vers%\%vers%.phpproj"
 DEL C:\Temp\CRM\%vers%\%vers%.phpproj.user"
 DEL C:\Temp\CRM\%vers%\framework\settings.php
 
-COPY C:\projects\Merit2013\Merit.PHP.Traveller\Merit.PHP.Traveller.Repository\default.php C:\Temp\CRM\%vers%\framework\settings.php
+COPY C:\projects\Merit2013\Merit.PHP.Traveller\default.php C:\Temp\CRM\%vers%\framework\settings.php
 
 echo ---
 echo Zipping up Standalone. Please wait...

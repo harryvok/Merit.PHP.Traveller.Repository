@@ -294,7 +294,6 @@
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
-    <Compile Include="framework\view\pc\view.pc.DocumentSearchResults.php" />
     <Compile Include="framework\view\pc\view.pc.NotifyOfficerList.php" />
     <Compile Include="framework\view\pc\view.pc.RequestDelete.php" />
     <Compile Include="framework\view\pc\view.pc.RequestDocuments.php" />
@@ -1304,7 +1303,6 @@
     </Content>
     <Content Include="images\delete-icon.png" />
     <Content Include="images\modify-icon.png" />
-    <Content Include="inc\js\libraries\jquery-ui-map.extensions.js" />
     <Content Include="inc\js\pages\js.adhocOfficer.js">
       <SubType>Content</SubType>
     </Content>

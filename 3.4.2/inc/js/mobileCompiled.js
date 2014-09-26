@@ -2766,215 +2766,6 @@ jQuery.validator.addMethod("timeField", function (value, element) {
 }, "* You must choose a time."); 
 /*! jquery-ui-map rc1 | Johan Säll Larsson */
 eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('(3(d){d.a=3(a,b){7 c=a.r(".")[0],a=a.r(".")[1];d[c]=d[c]||{};d[c][a]=3(a,b){E.L&&2.11(a,b)};d[c][a].F=d.z({1g:c,1l:a},b);d.I[a]=3(b){7 e="1k"===1o b,g=G.F.16.17(E,1),i=2;k(e&&"1n"===b.1m(0,1))4 i;2.13(3(){7 h=d.12(2,a);h||(h=d.12(2,a,n d[c][a](b,2)));e&&(i=h[b].19(h,g))});4 i}};d.a("1i.1d",{p:{1e:"1z",1C:5},1s:3(a,b){4 b?(2.p[a]=b,2.6("j").B(a,b),2):2.p[a]},11:3(a,b){2.u=b;a=a||{};l.z(2.p,a,{10:2.v(a.10)});2.18();2.1a&&2.1a()},18:3(){7 a=2;2.m={j:n 8.9.1u(a.u,a.p),C:[],M:[],W:[]};8.9.y.1t(a.m.j,"1w",3(){d(a.u).14("1v",a.m.j)});a.x(a.p.1q,a.m.j)},S:3(a){7 b=2.6("O",n 8.9.1p);b.z(2.v(a));2.6("j").1r(b);4 2},1B:3(a){7 b=2.6("j").1E();4 b?b.1D(a.U()):!1},1y:3(a,b){2.6("j").1x[b].P(2.D(a));4 2},1A:3(a,b){a.j=2.6("j");a.T=2.v(a.T);7 c=n(a.1h||8.9.1f)(a),f=2.6("C");c.X?f[c.X]=c:f.P(c);c.O&&2.S(c.U());2.x(b,a.j,c);4 d(c)},w:3(a){2.t(2.6(a));2.B(a,[]);4 2},t:3(a){A(7 b K a)a.R(b)&&(a[b]o 8.9.15?(8.9.y.1j(a[b]),a[b].N&&a[b].N(s)):a[b]o G&&2.t(a[b]),a[b]=s)},22:3(a,b,c){a=2.6(a);b.q=d.21(b.q)?b.q:[b.q];A(7 f K a)k(a.R(f)){7 e=!1,g;A(g K b.q)k(-1<d.20(b.q[g],a[f][b.1Y]))e=!0;Q k(b.V&&"1X"===b.V){e=!1;1W}c(a[f],e)}4 2},6:3(a,b){7 c=2.m;k(!c[a]){k(-1<a.1Z(">")){A(7 d=a.1c(/ /g,"").r(">"),e=0;e<d.L;e++){k(!c[d[e]])k(b)c[d[e]]=e+1<d.L?[]:b;Q 4 s;c=c[d[e]]}4 c}b&&!c[a]&&2.B(a,b)}4 c[a]},27:3(a,b,c){7 d=2.6("J",a.28||n 8.9.29);d.26(a);d.23(2.6("j"),2.D(b));2.x(c,d);4 2},24:3(){s!=2.6("J")&&2.6("J").25();4 2},B:3(a,b){2.m[a]=b;4 2},1V:3(){7 a=2.6("j"),b=a.1K();d(a).1b("1J");a.1M(b);4 2},1L:3(){2.w("C").w("W").w("M").t(2.m);l.1G(2.u,2.1F)},x:3(a){a&&d.1I(a)&&a.19(2,G.F.16.17(E,1))},v:3(a){k(!a)4 n 8.9.H(0,0);k(a o 8.9.H)4 a;a=a.1c(/ /g,"").r(",");4 n 8.9.H(a[0],a[1])},D:3(a){4!a?s:a o l?a[0]:a o 1H?a:d("#"+a)[0]}});l.I.z({1b:3(a){8.9.y.14(2[0],a);4 2},Y:3(a,b,c){8.9&&2[0]o 8.9.15?8.9.y.1S(2[0],a,b):c?2.Z(a,b,c):2.Z(a,b);4 2}});l.13("1R 1U 1T 1O 1N 1Q 1P".r(" "),3(a,b){l.I[b]=3(a,d){4 2.Y(b,a,d)}})})(l);',62,134,'||this|function|return||get|var|google|maps||||||||||map|if|jQuery|instance|new|instanceof|options|value|split|null|_c|el|_latLng|clear|_call|event|extend|for|set|markers|_unwrap|arguments|prototype|Array|LatLng|fn|iw|in|length|overlays|setMap|bounds|push|else|hasOwnProperty|addBounds|position|getPosition|operator|services|id|addEventListener|bind|center|_setup|data|each|trigger|MVCObject|slice|call|_create|apply|_init|triggerEvent|replace|gmap|mapTypeId|Marker|namespace|marker|ui|clearInstanceListeners|string|pluginName|substring|_|typeof|LatLngBounds|callback|fitBounds|option|addListenerOnce|Map|init|bounds_changed|controls|addControl|roadmap|addMarker|inViewport|zoom|contains|getBounds|name|removeData|Object|isFunction|resize|getCenter|destroy|setCenter|mouseout|mouseover|dragend|drag|click|addListener|dblclick|rightclick|refresh|break|AND|property|indexOf|inArray|isArray|find|open|closeInfoWindow|close|setOptions|openInfoWindow|infoWindow|InfoWindow'.split('|'),0,{})) 
-﻿/*!
- * jQuery UI Google Map 3.0-rc
- * http://code.google.com/p/jquery-ui-map/
- * Copyright (c) 2010 - 2011 Johan Säll Larsson
- * Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
- *
- * Depends:
- *      jquery.ui.map.js
- */
-(function ($) {
-
-    $.extend($.ui.gmap.prototype, {
-
-        /**
-		 * Gets the current position
-		 * @param callback:function(position, status)
-		 * @param geoPositionOptions:object, see https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIDOMGeoPositionOptions
-		 */
-        getCurrentPosition: function (callback, geoPositionOptions) {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-					function (result) {
-					    callback(result, 'OK');
-					},
-					function (error) {
-					    callback(null, error);
-					},
-					geoPositionOptions
-				);
-            } else {
-                callback(null, 'NOT_SUPPORTED');
-            }
-        },
-
-        /**
-		 * Watches current position
-		 * To clear watch, call navigator.geolocation.clearWatch(this.get('watch'));
-		 * @param callback:function(position, status)
-		 * @param geoPositionOptions:object, see https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIDOMGeoPositionOptions
-		 */
-        watchPosition: function (callback, geoPositionOptions) {
-            if (navigator.geolocation) {
-                this.set('watch', navigator.geolocation.watchPosition(
-					function (result) {
-					    callback(result, "OK");
-					},
-					function (error) {
-					    callback(null, error);
-					},
-					geoPositionOptions
-				));
-            } else {
-                callback(null, "NOT_SUPPORTED");
-            }
-        },
-
-        /**
-		 * Clears any watches
-		 */
-        clearWatch: function () {
-            if (navigator.geolocation) {
-                navigator.geolocation.clearWatch(this.get('watch'));
-            }
-        },
-
-        /**
-		 * Autocomplete using Google Geocoder
-		 * @param panel:string/node/jquery
-		 * @param callback:function(results, status)
-		 */
-        autocomplete: function (panel, callback) {
-            var self = this;
-            $(this._unwrap(panel)).autocomplete({
-                source: function (request, response) {
-                    self.search({ 'address': request.term }, function (results, status) {
-                        if (status === 'OK') {
-                            response($.map(results, function (item) {
-                                return { label: item.formatted_address, value: item.formatted_address, position: item.geometry.location }
-                            }));
-                        } else if (status === 'OVER_QUERY_LIMIT') {
-                            alert('Google said it\'s too much!');
-                        }
-                    });
-                },
-                minLength: 3,
-                select: function (event, ui) {
-                    self._call(callback, ui);
-                },
-                open: function () { $(this).removeClass("ui-corner-all").addClass("ui-corner-top"); },
-                close: function () { $(this).removeClass("ui-corner-top").addClass("ui-corner-all"); }
-            });
-        },
-
-        /**
-		 * Retrieves a list of Places in a given area. The PlaceResultss passed to the callback are stripped-down versions of a full PlaceResult. A more detailed PlaceResult for each Place can be obtained by sending a Place Details request with the desired Place's reference value.
-		 * @param placeSearchRequest:google.maps.places.PlaceSearchRequest, http://code.google.com/apis/maps/documentation/javascript/reference.html#PlaceSearchRequest
-		 * @param callback:function(result:google.maps.places.PlaceResult, status:google.maps.places.PlacesServiceStatus), http://code.google.com/apis/maps/documentation/javascript/reference.html#PlaceResult
-		 */
-        placesSearch: function (placeSearchRequest, callback) {
-            this.get('services > PlacesService', new google.maps.places.PlacesService(this.get('map'))).search(placeSearchRequest, callback);
-        },
-
-        /**
-		 * Clears any directions
-		 */
-        clearDirections: function () {
-            var directionsRenderer = this.get('services > DirectionsRenderer');
-            if (directionsRenderer) {
-                directionsRenderer.setMap(null);
-                directionsRenderer.setPanel(null);
-            }
-        },
-
-        /**
-		 * Page through the markers. Very simple version.
-		 * @param prop:the marker property to show in display, defaults to title
-		 */
-        pagination: function (prop) {
-            var $el = $("<div id='pagination' class='pagination shadow gradient rounded clearfix'><div class='lt btn back-btn'></div><div class='lt display'></div><div class='rt btn fwd-btn'></div></div>");
-            var self = this, i = 0, prop = prop || 'title';
-            self.set('p_nav', function (a, b) {
-                if (a) {
-                    i = i + b;
-                    $el.find('.display').text(self.get('markers')[i][prop]);
-                    self.get('map').panTo(self.get('markers')[i].getPosition());
-                }
-            });
-            self.get('p_nav')(true, 0);
-            $el.find('.back-btn').click(function () {
-                self.get('p_nav')((i > 0), -1, this);
-            });
-            $el.find('.fwd-btn').click(function () {
-                self.get('p_nav')((i < self.get('markers').length - 1), 1, this);
-            });
-            self.addControl($el, google.maps.ControlPosition.TOP_LEFT);
-        }
-
-        /**
-		 * A layer that displays data from Panoramio.
-		 * @param panoramioLayerOptions:google.maps.panoramio.PanoramioLayerOptions, http://code.google.com/apis/maps/documentation/javascript/reference.html#PanoramioLayerOptions
-		 */
-        /*loadPanoramio: function(panoramioLayerOptions) {
-			if ( !this.get('overlays').PanoramioLayer ) {
-				this.get('overlays').PanoramioLayer = new google.maps.panoramio.PanoramioLayer();
-			}
-			this.get('overlays').PanoramioLayer.setOptions(jQuery.extend({'map': this.get('map') }, panoramioLayerOptions));
-		},*/
-
-        /**
-		 * Makes an elevation request along a path, where the elevation data are returned as distance-based samples along that path.
-		 * @param pathElevationRequest:google.maps.PathElevationRequest, http://code.google.com/apis/maps/documentation/javascript/reference.html#PathElevationRequest
-		 * @param callback:function(result:google.maps.ElevationResult, status:google.maps.ElevationStatus), http://code.google.com/intl/sv-SE/apis/maps/documentation/javascript/reference.html#ElevationResult
-		 */
-        /*elevationPath: function(pathElevationRequest, callback) {
-			this.get('services > ElevationService', new google.maps.ElevationService()).getElevationAlongPath(pathElevationRequest, callback);
-		},*/
-
-        /**
-		 * Makes an elevation request for a list of discrete locations.
-		 * @param pathElevationRequest:google.maps.PathElevationRequest, http://code.google.com/apis/maps/documentation/javascript/reference.html#PathElevationRequest
-		 * @param callback:function(result:google.maps.ElevationResult, status:google.maps.ElevationStatus), http://code.google.com/intl/sv-SE/apis/maps/documentation/javascript/reference.html#ElevationResult
-		 */
-        /*elevationLocations: function(pathElevationRequest, callback) {
-			this.get('services > ElevationService', new google.maps.ElevationService()).getElevationForLocations(pathElevationRequest, callback);
-		},*/
-
-        /* PLACES SERVICE */
-
-        /**
-		 * Retrieves a list of Places in a given area. The PlaceResultss passed to the callback are stripped-down versions of a full PlaceResult. A more detailed PlaceResult for each Place can be obtained by sending a Place Details request with the desired Place's reference value.
-		 * @param placeSearchRequest:google.maps.places.PlaceSearchRequest, http://code.google.com/apis/maps/documentation/javascript/reference.html#PlaceSearchRequest
-		 * @param callback:function(result:google.maps.places.PlaceResult, status:google.maps.places.PlacesServiceStatus), http://code.google.com/apis/maps/documentation/javascript/reference.html#PlaceResult
-		 */
-        /*placesSearch: function(placeSearchRequest, callback) {
-			this.get('services > PlacesService', new google.maps.places.PlacesService(this.get('map'))).search(placeSearchRequest, callback);
-		},*/
-
-        /**
-		 * Retrieves details about the Place identified by the given reference.
-		 * @param placeDetailsRequest:google.maps.places.PlaceDetailsRequest, http://code.google.com/apis/maps/documentation/javascript/reference.html#PlaceDetailsRequest
-		 * @param callback:function(result:google.maps.places.PlaceResult, status:google.maps.places.PlacesServiceStatus), http://code.google.com/apis/maps/documentation/javascript/reference.html#PlaceResult
-		 */
-        /*placesDetails: function(placeDetailsRequest, callback) {
-			this.get('services > PlacesService', new google.maps.places.PlacesService(this.get('map'))).getDetails(placeDetailsRequest, callback);
-		},*/
-
-        /**
-		 * A service to predict the desired Place based on user input. The service is attached to an <input> field in the form of a drop-down list. The list of predictions is updated dynamically as text is typed into the input field. 
-		 * @param panel:jquery/node/string
-		 * @param autocompleteOptions:google.maps.places.AutocompleteOptions, http://code.google.com/apis/maps/documentation/javascript/reference.html#AutocompleteOptions
-		 */
-        /*placesAutocomplete: function(panel, autocompleteOptions) {
-			this.get('services > Autocomplete', new google.maps.places.Autocomplete(this._unwrap(panel)));
-		},*/
-
-        /* DISTANCE MATRIX SERVICE */
-
-        /**
-		 * Issues a distance matrix request.
-		 * @param distanceMatrixRequest:google.maps.DistanceMatrixRequest, http://code.google.com/apis/maps/documentation/javascript/reference.html#DistanceMatrixRequest 
-		 * @param callback:function(result:google.maps.DistanceMatrixResponse, status: google.maps.DistanceMatrixStatus), http://code.google.com/apis/maps/documentation/javascript/reference.html#DistanceMatrixResponse
-		 */
-        /*displayDistanceMatrix: function(distanceMatrixRequest, callback) {
-			this.get('services > DistanceMatrixService', new google.maps.DistanceMatrixService()).getDistanceMatrix(distanceMatrixRequest, callback);
-		}*/
-
-    });
-
-}(jQuery)); 
 
 //======================================================== FASTCLICK
          function FastButton(element, handler) {
@@ -3121,17 +2912,6 @@ function GetAliasDetails(address_id,type_txt,type_desc,type_cnt,type_key,type_co
 	}, "html");
 	
 }
-function GetAliasDetails_iphone(id, address_id, type_txt, type_desc, type_cnt, type_key, type_code) {
-    Load();
-    $.post("inc/ajax/ajax.getAliasDetails.php", { address_id: address_id, type_txt: type_txt, type_desc: type_desc, type_cnt: type_cnt, type_key: type_key, type_code: type_code },
-	function (data) {
-	    $('#alias_details' + id).html(data);
-	    $("#showhide-" + id).removeAttr('style');
-	    //$("#popup").popup("open");
-	    //$("#view-address").page('destroy').page();
-	}, "html");
-
-}
 
 function GetAttributeDetails(address_id,type_txt,type_desc,type_cnt,type_key,type_code,status_ind){
 	Load();
@@ -3142,6 +2922,16 @@ function GetAttributeDetails(address_id,type_txt,type_desc,type_cnt,type_key,typ
 	
 }
 
+function GetAliasDetails_iphone(id,address_id,type_txt,type_desc,type_cnt,type_key,type_code){
+	Load();
+	$.post("inc/ajax/ajax.getAliasDetails.php",{ address_id : address_id, type_txt : type_txt, type_desc : type_desc, type_cnt : type_cnt, type_key : type_key, type_code : type_code  },
+	function(data){
+	    $('#popup').html(data);
+	    $("#popup").popup("open");
+	    $("#view-address").page('destroy').page();
+	}, "html");
+	
+}
 function GetAssociationDetails_iphone(id,type_txt,type_desc,type_cnt,type_key,type_code,form_name,key_name,address_id){
 	Load();
 	$.post("inc/ajax/ajax.getAssociationDetails.php",{ type_txt : type_txt, type_desc : type_desc, type_cnt : type_cnt, type_key : type_key, type_code : type_code, form_name : form_name, key_name : key_name, address_id : address_id },
@@ -3362,72 +3152,51 @@ imageArray[3] = "images/pc/button-search-hover.png";
 imageArray[4] = "images/pc/button-logout-hover.png";
 
 for(var i=0;i<imageArray.length;i++){
-	Image1 = new Image(); 
+	Image1 = new Image();
 	Image1.src = imageArray[i];
 }
 
-function changeLocationType() {
+function changeLocationType(){
+	if(document.getElementById('same').value == "s"){
+		document.getElementById('inside_ca').style.display = "block";
+		document.getElementById('outside_ca').style.display = "none";
+		document.getElementById('i_cno').value = document.getElementById('lno').value;	
+		document.getElementById('i_cfno').value = document.getElementById('lfno').value;	
+		document.getElementById('i_cstreet').value = document.getElementById('lstreet').value;
+		document.getElementById('i_ctype').value = document.getElementById('ltype').value;
+		document.getElementById('i_csuburb').value = document.getElementById('lsuburb').value;
+		document.getElementById('i_cdesc').value = document.getElementById('ldesc').value;
 
-    /* IF SAME = S, (SAME AS LOCATION PICKED) */
-    if (document.getElementById('same').value == "s") {
+		if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
+		if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
+	}
+	else if(document.getElementById('same').value == "i"){
+		document.getElementById('o_cno').value = "";	
+		document.getElementById('o_cfno').value = "";	
+		document.getElementById('o_cstreet').value = "";
+		document.getElementById('o_ctype').value = "";
+		document.getElementById('o_csuburb').value = "";
+		document.getElementById('o_cdesc').value = "";
 
-        // Show inside, hide outside
-        document.getElementById('inside_ca').style.display = "block";
-        document.getElementById('outside_ca').style.display = "none";
+		document.getElementById('inside_ca').style.display = "block";
+		document.getElementById('outside_ca').style.display = "none";
+	}	
+	else if(document.getElementById('same').value == "o"){
+		document.getElementById('inside_ca').style.display = "none";
+		document.getElementById('outside_ca').style.display = "block";
+	}	
+	
+	if(document.getElementById('same').value == "i"){
+		document.getElementById('i_cno').value = '';	
+		document.getElementById('i_cfno').value = '';	
+		document.getElementById('i_cstreet').value = '';
+		document.getElementById('i_ctype').value = '';
+		document.getElementById('i_csuburb').value ='';
+		document.getElementById('i_cdesc').value = '';
 
-        // Set Inside area to location var's
-        document.getElementById('i_cno').value = document.getElementById('lno').value;
-        document.getElementById('i_cfno').value = document.getElementById('lfno').value;
-        document.getElementById('i_cstreet').value = document.getElementById('lstreet').value;
-        document.getElementById('i_ctype').value = document.getElementById('ltype').value;
-        document.getElementById('i_csuburb').value = document.getElementById('lsuburb').value;
-        document.getElementById('i_cdesc').value = document.getElementById('ldesc').value;
-
-        if ($("#i_ctype").val().length > 0) {
-            $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
-        }
-        if ($("#i_csuburb").val().length > 0) {
-            $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
-        }
-    }
-
-        /* IF SAME = I, (INSIDE COUNCIL AREA) */
-    else if (document.getElementById('same').value == "i") {
-
-        // Set Outside area to nothing
-        document.getElementById('o_cno').value = '';
-        document.getElementById('o_cfno').value = '';
-        document.getElementById('o_cstreet').value = '';
-        document.getElementById('o_ctype').value = '';
-        document.getElementById('o_csuburb').value = '';;
-        document.getElementById('o_cdesc').value = '';
-
-        // Show inside, hide outside
-        document.getElementById('inside_ca').style.display = "block";
-        document.getElementById('outside_ca').style.display = "none";
-
-        if ($("#i_ctype").val().length > 0) {
-            $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable");
-        }
-        if ($("#i_csuburb").val().length > 0) {
-            $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable");
-        }
-    }
-
-        /* IF SAME = O, (Outside COUNCIL AREA) */
-    else if (document.getElementById('same').value == "o") {
-        // Set Inside area to nothing
-        document.getElementById('i_cno').value = '';
-        document.getElementById('i_cfno').value = '';
-        document.getElementById('i_cstreet').value = '';
-        document.getElementById('i_ctype').value = '';
-        document.getElementById('i_csuburb').value = '';
-        document.getElementById('i_cdesc').value = '';
-
-        // Show outside, hide inside
-        document.getElementById('inside_ca').style.display = "none";
-        document.getElementById('outside_ca').style.display = "block";
-    }
+		if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); }
+		if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable"); }
+	}	
 }
 
 
@@ -3516,28 +3285,10 @@ function ClearHelpNotes() {
                     delay: 0,
                     minLength: 0,
                     select: response,
-                    response: response,
-                    //added by harry
-                    create: function (event, ui) {
-
-                        //autopopulate if there is one service
-                        if ($(self).attr('id') == "serviceInput") {
-                            $.ajax({
-                                url: ajax,
-                                dataType: "json",
-                                data: dataPass,
-                                success: function (data) {
-                                    if(data.length ==1)
-                                        //$("#serviceInput").click();
-                                        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
-                                }
-                            });
-                        }
-                    }
-                    //end addition by harry
+                    response: response
                 });
             }
-        })
+        });
     };
 
     
@@ -3579,29 +3330,10 @@ function ClearHelpNotes() {
                                     minLength: 0,
                                     select: response,
                                     response: response
-                                    
                                 });
                                 $(self).autocomplete("search", "");
                                 $(self).trigger("focus");
                                 
-                                if ($(self).attr('id') == "functionInput") {
-                                    if (data.length == 1) {
-                                        if ($("#textareaissue").length) {
-                                            $("#textareaissue").focus();
-                                        } else {
-                                            $("#add-request-textarea").focus();
-                                        }
-                                    } else {
-                                        $(self).focus();
-                                    }
-                                }
-                                /*if ($("#requestInput").val() != "" && $("#serviceInput").val() ) {
-                                    if ($("#textareaissue").length) {
-                                        $("#textareaissue").focus();
-                                    } else {
-                                        $("#add-request-textarea").focus();
-                                    }
-                                }*/
                             }
                         }
                     });
@@ -3743,10 +3475,8 @@ $(document).on("click", ".ViewFile", function(){
 		  type: 'post',
 		  data: { path: path, req_id: request_id, act_id: action_id },
 		  success: function(data) {
-		      Unload();
-		      $("#popupContent").html(data);
-		      //var lll = "#imageViewer" + path.replace(/\//g, '');
-		      //$(lll).html(data);
+			  Unload();
+			  $("#popupContent").html(data);
 			  $("#popup").popup("open");
 			  $("#default").page('destroy');
 			  $("#default").page();
@@ -3754,7 +3484,6 @@ $(document).on("click", ".ViewFile", function(){
 	  });
 	  return false;
 });
-
 
 $(document).on("pageinit", function () {
     $("#popup iframe")
@@ -3794,8 +3523,7 @@ function addElement() {
 function QueryUDFs(func,req,ser){
 	$.post("inc/ajax/ajax.getSrfUDFs.php",{ function_code: func, service_code: ser, request_code: req },
 	function(data){
-	    $("#global-udfs").html(data).trigger("create");
-	    //$("#default").trigger("create");
+		$("#global-udfs").html(data).trigger( "create" );
 	}, "html");
 }
 

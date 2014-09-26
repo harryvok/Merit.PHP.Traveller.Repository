@@ -17,15 +17,13 @@ if($GLOBALS['result']['errorConnecting']== false){
             var buttonID = $(this).attr("id");
             var documentID = buttonID.replace(/unlink/gi, '');
             unlinkDocument(documentID);
-        });
+    });
 
     });
 </script>
 <div class="summaryContainer">
     <h1>Documents</h1>
     <div>
-        <input type="button"  class="openPopup" id="Documents" value="Link Document"/>
-
         <table id="requestDocumentTable" class=" sortable" title="" cellspacing="0">
             <thead>
                 <tr>

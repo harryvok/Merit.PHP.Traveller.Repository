@@ -5,7 +5,7 @@ try{
 	if(!is_dir("../../attachments/")){
 		mkdir("../../attachments/");
 	}
-    $var = "../../attachments/".$rand.basename($_POST['path']);
+    $temp = copy($_POST['path'], "../../attachments/".$rand.basename($_POST['path']));
 	if(copy($_POST['path'], "../../attachments/".$rand.basename($_POST['path']))){
 		echo WEBSITE."attachments/".$rand.basename($_POST['path']);
 	}

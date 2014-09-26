@@ -32,11 +32,11 @@
                         <input id="al<?php echo $number ?>-type_key" value="<?php echo $result_a_as->type_key; ?>" type="hidden" />
                         <input id="al<?php echo $number ?>-type_code" value="<?php echo $result_a_as->type_code; ?>" type="hidden" />
                         
-                        <a href="#" id="<?php echo $number; ?>" class="alias">
+                        <a id="<?php echo $number; ?>" class="alias">
                         <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
                         </a>
                     </li>
-                    <li><a name="anchoral<?php echo $number ?>"></a></li>
+                    <a name="anchoral<?php echo $number ?>"></a>
                     <li id="showhide-<?php echo $number;?>" style="display: none;">
                     <div id="alias_details<?php echo $number ?>">
         
@@ -58,7 +58,7 @@
                         <input id="al<?php echo $number ?>-type_code" value="<?php echo $result_a_as->type_code; ?>" type="hidden" />
                         <input id="al<?php echo $number; ?>-address_id" value="<?php echo $_GET['id']; ?>" type="hidden" />
                         
-                        <a href="#" id="<?php echo $number ?>" class="alias">
+                        <a id="<?php echo $number ?>" class="alias">
                        <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
                         </a>
                     </li>

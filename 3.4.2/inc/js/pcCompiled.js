@@ -4759,17 +4759,6 @@ function GetAliasDetails(address_id,type_txt,type_desc,type_cnt,type_key,type_co
 	}, "html");
 	
 }
-function GetAliasDetails_iphone(id, address_id, type_txt, type_desc, type_cnt, type_key, type_code) {
-    Load();
-    $.post("inc/ajax/ajax.getAliasDetails.php", { address_id: address_id, type_txt: type_txt, type_desc: type_desc, type_cnt: type_cnt, type_key: type_key, type_code: type_code },
-	function (data) {
-	    $('#alias_details' + id).html(data);
-	    $("#showhide-" + id).removeAttr('style');
-	    //$("#popup").popup("open");
-	    //$("#view-address").page('destroy').page();
-	}, "html");
-
-}
 
 function GetAttributeDetails(address_id,type_txt,type_desc,type_cnt,type_key,type_code,status_ind){
 	Load();
@@ -4780,6 +4769,16 @@ function GetAttributeDetails(address_id,type_txt,type_desc,type_cnt,type_key,typ
 	
 }
 
+function GetAliasDetails_iphone(id,address_id,type_txt,type_desc,type_cnt,type_key,type_code){
+	Load();
+	$.post("inc/ajax/ajax.getAliasDetails.php",{ address_id : address_id, type_txt : type_txt, type_desc : type_desc, type_cnt : type_cnt, type_key : type_key, type_code : type_code  },
+	function(data){
+	    $('#popup').html(data);
+	    $("#popup").popup("open");
+	    $("#view-address").page('destroy').page();
+	}, "html");
+	
+}
 function GetAssociationDetails_iphone(id,type_txt,type_desc,type_cnt,type_key,type_code,form_name,key_name,address_id){
 	Load();
 	$.post("inc/ajax/ajax.getAssociationDetails.php",{ type_txt : type_txt, type_desc : type_desc, type_cnt : type_cnt, type_key : type_key, type_code : type_code, form_name : form_name, key_name : key_name, address_id : address_id },
@@ -5000,72 +4999,51 @@ imageArray[3] = "images/pc/button-search-hover.png";
 imageArray[4] = "images/pc/button-logout-hover.png";
 
 for(var i=0;i<imageArray.length;i++){
-	Image1 = new Image(); 
+	Image1 = new Image();
 	Image1.src = imageArray[i];
 }
 
-function changeLocationType() {
+function changeLocationType(){
+	if(document.getElementById('same').value == "s"){
+		document.getElementById('inside_ca').style.display = "block";
+		document.getElementById('outside_ca').style.display = "none";
+		document.getElementById('i_cno').value = document.getElementById('lno').value;	
+		document.getElementById('i_cfno').value = document.getElementById('lfno').value;	
+		document.getElementById('i_cstreet').value = document.getElementById('lstreet').value;
+		document.getElementById('i_ctype').value = document.getElementById('ltype').value;
+		document.getElementById('i_csuburb').value = document.getElementById('lsuburb').value;
+		document.getElementById('i_cdesc').value = document.getElementById('ldesc').value;
 
-    /* IF SAME = S, (SAME AS LOCATION PICKED) */
-    if (document.getElementById('same').value == "s") {
+		if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
+		if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable"); }
+	}
+	else if(document.getElementById('same').value == "i"){
+		document.getElementById('o_cno').value = "";	
+		document.getElementById('o_cfno').value = "";	
+		document.getElementById('o_cstreet').value = "";
+		document.getElementById('o_ctype').value = "";
+		document.getElementById('o_csuburb').value = "";
+		document.getElementById('o_cdesc').value = "";
 
-        // Show inside, hide outside
-        document.getElementById('inside_ca').style.display = "block";
-        document.getElementById('outside_ca').style.display = "none";
+		document.getElementById('inside_ca').style.display = "block";
+		document.getElementById('outside_ca').style.display = "none";
+	}	
+	else if(document.getElementById('same').value == "o"){
+		document.getElementById('inside_ca').style.display = "none";
+		document.getElementById('outside_ca').style.display = "block";
+	}	
+	
+	if(document.getElementById('same').value == "i"){
+		document.getElementById('i_cno').value = '';	
+		document.getElementById('i_cfno').value = '';	
+		document.getElementById('i_cstreet').value = '';
+		document.getElementById('i_ctype').value = '';
+		document.getElementById('i_csuburb').value ='';
+		document.getElementById('i_cdesc').value = '';
 
-        // Set Inside area to location var's
-        document.getElementById('i_cno').value = document.getElementById('lno').value;
-        document.getElementById('i_cfno').value = document.getElementById('lfno').value;
-        document.getElementById('i_cstreet').value = document.getElementById('lstreet').value;
-        document.getElementById('i_ctype').value = document.getElementById('ltype').value;
-        document.getElementById('i_csuburb').value = document.getElementById('lsuburb').value;
-        document.getElementById('i_cdesc').value = document.getElementById('ldesc').value;
-
-        if ($("#i_ctype").val().length > 0) {
-            $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
-        }
-        if ($("#i_csuburb").val().length > 0) {
-            $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
-        }
-    }
-
-        /* IF SAME = I, (INSIDE COUNCIL AREA) */
-    else if (document.getElementById('same').value == "i") {
-
-        // Set Outside area to nothing
-        document.getElementById('o_cno').value = '';
-        document.getElementById('o_cfno').value = '';
-        document.getElementById('o_cstreet').value = '';
-        document.getElementById('o_ctype').value = '';
-        document.getElementById('o_csuburb').value = '';;
-        document.getElementById('o_cdesc').value = '';
-
-        // Show inside, hide outside
-        document.getElementById('inside_ca').style.display = "block";
-        document.getElementById('outside_ca').style.display = "none";
-
-        if ($("#i_ctype").val().length > 0) {
-            $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable");
-        }
-        if ($("#i_csuburb").val().length > 0) {
-            $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable");
-        }
-    }
-
-        /* IF SAME = O, (Outside COUNCIL AREA) */
-    else if (document.getElementById('same').value == "o") {
-        // Set Inside area to nothing
-        document.getElementById('i_cno').value = '';
-        document.getElementById('i_cfno').value = '';
-        document.getElementById('i_cstreet').value = '';
-        document.getElementById('i_ctype').value = '';
-        document.getElementById('i_csuburb').value = '';
-        document.getElementById('i_cdesc').value = '';
-
-        // Show outside, hide inside
-        document.getElementById('inside_ca').style.display = "none";
-        document.getElementById('outside_ca').style.display = "block";
-    }
+		if ($("#i_ctype").val().length > 0) { $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); }
+		if ($("#i_csuburb").val().length > 0) { $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable"); }
+	}	
 }
 
 
@@ -5154,28 +5132,10 @@ function ClearHelpNotes() {
                     delay: 0,
                     minLength: 0,
                     select: response,
-                    response: response,
-                    //added by harry
-                    create: function (event, ui) {
-
-                        //autopopulate if there is one service
-                        if ($(self).attr('id') == "serviceInput") {
-                            $.ajax({
-                                url: ajax,
-                                dataType: "json",
-                                data: dataPass,
-                                success: function (data) {
-                                    if(data.length ==1)
-                                        //$("#serviceInput").click();
-                                        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
-                                }
-                            });
-                        }
-                    }
-                    //end addition by harry
+                    response: response
                 });
             }
-        })
+        });
     };
 
     
@@ -5217,29 +5177,10 @@ function ClearHelpNotes() {
                                     minLength: 0,
                                     select: response,
                                     response: response
-                                    
                                 });
                                 $(self).autocomplete("search", "");
                                 $(self).trigger("focus");
                                 
-                                if ($(self).attr('id') == "functionInput") {
-                                    if (data.length == 1) {
-                                        if ($("#textareaissue").length) {
-                                            $("#textareaissue").focus();
-                                        } else {
-                                            $("#add-request-textarea").focus();
-                                        }
-                                    } else {
-                                        $(self).focus();
-                                    }
-                                }
-                                /*if ($("#requestInput").val() != "" && $("#serviceInput").val() ) {
-                                    if ($("#textareaissue").length) {
-                                        $("#textareaissue").focus();
-                                    } else {
-                                        $("#add-request-textarea").focus();
-                                    }
-                                }*/
                             }
                         }
                     });

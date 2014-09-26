@@ -9,7 +9,6 @@ function generateGoogleMaps() {
     var markersArray = [];
 
     function initialize() {
-
         geocoder = new google.maps.Geocoder();
         var myOptions = {
             zoom: 15,
@@ -22,10 +21,9 @@ function generateGoogleMaps() {
             map: map,
         });
 
-       
+
         // Try W3C Geolocation (Preferred)
         if (navigator.geolocation) {
-
             browserSupportFlag = true;
             navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -52,6 +50,7 @@ function generateGoogleMaps() {
     }
 
     function placeMarker(map, lat, long) {
+
 
         var initialLocation = new google.maps.LatLng(lat, long);
         map.setCenter(initialLocation);

@@ -41,7 +41,6 @@
        <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpbUvAzj57UcnLYCrbqOYR63P-smXorhU&sensor=true">
         </script>
-    <script type="text/javascript" src="inc/js/libraries/jquery-ui-map.extensions.js"></script>
         <script type="text/javascript">
             $(function() {
             $('a').click(function() {

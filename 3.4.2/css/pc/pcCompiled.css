@@ -287,7 +287,6 @@ border-radius: 4px;
     input:focus, select:focus, textarea:focus {
         border: #415CA3 1px solid; 
         border-left: #415CA3 4px solid;
-        background-color:#FFFFCC
     }
 
     input:hover, select:hover, textarea:hover {

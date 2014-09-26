@@ -677,16 +677,6 @@ class Model {
         return $result;
     }
     
-    public function getSearchDocuments($params = NULL){
-        $parameters = new stdClass();
-        $parameters->user_id = $_SESSION['user_id'];
-        $parameters->password = $_SESSION['password'];
-        $parameters->search_param = $_POST['search_param'];
-        $parameters->search_type = $_POST['search_type'];
-        $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_search", $parameters);
-        return $result;
-    }
-    
     public function getOptions($params = NULL){
         return 0;
     }
