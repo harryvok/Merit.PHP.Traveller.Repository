@@ -533,6 +533,7 @@
     <Compile Include="inc\ajax\ajax.search.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="inc\ajax\ajax.unlinkDocument.php" />
     <Compile Include="inc\ajax\ajax.WorkflowView.php" />
     <Compile Include="inc\php\TreeView\GDRenderer.php" />
     <Compile Include="inc\php\TreeView\Node.php" />

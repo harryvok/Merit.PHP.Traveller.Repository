@@ -72,6 +72,8 @@ $error_array = array(
     'error_send_notification' => 'Error sending notification.',
     'error_alternative_officer' => 'You must specify an alternate officer',
     'error_editing_attach' => 'Error editing attachment',
+    'error_link_document' => 'Error linking document',
+    'error_unlink_document' => 'Error unlinking document',
     "error_custom" => $custom_error
 );
 
@@ -105,7 +107,9 @@ $success_array = array(
     'success_availability' => 'Successfully changed availability',
     'success_send_notification' => 'Successfully sent notification.',
 	'success_email' => isset($_SESSION['email_msg']) ? strlen($_SESSION['email_msg']) > 0 ? $_SESSION['email_msg'] : 'Email notification has been sent to the customer.' : '',
-	'success_sms' => isset($_SESSION['sms_msg']) ? strlen($_SESSION['sms_msg']) > 0 ? $_SESSION['sms_msg'] : 'SMS notification has been sent to the customer.' : ''
+	'success_sms' => isset($_SESSION['sms_msg']) ? strlen($_SESSION['sms_msg']) > 0 ? $_SESSION['sms_msg'] : 'SMS notification has been sent to the customer.' : '',
+    'success_link_document' => 'Successfully linked document',
+    'success_unlink_document' => 'Successfully unlinked document'
 );
 
 

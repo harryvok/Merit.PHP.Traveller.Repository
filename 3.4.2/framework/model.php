@@ -1240,7 +1240,6 @@ class Model {
                     array_push($filedescriptionarray,$_POST["attachDesc"]);
                 }
                 
-                
                 if ($totalfiles > 0 && $_FILES['attachment']['name'][0] != "") {
 
                      $parameters_att = array(

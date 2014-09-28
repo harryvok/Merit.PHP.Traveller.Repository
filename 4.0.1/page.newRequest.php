@@ -21,6 +21,8 @@ if(!isset($_GET['d'])){
             <div>
                 
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
+                <input type="button" value="InfoXpert Search" class="openPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
+
                 <div class="column r60">
                     <div class="column r25">
                         <label for="service">Keyword</label>
@@ -229,11 +231,13 @@ if(!isset($_GET['d'])){
                     <div>
                         
                         <div class="column r50">
+
                             <label class="inline">Customer Type</label><br/>
                             <?php $controller->Dropdown("CustomerTypes", "CustomerTypes"); ?>
                             <input type="button" name="myDetails" id="myDetails" value="My Details" />
                             <input type="button" name="clearDetails" id="clearDetails" value="Clear" />
                              <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()"  />
+                            <input type="button" class="openPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
                         </div>
                         <div class="float-left">
                             <div class="column r25">
@@ -413,7 +417,6 @@ if(!isset($_GET['d'])){
                 </div>
                </div>
             </div>
-        </div>
         <br />
 
         <div class="summaryContainer">
@@ -421,7 +424,7 @@ if(!isset($_GET['d'])){
                 <div class="column r100">
                     <div class="column r25">
                         <label for="desc">File</label>
-                        <input id="attachment" type="file" name="attachment[]" id="attachFile" />
+                        <input  type="file" name="attachment[]" id="attachFile" />
                         <!--<label for="desc">File 2</label>
                         <input id="attachment" type="file" name="attachment[]" id="attachFile" />
                         <label for="desc">File 3</label>
@@ -452,6 +455,124 @@ if(!isset($_GET['d'])){
         </div>
 
         <input type="hidden" name="saveCountOnly" id="countOnlyInd" value="N" />
+        <input type="hidden" name="documentsToLink" id="documentsToLink" />
+        </div>
+        
+        <div class="popupDetail" id="DocumentsPopup">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //hide search button if no value
+                $('#searchDocument').attr('disabled', 'disabled');
+                $('#linkbutton').attr('disabled', 'disabled');
+                $('#searchterm').keyup(function () {
+                    if ($(this).val() != '') {
+                        $('#searchDocument').removeAttr('disabled');
+                    } else {
+                        $('#searchDocument').attr('disabled', 'disabled');
+                    }
+                });
+                $("#searchDocument").click(function () {
+                    searchDocument();
+                });
+                $("#linkbutton").click(function () {
+                    var selectedDocument = $("#selectedDocument").val();
+                    var currentdocuments = $("#documentsToLink").val();
+                    if (currentdocuments != "") {
+                        if (currentdocuments.indexOf(selectedDocument) >= 0) {
+                            alert("You have already selected that document");
+                        } else {
+                            if (confirm("Click OK to link this document when request is saved")) {
+                                $("#documentsToLink").val(currentdocuments + "-" + selectedDocument);
+                            }
+                        }
+                    } else {
+                        if (confirm("Click OK to link this document when request is saved")) {
+                            $("#documentsToLink").val(selectedDocument);
+                        }
+                    }
+                });
+                
+            });
+        </script>
+      <h1>Link Document <span class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
+      <a title="Link Document"></a>
+
+      <div>
+        <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Correspondent (surname,given)</b></label>&nbsp
+        <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Document Name/Description</b></label>&nbsp
+        <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Document ID</b></label>&nbsp
+        <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b>Company</b></label>&nbsp
+        <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b>Full text</b></label>&nbsp
+        <input type="button" id="searchDocument" value="Search"/>
+        <div class="column r55"><input type="text" id="searchterm" placeholder="Search...."/></div>
+        <div class="summaryContainer">
+            <input type="hidden" name="selectedDocument" id="selectedDocument"/>
+            <div id="searchResults">
+
+            </div>
+            <input type="button" id="linkbutton" value="Link Document"/>
+            <span id="selectedDocDesc">Selected Doc: </span>
+        </div>
+      </div>
+</div>
+        <div class="popupDetail" id="customerInfoXpertPopup">
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                if ($("#given").val() != "" && $("#surname").val() != "") {
+                    $("#cust_searchterm").val($("#surname").val() + "," + $("#given").val());
+                    $('#cust_searchDocument').removeAttr('disabled');
+                    
+                }
+                //hide search button if no value
+                //$('#cust_searchDocument').attr('disabled', 'disabled');
+                $('#cust_linkbutton').attr('disabled', 'disabled');
+                $('#cust_searchterm').keyup(function () {
+                    if ($(this).val() != '') {
+                        $('#cust_searchDocument').removeAttr('disabled');
+                    } else {
+                        $('#cust_searchDocument').attr('disabled', 'disabled');
+                    }
+                });
+                $("#cust_searchDocument").click(function () {
+                    searchDocument($("#cust_searchterm").val(),"cust_searchResults");
+                });
+                $("#cust_linkbutton").click(function () {
+                    var selectedDocument = $("#cust_selectedDocument").val();
+                    var currentdocuments = $("#documentsToLink").val();
+                    if (currentdocuments != "") {
+                        if (currentdocuments.indexOf(selectedDocument) >= 0) {
+                            alert("You have already selected that document");
+                        } else {
+                            if (confirm("Click OK to link this document when request is saved")) {
+                                $("#documentsToLink").val(currentdocuments + "-" + selectedDocument);
+                            }
+                        }
+                    } else {
+                        if (confirm("Click OK to link this document when request is saved")) {
+                            $("#documentsToLink").val(selectedDocument);
+                        }
+                    }
+                });
+
+            });
+        </script>
+      <h1>Link Document <span class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
+      <a title="Link Document"></a>
+
+      <div>
+        <input type="hidden" id="cust_search_type1" name="Search_type"  value="CORRESPONDENT">
+        <input type="button" id="cust_searchDocument" value="Search"/>
+        <div class="column r55"><input type="text" id="cust_searchterm" placeholder="Search...."/></div>
+        <div class="summaryContainer">
+            <input type="hidden" name="selectedDocument" id="cust_selectedDocument"/>
+            <div id="cust_searchResults">
+
+            </div>
+            <input type="button" id="cust_linkbutton" value="Link Document"/>
+            <span id="cust_selectedDocDesc">Selected Doc: </span>
+        </div>
+      </div>
     </form>
     <?php
     foreach($_SESSION as $var => $data){
