@@ -1406,7 +1406,10 @@ class Model {
         session_unset();     // unset $_SESSION variable for the run-time
         session_destroy();   // destroy session data in storage
 
-        $_SESSION['redirect'] = "index.php";
+        if(isset($_GET["timeout"])&& $_GET["timeout"]== "y")
+            $_SESSION['redirect'] = "index.php?timeout=y";
+        else
+            $_SESSION['redirect'] = "index.php";
     }
 
     public function processLogin($params = NULL){
@@ -1536,11 +1539,8 @@ class Model {
             $_SESSION['success_send_notification'] = 1;
 
             // Redirect to the request
-            if($_SESSION['typecode'] == 0){ 
-                $id = $_POST['action_id']; $_SESSION['redirect'] = "index.php?page=view-"."action"."&id=".$id;
-            } else { 
-                $id = $_POST['request_id']; $_SESSION['redirect'] = "index.php?page=view-"."request"."&id=".$id;
-            }
+            if(strlen($_POST['action_id']) > 0) $id = $_POST['action_id']; else $id = $_POST['request_id'];
+            $_SESSION['redirect'] = "index.php?page=view-".$_POST['page']."&id=".$id;
 
         }
         catch (Exception $e) {
@@ -1837,7 +1837,7 @@ class Model {
                         }
 
                     }
-                }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
+                }else if($totalfiles == 1) {
                     $attachment = array(
                                'name' => $_FILES['attachment']['name'],
                                'type' => $_FILES['attachment']['type'],
@@ -1848,12 +1848,12 @@ class Model {
                       );
                     $rand = rand(0,100);
                     $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
-                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][0]);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name']);
                     array_push($filenamearray, $tempname);
-                    array_push($filedescriptionarray,$_POST["attachDesc"][0]);
+                    array_push($filedescriptionarray,$_POST["attachDesc"]);
                 }
                  
-                if ($totalfiles > 0) {
+                if ($totalfiles > 0 && $_FILES['attachment']['name'][0] != "") {
 
                     $parameters_att = array(
                      'user_id' => $_SESSION['user_id'],
@@ -1864,7 +1864,7 @@ class Model {
                  );
                      
                      try {
-                         $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
+                         $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file_multiple", $parameters_att);
                          $_SESSION['success'] = 1;
                          //$_SESSION['success_attach'] = 1;
                          $_SESSION['done'] = 1;
@@ -1885,6 +1885,45 @@ class Model {
                     $this->processEditUDFs();
                 }
 
+                //process linked Documents
+                if(isset($_POST["documentsToLink"])){
+                    $documents = explode("-",$_POST["documentsToLink"]);
+                    
+                      for($i =0; $i< count($documents); $i++){
+                            $parameters = new stdClass();
+                            $parameters->user_id = $_SESSION['user_id'];
+                            $parameters->password = $_SESSION['password'];
+                            $parameters->doc_id = $documents[$i];
+                            $parameters->request_id = $GLOBALS['request_id'];
+                    
+                            try {
+                                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
+                            }
+                            catch (Exception $e) {
+                                echo $e -> getMessage ();
+                                $_SESSION['error'];
+                                $_SESSION['error_link_document'] = 1;
+                            }
+                        }
+                }
+                
+                //process notify insurance officer
+                if(isset($_POST["notifyInsuranceOfficer"]) && $_POST["notifyInsuranceOfficer"] == "Y"){
+                    $parameters = new stdClass();
+                    $parameters->user_id = $_SESSION['user_id'];
+                    $parameters->password = $_SESSION['password'];
+                    $parameters->request_id = $GLOBALS['request_id'];
+                    
+                    try {
+                        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_notify_insurance_officer",$parameters);
+                    }
+                    catch (Exception $e) {
+                        echo $e -> getMessage ();
+                        $_SESSION['error'];
+                        $_SESSION['error_notify_officer'] = 1;
+                    }
+                }
+                
                 // Tells the user that the request has been successfully submitted.
                 $_SESSION['request_id_fin'] = $GLOBALS['request_id'];
                 $_SESSION['done'] = 1;
@@ -1926,6 +1965,23 @@ class Model {
             return false;
         }
 
+    }
+    public function processNotifyInsuranceOfficer($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_SESSION['request_id'];
+        
+        try {
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_notify_insurance_officer",$parameters);
+            return $result;
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $_SESSION['error'];
+            $_SESSION['error_notify_officer'] = 1;
+            return $result;
+        }
     }
     
     public function processRecategoriseRequest($params = NULL){
@@ -2166,15 +2222,15 @@ class Model {
                 imagejpeg($attachment['tmp_name'], $attachment['tmp_name'], 75);
             }
         }
-        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
+        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]);
         
-        if(move_uploaded_file($attachment['tmp_name'], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']))){
+        if(move_uploaded_file($attachment['tmp_name'][0], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]))){
 
             $parameters_att = new stdClass();
             $parameters_att->user_id = $_SESSION['user_id'];
             $parameters_att->password = $_SESSION['password'];
             $parameters_att->request_id = $requestID;
-            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
+            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]);
             $parameters_att->description = $description;
         }
         else{
@@ -3608,6 +3664,74 @@ class Model {
         }
     }
 
+    public function processRequestLinkDocument($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->doc_id = $_POST['selectedDocument'];
+        $parameters->request_id = $_SESSION['request_id'];
+        
+        try {
+            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
+            $_SESSION['done'] = 1;
+            $_SESSION['success'] = 1;
+            $_SESSION['success_link_document'] = 1;
+            $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $_SESSION['done'] = 1;
+            $_SESSION['error'];
+            $_SESSION['error_link_document'] = 1;
+            $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+        }
+    }
+    public function processActionLinkDocument($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->doc_id = $_POST['selectedDocument'];
+        $parameters->request_id = $_SESSION['request_id'];
+        
+        try {
+            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
+            $_SESSION['done'] = 1;
+            $_SESSION['success'] = 1;
+            $_SESSION['success_link_document'] = 1;
+            $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $_SESSION['done'] = 1;
+            $_SESSION['error'];
+            $_SESSION['error_link_document'] = 1;
+            $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
+        }
+    }
+    
+    public function processUnlinkDocument($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->doc_id = $_POST['doc_id'];
+        $parameters->request_id = $_SESSION['request_id'];
+        
+        try {
+            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_unlink_document",$parameters);
+            $_SESSION['done'] = 1;
+            $_SESSION['success'] = 1;
+            $_SESSION['success_unlink_document'] = 1;
+            return true;
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $_SESSION['done'] = 1;
+            $_SESSION['error'];
+            $_SESSION['error_unlink_document'] = 1;
+            return false;
+        }
+    }
+    
 	/* */
 }
 ?>

@@ -11,7 +11,7 @@
     <AssemblyName>4.0</AssemblyName>
     <IISProjectUrl>http://localhost:65236/</IISProjectUrl>
     <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-    <Server>IISExpress</Server>
+    <Server>PHPDev</Server>
     <PublishEvent>None</PublishEvent>
     <PHPDevAutoPort>True</PHPDevAutoPort>
     <PHPDevPort>29268</PHPDevPort>
@@ -438,6 +438,7 @@
     <Compile Include="inc\ajax\ajax.getAddressBasic.php" />
     <Compile Include="inc\ajax\ajax.getRequestHistoryCount.php" />
     <Compile Include="inc\ajax\ajax.getSearchUDFs.php" />
+    <Compile Include="inc\ajax\ajax.notifyInsuranceOfficer.php" />
     <Compile Include="inc\ajax\ajax.RequestSearch.php" />
     <Compile Include="inc\ajax\ajax.getRequestHistory.php" />
     <Compile Include="inc\ajax\ajax.chkCountOnly.php">
@@ -533,6 +534,7 @@
     <Compile Include="inc\ajax\ajax.search.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="inc\ajax\ajax.unlinkDocument.php" />
     <Compile Include="inc\ajax\ajax.WorkflowView.php" />
     <Compile Include="inc\php\TreeView\GDRenderer.php" />
     <Compile Include="inc\php\TreeView\Node.php" />

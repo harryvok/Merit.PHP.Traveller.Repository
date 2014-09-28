@@ -505,3 +505,60 @@ function searchDocument() {
         }
     });
 }
+
+function searchCustomerDocument(search_param, resultsDisplay) {
+    //var search_param = $("#searchterm").val();
+    var search_type = $('input:radio[name=Search_type]:checked').val();
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.getDocumentSearch.php",
+        type: 'post',
+        data: {
+            search_param: search_param,
+            search_type: search_type,
+        },
+        success: function (data) {
+            Unload();
+
+            $("#cust_searchResults").html(data);
+            if ($("#cust_searchResults").html().length > 18) {
+                $("#customerInfoXpert").removeAttr("disabled");
+            } else {
+                $("#cust_searchResults").attr("disabled","disabled");
+            }
+        }
+    });
+}
+
+function unlinkDocument(doc_id) {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.unlinkDocument.php",
+        dataType: "json",
+        type: 'post',
+        data: {
+            doc_id: doc_id,
+        },
+        success: function (data) {
+            //Unload();
+            location.reload();
+            
+        }
+    });
+}
+
+function notifyInsuranceOfficer() {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.notifyInsuranceOfficer.php",
+        dataType: "json",
+        type: 'post',
+        success: function (data) {
+            Unload();
+            if (data.status = true)
+                alert("Notification sent");
+            else
+                alert("Error Sending Notification");
+        }
+    });
+}

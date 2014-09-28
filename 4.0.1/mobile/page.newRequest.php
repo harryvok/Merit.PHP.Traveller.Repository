@@ -97,6 +97,8 @@ if(isset($_SESSION['user_id'])){
 
                         <label>Request Type<span class="request_type_label mandLabel" style="color: red; display: none;">*</span></label>
                         <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
+                        <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
+                        <input type="checkbox" name="notifyInsuranceOfficer" value="Y" style="width: 25px;height: 25px;position: static;margin-top: 10px;">
                         <label>Request Description<span class="request_description_label mandLabel" style="color: red; display: none;">*</span></label>
                         <textarea spellcheck="true" rows="4" class="text request-issue " data-mand="request_description" name='issue' id='textareaissue' maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
                     </p>
@@ -300,19 +302,16 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" value="0" />
                     </p>
                 </div>
-                <?php $dev = new Mobile_Detect();
-                      if(!$dev->isWindowsMobileOS()){?>
+
                 <div data-role="collapsible" class="col" data-content-theme="c">
                     <h4>Attachment</h4>
 
                     <p>
-                        <input id="attachment" type="file" name="attachment" />
-                        <label>Description:</label><input type="text" id="desc" maxlength="50" name="desc" />
+                        <input id="attachment" type="file" name="attachment[]" />
+                        <label>Description:</label><input type="text" id="desc" maxlength="50" name="attachDesc[]" />
                     </p>
                 </div>
-                <?php
-                      }
-                ?>
+
                 <input type="hidden" name="action" value="CreateRequest" />
                 <div id="adhocOfficer">
                 </div>
