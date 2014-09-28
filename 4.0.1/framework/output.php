@@ -74,6 +74,7 @@ $error_array = array(
     'error_editing_attach' => 'Error editing attachment',
     'error_link_document' => 'Error linking document',
     'error_unlink_document' => 'Error unlinking document',
+    'error_notify_officer' => 'Error Notifying Insurance Officer',
     "error_custom" => $custom_error
 );
 

@@ -546,3 +546,19 @@ function unlinkDocument(doc_id) {
         }
     });
 }
+
+function notifyInsuranceOfficer() {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.notifyInsuranceOfficer.php",
+        dataType: "json",
+        type: 'post',
+        success: function (data) {
+            Unload();
+            if (data.status = true)
+                alert("Notification sent");
+            else
+                alert("Error Sending Notification");
+        }
+    });
+}

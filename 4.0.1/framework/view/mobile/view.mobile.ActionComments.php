@@ -6,22 +6,22 @@
 	<h4>Comments <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?></span></h4>
     <p>
     	<div data-role="collapsible">
-    	<h4>Add Comment</h4> 
-        <p>
-        <form id="view-job-form" method="post"  enctype="multipart/form-data" data-ajax="false"  action="process.php">
-        <textarea class="required"  name="comment"><?php if(isset($_SESSION['comment'])){  echo $_SESSION['comment'];  unset($_SESSION['comment']); } ?></textarea>
-        <label>Notify Action Officer/s?</label>
-    <label for="no">No</label>
-        <input id="no" name="send_email" type="radio" value="N" checked />
-    <label for="yes">Yes</label>
-        <input id="yes" name="send_email" type="radio" value="Y" />
-        <input type="hidden" name="action" value="AddComment" />
-        <input type="hidden" name="request_id" id="request_id" value="<?php echo $GLOBALS['request_id']; ?>" />
-                  <input type="hidden" name="action_id" id="action_id" value="<?php echo $_GET['id']; ?>" />
-                  <input type="hidden" name="ref" vaue="<?php echo $_GET['ref']; ?>" />
-                <input type="hidden" name="ref_page" vaue="<?php echo $_GET['ref_page']; ?>" />
-                <input type="hidden" name="action_required" value="<?php echo $_SESSION['assign_name']; ?>">
-                <input type="hidden" name="filter" value="<?php echo $_GET['filter']; ?>" />
+    	    <h4>Add Comment</h4> 
+            <p>
+                <form id="view-job-form" method="post"  enctype="multipart/form-data" data-ajax="false"  action="process.php">
+                    <textarea class="required"  name="comment"><?php if(isset($_SESSION['comment'])){  echo $_SESSION['comment'];  unset($_SESSION['comment']); } ?></textarea>
+                    <label>Notify Action Officer/s?</label>
+                    <label for="no">No</label>
+                    <input id="no" name="send_email" type="radio" value="N" checked />
+                    <label for="yes">Yes</label>
+                    <input id="yes" name="send_email" type="radio" value="Y" />
+                    <input type="hidden" name="action" value="AddComment" />
+                    <input type="hidden" name="request_id" id="request_id" value="<?php echo $GLOBALS['request_id']; ?>" />
+                    <input type="hidden" name="action_id" id="action_id" value="<?php echo $_GET['id']; ?>" />
+                    <input type="hidden" name="ref" vaue="<?php echo $_GET['ref']; ?>" />
+                    <input type="hidden" name="ref_page" vaue="<?php echo $_GET['ref_page']; ?>" />
+                    <input type="hidden" name="action_required" value="<?php echo $_SESSION['assign_name']; ?>">
+                    <input type="hidden" name="filter" value="<?php echo $_GET['filter']; ?>" />
           <input type="hidden" name="page" value="action" />
        <input name="Submit input" type="submit" id="submit" value="Add" />
         </form>
@@ -41,10 +41,10 @@
                     <li id="Comment<?php echo $i; ?>ParentObject"><a data-icon="modify" href="#" class="edit" id="Comment<?php echo $i; ?>">
                         	<p><b>Level:</b> <?php if($result_c_get->action_id == 0){ echo "Request"; } else { echo "Action"; } ?></p>
                             <?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><p><b>Action Required:</b> <?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name; ?></p><?php } ?>
-                    <p><b>Date</b>: <?php if(strlen($result_c_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_c_get->note_datetime))); }  ?></p>
-                     <p><b>Officer:</b> <?php echo $result_c_get->officer; ?></p>
-                     <p><b>Type:</b> <?php echo $result_c_get->sub_type; ?></p>
-                     <p><b>Comment:</b> <div id="Comment<?php echo $i; ?>Label" class="font-normal"><?php if(isset($result_c_get->comment)){ echo base64_decode($result_c_get->comment); } ?></div></p>
+                            <p><b>Date</b>: <?php if(strlen($result_c_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_c_get->note_datetime))); }  ?></p>
+                            <p><b>Officer:</b> <?php echo $result_c_get->officer; ?></p>
+                            <p><b>Type:</b> <?php echo $result_c_get->sub_type; ?></p>
+                            <p><b>Comment:</b> <div id="Comment<?php echo $i; ?>Label" class="font-normal"><?php if(isset($result_c_get->comment)){ echo base64_decode($result_c_get->comment); } ?></div></p>
                         </a></li>
                             <li id="Comment<?php echo $i; ?>Edit" style="display:none">
                                 <p>

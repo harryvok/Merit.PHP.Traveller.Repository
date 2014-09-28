@@ -38,11 +38,11 @@ $(document).ready(function () {
     $("#new_officer_text").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
 
 
-    $("#new_officer_text").click(function () {
+    $("#new_officer_text").click(function() {
         $("#new_officer_code").val("");
         $("#new_officer_text").val("");
         $("#new_officer_text").attr("readonly", false);
-        $("#new_officer_text").autocomplete("search", "");
+        $("#new_officer_text").autocomplete("search","");
     });
     $("#adhocOfficer").validate();
     $("#adhocOfficer").submit(function () {

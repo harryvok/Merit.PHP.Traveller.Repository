@@ -85,6 +85,12 @@ if(!isset($_GET['d'])){
                         <div class="column r25">
                             <label for="refno">Request Type<span class="request_type_label mandLabel" style="color:red;display:none;"> *</span></label>
                             <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
+
+                        </div>
+                        <div class="column r25">
+                            <br /><br />
+                            <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
+                            <input type="checkbox" name="notifyInsuranceOfficer" value="Y">
                         </div>
                     </div>
 
@@ -189,6 +195,14 @@ if(!isset($_GET['d'])){
                         <label>Property Number</label>
                         <input readonly="readonly" name='property_no' id="property_no" maxlength='100' value="">
                             <input type="hidden" name="lpostcode" id="lpostcode" />
+                        </div>
+                        <div class="column r25">
+                            <label for="lroad_type">Road Type</label>
+                            <input class="text checkNone" name='lroad_type' onChange="" id="lroad_type" data-mand="lroad_type" maxlength='100' value=''>
+                        </div>
+                        <div class="column r25">
+                            <label for="lroad_responsibility">Road Responsiblity</label>
+                            <input class="text checkNone" name='lroad_responsibility' onChange="" id="lroad_responsibility" data-mand="lroad_responsibility" maxlength='100' value=''>
                         </div>	
                         <div class="column r100">
                             <label for="ldesc">Description</label>
