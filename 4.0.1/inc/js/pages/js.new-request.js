@@ -697,15 +697,15 @@ $(document).ready(function () {
             $("#lpostcode").val("");
             $("#ltype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             $("#lsuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-            //$("#lstreet").attr("readonly", false).autocomplete("search", "");
-            $("#lstreet").attr("readonly", false).val("").autocomplete(
+            $("#lstreet").attr("readonly", false).autocomplete("search", "");
+            //$("#lstreet").attr("readonly", false).val("").autocomplete(
 
-                $.ui.autocomplete.filter = function (array, term) {
-                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-                return $.grep(array, function (value) {
-                    return matcher.test(value.label || value.value || value);
-                });
-            })
+            //    $.ui.autocomplete.filter = function (array, term) {
+            //    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+            //    return $.grep(array, function (value) {
+            //        return matcher.test(value.label || value.value || value);
+            //    });
+            //})
         }
     });
 
@@ -1354,7 +1354,7 @@ function clearLocationAddress() {
     $("#addressId").val("");
     $('#lfno').val('');
     $('#lno').val('');    
-    $('#lstreet').val('').attr("readonly", false).trigger("click");
+    $('#lstreet').val('').attr("readonly", false);
     $("#ltype").val("").attr("readonly", true);
     $("#lsuburb").val("");
     $('#ldesc').val('');
