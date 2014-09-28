@@ -527,6 +527,8 @@ $(document).ready(function () {
                 $("#lno").addClass("ui-autocomplete-loading");
                 $("#lfno").addClass("ui-autocomplete-loading");
                 $("#property_no").addClass("ui-autocomplete-loading");
+                $("#lroad_type").addClass("ui-autocomplete-loading");
+                $("#lroad_responsibility").addClass("ui-autocomplete-loading");
                 $.ajax({
                     url: 'inc/ajax/ajax.getAddressBasic.php',
                     type: 'POST',
@@ -541,6 +543,8 @@ $(document).ready(function () {
                         $("#lsuburb").removeClass("ui-autocomplete-loading");
                         $("#lno").removeClass("ui-autocomplete-loading");
                         $("#lfno").removeClass("ui-autocomplete-loading");
+                        $("#lroad_type").removeClass("ui-autocomplete-loading");
+                        $("#lroad_responsibility").removeClass("ui-autocomplete-loading");
                         $("#lstreet").val(data.street_name).attr("readonly", true);
                         $("#ltype").val(data.street_type).attr("readonly", true).attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
                         $("#lsuburb").val(data.locality).attr("readonly", true).attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
@@ -548,6 +552,8 @@ $(document).ready(function () {
                         $("#property_no").val(data.property_no);
                         $("#lpostcode").val(data.postcode);
                         $("#addressId").val(data.address_id);
+                        $("#lroad_type").val(data.road_type);
+                        $("#lroad_responsibility").val(data.road_responsibility);
                         if (data.house_number.length > 0) {
                             $("#lno").val(data.house_number);
                             $("#lno").val($("#lno").val().replace(/[A-Za-z$-]/g, ""));
@@ -941,7 +947,8 @@ $(document).ready(function () {
             if ($("#countOnlyInd").val() == "N") {
                 Load();
                 $("#newrequest").valid();
-                if ($("#newrequest").validate().numberOfInvalids() == 0) {
+                
+                if ($("#newrequest").validate().numberOfInvalids() == 0 ) {
                     Unload();
                     $.ajax({
                         url: 'inc/ajax/ajax.chooseAdhocOfficer.php',

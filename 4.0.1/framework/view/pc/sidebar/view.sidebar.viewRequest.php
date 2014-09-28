@@ -1,4 +1,15 @@
- <ul class="subButtons">
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        $(".notifyOfficerOption").click(function () {
+            if (confirm("A Notification will be sent to the Inusrance Officer. Do you want to proceed?")) {
+                notifyInsuranceOfficer();
+            } 
+        });
+ 
+    });
+</script> 
+<ul class="subButtons">
     <li class="sm">Options
         <ul>
             <li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=summary'" <?php if(isset($_GET['d']) && $_GET['d'] == "summary" || !isset($_GET['d'])){ ?>class="act"<?php } ?>>Summary</li>
@@ -33,6 +44,8 @@
             <?php } elseif($GLOBALS['finalised_ind'] == "N" && $_SESSION['roleSecurity']->maint_recat == "Y" || $GLOBALS['count_only'] == "Y" && $_SESSION['roleSecurity']->maint_recat == "Y"){  ?>
             <li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=recategoriseRequest'">Recategorise Request</li><?php } ?>
             <?php if($_SESSION['roleSecurity']->maint_req_del == "Y") { ?><li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=deleteRequest'">Delete Request</li><?php } ?>
+
+            <li class="notifyOfficerOption">Notify Insurance Officer</li>
         </ul>
     </li>
     <?php } ?>

@@ -11,6 +11,8 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
         // On clicking "submit", it renables the save button, clicks it, unbinds the submit button so multiple officers can't be added and disables savemore
         // and save/count. and then disables the save button whilst the system proccess the request.
          
+        $(".newOfficerText").click();
+
         $("#submitAdhoc").click(function () {
             if ($(".newOfficerText").val().length > 0 && $(".officer").val().length > 0) {
                 $("#adhocOfficer").html("");
@@ -23,8 +25,9 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                 });
 
                 $("#submit").prop('disabled', false).buttonState("enable");
-                $("#submit").click();
                 $("#newrequest").unbind("submit");
+                $("#submit").click();
+                
                 $(this).attr("disabled", true).buttonState("disable");
                 $("#saveMore").attr("disabled", true).buttonState("disable");
                 $("#saveCountOnly").attr("disabled", true).buttonState("disable");

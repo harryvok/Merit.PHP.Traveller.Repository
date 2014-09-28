@@ -1910,6 +1910,23 @@ class Model {
                         }
                 }
                 
+                //process notify insurance officer
+                if(isset($_POST["notifyInsuranceOfficer"]) && $_POST["notifyInsuranceOfficer"] == "Y"){
+                    $parameters = new stdClass();
+                    $parameters->user_id = $_SESSION['user_id'];
+                    $parameters->password = $_SESSION['password'];
+                    $parameters->request_id = $GLOBALS['request_id'];
+                    
+                    try {
+                        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_notify_insurance_officer",$parameters);
+                    }
+                    catch (Exception $e) {
+                        echo $e -> getMessage ();
+                        $_SESSION['error'];
+                        $_SESSION['error_notify_officer'] = 1;
+                    }
+                }
+                
                 // Tells the user that the request has been successfully submitted.
                 $_SESSION['request_id_fin'] = $GLOBALS['request_id'];
                 $_SESSION['done'] = 1;
@@ -1951,6 +1968,23 @@ class Model {
             return false;
         }
 
+    }
+    public function processNotifyInsuranceOfficer($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_SESSION['request_id'];
+        
+        try {
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_notify_insurance_officer",$parameters);
+            return $result;
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $_SESSION['error'];
+            $_SESSION['error_notify_officer'] = 1;
+            return $result;
+        }
     }
     
     public function processRecategoriseRequest($params = NULL){
