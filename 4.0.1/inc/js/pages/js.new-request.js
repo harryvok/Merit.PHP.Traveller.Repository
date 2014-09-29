@@ -728,9 +728,8 @@ $(document).ready(function () {
             //alert(label);
             $("#lstreet").blur();
             $("#lstreet").removeClass("ui-autocomplete-loading").val(label);
-            $("#ltype").textInputState('enable');
-            $("#ltype").attr("disabled", false).trigger("click");
-            
+            $("#ltype").trigger("click");
+
 
             //$("#property_no").val(""); $("#lpostcode").val("");
             //$("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete(
@@ -762,7 +761,7 @@ $(document).ready(function () {
         $("#checkHistory").prop("disabled", true).buttonState("disable");
         $("#lsuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
         $("#ltype").textInputState('enable');
-        $("#ltype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("").trigger("focus");
+        $("#ltype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("");
         return $("#lstreet").val();
     }
 
@@ -773,9 +772,8 @@ $(document).ready(function () {
         if (label.length > 0) {
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#ltype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
-            $("#lsuburb").textInputState('enable');
             $("#ltype").autocomplete("close");
-            $("#lsuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
+            $("#lsuburb").trigger("click");
              }
     }
 
@@ -792,6 +790,7 @@ $(document).ready(function () {
         }
         $("#property_no").val(""); $("#lpostcode").val("");
         $("#checkHistory").prop("disabled", true).buttonState("disable");
+        //$("#lsuburb").textInputState('enable');
         $("#lsuburb").attr("readonly", false).val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
         return $("#ltype").val();
     }
@@ -906,8 +905,7 @@ $(document).ready(function () {
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
             $("#i_cstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete("close").textInputState('enable');
-            $("#i_ctype").textInputState('enable');
-            $("#i_ctype").attr("disabled", false).removeClass("ui-disabled").trigger("click");
+            $("#i_ctype").trigger("click");
             $("#caddsummary").prop('disabled', false);
             $("#caddhistory").prop('disabled', false);
             
@@ -928,9 +926,8 @@ $(document).ready(function () {
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
             $("#i_ctype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
-            $("#i_csuburb").textInputState('enable');
-            $("#i_csuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
-            $("#i_csuburb").autocomplete("close");
+            $("#i_csuburb").trigger("click");
+            //$("#i_csuburb").autocomplete("close");
         }
     }
 
