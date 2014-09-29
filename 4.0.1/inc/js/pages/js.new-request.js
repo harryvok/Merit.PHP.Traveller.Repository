@@ -1077,31 +1077,45 @@ $(document).ready(function () {
     });
 
     $('#saveCountOnly').on(eventName, function (event) {
+
+        // Disable Buttons
         $("#submit").prop('disabled', true).buttonState("disable");
         $("#saveMore").prop('disabled', true).buttonState("disable");
         $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+        $("#countonly_bypass").val() == "Y"
+
+        // If bypass enabled
         if ($("#countonly_bypass").val() == "Y") {
             $("#newrequest").validate().cancelSubmit = true;
 
+            // If count Only = no
             if ($("#countOnlyInd").val() == "N") {
+
+                // If popup box, "ok" clicked
                 if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
                     $("#countOnlyInd").val("Y");
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#newrequest").submit();
                 }
+
+                // Otherwise re-enable buttons
                 else {
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#saveMore").prop('disabled', false).buttonState("enable");
                     $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                 }
             }
+
+            // If count = yes
             else {
                 $("#submit").prop('disabled', false).buttonState("enable");
                 $("#newrequest").submit();
             }
-        }
-        else {
 
+        // If bypass is not enabled
+        } else {
+
+            // Add resetReq and remove standard required.
             $(".required").addClass("resetReq").removeClass("required");
             jQuery.validator.addClassRules({
                 req_text_udf: {
@@ -1117,6 +1131,7 @@ $(document).ready(function () {
                 }
             });
             
+
             if( $(".req_text_date").val()=="dd/mm/yyyy"){
                 $(".req_text_date").val("");
             }
@@ -1134,25 +1149,36 @@ $(document).ready(function () {
                 $(this).rules("add", "dateField");
             });
 
+            // Check Valid
             $("#newrequest").valid();
+            // If valid then 
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
+
+                // If countOnly = no
                 if ($("#countOnlyInd").val() == "N") {
+
+                    // If "ok" clicked on popup
                     if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
                         $("#countOnlyInd").val("Y");
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#newrequest").submit();
                     }
+                    // If not
                     else {
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");
                         $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                     }
                 }
+                
+                // If countOnly = yes
                 else {
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#newrequest").submit();
                 }
             }
+
+            // If not valid
             else {
                 alert("You must fill in the required User Defined Fields");
                 $(".resetReq").addClass("required").removeClass("resetReq");
@@ -1161,9 +1187,6 @@ $(document).ready(function () {
                 $("#saveCountOnly").prop('disabled', false).buttonState("enable");
             }
         }
-
-
-
     });
 
     $(".cadd").on(eventName, function (event) {
@@ -1181,11 +1204,11 @@ $(document).ready(function () {
     $("#requestInput").autoCompleteInitSeq(requestInit, "inc/ajax/ajax.getRequestTypes.php", { term: "", service_code: function () { return $("#service").val(); } }, requestResponse);
     $("#functionInput").autoCompleteInitSeq(functionInit, "inc/ajax/ajax.getFunctionTypes.php", { term: "", service_code: function () { return $("#service").val(); }, request_code: function () { return $("#request").val(); } }, functionResponse, functionSuccess);
     //$("#i_cstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "i_cstreet" }, cStreetResponse);
-    $("#i_ctype").autoCompleteInitSeq(cTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: "", id: "i_ctype", street: function () { return $('#i_cstreet').val(); } }, cTypeResponse);
-    $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: "", id: "i_csuburb", house: '', street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
+    $("#i_ctype").autoCompleteInitSeq(cTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#i_cstreet").val(), id: "i_ctype", street: function () { return $('#i_cstreet').val(); } }, cTypeResponse);
+    $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#i_ctype").val(), id: "i_csuburb", house: '', street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
     //$("#lstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "lstreet" }, streetResponse);
     $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#lstreet").val() , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
-    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: "", id: "lsuburb", house: '', street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
+    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#ltype").val(), id: "lsuburb", house: '', street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
     $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
     $("#facilityInput").autoCompleteInitSeq(facilityInit, "inc/ajax/ajax.getFacilitiesLookup.php", { term: "", facilitiesName: function () { return $("#facilityInput").val(); }, facilitiesType: function () { return $("#facilityTypeInput").val(); } }, facilityResponse);
