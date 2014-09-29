@@ -1071,31 +1071,45 @@ $(document).ready(function () {
     });
 
     $('#saveCountOnly').on(eventName, function (event) {
+
+        // Disable Buttons
         $("#submit").prop('disabled', true).buttonState("disable");
         $("#saveMore").prop('disabled', true).buttonState("disable");
         $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+        $("#countonly_bypass").val() == "Y"
+
+        // If bypass enabled
         if ($("#countonly_bypass").val() == "Y") {
             $("#newrequest").validate().cancelSubmit = true;
 
+            // If count Only = no
             if ($("#countOnlyInd").val() == "N") {
+
+                // If popup box, "ok" clicked
                 if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
                     $("#countOnlyInd").val("Y");
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#newrequest").submit();
                 }
+
+                // Otherwise re-enable buttons
                 else {
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#saveMore").prop('disabled', false).buttonState("enable");
                     $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                 }
             }
+
+            // If count = yes
             else {
                 $("#submit").prop('disabled', false).buttonState("enable");
                 $("#newrequest").submit();
             }
-        }
-        else {
 
+        // If bypass is not enabled
+        } else {
+
+            // Add resetReq and remove standard required.
             $(".required").addClass("resetReq").removeClass("required");
             jQuery.validator.addClassRules({
                 req_text_udf: {
@@ -1111,6 +1125,7 @@ $(document).ready(function () {
                 }
             });
             
+
             if( $(".req_text_date").val()=="dd/mm/yyyy"){
                 $(".req_text_date").val("");
             }
@@ -1128,25 +1143,36 @@ $(document).ready(function () {
                 $(this).rules("add", "dateField");
             });
 
+            // Check Valid
             $("#newrequest").valid();
+            // If valid then 
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
+
+                // If countOnly = no
                 if ($("#countOnlyInd").val() == "N") {
+
+                    // If "ok" clicked on popup
                     if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
                         $("#countOnlyInd").val("Y");
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#newrequest").submit();
                     }
+                    // If not
                     else {
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");
                         $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                     }
                 }
+                
+                // If countOnly = yes
                 else {
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#newrequest").submit();
                 }
             }
+
+            // If not valid
             else {
                 alert("You must fill in the required User Defined Fields");
                 $(".resetReq").addClass("required").removeClass("resetReq");
@@ -1155,9 +1181,6 @@ $(document).ready(function () {
                 $("#saveCountOnly").prop('disabled', false).buttonState("enable");
             }
         }
-
-
-
     });
 
     $(".cadd").on(eventName, function (event) {
