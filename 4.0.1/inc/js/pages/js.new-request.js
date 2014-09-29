@@ -1095,7 +1095,11 @@ $(document).ready(function () {
                 if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
                     $("#countOnlyInd").val("Y");
                     $("#submit").prop('disabled', false).buttonState("enable");
-                    $("#newrequest").submit();
+                    $("#newrequest").validate({
+                        submitHandler: function(form) {
+                            $(".newrequest").submit();
+                        }
+                    });
                 }
 
                 // Otherwise re-enable buttons
