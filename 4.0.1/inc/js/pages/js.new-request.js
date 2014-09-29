@@ -765,12 +765,14 @@ $(document).ready(function () {
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
-            $("#property_no").val(""); $("#lpostcode").val("");
-            $("#ltype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
+            $("#property_no").val("");
+            $("#lpostcode").val("");
+            //alert(label);
+            $("#ltype").blur();
+            $("#ltype").removeClass("ui-autocomplete-loading").val(label);
             $("#lsuburb").textInputState('enable');
-            $("#ltype").autocomplete("close");
-            $("#lsuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
-             }
+            $("#lsuburb").attr("disabled", false).trigger("click");
+        }
     }
 
     // Location Street Suburb
@@ -1201,7 +1203,7 @@ $(document).ready(function () {
     $("#i_ctype").autoCompleteInitSeq(cTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: "", id: "i_ctype", street: function () { return $('#i_cstreet').val(); } }, cTypeResponse);
     $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: "", id: "i_csuburb", house: '', street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
     //$("#lstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "lstreet" }, streetResponse);
-    $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#lstreet").val() , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
+    $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: "" , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
     $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: "", id: "lsuburb", house: '', street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
     $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
