@@ -3744,15 +3744,38 @@ class Model {
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
+        $parameters->role= $_SESSION['security_group'];
         
-        if(isset($_POST["serviceid"]) && isset($_POST["requestid"])  && isset($_POST["functionid"]) ){
-            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_request_types",$parameters)->request_note;
-        }else if(isset($_POST["serviceid"]) && isset($_POST["requestid"])  && !isset($_POST["functionid"])) {
-            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_function_types",$parameters)->function_note;
-        }else if(isset($_POST["serviceid"]) && !isset($_POST["requestid"])  && !isset($_POST["functionid"])){
-            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_service_types",$parameters)->service_note;
+        $_POST["functionid"] = str_replace(' ', '', $_POST["functionid"]);
+        
+        if(!empty($_POST["serviceid"]) && !empty($_POST["requestid"])  && !empty($_POST["functionid"]) ){
+            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_function_types",$parameters)->function_types_det->function_types_details;//->function_note;
+            for($i=0; $i<count($result); $i++){
+                if($_POST["serviceid"] == $result[$i]->service_code && $_POST["functionid"] == $result[$i]->function_code && $_POST["requestid"] == $result[$i]->request_code){
+                    $result_note=$result[$i]->function_note;
+                    return $result_note;
+                }
+            }
+
+        }else if(!empty($_POST["serviceid"]) && !empty($_POST["requestid"])  && empty($_POST["functionid"])) {
+            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_request_types",$parameters)->request_types_det->request_types_details;//->request_note;
+            for($i=0; $i<count($result); $i++){
+                if($_POST["serviceid"] == $result[$i]->service_code && $_POST["requestid"] == $result[$i]->request_code){
+                    $result_note=$result[$i]->request_note;
+                    return $result_note;
+                }
+            }
+        }else if(!empty($_POST["serviceid"]) && empty($_POST["requestid"])  && empty($_POST["functionid"])){
+            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_service_types",$parameters)->service_types_det->service_types_details;//->service_note;
+            for($i=0; $i<count($result); $i++){
+                if($_POST["serviceid"] == $result[$i]->service_code){
+                    $result_note=$result[$i]->service_note;
+                    return $result_note;
+                }
+            }
         }
-        return $result;
+        return "";
+        
     }
     
 	/* */

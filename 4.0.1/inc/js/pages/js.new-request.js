@@ -730,7 +730,7 @@ $(document).ready(function () {
             $("#lstreet").removeClass("ui-autocomplete-loading").val(label);
             $("#ltype").textInputState('enable');
             $("#ltype").attr("disabled", false).trigger("click");
-
+            
 
             //$("#property_no").val(""); $("#lpostcode").val("");
             //$("#lstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete(
