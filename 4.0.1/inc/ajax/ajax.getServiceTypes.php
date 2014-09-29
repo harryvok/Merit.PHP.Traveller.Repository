@@ -10,7 +10,7 @@ if(isset($GLOBALS['result']->service_types_details) && count($GLOBALS['result']-
 	if(count($GLOBALS['result']->service_types_details) > 1){
 		foreach($GLOBALS['result']->service_types_details as $result){
             if($result->active_ind == "Y"){
-                $array[$i] = array("code" => $result->service_code, "label" => $result->service_name);
+                $array[$i] = array("code" => $result->service_code, "label" => $result->service_name,"service_code" =>$result->service_note);
                 $i = $i + 1;
             }
 		}
@@ -18,7 +18,7 @@ if(isset($GLOBALS['result']->service_types_details) && count($GLOBALS['result']-
 	else{
 		$result = $GLOBALS['result']->service_types_details;
         if($result->active_ind == "Y"){
-            $array[$i] = array("code" => $result->service_code, "label" => $result->service_name);
+            $array[$i] = array("code" => $result->service_code, "label" => $result->service_name,"service_code" =>$result->service_note);
         }
 	}
 }

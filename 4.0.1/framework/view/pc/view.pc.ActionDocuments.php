@@ -24,6 +24,7 @@ if($GLOBALS['result']['errorConnecting']== false){
 <div class="summaryContainer">
     <h1>Documents</h1>
     <div>
+        <input type="button"  class="openPopup" id="Documents" value="Link Document"/>
         <table id="requestDocumentTable" class=" sortable" title="" cellspacing="0">
             <thead>
                 <tr>
@@ -57,7 +58,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                             <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
                                  <td><?php echo $document->document_id; ?></td>
                                  <td><?php echo $document->document_desc; ?></td>
-                                 <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a>&nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_id; ?>" value="Unlink"/></td>
+                                 <td><a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a>&nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_id; ?>" value="Unlink"/></td>
                             </tr>
                              <?php
                             for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
@@ -72,7 +73,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                 <tr class="light_nocur" id="Document<?php echo $i; ?>ParentObject">
                      <td><?php echo $document->document_id; ?></td>
                      <td><?php echo $document->document_desc; ?></td>
-                     <td><a href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a>&nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_id; ?>" value="Unlink"/></td>
+                     <td><a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a>&nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_id; ?>" value="Unlink"/></td>
                 </tr>
                 <?php
                         for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){

@@ -562,3 +562,22 @@ function notifyInsuranceOfficer() {
         }
     });
 }
+
+function getSRFRedText() {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.getSRFRedText.php",
+        dataType: "json",
+        type: 'post',
+        data: {
+            serviceid: $("#service").val(),
+            requestid: $("#request").val(),
+            functionid: $("#function").val()
+        },
+        success: function (data) {
+            Unload();
+            alert(data.note);
+
+        }
+    });
+}

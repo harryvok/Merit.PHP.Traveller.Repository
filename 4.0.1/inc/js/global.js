@@ -179,8 +179,8 @@ $(document).ready(function () {
                         $("#" + id + "Object").slideDown("fast");
                       
                     } else {
-                        //location.reload();
-                        $(self).parent().parent().hide();
+                        location.reload();
+                        //$(self).parent().parent().hide();
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

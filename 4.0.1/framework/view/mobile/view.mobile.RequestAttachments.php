@@ -13,12 +13,10 @@
             <input type="hidden" name="ref" value="<?php echo $_GET['id']; ?>" />
             <input type="hidden" name="ref_page" value="view-request" />
             <input type="hidden" name="action" value="Attachment" />
-            <?php $dev = new Mobile_Detect(); if(true/*!$dev->isWindowsMobileOS()*/){?>
            	<label>Attachment</label>
           	<input id="attachment" type="file" class="required" name="attachment" />
            	<label class="name">Description:</label>
             <input type="text" id="desc" maxlength="50"  name="desc" />
-            <?php } ?>
             <input id="submit" type='submit' value='Add' />
        </form>
        </p>
@@ -41,6 +39,7 @@
                           <?php if($_SESSION['roleSecurity']->delete_attachment == "Y"){ ?>
                             <!--<a data-role="button" class="deleteAttachment"><img src="images/delete-icon.png" width="16" height="16" /> Delete</a>-->
                             <a data-role="button" href="#" id="DeleteAttachment" data-action="deleteAttachment" class="deleteAttachment"  data-urlid="<?php echo $_GET['id'] ?>" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>"><img src="images/delete-icon.png" width="16" height="16" /> Delete</a>
+
                         <?php } ?>
                         <?php
                     
