@@ -19,10 +19,10 @@ if(!isset($_GET['d'])){
         <div class="summaryContainer">  
             <h1>Request Details</h1>
             <div>
-                
+                <b><span id="rednote"></span></b><BR />
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
                 <input type="button" value="InfoXpert Search" class="openPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
-
+                
                 <div class="column r60">
                     <div class="column r25">
                         <label for="service">Keyword</label>
@@ -196,6 +196,8 @@ if(!isset($_GET['d'])){
                         <input readonly="readonly" name='property_no' id="property_no" maxlength='100' value="">
                             <input type="hidden" name="lpostcode" id="lpostcode" />
                         </div>
+                        </div>
+                    <div class="float-left">
                         <div class="column r25">
                             <label for="lroad_type">Road Type</label>
                             <input class="text checkNone" name='lroad_type' onChange="" id="lroad_type" data-mand="lroad_type" maxlength='100' value=''>

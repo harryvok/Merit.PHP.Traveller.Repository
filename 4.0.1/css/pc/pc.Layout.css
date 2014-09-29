@@ -227,3 +227,9 @@ div.setupContainer {
 div.subPageContainer{
     display:none;
 }
+#rednote {
+    color: red;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif !important;
+    letter-spacing: -0.015em !important;
+}

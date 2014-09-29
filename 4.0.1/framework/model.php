@@ -344,8 +344,16 @@ class Model {
         
         return $result;
     }
-    public function getDocumentSearch(){
+    public function getDocumentSearchResults(){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->search_param = $_POST['search_param'];
+        $parameters->search_type = $_POST['search_type'];
         
+        $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_search", $parameters);
+        return $result;
+         //$GLOBALS['result'] = $result;
     }
 
     public function getIfWorkflow(){
@@ -1816,7 +1824,7 @@ class Model {
                 
                 $GLOBALS['request_id'] = $result->request_id;
                 $totalfiles=count($_FILES['attachment']['name']);
-                if($totalfiles > 1){
+                if($totalfiles > 1 && $_FILES['attachment']['name'][0] != ""){
                     for ($i=0; $i< $totalfiles;$i++) {
                         if($_FILES['attachment']['name'][$i] !=""){
                             $attachment = array(
@@ -1837,7 +1845,7 @@ class Model {
                         }
 
                     }
-                }else if($totalfiles == 1) {
+                }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     $attachment = array(
                                'name' => $_FILES['attachment']['name'],
                                'type' => $_FILES['attachment']['type'],
@@ -2149,7 +2157,7 @@ class Model {
         
         if($isDeleted =="SUCCESS"){
             $_SESSION['success'] = 1;
-            $_SESSION['success_edit_attach'] = 1;
+            $_SESSION['success_delete_attach'] = 1;
             $_SESSION['done'] = 1;
             echo json_encode(array("status" => true));   
         }else{
@@ -3730,6 +3738,21 @@ class Model {
             $_SESSION['error_unlink_document'] = 1;
             return false;
         }
+    }
+    
+    public function getSRFRedText($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        
+        if(isset($_POST["serviceid"]) && isset($_POST["requestid"])  && isset($_POST["functionid"]) ){
+            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_request_types",$parameters)->request_note;
+        }else if(isset($_POST["serviceid"]) && isset($_POST["requestid"])  && !isset($_POST["functionid"])) {
+            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_function_types",$parameters)->function_note;
+        }else if(isset($_POST["serviceid"]) && !isset($_POST["requestid"])  && !isset($_POST["functionid"])){
+            $result = $this->WebService(MERIT_ADMIN_FILE, "ws_get_service_types",$parameters)->service_note;
+        }
+        return $result;
     }
     
 	/* */

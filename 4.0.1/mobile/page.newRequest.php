@@ -41,8 +41,9 @@ if(isset($_SESSION['user_id'])){
                 <div data-role="collapsible" class="col" data-collapsed="false" data-content-theme="c">
                     <h4>Request Details</h4>
                     <p>
-                        <label>Keyword</label>
+                        
 
+                        <label>Keyword</label>
                         <input class="text" name='keyword' id="keywordSearch" maxlength='15' placeholder="Search...">
 
                         <input type="hidden" name='service' id="service">
@@ -81,6 +82,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" name="countOnly" id="countOnly" value="0">
 
                         <input type="hidden" id="chkCount" val="0" />
+                        <span id="rednote"></span>
                         <?php
                         if(isset($_SESSION['roleSecurity']->show_reference_no) && $_SESSION['roleSecurity']->show_reference_no == "Y"){
                             ?>
@@ -178,6 +180,12 @@ if(isset($_SESSION['user_id'])){
                       
                         <label>Property Number</label>
                         <input readonly="readonly" name='property_no' id="property_no" maxlength='100'>
+
+                        <label>Road Type</label>
+                        <input class="" name='lroad_type' onChange="" id="lroad_type" maxlength='100' value=''>
+
+                        <label>Road Responsibility</label>
+                        <input class="" name='lroad_responsibility' onChange="" id="lroad_responsibility" maxlength='100' value=''>
 
                         <label>Description</label>
                         <textarea id="ldesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'></textarea>

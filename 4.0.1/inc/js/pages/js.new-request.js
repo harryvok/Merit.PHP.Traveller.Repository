@@ -88,16 +88,16 @@ $(document).ready(function () {
 
     function serviceResponse(event, ui) {
         
-        var label = ""; var code = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; }
+        var label = ""; var code = ""; var service_note="";
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; ui.content[0].service_note }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; service_note= ui.item.service_note }
         if (label.length > 0 || code.length > 0) {
             $("#udfs").slideUp("fast");
             $("#udfs_exist").val("0");
             $("#service").val(code);
             $("#request").val("");
             $("#function").val("");
-
+            $("#rednote").html(service_note);
             QueryUDFs('0', '0', $("#service").val());
             GetHelpNotes('', '', $("#service").val());
 
@@ -145,14 +145,15 @@ $(document).ready(function () {
     }
 
     function requestResponse(event, ui) {
-        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; }
+        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = ""; var request_note = "";
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note= ui.content[0].request_note }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note }
         if (label.length > 0 || code.length > 0) {
             $(this).removeClass("ui-autocomplete-loading");
             $("#request").val(code);
             $("#function").val("");
             $("#priority").val(priority);
+            $("#rednote").html(request_note);
             CheckMandatoryFields($("#service").val(), $("#request").val(), '');
             $("#priority option").prop("selected", false);
             $("#priority option[value=" + priority + "]").prop("selected", true);
@@ -215,14 +216,15 @@ $(document).ready(function () {
     }
 
     function functionResponse(event, ui) {
-        var label = ""; var code = ""; var priority = ""; var count_only = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; }
+        var label = ""; var code = ""; var priority = ""; var count_only = ""; var function_note="";
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note= ui.content[0].function_note }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note= ui.item.function_note}
         if (label.length > 0 || code.length > 0) {
             $("#functionInput").removeClass("ui-autocomplete-loading");
             $("#function").val(code);
             $("#functionInput").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
             $("#priority").val(priority);
+            $("#rednote").html(function_note);
             $("#priority option").prop("selected", false);
             $("#priority option[value=" + priority + "]").prop("selected", true);
             $('#priority').selectmenuState('refresh', true);
@@ -249,6 +251,8 @@ $(document).ready(function () {
                 $("#add-request-textarea").focus();
             }
         }
+        
+        
     }
 
     function functionSuccess(data) {
@@ -258,12 +262,14 @@ $(document).ready(function () {
         } else {
             $("#add-request-textarea").focus();
         }
+        
         //$("#textareaissue").focus();
         if (data.length === 0) {
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), '');
             return false;
         }
+        
         return true;
     }
 
@@ -961,9 +967,9 @@ $(document).ready(function () {
     $("#newrequest").validate({
         
         submitHandler: function (form) {
-            $("#submit").prop('disabled', true).buttonState("disable");
+            /*$("#submit").prop('disabled', true).buttonState("disable");
             $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+            $("#saveCountOnly").prop('disabled', true).buttonState("disable");*/
 
             if ($("#countOnlyInd").val() == "N") {
                 Load();
