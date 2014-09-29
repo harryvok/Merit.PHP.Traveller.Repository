@@ -765,14 +765,12 @@ $(document).ready(function () {
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
-            $("#property_no").val("");
-            $("#lpostcode").val("");
-            //alert(label);
-            $("#ltype").blur();
-            $("#ltype").removeClass("ui-autocomplete-loading").val(label);
+            $("#property_no").val(""); $("#lpostcode").val("");
+            $("#ltype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
             $("#lsuburb").textInputState('enable');
-            $("#lsuburb").attr("disabled", false).trigger("click");
-        }
+            $("#ltype").autocomplete("close");
+            $("#lsuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
+             }
     }
 
     // Location Street Suburb
@@ -1200,11 +1198,11 @@ $(document).ready(function () {
     $("#requestInput").autoCompleteInitSeq(requestInit, "inc/ajax/ajax.getRequestTypes.php", { term: "", service_code: function () { return $("#service").val(); } }, requestResponse);
     $("#functionInput").autoCompleteInitSeq(functionInit, "inc/ajax/ajax.getFunctionTypes.php", { term: "", service_code: function () { return $("#service").val(); }, request_code: function () { return $("#request").val(); } }, functionResponse, functionSuccess);
     //$("#i_cstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "i_cstreet" }, cStreetResponse);
-    $("#i_ctype").autoCompleteInitSeq(cTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: "", id: "i_ctype", street: function () { return $('#i_cstreet').val(); } }, cTypeResponse);
-    $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: "", id: "i_csuburb", house: '', street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
+    $("#i_ctype").autoCompleteInitSeq(cTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#i_cstreet").val(), id: "i_ctype", street: function () { return $('#i_cstreet').val(); } }, cTypeResponse);
+    $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#i_ctype").val(), id: "i_csuburb", house: '', street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
     //$("#lstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "lstreet" }, streetResponse);
-    $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: "" , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
-    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: "", id: "lsuburb", house: '', street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
+    $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#lstreet").val() , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
+    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#ltype").val(), id: "lsuburb", house: '', street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
     $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
     $("#facilityInput").autoCompleteInitSeq(facilityInit, "inc/ajax/ajax.getFacilitiesLookup.php", { term: "", facilitiesName: function () { return $("#facilityInput").val(); }, facilitiesType: function () { return $("#facilityTypeInput").val(); } }, facilityResponse);
