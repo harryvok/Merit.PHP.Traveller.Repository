@@ -89,9 +89,11 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
 else{
 ?>
 <script type="text/javascript">
-    $("#submit").prop('disabled', false).buttonState("enable");
+    alert("no adhoc");
+    //$("#submit").prop('disabled', false).buttonState("enable");
     $("#newrequest").unbind("submit");
     $("#newrequest INPUT[type=submit]").click();
+    $("#submit").click();
     $(this).attr("disabled", true).buttonState("disable");
     $("#saveMore").attr("disabled", true).buttonState("disable");
     $("#saveCountOnly").attr("disabled", true).buttonState("disable");
