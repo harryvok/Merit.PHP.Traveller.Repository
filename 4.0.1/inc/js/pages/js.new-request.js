@@ -975,7 +975,7 @@ $(document).ready(function () {
     $("#newrequest").validate({
         
         submitHandler: function (form) {
-            
+
             if ($("#countOnlyInd").val() == "N") {
                 Load();
                 $("#newrequest").valid();
@@ -1046,7 +1046,13 @@ $(document).ready(function () {
        }
         $("#newrequest").valid();
         if ($("#newrequest").validate().numberOfInvalids() == 0) {
+<<<<<<< HEAD
             
+=======
+            /*$("#submit").prop('disabled', true).buttonState("disable");
+            $("#saveMore").prop('disabled', true).buttonState("disable");
+            $("#saveCountOnly").prop('disabled', true).buttonState("disable");*/
+>>>>>>> origin/master
             Load();
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
