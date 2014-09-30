@@ -8,40 +8,7 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
 
         $("#submitButton").hide();
 
-        var officerResponse = function (event, ui) {
-            var label = "";
-            var index = "";
-            if (typeof ui.content != "undefined" && ui.content.length === 1) {
-                label = ui.content[0].label;
-                index = ui.content[0].index;
-            }
-            else if (typeof ui.item != "undefined" && ui.item.label.length > 0) {
-                label = ui.item.label;
-                index = ui.item.index;
-            }
-            if (label.length > 0 || index.length > 0) {
-                $("#new_officer_code").val(index);
-                $("#new_officer_text").val(label);
-                $("#new_officer_text").attr("readonly", true);
-                $("#new_officer_text").blur();
-            }
-        }
-
-        $("input[data-adhocOfficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-        $("body").on("click", "input[data-adhocOfficer]", function () {
-            if ($(this).hasClass("ui-autocomplete-input")) {
-                $("#" + $(this).attr("id") + "Code").val("");
-                $(this).val("");
-                $(this).attr("readonly", false);
-
-                $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-                $(this).autocomplete("search", "");
-
-            }
-            else {
-                $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-            }
-        });
+        $(".newOfficerText").click();
 
         $("#submitAdhoc").click(function () {
             if ($(".newOfficerText").val().length > 0 && $(".officer").val().length > 0) {

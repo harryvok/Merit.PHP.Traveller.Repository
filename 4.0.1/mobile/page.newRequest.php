@@ -334,7 +334,7 @@ if(isset($_SESSION['user_id'])){
                 </div>
 
                 <input type="hidden" name="saveCountOnly" id="countOnlyInd" value="N" />
-
+                <input type="hidden" name="skipAdhoc" id="skipAdhocCount" value="0" />
             </form>
 
 <?php
