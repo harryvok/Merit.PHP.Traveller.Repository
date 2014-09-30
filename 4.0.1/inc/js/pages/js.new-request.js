@@ -801,12 +801,13 @@ $(document).ready(function () {
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; postcode = ui.item.postcode; }
         if (label.length > 0) {
             $("#lsuburb").val(label).attr("readonly", true).removeClass("ui-autocomplete-loading");
+            $("#property_no").addClass("ui-autocomplete-loading");
             // need to get property number
             if ($("#historyaddrtype").val() == "L" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
             showOnMap();
             GetAddressDetails();
             $("#lsuburb").autocomplete("close");
-            $("#lpostcode").val(postcode);
+            $("#lpostcode").val(postcode).removeClass("ui-autocomplete-loading");
             }
     }
     $("#lno").facClick();
@@ -904,7 +905,8 @@ $(document).ready(function () {
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
-            $("#i_cstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete("close").textInputState('enable');
+            $("#i_cstreet").blur();
+            $("#i_cstreet").removeClass("ui-autocomplete-loading").val(label);
             $("#i_ctype").trigger("click");
             $("#caddsummary").prop('disabled', false);
             $("#caddhistory").prop('disabled', false);
@@ -914,20 +916,21 @@ $(document).ready(function () {
 
     // Customer Street Type
     function cTypeInit() {
-        window.clicked["i_csuburb"] = false;
-
         $("#i_csuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-        $("#i_ctype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("").trigger("focus").textInputState('enable');
+        $("#i_ctype").textInputState('enable');
+        $("#i_ctype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("");
         return $("#i_cstreet").val();
     }
     var cTypeResponse = function (event, ui) {
+        window.clicked["i_csuburb"] = false;
         var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
+            $("#i_cpropertynumber").val(""); $("#i_cpostcode").val("");
             $("#i_ctype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
+            $("#i_ctype").autocomplete("close");
             $("#i_csuburb").trigger("click");
-            //$("#i_csuburb").autocomplete("close");
         }
     }
 
@@ -944,6 +947,7 @@ $(document).ready(function () {
         if (label.length > 0) {
             if ($("#historyaddrtype").val() == "C" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
             $("#i_csuburb").val(label).attr("readonly", true).removeClass("ui-autocomplete-loading");
+            $("#i_cpropertynumber").addClass("ui-autocomplete-loading");
             $("#i_cpostcode").val(postcode)//.attr("readonly", true).removeClass("ui-autocomplete-loading");
             GetCustomerAddressDetails();
             $("#i_csuburb").autocomplete("close");
