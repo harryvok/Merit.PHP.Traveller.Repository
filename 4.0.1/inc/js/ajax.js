@@ -42,10 +42,10 @@ function GetAddressDetails() {
             success: function (data) {
                 //alert("prop id: " + data.property_no);
                 if (data.property_no == "0" || data.property_no == "" ) {
-                    $("#property_no").val("");
+                    $("#property_no").val("").removeClass("ui-autocomplete-loading");
                 }
                 else {                    
-                    $("#property_no").val(data.property_no);
+                    $("#property_no").val(data.property_no).removeClass("ui-autocomplete-loading");
                 }
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
@@ -77,10 +77,10 @@ function GetCustomerAddressDetails() {
                 //$("#i_cpostcode").val(data.postcode);
                 $("#cust_address_id").val(data.address_id);
                 if (data.property_no == "0" || data.property_no == "") {
-                    $("#i_cpropertynumber").val("");
+                    $("#i_cpropertynumber").val("").removeClass("ui-autocomplete-loading");
                 }
                 else {
-                    $("#i_cpropertynumber").val(data.property_no);
+                    $("#i_cpropertynumber").val(data.property_no).removeClass("ui-autocomplete-loading");
                 }
                 if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
                     $("#CustAddSummary").removeAttr("disabled");
