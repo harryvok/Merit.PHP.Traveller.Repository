@@ -49,8 +49,8 @@ function GetAddressDetails() {
                 }
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
-                $("#lroad_type").val(data.road_type);
-                $("#lroad_responsibility").val(data.road_responsibility);
+                $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
+                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
                 if (data.address_id != "0" || data.address_id != "" || data.address_id > 0 ) {
                     $("#AddrSummary").removeAttr("disabled");
                 }
@@ -477,6 +477,7 @@ function CheckMandatoryFields(ser, req, func) {
                         }
                     }
                     else if (mand == "Y") {
+                        alert($(this.data));
                         $(this).addClass("required");
                         $("." + $(this).data("mand") + "_label").show();
                     }
