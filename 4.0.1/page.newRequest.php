@@ -471,6 +471,7 @@ if(!isset($_GET['d'])){
         </div>
 
         <input type="hidden" name="saveCountOnly" id="countOnlyInd" value="N" />
+        <input type="hidden" name="skipAdhoc" id="skipAdhocCount" value="0" />
         <input type="hidden" name="documentsToLink" id="documentsToLink" />
         </div>
         

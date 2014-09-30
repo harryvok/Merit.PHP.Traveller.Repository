@@ -231,7 +231,7 @@ $(document).ready(function () {
             if (($("#historyaddrtype").val() == "L" && $("#lsuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#i_csuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#o_csuburb").val().length > 0)
-               // || ($("#historyaddrtype").val() == "B" && $("#lcsuburb").val().length > 0)
+                // || ($("#historyaddrtype").val() == "B" && $("#lcsuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "B" && $("#i_csuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "B" && $("#o_csuburb").val().length > 0)
                 ) {
@@ -477,12 +477,12 @@ $(document).ready(function () {
         }
 
 
-                $.ui.autocomplete.filter = function (array, term) {
-                    var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
-                    return $.grep(array, function (value) {
-                        return matcher.test(value.label || value.value || value);
-                    });
-                }
+        $.ui.autocomplete.filter = function (array, term) {
+            var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
+            return $.grep(array, function (value) {
+                return matcher.test(value.label || value.value || value);
+            });
+        }
 
 
         return $("#facilityTypeInput").val();
@@ -776,7 +776,7 @@ $(document).ready(function () {
             $("#lsuburb").textInputState('enable');
             $("#ltype").autocomplete("close");
             $("#lsuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
-             }
+        }
     }
 
     // Location Street Suburb
@@ -797,7 +797,7 @@ $(document).ready(function () {
     }
 
     function streetSuburbResponse(event, ui) {
-         var label = "";
+        var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; postcode = ui.content[0].postcode; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; postcode = ui.item.postcode; }
         if (label.length > 0) {
@@ -808,7 +808,7 @@ $(document).ready(function () {
             GetAddressDetails();
             $("#lsuburb").autocomplete("close");
             $("#lpostcode").val(postcode);
-            }
+        }
     }
     $("#lno").facClick();
     $("#lfno").facClick();
@@ -855,7 +855,7 @@ $(document).ready(function () {
         });
     });
 
-        $("#CustSummary").removeAttr("disabled");
+    $("#CustSummary").removeAttr("disabled");
     
 
     /* */
@@ -864,24 +864,24 @@ $(document).ready(function () {
 
     // Customer Street Name
 
-        $("#i_cstreet").autocomplete(
-           $.ui.autocomplete.filter = function (array, term) {
-               var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-               return $.grep(array, function (value) {
-                   return matcher.test(value.label || value.value || value);
-               });
+    $("#i_cstreet").autocomplete(
+       $.ui.autocomplete.filter = function (array, term) {
+           var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+           return $.grep(array, function (value) {
+               return matcher.test(value.label || value.value || value);
            });
+       });
 
-        $("#i_cstreet").on(eventName, function (event) {
-            window.clicked["i_ctype"] = false;
-            window.clicked["i_csuburb"] = false;
-            //$("#checkHistory").prop("disabled", true).buttonState("disable");
-            $("#property_no").val("");
-            $("#lpostcode").val("");
-            $("#i_ctype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-            $("#i_csuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-            $("#i_cstreet").attr("readonly", false).autocomplete("search", "");
-        });
+    $("#i_cstreet").on(eventName, function (event) {
+        window.clicked["i_ctype"] = false;
+        window.clicked["i_csuburb"] = false;
+        //$("#checkHistory").prop("disabled", true).buttonState("disable");
+        $("#property_no").val("");
+        $("#lpostcode").val("");
+        $("#i_ctype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
+        $("#i_csuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
+        $("#i_cstreet").attr("readonly", false).autocomplete("search", "");
+    });
 
     //$("#i_cstreet").on(eventName, function (event) {
     //    window.clicked["i_ctype"] = false;
@@ -964,12 +964,13 @@ $(document).ready(function () {
     /* OTHER */
 
     // Adhoc Officer
+   if ($("#skipAdhocCount").val() == 0) {
     $("#newrequest").validate({
         
         submitHandler: function (form) {
-            /*$("#submit").prop('disabled', true).buttonState("disable");
+            $("#submit").prop('disabled', true).buttonState("disable");
             $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");*/
+            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
 
             if ($("#countOnlyInd").val() == "N") {
                 Load();
@@ -1024,6 +1025,7 @@ $(document).ready(function () {
         },
         ignore: ""
     });
+}
 
    
 
@@ -1076,121 +1078,79 @@ $(document).ready(function () {
         }
     });
 
+
+    // Debug $("#countonly_bypass").val("zzz"); // disable the bypass for now
+
     $('#saveCountOnly').on(eventName, function (event) {
+        // IF bypass enabled (Y) -----------------------------------------------------------------------------------------------
+            if ($("#countonly_bypass").val() == "Y") {
 
-        // Disable Buttons
-        $("#submit").prop('disabled', true).buttonState("disable");
-        $("#saveMore").prop('disabled', true).buttonState("disable");
-        $("#saveCountOnly").prop('disabled', true).buttonState("disable");
-        $("#countonly_bypass").val() == "Y"
-
-        // If bypass enabled
-        if ($("#countonly_bypass").val() == "Y") {
-            $("#newrequest").validate().cancelSubmit = true;
-
-            // If count Only = no
-            if ($("#countOnlyInd").val() == "N") {
-
-                // If popup box, "ok" clicked
-                if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
-                    $("#countOnlyInd").val("Y");
-                    $("#submit").prop('disabled', false).buttonState("enable");
-                    $("#newrequest").validate({
-                        submitHandler: function(form) {
-                            $(".newrequest").submit();
-                        }
-                    });
-                }
-
-                // Otherwise re-enable buttons
-                else {
-                    $("#submit").prop('disabled', false).buttonState("enable");
-                    $("#saveMore").prop('disabled', false).buttonState("enable");
-                    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
-                }
-            }
-
-            // If count = yes
-            else {
-                $("#submit").prop('disabled', false).buttonState("enable");
-                $("#newrequest").submit();
-            }
-
-        // If bypass is not enabled
-        } else {
-
-            // Add resetReq and remove standard required.
-            $(".required").addClass("resetReq").removeClass("required");
-            jQuery.validator.addClassRules({
-                req_text_udf: {
-                    required: true,
-                },
-                req_text_time: {
-                    required: true,
-                    timeField: true
-                },
-                req_text_date: {
-                    required: true,
-                    dateField: true
-                }
-            });
-            
-
-            if( $(".req_text_date").val()=="dd/mm/yyyy"){
-                $(".req_text_date").val("");
-            }
-
-            //apply validation rules to udfs
-            $('.req_text_udf').each(function (index) {
-                    $(this).rules("add", "required");
-            });
-            $('.req_text_time').each(function (index) {
-                $(this).rules("add", "required");
-                $(this).rules("add", "timeField");
-            });
-            $('.req_text_date').each(function (index) {
-                $(this).rules("add", "required");
-                $(this).rules("add", "dateField");
-            });
-
-            // Check Valid
-            $("#newrequest").valid();
-            // If valid then 
-            if ($("#newrequest").validate().numberOfInvalids() == 0) {
-
-                // If countOnly = no
+                // IF countOnlyInd = (N) 
                 if ($("#countOnlyInd").val() == "N") {
 
-                    // If "ok" clicked on popup
                     if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
                         $("#countOnlyInd").val("Y");
-                        $("#submit").prop('disabled', false).buttonState("enable");
-                        $("#newrequest").submit();
+                        $.ajax({
+                            url: 'inc/ajax/ajax.saveCountOnly.php',
+                            data: $("#newrequest").serialize(),
+                            type: 'POST',
+                            success: function (data) {
+                                Unload();
+                                $("#skipAdhocCount").val('1');
+                                location.reload();
+
+                                $("#submit").prop('disabled', true).buttonState("disable");
+                                $("#saveMore").prop('disabled', true).buttonState("disable");
+                                $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                            }
+                        });
+                        
                     }
-                    // If not
+
+                  // User declined confirm message, reset buttons
                     else {
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");
                         $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                     }
-                }
-                
-                // If countOnly = yes
-                else {
-                    $("#submit").prop('disabled', false).buttonState("enable");
-                    $("#newrequest").submit();
-                }
-            }
+                } else { }
+            } else { // -----------------------------------------------------------------------------------------------------
 
-            // If not valid
-            else {
-                alert("You must fill in the required User Defined Fields");
-                $(".resetReq").addClass("required").removeClass("resetReq");
-                $("#submit").prop('disabled', false).buttonState("enable");
-                $("#saveMore").prop('disabled', false).buttonState("enable");
-                $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                // IF countOnlyInd = (N) 
+                if ($("#countOnlyInd").val() == "N") {
+
+                    if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
+                        
+
+                        $("#newrequest").valid();
+                        if ($("#newrequest").validate().numberOfInvalids() == 0) {
+                            $("#countOnlyInd").val("Y");
+                            $.ajax({
+                                url: 'inc/ajax/ajax.saveCountOnly.php',
+                                data: $("#newrequest").serialize(),
+                                type: 'POST',
+                                success: function (data) {
+                                    Unload();
+                                    $("#skipAdhocCount").val('1');
+                                    location.reload();
+
+                                    $("#submit").prop('disabled', true).buttonState("disable");
+                                    $("#saveMore").prop('disabled', true).buttonState("disable");
+                                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                                }
+                            });
+                        }
+                    }
+
+                // User declined confirm message, reset buttons
+                    else {
+                        $("#submit").prop('disabled', false).buttonState("enable");
+                        $("#saveMore").prop('disabled', false).buttonState("enable");
+                        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                    }
+                } else { }
             }
-        }
+               
     });
 
     $(".cadd").on(eventName, function (event) {
