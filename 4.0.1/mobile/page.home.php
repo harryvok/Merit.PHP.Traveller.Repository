@@ -91,7 +91,7 @@
 </head>
 <body onload="initFastButtons();">
     <span id="fastclick">
-
+        <input type="hidden" id="inactivitytime" value="<?php echo INACTIVITY ?>"/>
         <a name="topAnc" title="topAnc"></a>
         <div id="contentBox">
             <?php
@@ -119,6 +119,7 @@
 
                     </div>
                     <div class="content-primary">
+                       
                         <div style="float: left"><?php include("mobile/page.output.php") ?></div>
                         <h3 style=""><?php echo COUNCIL_NAME; ?></h3>
                         <span style="text-align: center;">Welcome to Merit Traveller. You are logged in as <strong><?php echo $user; ?></strong>. Please choose an option.</span>
@@ -165,6 +166,14 @@
                         <p>
                             <center>Please login to access this page.</center>
                         </p>
+                        <?php
+                                    if(isset($_GET["timeout"]) && $_GET["timeout"]== "y"){
+                                        $_SESSION['done'] = 1;
+                                        $_SESSION['error'] = 1;
+                                        $_SESSION['error_logged_out'] = 1;
+                                    }
+                                     
+                                ?>
                         <?php
                     include("page.output.php");
                         ?>

@@ -136,6 +136,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             $("#add-request-textarea").focus();
         }
         <?php } ?>
+        getSRFRedText();
     });
 </script>
 <h1>Found Keywords <span class="closePopup">
@@ -234,6 +235,9 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         $("#function").val($("#ret_function_code").val());
         $("#function").attr("disabled", false);
         $("#workflowSRF").prop("disabled", false);
+
+        getSRFRedText();
+
         if ($("#ret_request_need_func").val() == "Y") {
             $("#functionInput").addClass("required");
             $("#functionRequired").show();

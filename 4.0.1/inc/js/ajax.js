@@ -576,7 +576,7 @@ function getSRFRedText() {
         },
         success: function (data) {
             Unload();
-            alert(data.note);
+            $("#rednote").html(data.note);
 
         }
     });
