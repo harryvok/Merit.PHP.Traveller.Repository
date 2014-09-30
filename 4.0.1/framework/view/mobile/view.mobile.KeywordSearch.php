@@ -164,7 +164,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    GetHelpNotes("", $("#request").val(), $("#service").val());
 		    GetHelpNotes("", "", $("#service").val());
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
-		    
+		    getSRFRedText();
 			<?php } ?>
             $("#popup").popup("close");
 		});
@@ -182,6 +182,7 @@ else{
 ?>
     <script type="text/javascript">
         alert("The keyword you've chosen is associated with a count only SRF. Please choose another keyword.");
+        getSRFRedText();
 	</script>
     <?php
     }
@@ -189,6 +190,7 @@ else{
     ?>
     <script type="text/javascript">
         alert("There are no SRFs associated with this keyword.");
+        getSRFRedText();
 	 </script>
      <?php
     }

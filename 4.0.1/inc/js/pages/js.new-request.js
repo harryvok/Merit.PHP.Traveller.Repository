@@ -773,13 +773,9 @@ $(document).ready(function () {
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#ltype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
             $("#ltype").autocomplete("close");
-<<<<<<< HEAD
-            $("#lsuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
-        }
-=======
+
             $("#lsuburb").trigger("click");
              }
->>>>>>> origin/master
     }
 
     // Location Street Suburb
@@ -815,13 +811,10 @@ $(document).ready(function () {
             showOnMap();
             GetAddressDetails();
             $("#lsuburb").autocomplete("close");
-<<<<<<< HEAD
-            $("#lpostcode").val(postcode);
-        }
-=======
+
             $("#lpostcode").val(postcode).removeClass("ui-autocomplete-loading");
             }
->>>>>>> origin/master
+
     }
     $("#lno").facClick();
     $("#lfno").facClick();

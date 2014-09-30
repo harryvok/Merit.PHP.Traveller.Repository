@@ -36,7 +36,7 @@ $(document).ready(function () {
     }
 
     $("#new_officer_text").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-
+    $("input[data-adhocOfficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
 
     $("#new_officer_text").click(function() {
         $("#new_officer_code").val("");
@@ -44,11 +44,27 @@ $(document).ready(function () {
         $("#new_officer_text").attr("readonly", false);
         $("#new_officer_text").autocomplete("search","");
     });
+    $("body").on("click", "input[data-adhocOfficer]", function () {
+        if ($(this).hasClass("ui-autocomplete-input")) {
+            $("#" + $(this).attr("id") + "Code").val("");
+            $(this).val("");
+            $(this).attr("readonly", false);
+
+            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
+            $(this).autocomplete("search", "");
+
+        }
+        else {
+            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
+        }
+    });
     $("#adhocOfficer").validate();
     $("#adhocOfficer").submit(function () {
         if ($(this).validate().numberOfInvalids() == 0) {
             $("#submit").attr("disabled", true);
         }
     });
+
+
 
 });

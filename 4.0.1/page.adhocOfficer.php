@@ -17,7 +17,7 @@
             <div class="float-left"> <label  for="resp_officer">Officer<span style="color:red;">*</span></label></div>
 			<div class="float-left">
 			        <input id="new_officer_text" class="required" placeholder="Search..." />
-		            <input type="hidden" id="new_officer_code" name="resp_officer"  class="required" />
+		            <input type="hidden" id="new_officer_code" data-adhocOfficer="true" name="resp_officer"  class="required" />
 			</div>
 
 			<input type="hidden" name="page" value="action" />
