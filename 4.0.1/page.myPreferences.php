@@ -151,7 +151,7 @@
                 <div class="column r100">
                 <label>Alternate Officer</label>
                 <input class="text ui-autocomplete-input valid" name="alternateOfficer" id="alternateOfficer" data-officer="true"  placeholder="Search..." autocomplete="off" value="<?php echo $_SESSION['alternate_officer_name'] ?>">
-                <input type="hidden" name="alternateOfficerCode" id="alternateOfficerCode" value="<?php echo $_SESSION['alternate_officer'] ?>"/>
+                <input type="hidden" name="alternateOfficerCode" id="alternateOfficerCode" value="<?php echo $_SESSION['alternative_officer'] ?>"/>
                 </div>
                 </div>
         </div> 
