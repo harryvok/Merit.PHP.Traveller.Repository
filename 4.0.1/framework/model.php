@@ -3019,6 +3019,7 @@ class Model {
                         $_SESSION['avail_to'] = $avail_to;
                         $_SESSION['available_ind'] = $_POST['availInd'];
                         $_SESSION['alternative_officer'] = $_POST['alternateOfficerCode'];
+                        $_SESSION['alternate_officer_name'] = $_POST["alternateOfficer"];
                     }
                     catch (Exception $e) {
                         

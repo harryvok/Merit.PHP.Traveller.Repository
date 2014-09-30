@@ -477,7 +477,6 @@ function CheckMandatoryFields(ser, req, func) {
                         }
                     }
                     else if (mand == "Y") {
-                        alert($(this.data));
                         $(this).addClass("required");
                         $("." + $(this).data("mand") + "_label").show();
                     }

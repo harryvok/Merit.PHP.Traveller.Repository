@@ -1,6 +1,7 @@
 <?php
 if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adhoc_officer_det) > 0){
 ?>
+<!--<script type="text/javascript" src="inc/js/pages/js.adhocOfficer.js"></script>-->
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -52,7 +53,7 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
         ?>
         <h2>Action Required: <?php echo $adhoc->action_reqd; ?></h2>
         <b>Assign to Officer:</b>
-        <input id="<?php echo $i; ?>" class="newOfficerText" data-officer="true" placeholder="Search..." />
+        <input id="<?php echo $i; ?>" class="newOfficerText" data-adhocofficer="true" placeholder="Search..." />
         <div class="adhocOfficerContent">
             <input type="hidden" id="<?php echo $i; ?>Code" class="officer" name="<?php echo $i; ?>_officer" />
             <input type="hidden" id="<?php echo $i; ?>_action_reqd" name="<?php echo $i; ?>_action_reqd" value="<?php echo $adhoc->action_reqd; ?>" />
@@ -68,7 +69,7 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
         ?>
         <h2>Action Required: <?php echo $adhoc->action_reqd; ?></h2>
         <b>Assign to Officer:</b>
-        <input id="0" class="newOfficerText" data-officer="true" placeholder="Search..." />
+        <input id="0" class="newOfficerText" data-adhocofficer="true" placeholder="Search..." />
         <div class="adhocOfficerContent">
             <input type="hidden" id="0Code" name="0_officer" class="officer" />
             <input type="hidden" id="0_action_reqd" name="0_action_reqd" value="<?php echo $adhoc->action_reqd; ?>" />
