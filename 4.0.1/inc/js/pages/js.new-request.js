@@ -801,7 +801,10 @@ $(document).ready(function () {
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; postcode = ui.item.postcode; }
         if (label.length > 0) {
             $("#lsuburb").val(label).attr("readonly", true).removeClass("ui-autocomplete-loading");
+            $("#lpostcode").addClass("ui-autocomplete-loading");
             $("#property_no").addClass("ui-autocomplete-loading");
+            $("#lroad_type").addClass("ui-autocomplete-loading");
+            $("#lroad_responsibility").addClass("ui-autocomplete-loading");
             // need to get property number
             if ($("#historyaddrtype").val() == "L" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
             showOnMap();
@@ -1438,6 +1441,8 @@ function clearLocationAddress() {
     window.clicked["lsuburb"] = false;
     $("#ltype").val("").attr("readonly", true);
     $("#lsuburb").val("");
+    $("#lroad_type").val("");
+    $("#lroad_responsibility").val("");
     $('#ldesc').val('');
     $("#lpostcode").val("");
     $("#property_no").val("");
