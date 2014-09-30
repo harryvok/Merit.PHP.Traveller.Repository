@@ -975,10 +975,7 @@ $(document).ready(function () {
     $("#newrequest").validate({
         
         submitHandler: function (form) {
-            $("#submit").prop('disabled', true).buttonState("disable");
-            $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
-
+            
             if ($("#countOnlyInd").val() == "N") {
                 Load();
                 $("#newrequest").valid();
@@ -1036,12 +1033,20 @@ $(document).ready(function () {
 
    
 
-    $('#saveMore').on(eventName, function (event) {
+   $('#saveMore').on(eventName, function (event) {
+       if ($('#same').val() == "s" || $('#same').val() == "i") {
+           $("#o_cstreet").removeClass("required");
+           $("#o_ctype").removeClass("required");
+           $("#o_csuburb").removeClass("required");
+       }
+       else {
+           $("#i_cstreet").removeClass("required");
+           $("#i_ctype").removeClass("required");
+           $("#i_csuburb").removeClass("required");
+       }
         $("#newrequest").valid();
         if ($("#newrequest").validate().numberOfInvalids() == 0) {
-            $("#submit").prop('disabled', true).buttonState("disable");
-            $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+            
             Load();
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
