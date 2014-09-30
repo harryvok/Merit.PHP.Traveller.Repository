@@ -1393,7 +1393,7 @@ function changeLocationType() {
 }
 
 function clearCustomerAddress() {
-    $('#same').val("i");
+    //$('#same').val("i");
     $('#i_cno').val('');
     $('#i_cfno').val('');
     window.clicked["i_ctype"] = false;
@@ -1412,9 +1412,16 @@ function clearCustomerAddress() {
     $('#o_cdesc').val("");
     $("#o_cpostcode").val("");
     $("#cust_address_id").val("");
-    $("#CustAddSummary").prop("disabled", true);  
-    $('#inside_ca').show();
-    $('#outside_ca').hide();
+    $("#CustAddSummary").prop("disabled", true);
+    if ($('#same').val() == "i" || $('#same').val() == "s") {
+        $('#inside_ca').show();
+        $('#outside_ca').hide();
+    }
+    else if ($('#same').val() == "o")
+    {
+        $('#inside_ca').hide();
+        $('#outside_ca').show();
+    }
 }
 
 function clearLocationAddress() {
