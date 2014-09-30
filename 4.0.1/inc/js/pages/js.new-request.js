@@ -244,7 +244,7 @@ $(document).ready(function () {
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
-
+            getSRFRedText();
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
             } else {
@@ -728,8 +728,7 @@ $(document).ready(function () {
             //alert(label);
             $("#lstreet").blur();
             $("#lstreet").removeClass("ui-autocomplete-loading").val(label);
-            $("#ltype").textInputState('enable');
-            $("#ltype").attr("disabled", false).trigger("click");
+            $("#ltype").trigger("click");
 
 
             //$("#property_no").val(""); $("#lpostcode").val("");
@@ -762,7 +761,7 @@ $(document).ready(function () {
         $("#checkHistory").prop("disabled", true).buttonState("disable");
         $("#lsuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
         $("#ltype").textInputState('enable');
-        $("#ltype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("").trigger("focus");
+        $("#ltype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("");
         return $("#lstreet").val();
     }
 
@@ -773,10 +772,14 @@ $(document).ready(function () {
         if (label.length > 0) {
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#ltype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
-            $("#lsuburb").textInputState('enable');
             $("#ltype").autocomplete("close");
+<<<<<<< HEAD
             $("#lsuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
         }
+=======
+            $("#lsuburb").trigger("click");
+             }
+>>>>>>> origin/master
     }
 
     // Location Street Suburb
@@ -792,6 +795,7 @@ $(document).ready(function () {
         }
         $("#property_no").val(""); $("#lpostcode").val("");
         $("#checkHistory").prop("disabled", true).buttonState("disable");
+        //$("#lsuburb").textInputState('enable');
         $("#lsuburb").attr("readonly", false).val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
         return $("#ltype").val();
     }
@@ -802,13 +806,22 @@ $(document).ready(function () {
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; postcode = ui.item.postcode; }
         if (label.length > 0) {
             $("#lsuburb").val(label).attr("readonly", true).removeClass("ui-autocomplete-loading");
+            $("#lpostcode").addClass("ui-autocomplete-loading");
+            $("#property_no").addClass("ui-autocomplete-loading");
+            $("#lroad_type").addClass("ui-autocomplete-loading");
+            $("#lroad_responsibility").addClass("ui-autocomplete-loading");
             // need to get property number
             if ($("#historyaddrtype").val() == "L" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
             showOnMap();
             GetAddressDetails();
             $("#lsuburb").autocomplete("close");
+<<<<<<< HEAD
             $("#lpostcode").val(postcode);
         }
+=======
+            $("#lpostcode").val(postcode).removeClass("ui-autocomplete-loading");
+            }
+>>>>>>> origin/master
     }
     $("#lno").facClick();
     $("#lfno").facClick();
@@ -905,9 +918,9 @@ $(document).ready(function () {
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
-            $("#i_cstreet").val(label).attr("readonly", true).attr("disabled", false).removeClass("ui-autocomplete-loading").autocomplete("close").textInputState('enable');
-            $("#i_ctype").textInputState('enable');
-            $("#i_ctype").attr("disabled", false).removeClass("ui-disabled").trigger("click");
+            $("#i_cstreet").blur();
+            $("#i_cstreet").removeClass("ui-autocomplete-loading").val(label);
+            $("#i_ctype").trigger("click");
             $("#caddsummary").prop('disabled', false);
             $("#caddhistory").prop('disabled', false);
             
@@ -916,21 +929,21 @@ $(document).ready(function () {
 
     // Customer Street Type
     function cTypeInit() {
-        window.clicked["i_csuburb"] = false;
-
         $("#i_csuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-        $("#i_ctype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("").trigger("focus").textInputState('enable');
+        $("#i_ctype").textInputState('enable');
+        $("#i_ctype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("");
         return $("#i_cstreet").val();
     }
     var cTypeResponse = function (event, ui) {
+        window.clicked["i_csuburb"] = false;
         var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
+            $("#i_cpropertynumber").val(""); $("#i_cpostcode").val("");
             $("#i_ctype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
-            $("#i_csuburb").textInputState('enable');
-            $("#i_csuburb").attr("disabled", false).removeClass("ui-disabled").trigger("click");
-            $("#i_csuburb").autocomplete("close");
+            $("#i_ctype").autocomplete("close");
+            $("#i_csuburb").trigger("click");
         }
     }
 
@@ -947,6 +960,7 @@ $(document).ready(function () {
         if (label.length > 0) {
             if ($("#historyaddrtype").val() == "C" || $("#historyaddrtype").val() == "B") { CheckHistory($("#historyaddrtype").val()); }
             $("#i_csuburb").val(label).attr("readonly", true).removeClass("ui-autocomplete-loading");
+            $("#i_cpropertynumber").addClass("ui-autocomplete-loading");
             $("#i_cpostcode").val(postcode)//.attr("readonly", true).removeClass("ui-autocomplete-loading");
             GetCustomerAddressDetails();
             $("#i_csuburb").autocomplete("close");
@@ -1038,6 +1052,20 @@ $(document).ready(function () {
             Load();
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
+                Unload();
+                $.ajax({
+                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                    type: 'post',
+                    data: {
+                        ser: $("#service").val(),
+                        req: $("#request").val(),
+                        func: $("#function").val()
+                    },
+                    success: function (data) {
+                        $('#popup').html(data);
+                        $("#adhocOfficer").html(data).trigger("create");
+                    }
+                });
                 $.ajax({
                     url: 'inc/ajax/ajax.saveAndMore.php',
                     data: $("#newrequest").serialize(),
@@ -1172,7 +1200,7 @@ $(document).ready(function () {
     $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#i_ctype").val(), id: "i_csuburb", house: '', street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
     //$("#lstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "lstreet" }, streetResponse);
     $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#lstreet").val() , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
-    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#ltype").val(), id: "lsuburb", house: '', street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
+    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#ltype").val(), id: "lsuburb", house: function () { return $('#lno').val(); }, street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
     $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
     $("#facilityInput").autoCompleteInitSeq(facilityInit, "inc/ajax/ajax.getFacilitiesLookup.php", { term: "", facilitiesName: function () { return $("#facilityInput").val(); }, facilitiesType: function () { return $("#facilityTypeInput").val(); } }, facilityResponse);
@@ -1338,9 +1366,11 @@ function changeLocationType() {
 }
 
 function clearCustomerAddress() {
-    $('#same').val("i");
+    //$('#same').val("i");
     $('#i_cno').val('');
     $('#i_cfno').val('');
+    window.clicked["i_ctype"] = false;
+    window.clicked["i_csuburb"] = false;
     $('#i_cstreet').val('').attr("readonly", false);
     $('#i_ctype').val('').attr("readonly", true);
     $('#i_csuburb').val('');
@@ -1355,9 +1385,16 @@ function clearCustomerAddress() {
     $('#o_cdesc').val("");
     $("#o_cpostcode").val("");
     $("#cust_address_id").val("");
-    $("#CustAddSummary").prop("disabled", true);  
-    $('#inside_ca').show();
-    $('#outside_ca').hide();
+    $("#CustAddSummary").prop("disabled", true);
+    if ($('#same').val() == "i" || $('#same').val() == "s") {
+        $('#inside_ca').show();
+        $('#outside_ca').hide();
+    }
+    else if ($('#same').val() == "o")
+    {
+        $('#inside_ca').hide();
+        $('#outside_ca').show();
+    }
 }
 
 function clearLocationAddress() {
@@ -1368,10 +1405,14 @@ function clearLocationAddress() {
     $("#facilityInput").val("");
     $("#addressId").val("");
     $('#lfno').val('');
-    $('#lno').val('');    
+    $('#lno').val('');
     $('#lstreet').val('').attr("readonly", false);
+    window.clicked["ltype"] = false;
+    window.clicked["lsuburb"] = false;
     $("#ltype").val("").attr("readonly", true);
     $("#lsuburb").val("");
+    $("#lroad_type").val("");
+    $("#lroad_responsibility").val("");
     $('#ldesc').val('');
     $("#lpostcode").val("");
     $("#property_no").val("");

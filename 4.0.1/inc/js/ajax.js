@@ -42,13 +42,15 @@ function GetAddressDetails() {
             success: function (data) {
                 //alert("prop id: " + data.property_no);
                 if (data.property_no == "0" || data.property_no == "" ) {
-                    $("#property_no").val("");
+                    $("#property_no").val("").removeClass("ui-autocomplete-loading");
                 }
                 else {                    
-                    $("#property_no").val(data.property_no);
+                    $("#property_no").val(data.property_no).removeClass("ui-autocomplete-loading");
                 }
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
+                $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
+                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
                 if (data.address_id != "0" || data.address_id != "" || data.address_id > 0 ) {
                     $("#AddrSummary").removeAttr("disabled");
                 }
@@ -75,10 +77,10 @@ function GetCustomerAddressDetails() {
                 //$("#i_cpostcode").val(data.postcode);
                 $("#cust_address_id").val(data.address_id);
                 if (data.property_no == "0" || data.property_no == "") {
-                    $("#i_cpropertynumber").val("");
+                    $("#i_cpropertynumber").val("").removeClass("ui-autocomplete-loading");
                 }
                 else {
-                    $("#i_cpropertynumber").val(data.property_no);
+                    $("#i_cpropertynumber").val(data.property_no).removeClass("ui-autocomplete-loading");
                 }
                 if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
                     $("#CustAddSummary").removeAttr("disabled");
@@ -475,6 +477,7 @@ function CheckMandatoryFields(ser, req, func) {
                         }
                     }
                     else if (mand == "Y") {
+                        alert($(this.data));
                         $(this).addClass("required");
                         $("." + $(this).data("mand") + "_label").show();
                     }
@@ -576,7 +579,7 @@ function getSRFRedText() {
         },
         success: function (data) {
             Unload();
-            alert(data.note);
+            $("#rednote").html(data.note);
 
         }
     });

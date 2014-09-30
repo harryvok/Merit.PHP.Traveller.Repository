@@ -121,6 +121,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         GetHelpNotes("", $("#request").val(), $("#service").val());
         GetHelpNotes("", "", $("#service").val());
         CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
+        getSRFRedText();
         if (($("#historyaddrtype").val() == "L" && $("#lsuburb").val().length > 0)
             || ($("#historyaddrtype").val() == "C" && $("#i_csuburb").val().length > 0)
             || ($("#historyaddrtype").val() == "C" && $("#o_csuburb").val().length > 0)
@@ -136,6 +137,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             $("#add-request-textarea").focus();
         }
         <?php } ?>
+        
+        
     });
 </script>
 <h1>Found Keywords <span class="closePopup">
@@ -234,6 +237,9 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         $("#function").val($("#ret_function_code").val());
         $("#function").attr("disabled", false);
         $("#workflowSRF").prop("disabled", false);
+
+        getSRFRedText();
+
         if ($("#ret_request_need_func").val() == "Y") {
             $("#functionInput").addClass("required");
             $("#functionRequired").show();

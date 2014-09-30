@@ -110,6 +110,7 @@
     if(isset($user)){ 
     ?>
          <div id="bottomBar">
+             <input type="hidden" id="inactivitytime" value="<?php echo INACTIVITY ?>"/>
             <script type="text/javascript">
 		        $(document).ready(function(){
 		          $('#searchInput').keydown(function(event){
@@ -158,6 +159,7 @@
                         <!--<![endif]-->
                 <div id="content">
                     <div class="pad-fix">
+                        
                     <?php include("page.output.php"); ?>
                     <div class="float-left">
                         <?php
@@ -187,6 +189,14 @@
                        if(!preg_match('/(?i)msie [1-7].[0-9]/',$_SERVER['HTTP_USER_AGENT'])) { // if IE<=8 
                         ?>
                             <div id="login-box">
+                                <?php
+                                    if(isset($_GET["timeout"]) && $_GET["timeout"]== "y"){
+                                        $_SESSION['done'] = 1;
+                                        $_SESSION['error'] = 1;
+                                        $_SESSION['error_logged_out'] = 1;
+                                    }
+                                     
+                                ?>
                                 <?php include("page.output.php"); ?>
                                     Please login to access this page.
                                     <form class="normal" action="process.php" id="login" method="post">
