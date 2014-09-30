@@ -1033,6 +1033,20 @@ $(document).ready(function () {
             Load();
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
+                Unload();
+                $.ajax({
+                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                    type: 'post',
+                    data: {
+                        ser: $("#service").val(),
+                        req: $("#request").val(),
+                        func: $("#function").val()
+                    },
+                    success: function (data) {
+                        $('#popup').html(data);
+                        $("#adhocOfficer").html(data).trigger("create");
+                    }
+                });
                 $.ajax({
                     url: 'inc/ajax/ajax.saveAndMore.php',
                     data: $("#newrequest").serialize(),
@@ -1378,6 +1392,8 @@ function clearCustomerAddress() {
     $('#same').val("i");
     $('#i_cno').val('');
     $('#i_cfno').val('');
+    window.clicked["i_ctype"] = false;
+    window.clicked["i_csuburb"] = false;
     $('#i_cstreet').val('').attr("readonly", false);
     $('#i_ctype').val('').attr("readonly", true);
     $('#i_csuburb').val('');
@@ -1405,8 +1421,10 @@ function clearLocationAddress() {
     $("#facilityInput").val("");
     $("#addressId").val("");
     $('#lfno').val('');
-    $('#lno').val('');    
+    $('#lno').val('');
     $('#lstreet').val('').attr("readonly", false);
+    window.clicked["ltype"] = false;
+    window.clicked["lsuburb"] = false;
     $("#ltype").val("").attr("readonly", true);
     $("#lsuburb").val("");
     $('#ldesc').val('');
