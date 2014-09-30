@@ -372,7 +372,7 @@ if(!isset($_GET['d'])){
                             <div class="float-left">
                                 <div class="column r25">
                                     <label for="i_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                    <input class="text cadd checkNone" name='i_csuburb' onchange="GetCustomerAddressDetails();" id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; } ?>'>
+                                    <input class="text cadd checkNone" name='i_csuburb' onchange="GetCustomerAddressDetails();" id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; }  ?>'>
                                 </div>
                                 <div class="column r25">
                                     <label for="i_cpostcode">Postcode</label>
@@ -410,7 +410,7 @@ if(!isset($_GET['d'])){
                             </div>
                             <div class="column r25">
                                 <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text" name='o_ctype' onChange="" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; } ?>'>
+                                <input class="text" name='o_ctype' onChange="" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; }  ?>'>
                             </div>
                             <div class="float-left">
                                 <div class="column r25">
