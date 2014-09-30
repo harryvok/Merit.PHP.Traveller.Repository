@@ -975,10 +975,6 @@ $(document).ready(function () {
     $("#newrequest").validate({
         
         submitHandler: function (form) {
-            $("#submit").prop('disabled', true).buttonState("disable");
-            $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
-
             if ($("#countOnlyInd").val() == "N") {
                 Load();
                 $("#newrequest").valid();
@@ -1039,9 +1035,9 @@ $(document).ready(function () {
     $('#saveMore').on(eventName, function (event) {
         $("#newrequest").valid();
         if ($("#newrequest").validate().numberOfInvalids() == 0) {
-            $("#submit").prop('disabled', true).buttonState("disable");
+            /*$("#submit").prop('disabled', true).buttonState("disable");
             $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+            $("#saveCountOnly").prop('disabled', true).buttonState("disable");*/
             Load();
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
