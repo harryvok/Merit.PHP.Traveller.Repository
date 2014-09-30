@@ -62,7 +62,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    GetHelpNotes("", $("#request").val(), $("#service").val());
 		    GetHelpNotes("", "", $("#service").val());
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
-		    
+		    getSRFRedText();
 			<?php } ?>
 		    $("#popup").popup("close");
 		    $("#add-request-textarea").focus();

@@ -244,7 +244,7 @@ $(document).ready(function () {
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
-
+            getSRFRedText();
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
             } else {

@@ -99,8 +99,11 @@ if(isset($_SESSION['user_id'])){
 
                         <label>Request Type<span class="request_type_label mandLabel" style="color: red; display: none;">*</span></label>
                         <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
+
                         <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
-                        <input type="checkbox" name="notifyInsuranceOfficer" value="Y" style="width: 25px;height: 25px;position: static;margin-top: 10px;">
+                        <input type="checkbox" name="notifyInsuranceOfficer" value="Y" style="width: 25px;height: 25px;margin-top: -18px; margin-left:150px">
+                        <br />
+
                         <label>Request Description<span class="request_description_label mandLabel" style="color: red; display: none;">*</span></label>
                         <textarea spellcheck="true" rows="4" class="text request-issue " data-mand="request_description" name='issue' id='textareaissue' maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
                     </p>
