@@ -1138,6 +1138,7 @@ $(document).ready(function () {
     //    }
     });
 
+   $("#countonly_bypass").val('N') // DEBUG TURN ON BYPASS
 
    $('#saveCountOnly').on(eventName, function (event) {
         // IF bypass enabled (Y) -------------------------------------------------------------------------------------------------
@@ -1194,7 +1195,41 @@ $(document).ready(function () {
             }
 
           // IF bypass disabled (N) -----------------------------------------------------------------------------------------------
-            else { 
+            else {
+
+                // Fix the "cars" required bug
+                $(".required").addClass("resetReq").removeClass("required");
+                jQuery.validator.addClassRules({
+                    req_text_udf: {
+                        required: true,
+                    },
+                    req_text_time: {
+                        required: true,
+                        timeField: true
+                    },
+                    req_text_date: {
+                        required: true,
+                        dateField: true
+                    }
+                });
+
+
+                if ($(".req_text_date").val() == "dd/mm/yyyy") {
+                    $(".req_text_date").val("");
+                }
+
+                //apply validation rules to udfs
+                $('.req_text_udf').each(function (index) {
+                    $(this).rules("add", "required");
+                });
+                $('.req_text_time').each(function (index) {
+                    $(this).rules("add", "required");
+                    $(this).rules("add", "timeField");
+                });
+                $('.req_text_date').each(function (index) {
+                    $(this).rules("add", "required");
+                    $(this).rules("add", "dateField");
+                });
 
                 // IF SRF not count only
                 if ($("#countOnlyInd").val() == "N") {
