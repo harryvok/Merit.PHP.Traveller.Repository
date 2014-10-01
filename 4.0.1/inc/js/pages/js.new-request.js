@@ -971,69 +971,97 @@ $(document).ready(function () {
     /* OTHER */
 
     // Adhoc Officer
-   if ($("#skipAdhocCount").val() == 0) {
-    $("#newrequest").validate({
-        
-        submitHandler: function (form) {
+    if ($("#skipAdhocCount").val() == 0) {
+       
+        $('#submit').on(eventName, function (event) {
+            //$("#saveMore").attr("disabled", true).buttonState("disable");
+            //$("#saveCountOnly").attr("disabled", true).buttonState("disable");
+            //$("#submit").prop('disabled', true).buttonState("disable");
+            //Load();
+            //$("#btnclick").val("Y");
+            //if ($('#same').val() == "s" || $('#same').val() == "i") {
+            //    $("#o_cstreet").removeClass("required");
+            //    $("#o_ctype").removeClass("required");
+            //    $("#o_csuburb").removeClass("required");
+            //}
+            //else {
+            //    $("#i_cstreet").removeClass("required");
+            //    $("#i_ctype").removeClass("required");
+            //    $("#i_csuburb").removeClass("required");
+            //}
+            //if ($("#countOnlyInd").val() == "N") {
+            //    $("#newrequest").valid();
+            //    if ($("#newrequest").validate().numberOfInvalids() == 0) {
+            //        Unload();
+                    alert("save clicked");
+            //    }
+            //} else {
+            //    unload();
+            //    alert("not valid");
+            //}
+    //   $("#newrequest").validate({        
+    //    submitHandler: function (form) {
+    //        alert("save clicked");
             
-            if ($("#countOnlyInd").val() == "N") {
-                Load();
-                $("#newrequest").valid();
-                
-                if ($("#newrequest").validate().numberOfInvalids() == 0 ) {
-                    Unload();
-                    $.ajax({
-                        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                        type: 'post',
-                        data: {
-                            ser: $("#service").val(),
-                            req: $("#request").val(),
-                            func: $("#function").val()
-                        },
-                        success: function (data) {
-                            $('#popup').html(data);
-                            $("#adhocOfficer").html(data).trigger("create");
-                        }
-                    });
-                }
-                else {
-                    $("#newrequest").validate();
-                    $("#saveMore").prop("disabled", false).buttonState("enable");
-                    $("#saveCountOnly").prop("disabled", false).buttonState("enable");
-                    $("#submit").prop('disabled', false).buttonState("enable");
-                    Unload();
-                }
+    //        if ($("#countOnlyInd").val() == "N") {
+    //            Load();
+    //            $("#newrequest").valid();
+    //            unload();
+    //            if ($("#newrequest").validate().numberOfInvalids() == 0 ) {
+    //                $.ajax({
+    //                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+    //                    type: 'post',
+    //                    data: {
+    //                        ser: $("#service").val(),
+    //                        req: $("#request").val(),
+    //                        func: $("#function").val()
+    //                    },
+    //                    success: function (data) {
+    //                        $('#popup').html(data);
+    //                        $("#adhocOfficer").html(data).trigger("create");
+    //                    }
+    //                });
+    //            }
+    //            else {
+    //                $("#newrequest").validate();
+    //                $("#saveMore").prop("disabled", false).buttonState("enable");
+    //                $("#saveCountOnly").prop("disabled", false).buttonState("enable");
+    //                $("#submit").prop('disabled', false).buttonState("enable");
+    //                Unload();
+    //            }
 
-            }
-            else {
-                Load();
-                $.ajax({
-                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                    type: 'post',
-                    data: {
-                        ser: $("#service").val(),
-                        req: $("#request").val(),
-                        func: $("#function").val()
-                    },
-                    success: function (data) {
-                        $('#popup').html(data);
-                        $("#adhocOfficer").html(data).trigger("create");
-                    }
-                });
-            }
+    //        }
+    //        else {
+    //            $.ajax({
+    //                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+    //                type: 'post',
+    //                data: {
+    //                    ser: $("#service").val(),
+    //                    req: $("#request").val(),
+    //                    func: $("#function").val()
+    //                },
+    //                success: function (data) {
+    //                    $('#popup').html(data);
+    //                    $("#adhocOfficer").html(data).trigger("create");
+    //                }
+    //            });
+    //        }
 
 
-        },
-        invalidHandler: function (event, validator) {
-            $(".error").closest(".col").trigger("expand");
-        },
-        ignore: ""
+    //    },
+    //    invalidHandler: function (event, validator) {
+    //        $(".error").closest(".col").trigger("expand");
+    //    },
+    //    ignore: ""
     });
 }
-
-   
+       
 
    $('#saveMore').on(eventName, function (event) {
+       $("#saveMore").attr("disabled", true).buttonState("disable");
+       $("#saveCountOnly").attr("disabled", true).buttonState("disable");
+       $("#submit").prop('disabled', true).buttonState("disable");
+       Load();
        $("#btnclick").val("Y");
        if ($('#same').val() == "s" || $('#same').val() == "i") {
            $("#o_cstreet").removeClass("required");
@@ -1046,7 +1074,6 @@ $(document).ready(function () {
            $("#i_csuburb").removeClass("required");
        }
        if ($("#countOnlyInd").val() == "N") {
-           Load();
            $("#newrequest").valid();
            if ($("#newrequest").validate().numberOfInvalids() == 0) {
                Unload();
@@ -1069,70 +1096,10 @@ $(document).ready(function () {
                $("#newrequest").validate();
                $("#saveMore").prop("disabled", false).buttonState("enable");
                $("#btnclick").val("");
-               $("#saveCountOnly").prop("disabled", false).buttonState("enable");
+               //$("#saveCountOnly").prop("disabled", false).buttonState("enable");
                $("#submit").prop('disabled', false).buttonState("enable");
-               Unload();
            }
        }
-       
-    //    $("#newrequest").valid();
-    //    if ($("#newrequest").validate().numberOfInvalids() == 0) {
-            
-    //        Load();
-    //        $("#newrequest").valid();
-    //        if ($("#newrequest").validate().numberOfInvalids() == 0) {
-    //            Unload();
-    //            $.ajax({
-    //                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-    //                type: 'post',
-    //                data: {
-    //                    ser: $("#service").val(),
-    //                    req: $("#request").val(),
-    //                    func: $("#function").val()
-    //                },
-    //                success: function (data) {
-    //                    $('#popup').html(data);
-    //                    $("#adhocOfficer").html(data).trigger("create");
-    //                }
-    //            });
-    //            $.ajax({
-    //                url: 'inc/ajax/ajax.saveAndMore.php',
-    //                data: $("#newrequest").serialize(),
-    //                type: 'POST',
-    //                success: function (data) {
-    //                    Unload();
-    //                    $("#service").val("");
-    //                    $("#request").val("");
-    //                    $("#function").val("");
-    //                    $("#keywordSearch").val("");
-    //                    $("#serviceInput").val("");
-    //                    $("#requestInput").val("");
-    //                    $("#functionInput").val("");
-    //                    $("#textareaissue").val("");
-    //                    $("#global-udfs").html("");
-    //                    $("#udfs").slideUp("fast");
-    //                    $("#attachFile").val("");
-    //                    $("#attachDesc").val("");
-    //                    $(".mandLabel").hide();
-    //                    $("[data-mand]").removeClass("required");
-    //                    $("#refno").val("");
-    //                    $("#submit").prop('disabled', false).buttonState("enable");
-    //                    $("#saveMore").prop('disabled', false).buttonState("enable");
-    //                    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
-    //                }
-    //            });
-    //        }
-    //        else {
-    //            $("#newrequest").validate();
-    //            $("#saveMore").prop("disabled", false).buttonState("enable");
-    //            $("#saveCountOnly").prop("disabled", false).buttonState("enable");
-    //            $("#submit").prop('disabled', false).buttonState("enable");
-    //            Unload();
-    //        }
-    //    }
-    //    else {
-    //        alert("You must fill in the required fields.");
-    //    }
     });
 
 

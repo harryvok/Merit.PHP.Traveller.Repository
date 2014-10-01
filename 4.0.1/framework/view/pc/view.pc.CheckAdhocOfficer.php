@@ -15,6 +15,7 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
         $(".newOfficerText").click();
 
         $("#submitAdhoc").click(function () {
+            Load();
             if ($(".newOfficerText").val().length > 0 && $(".officer").val().length > 0) {
                 $("#adhocOfficer").html("");
                 var i = 0;
@@ -26,17 +27,18 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                 });
 
                 if ($("#btnclick").val() == "Y") {
+                    $("#popup").html("");
+                    $("#popup").fadeOut("fast");
                     $.ajax({
                         url: 'inc/ajax/ajax.saveAndMore.php',
                         data: $("#newrequest").serialize(),
                         type: 'POST',
                         success: function (data) {
                             Unload();
-                            $("#popup").html("");
-                            $("#popup").fadeOut("fast");
                             $("#service").val("");
                             $("#request").val("");
                             $("#function").val("");
+                            $("#priority").val("");
                             $("#keywordSearch").val("");
                             $("#serviceInput").val("");
                             $("#requestInput").val("");
@@ -51,8 +53,9 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                             $("#refno").val("");
                             $("#submit").prop('disabled', false).buttonState("enable");
                             $("#saveMore").prop('disabled', false).buttonState("enable");
-                            $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                            //$("#saveCountOnly").prop('disabled', false).buttonState("enable");
                             alert(data);
+                            $("#keywordSearch").focus();
                         }
                     });
                 }
@@ -60,10 +63,10 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#newrequest").unbind("submit");
                     $("#submit").click();
-
+                    Unload();
                     $(this).attr("disabled", true).buttonState("disable");
                     $("#saveMore").attr("disabled", true).buttonState("disable");
-                    $("#saveCountOnly").attr("disabled", true).buttonState("disable");
+                    //$("#saveCountOnly").attr("disabled", true).buttonState("disable");
                     $("#submit").prop('disabled', true).buttonState("enable");
                 }
             }
@@ -121,14 +124,48 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
 else{
 ?>
 <script type="text/javascript">
-    //$("#submit").prop('disabled', false).buttonState("enable");
-    $("#newrequest").unbind("submit");
-    $("#newrequest INPUT[type=submit]").click();
-    //$("#submit").click();
-    //$(this).attr("disabled", true).buttonState("disable");
-    $("#submit").attr("disabled", true).buttonState("disable");
-    $("#saveMore").attr("disabled", true).buttonState("disable");
-    $("#saveCountOnly").attr("disabled", true).buttonState("disable");
+    
+    if ($("#btnclick").val() == "Y") {
+        Load();
+        $.ajax({
+            url: 'inc/ajax/ajax.saveAndMore.php',
+            data: $("#newrequest").serialize(),
+            type: 'POST',
+            success: function (data) {
+                Unload();
+                $("#service").val("");
+                $("#request").val("");
+                $("#function").val("");
+                $("#priority").val("");
+                $("#keywordSearch").val("");
+                $("#serviceInput").val("");
+                $("#requestInput").val("");
+                $("#functionInput").val("");
+                $("#textareaissue").val("");
+                $("#global-udfs").html("");
+                $("#udfs").slideUp("fast");
+                $("#attachFile").val("");
+                $("#attachDesc").val("");
+                $(".mandLabel").hide();
+                $("[data-mand]").removeClass("required");
+                $("#refno").val("");
+                $("#submit").prop('disabled', false).buttonState("enable");
+                $("#saveMore").prop('disabled', false).buttonState("enable");
+                //$("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                alert(data);
+                $("#btnclick").val("");
+                $("#keywordSearch").focus();
+            }
+        });
+    }
+    else {
+        Unload();
+        $("#newrequest").unbind("submit");
+        $("#newrequest INPUT[type=submit]").click();
+        $("#submit").attr("disabled", true).buttonState("disable");
+        $("#saveMore").attr("disabled", true).buttonState("disable");
+        //$("#saveCountOnly").attr("disabled", true).buttonState("disable");
+    }
 </script>
 <?php	
 }
