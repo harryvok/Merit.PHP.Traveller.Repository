@@ -152,7 +152,6 @@ else{
                 $("#submit").prop('disabled', false).buttonState("enable");
                 $("#saveMore").prop('disabled', false).buttonState("enable");
                 //$("#saveCountOnly").prop('disabled', false).buttonState("enable");
-                alert(data);
                 $("#btnclick").val("");
                 $("#keywordSearch").focus();
             }
