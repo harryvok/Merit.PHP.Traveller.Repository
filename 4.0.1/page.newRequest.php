@@ -473,6 +473,7 @@ if(!isset($_GET['d'])){
         <input type="hidden" name="saveCountOnly" id="countOnlyInd" value="N" />
         <input type="hidden" name="skipAdhoc" id="skipAdhocCount" value="0" />
         <input type="hidden" name="documentsToLink" id="documentsToLink" />
+        <input type="hidden" name="btnclick" id="btnclick" value="" />
         </div>
         
         <div class="popupDetail" id="DocumentsPopup">

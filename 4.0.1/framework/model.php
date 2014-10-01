@@ -1894,7 +1894,7 @@ class Model {
                 }
 
                 //process linked Documents
-                if(isset($_POST["documentsToLink"])){
+                if(isset($_POST["documentsToLink"]) && $_POST["documentsToLink"] != ""){
                     $documents = explode("-",$_POST["documentsToLink"]);
                     
                       for($i =0; $i< count($documents); $i++){
