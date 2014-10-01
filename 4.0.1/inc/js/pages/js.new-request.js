@@ -240,7 +240,8 @@ $(document).ready(function () {
             CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
             QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val());
-            //CheckCountOnly(count_only);
+
+            // Perform count only check on full SRF
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
@@ -266,6 +267,8 @@ $(document).ready(function () {
         //$("#textareaissue").focus();
         if (data.length === 0) {
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
+
+            // If function isn't entered, perform count only check
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), '');
             return false;
         }
@@ -1136,17 +1139,20 @@ $(document).ready(function () {
     });
 
 
-    // Debug $("#countonly_bypass").val("zzz"); // disable the bypass for now
-
-    $('#saveCountOnly').on(eventName, function (event) {
-        // IF bypass enabled (Y) -----------------------------------------------------------------------------------------------
+   $('#saveCountOnly').on(eventName, function (event) {
+        // IF bypass enabled (Y) -------------------------------------------------------------------------------------------------
             if ($("#countonly_bypass").val() == "Y") {
 
-                // IF countOnlyInd = (N) 
+                // IF SRF not count only
                 if ($("#countOnlyInd").val() == "N") {
 
+                    // Bypass is enabled, will not validate the form
                     if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
                         $("#countOnlyInd").val("Y");
+                        $("#submit").prop('disabled', true).buttonState("disable");
+                        $("#saveMore").prop('disabled', true).buttonState("disable");
+                        $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                        $("#reset").prop('disabled', true).buttonState("disable");
                         $.ajax({
                             url: 'inc/ajax/ajax.saveCountOnly.php',
                             data: $("#newrequest").serialize(),
@@ -1155,32 +1161,54 @@ $(document).ready(function () {
                                 Unload();
                                 $("#skipAdhocCount").val('1');
                                 location.reload();
-
-                                $("#submit").prop('disabled', true).buttonState("disable");
-                                $("#saveMore").prop('disabled', true).buttonState("disable");
-                                $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                                $(window).scrollTop(0);
                             }
                         });
                         
                     }
-
-                  // User declined confirm message, reset buttons
                     else {
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");
                         $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                        $("#reset").prop('disabled', false).buttonState("enable");
                     }
-                } else { }
-            } else { // -----------------------------------------------------------------------------------------------------
 
-                // IF countOnlyInd = (N) 
+                // IF SRF is count only
+                } else {
+                    $("#submit").prop('disabled', true).buttonState("disable");
+                    $("#saveMore").prop('disabled', true).buttonState("disable");
+                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                    $("#reset").prop('disabled', true).buttonState("disable");
+                    $.ajax({
+                        url: 'inc/ajax/ajax.saveCountOnly.php',
+                        data: $("#newrequest").serialize(),
+                        type: 'POST',
+                        success: function (data) {
+                            Unload();
+                            $("#skipAdhocCount").val('1');
+                            location.reload();
+                            $(window).scrollTop(0);
+                        }
+                    });
+                }
+            }
+
+          // IF bypass disabled (N) -----------------------------------------------------------------------------------------------
+            else { 
+
+                // IF SRF not count only
                 if ($("#countOnlyInd").val() == "N") {
 
-                    if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) {
-                        
-
+                    // Bypass is disabled, will only require UDF's
+                    if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) { 
                         $("#newrequest").valid();
                         if ($("#newrequest").validate().numberOfInvalids() == 0) {
+
+                            $("#submit").prop('disabled', true).buttonState("disable");
+                            $("#saveMore").prop('disabled', true).buttonState("disable");
+                            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                            $("#reset").prop('disabled', true).buttonState("disable");
+
                             $("#countOnlyInd").val("Y");
                             $.ajax({
                                 url: 'inc/ajax/ajax.saveCountOnly.php',
@@ -1190,25 +1218,53 @@ $(document).ready(function () {
                                     Unload();
                                     $("#skipAdhocCount").val('1');
                                     location.reload();
-
-                                    $("#submit").prop('disabled', true).buttonState("disable");
-                                    $("#saveMore").prop('disabled', true).buttonState("disable");
-                                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                                    $(window).scrollTop(0);
                                 }
                             });
+                        } else {
+                            $(window).scrollTop(0);
                         }
+                        
                     }
-
-                // User declined confirm message, reset buttons
                     else {
                         $("#submit").prop('disabled', false).buttonState("enable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");
                         $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                        $("#reset").prop('disabled', false).buttonState("enable");
                     }
-                } else { }
+
+                // IF SRF is count only
+                } else {
+                    $("#newrequest").valid();
+                    if ($("#newrequest").validate().numberOfInvalids() == 0) {
+
+                        $("#submit").prop('disabled', true).buttonState("disable");
+                        $("#saveMore").prop('disabled', true).buttonState("disable");
+                        $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                        $("#reset").prop('disabled', true).buttonState("disable");
+
+                        $("#countOnlyInd").val("Y");
+                        $.ajax({
+                            url: 'inc/ajax/ajax.saveCountOnly.php',
+                            data: $("#newrequest").serialize(),
+                            type: 'POST',
+                            success: function (data) {
+                                Unload();
+                                $("#skipAdhocCount").val('1');
+                                location.reload();
+                                $(window).scrollTop(0);
+                            }
+                        });
+                    } else {
+                        $(window).scrollTop(0);
+                    }
+                }
             }
-               
-    });
+        });
+    // ----------------------------------------------------------------------------------------------------------------------------
+
+
+
 
     $(".cadd").on(eventName, function (event) {
         $("#same").val("i");
