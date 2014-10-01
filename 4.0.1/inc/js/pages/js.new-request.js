@@ -1034,6 +1034,7 @@ $(document).ready(function () {
    
 
    $('#saveMore').on(eventName, function (event) {
+       $("#btnclick").val("Y");
        if ($('#same').val() == "s" || $('#same').val() == "i") {
            $("#o_cstreet").removeClass("required");
            $("#o_ctype").removeClass("required");
@@ -1044,64 +1045,94 @@ $(document).ready(function () {
            $("#i_ctype").removeClass("required");
            $("#i_csuburb").removeClass("required");
        }
-        $("#newrequest").valid();
-        if ($("#newrequest").validate().numberOfInvalids() == 0) {
+       if ($("#countOnlyInd").val() == "N") {
+           Load();
+           $("#newrequest").valid();
+           if ($("#newrequest").validate().numberOfInvalids() == 0) {
+               Unload();
+               $.ajax({
+                   url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                   type: 'post',
+                   data: {
+                       ser: $("#service").val(),
+                       req: $("#request").val(),
+                       func: $("#function").val()
+                   },
+                   success: function (data) {
+                       $('#popup').html(data);
+                       //$("#adhocOfficer").html(data).trigger("create");
+                   }
+               });
+           }
+           else {
+               alert("You must fill in the required fields.");
+               $("#newrequest").validate();
+               $("#saveMore").prop("disabled", false).buttonState("enable");
+               $("#btnclick").val("");
+               $("#saveCountOnly").prop("disabled", false).buttonState("enable");
+               $("#submit").prop('disabled', false).buttonState("enable");
+               Unload();
+           }
+       }
+       
+    //    $("#newrequest").valid();
+    //    if ($("#newrequest").validate().numberOfInvalids() == 0) {
             
-            Load();
-            $("#newrequest").valid();
-            if ($("#newrequest").validate().numberOfInvalids() == 0) {
-                Unload();
-                $.ajax({
-                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                    type: 'post',
-                    data: {
-                        ser: $("#service").val(),
-                        req: $("#request").val(),
-                        func: $("#function").val()
-                    },
-                    success: function (data) {
-                        $('#popup').html(data);
-                        $("#adhocOfficer").html(data).trigger("create");
-                    }
-                });
-                $.ajax({
-                    url: 'inc/ajax/ajax.saveAndMore.php',
-                    data: $("#newrequest").serialize(),
-                    type: 'POST',
-                    success: function (data) {
-                        Unload();
-                        $("#service").val("");
-                        $("#request").val("");
-                        $("#function").val("");
-                        $("#keywordSearch").val("");
-                        $("#serviceInput").val("");
-                        $("#requestInput").val("");
-                        $("#functionInput").val("");
-                        $("#textareaissue").val("");
-                        $("#global-udfs").html("");
-                        $("#udfs").slideUp("fast");
-                        $("#attachFile").val("");
-                        $("#attachDesc").val("");
-                        $(".mandLabel").hide();
-                        $("[data-mand]").removeClass("required");
-                        $("#refno").val("");
-                        $("#submit").prop('disabled', false).buttonState("enable");
-                        $("#saveMore").prop('disabled', false).buttonState("enable");
-                        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
-                    }
-                });
-            }
-            else {
-                $("#newrequest").validate();
-                $("#saveMore").prop("disabled", false).buttonState("enable");
-                $("#saveCountOnly").prop("disabled", false).buttonState("enable");
-                $("#submit").prop('disabled', false).buttonState("enable");
-                Unload();
-            }
-        }
-        else {
-            alert("You must fill in the required fields.");
-        }
+    //        Load();
+    //        $("#newrequest").valid();
+    //        if ($("#newrequest").validate().numberOfInvalids() == 0) {
+    //            Unload();
+    //            $.ajax({
+    //                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+    //                type: 'post',
+    //                data: {
+    //                    ser: $("#service").val(),
+    //                    req: $("#request").val(),
+    //                    func: $("#function").val()
+    //                },
+    //                success: function (data) {
+    //                    $('#popup').html(data);
+    //                    $("#adhocOfficer").html(data).trigger("create");
+    //                }
+    //            });
+    //            $.ajax({
+    //                url: 'inc/ajax/ajax.saveAndMore.php',
+    //                data: $("#newrequest").serialize(),
+    //                type: 'POST',
+    //                success: function (data) {
+    //                    Unload();
+    //                    $("#service").val("");
+    //                    $("#request").val("");
+    //                    $("#function").val("");
+    //                    $("#keywordSearch").val("");
+    //                    $("#serviceInput").val("");
+    //                    $("#requestInput").val("");
+    //                    $("#functionInput").val("");
+    //                    $("#textareaissue").val("");
+    //                    $("#global-udfs").html("");
+    //                    $("#udfs").slideUp("fast");
+    //                    $("#attachFile").val("");
+    //                    $("#attachDesc").val("");
+    //                    $(".mandLabel").hide();
+    //                    $("[data-mand]").removeClass("required");
+    //                    $("#refno").val("");
+    //                    $("#submit").prop('disabled', false).buttonState("enable");
+    //                    $("#saveMore").prop('disabled', false).buttonState("enable");
+    //                    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+    //                }
+    //            });
+    //        }
+    //        else {
+    //            $("#newrequest").validate();
+    //            $("#saveMore").prop("disabled", false).buttonState("enable");
+    //            $("#saveCountOnly").prop("disabled", false).buttonState("enable");
+    //            $("#submit").prop('disabled', false).buttonState("enable");
+    //            Unload();
+    //        }
+    //    }
+    //    else {
+    //        alert("You must fill in the required fields.");
+    //    }
     });
 
 

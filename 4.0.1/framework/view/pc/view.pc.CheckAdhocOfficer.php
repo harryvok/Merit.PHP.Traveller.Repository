@@ -25,16 +25,47 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                     i++;
                 });
 
-                $("#submit").prop('disabled', false).buttonState("enable");
-                $("#newrequest").unbind("submit");
-                $("#submit").click();
-                
-                $(this).attr("disabled", true).buttonState("disable");
-                $("#saveMore").attr("disabled", true).buttonState("disable");
-                $("#saveCountOnly").attr("disabled", true).buttonState("disable");
-                $("#submit").prop('disabled', true).buttonState("enable");
+                if ($("#btnclick").val() == "Y") {
+                    $.ajax({
+                        url: 'inc/ajax/ajax.saveAndMore.php',
+                        data: $("#newrequest").serialize(),
+                        type: 'POST',
+                        success: function (data) {
+                            Unload();
+                            $("#popup").html("");
+                            $("#popup").fadeOut("fast");
+                            $("#service").val("");
+                            $("#request").val("");
+                            $("#function").val("");
+                            $("#keywordSearch").val("");
+                            $("#serviceInput").val("");
+                            $("#requestInput").val("");
+                            $("#functionInput").val("");
+                            $("#textareaissue").val("");
+                            $("#global-udfs").html("");
+                            $("#udfs").slideUp("fast");
+                            $("#attachFile").val("");
+                            $("#attachDesc").val("");
+                            $(".mandLabel").hide();
+                            $("[data-mand]").removeClass("required");
+                            $("#refno").val("");
+                            $("#submit").prop('disabled', false).buttonState("enable");
+                            $("#saveMore").prop('disabled', false).buttonState("enable");
+                            $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                            alert(data);
+                        }
+                    });
+                }
+                else {
+                    $("#submit").prop('disabled', false).buttonState("enable");
+                    $("#newrequest").unbind("submit");
+                    $("#submit").click();
 
-
+                    $(this).attr("disabled", true).buttonState("disable");
+                    $("#saveMore").attr("disabled", true).buttonState("disable");
+                    $("#saveCountOnly").attr("disabled", true).buttonState("disable");
+                    $("#submit").prop('disabled', true).buttonState("enable");
+                }
             }
             else {
                 alert("Please type and choose a valid officer");
