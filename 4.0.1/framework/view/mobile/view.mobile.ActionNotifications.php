@@ -24,7 +24,7 @@
                             <p><b>Sent To:</b><?php if(isset($result_c_get->sent_to)) echo $result_c_get->sent_to; ?></p>
                             <p><b>Sent By:</b><?php if(isset($result_c_get->sent_by)) echo $result_c_get->sent_by; ?></p>
                             <p><b class="filterObject" id="filterObject<?php echo $i; ?>">Type:</b><?php if(isset($result_c_get->officer_type)) echo $result_c_get->officer_type; ?></p>
-                            <p><b>Notification:</b> <?php if(isset($result_c_get->comments)) echo $result_c_get->comments; ?></p>
+                            <p><b>Notification:</b> <?php if(isset($result_c_get->comments)) echo base64_decode($result_c_get->comments); ?></p>
                         </li>
                         <?php
                                               
@@ -39,7 +39,7 @@
                             <p><b>Sent To:</b><?php if(isset($result_c_get->sent_to)) echo $result_c_get->sent_to; ?></p>
                             <p><b>Sent By:</b><?php if(isset($result_c_get->sent_by)) echo $result_c_get->sent_by; ?></p>
                             <p><b class="filterObject" id="filterObject0">Type:</b><?php if(isset($result_c_get->officer_type)) echo $result_c_get->officer_type; ?></p>
-                            <p><b>Notification:</b> <?php if(isset($result_c_get->comments)) echo $result_c_get->comments; ?></p>
+                            <p><b>Notification:</b> <?php if(isset($result_c_get->comments)) echo base64_decode($result_c_get->comments); ?></p>
                     </li>
                     <?php
                                               

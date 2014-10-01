@@ -1500,6 +1500,19 @@ class Model {
                             unlink($file); // delete file
                     }
                 }
+                
+                //check if infoxpert integration enabled
+                $parameters = new stdClass();
+                $parameters->user_id = $_SESSION['user_id'];
+                $parameters->password = $_SESSION['password'];
+                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+
+                if($result->ws_message == "Integration not enabled")
+                    $_SESSION['EDMSAvailable'] = "N";
+                else
+                    $_SESSION['EDMSAvailable'] = "Y";
+                
+                
             }
             $_SESSION['redirect'] = $_POST['url'];
             return $_SESSION['resfound_login'];

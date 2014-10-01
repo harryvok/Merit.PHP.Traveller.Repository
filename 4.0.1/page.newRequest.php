@@ -21,8 +21,9 @@ if(!isset($_GET['d'])){
             <div>
                 <b><span id="rednote"></span></b><BR />
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
+                <?php if($_SESSION['EDMSAvailable'] == "Y"){ ?>
                 <input type="button" value="InfoXpert Search" class="openPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
-                
+                <?php } ?>
                 <div class="column r60">
                     <div class="column r25">
                         <label for="service">Keyword</label>
@@ -252,8 +253,10 @@ if(!isset($_GET['d'])){
                             <?php $controller->Dropdown("CustomerTypes", "CustomerTypes"); ?>
                             <input type="button" name="myDetails" id="myDetails" value="My Details" />
                             <input type="button" name="clearDetails" id="clearDetails" value="Clear" />
-                             <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()"  />
+                             <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()" style="display:none" />
+                            <?php if($_SESSION['EDMSAvailable'] == "Y"){ ?>
                             <input type="button" class="openPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
+                            <?php } ?> 
                         </div>
                         <div class="float-left">
                             <div class="column r25">

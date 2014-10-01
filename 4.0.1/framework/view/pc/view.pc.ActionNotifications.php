@@ -1,7 +1,7 @@
 
 <div class="summaryContainer">
     <h1>Notifications (<?php if(isset($GLOBALS['result']['notifications']->notification_details)) echo count($GLOBALS['result']['notifications']->notification_details); else echo 0; ?>)
-        
+     
         
     </h1>
     <div>
