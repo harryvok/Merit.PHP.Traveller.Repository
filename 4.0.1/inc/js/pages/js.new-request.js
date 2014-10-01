@@ -1138,7 +1138,6 @@ $(document).ready(function () {
     //    }
     });
 
-   $("#countonly_bypass").val('N') // DEBUG TURN ON BYPASS
 
    $('#saveCountOnly').on(eventName, function (event) {
         // IF bypass enabled (Y) -------------------------------------------------------------------------------------------------
