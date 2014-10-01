@@ -405,17 +405,19 @@ if(!isset($_GET['d'])){
                                 <input class="text" name='o_cno' onChange="" id="o_cno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cfaddno'])){ echo $_SESSION['rem_o_cfaddno']; } ?>'>
                             </div>
                             <div class="column r25">
-                                <label for="o_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text" name='o_cstreet' onChange="" data-mand="customer_address" id="o_cstreet" maxlength='100' value='<?php if(isset($_SESSION['rem_o_cstreet'])){ echo $_SESSION['rem_o_cstreet']; } ?>'>
+                                <label for="o_cstreet">Street Name<span id='o_cstreet_mand' class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
+                                <input class="text" name='o_cstreet' onChange="" data-mand="customer_address" id="o_cstreet" maxlength='100' value='<?php if(isset($_SESSION['rem_o_cstreet'])){ echo $_SESSION['rem_o_cstreet']; } else echo "not required"; ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text" name='o_ctype' onChange="" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; }  ?>'>
+                                <input class="text" name='o_ctype' onChange="" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if
+                                                                                                                                                      (isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; } else echo "not required" ?>'>
                             </div>
                             <div class="float-left">
                                 <div class="column r25">
                                     <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                    <input class="text" name='o_csuburb' onChange="GetCustomerAddressDetails();" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } ?>'>
+                                    <input class="text" name='o_csuburb' onChange="GetCustomerAddressDetails();" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if
+                                                                                                                                                                                          (isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } else echo "not required" ?>'>
                                 </div>
                                 <div class="column r25">
                                     <label for="o_cpostcode">Postcode</label>

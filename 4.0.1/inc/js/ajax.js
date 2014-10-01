@@ -60,8 +60,8 @@ function GetAddressDetails() {
 }
 
 function GetCustomerAddressDetails() {
-    if ($("#same").val() == "s" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
-        || $("#same").val() == "i" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
+    if ($("#same").val() == "s" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
+        || $("#same").val() == "i" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
             type: 'POST',
@@ -74,7 +74,7 @@ function GetCustomerAddressDetails() {
                 streetSuburb: function () { return $("#i_csuburb").val() }
             },
             success: function (data) {
-                //$("#i_cpostcode").val(data.postcode);
+                //alert(data.property_no);
                 $("#cust_address_id").val(data.address_id);
                 if (data.property_no == "0" || data.property_no == "") {
                     $("#i_cpropertynumber").val("").removeClass("ui-autocomplete-loading");

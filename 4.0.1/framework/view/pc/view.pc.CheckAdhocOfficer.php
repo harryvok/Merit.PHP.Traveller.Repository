@@ -159,12 +159,21 @@ else{
         });
     }
     else {
-        Unload();
+        $("#submit").prop('disabled', false).buttonState("enable");
         $("#newrequest").unbind("submit");
-        $("#newrequest INPUT[type=submit]").click();
-        $("#submit").attr("disabled", true).buttonState("disable");
+        $("#submit").click();
+        Unload();
+        $(this).attr("disabled", true).buttonState("disable");
         $("#saveMore").attr("disabled", true).buttonState("disable");
-        //$("#saveCountOnly").attr("disabled", true).buttonState("disable");
+        $("#submit").prop('disabled', true).buttonState("enable");
+
+
+        //Unload();
+        //$("#newrequest").unbind("submit");
+        //$("#newrequest INPUT[type=submit]").click();
+        //$("#submit").attr("disabled", true).buttonState("disable");
+        //$("#saveMore").attr("disabled", true).buttonState("disable");
+        ////$("#saveCountOnly").attr("disabled", true).buttonState("disable");
     }
 </script>
 <?php	
