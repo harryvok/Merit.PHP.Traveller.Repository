@@ -729,6 +729,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     }
                                 }  ?><br />
                                         ng>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File2" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
+
                                     </div>
                                     <?php
                             }
@@ -1062,7 +1063,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
             <input id="submit" class="button left" type='submit' value='Save' />
             <input type="hidden" name="page" value="action" />
             <input type="hidden" name="id" id="id" value="<?php echo $_SESSION['request_id']; ?>" />
-            <input type="hidden" name="act_id" id="act_id" value="<?php echo $_GET['id']; ?>" />
+            <!--<input type="hidden" name="act_id" id="act_id" value="<?php echo $_GET['id']; ?>" />-->
             <input type="hidden" name="service" value="<?php echo $GLOBALS['result']['request']->service_code; ?>" />
             <input type="hidden" name="request" value="<?php echo $GLOBALS['result']['request']->request_code; ?>" />
             <input type="hidden" name="function" value="<?php echo $GLOBALS['result']['request']->function_code; ?>" />

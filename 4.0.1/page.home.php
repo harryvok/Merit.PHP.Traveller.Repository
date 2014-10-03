@@ -55,10 +55,26 @@
      * what filter to be displayed.*/
     $defaultpage=$realNameArray[$page];
         if(!isset($_GET['page'])){
-            if($_SESSION['roleSecurity']->allow_action == "Y") {
-                $defaultpage = "actions";
-            }else if($_SESSION['roleSecurity']->allow_request == "Y"){
-                $defaultpage = "requests";
+            
+            //if role security disabled for both actions and requests, display new request
+            if($_SESSION['roleSecurity']->allow_action != "Y" && $_SESSION['roleSecurity']->allow_request != "Y"){
+                $_GET['page'] ="newRequest";
+            }
+            
+            if($defaultpage == "Requests"){
+                if($_SESSION['roleSecurity']->allow_request == "Y"){
+                    $defaultpage = "requests";
+                }else if($_SESSION['roleSecurity']->allow_action == "Y"){
+                    $defaultpage = "actions";
+                }
+            }else if($defaultpage == "Actions"){
+                if($_SESSION['roleSecurity']->allow_action == "Y") {
+                    $defaultpage = "actions";
+                }else if($_SESSION['roleSecurity']->allow_request == "Y"){
+                    $defaultpage = "requests";
+                }
+            }else if($defaultpage =="New Request"){
+                $_GET['page'] ="newRequest";
             }
         }
          ?>

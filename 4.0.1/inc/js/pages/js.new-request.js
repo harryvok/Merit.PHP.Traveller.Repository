@@ -977,6 +977,7 @@ $(document).ready(function () {
     if ($("#skipAdhocCount").val() == 0) {
         $("#newrequest").validate({
             submitHandler: function (form) {
+                $("#btnclick").val("N");
                 $("#submit").prop('disabled', true).buttonState("disable");
                 $("#saveMore").prop('disabled', true).buttonState("disable");
                 $("#saveCountOnly").prop('disabled', true).buttonState("disable");
@@ -994,9 +995,13 @@ $(document).ready(function () {
                                 func: $("#function").val()
                             },
                             success: function (data) {
-                                alert(data);
-                                $('#popup').html(data);
-                                //$("#adhocOfficer").html(data).trigger("create");
+                                
+                                if ($("#deviceIndicator").val() == "pc") {
+                                    $('#popup').html(data);
+                                } else {
+                                    $("#adhocOfficer").html(data).trigger("create");
+                                }
+
                             }
                         });
                     }
@@ -1019,8 +1024,11 @@ $(document).ready(function () {
                             func: $("#function").val()
                         },
                         success: function (data) {
-                            $('#popup').html(data);
-                            $("#adhocOfficer").html(data).trigger("create");
+                            if ($("#deviceIndicator").val() == "pc") {
+                                $('#popup').html(data);
+                            } else {
+                                $("#adhocOfficer").html(data).trigger("create");
+                            }
                         }
                     });
                 }
@@ -1033,11 +1041,7 @@ $(document).ready(function () {
     }       
 
    $('#saveMore').on(eventName, function (event) {
-       $("#saveMore").attr("disabled", true).buttonState("disable");
-       $("#saveCountOnly").attr("disabled", true).buttonState("disable");
-       $("#submit").prop('disabled', true).buttonState("disable");
-       Load();
-       $("#btnclick").val("Y");
+       
        //if ($('#same').val() == "s" || $('#same').val() == "i") {
        //    $("#o_cstreet").removeClass("required");
        //    $("#o_ctype").removeClass("required");
@@ -1051,7 +1055,12 @@ $(document).ready(function () {
        if ($("#countOnlyInd").val() == "N") {
            $("#newrequest").valid();
            if ($("#newrequest").validate().numberOfInvalids() == 0) {
-               Unload();
+               $("#saveMore").attr("disabled", true).buttonState("disable");
+               $("#saveCountOnly").attr("disabled", true).buttonState("disable");
+               $("#submit").prop('disabled', true).buttonState("disable");
+               Load();
+               $("#btnclick").val("Y");
+               
                $.ajax({
                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
                    type: 'post',
@@ -1061,13 +1070,17 @@ $(document).ready(function () {
                        func: $("#function").val()
                    },
                    success: function (data) {
-                       $('#popup').html(data);
-                       //$("#adhocOfficer").html(data).trigger("create");
+                       Unload();
+                       if($("#deviceIndicator").val() == "pc"){
+                           $('#popup').html(data);
+                       }else{
+                           $("#adhocOfficer").html(data).trigger("create");
+                       }  
                    }
                });
            }
            else {
-               unload();
+               Unload();
                alert("You must fill in the required fields.");
                $("#newrequest").validate();
                $("#saveMore").prop("disabled", false).buttonState("enable");

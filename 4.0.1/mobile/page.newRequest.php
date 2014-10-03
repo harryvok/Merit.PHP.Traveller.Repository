@@ -336,6 +336,8 @@ if(isset($_SESSION['user_id'])){
                 <input type="hidden" name="saveCountOnly" id="countOnlyInd" value="N" />
                 <input type="hidden" name="skipAdhoc" id="skipAdhocCount" value="0" />
                 <input type="hidden" name="buttonpressed" id="buttonpressed" value="" />
+                <input type="hidden" name="btnclick" id="btnclick" value="" />
+                <input type="hidden" name="deviceIndicator" id="deviceIndicator" value="mobile" />
             </form>
 
 <?php

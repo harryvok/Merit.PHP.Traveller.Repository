@@ -21,7 +21,7 @@ if(!isset($_GET['d'])){
             <div>
                 <b><span id="rednote"></span></b><BR />
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
-                <?php if($_SESSION['EDMSAvailable'] == "Y"){ ?>
+                <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
                 <input type="button" value="InfoXpert Search" class="openPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
                 <?php } ?>
                 <div class="column r60">
@@ -254,7 +254,7 @@ if(!isset($_GET['d'])){
                             <input type="button" name="myDetails" id="myDetails" value="My Details" />
                             <input type="button" name="clearDetails" id="clearDetails" value="Clear" />
                              <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()" style="display:none" />
-                            <?php if($_SESSION['EDMSAvailable'] == "Y"){ ?>
+                            <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
                             <input type="button" class="openPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
                             <?php } ?> 
                         </div>
@@ -469,7 +469,8 @@ if(!isset($_GET['d'])){
         <div id="adhocOfficer" style="display:none;"></div>
 
         <div id="submitButton">
-            <input id="submit" type='submit' value='Save' />
+            <!--<input id="submit" type='submit' value='Save' />-->
+            <input name="Submit input" type="submit" data-role="button" id="submit" value="Submit" />
             <input id="saveMore" type='button' value='Save & More' />
             <input id="saveCountOnly" type='button' value='Count Only'  />
             <input id="reset" type='button' value='Reset'  />
@@ -479,6 +480,7 @@ if(!isset($_GET['d'])){
         <input type="hidden" name="skipAdhoc" id="skipAdhocCount" value="0" />
         <input type="hidden" name="documentsToLink" id="documentsToLink" />
         <input type="hidden" name="btnclick" id="btnclick" value="" />
+        <input type="hidden" name="deviceIndicator" id="deviceIndicator" value="pc" />
         </div>
         
         <div class="popupDetail" id="DocumentsPopup">

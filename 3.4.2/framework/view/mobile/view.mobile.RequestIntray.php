@@ -60,19 +60,19 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
                   if($request_details->status_code == "OPEN"){ 
                       echo '<img width="10" height="9" src="images/dotGreen.png" />';
                   }
-                  elseif($request_details->status == "SUSPENDED"){
+                  elseif($request_details->status_code == "SUSPENDED"){
                       echo '<img width="10" height="9" src="images/dotYellow.png" />';
                   }
                   else{
                       echo '<img width="10" height="9" src="images/dotRed.png" />';
                   } 
-                  ?>
-              </div>
-              <?php 
+                  ?> <?php 
               echo $request_details->service_name . " - " .
               $request_details->request_name;
               if(isset($request_details->function_name)) echo  " - " . $request_details->function_name;
-              ?></p>
+              ?>
+              </div>
+             </p>
               <p><b>Request ID:</b> <?php echo $request_details->request_id; ?></p>
               <p><b>Issue:</b> <?php if(isset($request_details->request_description)){ echo htmlspecialchars(substr($request_details->request_description,0 ,50) . ".."); } else { echo ""; } ?></p>
                 <p><?php if(isset($request_details->facility_name) && strlen($request_details->facility_name) > 0){ ?><b>Facility Name:</b> <?php  echo $request_details->facility_name;  ?></p><?php }?>
