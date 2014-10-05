@@ -2162,7 +2162,7 @@ class Model {
         $parameters->password = $_SESSION['password'];
         $parameters->request_id = $_POST['reqID'];
         $parameters->mode = "DELETE";
-        $parameters->doc_name = $_POST['path'];
+        $parameters->doc_name = LOCAL_LINK."Attachments/".str_replace('\\', '/',basename($_POST['path']));//$_POST['path'];
         $parameters->action_id=$_POST['urlID'];
         $parameters->comment_txt="";
         $parameters->note_datetime=$_POST['date'];
