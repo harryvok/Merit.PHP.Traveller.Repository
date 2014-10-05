@@ -731,6 +731,7 @@ $(document).ready(function () {
             //alert(label);
             $("#lstreet").blur();
             $("#lstreet").removeClass("ui-autocomplete-loading").val(label);
+            $("#ltype").val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
             $("#ltype").trigger("click");
 
 
