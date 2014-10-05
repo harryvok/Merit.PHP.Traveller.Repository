@@ -1565,7 +1565,7 @@ class Model {
 
             // Redirect to the request
             if(strlen($_POST['action_id']) > 0) $id = $_POST['action_id']; else $id = $_POST['request_id'];
-            $_SESSION['redirect'] = "index.php?page=view-".$_POST['page']."&id=".$id;
+            $_SESSION['redirect'] = "index.php?page=view-"."request"."&id=".$id;
 
         }
         catch (Exception $e) {
@@ -1578,7 +1578,8 @@ class Model {
             $_SESSION['error_send_notification'] = 1;
 
             // Redirect to the form
-            if(strlen($_POST['action_id']) > 0) $id = $_POST['action_id']; else $id = $_POST['request_id'];
+            if(strlen($_POST['action_id']) > 0) $id = $_POST['action_id']; 
+            else $id = $_POST['request_id'];
             $_SESSION['redirect'] = "index.php?page=view-".$_POST['page']."&id=".$id;
         }
     }
