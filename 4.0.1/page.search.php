@@ -121,6 +121,9 @@
                     $("input[type=text],textarea,select").val("");
                     $("#global-udfs").html("");
                     $("#udfs").hide();
+                    $("#service").val("");
+                    $("#request").val("");
+                    $("#function").val("");
                 });
 
                 function submit() {

@@ -1331,7 +1331,7 @@ class Model {
             $parameters_att->user_id = $_SESSION['user_id'];
             $parameters_att->password = $_SESSION['password'];
             $parameters_att->request_id = $requestID;
-            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
+            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]);
             $parameters_att->description = $description;
         }
         else{

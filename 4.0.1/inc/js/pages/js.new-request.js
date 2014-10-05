@@ -400,7 +400,7 @@ $(document).ready(function () {
         $("#facilityInput").val("");
         $("#facilityId").val("");
         $("#addressId").val("");
-
+        GetAddressDetails();
         $("#use_gmaps_coord").val(1);
 
         if ($("#historyaddrtype").val() == "L") { CheckHistory("L"); }

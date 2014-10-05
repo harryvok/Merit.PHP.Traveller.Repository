@@ -41,10 +41,10 @@ if(isset($GLOBALS['result']->search_details)){
             elseif($result_search->result_type == "Action"){ ?> 
                 change_act('<?php echo $change; ?>'); <?php 
             } 
-            elseif($result_search->result_type == "Address"){ ?> 
+            elseif($result_search->result_type == "Address" || $result_search->result_type == "Linked Address"){ ?> 
                 change_add('<?php echo $change; ?>'); <?php 
             } 
-            elseif($result_search->result_type == "Name"){ ?> 
+            elseif($result_search->result_type == "Name" || $result_search->result_type == "Linked Name"){ ?> 
                 change_name('<?php echo $change; ?>'); <?php 
             } 
             elseif($result_search->result_type == "Property&Rating Address"){ ?> 
@@ -82,10 +82,10 @@ if(isset($GLOBALS['result']->search_details)){
         elseif($GLOBALS['result']->search_details->result_type == "Action"){ ?> 
             change_act('1'); <?php 
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Address"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Address" || $GLOBALS['result']->search_details->result_type == "Linked Address"){ ?> 
             change_add('1'); <?php 
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Name"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Name" || $GLOBALS['result']->search_details->result_type == "Linked Name"){ ?> 
             change_name('1'); <?php 
         } 
         elseif($GLOBALS['result']->search_details->result_type == "Property&Rating Address"){ ?> 

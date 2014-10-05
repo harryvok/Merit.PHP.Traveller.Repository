@@ -12,7 +12,7 @@ if(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['result']-
         ?>
         <li id="<?php echo $action_details->request_id; ?>" class="<?php echo $action_details->in_time_ind == "Y" ? "intime" : ''; ?> <?php echo $action_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime($action_details->due_time) < time() ? "red" : ''; ?>">
             <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $action_details->action_id; ?>&ref_page=actions&filter=<?php echo $filter; ?>">
-        	<p><div class="status_code">
+        	<p><div class="status-code" style="display:inline">
 				<?php 
                 if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo '<div class="dotGreen" title="Open"></div>'; } elseif($action_details->status_code == "SUSPENDED"){ echo '<div class="dotYellow" title="Suspended"></div>'; } else { echo '<div class="dotRed" tile="Finalised"></div>'; } 
                 ?>
@@ -39,7 +39,7 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
     ?>
      <li id="<?php echo $action_details->request_id; ?>" class="<?php echo $action_details->in_time_ind == "Y" ? "intime" : ''; ?> <?php echo $action_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime($action_details->due_time) < time() ? "red" : ''; ?>">
 		<a data-transition="slide" href="index.php?page=view-action&id=<?php echo $action_details->action_id; ?>&ref_page=actions&filter=<?php echo $filter; ?>">
-        <p><div class="status_code">
+        <p><div class="status-code" style="display:inline">
             <?php 
             if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo '<div class="dotGreen" title="Open"></div>'; } elseif($action_details->status_code == "SUSPENDED"){ echo '<div class="dotYellow" title="Suspended"></div>'; } else { echo '<div class="dotRed" tile="Finalised"></div>'; } 
             ?>

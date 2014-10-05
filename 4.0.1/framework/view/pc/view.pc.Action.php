@@ -300,14 +300,14 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     $show_hide = 0;
     if(count($GLOBALS['result']['udfs']->udf_details) > 1){
         foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" /*&& $udf->udf_action_id == 0*/){
                 $show_hide = $show_hide + 1;
             }					
         }
     }
     elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
         $udf = $GLOBALS['result']['udfs']->udf_details;
-        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" /*&& $udf->udf_action_id == 0*/){
             $show_hide = $show_hide + 1;
         }		
     }
@@ -442,7 +442,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                      ?><?php 
                         if(isset($udf->udf_data)) {
                             if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                      ?><a id="A1" class="ViewFile">View</a> <?php 
+                                      ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View</a> <?php 
                             }
                         }
                     } 
@@ -470,6 +470,11 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                     $(document).ready(function () {
                         // validate signup form on keyup and submit
                         $("#actionudf").validate();
+
+                        $("#actionudf").submit(function (event) {
+                            $('#submit').attr('disabled', true);
+                            return true;
+                        });
                     });
                 </script>    
                 <form method="post"  enctype="multipart/form-data" id="actionudf" action="process.php">
@@ -666,7 +671,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                         <?php 
                                 if(isset($udf->udf_data)){
                                     if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                        ?><a id="A2" class="ViewFile">View Attachment</a> <?php 
+                                        ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php 
                                     } 
                                     else{ 
                                         echo $udf->udf_data; 
@@ -688,7 +693,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                         <?php 
                                 if(isset($udf->udf_data)){
                                     if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ 
-                                        ?><a id="A3" class="ViewFile">View Attachment</a> <?php 
+                                        ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php 
                                     } 
                                     else{ 
                                         echo $udf->udf_data; 
@@ -710,7 +715,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                         <?php 
                                 if(isset($udf->udf_data)){
                                     if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
-                                        ?><a id="A4" class="ViewFile">View Attachment</a> <?php 
+                                        ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php 
                                     } 
                                     else{
                                         echo $udf->udf_data; 
@@ -943,7 +948,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                             <div class="float-left">  <?php 
                             if(isset($udf->udf_data)){
                                 if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
-                                                                      ?><a id="A5" class="ViewFile">View Attachment</a> <?php 
+                                                                      ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php 
                                 } 
                                 else{
                                     echo $udf->udf_data; 
@@ -962,7 +967,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                             <div class="float-left"><?php 
                             if(isset($udf->udf_data)){
                                 if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){
-                                                                    ?><a id="A6" class="ViewFile">View</a> <?php 
+                                                                    ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View</a> <?php 
                                 } 
                                 else{
                                     echo $udf->udf_data; 
@@ -1095,7 +1100,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         <tr class="<?php echo $class; ?>_nocur">
         <td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td>
         <td><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
-                                                                                                           if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A8" class="ViewFile">View</a> <?php }
+                                                                                                           if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View</a> <?php }
                                                                                                        }
                                                                                                                  } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
         </tr>
@@ -1111,7 +1116,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         <tr class="light_nocur">
         <td><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></td>
         <td><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {
-                                                                                                           if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A9" class="ViewFile">View</a> <?php }
+                                                                                                           if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View</a> <?php }
                                                                                                        }
                                                                                                                  } elseif($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data; } ?></td>
         </tr>
@@ -1137,6 +1142,11 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
             $(document).ready(function () {
                 // validate signup form on keyup and submit
                 $("#actionudf1").validate();
+
+                $("#actionudf1").submit(function (event) {
+                    $('#submit').attr('disabled', true);
+                    return true;
+                });
             });
         </script>
     
@@ -1146,7 +1156,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                 if(count($GLOBALS['result']['udfs']->udf_details)> 1){
                     $i=0;
                     foreach($GLOBALS['result']['udfs']->udf_details as $udf){
-                        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] && $udf->udf_action_comp == ""){
+                        if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id'] /*&& $udf->udf_action_comp == ""*/){
                             if($udf->udf_depends != 0){
         ?>
         <div id="act_depends_<?php echo $udf->udf_order; ?>" class="udfDependant">
@@ -1284,7 +1294,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A10" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>'class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File7" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1298,7 +1308,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A11" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File8" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1312,7 +1322,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A12" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File9" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1498,7 +1508,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A13" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File10" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1512,7 +1522,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A14" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File11" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1526,7 +1536,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         </div>
         <div class="float-left">
         <?php if(isset($udf->udf_data)){
-                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A15" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
+                  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
               }  ?><br />
         <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File12" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
         </div>
@@ -1644,7 +1654,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
             }
             elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
                 $udf = $GLOBALS['result']['udfs']->udf_details;
-                if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+                if($udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
         ?>
         <tr class="light_nocur">
         <td><?php echo "Action ".$udf->udf_action_id; ?></td>
