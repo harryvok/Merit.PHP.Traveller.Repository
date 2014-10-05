@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
     var oTable = $('#actionIntrayTable').dataTable({
-        iDisplayLength: "50",
+        iDisplayLength: 50,
         "aaSorting": [[ 6, "asc" ]],
         "oLanguage": {
                 "sSearch": "Intray Filter: "

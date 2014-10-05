@@ -190,8 +190,8 @@ $(document).ready(function () {
                 dataType: "json",
                 data: { subtype: subtype, date:date,path:path,urlID: urlID, reqID: reqID, id: id, commentText: '', extra: dataExtra, path: path },
                 success: function (data) {
-                    if (data.status == false) {
-                        alert("Error deleting. Please contact Merit or try again later.");
+                    if (data.status != true) {
+                        alert(data.status);
                         $("#" + id + "Object").slideDown("fast");
                       
                     } else {

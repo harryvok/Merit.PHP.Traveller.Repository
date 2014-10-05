@@ -133,7 +133,8 @@ div#popup {
    -webkit-border-radius: 8px;
 -moz-border-radius: 8px;
 border-radius: 8px;
-/*max-height:600px !important;*/
+max-height:600px !important;
+overflow:scroll;
 }
 
 div#popup h1+div {

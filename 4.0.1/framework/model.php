@@ -1841,7 +1841,7 @@ class Model {
                 
                 $GLOBALS['request_id'] = $result->request_id;
                 $totalfiles=count($_FILES['attachment']['name']);
-                if($totalfiles > 1 && $_FILES['attachment']['name'][0] != ""){
+                if($totalfiles > 1){
                     for ($i=0; $i< $totalfiles;$i++) {
                         if($_FILES['attachment']['name'][$i] !=""){
                             $attachment = array(
@@ -1873,9 +1873,9 @@ class Model {
                       );
                     $rand = rand(0,100);
                     $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
-                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name']);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][0]);
                     array_push($filenamearray, $tempname);
-                    array_push($filedescriptionarray,$_POST["attachDesc"]);
+                    array_push($filedescriptionarray,$_POST["attachDesc"][0]);
                 }
                  
                 if ($totalfiles > 0 && $_FILES['attachment']['name'][0] != "") {
@@ -2163,7 +2163,7 @@ class Model {
         $parameters->request_id = $_POST['reqID'];
         $parameters->mode = "DELETE";
         $parameters->doc_name = $_POST['path'];
-        $parameters->action_id="";//$_POST['urlID'];
+        $parameters->action_id=$_POST['urlID'];
         $parameters->comment_txt="";
         $parameters->note_datetime=$_POST['date'];
         $parameters->note_code=$_POST['subtype'];
@@ -2181,7 +2181,7 @@ class Model {
             $_SESSION['error'] = 1;
             $_SESSION['error_delete_attach'] = 1;
             $_SESSION['done'] = 1;
-            echo json_encode(array("status" => false));   
+            echo json_encode(array("status" => $isDeleted));   
         }
     }
 

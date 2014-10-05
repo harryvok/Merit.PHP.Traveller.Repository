@@ -2,11 +2,11 @@
  <script type="text/javascript">
 $(document).ready(function() {
     var oTable = $('#requestIntrayTable').dataTable({
-        iDisplayLength: "50",
+        iDisplayLength: 50,
         "aaSorting": [[0, "desc"]],
     "oLanguage": {
                 "sSearch": "Intray Filter: "
-         },
+    },
         "aoColumns": [
             null,
             null,
