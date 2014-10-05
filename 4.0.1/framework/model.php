@@ -1465,7 +1465,11 @@ class Model {
                 $_SESSION["user_id"]= $user_id;
                 $_SESSION["password"]= $password;
                 $_SESSION["data_group"] =$result->data_group;
-                $_SESSION["initial_screen"] =$result->initial_screen;
+                if($result->initial_screen != ""){
+                    $_SESSION["initial_screen"] =$result->initial_screen;
+                }else{
+                    $_SESSION["initial_screen"] ="actions";
+                }
                 $_SESSION["security_group"] =$result->security_group;
                 $_SESSION["responsible_code"]= $result->responsible_code;
                 $_SESSION["surname"] =$result->surname;
@@ -1500,6 +1504,19 @@ class Model {
                             unlink($file); // delete file
                     }
                 }
+                
+                //check if infoxpert integration enabled
+                $parameters = new stdClass();
+                $parameters->user_id = $_SESSION['user_id'];
+                $parameters->password = $_SESSION['password'];
+                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+
+                if($result->ws_message == "Integration not enabled")
+                    $_SESSION['EDMSAvailable'] = "N";
+                else
+                    $_SESSION['EDMSAvailable'] = "Y";
+                
+                
             }
             $_SESSION['redirect'] = $_POST['url'];
             return $_SESSION['resfound_login'];
@@ -2282,7 +2299,8 @@ class Model {
 
     public function processEditActionUDFs($params = NULL){
         if(isset($_POST['id'])) $id = $_POST['id'];
-        else $id = $GLOBALS['request_id'];
+        //else $id = $GLOBALS['request_id'];
+        else $id = $_POST['request_id'];
         $result_get_udfs = $this->getRequestUDFs($id);
         $result_get_udfs = $result_get_udfs['udfs'];
 
@@ -2333,15 +2351,18 @@ class Model {
                         $ok=1;
                     }
                     elseif($udf->udf_type == "G"){
-                        $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "B"){
-                        $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "P"){
-                        $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }
                     else{
@@ -2421,15 +2442,18 @@ class Model {
                     $ok=1;
                 }
                 elseif($udf->udf_type == "G"){
-                    $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 elseif($udf->udf_type == "B"){
-                    $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 elseif($udf->udf_type == "P"){
-                    $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 else{
@@ -2492,18 +2516,20 @@ class Model {
             $result_udfs = $this->WebService(MERIT_REQUEST_FILE, "ws_update_req_udfs", $parameters_udfs);
 
             $_SESSION['done']=1;
+            $_SESSION['success_udfs']=1;
             $_SESSION['success']=1;
             if(isset($GLOBALS['dontProcess']) && $GLOBALS['dontProcess'] == 1) $_SESSION['success_udfs']=1;
         }
         catch(Exception $e){
 
             $_SESSION['done']=1;
+            $_SESSION['error_udfs']=1;
             $_SESSION['error']=1;
             if(isset($GLOBALS['dontProcess']) && $GLOBALS['dontProcess'] == 1)$_SESSION['error_udfs']=1;
 
         }
 
-        $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'&d=udfs';
+        $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'';
     }
 
     public function processEditUDFs($params = NULL){
@@ -2565,15 +2591,18 @@ class Model {
                         $ok=1;
                     }
                     elseif($udf->udf_type == "G"){
-                        $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "B"){
-                        $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "P"){
-                        $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }
                     else{
@@ -2653,15 +2682,18 @@ class Model {
                     $ok=1;
                 }
                 elseif($udf->udf_type == "G"){
-                    $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 elseif($udf->udf_type == "B"){
-                    $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 elseif($udf->udf_type == "P"){
-                    $udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 else{
@@ -2734,8 +2766,8 @@ class Model {
             $_SESSION['error_udfs']=1;
 
         }
-        if(isset($_POST['act_id'])) $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'&d=udfs';
-        else $_SESSION['redirect'] = 'index.php?page=view-request&id='.$_POST['id'].'&d=udfs';
+        if(isset($_POST['act_id'])) $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'';
+        else $_SESSION['redirect'] = 'index.php?page=view-request&id='.$_POST['id'].'';
     }
 
     public function processAddAction($params = NULL){

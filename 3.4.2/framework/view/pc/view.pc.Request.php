@@ -1,4 +1,3 @@
-  
 <?php
 if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
 	foreach($GLOBALS['result']['request']->address_det->address_details as $address)

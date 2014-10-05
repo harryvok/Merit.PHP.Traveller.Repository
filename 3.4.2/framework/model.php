@@ -1708,7 +1708,7 @@ class Model {
 
         }
 
-        $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'&d=udfs';
+        $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'';
     }
 
     public function processEditUDFs($params = NULL){

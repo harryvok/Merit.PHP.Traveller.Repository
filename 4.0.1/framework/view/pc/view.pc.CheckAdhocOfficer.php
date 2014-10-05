@@ -153,6 +153,7 @@ else{
                 $("#saveMore").prop('disabled', false).buttonState("enable");
                 //$("#saveCountOnly").prop('disabled', false).buttonState("enable");
                 $("#btnclick").val("");
+                alert(data);
                 $("#keywordSearch").focus();
             }
         });

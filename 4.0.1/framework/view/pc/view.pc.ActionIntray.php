@@ -5,11 +5,12 @@
 $(document).ready(function() {
     var oTable = $('#actionIntrayTable').dataTable({
         iDisplayLength: "50",
-        "aaSorting": [[ 5, "asc" ]],
+        "aaSorting": [[ 6, "asc" ]],
         "oLanguage": {
                 "sSearch": "Intray Filter: "
          },
         "aoColumns": [
+            null,
             null,
             null,
             null,
@@ -81,6 +82,7 @@ else{
             <th style="width:70px;">Request ID</th>
             <th>Action Required</th>
             <th>Category</th>
+            <th>description</th>
             <th>Facility</th>
             <th>Address</th>
             <th>Suburb</th>
@@ -105,7 +107,8 @@ else{
                         <td id="<?php echo $change; ?>" style="width:70px;"><?php if(strlen($action_details->request_id) > 0){ echo $action_details->request_id; } else { echo ""; } ?></td>
                         <td><?php if(strlen($action_details->assign_name) > 0){ echo $action_details->assign_name; } else { echo ""; } ?></td>
                         <td><?php echo $action_details->service_name . " - " .$action_details->request_name; if(isset($action_details->function_name)) echo " - " . $action_details->function_name;?></td>
-                         <td><?php if(isset($action_details->facility_name)){ echo $action_details->facility_name; } ?></td>
+                        <td><?php if(strlen($action_details->request_description) > 0){ echo $action_details->request_description; } else { echo ""; } ?></td>
+                        <td><?php if(isset($action_details->facility_name)){ echo $action_details->facility_name; } ?></td>
                         <td><?php if(isset($action_details->location_house_suffix) && isset($action_details->location_house_no) && strlen($action_details->location_house_no) > 0 && strlen($action_details->location_house_suffix) > 0 && $action_details->location_house_no != $action_details->location_house_suffix){ echo $action_details->location_house_suffix; } else { echo $action_details->location_house_no; } if(isset($action_details->location_street_name)){ echo " " .$action_details->location_street_name; } if(isset($action_details->location_street_type)){ echo " " .$action_details->location_street_type; } ?></td>
                         <td><?php if(isset($action_details->location_locality_name)){ echo " " .$action_details->location_locality_name; } ?></td>
                     <td><?php if(isset($action_details->customer_given_name)){ if($action_details->customer_given_name != "Used") echo $action_details->customer_given_name; } if(isset($action_details->customer_surname)){ if($action_details->customer_surname != "Not") echo " " .$action_details->customer_surname; } ?></td>
@@ -124,6 +127,7 @@ else{
                     <td id="<?php echo $change; ?>"><?php if(strlen($action_details->request_id) > 0){ echo $action_details->request_id; } else { echo ""; } ?></td>
                     <td><?php if(strlen($action_details->assign_name) > 0){ echo $action_details->assign_name; } else { echo ""; } ?></td>
                     <td><?php echo $action_details->service_name . " - " .$action_details->request_name . " - " . $action_details->function_name;?></td>
+                    <td><?php if(strlen($action_details->request_description) > 0){ echo $action_details->request_description; } else { echo ""; } ?></td>
                      <td><?php if(isset($action_details->facility_name)){ echo $action_details->facility_name; } ?></td>
                      <td><?php if(isset($action_details->location_house_suffix) && isset($action_details->location_house_no) && strlen($action_details->location_house_no) > 0 && strlen($action_details->location_house_suffix) > 0 && $action_details->location_house_no != $action_details->location_house_suffix){ echo $action_details->location_house_suffix; } else{ echo $action_details->location_house_no; } if(isset($action_details->location_street_name)){ echo " " .$action_details->location_street_name; } if(isset($action_details->location_street_type)){ echo " " .$action_details->location_street_type; } if(isset($action_details->location_locality_name)){ echo " " .$action_details->location_locality_name; } ?></td>
                      <td><?php if(isset($action_details->location_locality_name)){ echo " " .$action_details->location_locality_name; } ?></td>

@@ -18,6 +18,14 @@
                         "iMaxSelections": 1,
 
                     },
+                    "aoColumns": [
+                        { "sType": "date-euro" },
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
                     "aaSorting": [[ 0, "desc" ]]
                 });
 
