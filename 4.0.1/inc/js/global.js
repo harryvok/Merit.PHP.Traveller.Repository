@@ -448,7 +448,7 @@ $(document).on("click", ".closePopup", function () {
 
         $(self).click(function () {
             var prevVal = init();
-            if (current[$(self).attr("id")] == prevVal) {
+            if ((current[$(self).attr("id")] == prevVal && $(self).attr('id') != "lsuburb" && $(self).attr('id') != "i_csuburb")) {
                 $(self).autocomplete("search", $(self).val());
             }
             else {
