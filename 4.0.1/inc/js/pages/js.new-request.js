@@ -3,17 +3,14 @@
 $(document).ready(function () {
 
     //check mandatory fields on page load
-    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
-    
+    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());    
 
     /* SRF */
-
     // Keyword Typealong
     $("#keywordSearch").on(eventName, function (event) {
         $("#infoHover").fadeOut("fast");
         $("#keywordSearch").val("").autocomplete("search", "");
     });
-
 
     function keywordResponse(event, ui) {
         var value = "";
@@ -41,12 +38,6 @@ $(document).ready(function () {
 
     // Service Input
     $("#serviceInput").on(eventName, function (event) {
-        /*if (!$("#serviceInput").is('[readonly]')) {
-            $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
-            setTimeout(function () {
-                serviceReset();
-            }, 0);
-        }*/
         $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
         setTimeout(function () {
             serviceReset();
@@ -86,8 +77,7 @@ $(document).ready(function () {
         }
     }
 
-    function serviceResponse(event, ui) {
-        
+    function serviceResponse(event, ui) {        
         var label = ""; var code = ""; var service_note="";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; ui.content[0].service_note }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; service_note= ui.item.service_note }
@@ -100,16 +90,13 @@ $(document).ready(function () {
             $("#rednote").html(service_note);
             QueryUDFs('0', '0', $("#service").val());
             GetHelpNotes('', '', $("#service").val());
-
             $("#functionInput").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-
             //modded by harry 22/5
             if (typeof ui.content != "undefined" && ui.content.length === 1)
                 $("#serviceInput").val(label).attr("readonly", true).autocomplete("close");
             else
                 $("#serviceInput").val(label).attr("readonly", false).autocomplete("close");
             //end mod. original code was just readonly = false
-
             $("#requestInput").val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
             $("#requestInput").trigger("click");
         }
@@ -158,10 +145,8 @@ $(document).ready(function () {
             $("#priority option").prop("selected", false);
             $("#priority option[value=" + priority + "]").prop("selected", true);
             $('#priority').selectmenuState('refresh', true);
-
             QueryUDFs('0', $("#request").val(), $("#service").val());
             GetHelpNotes('', $("#request").val(), $("#service").val());
-
             if (($("#historyaddrtype").val() == "L" && $("#lsuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#i_csuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#o_csuburb").val().length > 0)
@@ -171,7 +156,6 @@ $(document).ready(function () {
                 ) {
                 CheckHistory($("#historyaddrtype").val());
             }
-
             $("#requestInput").val(label).attr("readonly", true);
             if (need_function == "Y") {
                 $("#functionInput").addClass("required");
@@ -326,14 +310,11 @@ $(document).ready(function () {
             $('#name_ctr').val('0');
             $('#name_origin').val('');
             if ($("#given").val() == "" || $("#surname").val() == "") {
-                $("#customerInfoXpert").attr("disabled", "disabled");
-                
+                $("#customerInfoXpert").attr("disabled", "disabled");                
             } else {
                 var searchTerm = $("#surname").val() + "," + $("#given").val();
                 searchCustomerDocument(searchTerm, "cust_searchResults");
-
             }
-
             if (check_fields()) {
                 var self = this;
                 $(this).addClass("ui-autocomplete-loading");
@@ -356,7 +337,6 @@ $(document).ready(function () {
                     success: function (data) {
                         $('#popup').html(data);
                         $(self).removeClass("ui-autocomplete-loading");
-
                     }
                 });
             }
