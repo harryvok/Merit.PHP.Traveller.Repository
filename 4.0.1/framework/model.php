@@ -2163,7 +2163,7 @@ class Model {
         $parameters->password = $_SESSION['password'];
         $parameters->request_id = $_POST['reqID'];
         $parameters->mode = "DELETE";
-        $parameters->doc_name = LOCAL_LINK."Attachments/".str_replace('\\', '/',basename($_POST['path']));//$_POST['path'];
+        $parameters->doc_name = $_POST['path'];
         $parameters->action_id=$_POST['urlID'];
         $parameters->comment_txt="";
         $parameters->note_datetime=$_POST['date'];
@@ -2179,9 +2179,9 @@ class Model {
             $_SESSION['done'] = 1;
             echo json_encode(array("status" => true));   
         }else{
-            $_SESSION['error'] = 1;
+            /*$_SESSION['error'] = 1;
             $_SESSION['error_delete_attach'] = 1;
-            $_SESSION['done'] = 1;
+            $_SESSION['done'] = 1;*/
             echo json_encode(array("status" => $isDeleted));   
         }
     }

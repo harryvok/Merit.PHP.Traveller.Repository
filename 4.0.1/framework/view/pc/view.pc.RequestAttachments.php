@@ -48,11 +48,11 @@
                                   
                             <td>
                                  <?php if($_SESSION['roleSecurity']->maint_attachment == "Y"){ ?>
-                                    <a title="Edit Attachment" class="openPopup editAttachment" id="EditAttachment" data-urlid="<?php echo $_GET['id'] ?>" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>">
+                                    <a title="Edit Attachment" class="openPopup editAttachment" id="EditAttachment" data-urlid="0" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>">
                                     <img src="images/modify-icon.png" width="16" height="16" /></a> 
                                 <?php } ?>
                                 <?php if($_SESSION['roleSecurity']->delete_attachment == "Y"){ ?>
-                                    <a title="Delete Attachment" class="deleteAttachment" data-action="deleteAttachment" id="deleteAttachment" data-action="deleteAttachment" data-urlid="<?php echo $_GET['id'] ?>" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>"/>
+                                    <a title="Delete Attachment" class="deleteAttachment" data-action="deleteAttachment" id="deleteAttachment" data-action="deleteAttachment" data-urlid="0" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>"/>
                                     <img src="images/delete-icon.png" width="16" height="16" /></a>
                                 <?php } ?>
                             </td>
@@ -76,11 +76,11 @@
                                       }  ?></td>
                             <td>
                                  <?php if($_SESSION['roleSecurity']->maint_attachment == "Y"){ ?>
-                                    <a title="Edit Attachment" class="openPopup editAttachment" id="EditAttachment" data-urlid="<?php echo $_GET['id'] ?>" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>">
+                                    <a title="Edit Attachment" class="openPopup editAttachment" id="EditAttachment" data-urlid="0" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>">
                                     <img src="images/modify-icon.png" width="16" height="16" /></a> 
                                 <?php } ?>
                                 <?php if($_SESSION['roleSecurity']->delete_attachment == "Y"){ ?>
-                                    <a title="Delete Attachment" class="deleteAttachment" data-urlid="<?php echo $_GET['id'] ?>" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>"/>
+                                    <a title="Delete Attachment" class="deleteAttachment" data-urlid="0" data-reqid="<?php echo $GLOBALS['request_id'] ?>" data-path="<?php echo $result_at_get->attachment; ?>" data-date="<?php echo $result_at_get->note_datetime; ?>" data-subtype="<?php echo $result_at_get->sub_type; ?>"/>
                                     <img src="images/delete-icon.png" width="16" height="16" data-action="deleteAttachment" id="deleteAttachment"/></a>
                                 <?php } ?>
                             </td>
