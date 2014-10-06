@@ -1,6 +1,17 @@
 <?php
 if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 1){
 ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var oTable = $('#addressRequestsTable').dataTable({
+            iDisplayLength: 50,
+            "aaSorting": [[0, "desc"]],
+            "oLanguage": {
+                "sSearch": "Intray Filter: "
+            }
+        });
+    });
+</script>
   <div class="summaryContainer">
     <h1>Requests Created Today (<?php echo count($GLOBALS['result']->requests_created_details); ?>)</h1>
     <div>
@@ -16,7 +27,7 @@ if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result
                       <th class="sortable">Location Address</th>
                       <th class="sortable">Customer Name</th>
                       <th class="sortable">Count Only</th>
-                      <th></th>
+                     
                   </tr>
                   </thead>
                   <tbody>
