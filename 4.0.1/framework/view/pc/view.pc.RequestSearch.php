@@ -8,7 +8,7 @@ if(isset($GLOBALS['result']->request_search_details)){
      $(document).ready(function () {
          var oTable = $('#searchTable1').dataTable({
              "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-             iDisplayLength: "50"
+             "iDisplayLength": 50
          });
      });
 
