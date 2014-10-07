@@ -46,7 +46,8 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                             $("#adhocOfficer").fadeOut("fast");
                             $("#submitButton").show();
                             $("#keywordSearch").focus();
-                            $('html').scrollTop();
+                            $(window).scrollTop(0);
+                            //$('html').scrollTop();
                         }
                     });
                 } else {
@@ -157,7 +158,7 @@ else{
                 $("#submitButton").show();
                 alert(data);
                 $("#keywordSearch").focus();
-                $('html').scrollTop();
+                $(window).scrollTop(0);
             }
         });
     }

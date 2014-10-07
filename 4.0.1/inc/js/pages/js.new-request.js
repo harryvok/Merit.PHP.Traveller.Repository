@@ -1032,8 +1032,17 @@ $(document).ready(function () {
 
     }       
 
-   $('#saveMore').on(eventName, function (event) {
-       
+    $('#saveMore').on(eventName, function (event) {
+
+
+           $(".text_udf:not(:visible)").each(function () {
+               $(this).removeClass("required");
+           });
+           $(".req_text_udf:not(:visible)").each(function () {
+               $(this).removeClass("required");
+           });
+
+
        //if ($('#same').val() == "s" || $('#same').val() == "i") {
        //    $("#o_cstreet").removeClass("required");
        //    $("#o_ctype").removeClass("required");
