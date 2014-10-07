@@ -6,14 +6,14 @@ if(isset($GLOBALS['result']->request_search_details)){
     
  <script type="text/javascript">
      $(document).ready(function () {
-         var oTable = $('#searchTable').dataTable({
+         var oTable = $('#searchTable1').dataTable({
              "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
              iDisplayLength: "50"
          });
      });
 
 </script>
-    <table id="searchTable" class="sortable" title="" cellspacing="0">
+    <table id="searchTable1" class="sortable" title="" cellspacing="0">
         <thead>
             <tr>
                 <th class="sortable">Request ID</th>
