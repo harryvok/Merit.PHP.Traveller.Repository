@@ -213,7 +213,12 @@ $_SESSION['act_back_filter'] = $filter;
                 }
                 if($ok == 1){
                     if($action=="Action"){
-                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData);
+                        $parameters_udf = new stdClass();
+                        $parameters_udf->user_id = $_SESSION['user_id'];
+                        $parameters_udf->password = $_SESSION['password'];
+                        $parameters_udf->request_id = $requestData->request_id;
+                        $result_udf = $model->WebService(MERIT_REQUEST_FILE,"ws_get_request_udfs",$parameters_udf)->udf_dets;
+                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData, "udfs" =>$result_udf);
                     }else if($action=="RequestUDFs"){
                         $parameters_udf = new stdClass();
                         $parameters_udf->user_id = $_SESSION['user_id'];
@@ -281,7 +286,11 @@ $_SESSION['act_back_filter'] = $filter;
             else{
                 if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y" || !isset($_SESSION['roleSecurityArray'][$action])){
                     if($action=="Action"){
-                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData);
+                        $parameters_udf->user_id = $_SESSION['user_id'];
+                        $parameters_udf->password = $_SESSION['password'];
+                        $parameters_udf->request_id = $requestData->request_id;
+                        $result_udf = $model->WebService(MERIT_REQUEST_FILE,"ws_get_request_udfs",$parameters_udf)->udf_dets;
+                        $GLOBALS['result'] = array("action" => $actionData, "request" => $requestData, "udfs" => $result_udf);
                     }else if($action=="RequestUDFs"){
                         $parameters_udf = new stdClass();
                         $parameters_udf->user_id = $_SESSION['user_id'];
