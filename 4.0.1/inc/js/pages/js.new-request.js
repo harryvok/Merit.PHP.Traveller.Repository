@@ -954,7 +954,14 @@ $(document).ready(function () {
     /* OTHER */
 
     // Adhoc Officer
-    if ($("#skipAdhocCount").val() == 0) {
+    if ($("#skipAdhocCount").val() == 0) { 
+
+        $('#submit').on(eventName, function (event) {
+            $(".text_udf:not(:visible)").each(function () {
+                $(this).removeClass("required");
+            });
+        });
+
         $("#newrequest").validate({
             submitHandler: function (form) {
                 $("#btnclick").val("N");
@@ -963,6 +970,7 @@ $(document).ready(function () {
                 $("#saveCountOnly").prop('disabled', true).buttonState("disable");
                 if ($("#countOnlyInd").val() == "N") {
                     Load();
+                    
                     $("#newrequest").valid();
                     if ($("#newrequest").validate().numberOfInvalids() == 0) {
                         Unload();
@@ -1018,6 +1026,7 @@ $(document).ready(function () {
             },
             ignore: ""
         });
+
     }       
 
    $('#saveMore').on(eventName, function (event) {
@@ -1070,7 +1079,7 @@ $(document).ready(function () {
            }
        }
     });
-
+  
 
    $('#saveCountOnly').on(eventName, function (event) {
         // IF bypass enabled (Y) -------------------------------------------------------------------------------------------------
