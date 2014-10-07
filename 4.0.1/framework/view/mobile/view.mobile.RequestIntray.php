@@ -13,13 +13,11 @@ else{
 if(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['result']->action_intray_details) > 1){
 	$i = 0;
     foreach($GLOBALS['result']->action_intray_details as $request_details){ 
-		?>
-        
+		?>        
         <li class="<?php echo $request_details->in_time_ind == "Y" ? "intime" : ''; ?> <?php echo $request_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime(str_ireplace("00:00:00.000", "", $request_details->due_date)) < time() ? "red" : ''; ?>">
          <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $request_details->request_id; ?>&ref_page=requests&filter=<?php echo $filter; ?>">
               <p><div class="status-code" style="display:inline">
-              
-					  <?php 
+                  <?php 
                   if($request_details->status_code == "OPEN"){ 
                       echo '<img width="10" height="9" src="images/dotGreen.png" />';
                   }
