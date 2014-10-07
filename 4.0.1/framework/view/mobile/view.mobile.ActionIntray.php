@@ -49,14 +49,22 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
 		<a data-transition="slide" href="index.php?page=view-action&id=<?php echo $action_details->action_id; ?>&ref_page=actions&filter=<?php echo $filter; ?>">
         <p><div class="status-code" style="display:inline">
             <?php 
-            if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo '<div class="dotGreen" title="Open"></div>'; } elseif($action_details->status_code == "SUSPENDED"){ echo '<div class="dotYellow" title="Suspended"></div>'; } else { echo '<div class="dotRed" tile="Finalised"></div>'; } 
-            ?>
+                  if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ 
+                      echo '<img width="10" height="9" src="images/dotGreen.png" />';
+                  }
+                  elseif($action_details->status_code == "SUSPENDED"){
+                      echo '<img width="10" height="9" src="images/dotYellow.png" />';
+                  }
+                  else{
+                      echo '<img width="10" height="9" src="images/dotRed.png" />';
+                  } 
+                  ?>
             <?php echo $action_details->assign_name; ?>
         </div>
          </p>
          <p><b>Request ID:</b> <?php echo $action_details->request_id; ?></p>
           <p><?php echo $action_details->service_name . " - " .$action_details->request_name; if(isset($action_details->function_name)){ echo " - " . $action_details->function_name; }?></p>
-          <?php if(isset($action_details->facility_name) && strlen($action_details->facility_name) > 0){ ?><b>Facility Name:</b> <?php  echo $action_details->facility_name;  ?><br /><?php }?>
+          <?php if(isset($action_details->facility_name) && strlen($action_details->facility_name) > 0){ ?><p><b>Facility Name:</b> <?php  echo $action_details->facility_name;  ?><br /><?php }?></p>
           <p><b>Issue: </b><?php if(strlen($action_details->request_description) > 0){ echo $action_details->request_description; } else { echo ""; } ?></p>
           <p><b>Location Address:</b> <?php if(isset($action_details->location_house_suffix) && isset($action_details->location_house_no) && strlen($action_details->location_house_no) > 0 && strlen($action_details->location_house_suffix) > 0 && $action_details->location_house_no != $action_details->location_house_suffix){ echo $action_details->location_house_suffix; } else{ echo $action_details->location_house_no; } if(isset($action_details->location_street_name)){ echo " " .$action_details->location_street_name; } if(isset($action_details->location_street_type)){ echo " " .$action_details->location_street_type; } if(isset($action_details->location_locality_name)){ echo " " .$action_details->location_locality_name; } ?></p>
           <p><b>Customer Name:</b> <?php if(isset($action_details->customer_given_name)){ if($action_details->customer_given_name != "Used") echo $action_details->customer_given_name; } if(isset($action_details->customer_surname)){ if($action_details->customer_surname != "Not") echo " " .$action_details->customer_surname; } ?></p>
