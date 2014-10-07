@@ -1543,12 +1543,14 @@ class Model {
                 'sms_name' => '',
                 'sms_name_type' => '',
                 'sms_name_code' => '',
+                'email_attach' => '',
             )
         );
         
         $this->processAttachment($parameters);
-        
         $parameters = arrayToObject($parameters);
+      #  $parameters->notify_input->email_attach = array("string" => $_SESSION['filename']);
+        $parameters->notify_input->email_attach = $_SESSION['filename'];
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
         $parameters->notify_input->email_name_type = array("string" => $_POST['email_name_type']);
         $parameters->notify_input->email_name_code = array("string" => $_POST['email_name_code']);
@@ -2225,6 +2227,7 @@ class Model {
             $parameters_att->request_id = $requestID;
             $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
             $parameters_att->description = $description;
+            $_SESSION['filename'] = $parameters_att->filename;
                       
             try {
                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
