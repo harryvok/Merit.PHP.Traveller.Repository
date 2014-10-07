@@ -82,7 +82,7 @@ else{
             <th style="width:70px;">Request ID</th>
             <th>Action Required</th>
             <th>Category</th>
-            <th>description</th>
+            <th>Description</th>
             <th>Facility</th>
             <th>Address</th>
             <th>Suburb</th>
