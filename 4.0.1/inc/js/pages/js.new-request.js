@@ -960,6 +960,9 @@ $(document).ready(function () {
             $(".text_udf:not(:visible)").each(function () {
                 $(this).removeClass("required");
             });
+            $(".req_text_udf:not(:visible)").each(function () {
+                $(this).removeClass("required");
+            });
         });
 
         $("#newrequest").validate({
