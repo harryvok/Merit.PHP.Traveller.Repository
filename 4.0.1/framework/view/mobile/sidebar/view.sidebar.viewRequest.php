@@ -1,5 +1,5 @@
 <a data-role="button" href="index.php?page=view-request&id=<?php echo $_GET['id']; ?>" >Summary</a>
-<?php if($_SESSION['roleSecurity']->maint_udf == "Y" && $GLOBALS['result'] > 1){ ?><a data-role="button" href="index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=udfs" >User Defined Fields</a><?php } ?>
+<!--<?php if($_SESSION['roleSecurity']->maint_udf == "Y" && $GLOBALS['result'] > 1){ ?><a data-role="button" href="index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=udfs" >User Defined Fields</a><?php } ?>-->
 <?php if($_SESSION['roleSecurity']->view_notifications == "Y"){ ?><a  data-role="button" href="index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=notifications" >Notifications</a><?php } ?>
 <?php if(($GLOBALS['count_only'] == "N" || $GLOBALS['count_only'] == "") && $_SESSION['roleSecurity']->view_request_show_actions == "Y"){ ?><a data-role="button" href="index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=actions" >Actions</a><?php } ?>
 <?php if($_SESSION['roleSecurity']->view_comment == "Y" || $_SESSION['roleSecurity']->view_attachment == "Y"){ ?><a data-role="button" href="index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=ca" >Comments & Attachments</a></p><?php } ?>

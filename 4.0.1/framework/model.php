@@ -2017,7 +2017,13 @@ class Model {
         $parameters->request_id = $_POST['request_id'];
         $parameters->new_service = $_POST['service'];
         $parameters->new_request = $_POST['request'];
-        $parameters->new_function = $_POST['function'];
+        
+        //when searching for "eg" keyword srf it returns " " for a function_code. the web service doesnt like this
+        if($_POST['function'] == " "){
+            $parameters->new_function = "";
+        }else{
+            $parameters->new_function = $_POST['function'];
+        }
         $parameters->email_act_officer = $_POST['email_act_officer'];
         $parameters->email_resp_officer = $_POST['email_officer'];
         $parameters->comment_text = $_POST['reason'];
