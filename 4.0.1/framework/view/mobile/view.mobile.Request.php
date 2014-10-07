@@ -311,8 +311,8 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
             if($count_udf > 0){
             ?>
                 <li>
-                <div>
-	            <p><strong>Request UDFs</strong></p>
+                <div data-role="collapsible" data-count-theme="b" class="col" data-content-theme="c">
+	            <h4>Request UDFs <?php echo "(".$count_udf.")"; ?></h4>
                 <p>
     	            <ul data-role="listview" data-count-theme="b" data-inset="true">
 			            <?php
@@ -361,7 +361,6 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
                     </p>
         
 		            </div> 
-                </li>
              <?php
             }
             $count_udf = 0;
@@ -381,9 +380,9 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
             if($count_udf > 0)
             {
              ?>
-    <li>
-    <div>
-	<p><strong>All action UDFs for request</strong></p>
+<!--    <div data-role="collapsible">-->
+        <div data-role="collapsible" class="col" data-content-theme="c">
+	<h4>All action UDFs for request <?php echo "(".$count_udf.")"; ?></h4>
     <p>
     	<ul data-role="listview" data-count-theme="b" data-inset="true">
 			<?php
