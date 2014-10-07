@@ -3,7 +3,7 @@ include("../../framework/controller.php");
 $controller = new Controller();
 $controller->Get("Officers");
 
-ro$input = $_GET['term'];
+$input = $_GET['term'];
 $act = $_SESSION["act"];
 $array = array();
 if(isset($GLOBALS['result']->officer_details)){
