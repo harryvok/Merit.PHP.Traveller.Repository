@@ -1546,6 +1546,8 @@ class Model {
             )
         );
         
+        $this->processAttachment($parameters);
+        
         $parameters = arrayToObject($parameters);
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
         $parameters->notify_input->email_name_type = array("string" => $_POST['email_name_type']);
