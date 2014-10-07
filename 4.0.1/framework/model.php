@@ -2113,7 +2113,7 @@ class Model {
         $deleteparameters->password = $_SESSION['password'];
         $deleteparameters->request_id = $request_id;
         $deleteparameters->doc_name = $_POST['epath'];
-        $deleteparameters->action_id="";//$_POST['urlID'];
+        $deleteparameters->action_id="0";//$_POST['urlID'];
         $deleteparameters->note_code="";
         $deleteparameters->comment_txt=$_POST['desc'];
         $deleteparameters->note_datetime=$_POST['edate'];
@@ -2164,13 +2164,20 @@ class Model {
         $parameters->request_id = $_POST['reqID'];
         $parameters->mode = "DELETE";
         $parameters->doc_name = $_POST['path'];
-        $parameters->action_id=$_POST['urlID'];
+        
+        //if at a later date, actionid's are required for this web service, use this line instead
+        //$parameters->action_id=$_POST['urlID'];
+        
+        if($_POST['subtype'] == "TRAVELLER"){
+            $parameters->action_id="0";
+        }else{
+            $parameters->action_id=$_POST['urlID'];
+        }
+
         $parameters->comment_txt="";
         $parameters->note_datetime=$_POST['date'];
         $parameters->note_code=$_POST['subtype'];
 
-        //$isLocalFileDeleted = unlink(LOCAL_LINK."attachments/".str_replace('\\', '/',basename($_POST['path'])));
-        //$isAttachmentFileDeleted = unlink(ATTACHMENT_FOLDER.$_POST['attach_name']);
         $isDeleted = $this->WebService(MERIT_REQUEST_FILE,"ws_modify_delete_attachments",$parameters);
         
         if($isDeleted =="SUCCESS"){
