@@ -201,6 +201,7 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
                 $ok = 0;
             }
         }
+
         if($ok == 1){
             if($action=="Request"){
                 $parameters_udf = new stdClass();

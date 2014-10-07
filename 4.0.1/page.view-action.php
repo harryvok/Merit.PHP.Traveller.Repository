@@ -226,7 +226,13 @@ function Display($action, $view, $model, $device,$actionData, $requestData, $par
             }else if($action == "ActionReassign"){
                 $GLOBALS['action_officer_code'] = $actionData->action_officer_code;
                 $result_o = $model->getSpecificOfficer();
-                foreach ($
+                //foreach ($result_o as $new)
+                //{
+                //    if( $new[""] == "N")
+                //    {
+                //        $GLOBALS['result'] =  array("action" => $actionData, "officer" => $result_o);
+                //    }
+                //}
                 $GLOBALS['result'] =  array("action" => $actionData, "officer" => $result_o);
             }else if($action == "ActionComplete"){
                 $parameters_out = new stdClass();
