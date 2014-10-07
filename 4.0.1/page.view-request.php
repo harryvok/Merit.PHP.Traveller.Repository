@@ -17,6 +17,8 @@ if(isset($_GET['ref'])){ $ref = strip_tags($_GET['ref']); }
 if(isset($_GET['ref_page'])){ $page = strip_tags($_GET['ref_page']); }
 if(isset($_GET['filter'])){ $filter = strip_tags($_GET['filter']); }
 $_SESSION['req_back_filter'] = $filter;
+if(isset($_GET['d'])){ $_SESSION["act"] = strip_tags($_GET['d']); } else { $_SESSION["act"] = "";}
+if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction']); } else { $_SESSION["addAct"] = "";}
 $address = array();
 
 $model = new Model();  
