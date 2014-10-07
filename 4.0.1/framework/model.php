@@ -2444,16 +2444,22 @@ class Model {
                 }
                 elseif($udf->udf_type == "G"){
                     //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
+                    //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
                     $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 elseif($udf->udf_type == "B"){
                     //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
+                    //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
                     $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
                 elseif($udf->udf_type == "P"){
                     //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                    //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
+                    //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
                     $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                     $ok=1;
                 }
@@ -2592,18 +2598,24 @@ class Model {
                         $ok=1;
                     }
                     elseif($udf->udf_type == "G"){
-                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
+                        //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
                         $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "B"){
-                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
+                        //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
                         $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "P"){
-                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
+                        //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
                         $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
+                        //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
                     else{

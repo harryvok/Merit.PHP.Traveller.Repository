@@ -97,11 +97,11 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
         <div id="EditDescriptionEdit" class="editTextDiv">
             <textarea spellcheck="true" name="EditDescriptionText" id="EditDescriptionTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']->request_description)){ echo base64_decode($GLOBALS['result']->request_description); } ?></textarea>
             <input type="button" id="EditDescriptionSubmit" data-action="Request" value="Save" />
-            <a class="editClose" id="EditDescriptionClose">Close</a>
+            <a href="#" class="editClose" id="EditDescriptionClose">Close</a>
         </div>
 
     </li>
-    <a data-role="button" title="Edit Description" class="edit" id="EditDescription">
+    <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription">
         <img src="images/modify-icon.png" width="16" height="16" />
         Modify</a>
     <li class="textbox">
