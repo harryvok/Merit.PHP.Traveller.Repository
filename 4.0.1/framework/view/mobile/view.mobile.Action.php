@@ -322,8 +322,8 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 if($count_udf > 0){
     ?>
     <li>
-    <div>
-	<p><strong>Request UDFs</strong></p>
+        <div data-role="collapsible" class="col" data-content-theme="c">
+	<h4>Request UDFs <?php echo "(".$count_udf.")"; ?></h4>
     <p>
     	<ul data-role="listview" data-count-theme="b" data-inset="true">
 			<?php
@@ -362,7 +362,6 @@ if($count_udf > 0){
         </p>
         
 		</div> 
-    </li>
  <?php
 }
 $count_udf = 0;
@@ -382,9 +381,8 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 if($count_udf > 0)
     {
     ?>
-    <li>
-    <div>
-	<p><strong>Action UDFs</strong></p>
+<div data-role="collapsible" class="col" data-content-theme="c">
+	<h4>Action UDFs <?php echo "(".$count_udf.")"; ?></h4>
     <p>
     	<ul data-role="listview" data-count-theme="b" data-inset="true">
 			<?php
@@ -428,7 +426,6 @@ if($count_udf > 0)
 		</ul>
     </p>
 		</div>
-    </li>
     <?php
     }
 $count_udf = 0;
@@ -448,9 +445,8 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 if($count_udf > 0)
     {
     ?>
-    <li>
-    <div>
-	<p><strong>All action UDFs for request</strong></p>
+<div data-role="collapsible" class="col" data-content-theme="c">
+	<h4>All action UDFs for request <?php echo "(".$count_udf.")"; ?></h4>
     <p>
     	<ul data-role="listview" data-count-theme="b" data-inset="true">
 			<?php
