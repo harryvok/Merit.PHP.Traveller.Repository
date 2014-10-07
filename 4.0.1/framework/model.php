@@ -1546,6 +1546,8 @@ class Model {
             )
         );
         
+        $this->processAttachment($parameters);
+        
         $parameters = arrayToObject($parameters);
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
         $parameters->notify_input->email_name_type = array("string" => $_POST['email_name_type']);
@@ -2017,7 +2019,13 @@ class Model {
         $parameters->request_id = $_POST['request_id'];
         $parameters->new_service = $_POST['service'];
         $parameters->new_request = $_POST['request'];
-        $parameters->new_function = $_POST['function'];
+        
+        //when searching for "eg" keyword srf it returns " " for a function_code. the web service doesnt like this
+        if($_POST['function'] == " "){
+            $parameters->new_function = "";
+        }else{
+            $parameters->new_function = $_POST['function'];
+        }
         $parameters->email_act_officer = $_POST['email_act_officer'];
         $parameters->email_resp_officer = $_POST['email_officer'];
         $parameters->comment_text = $_POST['reason'];
@@ -2365,6 +2373,7 @@ class Model {
                     }
                     elseif($udf->udf_type == "B"){
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $var = 'udf_'.str_ireplace(" ", "_",str_ireplace(":", "", trim($udf->udf_name)));
                         $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }
