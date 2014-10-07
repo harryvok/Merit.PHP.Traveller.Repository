@@ -116,6 +116,15 @@ elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
 			}
 			?>
 		</ul>
+        <?php
+		if($count_udf > 0 && $GLOBALS['act_finalised_ind'] == "N" && $_SESSION['roleSecurity']->mod_udf == "Y"){
+				?>
+           
+				<a  data-role="button" href="index.php?page=<?php echo $_GET['page']; ?>&id=<?php echo $GLOBALS['id']; ?>&req_id=<?php echo $GLOBALS['request_id']; ?>&d=modify-act-udfs">Modify</a>
+			
+            <?php
+			}
+			?>
     </p>
 		</div>
 <?php

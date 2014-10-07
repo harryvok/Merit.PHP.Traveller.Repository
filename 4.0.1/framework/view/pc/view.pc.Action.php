@@ -699,7 +699,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                         echo $udf->udf_data; 
                                     }
                                 }  ?><br />
-                                        ng>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File2" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
+                                        <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File2" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                     </div>
                                     <?php
                             }
@@ -721,7 +721,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                         echo $udf->udf_data; 
                                     }
                                 }  ?><br />
-                                        <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File3" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
+                                        Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File3" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                     </div>
                                     <?php
                             }
@@ -954,7 +954,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo $udf->udf_data; 
                                 }
                             }  ?><br />
-                                                <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File4" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
+                                                Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File4" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                             </div>
                                             <?php
                         }
@@ -973,7 +973,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo $udf->udf_data; 
                                 }
                             } ?>
-                                                <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File5" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
+                                                Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File5" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                             </div>
                                             <?php
                         }
@@ -987,7 +987,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                             <?php if(isset($udf->udf_data)){
                                                       if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A7" class="ViewFile">View Attachment</a> <?php } else{ echo $udf->udf_data; }
                                                   }  ?><br />
-                                            <strong>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File6" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
+                                            Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File6" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
                                             </div>
                                             <?php
                         }

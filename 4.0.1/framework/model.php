@@ -2365,6 +2365,7 @@ class Model {
                     }
                     elseif($udf->udf_type == "B"){
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
+                        $var = 'udf_'.str_ireplace(" ", "_",str_ireplace(":", "", trim($udf->udf_name)));
                         $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
                         $ok=1;
                     }

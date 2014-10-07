@@ -136,7 +136,7 @@ if(count($GLOBALS['result']['udfs']->udf_details)>1){
 					?>
 					<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
 						
-                        	<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0){ if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><input type="button" id="<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>" class="ViewFile" value="View Attachment"><?php } 
+                        	<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0){ if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><input type="button" id="<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>" class="ViewFile" value="View Attachment"><?php }
 								else{ 
 									?>
                                     <?php echo $udf->udf_data; ?>
@@ -186,7 +186,7 @@ if(count($GLOBALS['result']['udfs']->udf_details)>1){
 				}
 				else{
                     ?>
-					<input type="hidden" name="udf_<?php echo str_ireplace("-","",str_ireplace(" ", "", str_ireplace(":","",trim($udf->udf_name)))); ?>" value="<?php echo $udf->udf_data; ?>" />
+					<input type="hidden" name="udf_<?php echo $udf->udf_name; ?>" value="<?php echo $udf->udf_data; ?>" />
 					<?php	
 				}
 				if($udf->udf_depends != 0){
@@ -383,7 +383,7 @@ elseif(count($GLOBALS['result']['udfs']->udf_details)== 1){
 								<?php
 							} 
 						}  ?>
-						<?php $dev = new Mobile_Detect(); if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo$udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
+						<?php $dev = new Mobile_Detect(); if(!$dev->isWindowsMobileOS()){?><input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>"><?php } ?>
 					
 				<?php
 			}
