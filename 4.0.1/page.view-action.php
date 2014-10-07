@@ -9,6 +9,7 @@ if(isset($_GET['ref'])){ $ref = strip_tags($_GET['ref']); }
 if(isset($_GET['ref_page'])){ $page = strip_tags($_GET['ref_page']); }
 if(isset($_GET['filter'])){ $filter = strip_tags($_GET['filter']); }
 $_SESSION['act_back_filter'] = $filter;
+if(isset($_GET['d'])){ $_SESSION["act"] = strip_tags($_GET['d']); }
 
 $model = new Model();  
 $dev = new Mobile_Detect();
