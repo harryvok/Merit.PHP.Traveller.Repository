@@ -190,6 +190,10 @@
                         <?php
                         if(isset($_GET['page'])){
                             $controller->Sidebar(str_replace("-", "", $_GET['page']));
+                            $_SESSION['page'] = $_GET['page'];
+                        }
+                        else{
+                            $_SESSION['page'] = "";
                         }
                            ?>
                       </div>

@@ -5,7 +5,8 @@ $GLOBALS['id'] = strip_tags($_GET['id']);
 if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); }
 if(isset($_GET['filter'])){ $filter = strip_tags($_GET['filter']); }
 $_SESSION['act_back_filter'] = $filter;
-if(isset($_GET['d'])){ $_SESSION["act"] = strip_tags($_GET['d']); }
+if(isset($_GET['d'])){ $_SESSION["act"] = strip_tags($_GET['d']); } else { $_SESSION["act"] = "";}
+if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction']); } else { $_SESSION["addAct"] = "";}
 ?>
 
 <div data-role="page" id="view-action">
