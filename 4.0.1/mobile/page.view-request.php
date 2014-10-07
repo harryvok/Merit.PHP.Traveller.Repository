@@ -167,9 +167,9 @@ $_SESSION['req_back_filter'] = $filter;
       $requestData = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters_r);
 	  
 	  $controller->Display("Request", "RequestHeader",$model,$device,$actionData, $requestData);
-		if(isset($_GET['d']) && $_GET['d'] == "summary" ||  !isset($_GET['d'])){
-			$controller->Display("Request", "Request");	
-		}
+        if(isset($_GET['d']) && $_GET['d'] == "summary" ||  !isset($_GET['d'])){
+            Display("Request", "Request",$model,$device,$actionData, $requestData);
+        }
 		if(isset($_GET['d']) && $_GET['d'] == "udfs"){
 			$controller->Display("RequestUDFs","RequestUDFs", $_GET['id']);
 		}

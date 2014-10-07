@@ -258,5 +258,246 @@ $action_id = $GLOBALS['result']['action']->action_id;
         </p>
     </li><?php
           }
-         ?>
+if( $_SESSION['roleSecurity']->maint_udf == "Y"){
+    $show_hide = 0;
+    if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" /*&& $udf->udf_action_id == 0*/){
+                $show_hide = $show_hide + 1;
+            }					
+        }
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+        $udf = $GLOBALS['result']['udfs']->udf_details;
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" /*&& $udf->udf_action_id == 0*/){
+            $show_hide = $show_hide + 1;
+        }		
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) > 1){
+        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+                $show_hide = $show_hide + 1;
+            }					
+        }
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+        $udf = $GLOBALS['result']['udfs']->udf_details;
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+            $show_hide = $show_hide + 1;
+        }		
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) > 1){
+        foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+            if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+                $show_hide = $show_hide + 1;
+            }					
+        }
+    }
+    elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+        $udf = $GLOBALS['result']['udfs']->udf_details;
+        if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id != 0){
+            $show_hide = $show_hide + 1;
+        }		
+    }  
+    if ($show_hide > 0)
+    {
+        ?>
+        <li data-role="list-divider">User Defined Fields</li>
+        
+<?php
+$count_udf = 0;
+if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+	foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+			if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+				$count_udf = $count_udf+1;
+			}					
+	}
+}
+elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+	$udf = $GLOBALS['result']['udfs']->udf_details;
+	if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+		  $count_udf = $count_udf+1;
+	  }		
+}
+if($count_udf > 0){
+    ?>
+    <li>
+    <div>
+	<p><strong>Request UDFs</strong></p>
+    <p>
+    	<ul data-role="listview" data-count-theme="b" data-inset="true">
+			<?php
+			if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+				foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+					if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+						?>
+						<li>
+								  <p><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){  if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; } } else { echo "<b>".$udf->udf_name."</b>"; } }  else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; } } ?></b></p>
+						   </li>
+						<?php  
+					}
+				}
+			}
+			elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+				$udf =$GLOBALS['result']['udfs']->udf_details;
+				if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
+				?>
+				<li>
+						<p><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id="A1" class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; } } else { echo "<b>".$udf->udf_name."</b>"; } } else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; } } ?></b></p>
+				   </li>
+				<?php  
+				}
+			}
+			?>
+		</ul>
+        <?php
+		if($count_udf > 0 && $GLOBALS['act_finalised_ind'] == "N" && $_SESSION['roleSecurity']->mod_udf == "Y"){
+				?>
+           
+				<a  data-role="button" href="index.php?page=<?php echo $_GET['page']; ?>&id=<?php echo $GLOBALS['id']; ?>&req_id=<?php echo $GLOBALS['request_id']; ?>&d=modify-udfs">Modify</a>
+			
+            <?php
+			}
+			?>
+        </p>
+        
+		</div> 
+    </li>
+ <?php
+}
+$count_udf = 0;
+if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+	foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+			if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+				$count_udf = $count_udf+1;
+			}					
+	}
+}
+elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+	$udf = $GLOBALS['result']['udfs']->udf_details;
+	if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y" && $udf->udf_action_id == $_GET['id']){
+		  $count_udf = $count_udf+1;
+	  }		
+}
+if($count_udf > 0)
+    {
+    ?>
+    <li>
+    <div>
+	<p><strong>Action UDFs</strong></p>
+    <p>
+    	<ul data-role="listview" data-count-theme="b" data-inset="true">
+			<?php
+			if($count_udf > 1){
+				foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+
+						if($udf->udf_active_ind == "Y"&& $udf->udf_action_id == $_GET['id']){
+							?>
+							<li>
+                                 <p>
+            					<b> 
+            					<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A3" href="#" class="ViewFile"> <?php } } } ?>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?> </b>
+								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
+                                  </a>
+                                    </p>
+							   </li>
+							<?php  
+						}
+				}
+			}
+			elseif($count_udf == 1){
+				$udf =$GLOBALS['result']['udfs']->udf_details;
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                    if($udf->udf_active_ind == "Y"&& $udf->udf_action_id  == $_GET['id']){
+							?>
+                            <li>
+                                <p>
+            					<b> 
+            					<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A4" href="#" class="ViewFile"> <?php } } } ?>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?> </b>
+								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
+                                  </a>
+                                    </p>
+							   </li>
+							<?php  
+						}
+                }
+			}
+			?>
+		</ul>
+    </p>
+		</div>
+    </li>
+    <?php
+    }
+$count_udf = 0;
+if(count($GLOBALS['result']['udfs']->udf_details) > 1){
+	foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+			if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
+				$count_udf = $count_udf+1;
+			}					
+	}
+}
+elseif(count($GLOBALS['result']['udfs']->udf_details) == 1){
+	$udf = $GLOBALS['result']['udfs']->udf_details;
+	if(isset($udf->udf_active_ind) && $udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
+		  $count_udf = $count_udf+1;
+	  }		
+}
+if($count_udf > 0)
+    {
+    ?>
+    <li>
+    <div>
+	<p><strong>All action UDFs for request</strong></p>
+    <p>
+    	<ul data-role="listview" data-count-theme="b" data-inset="true">
+			<?php
+			if($count_udf > 1){
+				foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+
+						if($udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
+							?>
+							<li>
+                            	<p>
+                            	<b><?php if($udf->udf_action_id == 0){ echo "(Request)</b>"; } else { echo "(Action ".$udf->udf_action_id.") - </b> ".$udf->action_required." - "; } ?>
+            					<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A2" href="#" class="ViewFile"> <?php } } } ?>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?>
+								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
+                                  </a>
+                                    </p>
+							   </li>
+							<?php  
+						}
+				}
+			}
+			elseif($count_udf == 1){               
+				$udf =$GLOBALS['result']['udfs']->udf_details;
+                foreach($GLOBALS['result']['udfs']->udf_details as $udf){
+                    if($udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
+							?>
+                            <li>
+							<p>
+            					<b><?php if($udf->udf_action_id == 0){ echo "(Request)</b>"; } else { echo "(Action ".$udf->udf_action_id.") ".$udf->action_required." : </b>"; } ?>
+            					<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A5" href="#" class="ViewFile"> <?php } } } ?>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?>
+								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
+                                  </a>
+                                    </p>
+							   </li>
+							<?php  
+						}
+                }
+			}
+			?>
+		</ul>
+    </p>
+</div>
+    </li>
+    <?php
+    }
+    }
+}
+?>
 </ul>
