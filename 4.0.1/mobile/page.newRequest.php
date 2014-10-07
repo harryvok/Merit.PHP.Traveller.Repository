@@ -209,7 +209,7 @@ if(isset($_SESSION['user_id'])){
                         <label>Title<span class="pref_title_label mandLabel" style="color: red; display: none;">*</span></label>
                         <input class="getlist" name='cust_title' id='pref_title' data-mand="pref_title" maxlength='5' value='<?php if(isset($_SESSION['rem_cust_title'])){ echo $_SESSION['rem_cust_title']; } ?>'></label>
                       
-                      <label>Given<span class="given_name_label mandLabel" style="color: red; display: none;">*</span></label>
+                        <label>Given<span class="given_name_label mandLabel" style="color: red; display: none;">*</span></label>
                         <input class="getlist" name='cust_given' id='given' data-mand="given_name" maxlength='30' value='<?php if(isset($_SESSION['rem_cust_given'])){ echo $_SESSION['rem_cust_given']; } ?>' >
 
                         <label>Surname<span class="surname_label mandLabel" style="color: red; display: none;">*</span></label>

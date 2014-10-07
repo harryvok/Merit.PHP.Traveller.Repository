@@ -1,7 +1,6 @@
 
 <?php
-if(isset($GLOBALS['result']->udf_details)){
-	
+if(isset($GLOBALS['result']->udf_details)){	
 	if(count($GLOBALS['result']->udf_details)> 1){
 		$i=0;
 		foreach($GLOBALS['result']->udf_details as $udf){
@@ -26,8 +25,7 @@ if(isset($GLOBALS['result']->udf_details)){
 						$udf_ddld = array();
 						?>
 						<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
-						
-							<select class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required req_text_udf"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>">
+						<select class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required req_text_udf"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>">
 							<option value="">Select</option>
 								<?php
                         if(count($result2->udf_ddlb_det->string) > 1){
@@ -187,14 +185,14 @@ if(isset($GLOBALS['result']->udf_details)){
                         ?>
 			<script language="javascript">
                 $("#udfs").slideUp("fast");
-                $("#udf_exist").val("0");
+                $("#udfs_exist").val("0");
             </script>
             <?php
 		}
 		else{
             ?>
 	<script language="javascript">
-		$("#udf_exist").val("1");
+		$("#udfs_exist").val("1");
 		$("#udfs").slideDown("fast");
 	</script>
 	<?php
@@ -381,14 +379,14 @@ if(isset($GLOBALS['result']->udf_details)){
 			?>
 			<script language="javascript">
                 $("#udfs").slideUp("fast");
-                $("#udf_exist").val("0");
+                $("#udfs_exist").val("0");
             </script>
             <?php
 		}
 		else{
 			?>
 	<script language="javascript">
-		$("#udf_exist").val("1");
+		$("#udfs_exist").val("1");
 		$("#udfs").slideDown("fast");
 	</script>
 	<?php
@@ -398,7 +396,7 @@ if(isset($GLOBALS['result']->udf_details)){
 	?>
 	<script language="javascript">
 		$("#udfs").slideUp("fast");
-		$("#udf_exist").val("0");
+		$("#udfs_exist").val("0");
 	</script>
 	<?php
 	}
@@ -407,7 +405,7 @@ else{
 ?>
 <script language="javascript">
 	$("#udfs").slideUp("fast");
-	$("#udf_exist").val("0");
+	$("#udfs_exist").val("0");
 </script>
 <?php
 }
