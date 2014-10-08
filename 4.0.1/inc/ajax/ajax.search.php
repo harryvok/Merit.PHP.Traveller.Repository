@@ -6,6 +6,7 @@ $search = $_POST['search_q'];
 $_SESSION['search'] = $search;
 
 
+
 ?>
 <script type="text/javascript">
 	function change_req(id){

@@ -195,6 +195,10 @@
                         else{
                             $_SESSION['page'] = "";
                         }
+                        if(isset($_GET['d']))
+                            $_SESSION['act'] = $_GET['d'];
+                        else
+                            $_SESSION['act'] = "";
                            ?>
                       </div>
                      </div>
