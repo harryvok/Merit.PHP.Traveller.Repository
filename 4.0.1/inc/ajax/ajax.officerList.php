@@ -7,6 +7,15 @@ $input = $_GET['term'];
 $act = $_SESSION["act"];
 $addAct = $_SESSION["addAct"];
 $page =  $_SESSION['page'];
+if ($act != "reassign" || $act != "reopenAction" || $act != "reopenRequest"){
+    $act = "";
+}
+if($addAct != 1){
+    $addAct = "";
+}
+if($page != "myPreferences"){
+    $page = "";
+}    
 
 $array = array();
 if(isset($GLOBALS['result']->officer_details)){
