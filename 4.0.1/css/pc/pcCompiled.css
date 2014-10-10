@@ -16,6 +16,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: middle;
 }
 
+.officerdot {
+    padding-left:5px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -296,6 +300,7 @@ border-radius: 4px;a
     input:focus, select:focus, textarea:focus {
         border: #415CA3 1px solid; 
         border-left: #415CA3 4px solid;
+        background-color:#FFFFCC
     }
 
     input:hover, select:hover, textarea:hover {
@@ -714,9 +719,8 @@ div.column {
     box-sizing: border-box; /* Opera/IE 8+ */
     padding-right: 15px;
 }
-    div.column:last-child {
-        padding-right:0;
-    }
+   
+
 div.r5 {width: 5% !important;}
 div.r10 {width: 10% !important;}
 div.r15 {width: 15% !important;}
@@ -727,6 +731,7 @@ div.r33 {width: 33.333% !important;}
 div.r40 {width: 40% !important;}
 div.r45 {width: 45% !important;}
 div.r50 {width: 50% !important;min-width:400px;}
+div.r50forceright {width: 50% !important; min-width:400px; float: right; padding-right: 0px;}
 div.r60 {width:60% !important;}
 div.r70 {width:70% !important;}
 div.r75 {width:75% !important;}
@@ -734,6 +739,8 @@ div.r80 {width:80% !important;}
 div.r85 {width:85% !important;}
 div.r95 {width:95% !important;}
 div.r100 {width:100% !important;}
+div.Fieldx2 {width:45% !important;}
+div.Fieldx1 {width:90% !important;}
 
 div.last-child {
     margin:0px;
@@ -760,6 +767,12 @@ div.setupContainer {
 
 div.subPageContainer{
     display:none;
+}
+#rednote {
+    color: red;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif !important;
+    letter-spacing: -0.015em !important;
 }/*
 Traveller Desktop CSS
 */
@@ -896,8 +909,8 @@ div#popup {
 -moz-border-radius: 8px;
 border-radius: 8px;
 max-height:600px !important;
+overflow:scroll;
 }
-
 
 div#popup h1+div {
     
@@ -906,7 +919,8 @@ div#popup h1+div {
     padding-top:24px;
     background-color: #9dadc9;
     overflow-y:scroll;
-    max-height:480px !important;
+    max-height:440px !important;
+
 }
 
 div#popup h1+div iframe {
@@ -977,7 +991,7 @@ div#loadingbar {
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
     opacity: 0.9;
     display: none;
-    z-index: 1001;
+    z-index: 2001;
     -webkit-border-radius: 25px;
 -moz-border-radius: 25px;
 border-radius: 25px;
@@ -1519,6 +1533,20 @@ border-top-right-radius: 4px;
         padding-right:3px;
     }
 
+    div.summaryContainer input[type=radio] {
+
+            background: none;
+            border: none;
+
+            padding: 0;
+
+            display:inline-block;
+    width:15px;
+    height:15px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle
+        }
+
 div#popup div.summaryContainer h1 + div {
     background: #eee !important;
     overflow:auto;
@@ -1818,8 +1846,10 @@ table.dataTable {
 .dataTables_info {
     clear: both;
     float: left;
-    font-weight:bold;
-    margin-top:10px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 100px;
 }
 
 
@@ -2087,10 +2117,6 @@ Traveller Desktop CSS
     width: 100%;
 }
 
-.float-right {
-    float: right;
-}
-
 /* Text */
 .bold {
     font-weight: bold;
@@ -2200,6 +2226,9 @@ div.status_code {
 * Includes: jquery.ui.core.css, jquery.ui.resizable.css, jquery.ui.accordion.css, jquery.ui.autocomplete.css, jquery.ui.button.css, jquery.ui.datepicker.css, jquery.ui.menu.css, jquery.ui.slider.css, jquery.ui.spinner.css
 * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Lucida%20Grande%2CLucida%20Sans%2CArial%2Csans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=5px&bgColorHeader=5c9ccc&bgTextureHeader=gloss_wave&bgImgOpacityHeader=55&borderColorHeader=4297d7&fcHeader=ffffff&iconColorHeader=d8e7f3&bgColorContent=fcfdfd&bgTextureContent=inset_hard&bgImgOpacityContent=100&borderColorContent=a6c9e2&fcContent=222222&iconColorContent=469bdd&bgColorDefault=dfeffc&bgTextureDefault=glass&bgImgOpacityDefault=85&borderColorDefault=c5dbec&fcDefault=2e6e9e&iconColorDefault=6da8d5&bgColorHover=d0e5f5&bgTextureHover=glass&bgImgOpacityHover=75&borderColorHover=79b7e7&fcHover=1d5987&iconColorHover=217bc0&bgColorActive=f5f8f9&bgTextureActive=inset_hard&bgImgOpacityActive=100&borderColorActive=79b7e7&fcActive=e17009&iconColorActive=f9bd01&bgColorHighlight=fbec88&bgTextureHighlight=flat&bgImgOpacityHighlight=55&borderColorHighlight=fad42e&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=glass&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
 * Copyright 2013 jQuery Foundation and other contributors Licensed MIT */
+
+/* James's Test for resizing text*/
+
 
 /* Layout helpers
 ----------------------------------*/
