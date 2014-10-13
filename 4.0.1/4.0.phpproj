@@ -293,7 +293,6 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
-    <Compile Include="framework\view\pc\view.pc.AddressLookupBasic.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
     <Compile Include="framework\view\pc\view.pc.DocumentSearchResults.php" />
     <Compile Include="framework\view\pc\view.pc.NotifyOfficerList.php" />
