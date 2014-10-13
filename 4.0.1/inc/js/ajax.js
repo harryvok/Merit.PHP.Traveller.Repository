@@ -525,6 +525,7 @@ function searchDocument() {
 
 function searchCustomerDocument(search_param, resultsDisplay) {
     //var search_param = $("#searchterm").val();
+    $("#cust_searchResults").html("");
     var search_type = $('input:radio[name=Search_type]:checked').val();
     Load()
     $.ajax({
@@ -537,11 +538,21 @@ function searchCustomerDocument(search_param, resultsDisplay) {
         success: function (data) {
             Unload();
 
-            $("#cust_searchResults").html(data);
-            if ($("#cust_searchResults").html().length > 18) {
-                $("#customerInfoXpert").removeAttr("disabled");
+            if ($("#deviceIndicator").val() != "mobile") {
+                $("#cust_searchResults").html(data);
+                if ($("#cust_searchResults").html().length > 18) {
+                    $("#customerInfoXpert").removeAttr("disabled");
+                } else {
+                    $("#customerInfoXpert").attr("disabled", "disabled");
+                }
             } else {
-                $("#cust_searchResults").attr("disabled","disabled");
+                $("#cust_searchResults").html(data);
+                $("#cust_searchResults").trigger("create");
+                if ($("#cust_searchResults").html().length > 18) {
+                    $("#customerInfoXpert").removeAttr("disabled").button('refresh');;
+                } else {
+                    $("#customerInfoXpert").attr("disabled", "disabled").button('refresh');;
+                }
             }
         }
     });

@@ -218,6 +218,9 @@ if(isset($_SESSION['user_id'])){
                     <p>
                         <input type="button" id="myDetails" value="My Details" data-role="button" />
                         <input type="button" id="clearDetails" value="Clear" data-role="button" />
+                        <input type="button" id="customerInfoXpert" data-role="button" disabled value="infoXpert"  onclick="$('#cust_searchResults').slideToggle()"/>
+                        <div id="cust_searchResults" hidden></div>
+
 
                         <label>Title<span class="pref_title_label mandLabel" style="color: red; display: none;">*</span></label>
                         <input class="getlist" name='cust_title' id='pref_title' data-mand="pref_title" maxlength='5' value='<?php if(isset($_SESSION['rem_cust_title'])){ echo $_SESSION['rem_cust_title']; } ?>'></label>
