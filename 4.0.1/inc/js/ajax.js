@@ -41,6 +41,7 @@ function GetAddressDetails() {
             },
             success: function (data) {
                 //alert("prop id: " + data.property_no);
+
                 if (data.property_no == "0" || data.property_no == "" ) {
                     $("#property_no").val("").removeClass("ui-autocomplete-loading");
                 }
