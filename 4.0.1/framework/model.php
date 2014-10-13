@@ -1412,7 +1412,6 @@ class Model {
             echo $e -> getMessage ();
             echo "<br>Error Code: 3. Please pass this on to the administrator.";
 
-            // There is a problem.
             $_SESSION['done'] = 1;
             $_SESSION['error'] = 1;
             $_SESSION['error_web_service'] = 1;

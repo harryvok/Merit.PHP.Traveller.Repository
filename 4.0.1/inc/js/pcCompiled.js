@@ -5310,7 +5310,7 @@ function getIntray(intray, i) {
             intray: intray,
             filterCode: i
         },
-        timeout: 30000,
+        timeout: 3000000, 
         success: function (data) {
             Unload();
             $("#" + intray + "Intray").html(data);
@@ -5326,6 +5326,7 @@ function getIntray(intray, i) {
 }
 
 function GetAddressDetails() {
+    //alert("coming ajax");
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
@@ -5339,55 +5340,76 @@ function GetAddressDetails() {
                 streetSuburb: function () { return $("#lsuburb").val() }
             },
             success: function (data) {
-                $("#property_no").val(data.property_no);
+                //alert("prop id: " + data.property_no);
+                if (data.property_no == "0" || data.property_no == "" ) {
+                    $("#property_no").val("").removeClass("ui-autocomplete-loading");
+                }
+                else {                    
+                    $("#property_no").val(data.property_no).removeClass("ui-autocomplete-loading");
+                }
                 $("#address").val(data.address_id);
                 $("#addressId").val(data.address_id);
+                $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
+                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
+                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0 ) {
+                    $("#AddrSummary").removeAttr("disabled");
+                }
             }
         });
-        
     }
 }
 
 function GetCustomerAddressDetails() {
-        if ($("#same").val() == "s" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
-            || $("#same").val() == "i" && $("#i_cno").val().length > 0 && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
-            $.ajax({
-                url: 'inc/ajax/ajax.getAddressBasic.php',
-                type: 'POST',
-                dataType: "json",
-                data: {
-                    flatNumber: function () { return $("#i_cfno").val() },
-                    streetNumber: function () { return $("#i_cno").val() },
-                    streetName: function () { return $("#i_cstreet").val() },
-                    streetType: function () { return $("#i_ctype").val() },
-                    streetSuburb: function () { return $("#i_csuburb").val() }
-                },
-                success: function (data) {
-                    //$("#i_cpostcode").val(data.postcode);
-                    $("#cust_address_id").val(data.address_id);
-                    $("#i_cpropertynumber").val(data.property_no);
+    if ($("#same").val() == "s" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
+        || $("#same").val() == "i" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
+        $.ajax({
+            url: 'inc/ajax/ajax.getAddressBasic.php',
+            type: 'POST',
+            dataType: "json",
+            data: {
+                flatNumber: function () { return $("#i_cfno").val() },
+                streetNumber: function () { return $("#i_cno").val() },
+                streetName: function () { return $("#i_cstreet").val() },
+                streetType: function () { return $("#i_ctype").val() },
+                streetSuburb: function () { return $("#i_csuburb").val() }
+            },
+            success: function (data) {
+                //alert(data.property_no);
+                $("#cust_address_id").val(data.address_id);
+                if (data.property_no == "0" || data.property_no == "") {
+                    $("#i_cpropertynumber").val("").removeClass("ui-autocomplete-loading");
                 }
-            });
-        }
-        if ($("#same").val() == "o" && $("#o_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
-            $.ajax({
-                url: 'inc/ajax/ajax.getAddressBasic.php',
-                type: 'POST',
-                dataType: "json",
-                data: {
-                    flatNumber: function () { return $("#o_cfno").val() },
-                    streetNumber: function () { return $("#o_cno").val() },
-                    streetName: function () { return $("#o_cstreet").val() },
-                    streetType: function () { return $("#o_ctype").val() },
-                    streetSuburb: function () { return $("#o_csuburb").val() }
-                },
-                success: function (data) {
-                    //$("#i_cpostcode").val(data.postcode);
-                    $("#cust_address_id").val(data.address_id);
-                    $("#i_cpropertynumber").val(data.property_no);
+                else {
+                    $("#i_cpropertynumber").val(data.property_no).removeClass("ui-autocomplete-loading");
                 }
-            });
-        }
+                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
+                    $("#CustAddSummary").removeAttr("disabled");
+                }
+            }
+        });
+    }
+    else if ($("#same").val() == "o" && $("#o_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
+        $.ajax({
+            url: 'inc/ajax/ajax.getAddressBasic.php',
+            type: 'POST',
+            dataType: "json",
+            data: {
+                flatNumber: function () { return $("#o_cfno").val() },
+                streetNumber: function () { return $("#o_cno").val() },
+                streetName: function () { return $("#o_cstreet").val() },
+                streetType: function () { return $("#o_ctype").val() },
+                streetSuburb: function () { return $("#o_csuburb").val() }
+            },
+            success: function (data) {
+                $("#o_cpostcode").val(data.postcode);
+                $("#cust_address_id").val(data.address_id);
+                $("#o_cpropertynumber").val(data.property_no);
+                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
+                    $("#CustAddSummary").removeAttr("disabled");
+                }
+            }
+        });
+    }
 }
 
 function Search(sear) {
@@ -5469,11 +5491,12 @@ function CheckCountOnlyAjax(ser, req, func) {
         },
         success: function (data) {
             if (data.flag_value == "Y") {
-                $("#countOnlyInd").val("Y");
-                $("#submit").prop('disabled', true).buttonState("disable");
-                $("#saveMore").prop('disabled', true).buttonState("disable");
-                $("#saveCountOnly").prop('disabled', false).buttonState("enable");
-                $("#workflowSRF").prop('disabled', true).buttonState("disable");
+                        $("#countOnlyInd").val("Y");
+                        $("#submit").prop('disabled', true).buttonState("disable");
+                        $("#saveMore").prop('disabled', true).buttonState("disable");
+                        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                        $("#workflowSRF").prop('disabled', true).buttonState("disable");
+                    
             }
             else if (data.flag_value == "N") {
                 $("#countOnlyInd").val("N");
@@ -5759,7 +5782,101 @@ function CheckMandatoryFields(ser, req, func) {
         }
     });
 }
- 
+
+function searchDocument() {
+    var search_param = $("#searchterm").val();
+    var search_type = $('input:radio[name=Search_type]:checked').val();
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.getDocumentSearch.php",
+        type: 'post',
+        data: {
+            search_param: search_param,
+            search_type: search_type,
+        },
+        success: function (data) {
+            Unload();
+            $("#searchResults").html(data);
+        }
+    });
+}
+
+function searchCustomerDocument(search_param, resultsDisplay) {
+    //var search_param = $("#searchterm").val();
+    var search_type = $('input:radio[name=Search_type]:checked').val();
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.getDocumentSearch.php",
+        type: 'post',
+        data: {
+            search_param: search_param,
+            search_type: search_type,
+        },
+        success: function (data) {
+            Unload();
+
+            $("#cust_searchResults").html(data);
+            if ($("#cust_searchResults").html().length > 18) {
+                $("#customerInfoXpert").removeAttr("disabled");
+            } else {
+                $("#cust_searchResults").attr("disabled","disabled");
+            }
+        }
+    });
+}
+
+function unlinkDocument(doc_id) {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.unlinkDocument.php",
+        dataType: "json",
+        type: 'post',
+        data: {
+            doc_id: doc_id,
+        },
+        success: function (data) {
+            //Unload();
+            location.reload();
+            
+        }
+    });
+}
+
+function notifyInsuranceOfficer() {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.notifyInsuranceOfficer.php",
+        dataType: "json",
+        type: 'post',
+        success: function (data) {
+            Unload();
+            if (data.status = true)
+                alert("Notification sent");
+            else
+                alert("Error Sending Notification");
+        }
+    });
+}
+
+function getSRFRedText() {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.getSRFRedText.php",
+        dataType: "json",
+        type: 'post',
+        data: {
+            serviceid: $("#service").val(),
+            requestid: $("#request").val(),
+            functionid: $("#function").val()
+        },
+        success: function (data) {
+            Unload();
+            $("#rednote").html(data.note);
+
+        }
+    });
+} 
+
 
 var eventName;
 if ('ontouchstart' in document) {
@@ -5773,14 +5890,16 @@ $(document).ready(function () {
         dateFormat: 'yy-mm-dd',
         constrainInput: true
     });
-
+    
     //this thing controls wildcard searching
-    /*$.ui.autocomplete.filter = function (array, term) {
+    /*
+    $.ui.autocomplete.filter = function (array, term) {
         var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
         return $.grep(array, function (value) {
             return matcher.test(value.label || value.value || value);
         });
-    };*/
+    };
+    */
 
     generateDateTime();
 
@@ -5806,6 +5925,7 @@ $(document).ready(function () {
     }
     
     
+    $("input[data-adhocofficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
     $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
 
     $("body").on("click", "input[data-officer]", function () {
@@ -5820,6 +5940,21 @@ $(document).ready(function () {
         }
         else{
             $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
+        }
+    });
+
+    $("body").on("click", "input[data-adhocofficer]", function () {
+        if ($(this).hasClass("ui-autocomplete-input")) {
+            $("#" + $(this).attr("id") + "Code").val("");
+            $(this).val("");
+            $(this).attr("readonly", false);
+
+            $("input[data-adhocofficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
+            $(this).autocomplete("search", "");
+
+        }
+        else {
+            $("input[data-adhocofficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
         }
     });
 
@@ -5933,13 +6068,13 @@ $(document).ready(function () {
                 dataType: "json",
                 data: { subtype: subtype, date:date,path:path,urlID: urlID, reqID: reqID, id: id, commentText: '', extra: dataExtra, path: path },
                 success: function (data) {
-                    if (data.status == false) {
-                        alert("Error deleting. Please contact Merit or try again later.");
+                    if (data.status != true) {
+                        alert(data.status);
                         $("#" + id + "Object").slideDown("fast");
                       
                     } else {
-                        //location.reload();
-                        $(self).parent().parent().hide();
+                        location.reload();
+                        //$(self).parent().parent().hide();
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -6148,7 +6283,26 @@ $(document).on("click", ".closePopup", function () {
                     delay: 0,
                     minLength: 0,
                     select: response,
-                    response: response
+                    response: response,
+                    //added by harry
+                    create: function (event, ui) {
+
+                        //if this is the serviceInput
+                        //autopopulate if there is one service
+                        if ($(self).attr('id') == "serviceInput") {
+                            $.ajax({
+                                url: ajax,
+                                dataType: "json",
+                                data: dataPass,
+                                success: function (data) {
+                                    if (data.length == 1)
+                                        //$("#serviceInput").click();
+                                        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
+                                }
+                            });
+                        }
+                    }
+                    //end addition by harry
                 });
             }
         });
@@ -6172,7 +6326,7 @@ $(document).on("click", ".closePopup", function () {
 
         $(self).click(function () {
             var prevVal = init();
-            if (current[$(self).attr("id")] == prevVal) {
+            if ((current[$(self).attr("id")] == prevVal && $(self).attr('id') != "lsuburb" && $(self).attr('id') != "i_csuburb")) {
                 $(self).autocomplete("search", $(self).val());
             }
             else {
@@ -6199,6 +6353,17 @@ $(document).on("click", ".closePopup", function () {
                                 if (autoOpen == true) $(self).autocomplete("search", $(self).val());
                                 $(self).trigger("focus");
 
+                                if ($(self).attr('id') == "functionInput") {
+                                    if (data.length == 1) {
+                                        if ($("#textareaissue").length) {
+                                            $("#textareaissue").focus();
+                                        } else {
+                                            $("#add-request-textarea").focus();
+                                        }
+                                    } else {
+                                        $(self).focus();
+                                    }
+                                }
                             }
                         }
                     });
