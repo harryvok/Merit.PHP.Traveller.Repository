@@ -11,7 +11,7 @@
     <AssemblyName>4.0</AssemblyName>
     <IISProjectUrl>http://localhost:65236/</IISProjectUrl>
     <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-    <Server>PHPDev</Server>
+    <Server>IISExpress</Server>
     <PublishEvent>None</PublishEvent>
     <PHPDevAutoPort>True</PHPDevAutoPort>
     <PHPDevPort>29268</PHPDevPort>
