@@ -325,6 +325,7 @@ if(isset($_SESSION['user_id'])){
                 </div>
 
                 <input type="hidden" name="action" value="CreateRequest" />
+                <div id="LC_Adress"></div>
                 <div id="adhocOfficer">
                 </div>
                 <div id="submitButton">
