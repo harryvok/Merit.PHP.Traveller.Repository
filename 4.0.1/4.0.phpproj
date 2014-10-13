@@ -101,6 +101,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="framework\view\mobile\view.mobile.ActionDelete.php" />
+    <Compile Include="framework\view\mobile\view.mobile.ActionDocuments.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionReopen.php" />
     <Compile Include="framework\view\mobile\view.mobile.Audit.php" />
     <Compile Include="framework\view\mobile\view.mobile.DocumentSearchResults.php" />

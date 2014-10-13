@@ -764,6 +764,7 @@ class Model {
         
     }
     
+    
     public function getAudit($params = NULL){
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
