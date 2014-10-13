@@ -40,17 +40,38 @@ function GetAddressDetails() {
                 streetSuburb: function () { return $("#lsuburb").val() }
             },
             success: function (data) {
-                //alert("prop id: " + data.property_no);
-                if (data.property_no == "0" || data.property_no == "" ) {
-                    $("#property_no").val("").removeClass("ui-autocomplete-loading");
+                //alert("count: " + data.length);
+                
+                if (data.property_count > "1") {
+                    $.ajax({
+                        url: 'inc/ajax/ajax.propertySearch.php',
+                        type: 'post',
+                        data: {
+                            addressId: data.address_id,
+                            streetNumber: function () { return $("#lfno").val() },
+                            streetName: function () { return $("#lstreet").val() },
+                            streetType: function () { return $("#ltype").val() },
+                            streetSuburb: function () { return $("#lsuburb").val() }
+                        },
+                        success: function (data) {
+                            Unload();
+                            $('#popup').html(data);
+                        }
+                    });
                 }
-                else {                    
-                    $("#property_no").val(data.property_no).removeClass("ui-autocomplete-loading");
+                else {
+                    if (data.property_no == "0") {
+                        $("#property_no").val("").removeClass("ui-autocomplete-loading");
+                    }
+                    else {
+                        $("#property_no").val(data.property_no).removeClass("ui-autocomplete-loading");
+                    }
+                    $("#address").val(data.address_id);
+                    $("#addressId").val(data.address_id);
                 }
-                $("#address").val(data.address_id);
-                $("#addressId").val(data.address_id);
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
                 $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
+
                 if (data.address_id != "0" || data.address_id != "" || data.address_id > 0 ) {
                     $("#AddrSummary").removeAttr("disabled");
                 }

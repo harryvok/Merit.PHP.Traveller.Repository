@@ -22,7 +22,7 @@ class Model {
         if(defined("WEB_SERVICES_PATH")){
             try{
                 $wsdl = WEB_SERVICES_PATH.$file."?wsdl";
-                $client = new SoapClient ($wsdl, array('cache_wsdl' => WSDL_CACHE_NONE) );
+                $client = new SoapClient ($wsdl, array('cache_wsdl' => WSDL_CACHE_NONE) );                
                 $result = $client->{$web_service}($parameters)->{$web_service."Result"};
                 return $result;
             }
@@ -470,6 +470,20 @@ class Model {
         
         return $result;
     }
+    
+    public function getPropertySearch($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->address_id = isset($_POST['address_id']) ? $_POST['address_id'] : "0";
+        $parameters->house_no = isset($_POST['streetNumber']) ? $_POST['streetNumber'] : "0";
+        $parameters->street_name = isset($_POST['streetName']) ? $_POST['streetName'] : "";
+        $parameters->street_type = isset($_POST['streetType']) ? $_POST['streetType'] : "";
+        $parameters->locality_name = isset($_POST['streetSuburb']) ? $_POST['streetSuburb'] : "";
+        $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_get_property", $parameters) -> property_dets;        
+        return $result;
+    }
+    
 
     public function getCustomerTypes($params = NULL){
         $parameters = new stdClass();
