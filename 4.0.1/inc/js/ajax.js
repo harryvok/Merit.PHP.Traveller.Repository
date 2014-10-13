@@ -497,6 +497,7 @@ function searchDocument() {
         success: function (data) {
             Unload();
             $("#searchResults").html(data);
+            $("#searchResults").trigger("create");
         }
     });
 }

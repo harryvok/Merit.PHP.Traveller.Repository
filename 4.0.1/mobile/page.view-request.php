@@ -209,6 +209,9 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
 			$controller->Display("Comments", "RequestComments");
 			$controller->Display("Attachments", "RequestAttachments");
 		}
+        if(isset($_GET['d']) && $_GET['d'] == "documents"){
+            Display("RequestDocuments", "RequestDocuments",$model,$device,$actionData, $requestData);
+        }
         function Display($action, $view, $model, $device,$actionData, $requestData, $params = NULL){
             $actionData=$actionData;
             $requestData=$requestData;
@@ -268,6 +271,22 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
                         $GLOBALS['result'] = array("action"=>$actionData ,"outcomes" => $result_out/*, "udfs" => $result_udfs['udfs']*/);
                         
                         
+                    }else if($action == "RequestDocuments"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+                        $rere = $result->ws_status;
+                        if($result->ws_status != "0")
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+                        else{
+                            $parameters = new stdClass();
+                            $parameters->user_id = $_SESSION['user_id'];
+                            $parameters->password = $_SESSION['password'];
+                            $parameters->request_id = $_GET['id'];
+                            $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+                        }
                     }
                     else
                         $GLOBALS['result'] = $model->{"get".$action}($params);
@@ -342,6 +361,22 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
                     }
                     else if($action == "RequestDelete"){
                         $GLOBALS['result'] = 0;
+                    }else if($action == "RequestDocuments"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+                        $rere = $result->ws_status;
+                        if($result->ws_status != "0")
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+                        else{
+                            $parameters = new stdClass();
+                            $parameters->user_id = $_SESSION['user_id'];
+                            $parameters->password = $_SESSION['password'];
+                            $parameters->request_id = $_GET['id'];
+                            $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+                        }
                     }
                     else
                         $GLOBALS['result'] = $model->{"get".$action}($params);

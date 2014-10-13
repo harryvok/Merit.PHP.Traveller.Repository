@@ -11,7 +11,7 @@
     <AssemblyName>4.0</AssemblyName>
     <IISProjectUrl>http://localhost:65236/</IISProjectUrl>
     <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-    <Server>IISExpress</Server>
+    <Server>PHPDev</Server>
     <PublishEvent>None</PublishEvent>
     <PHPDevAutoPort>True</PHPDevAutoPort>
     <PHPDevPort>29268</PHPDevPort>
@@ -103,7 +103,9 @@
     <Compile Include="framework\view\mobile\view.mobile.ActionDelete.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionReopen.php" />
     <Compile Include="framework\view\mobile\view.mobile.Audit.php" />
+    <Compile Include="framework\view\mobile\view.mobile.DocumentSearchResults.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestDelete.php" />
+    <Compile Include="framework\view\mobile\view.mobile.RequestDocuments.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestProcess.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestReopen.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestRecategorise.php" />
