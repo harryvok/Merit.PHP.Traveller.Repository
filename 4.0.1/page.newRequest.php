@@ -170,27 +170,35 @@ if(!isset($_GET['d'])){
                         <label for="lno">Flat/Unit Number</label>
                         <input class="text" name='lfaddno' onChange=""  id="lfno" maxlength='15' value='<?php if(isset($_SESSION['rem_lfaddno'])){ echo $_SESSION['rem_lfaddno']; } ?>'>
                     </div>
+
+
+
+                   <?php #Address lookup fields ?>
                     <div class="column r25">
                         <label for="lfno">Street Number</label>
-                        <input class="text" name='lno' onChange="" id="lno" maxlength='15' value='<?php if(isset($_SESSION['rem_lno'])){ echo $_SESSION['rem_lno']; } ?>'>
+                        <input class="text" name='lno'  id="lno" maxlength='15' value='<?php if(isset($_SESSION['rem_lno'])){ echo $_SESSION['rem_lno']; } ?>'>
                     </div>
                     
                     <div class="column r25">
                         <label for="lstreet">Street Name<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                        <input class="text checkNone" name='lstreet' onChange="" id="lstreet" data-mand="location_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_lstreet'])){ echo $_SESSION['rem_lstreet']; } ?>'>
+                        <input class="text checkNone" name='lstreet'  id="lstreet" data-mand="location_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_lstreet'])){ echo $_SESSION['rem_lstreet']; } ?>'>
                     </div>
                     <div class="column r25">
                         <label for="ltype">Street Type<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                        <input class="text checkNone" name='ltype' onChange="" id="ltype" data-mand="location_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_ltype'])){ echo $_SESSION['rem_ltype']; } ?>'>
+                        <input class="text checkNone" name='ltype'  id="ltype" data-mand="location_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_ltype'])){ echo $_SESSION['rem_ltype']; } ?>'>
                     </div>
                     <div class="float-left">
                         <div class="column r25">
                             <label for="lsuburb">Suburb<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                            <input class="text checkNone" name='lsuburb' onChange="" id="lsuburb" data-mand="location_address"  disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'>
+                            <input class="text checkNone" name='lsuburb' id="lsuburb" data-mand="location_address"  disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'>
                         </div>
+                    <?php #Address lookup fields ?>
+
+
+
                         <div class="column r25">
                             <label for="lpostcode">Postcode</label>
-                            <input class="text checkNone" name='lpostcode' onChange="" id="lpostcode" data-mand="location_postcode" maxlength='100' value=''>
+                            <input class="text checkNone getadd" name='lpostcode' onChange="" id="lpostcode" data-mand="location_postcode" maxlength='100' value=''>
                         </div>
                         <div class="column r25">
                         <label>Property Number</label>
