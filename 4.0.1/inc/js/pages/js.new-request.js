@@ -315,7 +315,6 @@ $(document).ready(function () {
                 var searchTerm = $("#surname").val() + "," + $("#given").val();
                 searchCustomerDocument(searchTerm, "cust_searchResults");
             }
-
             if (check_fields()) {
                 var self = this;
                 $(this).addClass("ui-autocomplete-loading");
