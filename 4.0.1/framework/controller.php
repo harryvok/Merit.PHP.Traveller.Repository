@@ -65,6 +65,7 @@ class Controller {
 				"Streets" => $_SESSION['roleSecurity']->maint_new_request,
 				"StreetTypes" => $_SESSION['roleSecurity']->maint_new_request,
 				"Suburbs" => $_SESSION['roleSecurity']->maint_new_request,
+                "PropertySearch" => $_SESSION['roleSecurity']->maint_new_request,
 				"NameLookup" => $_SESSION['roleSecurity']->maint_new_request,
 				"FacilitiesLookup" => $_SESSION['roleSecurity']->maint_new_request,
 				"KeywordSearch" => $_SESSION['roleSecurity']->maint_new_request,

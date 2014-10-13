@@ -466,6 +466,7 @@ if(!isset($_GET['d'])){
         <p>&nbsp;</p>
         <input type="hidden" name="action" value="CreateRequest" />
         <input type="hidden" id="ok" value='0' />
+<!--        <div id="Div1" style="display:none;"></div>-->
         <div id="adhocOfficer" style="display:none;"></div>
 
         <div id="submitButton">
