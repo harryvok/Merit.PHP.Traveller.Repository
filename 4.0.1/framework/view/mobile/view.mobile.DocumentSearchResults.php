@@ -56,8 +56,28 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
     $(".Link").on(eventName, function () {
         var docid = $(this).attr("data-docid");
         $("#selectedDocument").val(docid);
-        Load();
-        $("#linkdocument").submit();
+        
+       // if view request/action documents. else new request
+        if ($("#linkdocument").length > 0) {
+            Load();
+            $("#linkdocument").submit();
+        } else {
+            var selectedDocument = $("#selectedDocument").val();
+            var currentdocuments = $("#documentsToLink").val();
+            if (currentdocuments != "") {
+                if (currentdocuments.indexOf(selectedDocument) >= 0) {
+                    alert("You have already selected that document");
+                } else {
+                    if (confirm("Click OK to link this document when request is saved")) {
+                        $("#documentsToLink").val(currentdocuments + "-" + selectedDocument);
+                    }
+                }
+            } else {
+                if (confirm("Click OK to link this document when request is saved")) {
+                    $("#documentsToLink").val(selectedDocument);
+                }
+            }
+        }
     });
 </script>
 

@@ -201,6 +201,19 @@ if(isset($_SESSION['user_id'])){
                     </p>
                 </div>
                 <div data-role="collapsible" class="col" data-content-theme="c">
+                    <h4>InfoXpert Search</h4>
+                    <input class="text" name='keyword' id="searchterm"  placeholder="Search...">
+                    <label for="search_type1"><b>Correspondent (surname,given)</b></label><input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT">
+                    <label for="search_type2"><b>Document Name/Description</b></label><input type="radio" id="search_type2" name="Search_type" value="DOCNAME">
+                    <label for="search_type3"><b>Document ID</b></label><input type="radio" id="search_type3" name="Search_type" value="DOCID">
+                    <label for="search_type4"><b>Company</b></label><input type="radio" id="search_type4" name="Search_type" value="COMPANY">
+                    <label for="search_type5"><b>Full text</b></label><input type="radio" id="search_type5" name="Search_type" value="KEYWORD">
+                    <a data-role="button" class="documentSearchButton" href="#">Search...</a>
+
+                    <div id="searchResults"></div>
+                    <input type="hidden" name="selectedDocument" id="selectedDocument" />
+                </div>
+                <div data-role="collapsible" class="col" data-content-theme="c">
                     <h4>Customer Details</h4>
                     <p>
                         <input type="button" id="myDetails" value="My Details" data-role="button" />
@@ -338,6 +351,7 @@ if(isset($_SESSION['user_id'])){
                 <input type="hidden" name="buttonpressed" id="buttonpressed" value="" />
                 <input type="hidden" name="btnclick" id="btnclick" value="" />
                 <input type="hidden" name="deviceIndicator" id="deviceIndicator" value="mobile" />
+                <input type="hidden" name="documentsToLink" id="documentsToLink" />
             </form>
 
 <?php
