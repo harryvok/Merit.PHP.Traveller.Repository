@@ -203,6 +203,9 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
         if(isset($_GET['d']) && $_GET['d'] == "notifications"){
             Display("ActionNotifications", "ActionNotifications",$model,$device,$actionData, $requestData);
         }
+        if(isset($_GET['d']) && $_GET['d'] == "documents"){
+            Display("ActionDocuments", "ActionDocuments",$model,$device,$actionData, $requestData);
+        }
         
         function Display($action, $view, $model, $device,$actionData, $requestData, $params = NULL){
             $GLOBALS['action'] = $action;
@@ -250,6 +253,22 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
                         $GLOBALS['action_officer_code'] = $actionData->action_officer_code;
                         $result_o = $model->getSpecificOfficer();
                         $GLOBALS['result'] =  array("action" => $actionData, "officer" => $result_o);
+                    }else if($action == "ActionDocuments"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+                        $rere = $result->ws_status;
+                        if($result->ws_status != "0")
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+                        else{
+                            $parameters = new stdClass();
+                            $parameters->user_id = $_SESSION['user_id'];
+                            $parameters->password = $_SESSION['password'];
+                            $parameters->request_id =$_SESSION['request_id'];
+                            $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+                        }
                     }else if($action == "ActionComplete"){
                         $parameters_out = new stdClass();
                         $parameters_out->user_id = $_SESSION['user_id'];
@@ -322,6 +341,22 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
                         $GLOBALS['action_officer_code'] = $actionData->action_officer_code;
                         $result_o = $model->getSpecificOfficer();
                         $GLOBALS['result'] =  array("action" => $actionData, "officer" => $result_o);
+                    }else if($action == "ActionDocuments"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+                        $rere = $result->ws_status;
+                        if($result->ws_status != "0")
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "errorConnecting" => true);
+                        else{
+                            $parameters = new stdClass();
+                            $parameters->user_id = $_SESSION['user_id'];
+                            $parameters->password = $_SESSION['password'];
+                            $parameters->request_id =$_SESSION['request_id'];
+                            $result = $model->WebService(MERIT_TRAVELLER_FILE, "ws_get_edms_links", $parameters)->doc_dets;
+                            $GLOBALS['result']= array("action" => $actionData, "request" => $requestData, "docdets" => $result);
+                        }
                     }else if($action == "ActionComplete"){
                         $parameters_out = new stdClass();
                         $parameters_out->user_id = $_SESSION['user_id'];
