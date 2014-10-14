@@ -27,6 +27,8 @@ function getIntray(intray, i) {
 
 function GetAddressDetails() {
     //alert("coming ajax");
+    $("#loc_address").val("Y");
+    $("#cust_address").val("N");
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
@@ -44,11 +46,11 @@ function GetAddressDetails() {
                 
                 if (data.property_count > "1") {
                     $.ajax({
-                        url: 'inc/ajax/ajax.propertySearch.php',
+                        url: 'inc/ajax/ajax.getPropertySearch.php',
                         type: 'post',
                         data: {
                             addressId: data.address_id,
-                            streetNumber: function () { return $("#lfno").val() },
+                            streetNumber: function () { return $("#lno").val() },
                             streetName: function () { return $("#lstreet").val() },
                             streetType: function () { return $("#ltype").val() },
                             streetSuburb: function () { return $("#lsuburb").val() }
@@ -68,19 +70,20 @@ function GetAddressDetails() {
                     }
                     $("#address").val(data.address_id);
                     $("#addressId").val(data.address_id);
-                }
+                    if ($("#addressId").val() != "0" || $("#addressId").val() != "" || $("#addressId").val() != 0) {
+                        $("#AddrSummary").removeAttr("disabled");
+                    }
+                }                
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
-                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
-
-                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0 ) {
-                    $("#AddrSummary").removeAttr("disabled");
-                }
+                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");                
             }
         });
-    }
+    }    
 }
 
 function GetCustomerAddressDetails() {
+    $("#loc_address").val("N");
+    $("#cust_address").val("Y");
     if ($("#same").val() == "s" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
         || $("#same").val() == "i" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
         $.ajax({
@@ -95,16 +98,34 @@ function GetCustomerAddressDetails() {
                 streetSuburb: function () { return $("#i_csuburb").val() }
             },
             success: function (data) {
-                //alert(data.property_no);
-                $("#cust_address_id").val(data.address_id);
-                if (data.property_no == "0" || data.property_no == "") {
-                    $("#i_cpropertynumber").val("").removeClass("ui-autocomplete-loading");
+                if (data.property_count > "1") {
+                    $.ajax({
+                        url: 'inc/ajax/ajax.getPropertySearch.php',
+                        type: 'post',
+                        data: {
+                            addressId: data.address_id,
+                            streetNumber: function () { return $("#i_cno").val() },
+                            streetName: function () { return $("#i_cstreet").val() },
+                            streetType: function () { return $("#i_ctype").val() },
+                            streetSuburb: function () { return $("#i_csuburb").val() }
+                        },
+                        success: function (data) {
+                            Unload();
+                            $('#popup').html(data);
+                        }
+                    });
                 }
                 else {
-                    $("#i_cpropertynumber").val(data.property_no).removeClass("ui-autocomplete-loading");
-                }
-                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
-                    $("#CustAddSummary").removeAttr("disabled");
+                    $("#cust_address_id").val(data.address_id);
+                    if (data.property_no == "0" || data.property_no == "") {
+                        $("#i_cpropertynumber").val("").removeClass("ui-autocomplete-loading");
+                    }
+                    else {
+                        $("#i_cpropertynumber").val(data.property_no).removeClass("ui-autocomplete-loading");
+                    }
+                    if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
+                        $("#CustAddSummary").removeAttr("disabled");
+                    }
                 }
             }
         });

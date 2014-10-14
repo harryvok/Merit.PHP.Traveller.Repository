@@ -154,6 +154,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" id="address_gps" name="address_gps" />
                         <input type="hidden" id="defaultLat" value="-37.814107" />
                         <input type="hidden" id="defaultLng" value="144.96328" />
+                        <input type="hidden" name="loc_address" id="loc_address" value="" />
                         <label>Facility Type</label>
                         <input class="text"  placeholder="Search..." name='facilityTypeInput' id="facilityTypeInput" value='<?php if(isset($_SESSION['rem_facilityTypeInput'])){ echo $_SESSION['rem_facilityTypeInput']; } ?>'>
                         <input type="hidden" name='facilityTypeId' id="facilityTypeId" value='<?php if(isset($_SESSION['rem_facilityTypeId'])){ echo $_SESSION['rem_facilityTypeId']; } ?>'>
@@ -292,8 +293,10 @@ if(isset($_SESSION['user_id'])){
 
 
                             <label>Postcode</label>
-                            <input name='i_cpostcode' id="i_cpostcode"  maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'>
+                            <input name='i_cpostcode' id="i_cpostcode"  maxlength='6'>
 
+                            <label>Property</label>
+                            <input name='i_cpropertynumber' id="i_cpropertynumber" />
 
                             <label>Description</label>
                             <textarea id="i_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
@@ -328,6 +331,7 @@ if(isset($_SESSION['user_id'])){
                         </div>
                         <input type="hidden" name="cust_address_id" id="cust_address_id" value="0" />
                         <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" value="0" />
+                        <input type="hidden" name="cust_address" id="cust_address" value="" />
                     </p>
                 </div>
 
@@ -341,6 +345,7 @@ if(isset($_SESSION['user_id'])){
                 </div>
 
                 <input type="hidden" name="action" value="CreateRequest" />
+                <div id="LC_Adress"></div>
                 <div id="adhocOfficer">
                 </div>
                 <div id="submitButton">

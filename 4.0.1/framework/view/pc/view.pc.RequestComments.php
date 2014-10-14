@@ -73,18 +73,18 @@
                     elseif(isset($GLOBALS['result']->request_remark_details) && count($GLOBALS['result']->request_remark_details) == 1){
                         $result_c_get = $GLOBALS['result']->request_remark_details;
                     ?>
-                    <tr class="dark" title="" id="Comment0ParentObject">
+                    <tr class="dark" title="" id="CommentParentObject">
                         <td><?php if($result_c_get->action_id == 0){ echo "Request"; } else { echo "Action"; } ?></td>
                         <td><?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name; ?><?php } ?></td>
                         <td><?php if(strlen($result_c_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_c_get->note_datetime))); }  ?></td>
                         <td><?php echo $result_c_get->officer; ?></td>
                         <td><?php echo $result_c_get->sub_type; ?></td>
                         <td>
-                            <div id="Comment0Label"><?php if(isset($result_c_get->comment)) echo base64_decode($result_c_get->comment); ?></div>
-                            <div class="editTextDiv" id="Comment0Edit">
-                                <textarea spellcheck="true" id="Comment0TextVal" data-mode="MODIFY" data-request-id="<?php echo $_GET['id']; ?>" data-note-id="<?php echo $result_c_get->note_id; ?>" data-action-id="<?php echo $result_c_get->action_id; ?>" data-note-class="<?php echo $result_c_get->note_class; ?>"><?php if(isset($result_c_get->comment)){ echo base64_decode($result_c_get->comment); } ?></textarea>
-                                <input type="button" id="Comment0Submit" value="Save" data-action="Comment" />
-                                <a class="editClose" id="Comment0Close">Close</a>
+                            <div id="CommentLabel"><?php if(isset($result_c_get->comment)) echo base64_decode($result_c_get->comment); ?></div>
+                            <div class="editTextDiv" id="CommentEdit">
+                                <textarea spellcheck="true" id="CommentTextVal" data-mode="MODIFY" data-request-id="<?php echo $_GET['id']; ?>" data-note-id="<?php echo $result_c_get->note_id; ?>" data-action-id="<?php echo $result_c_get->action_id; ?>" data-note-class="<?php echo $result_c_get->note_class; ?>"><?php if(isset($result_c_get->comment)){ echo base64_decode($result_c_get->comment); } ?></textarea>
+                                <input type="button" id="CommentSubmit" value="Save" data-action="Comment" />
+                                <a class="editClose" id="CommentClose">Close</a>
                             </div>
                         </td>
                         <td>
