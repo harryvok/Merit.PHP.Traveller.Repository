@@ -1355,13 +1355,13 @@ function changeLocationType() {
         $('#inside_ca').hide();
         $('#outside_ca').show();
         
-        $('#o_cno').val();
-        $('#o_cfno').val();
-        $('#o_cstreet').val();
-        $('#o_ctype').val();
-        $('#o_csuburb').val();
-        $('#o_cdesc').val();
-        $("#o_cpostcode").val();      
+        $('#o_cno').val("");
+        $('#o_cfno').val("");
+        $('#o_cstreet').val("");
+        $('#o_ctype').val("");
+        $('#o_csuburb').val("");
+        $('#o_cdesc').val("");
+        $("#o_cpostcode").val("");      
 
         if ($("#o_ctype").val().length > 0) {
             $("#o_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable");

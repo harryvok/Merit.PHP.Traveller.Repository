@@ -246,6 +246,7 @@
     <Compile Include="framework\view\mobile\view.mobile.srfUDFs.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="framework\view\mobile\view.mobile.PropertySearch.php" />
     <Compile Include="framework\view\pc\dropdown\view.pc.Centres.php">
       <SubType>Code</SubType>
     </Compile>
@@ -442,7 +443,7 @@
     <Compile Include="inc\ajax\ajax.getSearchUDFs.php" />
     <Compile Include="inc\ajax\ajax.getSRFRedText.php" />
     <Compile Include="inc\ajax\ajax.notifyInsuranceOfficer.php" />
-    <Compile Include="inc\ajax\ajax.popertySearch.php" />
+    <Compile Include="inc\ajax\ajax.getPropertySearch.php" />
     <Compile Include="inc\ajax\ajax.RequestSearch.php" />
     <Compile Include="inc\ajax\ajax.getRequestHistory.php" />
     <Compile Include="inc\ajax\ajax.chkCountOnly.php">
