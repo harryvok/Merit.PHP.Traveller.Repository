@@ -168,6 +168,29 @@ $(document).ready(function () {
             });
         }
     });
+    $(".Unlink").on(eventName, function () {
+        var docID = $(this).attr("data-docid");
+        unlinkDocument(docID);
+    });
+
+    $(".Metadata").on(eventName, function () {
+        var rownum = $(this).attr("data-rownum");
+        $("#Document" + rownum + "MetaData").toggle();
+    });
+    $(".closeEdit").on(eventName, function () {
+        var id = $(this).attr("id");
+        $("#" + id + "Edit").toggle();
+    });
+    $(".toggleLinkDocForm").on(eventName, function () {
+        var id = $(this).attr("id");
+        $("#linkdocument").slideToggle();
+    });
+    
+    $(".documentSearchButton").on(eventName, function () {
+        if ($("#searchterm").val() != "") {
+            searchDocument();
+        }
+    });
     
     $(".deleteAttachment").on(eventName, function () {
 
