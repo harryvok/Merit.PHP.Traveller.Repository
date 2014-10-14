@@ -2,17 +2,34 @@
     if(isset($GLOBALS['result']->property_details)){
 ?>
     <script type="text/javascript">
-		$(document).ready(function(){
-			$('.address_row').click(function(){
-				var id = $(this).attr('id');
-				//$('#same').val('i');
-				$('#lno').val(" <?php $result_n_ar->unit_number; ?>"); // Unit number
-			    $('#property_no').val("<?php $result_n_ar->property_no; ?>").removeClass("ui-autocomplete-loading");;
-			    $('#address_id').val("<?php $result_n_ar->address_id; ?>"); 			
-			    $('#address').val("<?php $result_n_ar->address_id; ?>"); 	
-				$('#popup').fadeOut("fast");
-			});   
-            
+        $(document).ready(function () {
+            $("#popup").fadeIn("fast");
+        });
+
+        $(document).on("dblclick", ".address_row", function () {
+            var id = "";
+            var id = $(this).attr('id');
+			if ($("#loc_address").val() == "Y" && $("#cust_address").val() == "N") {
+			    $('#lfno').val($('#ret_' + id + '_house_number').val());
+			    $('#property_no').removeClass("ui-autocomplete-loading");
+			    $('#property_no').val($('#ret_' + id + '_property_no').val());
+			    $('#addressId').val($('#ret_' + id + '_address_id').val());
+			    $('#address').val($('#ret_' + id + '_address_id').val());
+			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
+			        $("#AddrSummary").prop("disabled", true);
+			    }
+			}
+			else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
+			    $('#i_cfno').val($('#ret_' + id + '_house_number').val());
+			    $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
+			    $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+			    $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
+			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
+			        $("#CustAddSummary").prop("disabled", true);
+			    }
+			}
+			
+			$('#popup').fadeOut("fast");           
 		});
 	</script>
     <h1>Found Properties<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
@@ -23,7 +40,7 @@
         <!--<th class="job-id sortable">Unit/Flat Number</th>-->
         <!--<th class="job-id sortable">Unit</th>
         <th class="job-id sortable">Unit Suffix</th>-->
-        <th class="job-id sortable">House/th>
+        <th class="job-id sortable">House</th>
         <th class="job-id sortable">Suffix</th>
         <th class="job-id sortable">Street Name</th>
         <th class="job-id sortable">Locality</th>
@@ -39,9 +56,11 @@
     <tbody>
     <?php
     $number=0;
+    $count = 0;
     if(isset($GLOBALS['result']->property_details) && count($GLOBALS['result']->property_details) > 1){
         foreach($GLOBALS['result']->property_details as $result_n_ar){
             $set = $result_n_ar->address_id;
+            
             $number = $number+1;
             if($number == 2){
                 $class = "dark";
@@ -51,10 +70,11 @@
                 $class = "light";
             }
             ?>     
-                <tr class="<?php echo $class; ?> address_row" id="<?php echo $set; ?>" title="">
-                    <!--<td>  <?php # echo "0"; ?></td>
-                    <td><?php  # echo ""; ?></td>-->
-                    <td><?php if(isset($result_n_ar->house_number)){ echo $result_n_ar->house_number; } else { echo ""; } ?></td>
+                <tr class="<?php echo $class; ?> address_row" id="<?php echo $set.$count; ?>" title="">
+                    
+                    <input type="hidden" id="ret_<?php echo $set.$count; ?>_house_number" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; else echo $result_n_ar->house_number; ?>" />
+                    <input type="hidden" id="ret_<?php echo $set.$count; ?>_property_no" value="<?php if(isset($result_n_ar->property_no)){ echo $result_n_ar->property_no; } else { echo ""; } ?>" />
+                    <input type="hidden" id="ret_<?php echo $set.$count; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" /><td><?php if(isset($result_n_ar->house_number)){ echo $result_n_ar->house_number; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->street_name) && ($result_n_ar->street_type )){ echo $result_n_ar->street_name." ".$result_n_ar->street_type; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->locality)){ echo $result_n_ar->locality; } else { echo ""; } ?></td>
@@ -67,6 +87,7 @@
                     <td><?php if(isset($result_n_ar->rate_analysis)){ echo $result_n_ar->rate_analysis; } else { echo ""; } ?></td>                
                 </tr>
                 <?php
+            $count++;
         }
     }
     ?>

@@ -238,6 +238,7 @@ if(!isset($_GET['d'])){
                     <input type="hidden" id="gmaps_x" name="gmaps_x" />
                     <input type="hidden" id="gmaps_y" name="gmaps_y" />
                     <input type="hidden" id="address_gps" name="address_gps" />
+                    <input type="hidden" name="loc_address" id="loc_address" value="" />
                 </div>
             </div>
         </div>
@@ -434,6 +435,7 @@ if(!isset($_GET['d'])){
                         </div>
                         <input type="hidden" name="cust_address_id" id="cust_address_id" />
                         <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" />
+                        <input type="hidden" name="cust_address" id="cust_address" value="" />
                     </div>
                 </div>
                </div>
