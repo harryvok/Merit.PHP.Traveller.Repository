@@ -32,7 +32,6 @@
         });
 
         $("#closePropertySearch").click(function () {
-            alert("click");
             $('#popup').fadeOut("fast");
             $("#popup").html("");
             $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
@@ -41,7 +40,7 @@
         
 
 	</script>
-    <h1>Found Properties<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
+    <h1>Found Properties<span  class="closePropertySearch" id="closePropertySearch"><img src="images/delete-icon.png" />Close</span></h1>
 	<div>
     <table id="propertyLookupTable" class=" sortable" title="" cellspacing="0" style="color:black;">
     <thead>
