@@ -1,7 +1,7 @@
 <?php
 if(isset($_GET['filter'])){ $filter = strip_tags($_GET['filter']); } else { $filter=""; }
-if(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS['result']->address_det->address_details) > 1){
-	foreach($GLOBALS['result']->address_det->address_details as $address)
+if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
+	foreach($GLOBALS['result']['request']->address_det->address_details as $address)
 	{
 		if($address->address_type == "Customer"){
 			$cust_address_id = $address->address_id;
@@ -27,8 +27,8 @@ if(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS['re
 		}
 	}
 }
-elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS['result']->address_det->address_details) == 1){
-	$address = $GLOBALS['result']->address_det->address_details;
+elseif(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) == 1){
+	$address = $GLOBALS['result']['request']->address_det->address_details;
 	if($address->address_type == "Customer"){
 		$cust_address_id = $address->address_id;
 		$cust_house_number = $address->house_number;
@@ -57,34 +57,34 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
 <ul class="no-ellipses" class="no-ellipses" data-role="listview" data-inset="true" data-divider-theme="d">
     <li data-role="list-divider">Request Details</li>
     <li>
-        <p><?php if($GLOBALS['result']->count_only == "Y"){ echo "Count Only"; }  ?></p>
+        <p><?php if($GLOBALS['result']['request']->count_only == "Y"){ echo "Count Only"; }  ?></p>
     </li>
     <li>
         <p><strong>Request ID:</strong> <?php echo $GLOBALS['request_id']; ?></p>
     </li>
-    <?php if(isset($GLOBALS['result']->request_datetime) && strlen($GLOBALS['result']->request_datetime) > 0){ ?><li>
-        <p><strong>Date Input:</strong> <?php if(strlen($GLOBALS['result']->request_datetime) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']->request_datetime))); } ?></p>
+    <?php if(isset($GLOBALS['result']['request']->request_datetime) && strlen($GLOBALS['result']['request']->request_datetime) > 0){ ?><li>
+        <p><strong>Date Input:</strong> <?php if(strlen($GLOBALS['result']['request']->request_datetime) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->request_datetime))); } ?></p>
     </li><?php } ?>
-    <?php if(isset($GLOBALS['result']->due_datetime) && strlen($GLOBALS['result']->due_datetime) > 0){ ?><li>
-        <p><strong>Due Date:</strong> <?php if(strlen($GLOBALS['result']->due_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']->due_datetime))); } ?></p>
+    <?php if(isset($GLOBALS['result']['request']->due_datetime) && strlen($GLOBALS['result']['request']->due_datetime) > 0){ ?><li>
+        <p><strong>Due Date:</strong> <?php if(strlen($GLOBALS['result']['request']->due_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); } ?></p>
     </li><?php } ?>
-    <?php if(isset($GLOBALS['result']->status) && strlen($GLOBALS['result']->status) > 0){ ?><li>
-        <p><strong>Completed Date:</strong> <?php if($GLOBALS['result']->finalised_ind == "Y"){ if(strlen($GLOBALS['result']->status_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']->status_datetime))); } } ?></p>
+    <?php if(isset($GLOBALS['result']['request']->status) && strlen($GLOBALS['result']['request']->status) > 0){ ?><li>
+        <p><strong>Completed Date:</strong> <?php if($GLOBALS['result']['request']->finalised_ind == "Y"){ if(strlen($GLOBALS['result']['request']->status_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->status_datetime))); } } ?></p>
     </li><?php } ?>
-    <?php if(isset($GLOBALS['result']->priority) && strlen($GLOBALS['result']->priority) > 0){ ?><li>
-        <p><strong>Priority:</strong> <?php echo $GLOBALS['result']->priority; ?></p>
+    <?php if(isset($GLOBALS['result']['request']->priority) && strlen($GLOBALS['result']['request']->priority) > 0){ ?><li>
+        <p><strong>Priority:</strong> <?php echo $GLOBALS['result']['request']->priority; ?></p>
     </li><?php } ?>
-    <?php if(isset($GLOBALS['result']->refer_no) && strlen($GLOBALS['result']->refer_no) > 0){ ?><li>
-        <p><strong>Reference Number:</strong> <?php if(isset($GLOBALS['result']->refer_no)){ echo $GLOBALS['result']->refer_no; } ?></p>
+    <?php if(isset($GLOBALS['result']['request']->refer_no) && strlen($GLOBALS['result']['request']->refer_no) > 0){ ?><li>
+        <p><strong>Reference Number:</strong> <?php if(isset($GLOBALS['result']['request']->refer_no)){ echo $GLOBALS['result']['request']->refer_no; } ?></p>
     </li><?php } ?>
-    <?php if(isset($GLOBALS['result']->officer_responsible_name) && strlen($GLOBALS['result']->officer_responsible_name) > 0){ ?><li>
-        <p><strong>Request Officer:</strong> <?php if(isset($GLOBALS['result']->officer_responsible_name)){ echo $GLOBALS['result']->officer_responsible_name; } ?></p>
+    <?php if(isset($GLOBALS['result']['request']->officer_responsible_name) && strlen($GLOBALS['result']['request']->officer_responsible_name) > 0){ ?><li>
+        <p><strong>Request Officer:</strong> <?php if(isset($GLOBALS['result']['request']->officer_responsible_name)){ echo $GLOBALS['result']['request']->officer_responsible_name; } ?></p>
     </li><?php } ?>
-    <?php if(isset($GLOBALS['result']->input_by_name) && strlen($GLOBALS['result']->input_by_name) > 0){ ?><li>
-        <p><strong>Input Officer:</strong> <?php if(isset($GLOBALS['result']->input_by_name)){ echo $GLOBALS['result']->input_by_name; } ?></p>
+    <?php if(isset($GLOBALS['result']['request']->input_by_name) && strlen($GLOBALS['result']['request']->input_by_name) > 0){ ?><li>
+        <p><strong>Input Officer:</strong> <?php if(isset($GLOBALS['result']['request']->input_by_name)){ echo $GLOBALS['result']['request']->input_by_name; } ?></p>
     </li><?php } ?>
-    <?php if(isset($GLOBALS['result']->how_received_name) && strlen($GLOBALS['result']->how_received_name) > 0){ ?><li>
-        <p><strong>How Received:</strong> <?php if(isset($GLOBALS['result']->how_received_name)){ echo $GLOBALS['result']->how_received_name; } ?></p>
+    <?php if(isset($GLOBALS['result']['request']->how_received_name) && strlen($GLOBALS['result']['request']->how_received_name) > 0){ ?><li>
+        <p><strong>How Received:</strong> <?php if(isset($GLOBALS['result']['request']->how_received_name)){ echo $GLOBALS['result']['request']->how_received_name; } ?></p>
     </li><?php } ?>
     <li data-role="list-divider">Issue Details</li>
     <li>
@@ -92,10 +92,10 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
         <p>
             <strong>Request Description:</strong>
             <br />
-            <div id="EditDescriptionLabel"><?php /* Display the description */  echo base64_decode($GLOBALS['result']->request_description); ?></div>
+            <div id="EditDescriptionLabel"><?php /* Display the description */  echo base64_decode($GLOBALS['result']['request']->request_description); ?></div>
         </p>
         <div id="EditDescriptionEdit" class="editTextDiv">
-            <textarea spellcheck="true" name="EditDescriptionText" id="EditDescriptionTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']->request_description)){ echo base64_decode($GLOBALS['result']->request_description); } ?></textarea>
+            <textarea spellcheck="true" name="EditDescriptionText" id="EditDescriptionTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo base64_decode($GLOBALS['result']['request']->request_description); } ?></textarea>
             <input type="button" id="EditDescriptionSubmit" data-action="Request" value="Save" />
             <a href="#" class="editClose" id="EditDescriptionClose">Close</a>
         </div>
@@ -109,10 +109,10 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
         <p>
             <strong>Request Instruction:</strong>
             <br />
-            <div id="EditInstructionsLabel"><?php /* Display the description */  echo base64_decode($GLOBALS['result']->request_instruction); ?></div>
+            <div id="EditInstructionsLabel"><?php /* Display the description */  echo base64_decode($GLOBALS['result']['request']->request_instruction); ?></div>
         </p>
         <div id="EditInstructionsEdit" class="editTextDiv">
-            <textarea spellcheck="true" name="EditInstructionsText" id="EditInstructionsTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']->request_instruction)){ echo base64_decode($GLOBALS['result']->request_instruction); } ?></textarea>
+            <textarea spellcheck="true" name="EditInstructionsText" id="EditInstructionsTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></textarea>
             <input type="button" id="EditInstructionsSubmit" data-action="Request" value="Save" />
             <a class="editClose" id="EditInstructionsClose">Close</a>
         </div>
@@ -153,8 +153,8 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
     </li>
     <?php
     }
-    if(isset($GLOBALS['result']->facility_det) && count($GLOBALS['result']->facility_det) > 0){
-        foreach($GLOBALS['result']->facility_det as $facility){
+    if(isset($GLOBALS['result']['request']->facility_det) && count($GLOBALS['result']['request']->facility_det) > 0){
+        foreach($GLOBALS['result']['request']->facility_det as $facility){
     ?>
     <?php if(isset($facility->facility_name) && strlen($facility->facility_name) > 0) { ?><li>
         <p><strong>Facility Name:</strong> <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?></p>
@@ -168,8 +168,8 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
     <?php
         }
     }
-    elseif(isset($GLOBALS['result']->facility_det->facility_details) && count($GLOBALS['result']->facility_det->facility_details) == 1){
-        $facility = $GLOBALS['result']->facility_det->facility_details;
+    elseif(isset($GLOBALS['result']['request']->facility_det->facility_details) && count($GLOBALS['result']['request']->facility_det->facility_details) == 1){
+        $facility = $GLOBALS['result']['request']->facility_det->facility_details;
     ?>
     <?php if(isset($facility->facility_name) && strlen($facility->facility_name) > 0) { ?><li>
         <p><strong>Facility Name:</strong> <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?></p>
@@ -186,56 +186,56 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
 
     <li data-role="list-divider">Customer Details</li>
     <?php
-    if(isset($GLOBALS['result']->customer_name_det->customer_name_details->name_type) && strlen($GLOBALS['result']->customer_name_det->customer_name_details->name_type) > 0){
+    if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) > 0){
     ?>
     <li>
-        <p><strong>Customer Type:</strong> <?php echo $GLOBALS['result']->customer_name_det->customer_name_details->name_type; ?></p>
+        <p><strong>Customer Type:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type; ?></p>
     </li>
     <?php
     }
-    if(isset($GLOBALS['result']->customer_name_det->customer_name_details->given_names)  && strlen($GLOBALS['result']->customer_name_det->customer_name_details->given_names) > 0 || isset($GLOBALS['result']->customer_name_det->customer_name_details->surname) && strlen($GLOBALS['result']->customer_name_det->customer_name_details->surname) > 0){
+    if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names)  && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names) > 0 || isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname) > 0){
         
     ?>
     <li>
         <?php
-        $customer = "<a href='index.php?page=view-name&id=".$GLOBALS['result']->customer_name_det->customer_name_details->name_id."&ref=".$_GET['id']."&ref_page=view-request'>".$GLOBALS['result']->customer_name_det->customer_name_details->given_names." ".$GLOBALS['result']->customer_name_det->customer_name_details->surname."</a>";
+        $customer = "<a href='index.php?page=view-name&id=".$GLOBALS['result']['request']->customer_name_det->customer_name_details->name_id."&ref=".$_GET['id']."&ref_page=view-request'>".$GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names." ".$GLOBALS['result']['request']->customer_name_det->customer_name_details->surname."</a>";
         echo $customer;
         ?>
     </li>
     <?php
     }
-    if(isset($GLOBALS['result']->customer_name_det->customer_name_details->company_name) && strlen($GLOBALS['result']->customer_name_det->customer_name_details->company_name) > 0){ ?>
+    if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name) > 0){ ?>
     <li>
-        <p><strong>Company Name:</strong> <?php if(isset($GLOBALS['result']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']->customer_name_det->customer_name_details->company_name; } ?></p>
+        <p><strong>Company Name:</strong> <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?></p>
     </li>
     <?php 
       } 
-    if(isset($GLOBALS['result']->customer_name_det->customer_name_details->telephone) && strlen($GLOBALS['result']->customer_name_det->customer_name_details->telephone) > 0){
+    if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone) > 0){
     ?>
     <li>
-        <p><strong>Phone Number:</strong> <?php echo $GLOBALS['result']->customer_name_det->customer_name_details->telephone; ?></p>
+        <p><strong>Phone Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></p>
     </li>
     <?php
     }
-    if(isset($GLOBALS['result']->customer_name_det->customer_name_details->mobile_no) && strlen($GLOBALS['result']->customer_name_det->customer_name_details->mobile_no) > 0){
+    if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no) > 0){
     ?>
     <li>
-        <p><strong>Mobile Number:</strong> <?php echo $GLOBALS['result']->customer_name_det->customer_name_details->mobile_no; ?></p>
+        <p><strong>Mobile Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></p>
     </li>
     <?php
     }
-    if(isset($GLOBALS['result']->customer_name_det->customer_name_details->work_phone) && strlen($GLOBALS['result']->customer_name_det->customer_name_details->work_phone) > 0){
+    if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone) > 0){
     ?>
     <li>
-        <p><strong>Work Number:</strong> <?php echo $GLOBALS['result']->customer_name_det->customer_name_details->work_phone; ?></p>
+        <p><strong>Work Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></p>
     </li>
     <?php
     }
     
-    if(isset($GLOBALS['result']->customer_name_det->customer_name_details->email_address) && strlen($GLOBALS['result']->customer_name_det->customer_name_details->email_address) > 0){
+    if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) > 0){
     ?>
     <li>
-        <p><strong>Email Address:</strong> <?php echo $GLOBALS['result']->customer_name_det->customer_name_details->email_address; ?></p>
+        <p><strong>Email Address:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
     </li>
     <?php
     }
@@ -292,7 +292,7 @@ elseif(isset($GLOBALS['result']->address_det->address_details) && count($GLOBALS
         if ($show_hide > 0)
         {
             ?>
-            <li data-role="list-divider">User Defined Fields</li>        
+            <li data-role="list-divider">Additional Information</li>        
             <?php
             $count_udf = 0;
             if(count($GLOBALS['result']['udfs']->udf_details) > 1){

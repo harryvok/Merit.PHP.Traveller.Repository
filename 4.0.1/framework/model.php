@@ -355,6 +355,26 @@ class Model {
         return $result;
          //$GLOBALS['result'] = $result;
     }
+    public function getBookingSummary($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->function_code = $_POST['functionID'];
+        $parameters->address_id = $_POST['addressID'];
+        $parameters->house_number = $_POST['house_number'];
+        $parameters->house_suffix = $_POST['house_suffix'];
+        $parameters->locality_name = $_POST['locality_name'];
+        $parameters->request_code = $_POST['request_code'];
+        $parameters->service_code = $_POST['service_code'];
+        $parameters->start_datetime = $_POST['start_datetime'];
+        $parameters->street_name = $_POST['street_name'];
+        $parameters->street_type = $_POST['street_type'];
+        
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_booking_details", $parameters);
+        return $result;
+        
+      
+    }
 
     public function getIfWorkflow(){
         if(isset($_GET['service_code']) && strlen($_GET['service_code']) > 0){ $service_code = $_GET['service_code']; } else { $service_code = ''; }

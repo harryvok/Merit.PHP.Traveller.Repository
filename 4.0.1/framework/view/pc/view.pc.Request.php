@@ -375,7 +375,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     {
 ?>  
 <div class="summaryContainer">
-    <h1>User Defined Fileds</h1>
+    <h1>Additional Information</h1>
     <div>
         <?php
         $count_udf = 0;
