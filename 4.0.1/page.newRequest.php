@@ -167,11 +167,11 @@ if(!isset($_GET['d'])){
                         </div>
                     </div>
                     <div class="column r25">
-                        <label for="lno">Flat/Unit Number</label>
+                        <label for="lfno">Flat/Unit Number</label>
                         <input class="text" name='lfaddno' onChange=""  id="lfno" maxlength='15' value='<?php if(isset($_SESSION['rem_lfaddno'])){ echo $_SESSION['rem_lfaddno']; } ?>'>
                     </div>
                     <div class="column r25">
-                        <label for="lfno">Street Number</label>
+                        <label for="lno">Street Number</label>
                         <input class="text" name='lno' onChange="" id="lno" maxlength='15' value='<?php if(isset($_SESSION['rem_lno'])){ echo $_SESSION['rem_lno']; } ?>'>
                     </div>
                     

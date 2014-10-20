@@ -43,6 +43,25 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 <?php
                 $number=0;
                  if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['result']->booking_dets->booking_details) > 1){
+                     foreach($GLOBALS['result']->booking_dets->booking_details as $booking_detail){
+                          $i=$i+1;
+                            $number = $number+1;
+                            if($number == 2){
+                                $class = "dark";
+                                $number = 0;
+                            }
+                            else{
+                                $class = "light";
+                            }
+                ?>
+                <tr class="<?php echo $class; ?>" id="BookingDetails<?php echo $i; ?>ParentObject">
+                                 <td><?php echo $booking_detail->booking_date; ?></td>
+                                 <td><?php echo $booking_detail->document_desc; ?></td>
+                                 <td><?php echo $booking_detail->document_desc; ?></td>
+                                 <td><?php echo $booking_detail->document_desc; ?></td>
+                            </tr>
+                <?php
+                      }
                  }
                 ?> 
             </tbody>
