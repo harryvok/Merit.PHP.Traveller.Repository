@@ -27,7 +27,8 @@
 			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
 			        $("#CustAddSummary").prop("disabled", true);
 			    }
-			}			
+			}
+			GetBookingSummary();
 			$('#popup').fadeOut("fast");           
         });
 
