@@ -5,7 +5,7 @@
         $(document).ready(function () {
             $("#popup").fadeIn("fast");
             var oTable = $('#propertyLookupTable').dataTable({
-                iDisplayLength: 10,
+                iDisplayLength: 25,
                 "aaSorting": [[0, "asc"]]
             });
         });
