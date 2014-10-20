@@ -104,9 +104,19 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
              <a class="closeEdit" href="#" id="SearchDocument<?php echo $i; ?>Close">Close</a> 
             </p>
             <div id="SearchDocument<?php echo $i; ?>MetaData" hidden >
+                <table>
+                    <tr>
+                        <td><b>Meta Tag</b></td>
+                        <td>Meta data</td>
+                    </tr>
                  <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
-                     <span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />
+                     <!--<span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />-->
+                    <tr>
+                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></td>
+                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></td>
+                    </tr>
                 <?php } ?>
+                </table>
             </div>  
       </li>
  <?php 
@@ -129,9 +139,19 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
              <a class="closeEdit" href="#" id="SearchDocument0Close">Close</a> 
             </p>
             <div id="SearchDocument0MetaData" hidden >
+                <table>
+                    <tr>
+                        <td><b>Meta Tag</b></td>
+                        <td>Meta data</td>
+                    </tr>
                  <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
-                     <span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />
+                     <!--<span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />-->
+                    <tr>
+                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></td>
+                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></td>
+                    </tr>
                 <?php } ?>
+                </table>
             </div>
               
       </li>

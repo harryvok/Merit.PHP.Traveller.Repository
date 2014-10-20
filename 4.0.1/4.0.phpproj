@@ -24,6 +24,7 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ajax.popertySearch.php" />
     <Compile Include="framework\controller.php">
       <SubType>Code</SubType>
     </Compile>

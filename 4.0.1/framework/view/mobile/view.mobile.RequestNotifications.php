@@ -50,6 +50,7 @@
     </p>
 </div>
 
-
-
+<div data-role="collapsible">
+    <h4>Send Notification</h4>
+</div>
 
