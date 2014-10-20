@@ -51,8 +51,7 @@ if(isset($GLOBALS['result']->property_details)){
                         <input type="hidden" id="ret_<?php echo $set.$count; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
                         <li class="address_row" id="<?php echo $set.$count; ?>">
                             <a>
-                                <p><b>House:</b><?php if(isset($result_n_ar->house_number)){ echo $result_n_ar->house_number; } else { echo ""; } ?></p>
-                                <p><b>Suffix:</b><?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?></p>
+                                <p><b>House:</b><?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?></p>
                                 <p><b>Street Name:</b><?php if(isset($result_n_ar->street_name) && ($result_n_ar->street_type )){ echo $result_n_ar->street_name." ".$result_n_ar->street_type; } else { echo ""; } ?></p>
                                 <p><b>Locality:</b><?php if(isset($result_n_ar->locality)){ echo $result_n_ar->locality; } else { echo ""; } ?></p>
                                 <p><b>Postcode:</b><?php if(isset($result_n_ar->postcode)){ echo $result_n_ar->postcode; } else { echo ""; } ?></p>

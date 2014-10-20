@@ -98,25 +98,29 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
       </li>
       <li id="SearchDocument<?php echo $i; ?>Edit" style="display:none">
             <p>
-             <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <a class="View" target="_blank" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <a class="Metadata" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
              <a class="Link" href="#" data-docid="<?php echo $document->document_id; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
              <a class="closeEdit" href="#" id="SearchDocument<?php echo $i; ?>Close">Close</a> 
             </p>
             <div id="SearchDocument<?php echo $i; ?>MetaData" hidden >
-                <table>
-                    <tr>
-                        <td><b>Meta Tag</b></td>
-                        <td>Meta data</td>
-                    </tr>
+                
                  <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
-                     <!--<span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />-->
-                    <tr>
-                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></td>
-                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></td>
-                    </tr>
+                    <?php if($document->document_metadata->doc_meta_data[$var]->meta_tag == "Name" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CreationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "ModificationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CheckoutBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisterDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisteredBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "Author" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "FolderId" ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_CORRESPONDENT") !== false ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
+                    ?>
+                        <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
+                    <?php }?>  
                 <?php } ?>
-                </table>
+                
             </div>  
       </li>
  <?php 
@@ -133,25 +137,29 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
       </li>
       <li id="SearchDocument0Edit" style="display:none">
             <p>
-             <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <a class="View" target="_blank" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <a class="Metadata" href="#" data-rownum="0" data-role="button" > Metadata</a>
              <a class="Link" href="#" data-docid="<?php echo $document->document_id; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
              <a class="closeEdit" href="#" id="SearchDocument0Close">Close</a> 
             </p>
             <div id="SearchDocument0MetaData" hidden >
-                <table>
-                    <tr>
-                        <td><b>Meta Tag</b></td>
-                        <td>Meta data</td>
-                    </tr>
+                
                  <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
-                     <!--<span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />-->
-                    <tr>
-                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></td>
-                        <td><?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></td>
-                    </tr>
+                    <?php if($document->document_metadata->doc_meta_data[$var]->meta_tag == "Name" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CreationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "ModificationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CheckoutBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisterDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisteredBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "Author" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "FolderId" ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_CORRESPONDENT") !== false ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
+                    ?>
+                        <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
+                    <?php }?>  
                 <?php } ?>
-                </table>
+               
             </div>
               
       </li>

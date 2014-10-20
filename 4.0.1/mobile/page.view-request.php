@@ -177,7 +177,7 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
 		}
 		if(isset($_GET['d']) && $_GET['d'] == "modify-udfs"){
 			$controller->Display("RequestUDFs", "ModifyUDFs", $_GET['id']);
-		}
+		} 
 		if(isset($_GET['d']) && $_GET['d'] == "add-action"){
 			$controller->Display("RequestActions", "AddAction");
 		}
