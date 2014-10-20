@@ -44,7 +44,19 @@ if($GLOBALS['result']['errorConnecting']== false){
             </p>
             <div id="Document<?php echo $i; ?>MetaData" hidden >
                  <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
-                     <span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />
+                    <?php if($document->document_metadata->doc_meta_data[$var]->meta_tag == "Name" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CreationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "ModificationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CheckoutBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisterDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisteredBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "Author" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "FolderId" ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_CORRESPONDENT") !== false ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
+                    ?>
+                        <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
+                    <?php }?>  
                 <?php } ?>
             </div>
               
@@ -71,8 +83,20 @@ if($GLOBALS['result']['errorConnecting']== false){
              <a class="closeEdit" href="#" id="Document0Close">Close</a> 
             </p>
             <div id="Document0MetaData" hidden >
-                 <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
-                     <span><b>Meta Tag: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?><b>Meta Data: </b> <?php echo $document->document_metadata->doc_meta_data[$var]->meta_data ?></span><br />
+                  <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
+                    <?php if($document->document_metadata->doc_meta_data[$var]->meta_tag == "Name" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CreationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "ModificationDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CheckoutBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisterDate" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisteredBy" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "Author" ||
+                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "FolderId" ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_CORRESPONDENT") !== false ||
+                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
+                    ?>
+                        <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
+                    <?php }?>  
                 <?php } ?>
             </div>
               

@@ -302,7 +302,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     if ($show_hide > 0)
     {
         ?>
-        <li data-role="list-divider">User Defined Fields</li>
+        <li data-role="list-divider">Additional Information</li>
         
 <?php
 $count_udf = 0;

@@ -58,6 +58,11 @@ function GetAddressDetails() {
                         success: function (data) {
                             Unload();
                             $('#popup').html(data);
+                        },
+                        error: function (request, status, error) {
+                            Unload();
+                            $("#" + intray + "Intray").html("<div class='float-left'>There has been an error: " + error + ". Please try again. If it continues please contact Merit.</div>");
+
                         }
                     });
                 }
@@ -73,12 +78,54 @@ function GetAddressDetails() {
                     if ($("#addressId").val() != "0" || $("#addressId").val() != "" || $("#addressId").val() != 0) {
                         $("#AddrSummary").removeAttr("disabled");
                     }
+                    //proceed to check booking summary
+                    GetBookingSummary();
+                   
                 }                
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
-                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");                
+                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
+                
             }
         });
     }    
+}
+function GetBookingSummary() {
+    if ($("service").val() != "" && $("request").val() != "" && $("function").val() != "") {
+        var serviceID = $("service").val();
+        var requestID = $("request").val();
+        var functionID = $("function").val();
+        var addressID = $("#addressId").val();
+        var house_number = $("#lno").val();
+        var house_suffix = $("#lfno").val();
+        var street_name = $("#lstreet").val();
+        var street_type = $("#ltype").val();
+        var locality_name = $("#lsuburb").val();
+
+        Load();
+        $.ajax({
+            url: 'inc/ajax/ajax.getBookingSummary.php',
+            type: 'POST',
+            
+            data: {
+                serviceID: serviceID,
+                requestID: requestID,
+                functionID: functionID,
+                addressID: addressID,
+                house_number: house_number,
+                house_suffix: house_suffix,
+                street_name: street_name,
+                street_type: street_type,
+                locality_name: locality_name,
+                start_datetime: new Date().toISOString()
+            },
+            success: function (data) {
+                Unload();
+                $('#popup').html(data);
+
+
+            },
+        });
+    }
 }
 
 function GetCustomerAddressDetails() {

@@ -28,7 +28,7 @@
 			        $("#CustAddSummary").prop("disabled", true);
 			    }
 			}
-			
+			GetBookingSummary();
 			$('#popup').fadeOut("fast");           
 		});
 	</script>
