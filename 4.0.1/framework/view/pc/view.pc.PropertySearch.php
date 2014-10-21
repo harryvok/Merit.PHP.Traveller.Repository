@@ -1,6 +1,12 @@
 <?php
     if(isset($GLOBALS['result']->property_details)){
 ?>
+    <style>
+        #propertyLookupTable tr.selected td {
+            background: none repeat scroll 0 0 #FFCF8B;
+            color: #000000;
+        }
+    </style>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#popup").fadeIn("fast");
@@ -13,6 +19,11 @@
         $('.address_row').click(function () {
             var id = "";
             var id = $(this).attr('id');
+            if ($(this).hasClass("selected")) {
+                    $(this).removeClass("selected");
+                } else {
+                $(this).addClass("selected").siblings().removeClass("selected");
+            }                   
             $("#submitProperty").click(function () {                
                 $('#'+id).dblclick();
             });
@@ -96,22 +107,27 @@
                                         $hn = explode(" ",$result_n_ar->house_suffix,2); 
                                         if(preg_match("/^[a-zA-Z]*$/",$hn[0])) {
                                              $house = $hn[1];
+                                             $no = explode("/",$house,2);
+                                             if($hn[0] == "Unit"){
+                                                 $unitno = $no[0];
+                                                 $streetno = $no[1];
+                                             }
+                                             else if($hn[0] != "Unit")
+                                             {
+                                                 $unitno = $hn[0]." ".$no[0]; 
+                                                 $streetno = $no[1];
+                                             }
                                         } 
-                                        else {
-                                             $house = $result_n_ar->house_suffix; 
-                                        }
-                                        if($hn[0] == "Unit")
-                                            $r = true;
-                                        else
-                                            $r = false;                                    
-                                        if ($r == true)
-                                        {
-                                        $no = explode("/",$house);
-                                        $unitno = $no[0];
-                                        $streetno = $no[1];
-                                        }
                                         else{
-                                            $streetno = $house;
+                                            $house = $result_n_ar->house_suffix; 
+                                            $no = explode("/",$house,2);
+                                            if(count($no) == 1){
+                                               $steetno = $house;
+                                            }
+                                            else{
+                                                $unitno = $no[0];
+                                                $streetno = $no[1];
+                                            }                                  
                                         }
                                     }                   
                                 ?>
