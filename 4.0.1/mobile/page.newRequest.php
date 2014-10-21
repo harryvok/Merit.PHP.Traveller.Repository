@@ -168,7 +168,7 @@ if(isset($_SESSION['user_id'])){
 
                         <label>Street Number</label>
                         <input name='lno' onChange="changeLocationType()" class="" id="lno"  maxlength='15' value='<?php if(isset($_SESSION['rem_loc_address_fnumber'])){ echo $_SESSION['rem_loc_address_fnumber']; } ?>'>
-
+                        <input type="hidden" id="newLno" name="newLno" />
                         <label>Street<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
 
                         <input class="" placeholder="Search..." name='lstreet' onChange="changeLocationType()" id="lstreet" data-mand="location_address" maxlength='100' value='<?php if(isset($_SESSION['rem_lstreet'])){ echo $_SESSION['rem_lstreet']; } ?>'></label>

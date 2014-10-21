@@ -7,7 +7,7 @@ if(isset($GLOBALS['result']->property_details)){
     </div>
     <div data-role="content">
     	<p>
-            <ul id="closePropertySearch" data-role="listview" data-filter="true" data-filter-placeholder="Search properties..." data-inset="true">                
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="Search properties..." data-inset="true">                
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#popup").popup("open");
@@ -39,13 +39,6 @@ if(isset($GLOBALS['result']->property_details)){
 		                    }
 	                    }			
 	                    $("#popup").popup("close");
-                    });
-
-                    $("#closePropertySearch").click(function () {
-                        $('#popup').fadeOut("fast");
-                        $("#popup").html("");
-                        $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
-                        $('#property_no').removeClass("ui-autocomplete-loading");
                     });
 
                 </script>
