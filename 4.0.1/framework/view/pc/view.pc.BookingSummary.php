@@ -10,6 +10,21 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
             $("#bookingService").html($("#serviceInput").val());
             $("#bookingRequest").html($("#requestInput").val());
             $("#bookingFunction").html($("#functionInput").val());
+
+            //show rows based on user click event
+            $("#bookings tbody tr ").click(function () {
+                var date = $(this).find("td:first-child").html();
+                $("#selectedDate").html(date);
+            });
+            $("#placeBookingDate").click(function () {
+                if ($("#selectedDate").html() != "-") {
+                    $("#duedate").html($("#selectedDate").html());
+                    $("#popup").fadeOut("fast");
+                } else {
+                    alert("please select a date");
+                }
+            });
+
         });
 </script>
 <div class="summaryContainer">
@@ -20,16 +35,16 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
     <b>Provider:</b> <span id="bookingProvider"><?php echo $GLOBALS['result']->provider;?></span><br />
     <b>Address:</b> <span id="bookingAddress"><?php echo $GLOBALS['result']->address;?></span><br />
     <b>Area:</b> <span id="bookingArea"><?php echo $GLOBALS['result']->area;?></span><br />
-    <b>Maximum:</b> <span id="bookingMaximum"></span><br />
-    <b>Response:</b> <span id="bookingResponse"></span><br />
+    <b>Maximum:</b> <span id="bookingMaximum"><?php echo $GLOBALS['result']->max_count;?></span><br />
+    <b>Response:</b> <span id="bookingResponse"><?php echo $GLOBALS['result']->response;?></span><br />
     <b>Include:</b> 
-    <input type="radio" id="includeSaturday" name="includeSaturday" checked value="Saturday"><label for="includeSaturday"><b>Saturday</b></label>&nbsp
-    <input type="radio" id="includeSunday" name="includeSunday"  value="Sunday"><label for="includeSunday"><b>Sunday</b></label>&nbsp
-    <input type="radio" id="includeHolidays" name="includeHolidays"  value="Holidays"><label for="includeHolidays"><b>Holidays</b></label>&nbsp
-    <input type="radio" id="includeSpecialHolidays" name="includeSpecialHolidays"  value="SpecialHolidays"><label for="SpecialHolidays"><b>Special Holidays</b></label>&nbsp<br />
+    <input type="checkbox" id="includeSaturday" name="includeSaturday" <?php if($GLOBALS['result']->include_saturday == "Y") echo "checked"; ?>  value="Saturday"><label for="includeSaturday"><b>Saturday</b></label>&nbsp
+    <input type="checkbox" id="includeSunday" name="includeSunday" <?php if($GLOBALS['result']->include_sunday == "Y") echo "checked"; ?>   value="Sunday"><label for="includeSunday"><b>Sunday</b></label>&nbsp
+    <input type="checkbox" id="includeHolidays" name="includeHolidays" <?php if($GLOBALS['result']->include_holidays == "Y") echo "checked"; ?>  value="Holidays"><label for="includeHolidays"><b>Holidays</b></label>&nbsp
+    <input type="checkbox" id="includeSpecialHolidays" name="includeSpecialHolidays" <?php if($GLOBALS['result']->include_sholidays == "Y") echo "checked"; ?>  value="SpecialHolidays"><label for="SpecialHolidays"><b>Special Holidays</b></label>&nbsp<br />
     <b>From:</b><input type="text" name="from" id="from" class="dateField text_udf_small" size="5" maxlength="10" >
-
-     <table id="requestDocumentTable" class=" sortable" title="" cellspacing="0">
+     <div  style="max-height:200px; overflow:scroll;">
+     <table id="bookings" class=" sortable" title="" cellspacing="0" >
             <thead>
                 <tr>
                     <th>Booked Date</th>
@@ -56,9 +71,10 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 ?>
                 <tr class="<?php echo $class; ?>" id="BookingDetails<?php echo $i; ?>ParentObject">
                                  <td><?php echo $booking_detail->booking_date; ?></td>
-                                 <td><?php echo $booking_detail->document_desc; ?></td>
-                                 <td><?php echo $booking_detail->document_desc; ?></td>
-                                 <td><?php echo $booking_detail->document_desc; ?></td>
+                                 <td><?php echo $booking_detail->booked_count; ?></td>
+                                 <td><?php echo $booking_detail->available_count; ?></td>
+                                 <td><?php echo $booking_detail->service_stopped; ?></td>
+                                 <td><?php echo $booking_detail->reason; ?></td>
                             </tr>
                 <?php
                       }
@@ -66,8 +82,14 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 ?> 
             </tbody>
          </table>
+         </div>
 
 </div>
+<input type="button" value="Place" id="placeBookingDate"/>
+<input type="button" value="Details"/>
+<input type="button" value="Stop"/>
+<input type="button" value="Get"/>
+<b>Selected Date: </b><span id="selectedDate">-</span>
 <?php 
 }else{
 ?> 
