@@ -20,8 +20,7 @@
             var table = $('#propertyLookupTable').DataTable();
             var id = "";
             var id = $(this).attr('id');
-                alert("selected");
-                alert($(this).hasClass("selected"));
+                
                 if ($(this).hasClass("selected")) {
                     $(this).removeClass("selected");
                 } else {
