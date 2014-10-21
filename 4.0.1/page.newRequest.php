@@ -175,6 +175,7 @@ if(!isset($_GET['d'])){
                     <div class="column r25">
                         <label for="lno">Street Number</label>
                         <input class="text" name='lno' onChange="" id="lno" maxlength='15' value='<?php if(isset($_SESSION['rem_lno'])){ echo $_SESSION['rem_lno']; } ?>'>
+                        <input type="hidden" id="newLno" name="newLno" />
                     </div>
                     
                     <div class="column r25">
@@ -184,11 +185,13 @@ if(!isset($_GET['d'])){
                     <div class="column r25">
                         <label for="ltype">Street Type<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                         <input class="text checkNone" name='ltype' onChange="" id="ltype" data-mand="location_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_ltype'])){ echo $_SESSION['rem_ltype']; } ?>'>
+                        
                     </div>
                     <div class="float-left">
                         <div class="column r25">
                             <label for="lsuburb">Suburb<span class="location_address_label mandLabel" style="color: red; display:none;"> *</span></label>
                             <input class="text checkNone" name='lsuburb' onChange="" id="lsuburb" data-mand="location_address"  disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'>
+
                         </div>
                         <div class="column r25">
                             <label for="lpostcode">Postcode</label>

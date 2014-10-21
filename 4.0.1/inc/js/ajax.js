@@ -36,7 +36,7 @@ function GetAddressDetails() {
             dataType: "json",
             data: {
                 flatNumber: function () { return $("#lfno").val() },
-                streetNumber: function () { return $("#lno").val() },
+                streetNumber: function () { return $("#newLno").val() },
                 streetName: function () { return $("#lstreet").val() },
                 streetType: function () { return $("#ltype").val() },
                 streetSuburb: function () { return $("#lsuburb").val() }
@@ -50,7 +50,7 @@ function GetAddressDetails() {
                         type: 'post',
                         data: {
                             addressId: data.address_id,
-                            streetNumber: function () { return $("#lno").val() },
+                            streetNumber: function () { return $("#newLno").val() },
                             streetName: function () { return $("#lstreet").val() },
                             streetType: function () { return $("#ltype").val() },
                             streetSuburb: function () { return $("#lsuburb").val() }

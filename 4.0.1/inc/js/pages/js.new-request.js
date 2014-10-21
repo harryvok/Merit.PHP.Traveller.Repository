@@ -600,6 +600,7 @@ $(document).ready(function () {
                 return;
             }
         }
+
     });
 
     $("#lfno").on(eventName, function (event) {
@@ -689,6 +690,9 @@ $(document).ready(function () {
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
             $("#property_no").val(""); $("#lpostcode").val("");
+            var newlno = $("#lno").val();
+            newlno = newlno.replace(/[^\d]/g, '');
+            $("#newLno").val(newlno);
             $("#ltype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
             $("#ltype").autocomplete("close");
             $("#lsuburb").trigger("click");
@@ -1206,7 +1210,7 @@ $(document).ready(function () {
     $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#i_ctype").val(), id: "i_csuburb", house: function () { return $('#i_cno').val(); }, street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
     //$("#lstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "lstreet" }, streetResponse);
     $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#lstreet").val() , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
-    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#ltype").val(), id: "lsuburb", house: function () { return $('#lno').val(); }, street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
+    $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#ltype").val(), id: "lsuburb", house: function () { return $('#newLno').val(); }, street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
     $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
     $("#facilityInput").autoCompleteInitSeq(facilityInit, "inc/ajax/ajax.getFacilitiesLookup.php", { term: "", facilitiesName: function () { return $("#facilityInput").val(); }, facilitiesType: function () { return $("#facilityTypeInput").val(); } }, facilityResponse);
