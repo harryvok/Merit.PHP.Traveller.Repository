@@ -16,14 +16,18 @@
             });
         });
 
-        $('.address_row').click(function () {
+        $('#propertyLookupTable tbody').on("click", "tr", function () {
+            var table = $('#propertyLookupTable').DataTable();
             var id = "";
             var id = $(this).attr('id');
-            if ($(this).hasClass("selected")) {
+                alert("selected");
+                alert($(this).hasClass("selected"));
+                if ($(this).hasClass("selected")) {
                     $(this).removeClass("selected");
                 } else {
-                $(this).addClass("selected").siblings().removeClass("selected");
-            }                   
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
             $("#submitProperty").click(function () {                
                 $('#'+id).dblclick();
             });
@@ -52,8 +56,7 @@
 			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
 			        $("#CustAddSummary").prop("disabled", true);
 			    }
-			}
-			GetBookingSummary();
+			}			
 			$('#popup').fadeOut("fast");           
         });
 
@@ -106,29 +109,36 @@
                                 <?php
                                     if(isset($result_n_ar->house_suffix)){ 
                                         $hn = explode(" ",$result_n_ar->house_suffix,2); 
-                                        if(preg_match("/^[a-zA-Z]*$/",$hn[0])) {
-                                             $house = $hn[1];
-                                             $no = explode("/",$house,2);
-                                             if($hn[0] == "Unit"){
-                                                 $unitno = $no[0];
-                                                 $streetno = $no[1];
-                                             }
-                                             else if($hn[0] != "Unit")
-                                             {
-                                                 $unitno = $hn[0]." ".$no[0]; 
-                                                 $streetno = $no[1];
-                                             }
-                                        } 
-                                        else{
-                                            $house = $result_n_ar->house_suffix; 
-                                            $no = explode("/",$house,2);
-                                            if(count($no) == 1){
-                                               $steetno = $house;
-                                            }
+                                        if(count($hn) > 1)
+                                        {
+                                            if(preg_match("/^[a-zA-Z]*$/",$hn[0])) {
+                                                 $house = $hn[1];
+                                                 $no = explode("/",$house,2);
+                                                 if($hn[0] == "Unit"){
+                                                     $unitno = $no[0];
+                                                     $streetno = $no[1];
+                                                 }
+                                                 else if($hn[0] != "Unit")
+                                                 {
+                                                     $unitno = $hn[0]." ".$no[0]; 
+                                                     $streetno = $no[1];
+                                                 }
+                                            } 
                                             else{
-                                                $unitno = $no[0];
-                                                $streetno = $no[1];
-                                            }                                  
+                                                $house = $result_n_ar->house_suffix; 
+                                                $no = explode("/",$house,2);
+                                                if(count($no) > 1){
+                                                    $unitno = $no[0];
+                                                    $streetno = $no[1];
+                                                }
+                                                else{
+                                                    $streetno = $house;
+                                                }                                  
+                                            }
+                                        }
+                                        else{
+                                            $streetno = $result_n_ar->house_suffix;
+                                            $house = $result_n_ar->house_suffix;
                                         }
                                     }                   
                                 ?>
