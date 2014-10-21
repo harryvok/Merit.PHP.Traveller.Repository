@@ -13,7 +13,7 @@
             var oTable = $('#propertyLookupTable').dataTable({
                 iDisplayLength: 25,
                 "aaSorting": [[0, "asc"]]
-            });
+            })
         });
 
         $('#propertyLookupTable tbody').on("click", "tr", function () {

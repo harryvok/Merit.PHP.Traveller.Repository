@@ -809,23 +809,6 @@ $(document).ready(function () {
         $("#i_cstreet").attr("readonly", false).autocomplete("search", "");
     });
 
-    //$("#i_cstreet").on(eventName, function (event) {
-    //    window.clicked["i_ctype"] = false;
-    //    window.clicked["i_csuburb"] = false;
-    //    //window.clicked["i_cpostcode"] = false;
-    //    $("#i_ctype").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-    //    $("#i_csuburb").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-    //    //$("#i_cpostcode").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-    //    $("#i_cstreet").val("").attr("readonly", false).autocomplete(
-
-    //            $.ui.autocomplete.filter = function (array, term) {
-    //                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
-    //                return $.grep(array, function (value) {
-    //                    return matcher.test(value.label || value.value || value);
-    //                });
-    //            }, $("#i_cstreet").val());
-    //});
-
     function cStreetResponse (event, ui) {
         var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
@@ -854,6 +837,9 @@ $(document).ready(function () {
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
             $("#i_cpropertynumber").val(""); $("#i_cpostcode").val("");
+            var newlno = $("#i_cno").val();
+            newlno = newlno.replace(/[^\d]/g, '');
+            $("#newLno").val(newlno);
             $("#i_ctype").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
             $("#i_ctype").autocomplete("close");
             $("#i_csuburb").trigger("click");
@@ -1207,7 +1193,7 @@ $(document).ready(function () {
     $("#functionInput").autoCompleteInitSeq(functionInit, "inc/ajax/ajax.getFunctionTypes.php", { term: "", service_code: function () { return $("#service").val(); }, request_code: function () { return $("#request").val(); } }, functionResponse, functionSuccess);
     //$("#i_cstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "i_cstreet" }, cStreetResponse);
     $("#i_ctype").autoCompleteInitSeq(cTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#i_cstreet").val(), id: "i_ctype", street: function () { return $('#i_cstreet').val(); } }, cTypeResponse);
-    $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#i_ctype").val(), id: "i_csuburb", house: function () { return $('#i_cno').val(); }, street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
+    $("#i_csuburb").autoCompleteInitSeq(cSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#i_ctype").val(), id: "i_csuburb", house: function () { return $('#newLno').val(); }, street: function () { return $('#i_cstreet').val(); }, street_type: function () { return $('#i_ctype').val(); } }, cSuburbResponse);
     //$("#lstreet").autoCompleteAjax("inc/ajax/ajax.getStreets.php", { term: "", id: "lstreet" }, streetResponse);
     $("#ltype").autoCompleteInitSeq(streetTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#lstreet").val() , id: "ltype", street: function () { return $('#lstreet').val(); } }, streetTypeResponse);
     $("#lsuburb").autoCompleteInitSeq(streetSuburbInit, "inc/ajax/ajax.getSuburbs.php", { term: $("#ltype").val(), id: "lsuburb", house: function () { return $('#newLno').val(); }, street: function () { return $('#lstreet').val(); }, street_type: function () { return $('#ltype').val(); } }, streetSuburbResponse);
