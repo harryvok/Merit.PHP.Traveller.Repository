@@ -7,7 +7,7 @@ if(isset($GLOBALS['result']->property_details)){
     </div>
     <div data-role="content">
     	<p>
-            <ul id="closePropertySearch" data-role="listview" data-filter="true" data-filter-placeholder="Search properties..." data-inset="true">
+            <ul id="closePropertySearch" data-role="listview" data-filter="true" data-filter-placeholder="Search properties..." data-inset="true">                
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#popup").popup("open");
@@ -59,29 +59,36 @@ if(isset($GLOBALS['result']->property_details)){
                         $streetno = "";
                         if(isset($result_n_ar->house_suffix)){ 
                             $hn = explode(" ",$result_n_ar->house_suffix,2); 
-                            if(preg_match("/^[a-zA-Z]*$/",$hn[0])) {
-                                $house = $hn[1];
-                                $no = explode("/",$house,2);
-                                if($hn[0] == "Unit"){
-                                    $unitno = $no[0];
-                                    $streetno = $no[1];
-                                }
-                                else if($hn[0] != "Unit")
-                                {
-                                    $unitno = $hn[0]." ".$no[0]; 
-                                    $streetno = $no[1];
-                                }
-                            } 
-                            else{
-                                $house = $result_n_ar->house_suffix; 
-                                $no = explode("/",$house,2);
-                                if(count($no) == 1){
-                                    $steetno = $house;
-                                }
+                            if(count($hn) > 1)
+                            {
+                                if(preg_match("/^[a-zA-Z]*$/",$hn[0])) {
+                                    $house = $hn[1];
+                                    $no = explode("/",$house,2);
+                                    if($hn[0] == "Unit"){
+                                        $unitno = $no[0];
+                                        $streetno = $no[1];
+                                    }
+                                    else if($hn[0] != "Unit")
+                                    {
+                                        $unitno = $hn[0]." ".$no[0]; 
+                                        $streetno = $no[1];
+                                    }
+                                } 
                                 else{
-                                    $unitno = $no[0];
-                                    $streetno = $no[1];
-                                }                                  
+                                    $house = $result_n_ar->house_suffix; 
+                                    $no = explode("/",$house,2);
+                                    if(count($no) > 1){
+                                        $unitno = $no[0];
+                                        $streetno = $no[1];
+                                    }
+                                    else{
+                                        $streetno = $house;
+                                    }                                  
+                                }
+                            }
+                            else{
+                                $streetno = $result_n_ar->house_suffix;
+                                $house = $result_n_ar->house_suffix;
                             }
                         }                   
                         ?>
