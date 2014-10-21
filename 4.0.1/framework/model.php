@@ -1473,15 +1473,11 @@ class Model {
         $parameters_pr->db_pwd = PROP_PASS;
         $result_pr = $this->WebService(MERIT_TRAVELLER_FILE, "ws_set_traveller_propsys_db_connection", $parameters_pr);
         
-
         $user_id = strip_tags(addslashes($_POST['user_id']));
         $password = strip_tags(addslashes($_POST['password']));
         $parameters = array("user_id" => $user_id, "password" => $password);
         $parameters = array_to_objecttree($parameters);
-
-
         if($result = $this->WebService(MERIT_ADMIN_FILE, "ws_merit_login", $parameters)){
-
             if($result->ws_status == "-1" && $result->ws_message == "Error connecting to the database"){
                 $_SESSION['done'] = 1;
                 $_SESSION['error'] = 1;
