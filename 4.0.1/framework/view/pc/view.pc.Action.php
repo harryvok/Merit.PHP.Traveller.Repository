@@ -545,8 +545,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
-                                        <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text1" class="text-popup_udf <?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                        <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text1" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                     echo "required"; ?> digits" value="<?php 
                                 if(isset($udf->udf_data)) 
                                     echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
@@ -562,8 +561,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
-                                        $<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text2" class="text-popup_udf <?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                        $<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text2" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                     echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                     </div>
                                     <?php
@@ -577,8 +575,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
-                                        <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text3" class="text-popup_udf <?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                        <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text3" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                     echo "required"; ?>" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                     </div>
                                     <?php
@@ -592,8 +589,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
-                                    <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text4" class="dateField text-popup_udf <?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text4" class="dateField text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                     echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10"  >
                                     </div>
                                     <?php	
@@ -607,15 +603,11 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
-                                        <b>Yes</b> <input class="<?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                    echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php 
-                                if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
+                                        <b>Yes</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
                                     echo "checked"; 
-                                } ?>  value="Y" /> <b>No</b> <input class="<?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                    echo "required"; ?>" type="radio" <?php 
-                                if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
+                                } ?>  value="Y" /> <b>No</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" type="radio" <?php if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
                                     echo "checked"; 
                                 } ?> name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
                                     </div>
@@ -625,15 +617,12 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                 $i=$i+1;
                                     ?>
                                     <div class="float-left">
-                                        <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                        <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                     echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
-                                        <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text5" class="timeField text-popup_udf <?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                    echo "required"; ?>" value="<?php 
-                                if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) 
+                                        <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text5" class="timeField text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                    echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) 
                                     echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
                                     </div>
                                     <?php	
@@ -642,8 +631,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                 $i=$i+1;
                                     ?>
                                     <div class="float-left">
-                                        <label  for="refno"><?php echo $udf->udf_name; ?><?php 
-                                if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
+                                        <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                     echo "<span style='color:red;'>*</span>"; ?></label>
                                     </div>
                                     <div class="float-left">
