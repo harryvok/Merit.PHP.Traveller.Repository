@@ -23,7 +23,7 @@ $(document).ready(function () {
                 left: e.pageX - 315,
                 top: e.pageY + 15
             });
-            $("#helpText").html($("#" + $(this).attr("id") + "Text").val());
+            $("#helpText_data").val($("#" + $(this).attr("id") + "Text").val());
             $("#helpURL").html($("#" + $(this).attr("id") + "URL").val());
             $(".hoverDiv").fadeIn("fast");
         }
