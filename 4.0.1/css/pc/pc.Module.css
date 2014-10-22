@@ -265,13 +265,15 @@ div.hoverDiv{
 	color: #132847;
 	border: #95a1b8 5px solid;
 	width:auto;
-    padding:0px 15px 15px 15px;
+    padding: 0px 15px 15px 15px;
 	height:auto;
 	max-width:650px;
     max-height:400px;
     right:100px;
     overflow:scroll;
 }
+
+
 div.scrollText {
     font-size:small;
 }

@@ -101,9 +101,9 @@ if(!isset($_GET['d'])){
                     <input type="hidden" name="countOnly" id="countOnly" value="0">
 
                     <div class="hoverDiv">
-                            <h1>Helpnotes <img src="images/delete-icon.png" id="infoHoverClose" style="float: right; cursor: pointer;" /></h1>
+                            <div><h1>Helpnotes <img src="images/delete-icon.png" id="infoHoverClose" style="float: right; cursor: pointer;" /></h1></div>
                             <div class="scrollText">
-                                <span id="helpText"></span>
+                                <span id="helpText"><textarea id="helpText_data" readonly="readonly" style="min-height: 100px; height:auto; resize:none;" disabled="disabled"></textarea></span>
                                 <br />
                                 <span id="helpURL"></span>
                             </div>
