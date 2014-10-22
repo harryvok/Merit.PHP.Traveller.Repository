@@ -139,7 +139,7 @@ function GetCustomerAddressDetails() {
             dataType: "json",
             data: {
                 flatNumber: function () { return $("#i_cfno").val() },
-                streetNumber: function () { return $("#i_cno").val() },
+                streetNumber: function () { return $("#newLno").val() },
                 streetName: function () { return $("#i_cstreet").val() },
                 streetType: function () { return $("#i_ctype").val() },
                 streetSuburb: function () { return $("#i_csuburb").val() }
@@ -151,7 +151,7 @@ function GetCustomerAddressDetails() {
                         type: 'post',
                         data: {
                             addressId: data.address_id,
-                            streetNumber: function () { return $("#i_cno").val() },
+                            streetNumber: function () { return $("#newLno").val() },
                             streetName: function () { return $("#i_cstreet").val() },
                             streetType: function () { return $("#i_ctype").val() },
                             streetSuburb: function () { return $("#i_csuburb").val() }
