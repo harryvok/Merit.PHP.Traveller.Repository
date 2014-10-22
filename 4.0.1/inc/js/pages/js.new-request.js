@@ -956,63 +956,49 @@ $(document).ready(function () {
     }       
 
     $('#saveMore').on(eventName, function (event) {
-
-
-           $(".text_udf:not(:visible)").each(function () {
-               $(this).removeClass("required");
-           });
-           $(".req_text_udf:not(:visible)").each(function () {
-               $(this).removeClass("required");
-           });
-
-
-       //if ($('#same').val() == "s" || $('#same').val() == "i") {
-       //    $("#o_cstreet").removeClass("required");
-       //    $("#o_ctype").removeClass("required");
-       //    $("#o_csuburb").removeClass("required");
-       //}
-       //else {
-       //    $("#i_cstreet").removeClass("required");
-       //    $("#i_ctype").removeClass("required");
-       //    $("#i_csuburb").removeClass("required");
-       //}
-       if ($("#countOnlyInd").val() == "N") {
-           $("#newrequest").valid();
-           if ($("#newrequest").validate().numberOfInvalids() == 0) {
-               $("#saveMore").attr("disabled", true).buttonState("disable");
-               $("#saveCountOnly").attr("disabled", true).buttonState("disable");
-               $("#submit").prop('disabled', true).buttonState("disable");
-               Load();
-               $("#btnclick").val("Y");
+        $(".text_udf:not(:visible)").each(function () {
+            $(this).removeClass("required");
+        });
+        $(".req_text_udf:not(:visible)").each(function () {
+            $(this).removeClass("required");
+        });
+        if ($("#countOnlyInd").val() == "N") {
+            $("#newrequest").valid();
+            if ($("#newrequest").validate().numberOfInvalids() == 0) {
+                $("#saveMore").attr("disabled", true).buttonState("disable");
+                $("#saveCountOnly").attr("disabled", true).buttonState("disable");
+                $("#submit").prop('disabled', true).buttonState("disable");
+                Load();
+                $("#btnclick").val("Y");
                
-               $.ajax({
-                   url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                   type: 'post',
-                   data: {
-                       ser: $("#service").val(),
-                       req: $("#request").val(),
-                       func: $("#function").val()
-                   },
-                   success: function (data) {
-                       Unload();
-                       if($("#deviceIndicator").val() == "pc"){
-                           $('#popup').html(data);
-                       }else{
-                           $("#adhocOfficer").html(data).trigger("create");
-                       }  
-                   }
-               });
-           }
-           else {
-               Unload();
-               alert("You must fill in the required fields.");
-               $("#newrequest").validate();
-               $("#saveMore").prop("disabled", false).buttonState("enable");
-               $("#btnclick").val("");
-               //$("#saveCountOnly").prop("disabled", false).buttonState("enable");
-               $("#submit").prop('disabled', false).buttonState("enable");
-           }
-       }
+                $.ajax({
+                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                    type: 'post',
+                    data: {
+                        ser: $("#service").val(),
+                        req: $("#request").val(),
+                        func: $("#function").val()
+                    },
+                    success: function (data) {
+                        Unload();
+                        if($("#deviceIndicator").val() == "pc"){
+                            $('#popup').html(data);
+                        }else{
+                            $("#adhocOfficer").html(data).trigger("create");
+                        }  
+                    }
+                });
+            }
+            else {
+                Unload();
+                alert("You must fill in the required fields.");
+                $("#newrequest").validate();
+                $("#saveMore").prop("disabled", false).buttonState("enable");
+                $("#btnclick").val("");
+                //$("#saveCountOnly").prop("disabled", false).buttonState("enable");
+                $("#submit").prop('disabled', false).buttonState("enable");
+            }
+        }
     });
   
 

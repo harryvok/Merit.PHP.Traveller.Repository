@@ -91,7 +91,7 @@ if(!isset($_GET['d'])){
                         <div class="column r25">
                             <br /><br />
                             <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
-                            <input type="checkbox" name="notifyInsuranceOfficer" value="Y"> &nbsp;
+                            <input type="checkbox" name="notifyInsuranceOfficer" value="Y"> <br />
                             <label for="duedate">Due Date: </label>
                             <span id="duedate">-</span>
                         </div>
@@ -99,14 +99,14 @@ if(!isset($_GET['d'])){
 
                     <input type="hidden" name="workflowInd" id="workflowInd">
                     <input type="hidden" name="countOnly" id="countOnly" value="0">
+
                     <div class="hoverDiv">
-                        <img src="images/close.png" id="infoHoverClose" style="float: right; cursor: pointer;" />
-                        <div class="scrollText">
-                            <span id="helpText"></span>
-                            <br />
-                            <span id="helpURL"></span>
-                        </div>
-                    </div>
+                            <h1>Helpnotes <img src="images/delete-icon.png" id="infoHoverClose" style="float: right; cursor: pointer;" /></h1>
+                            <div class="scrollText">
+                                <span id="helpText"></span>
+                                <br />
+                                <span id="helpURL"></span>
+                            </div>
                     <input type="hidden" name="chkCount" id="chkCount" value="0" />
                 </div>
 
