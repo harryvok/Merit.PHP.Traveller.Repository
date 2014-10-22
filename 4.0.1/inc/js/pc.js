@@ -30,7 +30,7 @@ $(document).ready(function () {
     });
     $("#infoHoverClose").click(function () {
         $(".hoverDiv").fadeOut("fast");
-        $("#helpText").html("");
+        $("#helpText_data").val("");
         $("#helpURL").html("");
     });
 
