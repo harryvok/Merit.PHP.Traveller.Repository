@@ -84,7 +84,7 @@
 					?>
 						<label><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 							
-								<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="dateField text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data)) echo  date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))); ?>" size="5" maxlength="10">
+								<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="dateField text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
 								
 									
 								
@@ -204,14 +204,14 @@
                         ?>
 			<script language="javascript">
                 $("#udfs").slideUp("fast");
-                $("#udf_exist").val("0");
+                document.getElementById('udfs_exist').value = '0';
             </script>
             <?php
 		}
 		else{
             ?>
 	<script language="javascript">
-		$("#udf_exist").val("1");
+	    document.getElementById('udfs_exist').value = '1';
 	</script>
 	<?php	
 		}
@@ -423,14 +423,14 @@
 			?>
 			<script language="javascript">
                 $("#udfs").slideUp("fast");
-                $("#udf_exist").val("0");
+                document.getElementById('udfs_exist').value = '0';
             </script>
             <?php
 		}
 		else{
 			?>
 	<script language="javascript">
-		$("#udf_exist").val("1");
+	    document.getElementById('udfs_exist').value = '1';
 	</script>
 	<?php	
 		}
@@ -440,7 +440,7 @@ elseif(isset($GLOBALS['result']->udf_details) && count($GLOBALS['result']->udf_d
 	?>
 	<script language="javascript">
 		$("#udfs").slideUp("fast");
-		$("#udf_exist").val("0");
+		document.getElementById('udfs_exist').value = '0';
 	</script>
 	<?php
 	}
