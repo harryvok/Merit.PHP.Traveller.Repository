@@ -212,14 +212,16 @@ if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['u
 			<script type="text/javascript">
                 
                 document.getElementById('outcome-udfs').style.display="none";
-                $("#udf_exist").val("0");
+                document.getElementById('udfs_exist').value = '0';
+            </script>
             </script>
             <?php
     }
     else{
             ?>
     	<script language="javascript">
-			$("#udf_exist").val("1");
+    	    document.getElementById('udfs_exist').value = '1';
+            </script>
 		</script>
 		<?php	
     }
@@ -434,14 +436,16 @@ elseif(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result'
 			<script type="text/javascript">
                 
                 document.getElementById('outcome-udfs').style.display="none";
-                $("#udf_exist").val("0");
+                document.getElementById('udfs_exist').value = '0';
+            </script>
             </script>
             <?php
 		}
 		else{
 			?>
 			<script language="javascript">
-                $("#udf_exist").val("1");
+			    document.getElementById('udfs_exist').value = '1';
+            </script>
             </script>
             <?php	
 		}
@@ -451,7 +455,8 @@ elseif(isset($GLOBALS['result']['udfs']->udf_details) &&  count($GLOBALS['result
 		<script type="text/javascript">
 			
 			$("#udfs").slideUp("fast");
-			$("#udf_exist").val("0");
+			document.getElementById('udfs_exist').value = '0';
+            </script>
 		</script>
 		<?php
 		

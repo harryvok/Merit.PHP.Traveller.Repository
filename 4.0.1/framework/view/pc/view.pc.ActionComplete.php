@@ -20,14 +20,14 @@
 				      act_id: $('#act_id').val()
 			      },
 			      success: function(data) {
-				      Unload();
+			          Unload();
 				      $('#outcome-udfs').html(data);	
 				      $('#outcome-udfs').show();
 			      }
 		      });
           }
           else{
-            $("#udfsexist").val("0");
+            $("#udfs_exist").val("0");
             $("#outcome-udfs").html("");
           }
 	  });
