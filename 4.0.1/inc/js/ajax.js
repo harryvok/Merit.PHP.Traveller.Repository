@@ -329,8 +329,8 @@ function CheckCountOnly(count_only) {
     }
 }
 
-function GetHelpNotes(func, req, ser) {
-
+function GetHelpNotes(func, req, ser, auto) {
+    alert(auto);
     $.ajax({
         url: "inc/ajax/ajax.getHelpNotes.php",
         dataType: "json",
@@ -349,12 +349,15 @@ function GetHelpNotes(func, req, ser) {
                     $("#request_help").fadeIn("fast");
                     $("#request_helpText").val(data.helpText);
                     $("#request_helpURL").val(data.helpURL);
+                    if (auto == "Y")
+                        $(".infoHover").click();
                 }
-
                 if (ser.length > 0 && req.length > 0 && func.length > 0) {
                     $("#function_help").fadeIn("fast");
                     $("#function_helpText").val(data.helpText);
                     $("#function_helpURL").val(data.helpURL);
+                    if (auto == "Y")
+                        $(".infoHover").click();
                 }
 
             }
