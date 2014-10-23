@@ -330,7 +330,6 @@ function CheckCountOnly(count_only) {
 }
 
 function GetHelpNotes(func, req, ser, auto) {
-    alert(auto);
     $.ajax({
         url: "inc/ajax/ajax.getHelpNotes.php",
         dataType: "json",
