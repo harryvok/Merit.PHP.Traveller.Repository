@@ -3414,6 +3414,8 @@ class Model {
                 $parameters->completed_date = $datetime;
 
                 $result = $this->WebService(MERIT_ACTION_FILE, "ws_complete_action", $parameters);
+                
+                
 
                 if($completed_code == "NORESPONSE") $GLOBALS['dontProcess'] = 1;
                 if($_POST['udfs_exist'] == 1) $this->processEditActionUDFs();
@@ -3440,7 +3442,6 @@ class Model {
                     $_SESSION['priority'] = $result->priority;
                     $_SESSION['officer_type'] = $result->officer_type;
                     $_SESSION['position_no'] = $result->position_no;
-
                     $_SESSION['position_no_arr'] = array();
 
                     foreach($result->position_no_arr as $int){
