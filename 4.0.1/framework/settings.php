@@ -15,7 +15,7 @@ define("REFRESHTABLE", "1"); // The time Before a table refresh occurs
 define("SITE_LINK", "http://traveller.merit.com.au/4.0.1/");
 define("WEBSITE", "http://traveller.merit.com.au/4.0.1/"); // Traveller website address, with a slash on the end.
 define("LOCAL_LINK", "C:/projects/Merit2013/Merit.PHP.Traveller/4.0/"); // Traveller website address, with a slash on the end.
-define("WEB_SERVICES_PATH", "http://192.168.0.68:8086/merit_traveller/"); // Path to the webservices. With a slash on the end!
+define("WEB_SERVICES_PATH", "http://192.168.0.87:8086/merit_traveller/"); // Path to the webservices. With a slash on the end!
 define("MERIT_ACTION_FILE", "ws_merit_action.asmx");
 define("MERIT_REQUEST_FILE", "ws_merit_request.asmx");
 define("MERIT_ADMIN_FILE", "ws_merit_admin.asmx");
