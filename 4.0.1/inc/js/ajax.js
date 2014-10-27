@@ -343,7 +343,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
         }        
     } else {
         sautoVal = sauto;
-        ratuoVal = rauto;
+        rautoVal = rauto;
         fautoVal = fauto;
     }
     $.ajax({
