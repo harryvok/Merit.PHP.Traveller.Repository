@@ -329,7 +329,7 @@ function CheckCountOnly(count_only) {
     }
 }
 
-function GetHelpNotes(func, req, ser, auto) {
+function GetHelpNotes(func, req, ser, sauto, rauto, fauto) {
     $.ajax({
         url: "inc/ajax/ajax.getHelpNotes.php",
         dataType: "json",
@@ -342,21 +342,56 @@ function GetHelpNotes(func, req, ser, auto) {
                     $("#service_help").fadeIn("fast");
                     $("#service_helpText").val(data.helpText);
                     $("#service_helpURL").val(data.helpURL);
+                    var element = document.getElementById('service_help'); //replace elementId with your element's Id.
+                    var rect = element.getBoundingClientRect();
+                    var x = rect.left;
+                    var y = rect.top;
+                    if (sauto == "Y") {
+                        $('.hoverDiv').css({
+                            left: x - 315,
+                            top: y + 25
+                        });
+                        $("#helpText_data").val(data.helpText);
+                        $("#helpURL").html(data.helpURL);
+                        $(".hoverDiv").fadeIn("fast");
+                    }       
                 }
 
                 if (ser.length > 0 && req.length > 0 && func.length == 0) {
                     $("#request_help").fadeIn("fast");
                     $("#request_helpText").val(data.helpText);
                     $("#request_helpURL").val(data.helpURL);
-                    if (auto == "Y")
-                        $(".infoHover").click();
+                    var element = document.getElementById('request_help'); //replace elementId with your element's Id.
+                    var rect = element.getBoundingClientRect();
+                    var x = rect.left;
+                    var y = rect.top;
+                    if (rauto == "Y") {
+                        $('.hoverDiv').css({
+                            left: x - 315,
+                            top: y + 25
+                        });
+                        $("#helpText_data").val(data.helpText);
+                        $("#helpURL").html(data.helpURL);
+                        $(".hoverDiv").fadeIn("fast");
+                    }
                 }
                 if (ser.length > 0 && req.length > 0 && func.length > 0) {
                     $("#function_help").fadeIn("fast");
                     $("#function_helpText").val(data.helpText);
                     $("#function_helpURL").val(data.helpURL);
-                    if (auto == "Y")
-                        $(".infoHover").click();
+                    var element = document.getElementById('function_help'); //replace elementId with your element's Id.
+                    var rect = element.getBoundingClientRect();
+                    var x = rect.left;
+                    var y = rect.top;
+                    if (fauto == "Y") {
+                        $('.hoverDiv').css({
+                            left: x - 315,
+                            top: y + 25
+                        });
+                        $("#helpText_data").val(data.helpText);
+                        $("#helpURL").html(data.helpURL);
+                        $(".hoverDiv").fadeIn("fast");
+                    }
                 }
 
             }
