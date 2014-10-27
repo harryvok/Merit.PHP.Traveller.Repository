@@ -64,6 +64,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto);
 		    GetHelpNotes("", $("#request").val(), $("#service").val(), "N", rauto, "N");
 		    GetHelpNotes("", "", $("#service").val(), sauto, "N", "N");
+		    if ((sauto == "Y" && rauto == "Y" && fauto == "Y") || (sauto == "Y" && rauto == "N" && fauto == "Y") || (sauto == "N" && rauto == "Y" && fauto == "Y") || (sauto == "N" && rauto == "N" && fauto == "Y")) {
+
+		    }
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
 		    getSRFRedText();
 			<?php } ?>

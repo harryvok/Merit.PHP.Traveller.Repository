@@ -329,7 +329,23 @@ function CheckCountOnly(count_only) {
     }
 }
 
-function GetHelpNotes(func, req, ser, sauto, rauto, fauto) {
+function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
+    var sautoVal = "";  var rautoVal = ""; var fautoVal = "";
+    if (keyword == "Y") {
+        if ((sauto == "Y" && rauto == "Y" && fauto == "Y") || (sauto == "Y" && rauto == "N" && fauto == "Y") || (sauto == "N" && rauto == "Y" && fauto == "Y") || (sauto == "N" && rauto == "N" && fauto == "Y")) {
+            sautoVal = "N"; raoutVal = "N"; fautoVal = "Y";
+        }
+        else if ((sauto == "Y" && rauto == "Y" && fauto == "N") || (sauto == "N" && rauto == "Y" && fauto == "N")) {
+            sautoVal = "N"; faoutVal = "N"; rautoVal = "Y";
+        }
+        else if (sauto == "Y" && rauto == "N" && fauto == "N") {
+            rautoVal = "N"; faoutVal = "N"; sautoVal = "Y";
+        }        
+    } else {
+        sautoVal = sauto;
+        ratuoVal = rauto;
+        fautoVal = fauto;
+    }
     $.ajax({
         url: "inc/ajax/ajax.getHelpNotes.php",
         dataType: "json",
@@ -346,7 +362,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto) {
                     var rect = element.getBoundingClientRect();
                     var x = rect.left;
                     var y = rect.top;
-                    if (sauto == "Y") {
+                    if (sautoVal == "Y") {
                         $('.hoverDiv').css({
                             left: x - 315,
                             top: y + 25
@@ -354,7 +370,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto) {
                         $("#helpText_data").val(data.helpText);
                         $("#helpURL").html(data.helpURL);
                         $(".hoverDiv").fadeIn("fast");
-                    }       
+                    }
                 }
 
                 if (ser.length > 0 && req.length > 0 && func.length == 0) {
@@ -365,7 +381,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto) {
                     var rect = element.getBoundingClientRect();
                     var x = rect.left;
                     var y = rect.top;
-                    if (rauto == "Y") {
+                    if (rautoVal == "Y") {
                         $('.hoverDiv').css({
                             left: x - 315,
                             top: y + 25
@@ -383,7 +399,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto) {
                     var rect = element.getBoundingClientRect();
                     var x = rect.left;
                     var y = rect.top;
-                    if (fauto == "Y") {
+                    if (fautoVal == "Y") {
                         $('.hoverDiv').css({
                             left: x - 315,
                             top: y + 25
@@ -392,8 +408,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto) {
                         $("#helpURL").html(data.helpURL);
                         $(".hoverDiv").fadeIn("fast");
                     }
-                }
-
+                }                          
             }
             else {
                 $("#infoHover").fadeOut("fast");

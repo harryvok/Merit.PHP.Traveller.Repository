@@ -90,7 +90,7 @@ $(document).ready(function () {
             $("#function").val("");
             $("#rednote").html(service_note);
             QueryUDFs('0', '0', $("#service").val());
-            GetHelpNotes('', '', $("#service").val(), sauto, "N", "N");
+            GetHelpNotes('', '', $("#service").val(), sauto, "N", "N", "N");
             $("#functionInput").val("").attr("disabled", true).addClass("ui-disabled").textInputState('disable');
             //modded by harry 22/5
             if (typeof ui.content != "undefined" && ui.content.length === 1)
@@ -98,6 +98,7 @@ $(document).ready(function () {
             else
                 $("#serviceInput").val(label).attr("readonly", false).autocomplete("close");
             //end mod. original code was just readonly = false
+
             $("#requestInput").val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
             $("#requestInput").trigger("click");
         }
@@ -147,7 +148,7 @@ $(document).ready(function () {
             $("#priority option[value=" + priority + "]").prop("selected", true);
             $('#priority').selectmenuState('refresh', true);
             QueryUDFs('0', $("#request").val(), $("#service").val());
-            GetHelpNotes('', $("#request").val(), $("#service").val(), "N", rauto, "N");
+            GetHelpNotes('', $("#request").val(), $("#service").val(), "N", rauto, "N", "N");
             if (($("#historyaddrtype").val() == "L" && $("#lsuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#i_csuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#o_csuburb").val().length > 0)
@@ -224,7 +225,7 @@ $(document).ready(function () {
             }
             CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
             QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
-            GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto);
+            GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto, "N");
 
             // Perform count only check on full SRF
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
