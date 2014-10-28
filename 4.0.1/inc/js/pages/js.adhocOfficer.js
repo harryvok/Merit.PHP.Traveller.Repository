@@ -1,5 +1,7 @@
 ﻿
 
+
+
 $(document).ready(function () {
     enableBeforeUnload();
 
@@ -12,7 +14,7 @@ $(document).ready(function () {
         window.onbeforeunload = null;
     }
 
-    $("form").on("submit", function() {
+    $("form").on("submit", function () {
         window.onbeforeunload = null;
     });
 
@@ -38,12 +40,13 @@ $(document).ready(function () {
     //$("#new_officer_text").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
     //$("input[data-adhocOfficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
 
-    $("#new_officer_text").click(function() {
+    $("#new_officer_text").click(function () {
         $("#new_officer_code").val("");
         $("#new_officer_text").val("");
         $("#new_officer_text").attr("readonly", false);
-        $("#new_officer_text").autocomplete("search","");
+        $("#new_officer_text").autocomplete("search", "");
     });
+
     $("body").on("click", "input[data-adhocOfficer]", function () {
         if ($(this).hasClass("ui-autocomplete-input")) {
             $("#" + $(this).attr("id") + "Code").val("");
