@@ -4,6 +4,10 @@
 
 $(document).ready(function () {
     enableBeforeUnload();
+    $("#new_officer_text").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
+    
+    
+    
 
     function enableBeforeUnload() {
         window.onbeforeunload = function (e) {
@@ -37,9 +41,20 @@ $(document).ready(function () {
         }
     }
 
-    $("#new_officer_text").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-    $("input[data-adhocOfficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
+    
 
+    
+
+    $("body").on("click", "input[data-adhocOfficer]", function () {
+        
+        if ($(this).hasClass("ui-autocomplete-input")) {
+            $("#" + $(this).attr("id") + "Code").val("");
+            $(this).val("");
+            $(this).attr("readonly", false);
+           $(this).autocomplete("search", "");
+
+        }
+    });
     $("#new_officer_text").click(function () {
         $("#new_officer_code").val("");
         $("#new_officer_text").val("");
@@ -47,20 +62,6 @@ $(document).ready(function () {
         $("#new_officer_text").autocomplete("search", "");
     });
 
-    $("body").on("click", "input[data-adhocOfficer]", function () {
-        if ($(this).hasClass("ui-autocomplete-input")) {
-            $("#" + $(this).attr("id") + "Code").val("");
-            $(this).val("");
-            $(this).attr("readonly", false);
-
-            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-            $(this).autocomplete("search", "");
-
-        }
-        else {
-            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-        }
-    });
     $("#adhocOfficer").validate();
     $("#adhocOfficer").submit(function () {
         if ($(this).validate().numberOfInvalids() == 0) {
