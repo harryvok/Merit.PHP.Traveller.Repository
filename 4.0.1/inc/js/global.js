@@ -420,6 +420,9 @@ $(document).on("click", ".closePopup", function () {
             url: ajax,
             dataType: "json",
             data: dataPass,
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            },
             success: function (data) {
                 $(self).removeClass("ui-autocomplete-loading");
                 $(self).autocomplete({
