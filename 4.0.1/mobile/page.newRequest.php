@@ -32,9 +32,9 @@ if(isset($_SESSION['user_id'])){
                         <h1>Help</h1>
                     </div>
                     <div data-role="content">
-                        <span id="helpText"></span>
+                        <span id="helpText_mobile"></span>
                         <br />
-                        <span id="helpURL"></span>
+                        <span id="helpURL_mobile"></span>
                     </div>
                 </div>
 

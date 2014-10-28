@@ -98,7 +98,7 @@ $(document).ready(function () {
             else
                 $("#serviceInput").val(label).attr("readonly", false).autocomplete("close");
             //end mod. original code was just readonly = false
-            $("#requestInput").val("").attr("disabled", false).removeClass("ui-disabled");
+            $("#requestInput").val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
             $("#requestInput").trigger("click");
         }
     }
@@ -107,7 +107,7 @@ $(document).ready(function () {
     function requestInit() {
         window.clicked["functionInput"] = false;
         $("#request").val("");
-        $("#requestInput").val("");
+        $("#requestInput").val("").attr("disabled", false).textInputState('enable');
         $("#request_help").fadeOut("fast");
         $("#request_helpText").val("");
         $("#request_helpURL").val("");
@@ -128,7 +128,7 @@ $(document).ready(function () {
         $("#chkCount").val("0");
         $("#checkHistory").prop("disabled", true).buttonState("disable");
         $("#countOnly").val("0");
-        $("#requestInput").attr("readonly", false).trigger("focus").textInputState('disable');
+        $("#requestInput").attr("readonly", false).trigger("focus");
         return $("#serviceInput").val();
     }
 
@@ -137,6 +137,7 @@ $(document).ready(function () {
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note = ui.content[0].request_note; rauto = ui.content[0].request_auto_help_notes; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note; rauto = ui.item.request_auto_help_notes; }
         if (label.length > 0 || code.length > 0) {
+
             $(this).removeClass("ui-autocomplete-loading");
             $("#request").val(code);
             $("#function").val("");

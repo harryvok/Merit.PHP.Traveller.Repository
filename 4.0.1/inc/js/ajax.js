@@ -370,6 +370,9 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
                         $("#helpText_data").val(data.helpText);
                         $("#helpURL").html(data.helpURL);
                         $(".hoverDiv").fadeIn("fast");
+                        $("#helpText_mobile").html(data.helpText);
+                        $("#helpURL_mobile").html(data.helpURL);
+                        $("#popup").html($("#hoverDiv").html()).popup("open");
                     }
                 }
 
@@ -389,6 +392,9 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
                         $("#helpText_data").val(data.helpText);
                         $("#helpURL").html(data.helpURL);
                         $(".hoverDiv").fadeIn("fast");
+                        $("#helpText_mobile").html(data.helpText);
+                        $("#helpURL_mobile").html(data.helpURL);
+                        $("#popup").html($("#hoverDiv").html()).popup("open");
                     }
                 }
                 if (ser.length > 0 && req.length > 0 && func.length > 0) {
@@ -407,11 +413,15 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
                         $("#helpText_data").val(data.helpText);
                         $("#helpURL").html(data.helpURL);
                         $(".hoverDiv").fadeIn("fast");
+                        $("#helpText_mobile").html(data.helpText);
+                        $("#helpURL_mobile").html(data.helpURL);
+                        $("#popup").html($("#hoverDiv").html()).popup("open");
                     }
                 }                          
             }
             else {
                 $("#infoHover").fadeOut("fast");
+                $("#popup").html($("#hoverDiv").html()).popup("open");
             }
         }
     });

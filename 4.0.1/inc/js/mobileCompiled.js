@@ -4420,8 +4420,8 @@ $(document).ready(function () {
 
     $(document).on("click", ".infoHover", function () {
         if ($("#" + $(this).attr("id") + "Text").val().length > 0 || $("#" + $(this).attr("id") + "URL").val().length > 0) {
-            $("#helpText").html($("#" + $(this).attr("id") + "Text").val());
-            $("#helpURL").html($("#" + $(this).attr("id") + "URL").val());
+            $("#helpText_mobile").html($("#" + $(this).attr("id") + "Text").val());
+            $("#helpURL_mobile").html($("#" + $(this).attr("id") + "URL").val());
             $("#popup").html($("#hoverDiv").html()).popup("open");
             $("#default").page("destroy");
             $("#default").page();
@@ -4431,8 +4431,8 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#infoHoverClose", function () {
-        $("#helpText").html("");
-        $("#helpURL").html("");
+        $("#helpText_mobile").html("");
+        $("#helpURL_mobile").html("");
     });
 
 });

@@ -61,12 +61,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 			<?php if (!isset($_POST['lite'])) { ?>
 		    ClearHelpNotes();
 		    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
-		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto);
-		    GetHelpNotes("", $("#request").val(), $("#service").val(), "N", rauto, "N");
-		    GetHelpNotes("", "", $("#service").val(), sauto, "N", "N");
-		    if ((sauto == "Y" && rauto == "Y" && fauto == "Y") || (sauto == "Y" && rauto == "N" && fauto == "Y") || (sauto == "N" && rauto == "Y" && fauto == "Y") || (sauto == "N" && rauto == "N" && fauto == "Y")) {
-
-		    }
+		    GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
+		    GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
 		    getSRFRedText();
 			<?php } ?>
@@ -92,9 +89,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_need_func" value="<?php if(isset($result_n_ar->request_need_func)){ echo $result_n_ar->request_need_func; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_priority" value="<?php if(isset($result_n_ar->request_priority)){ echo $result_n_ar->request_priority; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_priority" value="<?php if(isset($result_n_ar->function_priority)){ echo $result_n_ar->function_priority; } else { echo ""; } ?>" />
-                <input type="hidden" id="ret_<?php echo $set; ?>_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help_notes)){ echo $result_n_ar->service_auto_help_notes; } else { echo "N"; } ?>" />
-                <input type="hidden" id="ret_<?php echo $set; ?>_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help_notes)){ echo $result_n_ar->request_auto_help_notes; } else { echo "N"; } ?>" />
-                <input type="hidden" id="ret_<?php echo $set; ?>_fuction_auto_help_notes" value="<?php if(isset($result_n_ar->fuction_auto_help_notes)){ echo $result_n_ar->fuction_auto_help_notes; } else { echo "N"; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help)){ echo $result_n_ar->service_auto_help; } else { echo "N"; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help)){ echo $result_n_ar->request_auto_help; } else { echo "N"; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
 			<li class="keyword_row" id="<?php echo $set; ?>">
             	<a>
 				<p><b>Keyword:</b> <?php if(isset($result_n_ar->keyword)){ echo $result_n_ar->keyword; } else { echo ""; } ?></p>
@@ -125,9 +122,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
     <input type="hidden" id="ret_request_need_func" value="<?php if(isset($result_n_ar->request_need_func)){ echo $result_n_ar->request_need_func; } else { echo ""; } ?>" />
     <input type="hidden" id="ret_request_priority" value="<?php if(isset($result_n_ar->request_priority)){ echo $result_n_ar->request_priority; } else { echo ""; } ?>" />
     <input type="hidden" id="ret_function_priority" value="<?php if(isset($result_n_ar->function_priority)){ echo $result_n_ar->function_priority; } else { echo ""; } ?>" />
-    <input type="hidden" id="ret_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help_notes)){ echo $result_n_ar->service_auto_help_notes; } else { echo "N"; } ?>" />
-    <input type="hidden" id="ret_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help_notes)){ echo $result_n_ar->request_auto_help_notes; } else { echo "N"; } ?>" />
-    <input type="hidden" id="ret_fuction_auto_help_notes" value="<?php if(isset($result_n_ar->fuction_auto_help_notes)){ echo $result_n_ar->fuction_auto_help_notes; } else { echo "N"; } ?>" />
+<input type="hidden" id="ret_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help)){ echo $result_n_ar->service_auto_help; } else { echo "N"; } ?>" />
+<input type="hidden" id="ret_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help)){ echo $result_n_ar->request_auto_help; } else { echo "N"; } ?>" />
+<input type="hidden" id="ret_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
 	<script type="text/javascript">
 		$(document).ready(function() {
          $("#popup").popup("open");
@@ -135,7 +132,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
              $("#default").page();
              var sauto = $("#ret_service_auto_help_notes").val();
              var rauto = $("#ret_request_auto_help_notes").val();
-             var fauto = $("#ret_fuction_auto_help_notes").val();
+             var fauto = $("#ret_function_auto_help_notes").val();
 			$("#serviceInput").val($("#ret_service_name").val());
 			$("#service").val($("#ret_service_code").val());
 			$("#serviceInput").attr("readonly", true);
@@ -175,9 +172,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 			<?php  if (!isset($_POST['lite'])) { ?>
 		    ClearHelpNotes();
 		    CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
-		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto);
-		    GetHelpNotes("", $("#request").val(), $("#service").val(), "N", rauto, "N");
-		    GetHelpNotes("", "", $("#service").val(), sauto, "N", "N");
+		    GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
+		    GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
 		    getSRFRedText();
 			<?php } ?>
