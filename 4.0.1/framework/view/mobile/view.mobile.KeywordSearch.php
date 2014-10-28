@@ -192,8 +192,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
 		    getSRFRedText();
-		    alert($("#ret_request_name_type").val());
-		    alert($("#ret_function_name_type").val());
+		    
 		    if ($("#ret_function_name_type").val().length > 0) {
 		        $("#cust_type").val($("#ret_function_name_type").val());
 		        $("#cust_type option").prop("selected", false);
