@@ -6,6 +6,8 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
 
     $(document).ready(function () {
         $("#popup").fadeIn("fast");
+        
+
 
         // This function triggers on the first click of save
         // Prompts user to select a adhoc officer
