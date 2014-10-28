@@ -421,7 +421,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
             }
             else {
                 $("#infoHover").fadeOut("fast");
-                $("#popup").html($("#hoverDiv").html()).popup("open");
+                $("#popup").html($("#hoverDiv").html()).popup("close");
             }
         }
     });

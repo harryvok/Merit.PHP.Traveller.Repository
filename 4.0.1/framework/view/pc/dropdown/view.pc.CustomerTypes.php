@@ -30,7 +30,7 @@
         else{
             if(count($GLOBALS['result']->name_types_details) > 1){
                 ?>
-                <option value='BLANK'>Select</option>
+                <option value="">Select</option>
                 <?php
                 foreach($GLOBALS['result']->name_types_details as $result_nametypes){
                     ?>
@@ -40,7 +40,7 @@
             }
             else{
                 ?>
-                <option value='BLANK'>Select</option>
+                <option value=''>Select</option>
                 <option value='<?php echo $GLOBALS['result']->name_types_details->name_type; ?>'><?php echo $GLOBALS['result']->name_types_details->name_type_desc; ?></option>
                 <?php
             }

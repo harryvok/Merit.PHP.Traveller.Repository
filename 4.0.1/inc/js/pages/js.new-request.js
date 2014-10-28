@@ -133,11 +133,10 @@ $(document).ready(function () {
     }
 
     function requestResponse(event, ui) {
-        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = ""; var request_note = ""; var rauto = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note = ui.content[0].request_note; rauto = ui.content[0].request_auto_help_notes; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note; rauto = ui.item.request_auto_help_notes; }
+        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = ""; var request_note = ""; var rauto = ""; var request_name_type = "";
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note = ui.content[0].request_note; rauto = ui.content[0].request_auto_help_notes; request_name_type = ui.content[0].request_name_type; }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note; rauto = ui.item.request_auto_help_notes; request_name_type = ui.item.request_name_type; }
         if (label.length > 0 || code.length > 0) {
-
             $(this).removeClass("ui-autocomplete-loading");
             $("#request").val(code);
             $("#function").val("");
@@ -162,22 +161,17 @@ $(document).ready(function () {
             if (need_function == "Y") {
                 $("#functionInput").addClass("required");
                 $("#functionRequired").show();
-
             }
             else {
                 $("#functionRequired").hide();
                 $("#functionInput").removeClass("required");
-            }
-           
+            }           
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
             $("#functionInput").textInputState('enable');
-
             CheckCountOnly(count_only);
-            
+            $("#cust_type").val(request_name_type);           
             $("#requestInput").autocomplete("close");
             $("#functionInput").trigger("click");
-
-
         }
     }
 
@@ -202,9 +196,9 @@ $(document).ready(function () {
     }
 
     function functionResponse(event, ui) {
-        var label = ""; var code = ""; var priority = ""; var count_only = ""; var function_note = ""; var fauto = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; }
+        var label = ""; var code = ""; var priority = ""; var count_only = ""; var function_note = ""; var fauto = ""; var function_name_type;
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; function_name_type = ui.content[0].function_name_type; }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; function_name_type = ui.item.function_name_type; }
         if (label.length > 0 || code.length > 0) {
             $("#functionInput").removeClass("ui-autocomplete-loading");
             $("#function").val(code);
@@ -226,26 +220,24 @@ $(document).ready(function () {
             CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
             QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto,"N");
-
             // Perform count only check on full SRF
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
-            //if (auto_help_notes != null || auto_help_notes != "N")
-            //    $(".hoverDiv").fadeIn("fast");
             getSRFRedText();
+            alert(function_name_type);
+            $("#cust_type").val(function_name_type);
+            $("#cust_type option").prop("selected", false);
+            $("#cust_type option[value=" + function_name_type + "]").prop("selected", true);
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
             } else {
                 $("#add-request-textarea").focus();
             }
-        }
-        
-        
+        }       
     }
 
     function functionSuccess(data) {
-
         if ($("#textareaissue").length) {
             $("#textareaissue").focus();
         } else {
