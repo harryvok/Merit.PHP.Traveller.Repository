@@ -68,6 +68,17 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    getSRFRedText();
 			<?php } ?>
 		    $("#popup").popup("close");
+		    if ($("#ret_" + id + "_function_name_type").val().length > 0) {
+		        $("#cust_type").val($("#ret_" + id + "_function_name_type").val());
+		        $("#cust_type option").prop("selected", false);
+		        $("#cust_type option[value=" + $("#ret_" + id + "_function_name_type").val() + "]").prop("selected", true);
+		    }
+		    else {
+		        $("#cust_type").val($("#ret_" + id + "_request_name_type").val());
+		        $("#cust_type option").prop("selected", false);
+		        $("#cust_type option[value=" + $("#ret_" + id + "_request_name_type").val() + "]").prop("selected", true);
+		    }
+		    $('#cust_type').selectmenuState('refresh', true);
 		    $("#add-request-textarea").focus();
 		
 		});
@@ -92,6 +103,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 <input type="hidden" id="ret_<?php echo $set; ?>_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help)){ echo $result_n_ar->service_auto_help; } else { echo "N"; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help)){ echo $result_n_ar->request_auto_help; } else { echo "N"; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_request_name_type" value="<?php if(isset($result_n_ar->request_name_type)){ echo $result_n_ar->request_name_type; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_function_name_type" value="<?php if(isset($result_n_ar->function_name_type)){ echo $result_n_ar->function_name_type; } else { echo ""; } ?>" />
 			<li class="keyword_row" id="<?php echo $set; ?>">
             	<a>
 				<p><b>Keyword:</b> <?php if(isset($result_n_ar->keyword)){ echo $result_n_ar->keyword; } else { echo ""; } ?></p>
@@ -122,9 +135,11 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
     <input type="hidden" id="ret_request_need_func" value="<?php if(isset($result_n_ar->request_need_func)){ echo $result_n_ar->request_need_func; } else { echo ""; } ?>" />
     <input type="hidden" id="ret_request_priority" value="<?php if(isset($result_n_ar->request_priority)){ echo $result_n_ar->request_priority; } else { echo ""; } ?>" />
     <input type="hidden" id="ret_function_priority" value="<?php if(isset($result_n_ar->function_priority)){ echo $result_n_ar->function_priority; } else { echo ""; } ?>" />
-<input type="hidden" id="ret_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help)){ echo $result_n_ar->service_auto_help; } else { echo "N"; } ?>" />
-<input type="hidden" id="ret_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help)){ echo $result_n_ar->request_auto_help; } else { echo "N"; } ?>" />
-<input type="hidden" id="ret_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
+    <input type="hidden" id="ret_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help)){ echo $result_n_ar->service_auto_help; } else { echo "N"; } ?>" />
+    <input type="hidden" id="ret_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help)){ echo $result_n_ar->request_auto_help; } else { echo "N"; } ?>" />
+    <input type="hidden" id="ret_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
+    <input type="hidden" id="ret_request_name_type" value="<?php if(isset($result_n_ar->request_name_type)){ echo $result_n_ar->request_name_type; } else { echo ""; } ?>" />
+    <input type="hidden" id="ret_function_name_type" value="<?php if(isset($result_n_ar->function_name_type)){ echo $result_n_ar->function_name_type; } else { echo ""; } ?>" />
 	<script type="text/javascript">
 		$(document).ready(function() {
          $("#popup").popup("open");
@@ -177,6 +192,19 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
 		    getSRFRedText();
+		    alert($("#ret_request_name_type").val());
+		    alert($("#ret_function_name_type").val());
+		    if ($("#ret_function_name_type").val().length > 0) {
+		        $("#cust_type").val($("#ret_function_name_type").val());
+		        $("#cust_type option").prop("selected", false);
+		        $("#cust_type option[value=" + $("#ret_function_name_type").val() + "]").prop("selected", true);
+		    }
+		    else {
+		        $("#cust_type").val($("#ret_request_name_type").val());
+		        $("#cust_type option").prop("selected", false);
+		        $("#cust_type option[value=" + $("#ret_request_name_type").val() + "]").prop("selected", true);		        
+		    }
+		    $('#cust_type').selectmenuState('refresh', true);
 			<?php } ?>
             $("#popup").popup("close");
 		});
