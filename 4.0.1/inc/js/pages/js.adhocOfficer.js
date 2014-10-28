@@ -35,8 +35,8 @@ $(document).ready(function () {
         }
     }
 
-    $("#new_officer_text").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
-    $("input[data-adhocOfficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
+    //$("#new_officer_text").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
+    //$("input[data-adhocOfficer]").autoCompleteInit("inc/ajax/ajax.adhocOfficerList.php", { term: "" }, officerResponse);
 
     $("#new_officer_text").click(function() {
         $("#new_officer_code").val("");
