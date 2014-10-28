@@ -169,7 +169,11 @@ $(document).ready(function () {
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
             $("#functionInput").textInputState('enable');
             CheckCountOnly(count_only);
-            $("#cust_type").val(request_name_type);           
+            $("#cust_type").val(request_name_type);
+            $("#cust_type option").prop("selected", false);
+            $("#cust_type option[value=" + request_name_type + "]").prop("selected", true);
+            $('#cust_type').selectmenuState('refresh', true);
+
             $("#requestInput").autocomplete("close");
             $("#functionInput").trigger("click");
         }
@@ -225,10 +229,11 @@ $(document).ready(function () {
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
             getSRFRedText();
-            alert(function_name_type);
+          
             $("#cust_type").val(function_name_type);
             $("#cust_type option").prop("selected", false);
             $("#cust_type option[value=" + function_name_type + "]").prop("selected", true);
+            $('#cust_type').selectmenuState('refresh', true);
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
             } else {

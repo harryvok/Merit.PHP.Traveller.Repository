@@ -135,11 +135,19 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             ) {
             CheckHistory($("#historyaddrtype").val());
         }
+        if ($("#ret_" + id + "_function_name_type").val().length > 0) {
+            $("#cust_type").val($("#ret_" + id + "_function_name_type").val());
+        }
+        else {
+            $("#cust_type").val($("#ret_" + id + "_request_name_type").val());
+        }
         if ($("#textareaissue").length) {
             $("#textareaissue").focus();
         } else {
             $("#add-request-textarea").focus();
         }
+
+
         <?php } ?>
         
         
@@ -187,6 +195,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 <input type="hidden" id="ret_<?php echo $set; ?>_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help)){ echo $result_n_ar->service_auto_help; } else { echo "N"; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help)){ echo $result_n_ar->request_auto_help; } else { echo "N"; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_request_name_type" value="<?php if(isset($result_n_ar->request_name_type)){ echo $result_n_ar->request_name_type; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_function_name_type" value="<?php if(isset($result_n_ar->function_name_type)){ echo $result_n_ar->function_name_type; } else { echo ""; } ?>" />
+                                                   
                 <td><?php if(isset($result_n_ar->keyword)){ echo $result_n_ar->keyword; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->service_name)){ echo $result_n_ar->service_name; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->request_name)){ echo $result_n_ar->request_name; } else { echo ""; } ?></td>
@@ -228,6 +239,8 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
 <input type="hidden" id="ret_service_auto_help_notes" value="<?php if(isset($result_n_ar->service_auto_help)){ echo $result_n_ar->service_auto_help; } else { echo "N"; } ?>" />
 <input type="hidden" id="ret_request_auto_help_notes" value="<?php if(isset($result_n_ar->request_auto_help)){ echo $result_n_ar->request_auto_help; } else { echo "N"; } ?>" />
 <input type="hidden" id="ret_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
+<input type="hidden" id="ret_request_name_type" value="<?php if(isset($result_n_ar->request_name_type)){ echo $result_n_ar->request_name_type; } else { echo ""; } ?>" />
+<input type="hidden" id="ret_function_name_type" value="<?php if(isset($result_n_ar->function_name_type)){ echo $result_n_ar->function_name_type; } else { echo ""; } ?>" />
 <script type="text/javascript">
     $(document).ready(function () {
         var sauto = $("#ret_service_auto_help_notes").val();
@@ -279,6 +292,13 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
         CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
         CheckHistory();
+        
+        if ($("#ret_function_name_type").val().length > 0) {
+            $("#cust_type").val($("#ret_function_name_type").val());
+        }
+        else {
+            $("#cust_type").val($("#ret_request_name_type").val());
+        }
         <?php } ?>
     });
 </script>
