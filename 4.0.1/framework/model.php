@@ -1560,7 +1560,7 @@ class Model {
             'notify_input' => array(
                 'request_id' => $_POST['request_id'],
                 'action_id' => $_POST['action_id'],
-                'email_subject' => $_POST['subject'],
+                'email_subject' => '',
                 'email_body' => $_POST['message'],
                 'email_from' => $_POST['from'],
                 'email_from_type' => $_POST['fromEmail'],
@@ -1581,7 +1581,7 @@ class Model {
         $parameters = arrayToObject($parameters);
       #  $parameters->notify_input->email_attach = array("string" => $_SESSION['filename']);
         $parameters->notify_input->email_attach = $_SESSION['filename'];
-        $parameters->notify_input->email_subject = array("string" => $_POST['subject']);
+        $parameters->notify_input->email_subject = $_POST['subject'];
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
         $parameters->notify_input->email_name_type = array("string" => $_POST['email_name_type']);
         $parameters->notify_input->email_name_code = array("string" => $_POST['email_name_code']);
