@@ -34,7 +34,7 @@ if(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['result']-
               <p><b>Customer Name:</b> <?php if(isset($action_details->customer_given_name)){ if($action_details->customer_given_name != "Used") echo $action_details->customer_given_name; } if(isset($action_details->customer_surname)){ if($action_details->customer_surname != "Not") echo " " .$action_details->customer_surname; } ?></p>
               <p><b>Received:</b> <?php if(isset($action_details->assign_date) && $action_details->assign_date != "1970-01-01T00:00:00" && strlen($action_details->assign_date) > 0){ echo date('d/m/Y',strtotime($action_details->assign_date)); } else { echo ""; }  ?></p>
               <p><b>Due: </b> <?php if(isset($action_details->due_time) && $action_details->due_time != "1970-01-01T00:00:00" && strlen($action_details->due_time) > 0){ echo date('d/m/Y h:i A',strtotime($action_details->due_time)); } ?></p>
-              <p><b>Request Office: </b> <?php if(isset($action_details->officer_given_name)) {echo $action_details->officer_given_name;} if(isset($action_details->officer_surname)) {echo " " .$action_details->officer_surname;}?> </p>
+              <p><b>Action officer: </b> <?php if(isset($action_details->officer_given_name)) {echo $action_details->officer_given_name;} if(isset($action_details->officer_surname)) {echo " " .$action_details->officer_surname;}?> </p>
 			</a>
              
         </li>
@@ -71,7 +71,7 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
           <p><b>Customer Name:</b> <?php if(isset($action_details->customer_given_name)){ if($action_details->customer_given_name != "Used") echo $action_details->customer_given_name; } if(isset($action_details->customer_surname)){ if($action_details->customer_surname != "Not") echo " " .$action_details->customer_surname; } ?></p>
           <p><b>Received:</b> <?php if(isset($action_details->assign_date) && $action_details->assign_date != "1970-01-01T00:00:00" && strlen($action_details->assign_date) > 0){ echo date('d/m/Y',strtotime($action_details->assign_date)); } else { echo ""; }  ?></p>
           <p><b>Due: </b> <?php if(isset($action_details->due_time) && $action_details->due_time != "1970-01-01T00:00:00" && strlen($action_details->due_time) > 0){ echo date('d/m/Y h:i A',strtotime($action_details->due_time)); } ?></p>
-          <p><b>Request Office: </b> <?php if(isset($action_details->officer_given_name)) {echo $action_details->officer_given_name;} if(isset($action_details->officer_surname)) {echo " " .$action_details->officer_surname;} ?> </p>
+          <p><b>Action Officer: </b> <?php if(isset($action_details->officer_given_name)) {echo $action_details->officer_given_name;} if(isset($action_details->officer_surname)) {echo " " .$action_details->officer_surname;} ?> </p>
         </a>
          
     </li>
