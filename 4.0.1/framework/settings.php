@@ -10,6 +10,7 @@ define("SITE_TITLE","Merit Traveller");
 define("COUNCIL_NAME", "Merit Technology"); // Your council name
 define("INACTIVITY", ""); // The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.
 define("REFRESHTABLE", "1"); // The time Before a table refresh occurs
+define("EMAIL_SUBJECT_PREFIX", "Merit Technology Pty Ltd: "); // The Email Subject Prefix - eg. "Merit Technology Pty Ltd:" Request XXXXX - Updated Settings
 
 //WEB SERVICES AND LINKS
 define("SITE_LINK", "http://traveller.merit.com.au/4.0.1/");
@@ -45,12 +46,6 @@ define("INTRAMAPS_MOBILE", "");
 define("AU1", "administrator");
 define("AU2", "merit608");
 
-// EMAILING
-define("YOUR_EMAIL", "support@yourcompany.com.au"); // your support email
-define("EMAIL_FROM", "Merit Technology"); // name of person/company emails will be from (merit support)
-define("SMTP_HOST", "");
-define("SMTP_USER", "");
-define("SMTP_PASS", "");
 
 // OTHER
 define("COMPULSORY", "The fields with an asterisk are mandatory!"); // main message at top of form

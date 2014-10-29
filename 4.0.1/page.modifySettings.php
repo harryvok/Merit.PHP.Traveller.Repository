@@ -40,14 +40,17 @@ else{
           </p>
         <form method="post" id="setup" action="process.setup.php">
                 <h2>Authentication</h2>  
-              <label  for="password">Minutes of Inactivity</label> 
+              <label  for="inactivity">Minutes of Inactivity</label> 
               <input class="text" name='inactivity' value='<?php echo defined("INACTIVITY") ? INACTIVITY : ""; ?>'><br />
               <span class="small">(The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.)</span><p>&nbsp;</p><p>&nbsp;</p>
         
-              <label  for="password">Page refresh time</label> 
+              <label  for="refreshtable">Page refresh time</label> 
               <input class="text" name='refreshtable' value='<?php echo defined("REFRESHTABLE") ? REFRESHTABLE : ""; ?>'><br />
               <span class="small">(The time in minutes between refresh of Action and Request Intrays. Optional.)</span><p>&nbsp;</p><p>&nbsp;</p>
 
+              <label  for="emailprefix">Email Subject Prefix</label> 
+              <input class="text" name='emailsubject' value='<?php echo defined("EMAIL_SUBJECT_PREFIX") ? EMAIL_SUBJECT_PREFIX : ""; ?>'><br />
+              <span class="small">(The Email Subject Prefix - eg. "Merit Technology Pty Ltd: " )</span><p>&nbsp;</p><p>&nbsp;</p>
             
               <h2>Website</h2>
               <label  for="site_title">Site Title<span style="color:red;">*</span></label> 
