@@ -191,6 +191,11 @@
             <p>&nbsp;</p>
             <div class="summaryContainer" id="emailContainer">
                 <h1>Email Details</h1>
+                <?php 
+                // Fill header variable with subject prefix.
+                $header = EMAIL_SUBJECT_PREFIX;  
+                ?>
+                
 
                 <div>
                     <span <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == ""){ ?> style="color: red; font-weight: bold; display: none;" <?php } else { ?> style="color: red; font-weight: bold;" <?php } ?> id="note">NOTE: Email will be sent via Merit Engine.</span>
@@ -206,7 +211,7 @@
                     </div>
                     <div class="float-left">
                         <label for="from">Subject:</label>
-                        <input class="text" name='subject' id="subject" value="Request: <?php echo $_SESSION['request_id']; ?>">
+                        <input class="text" name='subject' id="subject" value="<?php echo $header. " Request: ".$_SESSION['request_id']; ?>">
                     </div>
                     <div class="float-left">
                         <label for="from">Message:</label>

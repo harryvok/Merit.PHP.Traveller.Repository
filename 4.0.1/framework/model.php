@@ -1577,9 +1577,6 @@ class Model {
             )
         );
         
-        // Fill header variable with subject prefix.
-        $header = EMAIL_SUBJECT_PREFIX;
-        
         // Skip Local Attachment of file.
         $_SESSION['noteAttach'] = 1;
         
@@ -1591,7 +1588,7 @@ class Model {
         
         $parameters = arrayToObject($parameters);
         $parameters->notify_input->email_attach = $_SESSION['filename'];
-        $parameters->notify_input->email_subject = $header.$_POST['subject'];
+        $parameters->notify_input->email_subject = $_POST['subject'];
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
         $parameters->notify_input->email_name_type = array("string" => $_POST['email_name_type']);
         $parameters->notify_input->email_name_code = array("string" => $_POST['email_name_code']);
@@ -2129,9 +2126,12 @@ class Model {
         if(isset($_POST['act_officer'])){$act_officer = $_POST['act_officer']; }
         $attachment = $_FILES["attachment"];
         
-        // If attachment filesize is 0 (NO attachment) - Assign Value
-        if ($attachment->size == 0){
-            $_SESSION['attachFake_success'] = 1;
+        // If attachment filesize is 0 (NO attachment) - exists = no
+        if ($attachment['size'] == 0){
+            $_SESSION['attachexists'] = 0;
+        }
+        else {
+            $_SESSION['attachexists'] = 1;
         }
         
         if(isset($_POST['ref'])){ $ref = strip_tags($_POST['ref']); }
@@ -2286,7 +2286,10 @@ class Model {
                     $_SESSION['done'] = 1;
                 }
                 else {
-                    $_SESSION['success_attach'] = 1; 
+                    if ($_SESSION['attachexists'] == 1){
+                        $_SESSION['success_attach'] = 1;
+                        $_SESSION['attachexists'] = 0;
+                    }
                 }
             }
             // If attachment fails - Error Messages
@@ -2313,10 +2316,6 @@ class Model {
             else {
                 
                 $_SESSION['success'] = 1;
-                if ($_SESSION['attachFake_success'] == 1){
-                    $_SESSION['success_attach'] = 1;
-                    $_SESSION['attachFake_success'] = 0;
-                }
                 $_SESSION['done'] = 1;
             }
         }
