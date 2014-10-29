@@ -1576,8 +1576,9 @@ class Model {
                 'email_attach' => '',
             )
         );
-        
+        $_SESSION['noteAttach'] = 1;
         $this->processAttachment($parameters);
+        $_SESSION['noteAttach'] = 0;
         $parameters = arrayToObject($parameters);
       #  $parameters->notify_input->email_attach = array("string" => $_SESSION['filename']);
         $parameters->notify_input->email_attach = $_SESSION['filename'];
@@ -2261,19 +2262,29 @@ class Model {
             $_SESSION['filename'] = $parameters_att->filename;
                       
             try {
-                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
+                if ($_SESSION['noteAttach'] == 0) {
+                    $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
+                }
                 $_SESSION['success'] = 1;
                 $_SESSION['success_attach'] = 1;
                 $_SESSION['done'] = 1;
             }
             catch(Exception $e){
-                $_SESSION['error'] = 1;
-                $_SESSION['error_attach'] = 1;
-                $_SESSION['done'] = 1;
-                $_SESSION['error_custom'] = 1;
-                $_SESSION['custom_error'] = $e->getMessage();
+                if ($_SESSION['noteAttach'] == 1) {
+                    $_SESSION['success'] = 1;
+                    $_SESSION['success_attach'] = 1;
+                    $_SESSION['done'] = 1;
+                }
+                else {
+                    $_SESSION['error'] = 1;
+                    $_SESSION['error_attach'] = 1;
+                    $_SESSION['done'] = 1;
+                    $_SESSION['error_custom'] = 1;
+                    $_SESSION['custom_error'] = $e->getMessage();
+                }
             }
         }
+        
         else{
             $_SESSION['error'] = 1;
             $_SESSION['error_attach'] = 1;
