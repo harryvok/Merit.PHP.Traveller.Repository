@@ -1560,7 +1560,7 @@ class Model {
             'notify_input' => array(
                 'request_id' => $_POST['request_id'],
                 'action_id' => $_POST['action_id'],
-                'email_subject' => $_POST['subject'],
+                'email_subject' => '',
                 'email_body' => $_POST['message'],
                 'email_from' => $_POST['from'],
                 'email_from_type' => $_POST['fromEmail'],
@@ -1576,12 +1576,13 @@ class Model {
                 'email_attach' => '',
             )
         );
-        
+        $_SESSION['noteAttach'] = 1;
         $this->processAttachment($parameters);
+        $_SESSION['noteAttach'] = 0;
         $parameters = arrayToObject($parameters);
       #  $parameters->notify_input->email_attach = array("string" => $_SESSION['filename']);
         $parameters->notify_input->email_attach = $_SESSION['filename'];
-        $parameters->notify_input->email_subject = array("string" => $_POST['subject']);
+        $parameters->notify_input->email_subject = $_POST['subject'];
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
         $parameters->notify_input->email_name_type = array("string" => $_POST['email_name_type']);
         $parameters->notify_input->email_name_code = array("string" => $_POST['email_name_code']);
@@ -2261,19 +2262,29 @@ class Model {
             $_SESSION['filename'] = $parameters_att->filename;
                       
             try {
-                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
+                if ($_SESSION['noteAttach'] == 0) {
+                    $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
+                }
                 $_SESSION['success'] = 1;
                 $_SESSION['success_attach'] = 1;
                 $_SESSION['done'] = 1;
             }
             catch(Exception $e){
-                $_SESSION['error'] = 1;
-                $_SESSION['error_attach'] = 1;
-                $_SESSION['done'] = 1;
-                $_SESSION['error_custom'] = 1;
-                $_SESSION['custom_error'] = $e->getMessage();
+                if ($_SESSION['noteAttach'] == 1) {
+                    $_SESSION['success'] = 1;
+                    $_SESSION['success_attach'] = 1;
+                    $_SESSION['done'] = 1;
+                }
+                else {
+                    $_SESSION['error'] = 1;
+                    $_SESSION['error_attach'] = 1;
+                    $_SESSION['done'] = 1;
+                    $_SESSION['error_custom'] = 1;
+                    $_SESSION['custom_error'] = $e->getMessage();
+                }
             }
         }
+        
         else{
             $_SESSION['error'] = 1;
             $_SESSION['error_attach'] = 1;
