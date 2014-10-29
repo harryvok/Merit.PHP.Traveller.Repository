@@ -2284,11 +2284,13 @@ class Model {
                     $_SESSION['success'] = 1;
                     $_SESSION['success_attach'] = 1;
                     $_SESSION['done'] = 1;
+                    unset($attachment);
                 }
                 else {
                     if ($_SESSION['attachexists'] == 1){
                         $_SESSION['success_attach'] = 1;
                         $_SESSION['attachexists'] = 0;
+                        unset($attachment);
                     }
                 }
             }
@@ -2298,7 +2300,8 @@ class Model {
                     $_SESSION['error_attach'] = 1;
                     $_SESSION['done'] = 1;
                     $_SESSION['error_custom'] = 1;
-                    $_SESSION['custom_error'] = $e->getMessage();  
+                    $_SESSION['custom_error'] = $e->getMessage(); 
+                    unset($attachment);
             }
         }
         
@@ -2311,12 +2314,14 @@ class Model {
                 $_SESSION['done'] = 1;
                 $_SESSION['error_custom'] = 1;
                 $_SESSION['custom_error'] = "Please ensure your attachment's file size is below ".$upload_mb."MB";
+                unset($attachment);
             }
             // If was sent from notification (upload skipped)
             else {
                 
                 $_SESSION['success'] = 1;
                 $_SESSION['done'] = 1;
+                unset($attachment);
             }
         }
     }
