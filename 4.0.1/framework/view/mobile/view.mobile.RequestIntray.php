@@ -41,7 +41,7 @@ if(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['result']-
               <p><b>Customer Name:</b> <?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></p>
               <p><b>Received Date:</b> <?php if(strlen($request_details->request_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->request_date))); } else { echo ""; } ?> <?php if(strlen($request_details->request_time) > 0){ echo date('h:i A',strtotime($request_details->request_time)); } else { echo ""; } ?></p>
              <p><b>Due Date:</b> <?php if(strlen($request_details->due_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->due_date))); } else { echo ""; } ?> <?php if(strlen($request_details->due_time) > 0){ echo date('h:i A',strtotime($request_details->due_time)); } else { echo ""; } ?></p>
-             <p><b>Request Office: </b> <?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;}?> </p>
+             <p><b>Request Officer: </b> <?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;}?> </p>
           </a>
          </li>        
 		 <?php
@@ -79,7 +79,7 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
               <p><b>Customer Name:</b> <?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></p>
               <p><b>Received Date:</b> <?php if(strlen($request_details->request_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->request_date))); } else { echo ""; } ?> <?php if(strlen($request_details->request_time) > 0){ echo date('h:i A',strtotime($request_details->request_time)); } else { echo ""; } ?></p>
              <p><b>Due Date:</b> <?php if(strlen($request_details->due_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->due_date))); } else { echo ""; } ?> <?php if(strlen($request_details->due_time) > 0){ echo date('h:i A',strtotime($request_details->due_time)); } else { echo ""; } ?></p>
-             <p><b>Request Office: </b> <?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;}?> </p>
+             <p><b>Request Officer: </b> <?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;}?> </p>
           </a>
          </li> 
     <?php
