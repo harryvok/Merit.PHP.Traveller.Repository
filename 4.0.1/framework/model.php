@@ -1576,13 +1576,14 @@ class Model {
                 'email_attach' => '',
             )
         );
+        $header = EMAILSUBJECT;
         $_SESSION['noteAttach'] = 1;
         $this->processAttachment($parameters);
         $_SESSION['noteAttach'] = 0;
         $parameters = arrayToObject($parameters);
       #  $parameters->notify_input->email_attach = array("string" => $_SESSION['filename']);
         $parameters->notify_input->email_attach = $_SESSION['filename'];
-        $parameters->notify_input->email_subject = $_POST['subject'];
+        $parameters->notify_input->email_subject = $header.$_POST['subject'];
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
         $parameters->notify_input->email_name_type = array("string" => $_POST['email_name_type']);
         $parameters->notify_input->email_name_code = array("string" => $_POST['email_name_code']);
