@@ -373,6 +373,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
                         $("#helpText_mobile").html(data.helpText);
                         $("#helpURL_mobile").html(data.helpURL);
                         $("#popup").html($("#hoverDiv").html()).popup("open");
+                        $("#popup").css("top", "100px");
                     }
                 }
 
@@ -395,6 +396,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
                         $("#helpText_mobile").html(data.helpText);
                         $("#helpURL_mobile").html(data.helpURL);
                         $("#popup").html($("#hoverDiv").html()).popup("open");
+                        $("#popup").css("top", "100px");
                     }
                 }
                 if (ser.length > 0 && req.length > 0 && func.length > 0) {
@@ -415,7 +417,8 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
                         $(".hoverDiv").fadeIn("fast");
                         $("#helpText_mobile").html(data.helpText);
                         $("#helpURL_mobile").html(data.helpURL);
-                        $("#popup").html($("#hoverDiv").html()).popup("open");
+                        $("#popup").html($("#hoverDiv").html()).popup("open");                       
+                        $("#popup").css("top", "100px");
                     }
                 }                          
             }
