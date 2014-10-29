@@ -16,6 +16,7 @@ $(document).ready(function() {
             null,
             {"sType": "date-euro" },
             {"sType": "date-euro" },
+            null,
             null
         ]
     });
@@ -81,6 +82,7 @@ else{
             <th>Received Date</th>
             <th>Due Date</th>
             <th></th>
+            <th>Request Officer</th>
         </tr>
     </thead>
     <tbody>
@@ -112,6 +114,7 @@ else{
                         echo '<img width="10" height="9" src="images/dotRed.png" />';
                     } 
                     ?></td>
+                <td><?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;} ?></td>
             </tr>
             <?php
         }
@@ -127,9 +130,9 @@ else{
             <td><?php echo $request_details->service_name . " - " .$request_details->request_name; if(isset($request_details->function_name)){ echo " - " . $request_details->function_name; }?></td>
             <td><?php if(isset($request_details->facility_name)){ echo $request_details->facility_name; } ?></td>
             <td><?php if(isset($request_details->location_house_suffix) && isset($request_details->location_house_no) && strlen($request_details->location_house_no) > 0 && strlen($request_details->location_house_suffix) > 0 && $request_details->location_house_no != $request_details->location_house_suffix){ echo $request_details->location_house_suffix; } else{ echo $request_details->location_house_no; } if(isset($request_details->location_street_name)){ echo " " .$request_details->location_street_name; } if(isset($request_details->location_street_type)){ echo " " .$request_details->location_street_type; } if(isset($request_details->location_locality_name)){ echo " " .$request_details->location_locality_name; } ?></td>
-                <td><?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></td>
-                <td><?php if(strlen($request_details->request_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->request_date))); } else { echo ""; } ?> <?php if(strlen($request_details->request_time) > 0){ echo date('h:i A',strtotime($request_details->request_time)); } else { echo ""; } ?></td>
-             <td><?php if(strlen($request_details->due_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->due_date))); } else { echo ""; } ?> <?php if(strlen($request_details->due_time) > 0){ echo date('h:i A',strtotime($request_details->due_time)); } else { echo ""; } ?></td>
+            <td><?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></td>
+            <td><?php if(strlen($request_details->request_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->request_date))); } else { echo ""; } ?> <?php if(strlen($request_details->request_time) > 0){ echo date('h:i A',strtotime($request_details->request_time)); } else { echo ""; } ?></td>
+            <td><?php if(strlen($request_details->due_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->due_date))); } else { echo ""; } ?> <?php if(strlen($request_details->due_time) > 0){ echo date('h:i A',strtotime($request_details->due_time)); } else { echo ""; } ?></td>
             <td><?php 
                     if($request_details->status_code == "OPEN"){ 
                         echo '<img width="10" height="9" src="images/dotGreen.png" />';
@@ -141,6 +144,7 @@ else{
                         echo '<img width="10" height="9" src="images/dotRed.png" />';
                     } 
                     ?></td>
+            <td><?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;} ?></td>
         </tr>
         <?php
     }

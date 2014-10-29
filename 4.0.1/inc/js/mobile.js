@@ -73,6 +73,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#infoHoverClose", function () {
+        $("#popup").html($("#hoverDiv").html()).popup("close");
         $("#helpText_mobile").html("");
         $("#helpURL_mobile").html("");
     });
