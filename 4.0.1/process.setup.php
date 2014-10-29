@@ -61,7 +61,7 @@ define("SITE_TITLE","'.$site_title.'");
 define("COUNCIL_NAME", "'.$council_name.'"); // Your council name
 define("INACTIVITY", "'.$inactivity.'"); // The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.
 define("REFRESHTABLE", "'.$refreshtable.'"); // The time Before a table refresh occurs
-define("EMAILSUBJECT", "'.$emailsubject.'"); // The email subject Prefix - eg. "Merit Technology Pty Ltd:" Request XXXXX - Updated Settings
+define("EMAIL_SUBJECT_PREFIX", "'.$emailsubject.'"); // The Email Subject Prefix - eg. "Merit Technology Pty Ltd:" Request XXXXX - Updated Settings
 
 //WEB SERVICES AND LINKS
 define("SITE_LINK", "'.$site_link.'");

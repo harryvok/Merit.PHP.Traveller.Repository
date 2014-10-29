@@ -1576,12 +1576,20 @@ class Model {
                 'email_attach' => '',
             )
         );
-        $header = EMAILSUBJECT;
+        
+        // Fill header variable with subject prefix.
+        $header = EMAIL_SUBJECT_PREFIX;
+        
+        // Skip Local Attachment of file.
         $_SESSION['noteAttach'] = 1;
+        
+        // Attach File Call.
         $this->processAttachment($parameters);
+        
+         // Reset Variable.
         $_SESSION['noteAttach'] = 0;
+        
         $parameters = arrayToObject($parameters);
-      #  $parameters->notify_input->email_attach = array("string" => $_SESSION['filename']);
         $parameters->notify_input->email_attach = $_SESSION['filename'];
         $parameters->notify_input->email_subject = $header.$_POST['subject'];
         $parameters->notify_input->email_to = array("string" => $_POST['email_to']);
@@ -2120,6 +2128,12 @@ class Model {
         if(isset($_POST['action_id'])){ $action_id = $_POST['action_id']; }
         if(isset($_POST['act_officer'])){$act_officer = $_POST['act_officer']; }
         $attachment = $_FILES["attachment"];
+        
+        // If attachment filesize is 0 (NO attachment) - Assign Value
+        if ($attachment->size == 0){
+            $_SESSION['attachFake_success'] = 1;
+        }
+        
         if(isset($_POST['ref'])){ $ref = strip_tags($_POST['ref']); }
         if(isset($_POST['ref_page'])){ $page = strip_tags($_POST['ref_page']); }
         if(isset($_POST['filter'])){ $filter = strip_tags($_POST['filter']); }
@@ -2261,37 +2275,50 @@ class Model {
             $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
             $parameters_att->description = $description;
             $_SESSION['filename'] = $parameters_att->filename;
-                      
+                
+            // Try Attach
             try {
+                // If attachment is not from Notification (noteAttach == 0) - Call webservice and post message if successfull
                 if ($_SESSION['noteAttach'] == 0) {
                     $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_attach_req_file", $parameters_att);
-                }
-                $_SESSION['success'] = 1;
-                $_SESSION['success_attach'] = 1;
-                $_SESSION['done'] = 1;
-            }
-            catch(Exception $e){
-                if ($_SESSION['noteAttach'] == 1) {
                     $_SESSION['success'] = 1;
                     $_SESSION['success_attach'] = 1;
                     $_SESSION['done'] = 1;
                 }
                 else {
+                    $_SESSION['success_attach'] = 1; 
+                }
+            }
+            // If attachment fails - Error Messages
+            catch(Exception $e){
                     $_SESSION['error'] = 1;
                     $_SESSION['error_attach'] = 1;
                     $_SESSION['done'] = 1;
                     $_SESSION['error_custom'] = 1;
-                    $_SESSION['custom_error'] = $e->getMessage();
-                }
+                    $_SESSION['custom_error'] = $e->getMessage();  
             }
         }
         
-        else{
-            $_SESSION['error'] = 1;
-            $_SESSION['error_attach'] = 1;
-            $_SESSION['done'] = 1;
-            $_SESSION['error_custom'] = 1;
-            $_SESSION['custom_error'] = "Please ensure your attachment's file size is below ".$upload_mb."MB";
+        // Otherwise Do
+        else {
+            // Again if not sent from a notification
+            if ($_SESSION['noteAttach'] == 0) {
+                $_SESSION['error'] = 1;
+                $_SESSION['error_attach'] = 1;
+                $_SESSION['done'] = 1;
+                $_SESSION['error_custom'] = 1;
+                $_SESSION['custom_error'] = "Please ensure your attachment's file size is below ".$upload_mb."MB";
+            }
+            // If was sent from notification (upload skipped)
+            else {
+                
+                $_SESSION['success'] = 1;
+                if ($_SESSION['attachFake_success'] == 1){
+                    $_SESSION['success_attach'] = 1;
+                    $_SESSION['attachFake_success'] = 0;
+                }
+                $_SESSION['done'] = 1;
+            }
         }
     }
     

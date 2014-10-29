@@ -48,9 +48,9 @@ else{
               <input class="text" name='refreshtable' value='<?php echo defined("REFRESHTABLE") ? REFRESHTABLE : ""; ?>'><br />
               <span class="small">(The time in minutes between refresh of Action and Request Intrays. Optional.)</span><p>&nbsp;</p><p>&nbsp;</p>
 
-              <label  for="emailprefix">Email subject prefix</label> 
-              <input class="text" name='emailsubject' value='<?php echo defined("EMAILSUBJECT") ? EMAILSUBJECT : ""; ?>'><br />
-              <span class="small">(The email subject Prefix - eg. "Merit Technology Pty Ltd: " )</span><p>&nbsp;</p><p>&nbsp;</p>
+              <label  for="emailprefix">Email Subject Prefix</label> 
+              <input class="text" name='emailsubject' value='<?php echo defined("EMAIL_SUBJECT_PREFIX") ? EMAIL_SUBJECT_PREFIX : ""; ?>'><br />
+              <span class="small">(The Email Subject Prefix - eg. "Merit Technology Pty Ltd: " )</span><p>&nbsp;</p><p>&nbsp;</p>
             
               <h2>Website</h2>
               <label  for="site_title">Site Title<span style="color:red;">*</span></label> 
