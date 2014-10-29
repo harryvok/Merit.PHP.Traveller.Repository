@@ -2146,7 +2146,7 @@ class Model {
         }
         //used to be process direct attachment over here.
         $this->processDirectAttachment($attachment, $request_id, $description);  
-       unset($_FILES["attachment"]);
+       unset($_FILES["attachment"]); 
     }
     
     public function processEditAttachment($params = NULL){
