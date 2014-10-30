@@ -25,12 +25,13 @@ $(document).ready(function () {
                 data: { keyword: value },
                 success: function (data) {
                     Unload();
+                    $("#popup").css("top", "100px");
                     $('#popup').html(data);
-                    if ($("#textareaissue").length) {
-                        $("#textareaissue").focus();
-                    } else {
-                        $("#add-request-textarea").focus();
-                    }
+                    //if ($("#textareaissue").length) {
+                    //    $("#textareaissue").focus();
+                    //} else {
+                    //    $("#add-request-textarea").focus();
+                    //}
                 }
             });
         }
