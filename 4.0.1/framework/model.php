@@ -1624,6 +1624,8 @@ class Model {
             else $id = $_POST['request_id'];
             $_SESSION['redirect'] = "index.php?page=view-".$_POST['page']."&id=".$id;
         }
+        unset($_FILES["attachment"]);
+        unset($parameters);
     }
     
     public function processCreateRequest($params = NULL){
@@ -2146,7 +2148,6 @@ class Model {
         }
         //used to be process direct attachment over here.
         $this->processDirectAttachment($attachment, $request_id, $description);  
-       unset($_FILES["attachment"]); 
     }
     
     public function processEditAttachment($params = NULL){
