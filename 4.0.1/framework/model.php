@@ -1600,7 +1600,8 @@ class Model {
         
         try {
             $result = $this->WebService(MERIT_REQUEST_FILE, "ws_send_manual_notification", $parameters);
-
+            unset($_FILES["attachment"]);
+            unset($parameters);
             $_SESSION['done'] = 1;
             $_SESSION['success'] = 1;
             $_SESSION['success_send_notification'] = 1;
@@ -1624,8 +1625,7 @@ class Model {
             else $id = $_POST['request_id'];
             $_SESSION['redirect'] = "index.php?page=view-".$_POST['page']."&id=".$id;
         }
-        unset($_FILES["attachment"]);
-        unset($parameters);
+        
     }
     
     public function processCreateRequest($params = NULL){
