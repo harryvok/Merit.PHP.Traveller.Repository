@@ -79,7 +79,12 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		        $("#cust_type option[value=" + $("#ret_" + id + "_request_name_type").val() + "]").prop("selected", true);
 		    }
 		    $('#cust_type').selectmenuState('refresh', true);
-		    $("#add-request-textarea").focus();
+		    //$("#add-request-textarea").focus();
+		    if ($("#textareaissue").length) {
+		        $("#textareaissue").focus();
+		    } else {
+		        $("#add-request-textarea").focus();
+		    }
 		
 		});
 		 });
@@ -205,7 +210,12 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    }
 		    $('#cust_type').selectmenuState('refresh', true);
 			<?php } ?>
-            $("#popup").popup("close");
+		    $("#popup").popup("close");
+		    if ($("#textareaissue").length) {
+		        $("#textareaissue").focus();
+		    } else {
+		        $("#add-request-textarea").focus();
+		    }
 		});
 	</script>
     <?php
