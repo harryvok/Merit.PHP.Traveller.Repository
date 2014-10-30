@@ -79,7 +79,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		        $("#cust_type option[value=" + $("#ret_" + id + "_request_name_type").val() + "]").prop("selected", true);
 		    }
 		    $('#cust_type').selectmenuState('refresh', true);
-		    $("#add-request-textarea").focus();
+		    //$("#add-request-textarea").focus();
 		
 		});
 		 });
