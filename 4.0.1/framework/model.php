@@ -1602,6 +1602,7 @@ class Model {
             $result = $this->WebService(MERIT_REQUEST_FILE, "ws_send_manual_notification", $parameters);
             unset($_FILES["attachment"]);
             unset($parameters);
+            unset($_SESSION['filename']);
             $_SESSION['done'] = 1;
             $_SESSION['success'] = 1;
             $_SESSION['success_send_notification'] = 1;
@@ -2275,8 +2276,10 @@ class Model {
             $parameters_att->request_id = $requestID;
             $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
             $parameters_att->description = $description;
+            
             $_SESSION['filename'] = $parameters_att->filename;
-                
+           
+
             // Try Attach
             try {
                 // If attachment is not from Notification (noteAttach == 0) - Call webservice and post message if successfull
@@ -2304,6 +2307,7 @@ class Model {
                     $_SESSION['custom_error'] = $e->getMessage(); 
                     
             }
+            unset($parameters_att);
         }
         
         // Otherwise Do
