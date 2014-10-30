@@ -80,6 +80,11 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    }
 		    $('#cust_type').selectmenuState('refresh', true);
 		    //$("#add-request-textarea").focus();
+		    if ($("#textareaissue").length) {
+		        $("#textareaissue").focus();
+		    } else {
+		        $("#add-request-textarea").focus();
+		    }
 		
 		});
 		 });
@@ -205,7 +210,12 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    }
 		    $('#cust_type').selectmenuState('refresh', true);
 			<?php } ?>
-            $("#popup").popup("close");
+		    $("#popup").popup("close");
+		    if ($("#textareaissue").length) {
+		        $("#textareaissue").focus();
+		    } else {
+		        $("#add-request-textarea").focus();
+		    }
 		});
 	</script>
     <?php
