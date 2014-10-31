@@ -265,5 +265,6 @@
                 $("#SMSmessage").rules("remove", "required");
             }
     </script>
+        <div style="clear:both"></div>
     </div>
 </div>

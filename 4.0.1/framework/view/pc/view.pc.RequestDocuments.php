@@ -26,7 +26,7 @@ if($GLOBALS['result']['errorConnecting']== false){
 <div class="summaryContainer">
     <h1>Documents</h1>
     <div>
-        <input type="button"  class="openPopup" id="Documents" value="Link Document"/>
+        <input type="button"  class="openDocumentPopup" id="Documents" value="Link Document"/>
         
         <table id="requestDocumentTable" class=" sortable" title="" cellspacing="0">
             <thead>

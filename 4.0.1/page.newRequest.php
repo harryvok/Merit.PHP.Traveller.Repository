@@ -28,7 +28,7 @@ if(!isset($_GET['d'])){
                 <b><span id="rednote"></span></b><BR />
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
                 <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
-                <input type="button" value="InfoXpert Search" class="openPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
+                <input type="button" value="InfoXpert Search" class="openDocumentPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
                 <?php } ?>
                 <div class="column r60">
                     <div class="column r25">
@@ -268,7 +268,7 @@ if(!isset($_GET['d'])){
                             <input type="button" name="clearDetails" id="clearDetails" value="Clear" />
                              <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()" style="display:none" />
                             <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
-                            <input type="button" class="openPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
+                            <input type="button" class="openDocumentPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
                             <?php } ?> 
                         </div>
                         <div class="float-left">

@@ -86,9 +86,20 @@ $.extend($.expr[":"],
 // Open Popup
 $(document).on("click", ".openPopup", function(){
 	$('#popup').html($("#"+$(this).attr("id")+"Popup").html());	
-	$('#popup').css({ 'opacity' : 1.0});
+	$('#popup').css({ 'opacity': 1.0 });
+	$('#popup').css({ "max-height": "600px"});
 	  $("#popup").fadeIn("fast");
 	popup();
+});
+
+// InfoExpert Popup
+$(document).on("click", ".openDocumentPopup", function () {
+    $('#popup').html($("#" + $(this).attr("id") + "Popup").html());
+    $('#popup').css({ 'opacity': 1.0 });
+    $('#popup').css({ "max-height": "auto !important", "overflow": "visible" });
+
+    $("#popup").fadeIn("fast");
+    popup();
 });
 
 // Edit Comment

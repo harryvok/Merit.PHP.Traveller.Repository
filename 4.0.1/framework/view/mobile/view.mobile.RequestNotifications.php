@@ -1,4 +1,4 @@
-<div data-role="collapsible" class="col" data-collapsed="false" data-corners="false" data-content-theme="c">
+<div data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="c">
     <h4>Notifications <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php if(isset($GLOBALS['result']['notifications']->notification_details)) echo count($GLOBALS['result']['notifications']->notification_details); else echo 0; ?></span></h4>
     <p>
         <strong>Filter</strong>
@@ -54,11 +54,11 @@
 
 
 <!-- Send Notification Div -->
-    <div data-role="collapsible" class="col" data-corners="false" data-collapsed="true" data-content-theme="b">
+    <div data-role="collapsible" class="col" data-corners="false" data-collapsed="false" data-content-theme="b">
         <h4>Send Notification</h4>
 
     <!-- Start Form -->
-        <script type="text/javascript" src="inc/js/pages/js.sendNotification.js"></script>
+        <script type="text/javascript" src="inc/js/pages/js.sendNotificationMobile.js"></script>
         <form id="notificationForm" method="post" action="process.php" enctype='multipart/form-data'>
         <input type="hidden" value="<?php echo $i; ?>" name="officerCount" />
             
@@ -67,10 +67,8 @@
                 <h4>Select Recipients</h4>
 
                     <!-- Table Start -->
-                <div class="ui-grid-a">
-                        <div class="ui-block-a">
-                            <div class="ui-bar-c height100">
-                            <table border="0" cellpadding="3">
+                            <div class="height100">
+                            <table class="mobileNotifyTable">
                                 <thead>
                                     <tr>
                                         <th>Full Name</th>
@@ -141,41 +139,132 @@
                                 </tbody>
                             </table>
                         </div>
-                      </div>
                         
                             
-                    <div class="ui-block-b">
-                       <div class="ui-bar-c height100">
-                            <span class="summaryColumnTitle">Email:</span>
-                            <div class="summaryColumn" id="listEmail"></div>
-                            <input type="button" value="+ Email" id="emailAdd"/>
-                            <input type="button" value="+ Officer" id="emailOfficerAdd"/>
+                        <table class="mobileNotifyTable" style="margin-top:10px">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>SMS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                        <td>
+                                            <div class="summaryColumn" id="listEmail"></div>
+                                            <div data-role="button" id="emailAdd">+ Email</div>
+                                            <div data-role="button" id="emailOfficerAdd">+ Officer</div>
+                                        </td>
+                                        <td>
+                                            <div class="summaryColumn" id="listSMS"></div>
+                                            <div data-role="button" id="smsAdd">+ Mobile</div>
+                                            <div data-role="button" id="smsOfficerAdd">+ Officer</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                        </table>
 
-                            <span class="summaryColumnTitle">SMS:</span>
-                            <div class="summaryColumn" id="listSMS"></div>
-                            <input type="button" value="+ Mobile" id="smsAdd" />
-                            <input type="button" value="+ Officer" id="smsOfficerAdd" />
-                        </div>
-                     </div>
                 </div>
                 <!-- End Select Div -->
                     <div style="clear:both"></div>
-                    </div> 
+
+
 
             <!-- Start Email Div -->
-            <div data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" style="overflow:hidden;">
+            <div id="emailContainer" data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" style="overflow:hidden;">
                 <h4>Email Message</h4>
+
+                <?php 
+                // Fill header variable with subject prefix.
+                $header = EMAIL_SUBJECT_PREFIX;  
+                ?>
+
+                    <table class="mobileNotifyTable" style="margin-top:10px">
+                                <thead>
+                                    <tr>
+                                        <th> <span <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == ""){ ?> style="color: red; font-weight: bold; display: none;" <?php } else { ?> style="color: red; font-weight: bold;" <?php } ?> id="note">NOTE: Email will be sent via Merit Engine.</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                        <td>
+                                            <label for="from">From my email address: </label>
+                                            <input type="checkbox" style="position:relative !important;" name='fromEmail' id="fromEmail" value="PERSONAL" <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == "") echo "checked='checked'"; ?> />
+                    
+                                            <label for="from">From:</label>
+                                            <input class="inline" readonly="readonly" name='from' id="from" size="60" value="<?php echo $_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL']; ?>" <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == "") echo "disabled='disabled'"; ?>>                     
+
+                                            <label for="from">Subject:</label>
+                                            <input class="text" name='subject' id="subject" value="<?php echo $header. " Request: ".$_SESSION['request_id']; ?>">
+
+                                            <label for="from">Message:</label>
+                                            <textarea id="message" name="message" required></textarea>
+
+                                            <label for="desc">File</label>
+                                            <input id="attachment" type="file" name="attachment" id="attachFile" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                        </table>  
             </div> <!-- End Email Div -->
 
+
+
             <!-- Start SMS Div -->
-            <div data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" style="overflow:hidden;">
+            <div id="smsContainer" data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" style="overflow:hidden;">
                 <h4>SMS Message</h4>
+                         <table class="mobileNotifyTable" style="margin-top:10px">
+                                <thead>
+                                    <tr>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                        <td>
+                                            <label for="from">Message:</label>
+                                            <textarea name="SMSmessage" required></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                        </table>
             </div> <!-- End SMS Div -->
 
+            <div class="float-right">
+                <input id="sendbutton" type="submit" value="Send"/>
+                <input type="reset" value="Reset" />
+            </div>
 
+            <!-- Hidden Fields -->
+                        <input type="hidden" name="request_id" value="<?php echo $_SESSION['request_id']; ?>" />
+                        <input type="hidden" name="action_id" value="<?php echo $_GET['id']; ?>" />
+                        <input type="hidden" name="page" value="action" />
+                        <input type="hidden" name="action" value="SendNotification" />
+                        <input type="hidden" name="emailCount" id="emailCount" value="0"/>
+                        <input type="hidden" name="smsCount" id="smsCount" value="0"/>
 
-
+            <!-- Form End -->
                 </form>
+
+                <?php $_SESSION['typecode'] = 1; ?>
+
+
+                    <script>
+                        var email = "<?php echo $email ?>";
+                        var sms = "<?php echo $sms ?>";
+                        $(document).ready(function () {
+                            $("#notificationForm").validate();
+                            $("#notificationForm").submit(function () {
+                                if ($(this).validate().numberOfInvalids() == 0) { $("#sendbutton").attr("disabled", true); }
+                            });
+                        });
+                        if (email < 1) {
+                            $("#message").rules("remove", "required");
+                        }
+                        else if (sms < 1) {
+                            $("#SMSmessage").rules("remove", "required");
+                        }
+                    </script>
             </div>
 
         
