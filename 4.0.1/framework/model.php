@@ -355,6 +355,7 @@ class Model {
         return $result;
          //$GLOBALS['result'] = $result;
     }
+    
     public function getBookingSummary($params = NULL){
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
@@ -364,8 +365,8 @@ class Model {
         $parameters->house_number = $_POST['house_number'];
         $parameters->house_suffix = $_POST['house_suffix'];
         $parameters->locality_name = $_POST['locality_name'];
-        $parameters->request_code = $_POST['request_code'];
-        $parameters->service_code = $_POST['service_code'];
+        $parameters->request_code = $_POST['requestID'];
+        $parameters->service_code = $_POST['serviceID'];
         $parameters->start_datetime = $_POST['start_datetime'];
         $parameters->street_name = $_POST['street_name'];
         $parameters->street_type = $_POST['street_type'];

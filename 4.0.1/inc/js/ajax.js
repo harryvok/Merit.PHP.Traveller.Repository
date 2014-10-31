@@ -79,33 +79,36 @@ function GetAddressDetails() {
                         $("#AddrSummary").removeAttr("disabled");
                     }
                     //proceed to check booking summary
-                    GetBookingSummary();
-                   
+                    var date = new Date().toISOString();
+                    GetBookingSummary(date);                   
                 }                
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
-                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
-                
+                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");                
             }
         });
     }    
 }
-function GetBookingSummary() {
-    if ($("service").val() != "" && $("request").val() != "" && $("function").val() != "") {
-        var serviceID = $("service").val();
-        var requestID = $("request").val();
-        var functionID = $("function").val();
+function GetBookingSummary(paramdate) {
+    if (paramdate == "")    
+        date = new Date().toISOString();
+    else
+        date = paramdate;
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {
+        
+        var serviceID = $("#serviceInput").val();
+        var requestID = $("#requestInput").val();
+        var functionID = $("#functionInput").val();
         var addressID = $("#addressId").val();
         var house_number = $("#lno").val();
         var house_suffix = $("#lfno").val();
         var street_name = $("#lstreet").val();
         var street_type = $("#ltype").val();
         var locality_name = $("#lsuburb").val();
-
         Load();
         $.ajax({
             url: 'inc/ajax/ajax.getBookingSummary.php',
             type: 'POST',
-            
+
             data: {
                 serviceID: serviceID,
                 requestID: requestID,
@@ -116,15 +119,19 @@ function GetBookingSummary() {
                 street_name: street_name,
                 street_type: street_type,
                 locality_name: locality_name,
-                start_datetime: new Date().toISOString()
+                start_datetime: date
             },
             success: function (data) {
                 Unload();
+                $('#popup').html("");
                 $('#popup').html(data);
 
 
             },
         });
+    }
+    else {
+        $("#AddrBooking").attr("disabled", "disabled");
     }
 }
 
