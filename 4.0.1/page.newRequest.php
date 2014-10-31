@@ -3,12 +3,7 @@
 if(!isset($_GET['d'])){
     // If there is no tracked result, display the form to lodge requests
 ?>
-<script type = "text/javascript" >
-    history.pushState(null, null, 'pagename');
-    window.addEventListener('popstate', function (event) {
-        history.pushState(null, null, 'pagename');
-    });
-</script>
+
 <script src="inc/js/pages/js.new-request.js"></script>
 <div id="error">
 </div>
