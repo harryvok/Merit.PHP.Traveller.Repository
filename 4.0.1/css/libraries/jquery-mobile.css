@@ -2429,11 +2429,11 @@ body.ui-mobile-viewport, div.ui-mobile-viewport {
 
 .ui-checkbox input, .ui-radio input {
     position: absolute;
-    left: 20px;
     top: 50%;
-    width: 10px;
-    height: 10px;
-    margin: -5px 0 0 0;
+    left: 0;
+    width: 30px;
+    height: 20px;
+    margin: -10px 0 0 0;
     outline: 0 !important;
     z-index: 1;
 }

@@ -89,6 +89,17 @@ $(document).ready(function () {
         $("#note").toggle();
     });
 
+    // Function VALIDATION ---------------------------------------------------
+    function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!emailReg.test($email)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
     // -----------------------------------------------------------------------
     // RESET BUTTON ----------------------------------------------------------
     $("#reset").click(function () {
@@ -167,19 +178,22 @@ $(document).ready(function () {
                                 "</script>" +
                                 "<span id='emailText" + email + "List'>" +
                                 "<span id='emailText" + email + "NameLab'>Name:</span>" +
-                                "<input id='emailText" + email + "Name' type='text'  value='' />" +
+                                "<input id='emailText" + email + "Name' type='text'  value='' />" + "<br />" +
+
                                 "<span id='emailText" + email + "EmailLab'>Email:</span>" +
                                 "<input id='emailText" + email + "Email' type='text' value='' />" +
+
                                 "<input id='emailText" + email + "Type' type='hidden' value='' />" +
-                                "<input type='button' value='Add' id='emailText" + email + "Add' />" +
+                                "<input type='button' value='Add' id='emailText" + email + "Add' />" + "&nbsp" +
                                 "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png' ><br /></span>");
 
         $("#emailText" + email + "Add").click(function () {
-            alert("youclickedme");
-            if ($("#emailText" + email + "Name").length > 0 && $("#emailText" + email + "Email").length > 0 && validateEmail($("#emailText" + email + "Email").val())) {
+
+            if ($("#emailText" + email + "Email").val().length > 0 && $("#emailText" + email + "Name").val().length > 0 && validateEmail($("#emailText" + email + "Name").val()) == true) {
 
                 var emailaddress = $("#emailText" + email + "Email").val();
                 var name = $("#emailText" + email + "Name").val();
+
                 $("#emailText" + email + "NameLab").html($("#emailText" + email + "Name").val());
                 $("#emailText" + email + "Name").css("display", "none").attr("name", "email_name[]");
                 $("#emailText" + email + "Email").css("display", "none").attr("name", "email_to[]");
@@ -259,7 +273,7 @@ $(document).ready(function () {
                         $("#emailText" + email + "Name").val(name);
                         if (emailText.length > 0) {
                             if (confirm("Choose this officer?")) {
-                                if ($("#emailText" + email + "Name").length > 0 && $("#emailText" + email + "Email").length > 0 && validateEmail($("#emailText" + email + "Email").val())) {
+                                if ($("#emailText" + email + "Name").length > 0 && $("#emailText" + email + "Email").length > 0) {
                                     $("#emailText" + email + "NameLab").html($("#emailText" + email + "Name").val());
                                     $("#emailText" + email + "Officer").css("display", "none");
                                     $("#emailText" + email + "Name").attr("name", "email_name[]");
@@ -318,14 +332,14 @@ $(document).ready(function () {
             "</script>" +
             "<span id='smsText" + sms + "List'>" +
             "<span id='smsText" + sms + "NameLab'>Name:</span>" +
-            "<input id='smsText" + sms + "Name' type='text' value='' />" +
+            "<input id='smsText" + sms + "Name' type='text' value='' />" + "<br />" +
             "<span id='smsText" + sms + "MobileLab'>Mobile:</span>" +
             "<input id='smsText" + sms + "Mobile' type='text' value='' />" +
-            "<input type='button' value='Add' id='smsText" + sms + "Add' />" +
+            "<input type='button' value='Add' id='smsText" + sms + "Add' />" + "&nbsp" +
             "<img onClick='decrementsms()' data-delete='smsText" + sms + "List' src='images/delete-icon.png'><br /></span>");
 
         $("#smsText" + sms + "Add").click(function () {
-            if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0 && isNumber($("#smsText" + sms + "Mobile").val())) {
+            if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0) {
                 $("#smsText" + sms + "NameLab").html($("#smsText" + sms + "Name").val());
                 $("#smsText" + sms + "Name").css("display", "none").attr("name", "sms_name[]");
                 $("#smsText" + sms + "Mobile").css("display", "none").attr("name", "sms_mobile_no[]");
@@ -366,9 +380,9 @@ $(document).ready(function () {
             "<span id='smsText" + sms + "List'>" +
             "<span id='smsText" + sms + "NameLab'>Officer:</span> " +
             "<input id='smsText" + sms + "Officer' type='text'  value='' " +
-            "<input id='smsText" + sms + "OfficerCode' type='hidden'  value='' />" +
+            "<input id='smsText" + sms + "OfficerCode' type='hidden'  value='' />" + "<br />" + 
             "<input id='smsText" + sms + "Name' type='hidden'  value='' />" +
-            "<input id='smsText" + sms + "Mobile' type='hidden'  value='' />" +
+            "<input id='smsText" + sms + "Mobile' type='hidden'  value='' />" + "&nbsp" +
             "<img onClick='decrementsms()' data-delete='smsText" + sms + "List' src='images/delete-icon.png'><br /></span>");
 
         var officerResponse = function (event, ui) {
@@ -399,7 +413,7 @@ $(document).ready(function () {
                         $("#smsText" + sms + "Name").val(name);
                         if (mobile.length > 0) {
                             if (confirm("Choose this officer?")) {
-                                if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0 && isNumber($("#smsText" + sms + "Mobile").val())) {
+                                if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0 ) {
                                     $("#smsText" + sms + "NameLab").html($("#smsText" + sms + "Name").val());
                                     $("#smsText" + sms + "Officer").css("display", "none");
                                     $("#smsText" + sms + "Name").attr("name", "sms_name[]");
