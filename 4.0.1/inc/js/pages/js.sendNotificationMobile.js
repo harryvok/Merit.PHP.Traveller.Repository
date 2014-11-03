@@ -2,45 +2,59 @@
 $(document).ready(function () {
     var emailCount = $("#emailCount").val();
     var smsCount = $("#smsCount").val();
+    
+    // Initially Hide/Disable Stuff
+    $("#emailContainer").hide();
+    $("#smsContainer").hide();
+
+    $("#sendbutton").css('visibility','hidden');
 
     /* On action do stuff ------------------------------------------------------- */
-    $("input[data-name]").on("click", function () {
+    $("input[type=checkbox]").on("click", function () {
         var id = $(this).attr("id");
+
         $("#" + id + "Type").trigger("click");
         $("#" + id + "Name").trigger("click");
         $("#" + id + "Email").trigger("click");
 
         // On check
-        if ($("#" + id + "Type").prop("checked")) {
-            var datatype = $(this).attr("data-type");
-            if (datatype == 'Email') {
+        if ($(this).is(":checked")) {
+            // CHECKED EMAIL
+            if ($(this).attr("data-type") == 'Email') {
+
                 // Increase Counter
                 emailCount = $("#emailCount").val();
                 emailCount++;
+
                 $("#emailCount").val(emailCount);
+
                 // Show Container
                 if (emailCount > 0) {
                     $("#emailContainer").show();
-                    document.getElementById("sendbutton").disabled = false;
+                    $("#emailContainer").trigger("expand");
+                    $("#sendbutton").css('visibility','visible');
                 }
             }
-            else if (datatype == 'SMS') {
+            // CHECKED SMS
+            else if ($(this).attr("data-type") == 'SMS') {
+
                 // Increase Counter
                 smsCount = $("#smsCount").val();
                 smsCount++;
                 $("#smsCount").val(smsCount);
+
                 // Show Container
                 if (smsCount > 0) {
                     $("#smsContainer").show();
-                    document.getElementById("sendbutton").disabled = false;
+                    $("#smsContainer").trigger("expand");
+                    $("#sendbutton").css('visibility', 'visible');
                 }
             }
         }
             // On uncheck
         else {
-            var datatype = $(this).attr("data-type");
             // If checkbox was Email
-            if (datatype == 'Email') {
+            if ($(this).attr("data-type") == 'Email') {
                 // Reduce Counter
                 emailCount = $("#emailCount").val();
                 emailCount--;
@@ -51,7 +65,7 @@ $(document).ready(function () {
                 }
             }
                 // If checkbox was SMS
-            else if (datatype == 'SMS') {
+            else if ($(this).attr("data-type") == 'SMS') {
                 // Reduce Counter
                 smsCount = $("#smsCount").val();
                 smsCount--;
@@ -63,7 +77,7 @@ $(document).ready(function () {
             }
             // Disable Submission Button
             if (smsCount == 0 & emailCount == 0) {
-                document.getElementById("sendbutton").disabled = true;
+                $("#sendbutton").css('visibility', 'hidden');
             }
         }
 
@@ -74,9 +88,10 @@ $(document).ready(function () {
     $("#fromEmail").click(function () {
         $("#note").toggle();
     });
+
     // -----------------------------------------------------------------------
     // RESET BUTTON ----------------------------------------------------------
-    $("input[type='reset']").click(function () {
+    $("#reset").click(function () {
         $("input[type='checkbox']:not(:disabled)").each(function () {
             $(this).prop("checked", false);
             var id = $(this).attr("id");
@@ -101,13 +116,15 @@ $(document).ready(function () {
             $("#smsAdd").show();
             $("#smsOfficerAdd").show();
 
-            document.getElementById("sendbutton").disabled = true;
+            $("#sendbutton").css('visibility', 'hidden');
         });
     });
+
     // -----------------------------------------------------------------------
     // SUBMIT BUTTON ---------------------------------------------------------
-    $("form").submit(function () {
-        return true;
+
+    $("#sendbutton").click(function () {
+        $("form:first").submit();
     });
     // -----------------------------------------------------------------------
 
@@ -127,7 +144,7 @@ $(document).ready(function () {
             $("#smsContainer").hide();
         }
         if (smsCount == 0 & emailCount == 0) {
-            document.getElementById("sendbutton").disabled = true;
+            $("#sendbutton").css('visibility', 'hidden');
         }
 
     });
@@ -158,6 +175,7 @@ $(document).ready(function () {
                                 "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png' ><br /></span>");
 
         $("#emailText" + email + "Add").click(function () {
+            alert("youclickedme");
             if ($("#emailText" + email + "Name").length > 0 && $("#emailText" + email + "Email").length > 0 && validateEmail($("#emailText" + email + "Email").val())) {
 
                 var emailaddress = $("#emailText" + email + "Email").val();
@@ -179,7 +197,8 @@ $(document).ready(function () {
                 emailCount = $("#emailCount").val();
                 if (emailCount > 0) {
                     $("#emailContainer").show();
-                    document.getElementById("sendbutton").disabled = false;
+                    $("#emailContainer").trigger("expand");
+                    $("#sendbutton").css('visibility', 'visible');
                 }
 
             }
@@ -254,7 +273,8 @@ $(document).ready(function () {
                                     emailCount = $("#emailCount").val();
                                     if (emailCount > 0) {
                                         $("#emailContainer").show();
-                                        document.getElementById("sendbutton").disabled = false;
+                                        $("#emailContainer").trigger("expand");
+                                        $("#sendbutton").css('visibility', 'visible');
                                     }
 
                                 }
@@ -318,7 +338,8 @@ $(document).ready(function () {
                 smsCount = $("#smsCount").val();
                 if (smsCount > 0) {
                     $("#smsContainer").show();
-                    document.getElementById("sendbutton").disabled = false;
+                    $("#smsContainer").trigger("expand");
+                    $("#sendbutton").css('visibility', 'visible');
                 }
 
             }
@@ -390,7 +411,8 @@ $(document).ready(function () {
                                     smsCount = $("#smsCount").val();
                                     if (smsCount > 0) {
                                         $("#smsContainer").show();
-                                        document.getElementById("sendbutton").disabled = false;
+                                        $("#smsContainer").trigger("expand");
+                                        $("#sendbutton").css('visibility', 'visible');
                                     }
                                 }
                                 else {

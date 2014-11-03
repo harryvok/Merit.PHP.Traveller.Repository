@@ -99,15 +99,15 @@
                                             <td><?php if(isset($result->officer_type_name)) echo $result->officer_type_name; ?> (<?php if(isset($result->officer_name)) echo $result->officer_name; ?>)</td>
                                             <td>
                                                 <input type="checkbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox''"; ?> name="email_name_code[]" id="officerEmail<?php echo $i; ?>" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
-                                                <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="officerEmail<?php echo $i; ?>Type" value="<?php echo $result->officer_type; ?>" />
-                                                <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="officerEmail<?php echo $i; ?>Name" value="<?php echo $result->officer_name; ?>" />
-                                                <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="officerEmail<?php echo $i; ?>Email" value="<?php echo $result->officer_email; ?>" />
+                                                <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="officerEmail<?php echo $i; ?>Type" value="<?php echo $result->officer_type; ?>" data-type="Email"/>
+                                                <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="officerEmail<?php echo $i; ?>Name" value="<?php echo $result->officer_name; ?>" data-type="Email"/>
+                                                <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="officerEmail<?php echo $i; ?>Email" value="<?php echo $result->officer_email; ?>" data-type="Email"/>
                                             </td>
                                             <td>
                                                 <input type="checkbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "class='hiddenCheckbox'"; ?> name="sms_name_code[]" id="officerSMS<?php echo $i; ?>" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="SMS" />
-                                                <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name_type[]" id="officerSMS<?php echo $i; ?>Type" value="<?php echo $result->officer_type; ?>" />
-                                                <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name[]" id="officerSMS<?php echo $i; ?>Name" value="<?php echo $result->officer_name; ?>" />
-                                                <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_mobile_no[]" id="officerSMS<?php echo $i; ?>Email" value="<?php echo $result->officer_mobile; ?>" />
+                                                <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name_type[]" id="officerSMS<?php echo $i; ?>Type" value="<?php echo $result->officer_type; ?>" data-type="SMS"/>
+                                                <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name[]" id="officerSMS<?php echo $i; ?>Name" value="<?php echo $result->officer_name; ?>" data-type="SMS"/>
+                                                <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_mobile_no[]" id="officerSMS<?php echo $i; ?>Email" value="<?php echo $result->officer_mobile; ?>" data-type="SMS"/>
 
                                             </td>
                                         </tr>
@@ -122,15 +122,15 @@
                                         <td><?php if(isset($result->officer_name)) echo $result->officer_name; ?></td>
                                         <td>
                                             <input type="checkbox" onchange="handleChange(this)" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "class='hiddenCheckbox'"; ?> name="email_name_code[]" id="Checkbox1" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="Email" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="Checkbox2" value="<?php echo $result->officer_type; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="Checkbox3" value="<?php echo $result->officer_name; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="Checkbox4" value="<?php echo $result->officer_email; ?>" />
+                                            <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name_type[]" id="Checkbox2" value="<?php echo $result->officer_type; ?>" data-type="Email"/>
+                                            <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_name[]" id="Checkbox3" value="<?php echo $result->officer_name; ?>" data-type="Email"/>
+                                            <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_email) || strlen($result->officer_email) == 0) echo "disabled='disabled'"; ?> name="email_to[]" id="Checkbox4" value="<?php echo $result->officer_email; ?>" data-type="Email"/>
                                         </td>
                                         <td>
                                             <input type="checkbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "class='hiddenCheckbox'"; ?> name="sms_name_code[]" id="Checkbox5" value="<?php echo $result->officer_code; ?>" data-name="<?php if(isset($result->officer_name)) echo $result->officer_name; ?>" data-type="SMS" />
-                                            <input type="checkbox" class="hiddenCheckbox"" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name_type[]" id="Checkbox6" value="<?php echo $result->officer_type; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name[]" id="Checkbox7" value="<?php echo $result->officer_name; ?>" />
-                                            <input type="checkbox" class="hiddenCheckbox" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_mobile_no[]" id="Checkbox8" value="<?php echo $result->officer_mobile; ?>" />
+                                            <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name_type[]" id="Checkbox6" value="<?php echo $result->officer_type; ?>" data-type="SMS"/>
+                                            <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_name[]" id="Checkbox7" value="<?php echo $result->officer_name; ?>" data-type="SMS"/>
+                                            <input type="checkbox" class="hiddenCheckbox" style="z-index:0" <?php if(!isset($result->officer_mobile) || strlen($result->officer_mobile) == 0) echo "disabled='disabled'"; ?> name="sms_mobile_no[]" id="Checkbox8" value="<?php echo $result->officer_mobile; ?>" data-type="SMS"/>
                                         </td>
                                     </tr>
                                     <?php          
@@ -159,6 +159,25 @@
                                             <div class="summaryColumn" id="listSMS"></div>
                                             <div data-role="button" id="smsAdd">+ Mobile</div>
                                             <div data-role="button" id="smsOfficerAdd">+ Officer</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                        
+                        <table class="mobileNotifyTable" style="margin-top:10px">
+                                <thead>
+                                    <tr>
+                                        <th>Options</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                        <td>
+                                            <div data-role="button" id="sendbutton">Send</div>                                          
+                                        </td>
+                                         <td>
+                                            <div data-role="button" id="reset" style="color:rgb(255, 0, 0);"> Reset</div> 
                                         </td>
                                     </tr>
                                 </tbody>
@@ -230,10 +249,6 @@
                         </table>
             </div> <!-- End SMS Div -->
 
-            <div class="float-right">
-                <input id="sendbutton" type="submit" value="Send"/>
-                <input type="reset" value="Reset" />
-            </div>
 
             <!-- Hidden Fields -->
                         <input type="hidden" name="request_id" value="<?php echo $_SESSION['request_id']; ?>" />
