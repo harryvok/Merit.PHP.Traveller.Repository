@@ -621,5 +621,6 @@ if(!isset($_GET['d'])){
     ?>
 </div>
 <div id="requestsCreated" class="subPageContainer">
-    <?php $controller->Display("RequestsCreated", "RequestsCreated"); ?>
+    <div style="color:red;"><p>test</p></div>
+     <?php $controller->Display("RequestsCreated", "RequestsCreated"); ?>
 </div>

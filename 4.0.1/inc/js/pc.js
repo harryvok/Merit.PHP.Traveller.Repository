@@ -40,6 +40,7 @@ $(document).ready(function () {
             $(this).removeClass("act");
             $("#" + $(this).data("open")).hide();
         });
+
         $(this).addClass("act");
         $("#" + $(this).data("open")).fadeIn("fast");
         $("#subPageTitle").html($(this).attr("data-title"));
