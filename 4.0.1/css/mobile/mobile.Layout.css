@@ -555,3 +555,38 @@ a.ui-link-inherit {
     font-family: Helvetica, Arial, sans-serif !important;
     letter-spacing: -0.015em !important;
 }
+
+
+.height100 {
+    height:auto;
+}
+
+.mobileNotifyTable {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid #69c;
+}
+
+.mobileNotifyTable th {
+    font-weight: normal;
+    font-size: 14px;
+    color: #039;
+    border-bottom: 1px dashed #69c;
+    padding: 12px 17px;
+}
+
+.mobileNotifyTable td {
+    color: #669;
+    padding: 7px 17px;
+}
+
+.mobileNotifyTable tbody {
+    background: #e8edff;
+}
+
+.mobileNotifyTable tbody tr:hover {
+    background: #dde5f2;
+}

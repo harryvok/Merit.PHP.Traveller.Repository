@@ -131,21 +131,19 @@ div#popup {
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
    -webkit-border-radius: 8px;
--moz-border-radius: 8px;
-border-radius: 8px;
-max-height:600px !important;
-overflow:scroll;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    overflow:scroll; 
 }
 
 div#popup h1+div {
     
     font-size: 14px;
     padding:24px;
-    padding-top:24px;
     background-color: #9dadc9;
-    overflow-y:scroll;
-    max-height:440px !important;
-
+    /* overflow-y:scroll; */
+    /* max-height:440px !important; */
+    height: auto;
 }
 
 div#popup h1+div iframe {
@@ -154,6 +152,7 @@ div#popup h1+div iframe {
 
 
 div#popup h1 {
+    padding-top: 10px;
     font-size:16px;
     color:white;
     background: rgb(42,86,105); /* Old browsers */
@@ -167,7 +166,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a5669', end
 
 display:block;
 width:100%;
-margin:0;
 padding:10px;
 -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
@@ -232,6 +230,18 @@ span.openPopup {
     font-weight: bold;
     color: #132847;
     
+    border-bottom: #132847 1px solid;
+}
+
+div.openDocumentPopup {
+    cursor: pointer;
+    float: right;
+}
+
+span.openDocumentPopup {
+    font-size: 14px;
+    font-weight: bold;
+    color: #132847;  
     border-bottom: #132847 1px solid;
 }
 
