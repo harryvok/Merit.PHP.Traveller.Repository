@@ -3868,6 +3868,32 @@ class Model {
         }
     }
     
+    public function processBookingStartStop($params = null){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->service_code = $_POST['service_code'];
+        $parameters->function_code = $_POST['function_code'];
+        $parameters->request_code = $_POST['request_code'];
+        $parameters->booking_date = $_POST['booking_date'];
+        $parameters->a_type = $_POST['a_type'];
+        try {
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_start_stop_booking",$parameters);
+            $_SESSION['done'] = 1;
+            $_SESSION['success'] = 1;
+            $_SESSION['success_delete_action'] = 1;
+            return true;       
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $_SESSION['done'] = 1;
+            $_SESSION['error'];
+            $_SESSION['error_delete_action'] = 1;
+            return false;
+        }
+        
+    }
+    
     public function processUnlinkDocument($params = NULL){
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];

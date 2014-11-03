@@ -93,7 +93,7 @@ function GetBookingSummary(paramdate) {
         date = new Date().toISOString();
     else
         date = paramdate;
-    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {        
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#keywordSearch").val() == "RSVP"  ) {        
         var serviceID = $("#service").val();
         var requestID = $("#request").val();
         var functionID = $("#function").val();
@@ -132,6 +132,31 @@ function GetBookingSummary(paramdate) {
     else {
         $("#AddrBooking").attr("disabled", "disabled");
     }
+}
+
+function bookingStartStop(action, bookingDate) {
+    alert(action + bookingDate);
+    var service_code = $("#service").val();
+    var request_code = $("#request").val();
+    var function_code = $("#function").val();
+    var booking_date = bookingDate;
+    var a_type = action;
+    Load();
+    $.ajax({
+        url: 'inc/ajax/ajax.bookingStartStop.php',
+        type: 'POST',
+
+        data: {
+            service_code: service_code,
+            request_code: request_code,
+            function_code: function_code,
+            booking_date: booking_date,
+            a_type: a_type
+        },
+        success: function (data) {
+            Unload();
+        },
+    });
 }
 
 function GetCustomerAddressDetails() {

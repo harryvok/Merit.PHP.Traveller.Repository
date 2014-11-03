@@ -11,21 +11,42 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
             $("#from").datepicker({ dateFormat: "yy-mm-dd" });
             $("#from").val("yyyy-dd-mm");
             $("#selectedDate.html").html($("#from").val());
+            $("#stop").val("Stop");
 
             //show rows based on user click event
             $("#bookings tbody tr ").click(function () {
                 var date = $(this).find("td:first-child").html();
-                $("#from").val(date);
-            });
-            $("#placeBookingDate").click(function () {
-                if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
-                    $("#duedate").html("<label>Due Date:</label> " + $("#from").val());
-                    $("#due").val($("#from").val());
-                    $("#popup").fadeOut("fast");
-                } else {
-                    alert("please select a date");
+                var startStop = $(this).find("td:nth-child(4)").html();
+                if (startStop == "Stopped") {
+                    $("#stop").val("Start");
                 }
-            });
+                else {
+                    $("#stop").val("Stop");
+                }
+                $("#from").val(date);
+                //start stop booking
+                $("#stop").click(function () {
+                    var act = "";
+                    if ($("#stop").val() == "Start") {
+                        act = "Start";
+                    }
+                    else if ($("#stop").val() == "Stop") {
+                        act = "Stop"
+                    }
+                    bookingStartStop(act,date);
+                });
+                //place booking
+                $("#placeBookingDate").click(function () {
+                    if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
+                        $("#duedate").html("<label>Due Date:</label> " + $("#from").val());
+                        $("#due").val($("#from").val());
+                        $("#popup").fadeOut("fast");
+                    } else {
+                        alert("please select a date");
+                    }
+                });
+            });           
+
             $("#get").click(function () {
                 //if user clicks on any date from popup table, following function converts date in to toISOString date formate 
                 //and calls getBookingSummary()
@@ -107,7 +128,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 </div>
 <input type="button" value="Place" id="placeBookingDate"/>
 <!-- <input type="button" value="Details"/> -->
-<input type="button" id="stop" value="Stop"/>
+<input type="button" id="stop" name="stop" value=""/>
 <?php 
 }else{
 ?> 

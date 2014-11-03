@@ -441,6 +441,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="inc\ajax\ajax.adhocOfficerList.php" />
+    <Compile Include="inc\ajax\ajax.bookingStartStop.php" />
     <Compile Include="inc\ajax\ajax.getBookingSummary.php" />
     <Compile Include="inc\ajax\ajax.getDocumentSearch.php" />
     <Compile Include="inc\ajax\ajax.getOfficer.php" />
