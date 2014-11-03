@@ -93,11 +93,10 @@ function GetBookingSummary(paramdate) {
         date = new Date().toISOString();
     else
         date = paramdate;
-    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {
-        
-        var serviceID = $("#serviceInput").val();
-        var requestID = $("#requestInput").val();
-        var functionID = $("#functionInput").val();
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {        
+        var serviceID = $("#service").val();
+        var requestID = $("#request").val();
+        var functionID = $("#function").val();
         var addressID = $("#addressId").val();
         var house_number = $("#lno").val();
         var house_suffix = $("#lfno").val();

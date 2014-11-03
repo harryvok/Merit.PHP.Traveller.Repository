@@ -1792,7 +1792,12 @@ class Model {
                                ));
             }
         }
-
+        if($_POST["due"] != ""){
+            $duedate = $_POST["due"];
+        }
+        else{
+            $duedate = date("Y-m-d");
+        }
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
@@ -1803,7 +1808,7 @@ class Model {
                 'function_type' => $function,
                 'issue_type' => $reqType,
                 'request_datetime' => date("Y-m-d") . "T" . date("H:i:s"),
-                'due_datetime' => date("Y-m-d") . "T" . date("H:i:s"),
+                'due_datetime' => $duedate . "T" . date("H:i:s"),
                 'count_only' => isset($saveCountOnly) ? $saveCountOnly : '',
                 'centre' => 'WEB',
                 'priority' => $priority,

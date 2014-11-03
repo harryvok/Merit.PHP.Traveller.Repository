@@ -95,6 +95,7 @@ if(!isset($_GET['d'])){
                             <input type="checkbox" name="notifyInsuranceOfficer" value="Y"> <br />
 <!--                            <label for="duedate">Due Date: </label>-->
                             <span id="duedate"></span>
+                            <input type="hidden" id="due" name="due" />
                         </div>
                     </div>
 
