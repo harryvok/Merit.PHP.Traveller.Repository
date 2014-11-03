@@ -28,6 +28,7 @@ $(document).ready(function () {
             $(".hoverDiv").fadeIn("fast");
         }
     });
+
     $("#infoHoverClose").click(function () {
         $(".hoverDiv").fadeOut("fast");
         $("#helpText_data").val("");

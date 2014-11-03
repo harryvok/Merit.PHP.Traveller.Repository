@@ -93,8 +93,8 @@ if(!isset($_GET['d'])){
                             <br /><br />
                             <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
                             <input type="checkbox" name="notifyInsuranceOfficer" value="Y"> <br />
-                            <label for="duedate">Due Date: </label>
-                            <span id="duedate">-</span>
+<!--                            <label for="duedate">Due Date: </label>-->
+                            <span id="duedate"></span>
                         </div>
                     </div>
 

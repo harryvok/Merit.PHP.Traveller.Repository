@@ -10,16 +10,16 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
             $("#bookingFunction").html($("#functionInput").val());
             $("#from").datepicker({ dateFormat: "yy-mm-dd" });
             $("#from").val("yyyy-dd-mm");
+            $("#selectedDate.html").html($("#from").val());
 
             //show rows based on user click event
             $("#bookings tbody tr ").click(function () {
                 var date = $(this).find("td:first-child").html();
-                $("#selectedDate").html(date);
                 $("#from").val(date);
             });
             $("#placeBookingDate").click(function () {
-                if ($("#selectedDate").html() != "-") {
-                    $("#duedate").html($("#selectedDate").html());
+                if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
+                    $("#duedate").html("<label>Due Date:</label> " + $("#from").val());
                     $("#popup").fadeOut("fast");
                 } else {
                     alert("please select a date");
@@ -49,9 +49,9 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 </script>
 <div class="summaryContainer">
     <h1>Booking Summary<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
-    <b>Service:</b> <span id="bookingService"></span><br />
-    <b>Request:</b> <span id="bookingRequest"></span><br />
-    <b>Function:</b> <span id="bookingFunction"></span><br />
+    <b>Service/Request/Function:</b> <span id="bookingService"></span> / <span id="bookingRequest"></span> / <span id="bookingFunction"></span> <br />
+<!--    <b>Request:</b> <br />
+    <b>Function:</b> <br />-->
     <b>Provider:</b> <span id="bookingProvider"><?php echo $GLOBALS['result']->provider;?></span><br />
     <b>Address:</b> <span id="bookingAddress"><?php echo $GLOBALS['result']->address;?></span><br />
     <b>Area:</b> <span id="bookingArea"><?php echo $GLOBALS['result']->area;?></span><br />
@@ -60,7 +60,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
     <b>Include:</b> <?php if ($GLOBALS['result']->include_saturday == "Y") echo "Saturday"; if ($GLOBALS['result']->include_sunday == "Y") echo " Sunday";  if ($GLOBALS['result']->include_holidays == "Y") echo " Holidays"; if ($GLOBALS['result']->include_sholidays == "Y") echo " Special Holidays"; ?>
     <br />
     <b>From: </b><input type="text" name="from" id="from" placeholder="yyyy-mm-dd" class="dateField text_udf_small" size="5" maxlength="10" style="width:10%" ><input type="button" id="get" name="get" value="Get"/>
-     <div  style="max-height:200px; overflow:scroll;">
+     <div  style="overflow:scroll;">
      <table id="bookings" class=" sortable" title="" cellspacing="0" >
             <thead>
                 <tr>
@@ -107,7 +107,6 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 <input type="button" value="Place" id="placeBookingDate"/>
 <!-- <input type="button" value="Details"/> -->
 <input type="button" id="stop" value="Stop"/>
-<b>Selected Date: </b><span id="selectedDate">-</span>
 <?php 
 }else{
 ?> 
