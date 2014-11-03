@@ -20,6 +20,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
             $("#placeBookingDate").click(function () {
                 if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
                     $("#duedate").html("<label>Due Date:</label> " + $("#from").val());
+                    $("#due").val($("#from").val());
                     $("#popup").fadeOut("fast");
                 } else {
                     alert("please select a date");
