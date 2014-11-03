@@ -1102,12 +1102,10 @@ $(document).ready(function () {
                     if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) { 
                         $("#newrequest").valid();
                         if ($("#newrequest").validate().numberOfInvalids() == 0) {
-
                             $("#submit").prop('disabled', true).buttonState("disable");
                             $("#saveMore").prop('disabled', true).buttonState("disable");
                             $("#saveCountOnly").prop('disabled', true).buttonState("disable");
                             $("#reset").prop('disabled', true).buttonState("disable");
-
                             $("#countOnlyInd").val("Y");
                             $.ajax({
                                 url: 'inc/ajax/ajax.saveCountOnly.php',
@@ -1410,6 +1408,7 @@ function clearLocationAddress() {
     $("#AddrSummary").prop("disabled", true);
     $("#responsible").val("");
     $("#facilitydescription").val("");
+    $("#AddrBooking").attr("disabled", "disabled");
 }
 
 function ViewAddressDetails() {

@@ -3,12 +3,7 @@
 if(!isset($_GET['d'])){
     // If there is no tracked result, display the form to lodge requests
 ?>
-<script type = "text/javascript" >
-    history.pushState(null, null, 'pagename');
-    window.addEventListener('popstate', function (event) {
-        history.pushState(null, null, 'pagename');
-    });
-</script>
+
 <script src="inc/js/pages/js.new-request.js"></script>
 <div id="error">
 </div>
@@ -98,8 +93,8 @@ if(!isset($_GET['d'])){
                             <br /><br />
                             <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
                             <input type="checkbox" name="notifyInsuranceOfficer" value="Y"> <br />
-                            <label for="duedate">Due Date: </label>
-                            <span id="duedate">-</span>
+<!--                            <label for="duedate">Due Date: </label>-->
+                            <span id="duedate"></span>
                         </div>
                     </div>
 
@@ -228,7 +223,8 @@ if(!isset($_GET['d'])){
                             <input type="button" value="Clear" onclick="clearLocationAddress()" />
                             <!--<input type="button" value="History" id="checkHistory" onclick="CheckHistoryDirect('L', 'N')" disabled="disabled" />-->
                             <input type="button" value="Summary" disabled id="AddrSummary" onclick="ViewAddressDetails()"  />
-                            <input type="button" value="Booking" disabled id="AddrBooking" onclick="GetBookingSummary()"  />
+                            <script type="text/javascript">  var date = new Date().toISOString(); </script>
+                            <input type="button" value="Booking" disabled id="AddrBooking" onclick="GetBookingSummary(date)"  />
                             <!--<input type="button" value="Fac Summary" id="FacSummary" onclick="" disabled="disabled" />-->
                         </div>
                     </div>

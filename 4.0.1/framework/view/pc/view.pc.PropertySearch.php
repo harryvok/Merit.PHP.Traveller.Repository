@@ -56,7 +56,10 @@
 			        $("#CustAddSummary").prop("disabled", true);
 			    }
 			}			
-			$('#popup').fadeOut("fast");           
+			$('#popup').fadeOut("fast");
+            //proceed to check booking summary
+			var date = new Date().toISOString();
+			GetBookingSummary(date);
         });
 
         $("#closePropertySearch").click(function () {
@@ -71,9 +74,6 @@
         <table id="propertyLookupTable" class="sortable" title="" cellspacing="0" style="color:black;">
             <thead>
                 <tr>
-                    <!--<th class="job-id sortable">Unit/Flat Number</th>-->
-                    <!--<th class="job-id sortable">Unit</th>
-                    <th class="job-id sortable">Unit Suffix</th>-->
                     <th class="job-id sortable">House</th>
                     <th class="job-id sortable">Street Name</th>
                     <th class="job-id sortable">Locality</th>
