@@ -65,6 +65,7 @@ if(isset($_SESSION['user_id'])){
         "KeywordList" => $_SESSION['roleSecurity']->maint_new_request,
         "AddressLookup" => $_SESSION['roleSecurity']->maint_new_request,
         "RequestsCreated" => $_SESSION['roleSecurity']->maint_new_request,
+        "BookingStartStop" => $_SESSION['roleSecurity']->maint_new_request,
     // Action Security
         "Action"=> $_SESSION['roleSecurity']->view_action,
         "viewaction"=> $_SESSION['roleSecurity']->view_action,
