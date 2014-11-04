@@ -1,4 +1,3 @@
-<div style="color:red;"><p>test</p></div>
 
 <?php
 if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 1){

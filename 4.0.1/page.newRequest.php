@@ -7,6 +7,11 @@ if(!isset($_GET['d'])){
 <script src="inc/js/pages/js.new-request.js"></script>
 <div id="error">
 </div>
+
+<div id="requestsCreated" class="subPageContainer" style="display:none">
+     <?php $controller->Display("RequestsCreated", "RequestsCreated"); ?>
+</div>
+
 <div id="newRequest">
     <span style="color: red;"><b><?php echo COMPULSORY ?></b></span><br />
 
@@ -620,7 +625,4 @@ if(!isset($_GET['d'])){
 }
     ?>
 </div>
-<div id="requestsCreated" class="subPageContainer">
-    <div style="color:red;"><p>test</p></div>
-     <?php $controller->Display("RequestsCreated", "RequestsCreated"); ?>
-</div>
+
