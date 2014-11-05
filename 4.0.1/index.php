@@ -27,7 +27,7 @@ include('framework/controller.php');
 // Initialise the framework
 $controller = new Controller();
 
-$version = "4.0.1";
+$version = "4.1 Beta";
 
 /* NAVSTATE */
 

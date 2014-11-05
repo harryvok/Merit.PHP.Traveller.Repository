@@ -8,9 +8,10 @@ if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result
             iDisplayLength: 50,
             "aaSorting": [[0, "desc"]],
             "oLanguage": {
-                "sSearch": "Intray Filter: "
+                "sSearch": " "
             }
         });
+        $('#addressRequestsTable_filter input').attr('placeholder', 'Search Requests');
     });
 </script>
   <div class="summaryContainer">
