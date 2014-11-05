@@ -3542,12 +3542,13 @@ class Model {
     }
 
     public function processAdhocOfficer($params = NULL){
-        if($_POST["due"] != ""){
-            $duedate = $_POST["due"]. "T" . date("H:i:s");
+      /*  if($_POST["due_datetime"] != ""){
+            $duedate = $_POST["due_datetime"]. "T" . date("H:i:s");
         }
         else{
             $duedate = $result->due_date. "T" . date("H:i:s");
-        }
+        } */
+      
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
@@ -3561,7 +3562,7 @@ class Model {
             ),
             'position_no' => $_POST['position_no'],
             'officer_type' => $_POST['officer_type'],
-            'due_datetime' => $duedate
+            'due_datetime' => $_POST["due_datetime"]
         );
         $count=0;
         for($i=0;$i<count($_SESSION['position_no_arr']);$i++){
