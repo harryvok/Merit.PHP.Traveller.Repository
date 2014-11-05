@@ -35,15 +35,21 @@ $(document).ready(function () {
         $("#helpURL").html("");
     });
 
+
+    // When list element opened perform
+
     $("li[data-open]").click(function () {
         $("li[data-open]").each(function () {
             $(this).removeClass("act");
             $("#" + $(this).data("open")).hide();
         });
+
         $(this).addClass("act");
         $("#" + $(this).data("open")).fadeIn("fast");
         $("#subPageTitle").html($(this).attr("data-title"));
     });
+
+
 
     $("#workflow").click(function () {
         Load();

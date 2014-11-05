@@ -1,3 +1,4 @@
+
 <?php
 if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 1){
 ?>
@@ -7,9 +8,10 @@ if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result
             iDisplayLength: 50,
             "aaSorting": [[0, "desc"]],
             "oLanguage": {
-                "sSearch": "Intray Filter: "
+                "sSearch": " "
             }
         });
+        $('#addressRequestsTable_filter input').attr('placeholder', 'Search Requests');
     });
 </script>
   <div class="summaryContainer">
@@ -18,7 +20,7 @@ if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result
    <div class="float-left">
           <input type="hidden" name="val" id="val" value="0" />
           
-          	<input type="text" id="addressRequests" class="tableSearch" placeholder="Search..." />
+          	<!-- <input type="text" id="addressRequests" class="tableSearch" placeholder="Search..." /> -->
                   <table id="addressRequestsTable" class=" sortable" title="" cellspacing="0">
                   <thead>
                   <tr>
