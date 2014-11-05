@@ -89,6 +89,7 @@ function GetAddressDetails() {
     }    
 }
 function GetBookingSummary(paramdate) {
+    var date = "";
     if (paramdate == "")    
         date = new Date().toISOString();
     else
