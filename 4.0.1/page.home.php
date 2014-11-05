@@ -155,7 +155,7 @@
 		        });
 		    </script>
     	    <div class="column r50"><div class="profImage"><img src="images/pc/prof.gif" width="20" height="20"></div><div class="welcome"><h3><b><?php if(isset($_SESSION['given_name'])) echo $_SESSION['given_name']; ?></b></h3></div><div class="bottomButtons"><a href="index.php?page=myPreferences">MY PREFERENCES</a><?php if($_SESSION['roleSecurity']->allow_settings == "Y") { ?><!--<?php if(defined('CHANGE_PASSWORD') && CHANGE_PASSWORD == 1 && $_SESSION['roleSecurity']->allow_cpwd == "Y"){ ?><a href="index.php?page=changePassword">CHANGE PASSWORD</a><?php } ?>--><a href="index.php?page=modifySettings">MODIFY SETTINGS</a><?php } ?></div></div>
-            <div class="column r50"><div class="version"><h3>v<?php if(isset($version)){ echo $version; } ?> &copy; Merit 2013</h3></div><div class="searchBar" style="width:290px"><b style="color:white">
+            <div class="column r50"><div class="version"><h3>v<?php if(isset($version)){ echo $version; } ?> &copy; Merit Technology</h3></div><div class="searchBar" style="width:290px"><b style="color:white">
             <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?>
                 Search: </b> <input type="text" placeholder="Search..." id="searchInput" style="width:200px">
             <?php }else{ ?>

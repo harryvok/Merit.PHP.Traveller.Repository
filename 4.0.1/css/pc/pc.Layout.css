@@ -225,7 +225,7 @@ div.setupContainer {
 }
 
 div.subPageContainer{
-    display:none;
+    background-color:grey;
 }
 #rednote {
     color: red;

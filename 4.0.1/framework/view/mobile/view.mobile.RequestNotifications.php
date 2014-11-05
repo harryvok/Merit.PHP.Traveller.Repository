@@ -151,11 +151,13 @@
                                 <tbody>
                                      <tr>
                                         <td>
+                                            Manual Email Contacts:<br />
                                             <div class="summaryColumn" id="listEmail"></div>
                                             <div data-role="button" id="emailAdd">+ Email</div>
                                             <div data-role="button" id="emailOfficerAdd">+ Officer</div>
                                         </td>
                                         <td>
+                                            Manual SMS Contacts:<br />
                                             <div class="summaryColumn" id="listSMS"></div>
                                             <div data-role="button" id="smsAdd">+ Mobile</div>
                                             <div data-role="button" id="smsOfficerAdd">+ Officer</div>
