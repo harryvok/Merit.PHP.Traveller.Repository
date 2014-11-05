@@ -8,7 +8,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				$("#"+name_id+"-addressRow").toggle();
 				$("#"+name_id+"-addresses").html("");
 			});
-			$('.address_row').click(function(){
+		    $('.address_row').click(function () {
 				var id = $(this).attr('id');
 				$('#same').val('i');
 				$('#i_cno').val($('#ret_'+id+'_house_number').val());
@@ -146,7 +146,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 else{
 	?>
     <script type="text/javascript">
-		$(document).ready(function(){
+        $(document).ready(function () {
 			$("#yes<?php echo $_POST['name_set']; ?>").click(function(){
 				var id = "<?php echo $_POST['name_set']; ?>";
 				$('#pref_title').val($('#ret_'+id+'_pref_title').val());

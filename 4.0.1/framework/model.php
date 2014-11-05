@@ -524,17 +524,7 @@ class Model {
         if(isset($_POST['cust_mobile'])) {$cust_mobile = $_POST['cust_mobile'];} else {$cust_mobile='';}
         if(isset($_POST['email_address'])) {$email_address = $_POST['email_address'];} else {$email_address='';}
         if(isset($_POST['company_name'])) {$company_name = $_POST['company_name'];} else {$company_name='';}
-        //if(strlen($cust_phone) > 0){
-        //    $telephone =  $cust_phone;
-        //}
-        //if(strlen($cust_work) > 0){
-        //    $telephone_work = $cust_work;
-        //}
-        //else $telephone_work = "";
-        //if(strlen($cust_mobile) > 0){
-        //    $telephone_mobile = $cust_mobile;
-        //}
-        
+              
         $parameters = array(
         "user_id" => $_SESSION['user_id'],
         "password" => $_SESSION['password'],
@@ -1652,6 +1642,7 @@ class Model {
             $cust_address_postcode = $_POST['i_cpostcode'];
             $cust_address_id = $_POST['cust_address_id'];
             $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
+            
         }
         elseif($_POST['same'] == "o"){
             $cust_address_number = strlen($_POST['o_cno']) > 0 ? strip_tags(addslashes($_POST['o_cno'])) : "";
@@ -1675,6 +1666,10 @@ class Model {
         $lpostcode = $_POST['lpostcode'];
         $property_no = $_POST['property_no'];
         $ldesc = strip_tags(addslashes($_POST['ldesc']));
+        if ($_POST['loc_adress_ctr'] != 0)
+            $loc_address_ctr = $_POST['loc_adress_ctr'];
+        else
+            $loc_address_ctr = 0;
 
         if(strlen($cust_address_street) > 0 || strlen($cust_address_streettype) > 0 || strlen($cust_address_suburb) > 0){
             $address_details = array( array(
@@ -1745,7 +1740,7 @@ class Model {
                                     "property_number" => $property_no,
                                     "gis_x_coord" => $_POST['use_gmaps_coord'] == 1 ? $gmaps_x : "",
                                     "gis_y_coord" => $_POST['use_gmaps_coord'] == 1 ? $gmaps_y : "",
-                                    "address_ctr" => 0,
+                                    "address_ctr" => $loc_address_ctr,
                                     "melway_map" => '',
                                     "melway_ref" => '',
                                     "address_type" => 'Location',
@@ -3547,6 +3542,12 @@ class Model {
     }
 
     public function processAdhocOfficer($params = NULL){
+        if($_POST["due"] != ""){
+            $duedate = $_POST["due"]. "T" . date("H:i:s");
+        }
+        else{
+            $duedate = $result->due_date. "T" . date("H:i:s");
+        }
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
@@ -3560,7 +3561,7 @@ class Model {
             ),
             'position_no' => $_POST['position_no'],
             'officer_type' => $_POST['officer_type'],
-            'due_datetime' => $_POST['due_datetime']
+            'due_datetime' => $duedate
         );
         $count=0;
         for($i=0;$i<count($_SESSION['position_no_arr']);$i++){
@@ -3580,14 +3581,14 @@ class Model {
         $parameters = array_to_objecttree($parameters);
 
         $result = $this->WebService(MERIT_ACTION_FILE, "ws_triggerdependant_action", $parameters);
-
+        
         if($result->ws_message == "adhoc" && $result->ws_status == 2){
             $_SESSION['action_id'] = $result->action_id;
             $_SESSION['request_id'] = $result->request_id;
             $_SESSION['bypass'] = $result->bypass;
             $_SESSION['reason_assigned'] = $result->reason_assigned;
             $_SESSION['email'] = $result->email;
-            $_SESSION['due_date'] = $result->due_date;
+            $_SESSION['due_date'] = $duedate;
             $_SESSION['priority'] = $result->priority;
             $_SESSION['officer_type'] = $result->officer_type;
             $_SESSION['position_no'] = $result->position_no;

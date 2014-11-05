@@ -43,7 +43,6 @@ function GetAddressDetails() {
             },
             success: function (data) {
                 //alert("count: " + data.length);
-                
                 if (data.property_count > "1") {
                     $.ajax({
                         url: 'inc/ajax/ajax.getPropertySearch.php',
@@ -78,6 +77,7 @@ function GetAddressDetails() {
                     if ($("#addressId").val() != "0" || $("#addressId").val() != "" || $("#addressId").val() != 0) {
                         $("#AddrSummary").removeAttr("disabled");
                     }
+                    $("#loc_address_ctr").val(data.address_ctr);
                     //proceed to check booking summary
                     var date = new Date().toISOString();
                     GetBookingSummary(date);                   
