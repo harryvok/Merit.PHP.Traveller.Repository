@@ -84,7 +84,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
     <br />
     <b>From: </b><input type="text" name="from" id="from" placeholder="eg. 01-Jan-1999" class="dateField text_udf_small" size="5" maxlength="10" style="width:10%" ><input type="button" id="get" name="get" value="Get"/>
      <div  style="overflow:scroll;">
-     <table id="bookings" class=" sortable" title="" cellspacing="0" >
+     <table id="bookings" class="sortable" title="" cellspacing="0" >
             <thead>
                 <tr>
                     <th>Booked Date</th>
@@ -109,11 +109,12 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                                 $class = "light";
                             }
                             $datetime = $booking_detail->booking_date;
+                            $day = date("l", strtotime($datetime));
                             $date = substr($datetime,0,10);
                             $formated = date("d-M-Y", strtotime($date));
                 ?>
                 <tr class="<?php echo $class; ?>" id="BookingDetails<?php echo $i; ?>ParentObject">
-                                 <td><?php echo $formated;  ?></td>
+                                 <td><?php echo $day." ".$formated; ?></td>
                                  <td><?php echo $booking_detail->booked_count; ?></td>
                                  <td><?php echo $booking_detail->available_count; ?></td>
                                  <td><?php echo $booking_detail->service_stopped; ?></td>
