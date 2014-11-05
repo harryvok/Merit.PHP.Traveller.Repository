@@ -42,6 +42,7 @@
 			    $('#property_no').val($('#ret_' + id + '_property_no').val());
 			    $('#addressId').val($('#ret_' + id + '_address_id').val());
 			    $('#address').val($('#ret_' + id + '_address_id').val());
+			    $("#loc_address_ctr").val($('#ret_' + id + '_address_ctr').val());
 			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
 			        $("#AddrSummary").prop("disabled", true);
 			    }
@@ -146,6 +147,7 @@
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_unit" value="<?php echo $unitno; ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_property_no" value="<?php if(isset($result_n_ar->property_no)){ echo $result_n_ar->property_no; } else { echo ""; } ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
+                                <input type="hidden" id="ret_<?php echo $set.$count; ?>_address_ctr" value="<?php if(isset($result_n_ar->address_ctr)){ echo $result_n_ar->address_ctr; } else { echo ""; } ?>" />
                                 <td><?php echo $house; ?></td>
                                 <td><?php if(isset($result_n_ar->street_name) && ($result_n_ar->street_type )){ echo $result_n_ar->street_name." ".$result_n_ar->street_type; } else { echo ""; } ?></td>
                                 <td><?php if(isset($result_n_ar->locality)){ echo $result_n_ar->locality; } else { echo ""; } ?></td>
