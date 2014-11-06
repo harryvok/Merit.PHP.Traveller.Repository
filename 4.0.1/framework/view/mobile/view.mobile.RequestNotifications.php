@@ -162,16 +162,16 @@
                                 <tbody>
                                      <tr>
                                         <td class="manualDiv" style="padding:0px;">
-                                            <span>Manual Email Contacts:</span>
-                                            <div class="summaryColumn" id="listEmail"></div>
+                                            <p>Email Contacts:</p>
+                                            <div class="fixFormat"><div class="summaryColumn" id="listEmail"></div>
                                             <div data-role="button" id="emailAdd">+ Email</div>
-                                            <div data-role="button" id="emailOfficerAdd">+ Officer</div>
+                                            <div data-role="button" id="emailOfficerAdd">+ Officer</div></div>
                                         </td>
                                         <td class="manualDiv" style="padding:0px;">
-                                            <span>Manual SMS Contacts:</span>
-                                            <div class="summaryColumn" id="listSMS"></div>
+                                            <p>SMS Contacts:</p>
+                                            <div class="fixFormat"><div class="summaryColumn" id="listSMS"></div>
                                             <div data-role="button" id="smsAdd">+ Mobile</div>
-                                            <div data-role="button" id="smsOfficerAdd">+ Officer</div>
+                                            <div data-role="button" id="smsOfficerAdd">+ Officer</div></div>
                                         </td>
                                     </tr>
                                 </tbody>
