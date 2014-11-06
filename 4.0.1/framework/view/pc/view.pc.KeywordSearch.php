@@ -199,8 +199,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_name_type" value="<?php if(isset($result_n_ar->request_name_type)){ echo $result_n_ar->request_name_type; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_name_type" value="<?php if(isset($result_n_ar->function_name_type)){ echo $result_n_ar->function_name_type; } else { echo ""; } ?>" />
-                <input type="hidden" id="ret_<?php echo $set; ?>_need_r_booking" value="<?php if(isset($result_n_ar->request_conut_ind)){ echo $result_n_ar->request_conut_ind; } else { echo "N"; } ?>" />
-                <input type="hidden" id="ret_<?php echo $set; ?>_need_f_booking" value="<?php if(isset($result_n_ar->function_conut_ind)){ echo $result_n_ar->function_conut_ind; } else { echo "N"; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_need_r_booking" value="<?php if(isset($result_n_ar->request_count_ind)){ echo $result_n_ar->request_count_ind; } else { echo "N"; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
                                                    
                 <td><?php if(isset($result_n_ar->keyword)){ echo $result_n_ar->keyword; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->service_name)){ echo $result_n_ar->service_name; } else { echo ""; } ?></td>
@@ -245,8 +245,8 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
 <input type="hidden" id="ret_function_auto_help_notes" value="<?php if(isset($result_n_ar->function_auto_help)){ echo $result_n_ar->function_auto_help; } else { echo "N"; } ?>" />
 <input type="hidden" id="ret_request_name_type" value="<?php if(isset($result_n_ar->request_name_type)){ echo $result_n_ar->request_name_type; } else { echo ""; } ?>" />
 <input type="hidden" id="ret_function_name_type" value="<?php if(isset($result_n_ar->function_name_type)){ echo $result_n_ar->function_name_type; } else { echo ""; } ?>" />
-<input type="hidden" id="ret_need_r_booking" value="<?php if(isset($result_n_ar->request_conut_ind)){ echo $result_n_ar->request_conut_ind; } else { echo "N"; } ?>" />
-<input type="hidden" id="ret_need_f_booking" value="<?php if(isset($result_n_ar->function_conut_ind)){ echo $result_n_ar->function_conut_ind; } else { echo "N"; } ?>" />
+<input type="hidden" id="ret_need_r_booking" value="<?php if(isset($result_n_ar->request_count_ind)){ echo $result_n_ar->request_count_ind; } else { echo "N"; } ?>" />
+<input type="hidden" id="ret_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
 <script type="text/javascript">
     $(document).ready(function () {
         var sauto = $("#ret_service_auto_help_notes").val();

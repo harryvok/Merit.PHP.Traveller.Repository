@@ -47,7 +47,6 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 $("#placeBookingDate").click(function () {
                     if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
                         $("#duedate").html("<label>Due Date:</label> " + $("#from").val());
-                        alert($("#booking_date_" + id).val());
                         $("#due").val($("#booking_date_" + id).val());
                         $("#popup").fadeOut("fast");
                     } else {
@@ -96,11 +95,11 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
      <table id="bookings" class="sortable" title="" cellspacing="0" >
             <thead>
                 <tr>
-                    <th>Booked Date</th>
-                    <th>Booked Count</th>
-                    <th>Available No.</th>
-                    <th>Still Open?</th>
-                    <th>Comments</th>
+                    <th style="width:170px; text-align:center">Booked Date</th>
+                    <th style="width:150px; text-align:center">Booked Count</th>
+                    <th style="width:150px; text-align:center">Available No.</th>
+                    <th style="width:170px; text-align:center">Still Open?</th>
+                    <th style="text-align:center">Comments</th>
                 </tr>
             </thead>
             <tbody>
@@ -125,9 +124,9 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 <tr class="<?php echo $class; ?>" id="BookingDetails<?php echo $i; ?>ParentObject">
                     <input type="hidden" id="booking_date_BookingDetails<?php echo $i; ?>ParentObject" value="<?php echo $date; ?>" />
                     <input type="hidden" id="display_date_BookingDetails<?php echo $i; ?>ParentObject" value="<?php echo $formated; ?>" />
-                                 <td><?php echo $day." ".$formated; ?></td>
-                                 <td><?php echo $booking_detail->booked_count; ?></td>
-                                 <td><?php echo $booking_detail->available_count; ?></td>
+                                 <td style="text-align:right"><?php echo $day." ".$formated; ?></td>
+                                 <td style="text-align:center"><?php echo $booking_detail->booked_count; ?></td>
+                                 <td style="text-align:center"><?php echo $booking_detail->available_count; ?></td>
                                  <td><?php echo $booking_detail->service_stopped; ?></td>
                                  <td><?php echo $booking_detail->reason; ?></td>
                             </tr>

@@ -94,6 +94,7 @@ function GetBookingSummary(paramdate) {
         date = new Date().toISOString();
     else
         date = paramdate;
+
     if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#keywordSearch").val() == "RSVP"  ) {        
         var serviceID = $("#service").val();
         var requestID = $("#request").val();
