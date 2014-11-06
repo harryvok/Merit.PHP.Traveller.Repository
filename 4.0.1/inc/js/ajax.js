@@ -136,7 +136,7 @@ function GetBookingSummary(paramdate) {
 }
 
 function bookingStartStop(action, bookingDate) {
-    alert(action + bookingDate);
+    //alert(action + bookingDate);
     var service_code = $("#service").val();
     var request_code = $("#request").val();
     var function_code = $("#function").val();
@@ -146,7 +146,6 @@ function bookingStartStop(action, bookingDate) {
     $.ajax({
         url: 'inc/ajax/ajax.bookingStartStop.php',
         type: 'POST',
-
         data: {
             service_code: service_code,
             request_code: request_code,
@@ -155,6 +154,7 @@ function bookingStartStop(action, bookingDate) {
             a_type: a_type
         },
         success: function (data) {
+            $("#get").trigger("click");
             Unload();
         },
     });
