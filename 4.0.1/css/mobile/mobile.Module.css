@@ -202,14 +202,9 @@ div.editTextDiv {
 }
 
 div.summaryColumn {
-    width: auto;
+    width: 100%;
     height: auto;
     min-height: 30px;
-    min-width:80%;
-    padding-left: 17px;
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 5px;
     font-size: 14px;
     background: #f4f1f1;
     border: 1px #c9c9c9 solid;
@@ -219,4 +214,8 @@ div.summaryColumn {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+.fixFormat {
+    padding:7px 5%;
 }
