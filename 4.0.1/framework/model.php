@@ -3879,17 +3879,11 @@ class Model {
         $parameters->booking_date = $_POST['booking_date'];
         $parameters->a_type = $_POST['a_type'];
         try {
-            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_start_stop_booking",$parameters);
-            $_SESSION['done'] = 1;
-            $_SESSION['success'] = 1;
-            $_SESSION['success_delete_action'] = 1;
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_stop_start_booking",$parameters);            
             return true;       
         }
         catch (Exception $e) {
             echo $e -> getMessage ();
-            $_SESSION['done'] = 1;
-            $_SESSION['error'];
-            $_SESSION['error_delete_action'] = 1;
             return false;
         }
         

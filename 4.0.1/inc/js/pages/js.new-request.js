@@ -27,11 +27,6 @@ $(document).ready(function () {
                     Unload();
                     $("#popup").css("top", "100px");
                     $('#popup').html(data);
-                    //if ($("#textareaissue").length) {
-                    //    $("#textareaissue").focus();
-                    //} else {
-                    //    $("#add-request-textarea").focus();
-                    //}
                 }
             });
         }
@@ -134,15 +129,16 @@ $(document).ready(function () {
     }
 
     function requestResponse(event, ui) {
-        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = ""; var request_note = ""; var rauto = ""; var request_name_type = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note = ui.content[0].request_note; rauto = ui.content[0].request_auto_help_notes; request_name_type = ui.content[0].request_name_type; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note; rauto = ui.item.request_auto_help_notes; request_name_type = ui.item.request_name_type; }
+        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = ""; var request_note = ""; var rauto = ""; var request_name_type = ""; var booking_required = "";
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note = ui.content[0].request_note; rauto = ui.content[0].request_auto_help_notes; request_name_type = ui.content[0].request_name_type; booking_required = ui.content[0].booking_required; }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note; rauto = ui.item.request_auto_help_notes; request_name_type = ui.item.request_name_type; booking_required = ui.item.booking_required; }
         if (label.length > 0 || code.length > 0) {
             $(this).removeClass("ui-autocomplete-loading");
             $("#request").val(code);
             $("#function").val("");
             $("#priority").val(priority);
             $("#rednote").html(request_note);
+            $("#need_r_booking").val(booking_required);
             CheckMandatoryFields($("#service").val(), $("#request").val(), '');
             $("#priority option").prop("selected", false);
             $("#priority option[value=" + priority + "]").prop("selected", true);

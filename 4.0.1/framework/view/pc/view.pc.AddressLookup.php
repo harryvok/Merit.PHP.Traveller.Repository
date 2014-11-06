@@ -9,7 +9,8 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				$("#"+name_id+"-addresses").html("");
 			});
 		    $('.address_row').click(function () {
-				var id = $(this).attr('id');
+		        var id = "";
+				id = $(this).attr('id');
 				$('#same').val('i');
 				$('#i_cno').val($('#ret_'+id+'_house_number').val());
 				$('#i_cfno').val($('#ret_'+id+'_house_suffix').val());

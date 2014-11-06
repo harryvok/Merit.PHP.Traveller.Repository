@@ -13,10 +13,11 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 			$('#popup').fadeOut("fast");
 			
 		});
-		$('.name_row').click(function(){
-			var id = $(this).attr('id');
+		$('.name_row').click(function () {
+		    var id = "";
+			id = $(this).attr('id');
 			$(".addressRow").hide();
-			$("#"+id+"-addresses").html("");
+			$("#" + id + "-addresses").html("");
 			$.ajax({
 				url:'inc/ajax/ajax.getAddresses.php',
 				type: 'post',
@@ -53,7 +54,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
     $number=0;
     if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) > 1){
         foreach($GLOBALS['result']->name_search_det->name_search as $result_n_ar){
-            $set = $result_n_ar->name_id;
+            $set = $result_n_ar->name_id.$result_n_ar->name_ctr;
             $number = $number+1;
             if($number == 2){
                 $class = "dark";
@@ -93,7 +94,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
     }
     elseif(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
         $result_n_ar = $GLOBALS['result']->name_search_det->name_search;
-        $set = $result_n_ar->name_id;
+        $set = $result_n_ar->name_id.$result_n_ar->name_ctr;
         ?>
         <input type="hidden" id="ret_<?php echo $set; ?>_name_origin" value="<?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_name_ctr" value="<?php if(isset($result_n_ar->name_ctr)){ echo $result_n_ar->name_ctr; } else { echo ""; } ?>" />
