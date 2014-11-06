@@ -968,13 +968,16 @@ class Model {
 
 	/* View Address */
     public function getAddress($params = NULL){
+        
         if(isset($_GET['ex'])){ $ex=$_GET['ex']; } else{ $ex=0; }
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
+        
         if(isset($ex) && $ex==1){
             $parameters->external_id = $_GET['id'];
             $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_get_external_address", $parameters);
+            
             if($result->ws_message = "Address ctr already exists in Merit"){
                 unset($parameters->external_id);
                 $parameters->address_id = $result->address_id;
