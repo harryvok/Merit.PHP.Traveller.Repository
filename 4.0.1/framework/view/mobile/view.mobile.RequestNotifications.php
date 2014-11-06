@@ -54,7 +54,7 @@
 
 
 <!-- Send Notification Div -->
-    <div data-role="collapsible" class="col" data-corners="false" data-collapsed="false" data-content-theme="b">
+    <div data-role="collapsible" class="col" data-corners="false" data-collapsed="false" data-content-theme="c">
         <h4>Send Notification</h4>
 
     <!-- Start Form -->
@@ -63,11 +63,22 @@
         <input type="hidden" value="<?php echo $i; ?>" name="officerCount" />
             
         <!-- Select Recipients Div -->
-            <div data-role="collapsible" class="col" data-collapsed="false" data-corners="false" data-content-theme="b" data-theme="b" style="overflow:hidden;">
+            <div data-role="collapsible" class="col" data-collapsed="false" data-corners="false" data-content-theme="b" data-theme="b" style="overflow:hidden;" >
                 <h4>Select Recipients</h4>
 
+
+                <!-- Usefull Styling Code for Insets
+                    padding-top: 10px;
+                    padding-right: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    border-right-width: 0px;
+                    border-left-width: 0px;
+                    border-bottom-width: 0px;
+                -->
+
+
                     <!-- Table Start -->
-                            <div class="height100">
                             <table class="mobileNotifyTable">
                                 <thead>
                                     <tr>
@@ -138,7 +149,7 @@
                                     ?>
                                 </tbody>
                             </table>
-                        </div>
+                        
                         
                             
                         <table class="mobileNotifyTable" style="margin-top:10px">
@@ -164,25 +175,6 @@
                                 </tbody>
                         </table>
                         
-                        <table class="mobileNotifyTable" style="margin-top:10px">
-                                <thead>
-                                    <tr>
-                                        <th>Options</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                     <tr>
-                                        <td>
-                                            <div data-role="button" id="sendbutton">Send</div>                                          
-                                        </td>
-                                         <td>
-                                            <div data-role="button" id="reset" style="color:rgb(255, 0, 0);"> Reset</div> 
-                                        </td>
-                                    </tr>
-                                </tbody>
-                        </table>
-
                 </div>
                 <!-- End Select Div -->
                     <div style="clear:both"></div>
@@ -190,7 +182,7 @@
 
 
             <!-- Start Email Div -->
-            <div id="emailContainer" data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" style="overflow:hidden;">
+            <div id="emailContainer" data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" data-theme="b" style="overflow:hidden;">
                 <h4>Email Message</h4>
 
                 <?php 
@@ -198,7 +190,7 @@
                 $header = EMAIL_SUBJECT_PREFIX;  
                 ?>
 
-                    <table class="mobileNotifyTable" style="margin-top:10px">
+                    <table class="mobileNotifyTable">
                                 <thead>
                                     <tr>
                                         <th> <span <?php if($_SESSION['meritIni']['NOTIFYCUSTOMERFROMEMAIL'] == ""){ ?> style="color: red; font-weight: bold; display: none;" <?php } else { ?> style="color: red; font-weight: bold;" <?php } ?> id="note">NOTE: Email will be sent via Merit Engine.</span></th>
@@ -230,9 +222,9 @@
 
 
             <!-- Start SMS Div -->
-            <div id="smsContainer" data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" style="overflow:hidden;">
+            <div id="smsContainer" data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="b" data-theme="b" style="overflow:hidden;">
                 <h4>SMS Message</h4>
-                         <table class="mobileNotifyTable" style="margin-top:10px">
+                         <table class="mobileNotifyTable">
                                 <thead>
                                     <tr>
                                         <th>Message</th>
@@ -248,6 +240,25 @@
                                 </tbody>
                         </table>
             </div> <!-- End SMS Div -->
+
+            <table class="mobileNotifyTable" style="margin-top:10px">
+                                <thead>
+                                    <tr>
+                                        <th>Options</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                        <td>
+                                            <div data-role="button" id="sendbutton">Send</div>                                          
+                                        </td>
+                                         <td>
+                                            <div data-role="button" id="reset" style="color:rgb(255, 0, 0);"> Reset</div> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                        </table>
 
 
             <!-- Hidden Fields -->

@@ -1996,9 +1996,11 @@ body.ui-mobile-viewport, div.ui-mobile-viewport {
     border-left-width: 1px;
 }
 
+
 .ui-collapsible-content-collapsed {
     display: none;
 }
+
 
 .ui-collapsible-set > .ui-collapsible.ui-corner-all {
     -webkit-border-radius: 0;
@@ -4268,6 +4270,15 @@ and (max-device-width : 1024px)  {
 	
 }
 
+.ui-collapsible-content.ui-body-b {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-bottom-width: 0px;
+}
 
 .ui-shadow,
 .ui-btn-up-a,
