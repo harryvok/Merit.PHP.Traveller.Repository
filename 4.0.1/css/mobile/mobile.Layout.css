@@ -594,3 +594,12 @@ a.ui-link-inherit {
 .manualDiv {
     width:50%;
 }
+
+.manualDiv span {
+    font-weight:bold;
+    font-size: 12px;
+    padding-left:17px;
+    padding-top:5px;
+    padding-right:10px;
+    padding-bottom:5px;
+}
