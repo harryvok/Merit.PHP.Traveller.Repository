@@ -198,14 +198,15 @@ $(document).ready(function () {
 
     function functionResponse(event, ui) {
         var label = ""; var code = ""; var priority = ""; var count_only = ""; var function_note = ""; var fauto = ""; var function_name_type;
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; function_name_type = ui.content[0].function_name_type; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; function_name_type = ui.item.function_name_type; }
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; function_name_type = ui.content[0].function_name_type; booking_required = ui.content[0].booking_required; }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; function_name_type = ui.item.function_name_type; booking_required = ui.item.booking_required; }
         if (label.length > 0 || code.length > 0) {
             $("#functionInput").removeClass("ui-autocomplete-loading");
             $("#function").val(code);
             $("#functionInput").val(label).removeClass("ui-autocomplete-loading").attr("readonly", true);
             $("#priority").val(priority);
             $("#rednote").html(function_note);
+            $("#need_f_booking").val(booking_required);
             $("#priority option").prop("selected", false);
             $("#priority option[value=" + priority + "]").prop("selected", true);
             $('#priority').selectmenuState('refresh', true);
@@ -223,10 +224,11 @@ $(document).ready(function () {
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto,"N");
             // Perform count only check on full SRF
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
+            var date = new Date().toISOString();
+            GetBookingSummary(date);
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
-            getSRFRedText();
-          
+            getSRFRedText();          
             $("#cust_type").val(function_name_type);
             $("#cust_type option").prop("selected", false);
             $("#cust_type option[value=" + function_name_type + "]").prop("selected", true);
