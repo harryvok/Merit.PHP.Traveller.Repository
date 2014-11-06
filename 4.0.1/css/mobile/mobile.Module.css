@@ -205,8 +205,11 @@ div.summaryColumn {
     width: auto;
     height: auto;
     min-height: 30px;
-    min-width:100%;
-    padding: 6px;
+    min-width:80%;
+    padding-left: 17px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
     font-size: 14px;
     background: #f4f1f1;
     border: 1px #c9c9c9 solid;

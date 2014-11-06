@@ -152,7 +152,7 @@
                         
                         
                             
-                        <table class="mobileNotifyTable" style="margin-top:10px">
+                        <table class="mobileNotifyTable" style="margin-top:10px;">
                                 <thead>
                                     <tr>
                                         <th>Email</th>
@@ -161,12 +161,14 @@
                                 </thead>
                                 <tbody>
                                      <tr>
-                                        <td class="manualDiv"><span>Manual Email Contacts:</span>
+                                        <td class="manualDiv" style="padding:0px;">
+                                            <span>Manual Email Contacts:</span>
                                             <div class="summaryColumn" id="listEmail"></div>
                                             <div data-role="button" id="emailAdd">+ Email</div>
                                             <div data-role="button" id="emailOfficerAdd">+ Officer</div>
                                         </td>
-                                        <td class="manualDiv"><span>Manual SMS Contacts:</span>
+                                        <td class="manualDiv" style="padding:0px;">
+                                            <span>Manual SMS Contacts:</span>
                                             <div class="summaryColumn" id="listSMS"></div>
                                             <div data-role="button" id="smsAdd">+ Mobile</div>
                                             <div data-role="button" id="smsOfficerAdd">+ Officer</div>
@@ -250,10 +252,10 @@
                                 </thead>
                                 <tbody>
                                      <tr>
-                                        <td>
+                                        <td class="manualDiv">
                                             <div data-role="button" id="sendbutton">Send</div>                                          
                                         </td>
-                                         <td>
+                                         <td class="manualDiv">
                                             <div data-role="button" id="reset" style="color:rgb(255, 0, 0);"> Reset</div> 
                                         </td>
                                     </tr>
