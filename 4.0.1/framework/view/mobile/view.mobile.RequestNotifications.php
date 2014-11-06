@@ -27,7 +27,7 @@
                             <p><b>Notification:</b> <?php if(isset($result_c_get->comments)) echo base64_decode($result_c_get->comments); ?></p>
                         </li>
                         <?php
-                                              
+                                               
                     }
                 }
                 elseif(count($GLOBALS['result']['notifications']->notification_details) == 1){
