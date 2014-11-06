@@ -264,7 +264,7 @@
                         ?>
                   </div>
             <div id="footer">
-                  &copy; Merit Technology 2013.
+                  &copy; Merit Technology.
             </div>
         <?php
         }

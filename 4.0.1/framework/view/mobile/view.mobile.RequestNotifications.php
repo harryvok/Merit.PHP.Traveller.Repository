@@ -150,14 +150,12 @@
                                 </thead>
                                 <tbody>
                                      <tr>
-                                        <td>
-                                            Manual Email Contacts:<br />
+                                        <td class="manualDiv"><span>Manual Email Contacts:</span>
                                             <div class="summaryColumn" id="listEmail"></div>
                                             <div data-role="button" id="emailAdd">+ Email</div>
                                             <div data-role="button" id="emailOfficerAdd">+ Officer</div>
                                         </td>
-                                        <td>
-                                            Manual SMS Contacts:<br />
+                                        <td class="manualDiv"><span>Manual SMS Contacts:</span>
                                             <div class="summaryColumn" id="listSMS"></div>
                                             <div data-role="button" id="smsAdd">+ Mobile</div>
                                             <div data-role="button" id="smsOfficerAdd">+ Officer</div>

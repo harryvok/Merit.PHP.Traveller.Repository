@@ -968,13 +968,16 @@ class Model {
 
 	/* View Address */
     public function getAddress($params = NULL){
+        
         if(isset($_GET['ex'])){ $ex=$_GET['ex']; } else{ $ex=0; }
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
+        
         if(isset($ex) && $ex==1){
             $parameters->external_id = $_GET['id'];
             $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_get_external_address", $parameters);
+            
             if($result->ws_message = "Address ctr already exists in Merit"){
                 unset($parameters->external_id);
                 $parameters->address_id = $result->address_id;
@@ -3542,12 +3545,13 @@ class Model {
     }
 
     public function processAdhocOfficer($params = NULL){
-        if($_POST["due"] != ""){
-            $duedate = $_POST["due"]. "T" . date("H:i:s");
+      /*  if($_POST["due_datetime"] != ""){
+            $duedate = $_POST["due_datetime"]. "T" . date("H:i:s");
         }
         else{
             $duedate = $result->due_date. "T" . date("H:i:s");
-        }
+        } */
+      
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
@@ -3561,7 +3565,7 @@ class Model {
             ),
             'position_no' => $_POST['position_no'],
             'officer_type' => $_POST['officer_type'],
-            'due_datetime' => $duedate
+            'due_datetime' => $_POST["due_datetime"]
         );
         $count=0;
         for($i=0;$i<count($_SESSION['position_no_arr']);$i++){
