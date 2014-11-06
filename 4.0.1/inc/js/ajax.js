@@ -94,44 +94,42 @@ function GetBookingSummary(paramdate) {
         date = new Date().toISOString();
     else
         date = paramdate;
-    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "" && $("#functionInput").val() != "") {
-        if ($("#need_r_booking").val() == "Y" || $("#need_f_booking").val() == "Y") {
-            var serviceID = $("#service").val();
-            var requestID = $("#request").val();
-            var functionID = $("#function").val();
-            var addressID = $("#addressId").val();
-            var house_number = $("#lno").val();
-            var house_suffix = $("#lfno").val();
-            var street_name = $("#lstreet").val();
-            var street_type = $("#ltype").val();
-            var locality_name = $("#lsuburb").val();
-            Load();
-            $.ajax({
-                url: 'inc/ajax/ajax.getBookingSummary.php',
-                type: 'POST',
 
-                data: {
-                    serviceID: serviceID,
-                    requestID: requestID,
-                    functionID: functionID,
-                    addressID: addressID,
-                    house_number: house_number,
-                    house_suffix: house_suffix,
-                    street_name: street_name,
-                    street_type: street_type,
-                    locality_name: locality_name,
-                    start_datetime: date
-                },
-                success: function (data) {
-                    Unload();
-                    $('#popup').html("");
-                    $('#popup').html(data);
-                },
-            });
-        }
-        else {
-            $("#AddrBooking").attr("disabled", "disabled");
-        }
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#keywordSearch").val() == "RSVP"  ) {        
+        var serviceID = $("#service").val();
+        var requestID = $("#request").val();
+        var functionID = $("#function").val();
+        var addressID = $("#addressId").val();
+        var house_number = $("#lno").val();
+        var house_suffix = $("#lfno").val();
+        var street_name = $("#lstreet").val();
+        var street_type = $("#ltype").val();
+        var locality_name = $("#lsuburb").val();
+        Load();
+        $.ajax({
+            url: 'inc/ajax/ajax.getBookingSummary.php',
+            type: 'POST',
+
+            data: {
+                serviceID: serviceID,
+                requestID: requestID,
+                functionID: functionID,
+                addressID: addressID,
+                house_number: house_number,
+                house_suffix: house_suffix,
+                street_name: street_name,
+                street_type: street_type,
+                locality_name: locality_name,
+                start_datetime: date
+            },
+            success: function (data) {
+                Unload();
+                $('#popup').html("");
+                $('#popup').html(data);
+
+
+            },
+        });
     }
     else {
         $("#AddrBooking").attr("disabled", "disabled");

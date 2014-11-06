@@ -15,6 +15,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 
             //show rows based on user click event
             $("#bookings tbody tr ").click(function () {
+                $("#placeBookingDate").prop("disabled", "");
                 var id = "";
                 id = $(this).attr('id');                
                 var disp_date = $("#display_date_" + id).val();
@@ -27,6 +28,10 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 }
                 $("#from").val(disp_date);
 
+                var avail = $(this).find("td:nth-child(5)").html();
+                if (avail == 0) {
+                    $("#placeBookingDate").prop("disabled", "disabled");
+                }                
                 //start stop booking
                 $("#stop").click(function () {
                     var d = "";
