@@ -590,3 +590,7 @@ a.ui-link-inherit {
 .mobileNotifyTable tbody tr:hover {
     background: #dde5f2;
 }
+
+.manualDiv {
+    width:50%;
+}

@@ -169,7 +169,7 @@ if(isset($GLOBALS['result']->fac_dets->facility_details) && count($GLOBALS['resu
             </div>
             <span class="summaryColumnTitle">Responsibility</span>
             <div class="summaryColumn" style="width: 100%;">
-                <?php if(isset($GLOBALS['result']->responsibility)){ echo $GLOBALS['result']->responsibility; } ?>
+                <?php if(isset($GLOBALS['result']->road_responsibility)){ echo $GLOBALS['result']->road_responsibility; } ?>
             </div>
 
         </div>
