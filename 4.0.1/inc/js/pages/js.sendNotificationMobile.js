@@ -172,20 +172,32 @@ $(document).ready(function () {
 
         $("#emailAdd").hide();
         $("#emailOfficerAdd").hide();
+
+        $("#smsmanualdiv").hide();
+        $("#smsheader").hide();
+        $("#manualdivrow").css("width", "100%");
+
         $("#listEmail").html($("#listEmail").html() +
                                 "<script>function decrementemail() { var tempEmailCounter= $(\"#emailCount\").val(); " +
-                                "tempEmailCounter--; $(\"#emailCount\").val(tempEmailCounter);  $(\"#emailAdd\").show(); $(\"#emailOfficerAdd\").show(); }" +
+                                "tempEmailCounter--; $(\"#emailCount\").val(tempEmailCounter);  $(\"#emailAdd\").show(); $(\"#emailOfficerAdd\").show(); $(\"#smsmanualdiv\").show(); $(\"#smsheader\").show(); $(\"#manualdivrow\").css('width', '50%'); }" +
                                 "</script>" +
-                                "<span id='emailText" + email + "List'>" +
-                                "<span id='emailText" + email + "NameLab'>Name:</span>" +
-                                "<input id='emailText" + email + "Name' type='text'  value='' />" + "<br />" +
 
-                                "<span id='emailText" + email + "EmailLab'>Email:</span>" +
-                                "<input id='emailText" + email + "Email' type='text' value='' />" +
+                                "<div id='emailText" + email + "List'>" +
+
+                                "<label for id='emailText" + email + "NameLab' style='margin-left: 3% !important; margin-top:2% !important;'>Name:</label>" +
+                                "<input type='text' name='emailText' id='emailText" + email + "Name' value='' data-mini='true' class='mobileform ui-input-text ui-body-c'>" +
+
+                                "<label for id='emailText" + email + "EmailLab' style='margin-left: 3% !important;'>Email:</label>" +
+                                "<input type='text' id='emailText" + email + "Email' value='' data-mini='true' class='mobileform ui-input-text ui-body-c' />" +
 
                                 "<input id='emailText" + email + "Type' type='hidden' value='' />" +
-                                "<input type='button' value='Add' id='emailText" + email + "Add' />" + "&nbsp" +
-                                "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png' ><br /></span>");
+                                "<div data-role='button' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' id='emailText" + email + "Add' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important; display:inline-block !important;'>Add</div>" +
+                                "<div data-role='button' onClick='decrementemail()' data-delete='emailText" + email + "List' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important;display:inline-block !important;'>Cancel</div></div>");
+
+        //  "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png'></div>");
+
+        
+        // <input id='emailText" + email + "Name' type='text'  value='' />
 
         $("#emailText" + email + "Add").click(function () {
 

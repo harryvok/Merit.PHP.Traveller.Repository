@@ -155,19 +155,19 @@
                         <table class="mobileNotifyTable" style="margin-top:10px;">
                                 <thead>
                                     <tr>
-                                        <th>Email</th>
-                                        <th>SMS</th>
+                                        <th id="emailheader">Email</th>
+                                        <th id="smsheader">SMS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     <tr>
-                                        <td class="manualDiv" style="padding:0px;">
+                                     <tr style="vertical-align:top;">
+                                        <td class="manualDiv" style="padding:0px;" id="emailmanualdiv">
                                             <p>Email Contacts:</p>
                                             <div class="fixFormat"><div class="summaryColumn" id="listEmail"></div>
                                             <div data-role="button" id="emailAdd">+ Email</div>
                                             <div data-role="button" id="emailOfficerAdd">+ Officer</div></div>
                                         </td>
-                                        <td class="manualDiv" style="padding:0px;">
+                                        <td class="manualDiv" style="padding:0px;" id="smsmanualdiv">
                                             <p>SMS Contacts:</p>
                                             <div class="fixFormat"><div class="summaryColumn" id="listSMS"></div>
                                             <div data-role="button" id="smsAdd">+ Mobile</div>
