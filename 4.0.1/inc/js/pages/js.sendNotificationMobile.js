@@ -7,7 +7,8 @@ $(document).ready(function () {
     $("#emailContainer").hide();
     $("#smsContainer").hide();
 
-    $("#sendbutton").css('visibility','hidden');
+    $("#sendbutton").css('visibility', 'hidden');
+    
 
     /* On action do stuff ------------------------------------------------------- */
     $("input[type=checkbox]").on("click", function () {
@@ -88,16 +89,6 @@ $(document).ready(function () {
     $("#fromEmail").click(function () {
         $("#note").toggle();
     });
-
-    // Function VALIDATION ---------------------------------------------------
-    function validateEmail($email) {
-        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        if (!emailReg.test($email)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
 
     // -----------------------------------------------------------------------
@@ -207,7 +198,7 @@ $(document).ready(function () {
 
         $("#emailText" + email + "Add").click(function () {
 
-            if ($("#emailText" + email + "Email").val().length > 0 && $("#emailText" + email + "Name").val().length > 0 && validateEmail($("#emailText" + email + "Name").val()) == true) {
+            if ($("#emailText" + email + "Email").val().length > 0 && $("#emailText" + email + "Name").val().length > 0 && validateEmail($("#emailText" + email + "Email").val())) {
 
                 var emailaddress = $("#emailText" + email + "Email").val();
                 var name = $("#emailText" + email + "Name").val();
@@ -380,7 +371,7 @@ $(document).ready(function () {
             "<div data-role='button' onClick='decrementsms()' data-delete='smsText" + sms + "List' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important;display:inline-block !important;'>Cancel</div></div>");
 
         $("#smsText" + sms + "Add").click(function () {
-            if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0) {
+            if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0 && isNumber($("#smsText" + sms + "Mobile").val())) {
                 $("#smsText" + sms + "NameLab").html($("#smsText" + sms + "Name").val());
                 $("#smsText" + sms + "Name").css("display", "none").attr("name", "sms_name[]");
                 $("#smsText" + sms + "Mobile").css("display", "none").attr("name", "sms_mobile_no[]");

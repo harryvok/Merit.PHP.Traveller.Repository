@@ -1548,6 +1548,8 @@ class Model {
     }
     
     public function processSendNotification($params = NULL){
+        $testtesttest = $_SESSION['user_id'];
+        
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],

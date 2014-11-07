@@ -167,3 +167,12 @@ function scale(width, height, padding, border) {
         'height': h - (ifrPadding + ifrBorder)
     };
 };
+
+function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
