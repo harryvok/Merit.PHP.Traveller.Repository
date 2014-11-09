@@ -8,6 +8,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				$("#"+name_id+"-addressRow").toggle();
 				$("#"+name_id+"-addresses").html("");
 			});
+
 		    $('.address_row').click(function () {
 		        var id = "";
 				id = $(this).attr('id');

@@ -1,42 +1,39 @@
-
 <?php
 if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) >0){
 	?>
     <script type="text/javascript">
+        $(document).ready(function () {
+            $("#popup").fadeIn("fast");
+        });
 
-		$(document).ready(function() {
-			  $("#popup").fadeIn("fast");
-		});
-		
-		$('#closeNames').click(function(){
-			
-			$('#popup').fadeOut("fast");
-			
-		});
-		$('.name_row').click(function () {
-		    var id = "";
-			id = $(this).attr('id');
-			$(".addressRow").hide();
-			$("#" + id + "-addresses").html("");
-			$.ajax({
-				url:'inc/ajax/ajax.getAddresses.php',
-				type: 'post',
-				data: {
-					name_set: id,
-					name_origin: $('#ret_'+id+'_name_origin').val(), 
-					name_id: $('#ret_'+id+'_name_id').val(), 
-					name_ctr: $('#ret_' + id + '_name_ctr').val(),
-					name_origin_code: $('#ret_' + id + '_name_origin_code').val(),
-				},
-				success: function(data) {
-					$("#"+id+"-addressRow").show();
-					$("#"+id+"-addresses").html(data);
-				}
-			});
-		});
+        $('#closeNames').click(function () {
+
+            $('#popup').fadeOut("fast");
+
+        });
+        $('.name_row').click(function () {
+            var id = $(this).attr('id');
+            $(".addressRow").hide();
+            $("#" + id + "-addresses").html("");
+            $.ajax({
+                url: 'inc/ajax/ajax.getAddresses.php',
+                type: 'post',
+                data: {
+                    name_set: id,
+                    name_origin: $('#ret_' + id + '_name_origin').val(),
+                    name_id: $('#ret_' + id + '_name_id').val(),
+                    name_ctr: $('#ret_' + id + '_name_ctr').val(),
+                    name_origin_code: $('#ret_' + id + '_name_origin_code').val(),
+                },
+                success: function (data) {
+                    $("#" + id + "-addressRow").show();
+                    $("#" + id + "-addresses").html(data);
+                }
+            });
+        });
 	</script>
 	<h1>Found Names<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
-	<div>
+	<div style="overflow:scroll; max-height: 440px !important">
     <table id="nameLookupTable" class=" sortable" title="" cellspacing="0" style="color:black;">
     <thead>
     <tr>
@@ -54,7 +51,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
     $number=0;
     if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) > 1){
         foreach($GLOBALS['result']->name_search_det->name_search as $result_n_ar){
-            $set = $result_n_ar->name_id.$result_n_ar->name_ctr;
+            $set = $result_n_ar->name_id;
             $number = $number+1;
             if($number == 2){
                 $class = "dark";
@@ -94,7 +91,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
     }
     elseif(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
         $result_n_ar = $GLOBALS['result']->name_search_det->name_search;
-        $set = $result_n_ar->name_id.$result_n_ar->name_ctr;
+        $set = $result_n_ar->name_id;
         ?>
         <input type="hidden" id="ret_<?php echo $set; ?>_name_origin" value="<?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_name_ctr" value="<?php if(isset($result_n_ar->name_ctr)){ echo $result_n_ar->name_ctr; } else { echo ""; } ?>" />
