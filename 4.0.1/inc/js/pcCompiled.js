@@ -5351,6 +5351,7 @@ function GetAddressDetails() {
                 $("#addressId").val(data.address_id);
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
                 $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
+                $("#larea_group").val(data.area_group);
                 if (data.address_id != "0" || data.address_id != "" || data.address_id > 0 ) {
                     $("#AddrSummary").removeAttr("disabled");
                 }

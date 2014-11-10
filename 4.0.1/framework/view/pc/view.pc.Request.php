@@ -168,7 +168,6 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                 ?>
             </div>
         </div>
-
         <div class="float-left">
             <?php
             if(isset($address->property_no)){
@@ -205,6 +204,32 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <?php
             }
             ?>
+        </div>
+        <div class="float-left">
+            <div class="column r15">
+                <span class="summaryColumnTitle">Road Type</span>
+                <div class="summaryColumn">
+                    <?php 
+                if(isset($address->property_no)){ echo $address->road_type; }
+                    ?>
+                </div>
+            </div>
+            <div class="column r15">
+                <span class="summaryColumnTitle">Road Responsibility</span>
+                <div class="summaryColumn">
+                    <?php 
+                if(isset($address->property_no)){ echo $address->road_responsibility; }
+                    ?>
+                </div>
+            </div>
+            <div class="column r15">
+                <span class="summaryColumnTitle">Area Group</span>
+                <div class="summaryColumn">
+                    <?php 
+                if(isset($address->property_no)){ echo $address->area_group; }
+                    ?>
+                </div>
+            </div>
         </div>
         <?php
         
@@ -265,7 +290,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         <?php
         }
         ?>
-    </div>
+    </div>    
 </div>
 <div class="summaryContainer">
     <h1>Customer Details</h1>

@@ -191,6 +191,7 @@ if(isset($_SESSION['user_id'])){
 
                         <label>Road Responsibility</label>
                         <input class="" name='lroad_responsibility' onChange="" id="lroad_responsibility" maxlength='100' value=''>
+                        <input type="hidden" name="larea_group" id="larea_group" />
 
                         <label>Description</label>
                         <textarea id="ldesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'></textarea>

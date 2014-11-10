@@ -83,7 +83,8 @@ function GetAddressDetails() {
                     GetBookingSummary(date);                   
                 }                
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
-                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");                
+                $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
+                $("#larea_group").val(data.area_group);
             }
         });
     }    

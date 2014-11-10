@@ -544,6 +544,7 @@ $(document).ready(function () {
                         $("#addressId").val(data.address_id);
                         $("#lroad_type").val(data.road_type);
                         $("#lroad_responsibility").val(data.road_responsibility);
+                        $("#larea_group").val(data.area_group);
                         if (data.house_number.length > 0) {
                             $("#lno").val(data.house_number);
                             $("#lno").val($("#lno").val().replace(/[A-Za-z$-]/g, ""));
@@ -1401,6 +1402,7 @@ function clearLocationAddress() {
     $("#lsuburb").val("");
     $("#lroad_type").val("");
     $("#lroad_responsibility").val("");
+    $("#larea_group").val("");
     $('#ldesc').val('');
     $("#lpostcode").val("");
     $("#property_no").val("");
