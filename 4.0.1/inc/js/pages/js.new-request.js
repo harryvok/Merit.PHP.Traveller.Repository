@@ -376,6 +376,7 @@ $(document).ready(function () {
         $("#lstreet").val($("#gmaps_StreetName").val()).attr("readonly", false);
         $("#ltype").val($("#gmaps_StreetType").val()).attr("disabled", false).textInputState('enable');
         $("#lsuburb").val($("#gmaps_Suburb").val()).attr("disabled", false).textInputState('enable');
+        $("#lpostcode").val($("#gmaps_PostCode").val()).attr("disabled", false).textInputState('enable');
         $("#ldesc").val("");
         $("#facilityInput").val("");
         $("#facilityId").val("");
