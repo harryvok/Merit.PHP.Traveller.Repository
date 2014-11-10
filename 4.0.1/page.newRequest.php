@@ -408,7 +408,7 @@ if(!isset($_GET['d'])){
                                 </div>
                                 <div class="column r100">
                                     <label for="i_cdesc">Description</label>
-                                    <textarea id="i_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
+                                    <textarea id="i_cdesc" name="i_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
                                 </div>
                                 <!--
                                 <div class="column r100">
@@ -449,7 +449,7 @@ if(!isset($_GET['d'])){
                                 </div>
                                 <div class="column r100">
                                     <label for="o_cdesc">Description</label>
-                                    <textarea id="o_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'></textarea>
+                                    <textarea id="o_cdesc" name="o_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'></textarea>
                                 </div>
                             </div>
                         </div>
