@@ -451,8 +451,6 @@ if(!isset($_GET['d'])){
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="cust_road_type" id="cust_road_type" />
-                        <input type="hidden" name="cust_road_responsibility" id="cust_road_responsibility" />
                         <input type="hidden" name="cust_address_id" id="cust_address_id" />
                         <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" />
                         <input type="hidden" name="cust_address" id="cust_address" value="" />

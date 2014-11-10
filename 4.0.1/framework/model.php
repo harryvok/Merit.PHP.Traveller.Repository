@@ -1646,8 +1646,6 @@ class Model {
             $cust_address_suburb = $_POST['i_csuburb'];
             $cust_address_postcode = $_POST['i_cpostcode'];
             $cust_address_id = $_POST['cust_address_id'];
-            $cust_road_type = $_POST["cust_road_type"];
-            $cust_road_responsibility = $_POST["cust_road_responsibility"];
             $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
             
         }
@@ -1672,7 +1670,6 @@ class Model {
         $lsuburb = $_POST['lsuburb'];
         $lpostcode = $_POST['lpostcode'];
         $property_no = $_POST['property_no'];
-        
         $ldesc = strip_tags(addslashes($_POST['ldesc']));
         if ($_POST['loc_adress_ctr'] != 0)
             $loc_address_ctr = $_POST['loc_adress_ctr'];
@@ -1702,8 +1699,8 @@ class Model {
                                 "confidential" => '',
                                 "area_group" => '',
                                 "municipality" => '',
-                                "road_type" => $cust_road_type,
-                                "road_responsibility" => $cust_road_responsibility,
+                                "road_type" => '',
+                                "road_responsibility" => '',
                                 "street_id" => '',
                                 "facility_id" => 0
                             ),
