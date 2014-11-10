@@ -31,6 +31,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                 }
             });
         });
+        
 	</script>
 	<h1>Found Names<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
 	<div style="overflow:scroll; max-height: 440px !important">
