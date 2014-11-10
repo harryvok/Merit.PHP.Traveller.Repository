@@ -209,31 +209,33 @@ function GetCustomerAddressDetails() {
                         $("#CustAddSummary").removeAttr("disabled");
                     }
                 }
+                $("#cust_road_type").val(data.road_type);
+                $("#cust_road_responsibility").val(data.road_responsibility);
             }
         });
     }
-    else if ($("#same").val() == "o" && $("#o_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
-        $.ajax({
-            url: 'inc/ajax/ajax.getAddressBasic.php',
-            type: 'POST',
-            dataType: "json",
-            data: {
-                flatNumber: function () { return $("#o_cfno").val() },
-                streetNumber: function () { return $("#o_cno").val() },
-                streetName: function () { return $("#o_cstreet").val() },
-                streetType: function () { return $("#o_ctype").val() },
-                streetSuburb: function () { return $("#o_csuburb").val() }
-            },
-            success: function (data) {
-                $("#o_cpostcode").val(data.postcode);
-                $("#cust_address_id").val(data.address_id);
-                $("#o_cpropertynumber").val(data.property_no);
-                if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
-                    $("#CustAddSummary").removeAttr("disabled");
-                }
-            }
-        });
-    }
+    //else if ($("#same").val() == "o" && $("#o_cno").val().length > 0 && $("#o_cstreet").val().length > 0 && $("#o_ctype").val().length > 0 && $("#o_csuburb").val().length > 0) {
+    //    $.ajax({
+    //        url: 'inc/ajax/ajax.getAddressBasic.php',
+    //        type: 'POST',
+    //        dataType: "json",
+    //        data: {
+    //            flatNumber: function () { return $("#o_cfno").val() },
+    //            streetNumber: function () { return $("#o_cno").val() },
+    //            streetName: function () { return $("#o_cstreet").val() },
+    //            streetType: function () { return $("#o_ctype").val() },
+    //            streetSuburb: function () { return $("#o_csuburb").val() }
+    //        },
+    //        success: function (data) {
+    //            $("#o_cpostcode").val(data.postcode);
+    //            $("#cust_address_id").val(data.address_id);
+    //            $("#o_cpropertynumber").val(data.property_no);
+    //            if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
+    //                $("#CustAddSummary").removeAttr("disabled");
+    //            }
+    //        }
+    //    });
+    //}
 }
 
 function Search(sear) {
