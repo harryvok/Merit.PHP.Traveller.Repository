@@ -110,10 +110,9 @@ if(!isset($_GET['d'])){
                     <input type="hidden" name="countOnly" id="countOnly" value="0">
 
                     <div class="hoverDiv">
-                        <script>$('helpText_data').autoResize();</script>
                             <div><h1>Helpnotes <img src="images/delete-icon.png" id="infoHoverClose" style="float: right; cursor: pointer;" /></h1></div>
                             <div class="scrollText">
-                                <span id="helpText"><textarea id="helpText_data" readonly="readonly" disabled="disabled"></textarea></span>
+                                <span id="helpText"><textarea id="helpText_data" readonly="readonly" disabled="disabled" style="height:200px"></textarea></span>
                                 <br />
                                 <span id="helpURL"></span>
                             </div>
