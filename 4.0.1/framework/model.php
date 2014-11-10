@@ -479,6 +479,7 @@ class Model {
     
     public function getAddressBasic($params = NULL){
         $parameters = new stdClass();
+               
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
         $parameters->address_id = isset($_POST['address_id']) ? $_POST['address_id'] : "0";
