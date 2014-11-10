@@ -220,6 +220,7 @@ if(!isset($_GET['d'])){
                         <div class="column r25">
                             <label for="lroad_responsibility">Road Responsiblity</label>
                             <input class="text checkNone" name='lroad_responsibility' onChange="" id="lroad_responsibility" data-mand="lroad_responsibility" maxlength='100' value=''>
+                            <input type="hidden" name="larea_group" id="larea_group" />
                         </div>	
                         <div class="column r100">
                             <label for="ldesc">Description</label>

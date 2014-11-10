@@ -1671,6 +1671,9 @@ class Model {
         $lsuburb = $_POST['lsuburb'];
         $lpostcode = $_POST['lpostcode'];
         $property_no = $_POST['property_no'];
+        $road_type = $_POST["lroad_type"];
+        $road_responsibility = $_POST["lroad_responsibility"];
+        $area_group = $_POST["larea_group"];
         $ldesc = strip_tags(addslashes($_POST['ldesc']));
         if ($_POST['loc_adress_ctr'] != 0)
             $loc_address_ctr = $_POST['loc_adress_ctr'];
@@ -1725,10 +1728,10 @@ class Model {
                                 "ws_status" => 1,
                                 "ws_message" => '',
                                 "confidential" => '',
-                                "area_group" => '',
+                                "area_group" => $area_group,
                                 "municipality" => '',
-                                "road_type" => '',
-                                "road_responsibility" => '',
+                                "road_type" => $road_type,
+                                "road_responsibility" => $road_responsibility,
                                 "street_id" => '',
                                 "facility_id" => $facility_id
                             ));
@@ -1755,10 +1758,10 @@ class Model {
                                     "ws_status" => 1,
                                     "ws_message" => '',
                                     "confidential" => '',
-                                    "area_group" => '',
+                                    "area_group" => $area_group,
                                     "municipality" => '',
-                                    "road_type" => '',
-                                    "road_responsibility" => '',
+                                    "road_type" => $road_type,
+                                    "road_responsibility" => $road_responsibility,
                                     "street_id" => '',
                                     "facility_id" => $facility_id
                                 ));
