@@ -273,7 +273,8 @@ if(!isset($_GET['d'])){
                             <?php $controller->Dropdown("CustomerTypes", "CustomerTypes"); ?>
                             <input type="button" name="myDetails" id="myDetails" value="My Details" />
                             <input type="button" name="clearDetails" id="clearDetails" value="Clear" />
-                             <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()" style="display:none" />
+                            <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()" />
+
                             <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
                             <input type="button" class="openDocumentPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
                             <?php } ?> 
