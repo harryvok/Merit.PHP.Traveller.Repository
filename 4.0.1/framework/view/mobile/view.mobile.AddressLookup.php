@@ -12,7 +12,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 			$('#i_cstreet').val($('#ret_'+id+'_street_name').val());
 			$('#i_ctype').val($('#ret_'+id+'_street_type').val());
 			$('#i_csuburb').val($('#ret_'+id+'_locality').val());
-			$('#cust_address_id').val($('#ret_'+id+'_address_id').val());
+			$('#cust_address_id').val($('#ret_' + id + '_address_id').val());
 			$('#cust_address_ctr').val($('#ret_'+id+'_address_ctr').val());
 			$("#i_ctype").textinput('enable');
 			$("#i_csuburb").textinput('enable');
