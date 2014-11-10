@@ -759,6 +759,10 @@ $(document).ready(function () {
         $("#email_address").val("");
         $("#company").val("");
         $("#cust_type").val("");
+        $("#name_id").val("0");
+        $("#name_origin").val("");
+        $("#name_ctr").val("");
+        $("#CustSummary").attr("disabled", "disabled");
     });
 
     // My Details Button
@@ -779,11 +783,12 @@ $(document).ready(function () {
                 $("#company").val("");
                 $("#cust_type").val("STAFF");
                 $('#cust_type').selectmenuState('refresh');
-            }
+            }                
+
         });
+        //$("#CustSummary").removeAttr("disabled");
     });
 
-    $("#CustSummary").removeAttr("disabled");
     
 
     /* */
@@ -1421,7 +1426,7 @@ function ViewCustomerAddDetails() {
 }
 
 function ViewCustomerDetails() {
-    window.open("index.php?page=view-customer&id=" + $("#customerId").val(), "_blank");
+    window.open("index.php?page=view-name&id=" + $("#name_id").val(), "_blank");
 }
 
 // GOOGLE MAPS

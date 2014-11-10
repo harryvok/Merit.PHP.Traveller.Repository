@@ -33,8 +33,10 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				$('#company').val($('#ret_'+name_id+'_company_name').val());
 				$('#name_id').val($('#ret_'+name_id+'_name_id').val());
 				$('#name_ctr').val($('#ret_'+name_id+'_name_ctr').val());
-				$('#name_origin').val($('#ret_'+name_id+'_name_origin').val());
-				
+				$('#name_origin').val($('#ret_' + name_id + '_name_origin').val());
+				if ($('#ret_' + name_id + '_name_id').val() > 0 || $('#ret_' + name_id + '_name_id').val() != "0" || $('#ret_' + name_id + '_name_id').val() != 0) {
+				    $("#CustSummary").removeAttr("disabled")
+				}
 				$('#popup').fadeOut("fast");
 			});
             
@@ -52,7 +54,9 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				    $('#name_id').val($('#ret_'+name_id+'_name_id').val());
 				    $('#name_ctr').val($('#ret_'+name_id+'_name_ctr').val());
 				    $('#name_origin').val($('#ret_'+name_id+'_name_origin').val());
-				
+				    if ($('#ret_' + name_id + '_name_id').val() > 0 || $('#ret_' + name_id + '_name_id').val() != "0" || $('#ret_' + name_id + '_name_id').val() != 0) {
+				        $("#CustSummary").removeAttr("disabled")
+				    }
                 $("#popup").html("");
                 
 			    $('#popup').fadeOut("fast");
@@ -149,8 +153,9 @@ else{
 	?>
     <script type="text/javascript">
         $(document).ready(function () {
-			$("#yes<?php echo $_POST['name_set']; ?>").click(function(){
-				var id = "<?php echo $_POST['name_set']; ?>";
+            $("#yes<?php echo $_POST['name_set']; ?>").click(function () {
+                //alert("ok");
+                var id = "<?php echo $_POST['name_set']; ?>";
 				$('#pref_title').val($('#ret_'+id+'_pref_title').val());
 				$('#surname').val($('#ret_'+id+'_surname').val());
 				$('#given').val($('#ret_'+id+'_given_names').val());
@@ -161,7 +166,11 @@ else{
 				$('#company').val($('#ret_'+id+'_company_name').val());
 				$('#name_id').val($('#ret_'+id+'_name_id').val());
 				$('#name_ctr').val($('#ret_'+id+'_name_ctr').val());
-				$('#name_origin').val($('#ret_'+id+'_name_origin').val());
+				$('#name_origin').val($('#ret_' + id + '_name_origin').val());
+				if ($('#ret_' + id + '_name_id').val() > 0 || $('#ret_' + id + '_name_id').val() != "0" || $('#ret_' + id + '_name_id').val() != 0) {
+				    $("#CustSummary").removeAttr("disabled")
+				}
+				$("#popup").html("");
 				$("#popup").fadeOut("fast");
 			});
 		});
