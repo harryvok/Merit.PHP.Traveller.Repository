@@ -7,7 +7,8 @@ $(document).ready(function () {
     $("#emailContainer").hide();
     $("#smsContainer").hide();
 
-    $("#sendbutton").css('visibility','hidden');
+    $("#sendbutton").css('visibility', 'hidden');
+    
 
     /* On action do stuff ------------------------------------------------------- */
     $("input[type=checkbox]").on("click", function () {
@@ -89,16 +90,6 @@ $(document).ready(function () {
         $("#note").toggle();
     });
 
-    // Function VALIDATION ---------------------------------------------------
-    function validateEmail($email) {
-        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        if (!emailReg.test($email)) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
 
     // -----------------------------------------------------------------------
     // RESET BUTTON ----------------------------------------------------------
@@ -126,6 +117,12 @@ $(document).ready(function () {
             $("#emailOfficerAdd").show();
             $("#smsAdd").show();
             $("#smsOfficerAdd").show();
+
+            $("#emailmanualdiv").show();
+            $("#smsmanualdiv").show();
+            $("#emailheader").show();
+            $("#smsheader").show();
+            $("#manualdivrow").css("width", "50%");
 
             $("#sendbutton").css('visibility', 'hidden');
         });
@@ -172,24 +169,36 @@ $(document).ready(function () {
 
         $("#emailAdd").hide();
         $("#emailOfficerAdd").hide();
+
+        $("#smsmanualdiv").hide();
+        $("#smsheader").hide();
+        $("#manualdivrow").css("width", "100%");
+
         $("#listEmail").html($("#listEmail").html() +
                                 "<script>function decrementemail() { var tempEmailCounter= $(\"#emailCount\").val(); " +
-                                "tempEmailCounter--; $(\"#emailCount\").val(tempEmailCounter);  $(\"#emailAdd\").show(); $(\"#emailOfficerAdd\").show(); }" +
+                                "tempEmailCounter--; $(\"#emailCount\").val(tempEmailCounter);  $(\"#emailAdd\").show(); $(\"#emailOfficerAdd\").show(); $(\"#smsmanualdiv\").show(); $(\"#smsheader\").show(); $(\"#manualdivrow\").css('width', '50%'); }" +
                                 "</script>" +
-                                "<span id='emailText" + email + "List'>" +
-                                "<span id='emailText" + email + "NameLab'>Name:</span>" +
-                                "<input id='emailText" + email + "Name' type='text'  value='' />" + "<br />" +
 
-                                "<span id='emailText" + email + "EmailLab'>Email:</span>" +
-                                "<input id='emailText" + email + "Email' type='text' value='' />" +
+                                "<div id='emailText" + email + "List'>" +
+
+                                "<label for id='emailText" + email + "NameLab' style='margin-left: 3% !important; margin-top:2% !important;'>Name:</label>" +
+                                "<input type='text' name='emailText' id='emailText" + email + "Name' value='' data-mini='true' class='mobileform ui-input-text ui-body-c'>" +
+
+                                "<label for id='emailText" + email + "EmailLab' style='margin-left: 3% !important;'>Email:</label>" +
+                                "<input type='text' id='emailText" + email + "Email' value='' data-mini='true' class='mobileform ui-input-text ui-body-c' />" +
 
                                 "<input id='emailText" + email + "Type' type='hidden' value='' />" +
-                                "<input type='button' value='Add' id='emailText" + email + "Add' />" + "&nbsp" +
-                                "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png' ><br /></span>");
+                                "<div data-role='button' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' id='emailText" + email + "Add' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important; display:inline-block !important;'>Add</div>" +
+                                "<div data-role='button' onClick='decrementemail()' data-delete='emailText" + email + "List' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important;display:inline-block !important;'>Cancel</div></div>");
+
+        //  "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png'></div>");
+
+        
+        // <input id='emailText" + email + "Name' type='text'  value='' />
 
         $("#emailText" + email + "Add").click(function () {
 
-            if ($("#emailText" + email + "Email").val().length > 0 && $("#emailText" + email + "Name").val().length > 0 && validateEmail($("#emailText" + email + "Name").val()) == true) {
+            if ($("#emailText" + email + "Email").val().length > 0 && $("#emailText" + email + "Name").val().length > 0 && validateEmail($("#emailText" + email + "Email").val())) {
 
                 var emailaddress = $("#emailText" + email + "Email").val();
                 var name = $("#emailText" + email + "Name").val();
@@ -206,6 +215,9 @@ $(document).ready(function () {
 
                 $("#emailAdd").show();
                 $("#emailOfficerAdd").show();
+                $("#smsmanualdiv").show();
+                $("#smsheader").show();
+                $("#manualdivrow").css("width", "50%");
                 email++;
 
                 emailCount = $("#emailCount").val();
@@ -232,17 +244,25 @@ $(document).ready(function () {
 
         $("#emailAdd").hide();
         $("#emailOfficerAdd").hide();
+
+        $("#smsmanualdiv").hide();
+        $("#smsheader").hide();
+        $("#manualdivrow").css("width", "100%");
+
         $("#listEmail").html($("#listEmail").html() +
                     "<script>function decrementemail() { var tempEmailCounter= $(\"#emailCount\").val(); " +
-                    "tempEmailCounter--; $(\"#emailCount\").val(tempEmailCounter); $(\"#emailAdd\").show(); $(\"#emailOfficerAdd\").show();}" +
+                    "tempEmailCounter--; $(\"#emailCount\").val(tempEmailCounter); $(\"#emailAdd\").show(); $(\"#emailOfficerAdd\").show(); $(\"#smsmanualdiv\").show(); $(\"#smsheader\").show(); $(\"#manualdivrow\").css('width', '50%');}" +
                     "</script>" +
-                    "<span id='emailText" + email + "List'>" +
-                    "<span id='emailText" + email + "NameLab'>Officer:</span>" +
-                    "<input id='emailText" + email + "Officer' type='text'  value='' />" +
+                    "<div id='emailText" + email + "List'>" +
+
+                    "<label for id='emailText" + email + "NameLab' style='margin-left: 3% !important; margin-top:2% !important;'>Officer:</label>" +
+                    "<input type='text' name='emailText' id='emailText" + email + "Officer' value='' data-mini='true' class='mobileform ui-input-text ui-body-c'>" +
+
                     "<input id='emailText" + email + "OfficerCode' type='hidden'  value='' />" +
                     "<input id='emailText" + email + "Name' type='hidden'  value='' />" +
                     "<input id='emailText" + email + "Email' type='hidden'  value='' /> " +
-                    "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png'><br /></span>");
+                  //  "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png'><br /></span>");
+                    "<div data-role='button' onClick='decrementemail()' data-delete='emailText" + email + "List' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important;display:inline-block !important;'>Cancel</div></div>")
 
         // Get officer
         var officerResponse = function (event, ui) {
@@ -282,6 +302,9 @@ $(document).ready(function () {
                                     $("#emailText" + email + "Add").remove();
                                     $("#emailAdd").show();
                                     $("#emailOfficerAdd").show();
+                                    $("#smsmanualdiv").show();
+                                    $("#smsheader").show();
+                                    $("#manualdivrow").css("width", "50%");
                                     email++;
 
                                     emailCount = $("#emailCount").val();
@@ -326,20 +349,29 @@ $(document).ready(function () {
 
         $("#smsAdd").hide();
         $("#smsOfficerAdd").hide();
+
+        $("#emailmanualdiv").hide();
+        $("#emailheader").hide();
+        $("#manualdivrow").css("width", "100%");
+
         $("#listSMS").html($("#listSMS").html() +
             "<script>function decrementsms() { var tempSmsCounter= $(\"#smsCount\").val(); " +
-            "tempSmsCounter--; $(\"#smsCount\").val(tempSmsCounter); $(\"#smsAdd\").show(); $(\"#smsOfficerAdd\").show();}" +
+            "tempSmsCounter--; $(\"#smsCount\").val(tempSmsCounter); $(\"#smsAdd\").show(); $(\"#smsOfficerAdd\").show(); $(\"#emailmanualdiv\").show(); $(\"#emailheader\").show(); $(\"#manualdivrow\").css('width', '50%');}" +
             "</script>" +
-            "<span id='smsText" + sms + "List'>" +
-            "<span id='smsText" + sms + "NameLab'>Name:</span>" +
-            "<input id='smsText" + sms + "Name' type='text' value='' />" + "<br />" +
-            "<span id='smsText" + sms + "MobileLab'>Mobile:</span>" +
-            "<input id='smsText" + sms + "Mobile' type='text' value='' />" +
-            "<input type='button' value='Add' id='smsText" + sms + "Add' />" + "&nbsp" +
-            "<img onClick='decrementsms()' data-delete='smsText" + sms + "List' src='images/delete-icon.png'><br /></span>");
+
+            "<div id='smsText" + sms + "List'>" +
+
+            "<label for id='smsText" + sms + "NameLab' style='margin-left: 3% !important; margin-top:2% !important;'>Name:</label>" +
+            "<input type='text' name='emailText' id='smsText" + sms + "Name' value='' data-mini='true' class='mobileform ui-input-text ui-body-c'>" +
+
+            "<label for id='smsText" + sms + "MobileLab' style='margin-left: 3% !important;'>Mobile Number:</label>" +
+            "<input type='text' id='smsText" + sms + "Mobile' value='' data-mini='true' class='mobileform ui-input-text ui-body-c' />" +
+
+            "<div data-role='button' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' id='smsText" + sms + "Add' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important; display:inline-block !important;'>Add</div>" +
+            "<div data-role='button' onClick='decrementsms()' data-delete='smsText" + sms + "List' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important;display:inline-block !important;'>Cancel</div></div>");
 
         $("#smsText" + sms + "Add").click(function () {
-            if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0) {
+            if ($("#smsText" + sms + "Name").length > 0 && $("#smsText" + sms + "Mobile").length > 0 && isNumber($("#smsText" + sms + "Mobile").val())) {
                 $("#smsText" + sms + "NameLab").html($("#smsText" + sms + "Name").val());
                 $("#smsText" + sms + "Name").css("display", "none").attr("name", "sms_name[]");
                 $("#smsText" + sms + "Mobile").css("display", "none").attr("name", "sms_mobile_no[]");
@@ -347,6 +379,9 @@ $(document).ready(function () {
                 $("#smsText" + sms + "Add").remove();
                 $("#smsAdd").show();
                 $("#smsOfficerAdd").show();
+                $("#emailmanualdiv").show();
+                $("#emailheader").show();
+                $("#manualdivrow").css("width", "50%");
                 sms++;
 
                 smsCount = $("#smsCount").val();
@@ -373,17 +408,27 @@ $(document).ready(function () {
 
         $("#smsAdd").hide();
         $("#smsOfficerAdd").hide();
+
+        $("#emailmanualdiv").hide();
+        $("#emailheader").hide();
+        $("#manualdivrow").css("width", "100%");
+
         $("#listSMS").html($("#listSMS").html() +
             "<script>function decrementsms() { var tempSmsCounter= $(\"#smsCount\").val(); " +
-            "tempSmsCounter--; $(\"#smsCount\").val(tempSmsCounter); $(\"#smsAdd\").show(); $(\"#smsOfficerAdd\").show();}" +
+            "tempSmsCounter--; $(\"#smsCount\").val(tempSmsCounter); $(\"#smsAdd\").show(); $(\"#smsOfficerAdd\").show(); $(\"#emailmanualdiv\").show(); $(\"#emailheader\").show(); $(\"#manualdivrow\").css('width', '50%');}" +
             "</script>" +
-            "<span id='smsText" + sms + "List'>" +
-            "<span id='smsText" + sms + "NameLab'>Officer:</span> " +
-            "<input id='smsText" + sms + "Officer' type='text'  value='' " +
-            "<input id='smsText" + sms + "OfficerCode' type='hidden'  value='' />" + "<br />" + 
+
+            "<div id='smsText" + sms + "List'>" +
+
+            "<label for id='smsText" + sms + "NameLab' style='margin-left: 3% !important; margin-top:2% !important;'>Officer:</label>" +
+            "<input type='text' name='emailText' id='smsText" + sms + "Officer' value='' data-mini='true' class='mobileform ui-input-text ui-body-c'>" +
+
+
+            "<input id='smsText" + sms + "OfficerCode' type='hidden'  value='' />" +  
             "<input id='smsText" + sms + "Name' type='hidden'  value='' />" +
-            "<input id='smsText" + sms + "Mobile' type='hidden'  value='' />" + "&nbsp" +
-            "<img onClick='decrementsms()' data-delete='smsText" + sms + "List' src='images/delete-icon.png'><br /></span>");
+            "<input id='smsText" + sms + "Mobile' type='hidden'  value='' />" + 
+
+            "<div data-role='button' onClick='decrementsms()' data-delete='smsText" + sms + "List' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important;display:inline-block !important;'>Cancel</div></div>");
 
         var officerResponse = function (event, ui) {
             var label = "";
@@ -420,6 +465,9 @@ $(document).ready(function () {
                                     $("#smsText" + sms + "Mobile").attr("name", "sms_mobile_no[]");
                                     $("#smsAdd").show();
                                     $("#smsOfficerAdd").show();
+                                    $("#emailmanualdiv").show();
+                                    $("#emailheader").show();
+                                    $("#manualdivrow").css("width", "50%");
                                     sms++;
 
                                     smsCount = $("#smsCount").val();

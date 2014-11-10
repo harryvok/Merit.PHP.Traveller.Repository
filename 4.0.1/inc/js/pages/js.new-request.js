@@ -1,5 +1,5 @@
 // New Request Common JS
-
+ 
 $(document).ready(function () {
 
     //check mandatory fields on page load

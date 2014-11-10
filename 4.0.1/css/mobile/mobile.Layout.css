@@ -597,11 +597,18 @@ a.ui-link-inherit {
 
 .manualDiv p {
     font-size: 12px;
-    padding-left:17px;
+    padding-left:5%;
     padding-right:10px;
-    padding-bottom:5px;
     display:inline-block;
     padding-top:5px;
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
+}
+
+.mobileform {
+    padding: 0.4em !important;
+    margin-left: 3% !important;
+    margin-right: 2% !important;
+    min-width: 0 !important;
+    width: 90% !important;
 }
