@@ -108,6 +108,7 @@
     <Compile Include="framework\view\mobile\view.mobile.DocumentSearchResults.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestDelete.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestDocuments.php" />
+    <Compile Include="framework\view\mobile\view.mobile.BookingSummary.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestProcess.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestReopen.php" />
     <Compile Include="framework\view\mobile\view.mobile.RequestRecategorise.php" />

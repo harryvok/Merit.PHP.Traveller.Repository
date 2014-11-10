@@ -148,6 +148,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" id="gmaps_StreetName" />
                         <input type="hidden" id="gmaps_StreetType" />
                         <input type="hidden" id="gmaps_Suburb" />
+                        <input type="hidden" id="gmaps_PostCode" />
                         <input type="hidden" id="gmaps_x" name="gmaps_x" />
                         <input type="hidden" id="gmaps_y" name="gmaps_y" />
                         <input type="hidden" id="use_gmaps_coord" name="use_gmaps_coord" value="0" />
@@ -169,20 +170,19 @@ if(isset($_SESSION['user_id'])){
                         <label>Street Number</label>
                         <input name='lno' onChange="changeLocationType()" class="" id="lno"  maxlength='15' value='<?php if(isset($_SESSION['rem_loc_address_fnumber'])){ echo $_SESSION['rem_loc_address_fnumber']; } ?>'>
                         <input type="hidden" id="newLno" name="newLno" />
+
                         <label>Street<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
-
                         <input class="" placeholder="Search..." name='lstreet' onChange="changeLocationType()" id="lstreet" data-mand="location_address" maxlength='100' value='<?php if(isset($_SESSION['rem_lstreet'])){ echo $_SESSION['rem_lstreet']; } ?>'></label>
-                      
-                      
-                      <label>Type<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
-
+                                            
+                        <label>Type<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
                         <input class="" placeholder="Search..." disabled="disabled" name='ltype' onChange="changeLocationType()" id="ltype" data-mand="location_address" maxlength='100' value='<?php if(isset($_SESSION['rem_ltype'])){ echo $_SESSION['rem_ltype']; } ?>'></label>
-                      
-                      
-                      <label>Suburb<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
-
+                                            
+                        <label>Suburb<span class="location_address_label mandLabel" style="color: red; display: none;">*</span></label>
                         <input class="" placeholder="Search..."disabled="disabled" name='lsuburb' onChange="changeLocationType()" id="lsuburb" data-mand="location_address" maxlength='100' value='<?php if(isset($_SESSION['rem_lsuburb'])){ echo $_SESSION['rem_lsuburb']; } ?>'></label>
                       
+                        <label>Postcode</label>
+                        <input class="" name='lpostcode' onChange="" id="lpostcode" maxlength='100' value='' />
+
                         <label>Property Number</label>
                         <input readonly="readonly" name='property_no' id="property_no" maxlength='100'>
 
@@ -194,10 +194,9 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" name="larea_group" id="larea_group" />
 
                         <label>Description</label>
-                        <textarea id="ldesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'></textarea>
-
-
-                        <input type="hidden" name="lpostcode" id="lpostcode" />
+                        <textarea id="ldesc" name="ldesc" onchange="changeLocationType()" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_loc_address_desc'])){ echo $_SESSION['rem_loc_address_desc']; } ?>'></textarea>
+                        
+<!--                        <input type="hidden" name="lpostcode" id="lpostcode" />-->
                         <!--<input type="button" data-role="button" value="Show On Map" onclick="showOnMap()" />-->
                         <input type="button" data-role="button" value="Clear" onclick="clearLocationAddress()" />
                     </p>
@@ -300,7 +299,7 @@ if(isset($_SESSION['user_id'])){
                             <input name='i_cpropertynumber' id="i_cpropertynumber" />
 
                             <label>Description</label>
-                            <textarea id="i_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
+                            <textarea id="i_cdesc" name="i_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
 
                             <input type="button" data-role="button" value="Clear" onclick="clearCustomerAddress()" />
 
@@ -326,7 +325,7 @@ if(isset($_SESSION['user_id'])){
                             <input name='o_cpostcode' id="o_cpostcode" onChange="changeLocationType()" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'>
 
                             <label>Description</label>
-                            <textarea id="o_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
+                            <textarea id="o_cdesc" name="o_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
 
                             <input type="button" data-role="button" value="Clear" onclick="clearCustomerAddress()" />
                         </div>

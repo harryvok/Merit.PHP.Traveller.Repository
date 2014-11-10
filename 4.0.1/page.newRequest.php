@@ -209,7 +209,7 @@ if(!isset($_GET['d'])){
                         <div class="column r25">
                         <label>Property Number</label>
                         <input readonly="readonly" name='property_no' id="property_no" maxlength='100' value="">
-                            <input type="hidden" name="lpostcode" id="lpostcode" />
+<!--                            <input type="hidden" name="lpostcode" id="lpostcode" />-->
                         </div>
                         </div>
                     <div class="float-left">
