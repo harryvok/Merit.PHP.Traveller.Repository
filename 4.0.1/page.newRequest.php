@@ -250,6 +250,7 @@ if(!isset($_GET['d'])){
                     <input type="hidden" id="gmaps_StreetName" />
                     <input type="hidden" id="gmaps_StreetType" />
                     <input type="hidden" id="gmaps_Suburb" />
+                    <input type="hidden" id="gmaps_PostCode" />
                     <input type="hidden" id="use_gmaps_coord" name="use_gmaps_coord" value="0" />
                     <input type="hidden" id="gmaps_x" name="gmaps_x" />
                     <input type="hidden" id="gmaps_y" name="gmaps_y" />
