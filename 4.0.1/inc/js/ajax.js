@@ -74,6 +74,7 @@ function GetAddressDetails() {
                     }
                     $("#address").val(data.address_id);
                     $("#addressId").val(data.address_id);
+                    //check if address_id is not zero and enable the summuary button
                     if ($("#addressId").val() != "0" || $("#addressId").val() != "" || $("#addressId").val() != 0) {
                         $("#AddrSummary").removeAttr("disabled");
                     }
