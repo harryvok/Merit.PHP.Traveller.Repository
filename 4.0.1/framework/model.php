@@ -1679,8 +1679,8 @@ class Model {
             $loc_address_ctr = $_POST['loc_adress_ctr'];
         else
             $loc_address_ctr = 0;
-
-        if(strlen($cust_address_street) > 0 || strlen($cust_address_streettype) > 0 || strlen($cust_address_suburb) > 0){
+    //only when both address are present
+        if ((strlen($cust_address_street) > 0 || strlen($cust_address_streettype) > 0 || strlen($cust_address_suburb) > 0) && (strlen($lstreet) > 0 || strlen($ltype) > 0 || strlen($lsuburb) > 0)){
             $address_details = array( array(
                                 "address_id" => $cust_address_id,
                                 "house_number" => $cust_address_number,
@@ -1736,8 +1736,8 @@ class Model {
                                 "facility_id" => $facility_id
                             ));
         }
-        else{
-            if(strlen($lstreet) > 0 || strlen($ltype) > 0 || strlen($lsuburb) > 0){
+        //only if location address is present
+        else if((strlen($lstreet) > 0 || strlen($ltype) > 0 || strlen($lsuburb) > 0) && (strlen($cust_address_street) == 0 || strlen($cust_address_streettype) == 0 || strlen($cust_address_suburb) == 0)){
                 $address_details =   array(array(
                                     "address_id" => $addressId,
                                     "house_number" => $lno,
@@ -1766,7 +1766,36 @@ class Model {
                                     "facility_id" => $facility_id
                                 ));
             }
-            else{
+        //only if customer address is present
+        else if((strlen($lstreet) == 0 || strlen($ltype) == 0 || strlen($lsuburb) == 0) && (strlen($cust_address_street) > 0 || strlen($cust_address_streettype) > 0 || strlen($cust_address_suburb) > 0)){
+                    $address_details =   array(array(
+                                        "address_id" => $cust_address_id,
+                                        "house_number" => $cust_address_number,
+                                        "house_suffix" => strlen($cust_address_fnumber) > 0 ? $cust_address_fnumber . "/" . $cust_address_number : $cust_address_number,
+                                        "street_name" => $cust_address_street,
+                                        "street_type" => $cust_address_streettype,
+                                        "locality" => $cust_address_suburb,
+                                        "postcode" => $cust_address_postcode,
+                                        "property_number" => '',
+                                        "gis_x_coord" => '',
+                                        "gis_y_coord" => '',
+                                        "address_ctr" => $cust_address_ctr,
+                                        "melway_map" => '',
+                                        "melway_ref" => '',
+                                        "address_type" => 'Customer',
+                                        "address_desc" => $cust_address_desc,
+                                        "address_type_code" => 'Customer',
+                                        "ws_status" => 1,
+                                        "ws_message" => '',
+                                        "confidential" => '',
+                                        "area_group" => '',
+                                        "municipality" => '',
+                                        "road_type" => '',
+                                        "road_responsibility" => '',
+                                        "street_id" => '',
+                                        "facility_id" => 0
+                                    ));
+                } else{
                 $address_details =   array(array(
                                    "address_id" => '',
                                    "house_number" => '',
@@ -1794,7 +1823,6 @@ class Model {
                                    "street_id" => '',
                                    "facility_id" => ''
                                ));
-            }
         }
         if($_POST["due"] != ""){
             $duedate = $_POST["due"];

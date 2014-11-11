@@ -43,6 +43,10 @@
 			    $('#addressId').val($('#ret_' + id + '_address_id').val());
 			    $('#address').val($('#ret_' + id + '_address_id').val());
 			    $("#loc_address_ctr").val($('#ret_' + id + '_address_ctr').val());
+			    alert($('#ret_' + id + '_address_id').val());
+			    if ($('#ret_' + id + '_address_id').val() != "0" || $('#ret_' + id + '_address_id').val() != 0 || $('#ret_' + id + '_address_id').val() != "") {
+			        $("#AddrSummary").prop("disabled", false);
+			    }
 			}
 			else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
 			    $('#i_cno').val($('#ret_' + id + '_house_number').val());
@@ -50,10 +54,10 @@
 			    $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
 			    $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
 			    $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
-			}
-			if ($('#ret_' + id + '_address_id').val() != "0" || $('#ret_' + id + '_address_id').val() != 0 || $('#ret_' + id + '_address_id').val() != "") {
-			    $("#AddrSummary").prop("disabled", false);
-			}
+			    if ($('#ret_' + id + '_address_id').val() != "0" || $('#ret_' + id + '_address_id').val() != 0 || $('#ret_' + id + '_address_id').val() != "") {
+			        $("#CustAddSummary").prop("disabled", false);
+			    }
+			}			
 			$('#popup').fadeOut("fast");
             //proceed to check booking summary
 			var date = new Date().toISOString();

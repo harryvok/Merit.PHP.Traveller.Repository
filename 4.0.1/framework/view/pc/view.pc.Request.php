@@ -11,6 +11,11 @@ if(isset($GLOBALS['result']['request']->address_det->address_details) && count($
 			$cust_street_type = $address->street_type;
 			$cust_locality = $address->locality;
 			$cust_postcode = $address->postcode;
+            $cust_gis_x_coords = $address->gis_x_coords;
+            $cust_gis_y_coords = $address->gis_y_coords;
+            $cust_road_type = $address->road_type;
+            $cust_road_responsibility = $address->road_responsibility;
+            $cust_area_group = $address->area_group;
 			if(isset($address->address_desc)) $cust_desc = $address->address_desc;
 		}
 		if($address->address_type == "Location" || $address->address_type == "Facility"){
@@ -22,6 +27,11 @@ if(isset($GLOBALS['result']['request']->address_det->address_details) && count($
 			$loc_street_type = $address->street_type;
 			$loc_locality = $address->locality;
 			$loc_postcode = $address->postcode;
+            $loc_gis_x_coords = $address->gis_x_coords;
+            $loc_gis_y_coords = $address->gis_y_coords;
+            $loc_road_type = $address->road_type;
+            $loc_road_responsibility = $address->road_responsibility;
+            $loc_area_group = $address->area_group;
 			if(isset($address->address_desc)) $loc_desc = $address->address_desc;
 		}
 	}
@@ -37,6 +47,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 		$cust_street_type = $address->street_type;
 		$cust_locality = $address->locality;
 		$cust_postcode = $address->postcode;
+        $cust_gis_x_coords = $address->gis_x_coords;
+        $cust_gis_y_coords = $address->gis_y_coords;
+        $cust_road_type = $address->road_type;
+        $cust_road_responsibility = $address->road_responsibility;
+        $cust_area_group = $address->area_group;
 		if(isset($address->address_desc)) $cust_desc = $address->address_desc;
 	}
 	if($address->address_type == "Location" || $address->address_type == "Facility"){
@@ -48,6 +63,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 		$loc_street_type = $address->street_type;
 		$loc_locality = $address->locality;
 		$loc_postcode = $address->postcode;
+        $loc_gis_x_coords = $address->gis_x_coords;
+        $loc_gis_y_coords = $address->gis_y_coords;
+        $loc_road_type = $address->road_type;
+        $loc_road_responsibility = $address->road_responsibility;
+        $loc_area_group = $address->area_group;
 		if(isset($address->address_desc)) $loc_desc = $address->address_desc;
 	}
 }
@@ -146,50 +166,30 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
     <div>
         <div class="column r50">
             <span class="summaryColumnTitle">Location Address</span>
-            <div class="summaryColumn">
-                <?php 
-                if(isset($loc_address_id)){
-                ?>
+            <div class="summaryColumn">                
                 <a href='index.php?page=view-address&amp;id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?> <?php if(isset($loc_street_name)){ echo $loc_street_name; } ?> <?php if(isset($loc_street_type)){ echo $loc_street_type; } ?> <?php if(isset($loc_locality)){ echo $loc_locality; } ?> <?php if(isset($loc_postcode)){ echo $loc_postcode; } ?> </a>
-                <?php
-                }
-                ?>
-
             </div>
         </div>
         <div class="column r50">
             <span class="summaryColumnTitle">Location Address Descr</span>
-            <div class="summaryColumn">
-
-                <?php 
-                if(isset($loc_address_id)){
-                    if(isset($loc_desc)){ echo " ".$loc_desc; }
-                }
-                ?>
+            <div class="summaryColumn">              
+                    <?php if(isset($loc_desc)){ echo " ".$loc_desc; } ?>
             </div>
         </div>
         <div class="float-left">
-            <?php
-            if(isset($address->property_no)){
-            ?>
             <div class="column r15">
                 <span class="summaryColumnTitle">Property Number</span>
                 <div class="summaryColumn">
                     <?php 
-                if(isset($address->property_no)){ echo $address->property_no; }
+                        if(isset($loc_property_no)){ echo $loc_property_no; }
                     ?>
                 </div>
             </div>
-
-            <?php
-            }
-            if(isset($address->gis_x_coord) || isset($address->gis_y_coord)){
-            ?>
             <div class="column r15">
                 <span class="summaryColumnTitle">X Coord</span>
                 <div class="summaryColumn">
                     <?php 
-                if(isset($address->gis_x_coord)){ echo $address->gis_x_coord; }
+                        if(isset($loc_gis_x_coord)){ echo $loc_gis_x_coord; }
                     ?>
                 </div>
             </div>
@@ -197,20 +197,17 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                 <span class="summaryColumnTitle">Y Coord</span>
                 <div class="summaryColumn">
                     <?php 
-                if(isset($address->gis_y_coord)){ echo $address->gis_y_coord; }
+                        if(isset($loc_gis_y_coord)){ echo $loc_gis_y_coord; }
                     ?>
                 </div>
             </div>
-            <?php
-            }
-            ?>
         </div>
         <div class="float-left">
             <div class="column r15">
                 <span class="summaryColumnTitle">Road Type</span>
                 <div class="summaryColumn">
                     <?php 
-                if(isset($address->property_no)){ echo $address->road_type; }
+                        if(isset($loc_property_no)){ echo $loc_road_type; }
                     ?>
                 </div>
             </div>
@@ -218,7 +215,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                 <span class="summaryColumnTitle">Road Responsibility</span>
                 <div class="summaryColumn">
                     <?php 
-                if(isset($address->property_no)){ echo $address->road_responsibility; }
+                        if(isset($loc_property_no)){ echo $loc_road_responsibility; }
                     ?>
                 </div>
             </div>
@@ -226,7 +223,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                 <span class="summaryColumnTitle">Area Group</span>
                 <div class="summaryColumn">
                     <?php 
-                if(isset($address->property_no)){ echo $address->area_group; }
+                        if(isset($loc_property_no)){ echo $loc_area_group; }
                     ?>
                 </div>
             </div>

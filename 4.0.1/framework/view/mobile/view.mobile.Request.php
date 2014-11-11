@@ -12,6 +12,11 @@ if(isset($GLOBALS['result']['request']->address_det->address_details) && count($
 			$cust_street_type = $address->street_type;
 			$cust_locality = $address->locality;
 			$cust_postcode = $address->postcode;
+            $cust_gis_x_coords = $address->gis_x_coords;
+            $cust_gis_y_coords = $address->gis_y_coords;
+            $cust_road_type = $address->road_type;
+            $cust_road_responsibility = $address->road_responsibility;
+            $cust_area_group = $address->area_group;
 			if(isset($address->address_desc)) $cust_desc = $address->address_desc;
 		}
 		if($address->address_type == "Location" || $address->address_type == "Facility"){
@@ -23,6 +28,11 @@ if(isset($GLOBALS['result']['request']->address_det->address_details) && count($
 			$loc_street_type = $address->street_type;
 			$loc_locality = $address->locality;
 			$loc_postcode = $address->postcode;
+            $loc_gis_x_coords = $address->gis_x_coords;
+            $loc_gis_y_coords = $address->gis_y_coords;
+            $loc_road_type = $address->road_type;
+            $loc_road_responsibility = $address->road_responsibility;
+            $loc_area_group = $address->area_group;
 			if(isset($address->address_desc)) $loc_desc = $address->address_desc;
 		}
 	}
@@ -38,6 +48,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 		$cust_street_type = $address->street_type;
 		$cust_locality = $address->locality;
 		$cust_postcode = $address->postcode;
+        $cust_gis_x_coords = $address->gis_x_coords;
+        $cust_gis_y_coords = $address->gis_y_coords;
+        $cust_road_type = $address->road_type;
+        $cust_road_responsibility = $address->road_responsibility;
+        $cust_area_group = $address->area_group;
 		if(isset($address->address_desc)) $cust_desc = $address->address_desc;
 	}
 	if($address->address_type == "Location" || $address->address_type == "Facility"){
@@ -49,11 +64,15 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 		$loc_street_type = $address->street_type;
 		$loc_locality = $address->locality;
 		$loc_postcode = $address->postcode;
+        $loc_gis_x_coords = $address->gis_x_coords;
+        $loc_gis_y_coords = $address->gis_y_coords;
+        $loc_road_type = $address->road_type;
+        $loc_road_responsibility = $address->road_responsibility;
+        $loc_area_group = $address->area_group;
 		if(isset($address->address_desc)) $loc_desc = $address->address_desc;
 	}
 }
 ?>
-
 <ul class="no-ellipses" class="no-ellipses" data-role="listview" data-inset="true" data-divider-theme="d">
     <li data-role="list-divider">Request Details</li>
     <li>
@@ -62,33 +81,48 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
     <li>
         <p><strong>Request ID:</strong> <?php echo $GLOBALS['request_id']; ?></p>
     </li>
-    <?php if(isset($GLOBALS['result']['request']->request_datetime) && strlen($GLOBALS['result']['request']->request_datetime) > 0){ ?><li>
+    <?php if(isset($GLOBALS['result']['request']->request_datetime) && strlen($GLOBALS['result']['request']->request_datetime) > 0){ ?>
+    <li>
         <p><strong>Date Input:</strong> <?php if(strlen($GLOBALS['result']['request']->request_datetime) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->request_datetime))); } ?></p>
-    </li><?php } ?>
-    <?php if(isset($GLOBALS['result']['request']->due_datetime) && strlen($GLOBALS['result']['request']->due_datetime) > 0){ ?><li>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->due_datetime) && strlen($GLOBALS['result']['request']->due_datetime) > 0){ ?>
+    <li>
         <p><strong>Due Date:</strong> <?php if(strlen($GLOBALS['result']['request']->due_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); } ?></p>
-    </li><?php } ?>
-    <?php if(isset($GLOBALS['result']['request']->status) && strlen($GLOBALS['result']['request']->status) > 0){ ?><li>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->status) && strlen($GLOBALS['result']['request']->status) > 0){ ?>
+    <li>
         <p><strong>Completed Date:</strong> <?php if($GLOBALS['result']['request']->finalised_ind == "Y"){ if(strlen($GLOBALS['result']['request']->status_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->status_datetime))); } } ?></p>
-    </li><?php } ?>
-    <?php if(isset($GLOBALS['result']['request']->priority) && strlen($GLOBALS['result']['request']->priority) > 0){ ?><li>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->priority) && strlen($GLOBALS['result']['request']->priority) > 0){ ?>
+    <li>
         <p><strong>Priority:</strong> <?php echo $GLOBALS['result']['request']->priority; ?></p>
-    </li><?php } ?>
-    <?php if(isset($GLOBALS['result']['request']->refer_no) && strlen($GLOBALS['result']['request']->refer_no) > 0){ ?><li>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->refer_no) && strlen($GLOBALS['result']['request']->refer_no) > 0){ ?>
+    <li>
         <p><strong>Reference Number:</strong> <?php if(isset($GLOBALS['result']['request']->refer_no)){ echo $GLOBALS['result']['request']->refer_no; } ?></p>
-    </li><?php } ?>
-    <?php if(isset($GLOBALS['result']['request']->officer_responsible_name) && strlen($GLOBALS['result']['request']->officer_responsible_name) > 0){ ?><li>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->officer_responsible_name) && strlen($GLOBALS['result']['request']->officer_responsible_name) > 0){ ?>
+    <li>
         <p><strong>Request Officer:</strong> <?php if(isset($GLOBALS['result']['request']->officer_responsible_name)){ echo $GLOBALS['result']['request']->officer_responsible_name; } ?></p>
-    </li><?php } ?>
-    <?php if(isset($GLOBALS['result']['request']->input_by_name) && strlen($GLOBALS['result']['request']->input_by_name) > 0){ ?><li>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->input_by_name) && strlen($GLOBALS['result']['request']->input_by_name) > 0){ ?>
+    <li>
         <p><strong>Input Officer:</strong> <?php if(isset($GLOBALS['result']['request']->input_by_name)){ echo $GLOBALS['result']['request']->input_by_name; } ?></p>
-    </li><?php } ?>
-    <?php if(isset($GLOBALS['result']['request']->how_received_name) && strlen($GLOBALS['result']['request']->how_received_name) > 0){ ?><li>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->how_received_name) && strlen($GLOBALS['result']['request']->how_received_name) > 0){ ?>
+    <li>
         <p><strong>How Received:</strong> <?php if(isset($GLOBALS['result']['request']->how_received_name)){ echo $GLOBALS['result']['request']->how_received_name; } ?></p>
-    </li><?php } ?>
+    </li>
+    <?php } ?>
     <li data-role="list-divider">Issue Details</li>
     <li>
-
         <p>
             <strong>Request Description:</strong>
             <br />
@@ -99,13 +133,9 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <input type="button" id="EditDescriptionSubmit" data-action="Request" value="Save" />
             <a href="#" class="editClose" id="EditDescriptionClose">Close</a>
         </div>
-
     </li>
-    <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription">
-        <img src="images/modify-icon.png" width="16" height="16" />
-        Modify</a>
+    <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
     <li class="textbox">
-
         <p>
             <strong>Request Instruction:</strong>
             <br />
@@ -116,74 +146,71 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <input type="button" id="EditInstructionsSubmit" data-action="Request" value="Save" />
             <a class="editClose" id="EditInstructionsClose">Close</a>
         </div>
-
     </li>
-    <a data-role="button" title="Edit Instructions" class="edit" id="EditInstructions">
-        <img src="images/modify-icon.png" width="16" height="16" />
-        Modify</a>
+    <a data-role="button" title="Edit Instructions" class="edit" id="EditInstructions"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
     <li data-role="list-divider">Location Details</li>
-    <?php 
-    if(isset($loc_address_id)){
-    ?>
     <li>
-
         <a href='index.php?page=view-address&id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>&ref_page=view-request&ref=<?php echo $_GET['id']; ?>&filter=<?php echo $filter; ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?> <?php if(isset($loc_street_name)){ echo $loc_street_name; } ?> <?php if(isset($loc_street_type)){ echo $loc_street_type; } ?> <?php if(isset($loc_locality)){ echo $loc_locality; } ?> <?php if(isset($loc_postcode)){ echo $loc_postcode; } ?> </a>
-
-
     </li>
-    <?php
-    }
-    ?>
-    <?php 
-    if(isset($loc_desc) && strlen($loc_desc) > 0){
-        ?>
     <li>
-        <p>
-            <strong>Address Description:</strong> <?php 
-                                                      echo $loc_desc; 
-                                                  ?>
-        </p>
+        <p><strong>Location Address Descr:</strong> <?php if(isset($loc_desc)){ echo " ".$loc_desc; } ?> </p>
     </li>
-    <?php
-    }
-    if(isset($address->property_no) && strlen($address->property_no) > 0){
-    ?>
     <li>
-        <p><strong>Property Number</strong> <?php if(isset($address->property_no)) echo $address->property_no; ?></p>
+        <p><strong>Property Number</strong> <?php if(isset($loc_property_no)){ echo $loc_property_no; } ?> </p>
     </li>
-    <?php
-    }
-    if(isset($GLOBALS['result']['request']->facility_det) && count($GLOBALS['result']['request']->facility_det) > 0){
-        foreach($GLOBALS['result']['request']->facility_det as $facility){
-    ?>
-    <?php if(isset($facility->facility_name) && strlen($facility->facility_name) > 0) { ?><li>
-        <p><strong>Facility Name:</strong> <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?></p>
-    </li><?php } ?>
-    <?php if(isset($facility->facility_type) && strlen($facility->facility_type) > 0) { ?><li>
-        <p><strong>Facility Type:</strong> <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?></p>
-    </li><?php } ?>
-    <?php if(isset($facility->facility_desc) && strlen($facility->facility_desc) > 0) { ?><li>
-        <p><strong>Facility Description:</strong> <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?></p>
-    </li><?php } ?>
-    <?php
+    <li>
+        <p><strong>X Coords</strong> <?php if(isset($loc_gis_x_coord)){ echo $loc_gis_x_coord; } ?> </p>
+    </li>
+    <li>
+        <p><strong>Y Coords</strong> <?php if(isset($loc_gis_y_coord)){ echo $loc_gis_y_coord; } ?></p>
+    </li>
+    <li>
+        <p><strong>Road< Type</strong> <?php if(isset($loc_property_no)){ echo $loc_road_type; } ?></p>
+    </li>
+    <li>
+        <p><strong>Road Responsibility</strong> <?php if(isset($loc_property_no)){ echo $loc_road_responsibility; } ?></p>
+    </li>
+    <li>
+        <p><strong>Area Group</strong> <?php if(isset($loc_property_no)){ echo $loc_area_group; } ?></p>
+    </li>
+    <?php if(isset($GLOBALS['result']['request']->facility_det) && count($GLOBALS['result']['request']->facility_det) > 0){
+        foreach($GLOBALS['result']['request']->facility_det as $facility){ 
+            if(isset($facility->facility_name) && strlen($facility->facility_name) > 0) { ?>
+                <li>
+                    <p><strong>Facility Name:</strong> <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?></p>
+                </li> <?php 
+            } 
+            if(isset($facility->facility_type) && strlen($facility->facility_type) > 0) { ?>
+                <li>
+                    <p><strong>Facility Type:</strong> <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?></p>
+                </li> <?php 
+            } 
+            if(isset($facility->facility_desc) && strlen($facility->facility_desc) > 0) { ?>
+                <li>
+                    <p><strong>Facility Description:</strong> <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?></p>
+                </li> <?php 
+            } 
         }
     }
     elseif(isset($GLOBALS['result']['request']->facility_det->facility_details) && count($GLOBALS['result']['request']->facility_det->facility_details) == 1){
         $facility = $GLOBALS['result']['request']->facility_det->facility_details;
-    ?>
-    <?php if(isset($facility->facility_name) && strlen($facility->facility_name) > 0) { ?><li>
-        <p><strong>Facility Name:</strong> <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?></p>
-    </li><?php } ?>
-    <?php if(isset($facility->facility_type) && strlen($facility->facility_type) > 0) { ?><li>
-        <p><strong>Facility Type:</strong> <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?></p>
-    </li><?php } ?>
-    <?php if(isset($facility->facility_desc) && strlen($facility->facility_desc) > 0) { ?><li>
-        <p><strong>Facility Description:</strong> <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?></p>
-    </li><?php } ?>
-    <?php
+        if(isset($facility->facility_name) && strlen($facility->facility_name) > 0) { ?>
+            <li>
+                <p><strong>Facility Name:</strong> <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?></p>
+            </li> <?php 
+        } 
+        if(isset($facility->facility_type) && strlen($facility->facility_type) > 0) { ?>
+            <li>
+                <p><strong>Facility Type:</strong> <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?></p>
+            </li><?php 
+        } 
+        if(isset($facility->facility_desc) && strlen($facility->facility_desc) > 0) { ?>
+            <li>
+                <p><strong>Facility Description:</strong> <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?></p>
+            </li><?php 
+        } 
     }
     ?>
-
     <li data-role="list-divider">Customer Details</li>
     <?php
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) > 0){
