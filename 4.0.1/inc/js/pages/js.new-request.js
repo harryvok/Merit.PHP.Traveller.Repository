@@ -763,6 +763,8 @@ $(document).ready(function () {
         $("#name_origin").val("");
         $("#name_ctr").val("");
         $("#CustSummary").attr("disabled", "disabled");
+        $("#customerInfoXpert").attr("disabled", "disabled");
+
     });
 
     // My Details Button
@@ -1199,7 +1201,6 @@ $(document).ready(function () {
         clearLocationAddress();
         ClearHelpNotes();
         serviceReset();
-
         $("#surname").val("");
         $("#given").val("");
         $("#pref_title").val("");
@@ -1210,6 +1211,7 @@ $(document).ready(function () {
         $("#email_address").val("");
         $("#company").val("");
         $("#cust_type").val("");
+        $("#customerInfoXpert").attr("disabled", "disabled");
         $("#keywordSearch").val("");
         $("#refno").val("");
         $("#reqType").val("");
