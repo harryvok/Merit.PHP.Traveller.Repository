@@ -3585,9 +3585,16 @@ class Model {
         }
     }
 
+    public function processAdhocOfficer2($params = NULL){
+    }
+    
     public function processAdhocOfficer($params = NULL){
+        
+     /*DEBUG CODE */
      $test=$_SESSION['user_id'];
+     /*DEBUG CODE */
      
+        /*Generate Params for trigger action */
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
@@ -3603,25 +3610,32 @@ class Model {
             'officer_type' => $_POST['officer_type'],
             'due_datetime' => $_POST["due_datetime"]
         );
+        
+        /* Iterate through pos numb and type and generate lists */
         $count=0;
         for($i=0;$i<count($_SESSION['position_no_arr']);$i++){
             $ll_pos_no = $_SESSION['position_no_arr'][$i];
             $lstr_act_level = $_SESSION['act_level_arr'][$i];
+            
             if($ll_pos_no != $_POST['position_no']){
                 $count=$count+1;
                 $parameters['position_no_arr'][$count] = $ll_pos_no;
                 $parameters['action_type_arr'][$count] = $lstr_act_level;
             }
+            
             elseif($ll_pos_no == $_POST['position_no']){
                 $act_type = $lstr_act_level;
             }
         }
+        
+        /* Fill Params */
         $parameters['act_type'] = $act_type;
-
         $parameters = array_to_objecttree($parameters);
 
+        /* Trigger Action */
         $result = $this->WebService(MERIT_ACTION_FILE, "ws_triggerdependant_action", $parameters);
         
+        // If resulting message is adhoc, trigger adhoc officer selection again 
         if($result->ws_message == "adhoc" && $result->ws_status == 2){
             $_SESSION['action_id'] = $result->action_id;
             $_SESSION['request_id'] = $result->request_id;
@@ -3632,64 +3646,39 @@ class Model {
             $_SESSION['priority'] = $result->priority;
             $_SESSION['officer_type'] = $result->officer_type;
             $_SESSION['position_no'] = $result->position_no;
-
+            
+            // Set Pos Numb Arr
             $_SESSION['position_no_arr'] = array();
             foreach($result->position_no_arr as $int){
                 array_push($_SESSION['position_no_arr'], $int);
             }
+            
+            // Set act level arr
             $_SESSION['act_level_arr'] = array();
             foreach($result->act_level_arr as $string){
-                array_push($_SESSION['position_no_arr'], $string);
+                array_push($_SESSION['act_level_arr'], $string);
             }
 
             $_SESSION['adhoc-true'] = 1;
             $_SESSION['redirect'] = "index.php?page=adhocOfficer&id=".$action_id;
         }
+        
+        // Else set ID's
         else{
             $_SESSION['action-id'] = $_POST['action_id'];
             $_SESSION['request-id'] = $_POST['request_id'];
             $_SESSION['assign_name'] = $_POST['reason_assigned'];
 
+            // Post Completed
             if($_SESSION['completed_code'] != "NORESPONSE"){
-                
-                /* CODE FOR MULTIPLE ACTIONS */
-                $numbActions = count($_SESSION['position_no_arr']);
-                
-                if(count($_SESSION['position_no_arr']) > 0){
-                    if ($numbActions > 0) {
-                    $_SESSION['position_no']=$_SESSION['position_no_arr'][$numbActions];
-                    $_SESSION['act_type']=$_SESSION['act_level_arr'][$numbActions];              
-                    $numbActions--;
-                    
-                    $parameters = array(
-                        'user_id' => $_SESSION['user_id'],
-                        'password' => $_SESSION['password'],
-                        'request_id' => $_POST['request_id'],
-                        'action_id' => $_POST['action_id'],
-                        'resp_officer' => $_POST['resp_officer'],
-                        'bypass' => "N",
-                        'position_no_arr' => array(
-                        ),
-                        'action_type_arr' => array(
-                        ),
-                        'position_no' => $_POST['position_no'],
-                        'officer_type' => $_POST['officer_type'],
-                        'due_datetime' => $_POST["due_datetime"],
-                        'act_type' => $_SESSION['act_type']
-                    );
-                    
-                    }
-                }
-                
-                /* --------------------- */
-                
-                
-                
                 $_SESSION['done'] = 1;
                 $_SESSION['success'] = 1;
                 $_SESSION['success_action_submit'] = 1;
+                                     
+                 // Everything done   
                 $_SESSION['redirect'] = "index.php?page=actions";
             }
+            // Otherwise  Go to summary
             else{
                 $_SESSION['redirect'] = "index.php?page=view-action&id=".$result->action_id."&d=summary";
             }
