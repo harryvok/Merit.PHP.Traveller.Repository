@@ -101,7 +101,7 @@ if(isset($_SESSION['user_id'])){
                         <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
 
                         <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
-                        <input type="checkbox" name="notifyInsuranceOfficer" value="Y" style="width: 25px;height: 25px;margin-top: -18px; margin-left:150px">
+                        <input type="checkbox" name="notifyInsuranceOfficer" value="Y" style="width: 25px;height: 25px;margin-top: -18px; margin-left:170px">
                         <br />
 
                         <span id="rednote"></span>
