@@ -10,9 +10,44 @@ if(isset($GLOBALS['result']->request_search_details)){
              "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
              "iDisplayLength": 50
          });
+
+         $("#export1").click(function () {
+             $("#export1").prop({ disabled: true });
+
+             var oSettings = oTable.fnSettings();
+             var current = oSettings._iDisplayLength;
+             oSettings._iDisplayLength = 1000;
+             oTable.fnDraw();
+
+             var rowsArray = {};
+             var i = 0;
+             $('#searchTable1 tr').each(function () {
+                 var i2 = 0;
+                 rowsArray[i] = {};
+                 $(this).find("th").each(function () {
+                     rowsArray[i][i2] = $(this).html();
+                     i2++;
+                 });
+                 $(this).find("td").each(function () {
+                     rowsArray[i][i2] = $(this).html();
+                     i2++;
+                 });
+                 i++;
+             });
+
+             oSettings._iDisplayLength = current;
+             oTable.fnDraw();
+             $("#tableArray").val(JSON.stringify(rowsArray));
+             $("#exportForm").submit();
+         });
+
      });
 
 </script>
+    <div class="float-right">
+    <br /><br /><form method="post" id="exportForm" action="process.export.php"><input type="hidden" name="tableArray" id="tableArray" /><input type="hidden" name="name" id="name" value="Action-Intray" /></form><input type="button" id="export1" value="Export to Excel">
+</div>
+
     <table id="searchTable1" class="sortable" title="" cellspacing="0">
         <thead>
             <tr>

@@ -22,6 +22,8 @@
                 }
 
             });
+
+            
         });
     </script>
     This form will search the database for anything that you type in the below text box.<p>&nbsp;</p>
@@ -82,6 +84,7 @@
 </div>
 <div id="advanced" class="subPageContainer" <?php if(isset($_GET['d']) && $_GET['d'] == "advanced") echo "style='display:block;'"; else echo "style='display:none;'"; ?>>
     <script src="inc/js/pages/js.search.js"></script>
+
 
     <div id="searchResults">
     </div>
@@ -151,6 +154,9 @@
                         }
                     });
                 }
+
+                
+
             });
 
         </script>
