@@ -3473,8 +3473,6 @@ class Model {
                 $parameters->completed_date = $datetime;
 
                 $result = $this->WebService(MERIT_ACTION_FILE, "ws_complete_action", $parameters);
-                
-                
 
                 if($completed_code == "NORESPONSE") $GLOBALS['dontProcess'] = 1;
                 if($_POST['udfs_exist'] == 1) $this->processEditActionUDFs();
@@ -3501,18 +3499,27 @@ class Model {
                     $_SESSION['priority'] = $result->priority;
                     $_SESSION['officer_type'] = $result->officer_type;
                     $_SESSION['position_no'] = $result->position_no;
+                    
                     $_SESSION['position_no_arr'] = array();
-
                     foreach($result->position_no_arr as $int){
                         array_push($_SESSION['position_no_arr'], $int);
                     }
 
 
                     $_SESSION['act_level_arr'] = array();
-
                     foreach($result->act_level_arr as $string){
                         array_push($_SESSION['act_level_arr'], $string);
                     }
+                    
+                    /*Fix for multiple actions + adhocs */
+                    foreach($result->position_no_arr as $int){
+                        array_push($_SESSION['position_no'], $int);
+                    }
+                    foreach($result->act_level_arr as $int){
+                        array_push($_SESSION['act_type'], $int);
+                    }
+                    /* End fix redirect */
+                    
 
                     $_SESSION['completed_code'] = $completed_code;
                     $_SESSION['adhoc-true'] = 1;
@@ -3551,13 +3558,8 @@ class Model {
     }
 
     public function processAdhocOfficer($params = NULL){
-      /*  if($_POST["due_datetime"] != ""){
-            $duedate = $_POST["due_datetime"]. "T" . date("H:i:s");
-        }
-        else{
-            $duedate = $result->due_date. "T" . date("H:i:s");
-        } */
-      
+     $test=$_SESSION['user_id'];
+     
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
@@ -3621,6 +3623,40 @@ class Model {
             $_SESSION['assign_name'] = $_POST['reason_assigned'];
 
             if($_SESSION['completed_code'] != "NORESPONSE"){
+                
+                /* CODE FOR MULTIPLE ACTIONS */
+                $numbActions = count($_SESSION['position_no_arr']);
+                
+                if(count($_SESSION['position_no_arr']) > 0){
+                    if ($numbActions > 0) {
+                    $_SESSION['position_no']=$_SESSION['position_no_arr'][$numbActions];
+                    $_SESSION['act_type']=$_SESSION['act_level_arr'][$numbActions];              
+                    $numbActions--;
+                    
+                    $parameters = array(
+                        'user_id' => $_SESSION['user_id'],
+                        'password' => $_SESSION['password'],
+                        'request_id' => $_POST['request_id'],
+                        'action_id' => $_POST['action_id'],
+                        'resp_officer' => $_POST['resp_officer'],
+                        'bypass' => "N",
+                        'position_no_arr' => array(
+                        ),
+                        'action_type_arr' => array(
+                        ),
+                        'position_no' => $_POST['position_no'],
+                        'officer_type' => $_POST['officer_type'],
+                        'due_datetime' => $_POST["due_datetime"],
+                        'act_type' => $_SESSION['act_type']
+                    );
+                    
+                    }
+                }
+                
+                /* --------------------- */
+                
+                
+                
                 $_SESSION['done'] = 1;
                 $_SESSION['success'] = 1;
                 $_SESSION['success_action_submit'] = 1;
