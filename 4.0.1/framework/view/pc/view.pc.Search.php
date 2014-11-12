@@ -1,12 +1,50 @@
 <?php
 if(isset($GLOBALS['result']->search_details)){
 	?>
-<div style="float:left; width:100%;">
-    <br />
-    Found <b><?php echo count($GLOBALS['result']->search_details); ?></b> results.
+<script type="text/javascript">
+    $(document).ready(function () {
+        var oTable = $('#searchTable').dataTable({
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "iDisplayLength": 50
+        });
+
+        $("#export").click(function () {
+            $("#export").prop({ disabled: true });
+
+            var oSettings = oTable.fnSettings();
+            var current = oSettings._iDisplayLength;
+            oSettings._iDisplayLength = 1000;
+            oTable.fnDraw();
+
+            var rowsArray = {};
+            var i = 0;
+            $('#searchTable tr').each(function () {
+                var i2 = 0;
+                rowsArray[i] = {};
+                $(this).find("th").each(function () {
+                    rowsArray[i][i2] = $(this).html();
+                    i2++;
+                });
+                $(this).find("td").each(function () {
+                    rowsArray[i][i2] = $(this).html();
+                    i2++;
+                });
+                i++;
+            });
+
+            oSettings._iDisplayLength = current;
+            oTable.fnDraw();
+            $("#tableArray").val(JSON.stringify(rowsArray));
+            $("#exportForm").submit();
+        });
+
+        Unload();
+        });
+</script>
+<div class="float-right">
+    <br /><br /><form method="post" id="exportForm" action="process.export.php"><input type="hidden" name="tableArray" id="tableArray" /><input type="hidden" name="name" id="name" value="search-Intray" /></form><input type="button" id="export" value="Export to Excel">
 </div>
-<div style="float:left; width:100%;">
-<input type="text" id="search" class="tableSearch" placeholder="Filter..." />
+
 <table id="searchTable" class="sortable" title="" cellspacing="0">
 	<thead>
     <tr>
@@ -122,8 +160,3 @@ else{
 	echo "<br>No results found.";	
 }
 ?>
-<script type="text/javascript">
-	$(document).ready(function() {
-		Unload();
-	});
-</script>
