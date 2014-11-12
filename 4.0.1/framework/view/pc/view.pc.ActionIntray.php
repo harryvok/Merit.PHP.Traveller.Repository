@@ -26,9 +26,7 @@ $(document).ready(function() {
     });
   
     $("#export").click(function(){
-        $("#export").prop({
-          disabled: true
-        });
+        $("#export").prop({disabled: true});
         
         var oSettings = oTable.fnSettings();
         var current = oSettings._iDisplayLength;
@@ -56,6 +54,8 @@ $(document).ready(function() {
         $("#tableArray").val(JSON.stringify(rowsArray));
         $("#exportForm").submit();
     });
+
+
 });
 
 
