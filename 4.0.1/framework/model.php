@@ -2915,8 +2915,8 @@ class Model {
             $_SESSION['error_udfs']=1;
 
         }
-        if(isset($_POST['act_id'])) $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'';
-        else $_SESSION['redirect'] = 'index.php?page=view-request&id='.$_POST['id'].'';
+        //if(isset($_POST['act_id'])) $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'';
+        $_SESSION['redirect'] = 'index.php?page=view-request&id='.$_POST['id'].'';
     }
 
     public function processAddAction($params = NULL){
