@@ -236,16 +236,22 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             foreach($GLOBALS['result']['request']->facility_det as $facility){
         ?>
         <div class="float-left">
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
                 </div>
             </div>
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Type</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
+                </div>
+            </div>
+            <div class="column r30">
+                <span class="summaryColumnTitle">Facility Officer</span>
+                <div class="summaryColumn">
+                    <?php if(isset($facility->officer_name)){ echo $facility->officer_name; } ?>
                 </div>
             </div>
         </div>
@@ -265,16 +271,22 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             $facility = $GLOBALS['result']['request']->facility_det->facility_details;
         ?>
         <div class="float-left">
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
                 </div>
             </div>
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Type</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
+                </div>
+            </div>
+            <div class="column r30">
+                <span class="summaryColumnTitle">Facility Officer</span>
+                <div class="summaryColumn">
+                    <?php if(isset($facility->officer_name)){ echo $facility->officer_name; } ?>
                 </div>
             </div>
         </div>
@@ -756,7 +768,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                         echo $udf->udf_data; 
                                     }
                                 }  ?><br />
-                                        ng>Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File2" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
+                                        Upload New:</strong> <input type="file" name="udf_<?php echo $udf->udf_name; ?>" id="File2" class="text-popup_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required"; ?>" >
 
                                     </div>
                                     <?php

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta name="viewport" content="user-scalable=yes;width=device-width;initial-scale=0.31; maximum-scale=1.0; minimum-scale=0.25"/>
+    <meta name="viewport" content="user-scalable=no;width=device-width;initial-scale=0.31; maximum-scale=1.0; minimum-scale=0.25"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-au" />

@@ -185,6 +185,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                     <p><strong>Facility Type:</strong> <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?></p>
                 </li> <?php 
             } 
+            if(isset($facility->officer_name) && strlen($facility->officer_name) > 0) { ?>
+                <li>
+                    <p><strong>Facility Officer:</strong> <?php if(isset($facility->officer_name)){ echo $facility->officer_name; } ?></p>
+                </li> <?php 
+            } 
             if(isset($facility->facility_desc) && strlen($facility->facility_desc) > 0) { ?>
                 <li>
                     <p><strong>Facility Description:</strong> <?php if(isset($facility->facility_desc)){ echo $facility->facility_desc; } ?></p>
@@ -203,6 +208,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <li>
                 <p><strong>Facility Type:</strong> <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?></p>
             </li><?php 
+        }
+        if(isset($facility->officer_name) && strlen($facility->officer_name) > 0) { ?>
+                <li>
+                    <p><strong>Facility Officer:</strong> <?php if(isset($facility->officer_name)){ echo $facility->officer_name; } ?></p>
+                </li> <?php 
         } 
         if(isset($facility->facility_desc) && strlen($facility->facility_desc) > 0) { ?>
             <li>
