@@ -80,7 +80,8 @@ $(document).ready(function () {
 
 });
 
-$(document).on("click", ".ViewFile", function(){
+$(document).on("click", ".ViewFile", function () {
+    
     Load();
     var path = $(this).attr("id");
     var request_id = $("#request_id").val();
