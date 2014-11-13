@@ -339,7 +339,17 @@ if(isset($_SESSION['user_id'])){
                     <h4>Attachment</h4>
 
                     <p>
-                        <span><input type="file" name="attachment[]" id="attachment"  /></span>
+                        <script>
+                            $(document).ready(function () {
+                                $("#attachment").click(function () {
+                                    event.stopPropagation();
+                                    $("#attachment").unbind();
+                                });
+
+                            });
+                        </script>
+
+                        <input type="file" name="attachment[]" id="attachment"  />
                         <label>Description:</label><input type="text" id="desc" maxlength="50" name="attachDesc[]" />
                     </p>
                 </div>
