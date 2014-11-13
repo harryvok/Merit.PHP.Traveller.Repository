@@ -177,8 +177,7 @@
                                 <div class="column r30">
                                     <label>Surname:</label>
                                     <input type="text" name="nameSurname">
-                                </div>
-                            
+                                </div>                            
 
                                 <div class="column r25">
                                     <label>Company:</label>
@@ -192,24 +191,24 @@
                                     </select>
                                 </div>
                             </div>
-                            <!--<div class="float-left">
+                            <div class="float-left">
                                  <div class="column r20">
                                         <label>Phone:</label>
                                         <input type="text" name="phoneNumber">
                                  </div>
-                                 <div class="column r20">
+                                 <!--<div class="column r20">
                                         <label>Mobile:</label>
                                         <input type="text" name="mobileNumber">
-                                 </div>
+                                 </div>-->
                                  <div class="column r20">
                                         <label>Email:</label>
                                         <input type="text" name="emailNumber">
                                  </div>
                                  <div class="column r20">
-                                        <label>Name Type:</label>
+                                        <label>Customer Type:</label>
                                         <?php $controller->Dropdown("CustomerTypes", "CustomerTypes"); ?>
                                  </div>
-                             </div>-->
+                             </div>
                         </div>
                     </div>
                     <div class="summaryContainer">
