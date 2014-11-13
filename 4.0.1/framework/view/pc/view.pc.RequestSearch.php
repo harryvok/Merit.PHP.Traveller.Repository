@@ -13,18 +13,16 @@ if(isset($GLOBALS['result']->request_search_details)){
 
          $("#export1").click(function () {
              $("#export1").prop({ disabled: true });
-
              var oSettings = oTable.fnSettings();
              var current = oSettings._iDisplayLength;
              oSettings._iDisplayLength = 1000;
              oTable.fnDraw();
-
              var rowsArray = {};
              var i = 0;
              $('#searchTable1 tr').each(function () {
                  var i2 = 0;
                  rowsArray[i] = {};
-                 $(this).find("th").each(function () {
+                 $(this).find("th").each(function () {                     
                      rowsArray[i][i2] = $(this).html();
                      i2++;
                  });
@@ -37,7 +35,7 @@ if(isset($GLOBALS['result']->request_search_details)){
 
              oSettings._iDisplayLength = current;
              oTable.fnDraw();
-             $("#tableArray").val(JSON.stringify(rowsArray));
+             $("#table").val(JSON.stringify(rowsArray));
              $("#exportForm").submit();
          });
 
@@ -45,7 +43,7 @@ if(isset($GLOBALS['result']->request_search_details)){
 
 </script>
     <div class="float-right">
-    <br /><br /><form method="post" id="exportForm" action="process.export.php"><input type="hidden" name="tableArray" id="tableArray" /><input type="hidden" name="name" id="name" value="Action-Intray" /></form><input type="button" id="export1" value="Export to Excel">
+    <br /><br /><form method="post" id="exportForm" action="process.export.php"><input type="hidden" name="table" id="table" /><input type="hidden" name="name" id="name" value="Action-Intray" /></form><input type="button" id="export1" value="Export to Excel">
 </div>
 
     <table id="searchTable1" class="sortable" title="" cellspacing="0">
