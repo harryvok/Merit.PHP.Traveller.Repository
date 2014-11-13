@@ -236,16 +236,22 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             foreach($GLOBALS['result']['request']->facility_det as $facility){
         ?>
         <div class="float-left">
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
                 </div>
             </div>
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Type</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
+                </div>
+            </div>
+            <div class="column r30">
+                <span class="summaryColumnTitle">Facility Officer</span>
+                <div class="summaryColumn">
+                    <?php if(isset($facility->officer_name)){ echo $facility->officer_name; } ?>
                 </div>
             </div>
         </div>
@@ -265,16 +271,22 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             $facility = $GLOBALS['result']['request']->facility_det->facility_details;
         ?>
         <div class="float-left">
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_name)) echo $facility->facility_name; ?>
                 </div>
             </div>
-            <div class="column r50">
+            <div class="column r30">
                 <span class="summaryColumnTitle">Facility Type</span>
                 <div class="summaryColumn">
                     <?php if(isset($facility->facility_type)){ echo $facility->facility_type; } ?>
+                </div>
+            </div>
+            <div class="column r30">
+                <span class="summaryColumnTitle">Facility Officer</span>
+                <div class="summaryColumn">
+                    <?php if(isset($facility->officer_name)){ echo $facility->officer_name; } ?>
                 </div>
             </div>
         </div>
