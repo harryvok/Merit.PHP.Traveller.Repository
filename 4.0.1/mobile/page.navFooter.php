@@ -1,4 +1,4 @@
-<div data-role="footer" data-id="Traveller" data-position="fixed">
+<div data-role="footer" data-id="Traveller" data-position="fixed" data-tap-toggle="false">
         <div data-role="navbar" data-iconpos="bottom" >
         <ul>
             <?php if($_SESSION['roleSecurity']->allow_action == "Y") { ?><li><a href="index.php?page=actions&navstate" data-icon="bars">Actions</a></li><?php } ?>
