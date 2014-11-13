@@ -1168,7 +1168,7 @@ class Model {
                     'request_description' => $_POST['requestDetails'],
                     'customer_surname' => $_POST['nameSurname'],
                     'customer_given_name' => $_POST['nameGiven'],
-                    //'name_type' => $_POST['cust_type'],
+                    'name_type' => $_POST['cust_type'],
                     'company_name' => $_POST['company'],
                     'house_number' => $_POST['lno'],
                     'street_name' => $_POST['lstreet'],
@@ -1179,10 +1179,10 @@ class Model {
                     'address_details' => $_POST['addressDets'],
                     'facility_type' => $_POST['facilityTypeInput'],
                     'facility_name' => $_POST['facilityInput'],
-                    'telephone'=>"",
+                    'telephone'=> $_POST['phoneNumber'],
                     'udf_data'=>"",
                     'mobile_no'=>"",
-                    'email_address'=>"",
+                    'email_address'=> $_POST['emailNumber'],
                     'name_type' => "",
                     'udf_dets' => array(
                         'udf_dets' => $udf_details

@@ -29,8 +29,6 @@ include 'inc/php/PHPExcel/Writer/Excel2007.php';
 // Create new PHPExcel object
 $objPHPExcel = new PHPExcel();
 
-$result = json_decode($_POST['tableArray'], true);
-
 // Set properties
 $objPHPExcel->getProperties()->setCreator("Merit Traveller");
 $objPHPExcel->getProperties()->setLastModifiedBy("Merit Traveller");
@@ -40,13 +38,29 @@ $objPHPExcel->getProperties()->setDescription("The ".$_POST['name']." exported f
 
 // Add some data
 $objPHPExcel->setActiveSheetIndex(0);
-for($i = 0; $i < count($result); $i++){
-    for($i2 = 0; $i2 < (count($result[$i])-1); $i2++){
-        $letter = num_to_letter(($i2+1), true);
-        $objPHPExcel->getActiveSheet()->SetCellValue($letter.($i+1), str_replace("&amp;", "&", $result[$i][$i2]));
-        if($i == 0){
-            $objPHPExcel->getActiveSheet()->getStyle($letter.($i+1).":".$letter.($i+1))->getFont()->setBold(true);
-            cellColor($letter.($i+1), 'CCCCCC');
+if($_POST['tableArray']){
+    $result = json_decode($_POST['tableArray'], true);
+    for($i = 0; $i < count($result); $i++){
+        for($i2 = 0; $i2 < (count($result[$i])-1); $i2++){
+            $letter = num_to_letter(($i2+1), true);
+            $objPHPExcel->getActiveSheet()->SetCellValue($letter.($i+1), str_replace("&amp;", "&", $result[$i][$i2]));
+            if($i == 0){
+                $objPHPExcel->getActiveSheet()->getStyle($letter.($i+1).":".$letter.($i+1))->getFont()->setBold(true);
+                cellColor($letter.($i+1), 'CCCCCC');
+            }
+        }
+    }
+}
+else if($_POST['table']){
+    $result = json_decode($_POST['table'], true);
+    for($i = 0; $i < count($result); $i++){
+        for($i2 = 0; $i2 < (count($result[$i])); $i2++){
+            $letter = num_to_letter(($i2+1), true);
+            $objPHPExcel->getActiveSheet()->SetCellValue($letter.($i+1), str_replace("&amp;", "&", $result[$i][$i2]));
+            if($i == 0){
+                $objPHPExcel->getActiveSheet()->getStyle($letter.($i+1).":".$letter.($i+1))->getFont()->setBold(true);
+                cellColor($letter.($i+1), 'CCCCCC');
+            }
         }
     }
 }
