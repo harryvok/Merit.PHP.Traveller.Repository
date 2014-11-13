@@ -340,17 +340,14 @@ if(isset($_SESSION['user_id'])){
 
                     <p>
                         <script>
+                            $(document).ready(function () {
+                                var attachstop = document.getElementById("attachment");
 
-                            var input = document.getElementbyID('attachment');
+                                attachstop.onclick = function () {
+                                    event.stopPropagation();
+                                };
 
-                            input.onclick = function () {
-                                this.value = null;
-                            };
-
-                            input.onchange = function () {
-                                alert(this.value);
-                            };
-
+                            });
                         </script>
 
                         <input type="file" name="attachment[]" id="attachment"  />
