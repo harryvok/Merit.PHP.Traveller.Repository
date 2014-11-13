@@ -339,7 +339,21 @@ if(isset($_SESSION['user_id'])){
                     <h4>Attachment</h4>
 
                     <p>
-                        <span><input type="file" name="attachment[]" id="attachment"  /></span>
+                        <script>
+
+                            var input = document.getElementbyID('attachment');
+
+                            input.onclick = function () {
+                                this.value = null;
+                            };
+
+                            input.onchange = function () {
+                                alert(this.value);
+                            };
+
+                        </script>
+
+                        <input type="file" name="attachment[]" id="attachment"  />
                         <label>Description:</label><input type="text" id="desc" maxlength="50" name="attachDesc[]" />
                     </p>
                 </div>
