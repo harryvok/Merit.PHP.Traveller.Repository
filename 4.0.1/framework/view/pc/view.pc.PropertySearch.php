@@ -43,7 +43,6 @@
 			    $('#addressId').val($('#ret_' + id + '_address_id').val());
 			    $('#address').val($('#ret_' + id + '_address_id').val());
 			    $("#loc_address_ctr").val($('#ret_' + id + '_address_ctr').val());
-			    alert($('#ret_' + id + '_address_id').val());
 			    if ($('#ret_' + id + '_address_id').val() != "0" || $('#ret_' + id + '_address_id').val() != 0 || $('#ret_' + id + '_address_id').val() != "") {
 			        $("#AddrSummary").prop("disabled", false);
 			    }
