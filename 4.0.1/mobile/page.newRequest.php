@@ -341,11 +341,10 @@ if(isset($_SESSION['user_id'])){
                     <p>
                         <script>
                             $(document).ready(function () {
-                                var attachstop = document.getElementById("attachment");
-
-                                attachstop.onclick = function () {
+                                $("#attachment").click(function () {
                                     event.stopPropagation();
-                                };
+                                    $("#attachment").unbind();
+                                });
 
                             });
                         </script>
