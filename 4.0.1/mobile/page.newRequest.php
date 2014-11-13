@@ -339,7 +339,7 @@ if(isset($_SESSION['user_id'])){
                     <h4>Attachment</h4>
 
                     <p>
-                        <input id="attachment" type="file" name="attachment[]" />
+                        <span><input type="file" name="attachment[]" id="attachment"  /></span>
                         <label>Description:</label><input type="text" id="desc" maxlength="50" name="attachDesc[]" />
                     </p>
                 </div>
