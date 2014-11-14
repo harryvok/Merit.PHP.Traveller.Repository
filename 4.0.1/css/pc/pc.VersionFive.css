@@ -191,7 +191,7 @@ a {
     min-height:50px;
     overflow:auto;
     margin-bottom: 20px;
-    border:1px solid black;;
+    border:1px solid black;
     box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
 }
 .expandable-panel-heading {
