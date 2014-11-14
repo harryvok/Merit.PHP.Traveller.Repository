@@ -29,7 +29,7 @@
 
             <!-- Content Header -->
             <div class="header row">
-                <h1>Storyboard</h1>
+                <h1>Storyboard - DRAFT v1.0</h1>
             </div>
 
             <div class="topfloat row">
