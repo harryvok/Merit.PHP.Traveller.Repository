@@ -34,7 +34,12 @@
 
             <div class="topfloat row">
                 <!-- Float Header with page -->
-                <div class="storyheader"></div>
+                <div class="storyheader">
+                    <p>As at:</p>
+                    <h4>Request ID:</h4>
+                    <h4>Type: - -</h4>
+                    <h4>Status:</h4>
+                </div>
             </div>
 
             <!-- Content -->

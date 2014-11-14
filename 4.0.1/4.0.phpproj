@@ -1328,6 +1328,7 @@
     <Content Include="inc\js\pages\js.search.js" />
     <Content Include="inc\js\pages\js.sendNotificationMobile.js" />
     <Content Include="inc\js\pages\js.sendNotification.js" />
+    <Content Include="inc\js\pages\js.storyBoard.js" />
     <Content Include="inc\php\arial.ttf" />
     <Content Include="css\libraries\jquery-mobile-min.css">
       <SubType>Content</SubType>
