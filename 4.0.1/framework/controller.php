@@ -198,7 +198,8 @@ class Controller {
 			}
 		 }
 	 }
-	 
+       
+
 	 // Display Dropdown Function
 	 public function Dropdown($action, $view, $params = NULL){
 		 if(isset($_SESSION['roleSecurityArray'][$action]) && is_array($_SESSION['roleSecurityArray'][$action])){
