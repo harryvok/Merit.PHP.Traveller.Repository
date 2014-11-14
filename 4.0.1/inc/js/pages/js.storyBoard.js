@@ -1,11 +1,6 @@
 (function ($) {
     $(document).ready(function () {
-        /* STICKEM PLUGIN INITALIZE */
-
-        if ($(document).height() > $(window).height()) {
-            alert("Vertical Scrollbar! D:");
-        }
-
+       
 
         /*-------------------- EXPANDABLE PANELS ----------------------*/
         var panelspeed = 300; //panel animate speed in milliseconds

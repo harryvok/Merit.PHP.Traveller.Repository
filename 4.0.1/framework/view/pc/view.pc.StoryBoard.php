@@ -1,3 +1,4 @@
+<!-- James Thomas 2014 -->
 
 <!-- Navigation -->
         <div class="left col">
@@ -35,10 +36,54 @@
             <div class="topfloat row">
                 <!-- Float Header with page -->
                 <div class="storyheader">
-                    <p>As at:</p>
-                    <h4>Request ID:</h4>
-                    <h4>Type: - -</h4>
-                    <h4>Status:</h4>
+
+                    <!-- PHP code to generate stuff for the header -->
+                        <?php $date = date('d-M-Y H:i a');
+
+                              if(isset($GLOBALS['result']->request_id) && $GLOBALS['result']->status_code == "OPEN"){ 
+                                  $statuscode = "OPEN";   
+                              } 
+                              elseif(isset($GLOBALS['result']->request_id) && $GLOBALS['result']->status_code == "SUSPENDED"){ 
+                                  $statuscode = "SUSPENDED";  
+                              } 
+                              else { 
+                                  $statuscode = "CLOSED"; 
+                              } 
+                              
+                            $scode=$GLOBALS['result']->service_name;
+                            $rcode=$GLOBALS['result']->request_name;
+                            if(isset($GLOBALS['result']->function_name) && $GLOBALS['result']->function_name != '') {
+                                   $fcode=$GLOBALS['result']->function_name; 
+                            }
+                        ?>
+                     <!-- PHP END -->
+                     <!-- javascript code to generate stuff for the header -->
+                        <script type="text/javascript">
+                                $( document ).ready(function() {
+                                    if ($("#statuscolor").val() == "OPEN") {
+                                        $("#reqstatus").css("color", "green");
+                                    }
+                                    else if ($("#statuscolor").val() == "SUSPENDED") {
+                                        $("#reqstatus").css("color", "orange");
+                                    }
+                                    else {
+                                        $("#reqstatus").css("color", "red");
+                                    }
+                                });
+                        </script>
+                     <!-- JS END -->
+
+                    <div class="wrapper">
+                        <div class="wrapperleft">
+                            <input type="hidden" id="statuscolor" value="<?php echo $statuscode ?>" />
+                            <p style="margin-bottom:10px;">As at: <b><?php echo $date; ?></b></p>
+                            <p>Request ID: <b style="font-size:18px;"><?php echo $_GET['id']; ?></b><span id="reqstatus" style="font-weight:bold; font-size:18px; padding-left:120px;"><?php echo $statuscode ?></span></p>
+                            <p style="-webkit-margin-before:10px;">Type: <b style="font-size:18px;"><?php echo $scode ." - ".$rcode." - ".$fcode ?></b></p>
+                        </div>
+                        <div class="wrapperright">
+                            <img src="/images/test.png" />
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -52,7 +97,9 @@
                         <h2>Request Details +<span class="icon-close-open"></span></h2>
                      </div>
                     <div class="expandable-panel-content">
-                     
+                     <div class="wrapper">
+
+                     </div>
                     </div>
                 </div>
 
@@ -62,7 +109,9 @@
                         <h2>Example Div +<span class="icon-close-open"></span></h2>
                      </div>
                     <div class="expandable-panel-content">
-                     
+                     <div class="wrapper">
+
+                     </div>
                     </div>
                 </div>
 
@@ -72,7 +121,9 @@
                         <h2>Example Div +<span class="icon-close-open"></span></h2>
                      </div>
                     <div class="expandable-panel-content">
-                     
+                     <div class="wrapper">
+
+                     </div>
                     </div>
                 </div>
 
@@ -82,7 +133,9 @@
                         <h2>Example Div +<span class="icon-close-open"></span></h2>
                      </div>
                     <div class="expandable-panel-content">
-                     
+                     <div class="wrapper">
+
+                     </div>
                     </div>
                 </div>
 
@@ -92,7 +145,9 @@
                         <h2>Example Div +<span class="icon-close-open"></span></h2>
                      </div>
                     <div class="expandable-panel-content">
-                     
+                     <div class="wrapper">
+
+                     </div>
                     </div>
                 </div>
 

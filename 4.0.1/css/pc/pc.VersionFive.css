@@ -57,7 +57,8 @@ body {
 }
 
 body > div.right.col > div.body.row.scroll-y {
-    top: 211px;
+    top: 214px;
+    min-width:760px;
 }
 
 /* Left COLUMN*/
@@ -85,6 +86,7 @@ body > div.left.col > div.body.row.scroll-y {
     padding-right: 16px;
     padding-bottom: 16px;
     border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 
 .body.row { 
@@ -175,13 +177,20 @@ a {
 /* StoryBoard Div's */
 /*--------------------------------------------------------------------*/
 
-.storyheader {
-    background-color:white;
-    height:100px;
-    width:100%;
-    margin-top:16px;
-    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
-    border: 1px solid black;
+.wrapper {
+}
+
+.wrapperleft {
+    float:left;
+    width: auto;
+    padding: 10px;
+    min-width:400px;
+}
+
+.wrapperright {
+    float:right;
+    padding: 0px;
+    min-width:347px;
 }
 
 .expandable-panel {
@@ -235,4 +244,26 @@ a {
 .expandable-panel-content img {
     float:right;
     padding-left:12px;
+}
+
+
+/* Header */
+/*--------------------------------------------------------------------*/
+.storyheader {
+    background-color:white;
+    height:100px;
+    width:100%;
+    margin-top:16px;
+    min-width:770px;
+    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+    border: 1px solid black;
+
+    color:black;
+    font-size: 14px;
+    font-family: Arial;
+}
+
+.storyheader p {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
 }
