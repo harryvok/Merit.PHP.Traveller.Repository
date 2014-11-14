@@ -1,0 +1,238 @@
+
+/* Version Five Beta CSS */
+
+
+/*--------------------------------------------------------------------*/
+/* Set Default */
+/*--------------------------------------------------------------------*/
+body { margin: 0; -webkit-text-size-adjust: 100%; }
+.page { left: 0; right: 0; top: 0; bottom: 0; }
+.row, .col, .page { overflow: hidden; position: absolute; }
+.row { left: 0; right: 0; }
+.col { top: 0; bottom: 0; }
+.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.scroll-y { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.fill, .pane { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100%; height: 100% }
+.pane { display: none; }
+
+
+/*--------------------------------------------------------------------*/
+/* Rough headers etc
+/*--------------------------------------------------------------------*/
+body { 
+    font-family: 'Helvetica Neue', Arial, Sans-Serif; 
+}
+
+
+.header, .footer {
+    color: #eee; 
+    background: #696f77; 
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5); 
+    padding: 0 0.5em;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#696f77), color-stop(100%,#28343b));
+    background: -webkit-linear-gradient(top, #696f77 0%,#28343b 100%); 
+    background: -ms-linear-gradient(top, #696f77 0%,#28343b 100%); 
+}
+
+
+/*--------------------------------------------------------------------*/
+/* Layout */
+/*--------------------------------------------------------------------*/
+.header { 
+    font-size: 1.4em; 
+}
+.body, .pane { 
+    background: #E7E7E7; 
+}
+
+/* Right COLUMN*/
+/*--------------------------------------------------------------------*/
+.right.col { 
+    border-left: 1px solid black;
+    left: 250px; 
+    right: 0; 
+}
+.right.col .body { 
+    padding: 0 1em; 
+}
+
+body > div.right.col > div.body.row.scroll-y {
+    top: 211px;
+}
+
+/* Left COLUMN*/
+/*--------------------------------------------------------------------*/
+.left.col { 
+    width: 250px;
+}
+
+body > div.left.col > div.body.row.scroll-y {
+    background-color:#ADADAD !important;
+    border-top: 1px solid black;
+}
+/*--------------------------------------------------------------------*/
+
+
+.header.row { 
+    height: 75px; 
+    line-height: 75px; 
+}
+
+.topfloat.row{
+    top: 75px;
+    background-color: #E7E7E7;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid black;
+}
+
+.body.row { 
+    top: 75px; 
+    bottom: 50px; 
+}
+.footer.row { 
+    height: 50px;
+    bottom: 0; 
+    line-height: 50px; 
+}
+
+.footer.row.left { 
+    text-align:left;
+}
+
+.footer.row.right { 
+    text-align:right;
+}
+
+
+/*--------------------------------------------------------------------*/
+/* Navigation   */
+/*--------------------------------------------------------------------*/
+.listview { 
+    padding: 0; 
+    margin: 0; 
+    font-weight: bold; 
+    color: #444; 
+}
+.listview li { 
+    list-style-type: none; 
+    background: #eee; 
+    padding: 1em; 
+    border-top: 1px solid #aaa; 
+    border-bottom: 1px solid #fff; 
+    cursor: pointer; 
+}
+.listview li.selected { 
+    background-color: #37F; 
+    color: White; 
+}
+            
+.listview.inset { 
+    margin: 1em 0; 
+}
+.listview.inset li { 
+    background: white; 
+    border: 2px solid #aaa; 
+    border-bottom-width: 0; 
+}
+.listview.inset li:first-child { 
+    border-radius: 1em 1em 0em 0em;
+}
+.listview.inset li:last-child { 
+    border-radius: 0em 0em 1em 1em; 
+    border-bottom-width: 2px; 
+}         
+
+/*--------------------------------------------------------------------*/
+/* Text Styles */
+/*--------------------------------------------------------------------*/
+h1 {
+    display: block;
+    font-size: 28px;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+h2 {
+    display: block;
+    font-size: 20px;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/*--------------------------------------------------------------------*/
+/* StoryBoard Div's */
+/*--------------------------------------------------------------------*/
+
+.storyheader {
+    background-color:white;
+    height:100px;
+    width:100%;
+    margin-top:16px;
+    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+    border: 1px solid black;
+}
+
+.expandable-panel {
+    width:100%;
+    margin-top:16px;
+    position:relative;
+    min-height:50px;
+    overflow:auto;
+    margin-bottom: 20px;
+    border:1px solid black;
+    box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+}
+.expandable-panel-heading {
+    width:100%;
+    cursor:pointer;
+    min-height:50px;
+    clear:both;
+    background-color: rgb(84, 141, 212);
+    position:relative;
+}
+
+.expandable-panel-heading:hover {
+    color:#666;
+}
+.expandable-panel-heading h2 {
+    padding:14px 10px 9px 15px;
+    font-size:18px;
+    color: white;
+    line-height:20px;
+}
+.expandable-panel-content {
+    margin-top:-999px;
+    height: 200px;
+    background-color: #FFF;
+    border-top: 1px solid black;
+}
+    
+.expandable-panel-content p:first-child  {
+    padding-top:10px;
+}
+.expandable-panel-content p:last-child {
+    padding-bottom:15px;
+}
+.icon-close-open {
+    width:20px;
+    height:20px;
+    position:absolute;
+    background-image:url(icon-close-open.png);
+    right:15px;
+}
+.expandable-panel-content img {
+    float:right;
+    padding-left:12px;
+}
