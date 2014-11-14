@@ -17,6 +17,7 @@
             });
             $('#search').keydown(function (event) {
                 if (event.which == 13) {
+                    alert("clicked me")
                     Search($("#search").val());
                     $("#search").select();
                 }
@@ -136,7 +137,7 @@
                         url: 'inc/ajax/ajax.RequestSearch.php',
                         data: $("#advancedSearch").serialize(),
                         type: 'POST',
-                        timeout: 40000,
+                        timeout: 1000000,
                         success: function (data) {
                             Unload();
                             $("#searchResults").html(data);
@@ -202,7 +203,7 @@
                                  </div>-->
                                  <div class="column r20">
                                         <label>Email:</label>
-                                        <input type="text" name="emailNumber">
+                                        <input type="text" name="emailAddress">
                                  </div>
                                  <div class="column r20">
                                         <label>Customer Type:</label>
