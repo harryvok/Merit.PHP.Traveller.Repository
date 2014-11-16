@@ -9005,6 +9005,20 @@ $.widget( "mobile.textinput", $.mobile.widget, {
 				}
 			};
 
+            //footer scroll up fix test
+			$(window).bind('scroll', function () {
+			    var $nav = $(".mobile-footer")
+			    var scrollTop = $(window).scrollTop();
+			    var offsetTop = $nav.offset().top;
+
+			    if (Math.abs(scrollTop - offsetTop) > 1) {
+			        $nav.css('position', 'absolute');
+			        setTimeout(function () {
+			            $nav.css('position', 'fixed');
+			        }, 1);
+			    }
+			});
+
 			input.on( "keyup change input paste", function() {
 				clearTimeout( keyupTimeout );
 				keyupTimeout = setTimeout( self._keyup, keyupTimeoutBuffer );
