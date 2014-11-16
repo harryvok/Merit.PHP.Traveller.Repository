@@ -15,7 +15,6 @@ $(document).on("blur", "input[type=text], textarea", function () {
 $(document).ready(function () {
     // Write on keyup event of keyword input element
     $(document).on("input paste", "#searchText", function () {
-
         // When value of the input is not blank
         var leng = $(".searchObject").length;
         if ($("#searchText").val() != "" && $("#searchText").val().length > 1) {
@@ -34,6 +33,16 @@ $(document).ready(function () {
                 $("#searchObject" + i).show();
             }
         }
+        alert("dostuff");
+        $(".ui-footer-fixed").css({
+            "bottom": "-1px",
+            "padding-bottom": "1px",
+            "left": "0",
+            "right": "0",
+            "width": "100%",
+            "position": "fixed",
+            "z-index": "1000"
+        });
     });
 
 

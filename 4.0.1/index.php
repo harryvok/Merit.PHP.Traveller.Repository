@@ -193,6 +193,10 @@ if($mobile_browser > 0){
 	include("mobile/page.home.php");
 }
 else{
-	include("page.home.php");
+    if($page == "view-StoryBoard"){
+        include("page.versionfive.php");
+    } else {
+	    include("page.home.php");
+    }
 }
 ?>

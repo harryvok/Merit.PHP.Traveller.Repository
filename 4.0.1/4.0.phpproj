@@ -300,6 +300,7 @@
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
     <Compile Include="framework\view\pc\view.pc.BookingSummary.php" />
+    <Compile Include="framework\view\pc\view.pc.StoryBoard.php" />
     <Compile Include="framework\view\pc\view.pc.PropertySearch.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
     <Compile Include="framework\view\pc\view.pc.DocumentSearchResults.php" />
@@ -1166,6 +1167,7 @@
     <Compile Include="page.attachmentError.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.versionfive.php" />
     <Compile Include="page.myPreferences.php">
       <SubType>Code</SubType>
     </Compile>
@@ -1206,6 +1208,7 @@
     <Compile Include="page.view-name.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.view-StoryBoard.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>
     </Compile>
@@ -1315,6 +1318,7 @@
     <Content Include=".htaccess">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="css\pc\pc.VersionFive.css" />
     <Content Include="images\delete-icon.png" />
     <Content Include="images\modify-icon.png" />
     <Content Include="inc\js\pages\js.adhocOfficer.js">
@@ -1324,6 +1328,7 @@
     <Content Include="inc\js\pages\js.search.js" />
     <Content Include="inc\js\pages\js.sendNotificationMobile.js" />
     <Content Include="inc\js\pages\js.sendNotification.js" />
+    <Content Include="inc\js\pages\js.storyBoard.js" />
     <Content Include="inc\php\arial.ttf" />
     <Content Include="css\libraries\jquery-mobile-min.css">
       <SubType>Content</SubType>

@@ -111,7 +111,7 @@
                         <?php if($_SESSION['roleSecurity']->maint_new_request == "Y") { ?> <a class="header-nav" href="index.php?page=newRequest">NEW REQUEST</a><?php } ?>
                          <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?><a class="header-nav" href="index.php?page=search">SEARCH</a><?php } ?>
                          <a class="header-nav" href="process.php?action=logout">LOGOUT</a>
-                        <!-- <a class="header-nav" href="index.php?page=view-officer&id=381221">// TEST - OFFICER</a> -->
+                         <a class="header-nav" href="index.php?page=view-StoryBoard&id=619808">STORYBOARD</a>
                          <span class="council-name cname-logged-in"><?php  echo COUNCIL_NAME;  ?></span>
               </div>
          </div>
