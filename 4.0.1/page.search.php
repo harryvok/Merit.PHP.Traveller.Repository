@@ -84,8 +84,6 @@
 </div>
 <div id="advanced" class="subPageContainer" <?php if(isset($_GET['d']) && $_GET['d'] == "advanced") echo "style='display:block;'"; else echo "style='display:none;'"; ?>>
     <script src="inc/js/pages/js.search.js"></script>
-
-
     <div id="searchResults">
     </div>
     <div id="form">
@@ -154,6 +152,10 @@
                         }
                     });
                 }
+
+                $("#reset").click(function () {
+                    $("#searchResults").html("");
+                });
 
                 
 
@@ -380,7 +382,7 @@
                 <div class="column r100">
                     <br />
                     <input type="button" id="submit" data-ajax="true" value="Search">
-                    <input type="reset" value="Reset">
+                    <input type="reset" value="Reset" id="reset" name="reset">
                 </div>
         </form>
     </div>
