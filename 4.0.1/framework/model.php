@@ -1645,6 +1645,7 @@ class Model {
     }
     
     public function processCreateRequest($params = NULL){
+        unset($_SESSION['filenameudf']);
         $parameters_at = new stdClass();
         $parameters_at->user_id = $_SESSION['user_id'];
         $parameters_at->password = $_SESSION['password'];
@@ -1961,6 +1962,7 @@ class Model {
                             array_push($filenamearray, $tempname);
                             array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
                             
+                            $_SESSION['filenameudf'][] = $tempname;
                         }
 
                     }
@@ -2009,6 +2011,7 @@ class Model {
                 if($_POST['udfs_exist'] == 1){
                     $GLOBALS['udf-create'] = 1;
                     $GLOBALS['udf-request-create'] = 1;
+                    // PROCESS UDFS!!!!
                     $this->processEditUDFs();
                 }
 
@@ -2696,6 +2699,8 @@ class Model {
     public function processEditUDFs($params = NULL){
         if(isset($_POST['id'])) $id = $_POST['id'];
         else $id = $GLOBALS['request_id'];
+        
+        
         if(isset($GLOBALS['udf-create']) && $GLOBALS['udf-create'] == 1){
             $result_get_udfs = $this->getsrfUDFs(array("service_code" => $_POST['service'], "request_code" => $_POST['request'], "function_code" => $_POST['function']));
             unset($GLOBALS['udf-create']);
@@ -2754,21 +2759,21 @@ class Model {
                     elseif($udf->udf_type == "G"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
+                        $udf_data = $_SESSION['filenameudf'][0];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "B"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
+                        $udf_data = $_SESSION['filenameudf'][1];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "P"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $this->processUDFAttachment($_FILES['udf_'.str_ireplace(" ", "_", $udf->udf_name)]);
+                        $udf_data = $_SESSION['filenameudf'][0];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
