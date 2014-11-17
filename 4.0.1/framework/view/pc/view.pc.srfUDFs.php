@@ -133,8 +133,8 @@ if(isset($GLOBALS['result']->udf_details)){
                           <div class="float-left">
                               <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
                           </div>
-                          <div class="float-left">
-                          		<input type="file" name="udf_<?php echo str_ireplace("-","",str_ireplace(" ", "", str_ireplace(":","",trim($udf->udf_name)))); ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required req_text_udf"; ?>" >
+                          <div class="float-left"> <!-- udf_ # echo str_ireplace("-","",str_ireplace(" ", "", str_ireplace(":","",trim($udf->udf_name))));  -->
+                          		<input type="file" name="attachment[]" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required req_text_udf"; ?>" >
                           </div>
                       <?php
                       }
@@ -144,8 +144,8 @@ if(isset($GLOBALS['result']->udf_details)){
                           <div class="float-left">
                               <label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>*</span>"; ?></label>
                           </div>
-                          <div class="float-left">
-                          		<input type="file" name="udf_<?php echo str_ireplace("-","",str_ireplace(" ", "", str_ireplace(":","",trim($udf->udf_name)))); ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required req_text_udf"; ?>" >
+                          <div class="float-left"> <!-- udf_ # echo str_ireplace("-","",str_ireplace(" ", "", str_ireplace(":","",trim($udf->udf_name))));  -->
+                          		<input type="file" name="attachment[]" id="udf_<?php echo $udf->udf_order; ?>" class="text_udf <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "required req_text_udf"; ?>" >
                           </div>
                       <?php
                       }
