@@ -351,6 +351,8 @@ if(isset($_SESSION['user_id'])){
 
                         <input type="file" name="attachment[]" id="attachment"  />
                         <label>Description:</label><input type="text" id="desc" maxlength="50" name="attachDesc[]" />
+                        <input type="hidden" id="attachDesc1" name="attachDesc[]" />
+                        <input type="hidden" id="attachDesc2" name="attachDesc[]" />
                     </p>
                 </div>
 
