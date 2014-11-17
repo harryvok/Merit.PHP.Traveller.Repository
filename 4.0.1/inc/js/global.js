@@ -293,10 +293,11 @@ function generateDateTime() {
     });
     $("body").on("focus", '.timeField', function () {
         if (!$(this).hasClass("hasDatepicker")) {
+            //$(this).timepicker({ defaultValue: $(this).val() });
             $(this).timepicker({ timeFormat: 'hh:mm TT', controlType: 'select' });
-
         }
         $(this).timepicker("show");
+
     });
 
     $("body").on("submit", "form", function () {
