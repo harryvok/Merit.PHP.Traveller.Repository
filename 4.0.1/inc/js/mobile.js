@@ -5,10 +5,12 @@ var iWebkit; if (!iWebkit) { iWebkit = window.onload = function () { function fu
 
 $(document).on("click", "input[type=text], textarea", function () {
     $(".ui-header-fixed").fadeOut("fast");
+    $(".ui-footer-fixed").fadeOut("fast");
 });
 
 $(document).on("blur", "input[type=text], textarea", function () {
     $(".ui-header-fixed").fadeIn("fast");
+    $(".ui-footer-fixed").fadeIn("fast");
 });
 
 
