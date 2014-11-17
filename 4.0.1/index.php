@@ -195,6 +195,9 @@ if($mobile_browser > 0){
 else{
     if($page == "view-StoryBoard"){
         include("page.versionfive.php");
+    } 
+    else if($page == "view-Calender") {
+        include("page.versionfive.php");
     } else {
 	    include("page.home.php");
     }

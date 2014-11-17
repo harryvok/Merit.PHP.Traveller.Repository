@@ -18,6 +18,22 @@ class Model {
         return $result;
     }
     
+    /* Calender */
+    
+    public function getCalender($params = NULL){
+        if(isset($_GET['id'])) $id = $_GET['id'];
+        elseif(isset($_SESSION['request_id'])) $id = $_SESSION['request_id'];
+        elseif(isset($GLOBALS['request_id'])) $id = $GLOBALS['request_id'];
+        elseif(isset($_POST['id'])) $id = $_POST['id'];
+
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $id;
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters);
+        return $result;
+    }
+    
 
 
 	/* Generic functions */

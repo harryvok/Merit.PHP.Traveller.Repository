@@ -16,7 +16,6 @@
             ?>
             <script src="inc\js\libraries\jquery-1.9.1.js"></script>
             <script src="inc\js\pages\js.storyBoard.js"></script>
-            <script src="inc\js\libraries\jquery.stickem.js "></script>
             <script src="inc\js\libraries\jquery.validate.min.js "></script>
             <script src="inc\js\libraries\sorttable.js "></script>
             <script src="inc\js\libraries\jquery-ui-1.10.3.custom.js"></script>
@@ -59,7 +58,6 @@
             }
         }
          ?>
-    <title><?php echo SITE_TITLE; ?> - Request: <?php echo $GLOBALS['_REQUEST']['id'] ?> Storyboard</title>
     
 </head>
 <body>
