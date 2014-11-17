@@ -413,7 +413,7 @@ body.ui-mobile-viewport, div.ui-mobile-viewport {
     }
 
 .ui-header, .ui-footer {
-    position: absolute;
+    position: relative;
     zoom: 1;
 }
 
