@@ -1948,16 +1948,16 @@ class Model {
                     for ($i=0; $i< $totalfiles;$i++) {
                         if($_FILES['attachment']['name'][$i] !=""){
                             $attachment = array(
-                                    'name' => $_FILES['attachment']['name'][$i],
-                                    'type' => $_FILES['attachment']['type'][$i],
-                                    'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
-                                    'error' => $_FILES['attachment']['error'][$i],
-                                    'size' => $_FILES['attachment']['size'][$i]
-                                
-                           );
+                               'name' => $_FILES['attachment']['name'][$i],
+                               'type' => $_FILES['attachment']['type'][$i],
+                               'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
+                               'error' => $_FILES['attachment']['error'][$i],
+                               'size' => $_FILES['attachment']['size'][$i]
+                           
+                      );
                             $rand = rand(0,100);
-                            
-                            $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
+                            $d=0;
+                            $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand, $desciption);
                             $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][$i]);
                             array_push($filenamearray, $tempname);
                             array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
@@ -1976,10 +1976,11 @@ class Model {
                            
                       );
                     $rand = rand(0,100);
-                    $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand);
+                    $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand, $desciption);
                     $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][0]);
                     array_push($filenamearray, $tempname);
                     array_push($filedescriptionarray,$_POST["attachDesc"][0]);
+                    $_SESSION['filenameudf'][] = $tempname;
                 }
                  
                 if ($totalfiles > 0 && $_FILES['attachment']['name'][0] != "") {
@@ -2312,6 +2313,7 @@ class Model {
     }
 
     public function processDirectAttachment($attachment, $requestID, $description = ''){
+        $testrandvar = 0;
         $rand = rand(0,100);
         $max_upload = (int)(ini_get('upload_max_filesize'));
         $max_post = (int)(ini_get('post_max_size'));
@@ -2404,10 +2406,10 @@ class Model {
                 imagejpeg($attachment['tmp_name'], $attachment['tmp_name'], 75);
             }
         }
-        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]);
+        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]); 
+        $d++;
         
-        if(move_uploaded_file($attachment['tmp_name'][0], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]))){
-
+        if(move_uploaded_file($attachment['tmp_name'], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']))){
             $parameters_att = new stdClass();
             $parameters_att->user_id = $_SESSION['user_id'];
             $parameters_att->password = $_SESSION['password'];
@@ -2760,6 +2762,7 @@ class Model {
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
                         $udf_data = $_SESSION['filenameudf'][0];
+                        
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }

@@ -477,10 +477,12 @@ if(!isset($_GET['d'])){
                     <div class="column r70">
                         <label for="desc">Description</label>
                         <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
+                        <input type="hidden" id="attachDesc1" name="attachDesc[]" />
+                        <input type="hidden" id="attachDesc2" name="attachDesc[]" />
                         <!--<label for="desc">Description 2</label>
-                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />
+                        <input type="hidden" id="attachDesc1" maxlength="50" name="attachDesc[]" />
                         <label for="desc">Description 3</label>
-                        <input type="text" id="attachDesc" maxlength="50" name="attachDesc[]" />-->
+                        <input type="hidden" id="attachDesc2" maxlength="50" name="attachDesc[]" />-->
                     </div>
                 </div>
                      
