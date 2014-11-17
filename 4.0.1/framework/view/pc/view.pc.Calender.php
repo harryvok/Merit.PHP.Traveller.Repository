@@ -1,1 +1,1 @@
- <h1 style="color:black !important"><?php if($_SESSION['roleSecurity']->allow_request == "Y") { ?><h2><a class="header-nav" href="index.php?page=requests">BACK</a></h2><?php } ?></h1>
+ <h1><?php if($_SESSION['roleSecurity']->allow_request == "Y") { ?><h2><a class="header-nav" href="index.php?page=requests" style="color:black !important">BACK</a></h2><?php } ?></h1>
