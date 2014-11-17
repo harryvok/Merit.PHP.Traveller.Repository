@@ -129,7 +129,7 @@ if(!isset($_GET['d'])){
         </div>
         <div id="udfs" style="display: none;">
 
-            <div class="summaryContainer">
+            <div class="summaryContainer"> <!-- global udfs go here -->
                 <h1>User Defined Fields</h1>
                 <div>
                     <div style="margin-right: 24px;" id="global-udfs">
