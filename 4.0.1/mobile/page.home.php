@@ -7,7 +7,8 @@
     <meta name="HandheldFriendly" content="true" />
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
     <link rel="apple-touch-icon" href="images/mobile/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />-->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi" />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpbUvAzj57UcnLYCrbqOYR63P-smXorhU&sensor=true"></script>
     <?php
     if(defined("DEV") && DEV == 1){
