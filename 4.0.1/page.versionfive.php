@@ -16,7 +16,6 @@
             ?>
             <script src="inc\js\libraries\jquery-1.9.1.js"></script>
             <script src="inc\js\pages\js.storyBoard.js"></script>
-            <script src="inc\js\libraries\jquery.stickem.js "></script>
             <script src="inc\js\libraries\jquery.validate.min.js "></script>
             <script src="inc\js\libraries\sorttable.js "></script>
             <script src="inc\js\libraries\jquery-ui-1.10.3.custom.js"></script>
@@ -25,7 +24,7 @@
             <script src="inc\js\ajax.js"></script>
             <script src="inc\js\global.js"></script>
             <script src="inc\js\pc.js"></script>
-            <?php 
+            <?php
         }
     }
     ?>
@@ -40,7 +39,8 @@
             //if role security disabled for both actions and requests, display new request
             if($_SESSION['roleSecurity']->allow_action != "Y" && $_SESSION['roleSecurity']->allow_request != "Y"){
                 $_GET['page'] ="newRequest";
-            }            
+            }
+            
             if($defaultpage == "Requests"){
                 if($_SESSION['roleSecurity']->allow_request == "Y"){
                     $defaultpage = "requests";
@@ -58,16 +58,19 @@
             }
         }
          ?>
-    <title><?php echo SITE_TITLE; ?> - Request: <?php echo $GLOBALS['_REQUEST']['id'] ?> Storyboard</title>    
+    
 </head>
-<body>                    
-    <?php
-    if(!isset($_GET['page'])){
-        include("page.".$defaultpage.".php");
-    }else{
-        include("page.".$page.".php");
-    }
-    ?>                    
+<body>
+                    
+                        <?php
+                        if(!isset($_GET['page'])){
+                            include("page.".$defaultpage.".php");
+                        }else{
+                            include("page.".$page.".php");
+                        }
+                        ?>
+
+                    
 </body>
 </html>
 
