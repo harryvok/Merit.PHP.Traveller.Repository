@@ -39,8 +39,7 @@
             //if role security disabled for both actions and requests, display new request
             if($_SESSION['roleSecurity']->allow_action != "Y" && $_SESSION['roleSecurity']->allow_request != "Y"){
                 $_GET['page'] ="newRequest";
-            }
-            
+            }            
             if($defaultpage == "Requests"){
                 if($_SESSION['roleSecurity']->allow_request == "Y"){
                     $defaultpage = "requests";
@@ -60,17 +59,14 @@
          ?>
     
 </head>
-<body>
-                    
-                        <?php
-                        if(!isset($_GET['page'])){
-                            include("page.".$defaultpage.".php");
-                        }else{
-                            include("page.".$page.".php");
-                        }
-                        ?>
-
-                    
+<body>                    
+    <?php
+        if(!isset($_GET['page'])){
+            include("page.".$defaultpage.".php");
+        }else{
+            include("page.".$page.".php");
+        }
+    ?>                   
 </body>
 </html>
 
