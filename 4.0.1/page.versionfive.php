@@ -25,7 +25,7 @@
             <script src="inc\js\ajax.js"></script>
             <script src="inc\js\global.js"></script>
             <script src="inc\js\pc.js"></script>
-            <?php
+            <?php 
         }
     }
     ?>
@@ -40,8 +40,7 @@
             //if role security disabled for both actions and requests, display new request
             if($_SESSION['roleSecurity']->allow_action != "Y" && $_SESSION['roleSecurity']->allow_request != "Y"){
                 $_GET['page'] ="newRequest";
-            }
-            
+            }            
             if($defaultpage == "Requests"){
                 if($_SESSION['roleSecurity']->allow_request == "Y"){
                     $defaultpage = "requests";
@@ -59,20 +58,16 @@
             }
         }
          ?>
-    <title><?php echo SITE_TITLE; ?> - Request: <?php echo $GLOBALS['_REQUEST']['id'] ?> Storyboard</title>
-    
+    <title><?php echo SITE_TITLE; ?> - Request: <?php echo $GLOBALS['_REQUEST']['id'] ?> Storyboard</title>    
 </head>
-<body>
-                    
-                        <?php
-                        if(!isset($_GET['page'])){
-                            include("page.".$defaultpage.".php");
-                        }else{
-                            include("page.".$page.".php");
-                        }
-                        ?>
-
-                    
+<body>                    
+    <?php
+    if(!isset($_GET['page'])){
+        include("page.".$defaultpage.".php");
+    }else{
+        include("page.".$page.".php");
+    }
+    ?>                    
 </body>
 </html>
 

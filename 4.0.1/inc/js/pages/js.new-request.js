@@ -1312,10 +1312,14 @@ function changeLocationType() {
         $('#outside_ca').hide();
 
         if ($("#i_ctype").val().length > 0 || $("#i_ctype").val() != "") {
-            $("#i_ctype").prop("disabled", true); ("#i_ctype").prop("readonly", true).addClass("ui-disabled"); $("#i_ctype").textInputState("disable"); 
+            $("#i_ctype").prop("disabled", true);
+            $("#i_ctype").prop("readonly", true).addClass("ui-disabled");
+            $("#i_ctype").textInputState("disable");
         }
         if ($("#i_csuburb").val().length > 0) {
-            $("#i_csuburb").prop("disabled", true); ("#i_csuburb").prop("readonly", true).addClass("ui-disabled"); $("#i_csuburb").textInputState("disable");
+            $("#i_csuburb").prop("disabled", true);
+            $("#i_csuburb").prop("readonly", true).addClass("ui-disabled");
+            $("#i_csuburb").textInputState("disable");
             if ($("#cust_address_id").val() > 0) {
                 $("#CustAddSummary").prop("disabled", false);
             }
