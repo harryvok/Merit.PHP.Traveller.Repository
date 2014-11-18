@@ -112,6 +112,7 @@
                          <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?><a class="header-nav" href="index.php?page=search">SEARCH</a><?php } ?>
                          <a class="header-nav" href="process.php?action=logout">LOGOUT</a>
                          <a class="header-nav" href="index.php?page=view-StoryBoard&id=619808">STORYBOARD</a>
+                         <a class="header-nav" href="index.php?page=view-Calender&id=619808">CALENDER</a>
                          <span class="council-name cname-logged-in"><?php  echo COUNCIL_NAME;  ?></span>
               </div>
          </div>

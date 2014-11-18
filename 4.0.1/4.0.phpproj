@@ -1208,6 +1208,7 @@
     <Compile Include="page.view-name.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.view-DashBoard.php" />
     <Compile Include="page.view-StoryBoard.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>

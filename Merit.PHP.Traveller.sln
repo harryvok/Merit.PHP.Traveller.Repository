@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "3.4.1", "3.4.1\3.4.1.phpproj", "{D38288D8-893C-4A76-9502-A6B74F5EFC07}"
 EndProject
 Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "3.4.4", "3.4.2\3.4.4.phpproj", "{9F3ECE1E-6C4B-4C1D-A385-D2AA452B783F}"
@@ -23,6 +25,7 @@ Global
 		{9F3ECE1E-6C4B-4C1D-A385-D2AA452B783F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
