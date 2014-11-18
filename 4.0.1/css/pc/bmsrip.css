@@ -23,7 +23,7 @@
 	max-width:inherit;
 	bottom:0;
 	top:0;
-	background-color:#FFF
+	background-color:#C5C3C3;
 }
 .main-container.container,.rtl .main-container.container
 {
@@ -19074,7 +19074,7 @@
 }
 .no-skin .sidebar
 {
-	background-color:#f2f2f2;
+	background-color:#e4e6e9;
 	border-style:solid;
 	border-color:#ccc;
 	border-width:0 1px 0 0

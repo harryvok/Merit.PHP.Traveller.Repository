@@ -1423,7 +1423,9 @@
     <Content Include="css\pc\bmsrip.css" />
     <Content Include="css\pc\bootstraprip.css" />
     <Content Include="css\pc\pc.VersionFive.css" />
+    <Content Include="images\banner2.jpg" />
     <Content Include="images\delete-icon.png" />
+    <Content Include="images\logo1.png" />
     <Content Include="images\modify-icon.png" />
     <Content Include="inc\js\pages\js.adhocOfficer.js">
       <SubType>Content</SubType>
