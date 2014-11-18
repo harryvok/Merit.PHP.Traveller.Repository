@@ -300,6 +300,7 @@
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
     <Compile Include="framework\view\pc\view.pc.BookingSummary.php" />
+    <Compile Include="framework\view\pc\view.pc.Calender.php" />
     <Compile Include="framework\view\pc\view.pc.StoryBoard.php" />
     <Compile Include="framework\view\pc\view.pc.PropertySearch.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
@@ -1208,6 +1209,7 @@
     <Compile Include="page.view-name.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.view-Calender.php" />
     <Compile Include="page.view-StoryBoard.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>
@@ -1318,6 +1320,8 @@
     <Content Include=".htaccess">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="css\pc\bmsrip.css" />
+    <Content Include="css\pc\bootstraprip.css" />
     <Content Include="css\pc\pc.VersionFive.css" />
     <Content Include="images\delete-icon.png" />
     <Content Include="images\modify-icon.png" />
