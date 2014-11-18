@@ -64,15 +64,25 @@
         </div>
 
         <div class="main-content">
-            <div class="breadcrumbs" id="breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa  fa-tachometer"></i>
-                        <a href="#">Request Intray</a>
-                    </li>
-                    <li class="active"><a href="#">Storyboard</a></li>
-                </ul>
-
+            <div class="breadcrumbs" id="breadcrumbs">  
+                <div style="float:left"><p id="header-text" style="font-size:x-large;font-weight:bold;margin-left:20px;">Calendar View - Action</p></div>
+                <div style="float:right">
+                    <p id="color_info">
+                        <table>
+                            <tr>
+                                <td onclick="taskselection_unpro();" style="cursor: pointer;">
+                                    <div id="Div1"><small class="cal-events-num badge3 badge-important1 pull-left">&nbsp;&nbsp;</small> &nbsp;&nbsp;<strong> Open </strong> </div>
+                                </td>
+                                <td onclick="taskselection_unfin();" style="cursor: pointer; ">
+                                    <div id="Div2"><small class="cal-events-num badge badge-important pull-left">&nbsp;&nbsp;</small> &nbsp;&nbsp;<strong> Completed</strong></div>
+                                </td>
+                                <td onclick="taskselection_unapp();" style="cursor: pointer;">
+                                    <div id="Div3"><small class="cal-events-num badge2 badge-important1 pull-left">&nbsp;&nbsp;</small>&nbsp;&nbsp; <strong> Suspended </strong> </div>
+                                </td>                               
+                            </tr>
+                        </table>
+                    </p> 
+                </div>  
             </div>
             <div class="">
                     <div id="homemaincontent">
@@ -95,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <iframe id="calendar-frame" width="1270" height="650" frameborder="1" scrolling="no" style="margin-left:20%;"> 
+                                    <iframe id="calendar-frame" width="1270" height="650" frameborder="1" scrolling="no" style="margin-left:10px;margin-top:10%;"> 
             </iframe>
                                 </div>
                             </div>

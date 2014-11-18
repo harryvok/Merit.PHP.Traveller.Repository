@@ -1,0 +1,23 @@
+<span id="cal-slide-tick" style="display: none"></span>
+<div id="cal-slide-content" class="cal-event-list">
+	<ul class="unstyled list-unstyled">
+       
+        <% function sortByKey(array, key) { %>
+        <% return array.sort(function(a, b) { %>
+        <% var x = a[key]; var y = b[key]; %>
+        <% return ((x > y) ? -1 : ((x < y) ? 1 : 0)); %>
+        <% }); %>
+        <% } %>
+        
+        <% events = sortByKey(events, 'title'); %>
+        
+		<% _.each(events, function(event) { %>
+			<li>
+				<span class="pull-left event <%= event['class'] %>"></span>&nbsp;
+				<a onclick="window.top.location='/PermitIntray'" href="" data-event-id="<%= event.id %>"
+					data-event-class="<%= event['class'] %>" class="event-item">
+					<%= event.title %></a>
+			</li>
+		<% }) %>
+	</ul>
+</div>
