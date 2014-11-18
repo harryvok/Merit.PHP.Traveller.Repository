@@ -1685,7 +1685,7 @@ class Model {
             $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
             
         }
-        elseif($_POST['same'] == "o"){
+        else if($_POST['same'] == "o"){
             $cust_address_number = strlen($_POST['o_cno']) > 0 ? strip_tags(addslashes($_POST['o_cno'])) : "";
             $cust_address_fnumber = $_POST['o_cfaddno'];
             $cust_address_street = $_POST['o_cstreet'];
@@ -1695,6 +1695,7 @@ class Model {
             $cust_address_desc = strip_tags(addslashes($_POST['o_cdesc']));
             $cust_address_postcode = $_POST['o_cpostcode'];
         }
+        $cust_address_ctr = $_POST['cust_address_ctr'];
 
         $facility_id = $_POST['facilityId'] != "" ? $_POST['facilityId'] : 0;
 

@@ -34,6 +34,13 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				$('#name_id').val($('#ret_'+name_id+'_name_id').val());
 				$('#name_ctr').val($('#ret_'+name_id+'_name_ctr').val());
 				$('#name_origin').val($('#ret_' + name_id + '_name_origin').val());
+				if ($("#i_ctype").val().length > 0) {
+				    $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+				}
+				if ($("#i_csuburb").val().length > 0) {
+				    $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+				}
+
 				if ($('#ret_' + name_id + '_name_id').val() > 0 || $('#ret_' + name_id + '_name_id').val() != "0" || $('#ret_' + name_id + '_name_id').val() != 0) {
 				    $("#CustSummary").removeAttr("disabled")
 				}
