@@ -17,10 +17,14 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				$('#i_cfno').val($('#ret_'+id+'_house_suffix').val());
 				$('#i_cstreet').val($('#ret_'+id+'_street_name').val());
 				$('#i_ctype').val($('#ret_'+id+'_street_type').val());
-				$('#i_csuburb').val($('#ret_'+id+'_locality').val());
+				$('#i_csuburb').val($('#ret_' + id + '_locality').val());
+				$("#i_cpostcode").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+				$("#i_cpropertynumber").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+				$('#i_cpostcode').val($('#ret_' + id + '_postcode').val());
+				$('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
 				$('#cust_address_id').val($('#ret_' + id + '_address_id').val());
-				$('#cust_address_ctr').val($('#ret_'+id+'_address_ctr').val());
-				
+				$('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
+								
 				var name_id = "<?php echo $_POST['name_set']; ?>";
 				
 				$('#pref_title').val($('#ret_'+name_id+'_pref_title').val());
@@ -33,7 +37,8 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				$('#company').val($('#ret_'+name_id+'_company_name').val());
 				$('#name_id').val($('#ret_'+name_id+'_name_id').val());
 				$('#name_ctr').val($('#ret_'+name_id+'_name_ctr').val());
-				$('#name_origin').val($('#ret_' + name_id + '_name_origin').val());
+				$('#name_origin').val($('#ret_' + name_id + '_name_origin').val());				
+
 				if ($("#i_ctype").val().length > 0) {
 				    $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
 				}
