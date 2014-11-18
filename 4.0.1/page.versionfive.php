@@ -71,7 +71,7 @@
                 </div>
             </header>
 
-    <div id="banner" class="navbar navbar-default" >
+    <div id="banner" >
         
     </div>
 
