@@ -10,7 +10,9 @@
     <?php
     if(defined("DEV") && DEV == 1){
         ?>
-        <link rel="stylesheet" href="css/pc/pc.VersionFive.css" />
+        <link rel="stylesheet" href="css/pc/pc.VersionFive.css"
+        <link rel="stylesheet" href="css/pc/boostraprip.css" />
+        <link rel="stylesheet" href="css/pc/bmsrip.css" />
         <?php
         if(isset($user)){
             ?>
@@ -39,7 +41,8 @@
             //if role security disabled for both actions and requests, display new request
             if($_SESSION['roleSecurity']->allow_action != "Y" && $_SESSION['roleSecurity']->allow_request != "Y"){
                 $_GET['page'] ="newRequest";
-            }            
+            }
+            
             if($defaultpage == "Requests"){
                 if($_SESSION['roleSecurity']->allow_request == "Y"){
                     $defaultpage = "requests";
@@ -59,14 +62,30 @@
          ?>
     
 </head>
-<body>                    
+<body class="no-skin" style="margin-top:40px;">
+             <header>
+                <div id="headerContainer">
+                        <img id="bannerLogo" border="0" src="images/pc/logo1.png" alt="Merit Technology">
+                        <span id="userDetails">Header</span>
+                        <span id="bannerMeritName">Merit Technology</span>     
+                </div>
+            </header>
+
+    <div id="banner" class="navbar navbar-default" >
+        
+    </div>
+
+    <!-- Include the page content -->    
+    <div>            
     <?php
-        if(!isset($_GET['page'])){
-            include("page.".$defaultpage.".php");
-        }else{
-            include("page.".$page.".php");
-        }
-    ?>                   
+            if(!isset($_GET['page'])){
+                include("page.".$defaultpage.".php");
+            }else{
+                include("page.".$page.".php");
+            }
+    ?>
+    </div>                  
+                    
 </body>
 </html>
 

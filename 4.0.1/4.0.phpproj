@@ -1210,6 +1210,10 @@
     <Compile Include="page.view-name.php">
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="page.view-Calender.php" />
+>>>>>>> origin/master
     <Compile Include="page.view-StoryBoard.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>
@@ -1339,6 +1343,7 @@
     <Content Include=".htaccess">
       <SubType>Content</SubType>
     </Content>
+<<<<<<< HEAD
     <Content Include="calendar\calendar %282%29.html" />
     <Content Include="calendar\calendar.html" />
     <Content Include="calendar\calendar_days.html" />
@@ -1419,6 +1424,10 @@
     <Content Include="calendar\tmpls\week.html" />
     <Content Include="calendar\tmpls\year-month.html" />
     <Content Include="calendar\tmpls\year.html" />
+=======
+    <Content Include="css\pc\bmsrip.css" />
+    <Content Include="css\pc\bootstraprip.css" />
+>>>>>>> origin/master
     <Content Include="css\pc\pc.VersionFive.css" />
     <Content Include="images\delete-icon.png" />
     <Content Include="images\modify-icon.png" />
