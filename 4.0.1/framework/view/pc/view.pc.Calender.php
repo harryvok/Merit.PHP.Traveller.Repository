@@ -76,9 +76,7 @@
             </div>
             <div class="">
                     <div id="homemaincontent">
-                    <div class="page-content">
-                        <div class="page-content-area">
-                            <div class="container1">
+                    
                                 <div id="button-content">
                                     <div class="btn-group1">
                                         <table>
@@ -101,9 +99,7 @@
             </iframe>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div><!-- /.page-content -->
+                       
             </div><!-- /.main-content -->
         </div><!-- /.main-container -->
     </div>     
