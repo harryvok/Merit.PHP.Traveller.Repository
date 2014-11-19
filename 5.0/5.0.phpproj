@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Name>_4.0</Name>
-    <ProjectGuid>6a34cb60-df22-4520-8485-8ff93943ae50</ProjectGuid>
+    <ProjectGuid>{ec165a3f-2d19-4947-8a94-6806fb61d474}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>_4.0</RootNamespace>
     <!-- important to be opened by PHP Tools, when also Phalanger Tools are installed -->

@@ -2780,7 +2780,7 @@ class Model {
                     elseif($udf->udf_type == "G"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][0];
+                        $udf_data = $_SESSION['filenameudf'][1];
                         
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
@@ -2788,7 +2788,7 @@ class Model {
                     elseif($udf->udf_type == "B"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][1];
+                        $udf_data = $_SESSION['filenameudf'][0];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
