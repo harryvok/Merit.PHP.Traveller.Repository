@@ -71,12 +71,7 @@
                 </div>
             </header>
 
-<<<<<<< HEAD
-    <div id="banner">
-=======
-    <div id="banner" >
->>>>>>> origin/poonam-edits
-        
+    <div id="banner">        
     </div>
 
     <!-- Include the page content -->    

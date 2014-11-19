@@ -2849,7 +2849,7 @@ class Model {
                         );
                         array_push($array, $udf_details);
                     }
-                    unset($udf_details);
+                     unset($udf_details);
                 }
             }
             $parameters_udfs['a_data']['udf_dets']['udf_details'] = $array;
