@@ -1,41 +1,7 @@
 <?php
 
 class Model {
-    
-    /* STORYBOARD */
-    
-    public function getStoryBoard($params = NULL){
-        if(isset($_GET['id'])) $id = $_GET['id'];
-        elseif(isset($_SESSION['request_id'])) $id = $_SESSION['request_id'];
-        elseif(isset($GLOBALS['request_id'])) $id = $GLOBALS['request_id'];
-        elseif(isset($_POST['id'])) $id = $_POST['id'];
 
-        $parameters = new stdClass();
-        $parameters->user_id = $_SESSION['user_id'];
-        $parameters->password = $_SESSION['password'];
-        $parameters->request_id = $id;
-        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters);
-        return $result;
-    }
-    
-    /* Calender */
-    
-    public function getCalender($params = NULL){
-        $filter = $this->getDefaultFilter("A", "action");
-        $from_date = (date("o")-20)."-01-"."01T00:00:00.000";
-        $to_date = (date("o")+20)."-01-"."01T00:00:00.000";
-        $parameters = new stdClass();
-        $parameters->user_id = $_SESSION['user_id'];
-        $parameters->password = $_SESSION['password'];
-        $parameters->data_group = $_SESSION['data_group'];
-        $parameters->filter_no = $filter;
-        $parameters->from_date = $from_date;
-        $parameters->to_date = $to_date;
-        $result = $this->WebService(MERIT_ACTION_FILE, "ws_get_action_intray", $parameters)->action_intray_det;
-        $GLOBALS['default_filter'] = $filter;
-        return $result;
-    }
-   
 
 
 	/* Generic functions */

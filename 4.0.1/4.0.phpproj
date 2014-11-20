@@ -300,8 +300,6 @@
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
     <Compile Include="framework\view\pc\view.pc.BookingSummary.php" />
-    <Compile Include="framework\view\pc\view.pc.Calender.php" />
-    <Compile Include="framework\view\pc\view.pc.StoryBoard.php" />
     <Compile Include="framework\view\pc\view.pc.PropertySearch.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
     <Compile Include="framework\view\pc\view.pc.DocumentSearchResults.php" />
@@ -1199,7 +1197,6 @@
     <Compile Include="page.view-action.php">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="page.view-Calender.php" />
     <Compile Include="page.view-customer.php" />
     <Compile Include="page.view-address.php">
       <SubType>Code</SubType>
@@ -1211,7 +1208,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="page.view-Calender.php" />
-    <Compile Include="page.view-StoryBoard.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>
     </Compile>
@@ -1420,8 +1416,6 @@
     <Content Include="calendar\tmpls\week.html" />
     <Content Include="calendar\tmpls\year-month.html" />
     <Content Include="calendar\tmpls\year.html" />
-    <Content Include="css\pc\bmsrip.css" />
-    <Content Include="css\pc\bootstraprip.css" />
     <Content Include="css\pc\pc.VersionFive.css" />
     <Content Include="images\banner2.jpg" />
     <Content Include="images\delete-icon.png" />
