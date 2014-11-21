@@ -2746,7 +2746,17 @@ class Model {
                     elseif($udf->udf_type == "G"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][1];
+                        $i++;
+                        if ($i > 1){
+                            if ($_SESSION['udf_G'] > 1){
+                                $_SESSION['filenameudf'][0] = $_SESSION['filenameudf'][1];;
+                            }
+                        }
+                        
+                        if ($_SESSION['udf_G'] > 0 ){
+                            $udf_data = $_SESSION['filenameudf'][0];
+                        }
+                            
                         
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
@@ -2754,14 +2764,12 @@ class Model {
                     elseif($udf->udf_type == "B"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][0];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "P"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][0];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
