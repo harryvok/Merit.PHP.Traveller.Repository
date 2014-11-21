@@ -1953,11 +1953,11 @@ class Model {
                     }
                 }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     $attachment = array(
-                               'name' => $_FILES['attachment']['name'],
-                               'type' => $_FILES['attachment']['type'],
-                               'tmp_name' => $_FILES['attachment']['tmp_name'],
-                               'error' => $_FILES['attachment']['error'],
-                               'size' => $_FILES['attachment']['size']
+                               'name' => $_FILES['attachment']['name'][0],
+                               'type' => $_FILES['attachment']['type'][0],
+                               'tmp_name' => $_FILES['attachment']['tmp_name'][0],
+                               'error' => $_FILES['attachment']['error'][0],
+                               'size' => $_FILES['attachment']['size'][0]
                            
                       );
                     $rand = rand(0,100);
