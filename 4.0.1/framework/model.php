@@ -2,7 +2,29 @@
 
 class Model {
 
+    public function processresubmitAction ($params = NULL){
+        
+        $test = 1;
+        $datetime = $_POST['resubDate'].'T'.$_POST['resubTime'].':00+11:00';
+        
+        $c = strip_tags(addslashes($_POST['comment']));
+        
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_SESSION['request_id'];
+        $parameters->action_id = $_SESSION['action_id'];
+        $parameters->resubmit_datetime = $datetime;
+        $parameters->comment = $c;
+        
+      
+        $result = $this->WebService(MERIT_ACTION_FILE, "ws_resubmit_action", $parameters);
 
+        $_SESSION['success_action_resubmit'] = 1;
+        $_SESSION['done'] = 1;
+        $_SESSION['success'] = 1;
+        $_SESSION['redirect'] = "index.php?page=actions";
+    }
 
 	/* Generic functions */
 
@@ -3535,6 +3557,7 @@ class Model {
                 if($result->sms_sent_on_comp == true) $_SESSION['success_sms'] = 1;
 
                 
+                
                 #Adhoc stuff Below ---------------------------------------------------->
                 if($result->ws_message == "adhoc" && $result->ws_status == 2){
                     $_SESSION['action_id'] = $result->action_id;
@@ -3574,6 +3597,12 @@ class Model {
                 }
                 #Adhoc stuff Above ----------------------------------------------------->
                 
+                #Resubmit stuff Below ---------------------------------------------------->
+                if ($tempArray[2]=='Y') {
+                    $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
+                }
+                #Resubmit stuff Above ---------------------------------------------------->
+                
                 
                 else{
                     $_SESSION['action-id'] = $action_id;
@@ -3603,9 +3632,7 @@ class Model {
             $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=complete";
         }
     }
-
-    public function processAdhocOfficer2($params = NULL){
-    }
+  
     
     public function processAdhocOfficer($params = NULL){
         

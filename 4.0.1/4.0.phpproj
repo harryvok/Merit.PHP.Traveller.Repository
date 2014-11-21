@@ -1160,6 +1160,7 @@
     <Compile Include="page.actions.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.resubmitAction.php" />
     <Compile Include="page.adhocOfficer.php">
       <SubType>Code</SubType>
     </Compile>
