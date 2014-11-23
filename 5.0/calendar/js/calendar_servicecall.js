@@ -1,7 +1,7 @@
 
 var size_calendar = 0;
 
-function getcalendar_month(date) {
+function getcalendar_days(date) {
      var j = 0;
     title[j] =  "Dummy";
     url[j] = "/PermitIntray";

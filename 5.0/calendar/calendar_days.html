@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/calendar/css/calendar.css">
     <script src="/calendar/js/eventslist.js"></script>
     <script src="/calendar/js/calendar_servicecall.js"></script>
-    <link rel="stylesheet" href="../../Content/CSS/calendar_main.css">
+<!--    <link rel="stylesheet" href="../../Content/CSS/calendar_main.css">-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
     <script>
@@ -31,25 +31,25 @@
         }
 
         var date_str = "01-"+getParameterByName('date');
-        //alert(date_str);
+        alert(date_str);
 
         var date_spl = date_str.split('-');
 
-        var date_mondiff = monthDiff(new Date(2013, 02, 01), new Date(parseInt(date_spl[2]), parseInt(date_spl[1]) - 1, 1));
+        //var date_mondiff = monthDiff(new Date(2013, 02, 01), new Date(parseInt(date_spl[2]), parseInt(date_spl[1]) - 1, 1));
 
-        var unfin = getParameterByName('unfin');
-        var unapp = getParameterByName('unapp');
-        var unpro = getParameterByName('unpro');
-        var finis = getParameterByName('finis');
+        //var unfin = getParameterByName('unfin');
+        //var unapp = getParameterByName('unapp');
+        //var unpro = getParameterByName('unpro');
+        //var finis = getParameterByName('finis');
 
-        getcalendar_days(date_str, unfin, unapp, unpro, finis);
+        getcalendar_days(date_str);
 
     </script>
 	
 </head>
 <body>
     <div class="container1">
-        <div class="page-header" style="display:none;">
+       <!-- <div class="page-header">
 
             <h3></h3>
 
@@ -71,9 +71,9 @@
                     <small class="cal-events-num badge badge-important1 pull-left">Unallocated</small>
 
                 </div>
-            </div>-->
+            </div>
 
-        </div>
+        </div>-->
 
         <div>
             <div class="span9">
@@ -99,7 +99,7 @@
                 var options = {
                     events_source: 'null',
                     view: 'month',
-                    tmpl_path: '/Scripts/calendar/tmpls/',
+                    tmpl_path: '/calendar/tmpls/',
                     tmpl_cache: false,
                     day: '2013-03-12',
                     onAfterEventsLoad: function (events) {
@@ -126,7 +126,7 @@
                         }
                     }
                 };
-
+                
                 var calendar = $('#calendar').calendar(options);
 
                 $('.btn-group button[data-calendar-nav]').each(function () {
