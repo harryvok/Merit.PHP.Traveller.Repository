@@ -140,9 +140,31 @@
                             var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                             var date_cal = new Date();
                             date_cal.setMonth(date_cal.getMonth());
-                            document.getElementById('calendar-frame').src = '/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
-                            alert(document.getElementById('calendar-frame').src);
+                            document.getElementById('calendar-frame').src = '/calendar/calendar_months.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
                             document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
+                            function call_calendar() {
+                                //document.getElementById('loader1').style.display = 'block';
+                                //$('#calendar-frame').on('load', function () {
+                                //    $('#loader1').hide();
+                                //});
+                                //document.getElementById('calendar-graphbutton').innerHTML = '<button class="btn btn-primary" data-calendar-view="month" onclick="call_graph();">Graph</button>';
+                                //if (yearbutton == 1) {
+                                    document.getElementById('calendar-frame').src = '/Calendar_Months?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear() ;
+                                //}
+                                //else {
+                                //    document.getElementById('calendar-frame').src = '@Url.Content("~/Dashboard/Calendar_Days?date=")' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear() + '&unfin=' + unfin_butcheck + '&unapp=' + unapp_butcheck + '&unpro=' + unpro_butcheck + '&finis=' + finis_butcheck;
+
+                                //}
+                                document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
+                                //document.getElementById('color_bar').style.display = 'block';
+                                ////document.getElementById('nextprev_butgroup').style.display = 'block';
+                                ////document.getElementById('calendar-graphbutton').style.display = 'none';
+                                ////document.getElementById('yeamonth_group').style.display = 'block';
+                                ////document.getElementById('cal_date').style.display = 'block';
+                                //document.getElementById('calend_div').style.display = 'block';
+                                //document.getElementById('graph_div').style.display = 'none';
+                            }
+
                         });
                     </script>
                     

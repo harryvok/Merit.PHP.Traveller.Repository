@@ -3,12 +3,12 @@
 <head>
 	<title>Twitter Bootstrap jQuery Calendar component</title>
 
-	<link rel="stylesheet" href="/Scripts/calendar/components/bootstrap2/css/bootstrap.css">
-    <link rel="stylesheet" href="/Scripts/calendar/components/bootstrap2/css/bootstrap-responsive.css">
-    <link rel="stylesheet" href="/Scripts/calendar/css/calendar.css">
-    <script src="/Scripts/calendar/js/eventslist.js"></script>
-    <script src="/Scripts/calendar/js/calendar_servicecall.js"></script>
-    <link rel="stylesheet" href="../../Content/CSS/calendar_main.css">
+	<link rel="stylesheet" href="/calendar/components/bootstrap2/css/bootstrap.css">
+    <link rel="stylesheet" href="/calendar/components/bootstrap2/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/calendar/css/calendar.css">
+    <script src="/calendar/js/eventslist.js"></script>
+    <script src="/calendar/js/calendar_servicecall.js"></script>
+<!--    <link rel="stylesheet" href="../../Content/CSS/calendar_main.css">-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
     <script>
@@ -29,18 +29,18 @@
         }
 
         var date_str = "01-"+getParameterByName('date');
-        //alert(date_str);
+        alert(date_str);
 
         var date_spl = date_str.split('-');
 
-        var date_mondiff = monthDiff(new Date(2013, 02, 01), new Date(parseInt(date_spl[2]), parseInt(date_spl[1]) - 1, 1));
+        //var date_mondiff = monthDiff(new Date(2013, 02, 01), new Date(parseInt(date_spl[2]), parseInt(date_spl[1]) - 1, 1));
 
-        var unfin = getParameterByName('unfin');
-        var unapp = getParameterByName('unapp');
-        var unpro = getParameterByName('unpro');
-        var finis = getParameterByName('finis');
+        //var unfin = getParameterByName('unfin');
+        //var unapp = getParameterByName('unapp');
+        //var unpro = getParameterByName('unpro');
+        //var finis = getParameterByName('finis');
 
-        getcalendar_month(date_str, unfin, unapp, unpro, finis);
+        getcalendar_month(date_str);
 
     </script>
 	
@@ -85,11 +85,11 @@
 
         <div id="disqus_thread"></div>
 
-        <script src="/Scripts/calendar/components/jquery/jquery.min.js"></script>
-        <script src="/Scripts/calendar/components/underscore/underscore-min.js"></script>
-        <script src="/Scripts/calendar/components/bootstrap2/js/bootstrap.min.js"></script>
-        <script src="/Scripts/calendar/components/jstimezonedetect/jstz.min.js"></script>
-        <script src="/Scripts/calendar/js/calendar.js"></script>
+        <script src="/calendar/components/jquery/jquery.min.js"></script>
+        <script src="/calendar/components/underscore/underscore-min.js"></script>
+        <script src="/calendar/components/bootstrap2/js/bootstrap.min.js"></script>
+        <script src="/calendar/components/jstimezonedetect/jstz.min.js"></script>
+        <script src="/calendar/js/calendar.js"></script>
 
         <script>
             (function ($) {
@@ -97,7 +97,7 @@
                 var options = {
                     events_source: 'null',
                     view: 'month',
-                    tmpl_path: '/Scripts/calendar/tmpls/',
+                    tmpl_path: '/calendar/tmpls/',
                     tmpl_cache: false,
                     day: '2013-03-12',
                     onAfterEventsLoad: function (events) {
@@ -124,7 +124,6 @@
                         }
                     }
                 };
-
                 var calendar = $('#calendar').calendar(options);
 
                 $('.btn-group button[data-calendar-nav]').each(function () {
