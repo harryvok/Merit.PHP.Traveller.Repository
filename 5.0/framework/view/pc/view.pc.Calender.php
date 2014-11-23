@@ -1,11 +1,16 @@
 
-<!-- bootstrap & fontawesome --> 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-    <!-- page specific plugin styles -->
-
-    <!-- button styles -->
-
-<style>
+<!DOCTYPE html>
+<head>
+    <title>Calendar - Actions</title>
+    <link rel="stylesheet" href="/calendar/css/calendar.css" />
+    <link rel="stylesheet" href="/calendar/components/bootstrap3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href='/calendar/components/bootstrap2/css/bootstrap.css'>
+    <link rel="stylesheet" href='/calendar/components/bootstrap2/css/bootstrap-responsive.css'>
+    <script src='/calendar/js/eventslist.js'></script>
+</head>
+<body>
+    <div class="main-container" id="main-container">
+        <style>
         .datec {
             font-size: 22px;
             font-weight: 400;
@@ -56,66 +61,62 @@
             border-radius: 10px;
         } 
     </style>
-    
-    <!-- inline styles related to this page -->
-
-  
-    <div class="main-container" id="main-container">
-
         <div id="sidebar" class="sidebar responsive">
             <ul class="nav nav-list" style="top: 0px;">
                 <li class="active">
                     <a href="#">
-                        <i class="menu-icon fa fa-desktop"></i>
-                        <span class="menu-text">Show</span>
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text"> Dashboard </span>
                     </a>
+                    <b class="arrow"></b>
                 </li>
 
                 <li class="hsub ">
                     <a href="#">
-                        <i class="menu-icon fa fa-pencil-square-o"></i>
-                        <span class="menu-text">Options</span>
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text"> Visa Registration </span>
                     </a>
+                    <b class="arrow"></b>
                 </li>
 
                 <li class="hsub " onclick="getPaging(this.id);">
                     <a href="#">
                     <i class="menu-icon fa fa-fighter-jet"></i>
-                    <span class="menu-text">Actions</span>
+                    <span class="menu-text">Permits</span>
                     </a>
+                    <b class="arrow"></b>
                 </li>
 
                 <li class="hsub " onclick="getPaging(this.id);">
                     <a href="#">
                     <i class="menu-icon fa fa-envelope"></i>
-                    <span class="menu-text">Output</span>
+                    <span class="menu-text">Messages</span>
                     </a>
+                    <b class="arrow"></b>
                 </li>
 
                 <li class="hsub" onclick="getPaging(this.id);">
-                    <?php if($_SESSION['roleSecurity']->allow_request == "Y") { ?><a class="header-nav" href="index.php?page=requests" ><?php } ?>
+                    <a href="#">
                     <i class="menu-icon fa fa-sign-out"></i>
-                    <span class="menu-text">Back</span>
+                    <span class="menu-text">Log Out</span>
                     </a>
+                    <b class="arrow"></b>
                 </li>
 
-
+                <li class="hsub">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> Administration </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
             </ul>
+            <h3><?php if($_SESSION['roleSecurity']->allow_request == "Y") { ?><a class="header-nav" href="index.php?page=requests" style="color:black !important">BACK</a></><?php } ?></h3>
         </div>
 
         <div class="main-content">
             <div class="breadcrumbs" id="breadcrumbs">  
-                <div style="float:left">
-                    <div class="breadcrumbs" id="Div1">
-                        <ul class="breadcrumb">
-                            <li>
-                                <i class="ace-icon fa  fa-tachometer"></i>
-                                <a href="#">Action Intray</a>
-                            </li>
-                            <li class="active"><a href="#">Calendar</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <div style="float:left"><p id="header-text" style="font-size:x-large;font-weight:bold;margin-left:20px;">Calendar View - Action</p></div>
                 <div style="float:right">
                     <table>
                         <tr>
