@@ -1,42 +1,30 @@
 <?php
 
 class Model {
-    
-    /* STORYBOARD */
-    
-    public function getStoryBoard($params = NULL){
-        if(isset($_GET['id'])) $id = $_GET['id'];
-        elseif(isset($_SESSION['request_id'])) $id = $_SESSION['request_id'];
-        elseif(isset($GLOBALS['request_id'])) $id = $GLOBALS['request_id'];
-        elseif(isset($_POST['id'])) $id = $_POST['id'];
 
+    public function processresubmitAction ($params = NULL){
+        
+        $test = 1;
+        $datetime = $_POST['resubDate'].'T'.$_POST['resubTime'].':00+11:00';
+        
+        $c = strip_tags(addslashes($_POST['comment']));
+        
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
-        $parameters->request_id = $id;
-        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters);
-        return $result;
-    }
-    
-    /* Calender */
-    
-    public function getCalender($params = NULL){
-        $filter = $this->getDefaultFilter("A", "action");
-        $from_date = (date("o")-20)."-01-"."01T00:00:00.000";
-        $to_date = (date("o")+20)."-01-"."01T00:00:00.000";
-        $parameters = new stdClass();
-        $parameters->user_id = $_SESSION['user_id'];
-        $parameters->password = $_SESSION['password'];
-        $parameters->data_group = $_SESSION['data_group'];
-        $parameters->filter_no = $filter;
-        $parameters->from_date = $from_date;
-        $parameters->to_date = $to_date;
-        $result = $this->WebService(MERIT_ACTION_FILE, "ws_get_action_intray", $parameters)->action_intray_det;
-        $GLOBALS['default_filter'] = $filter;
-        return $result;
-    }
-   
+        $parameters->request_id = $_SESSION['request_id'];
+        $parameters->action_id = $_SESSION['action_id'];
+        $parameters->resubmit_datetime = $datetime;
+        $parameters->comment = $c;
+        
+      
+        $result = $this->WebService(MERIT_ACTION_FILE, "ws_resubmit_action", $parameters);
 
+        $_SESSION['success_action_resubmit'] = 1;
+        $_SESSION['done'] = 1;
+        $_SESSION['success'] = 1;
+        $_SESSION['redirect'] = "index.php?page=actions";
+    }
 
 	/* Generic functions */
 
@@ -1987,11 +1975,11 @@ class Model {
                     }
                 }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     $attachment = array(
-                               'name' => $_FILES['attachment']['name'],
-                               'type' => $_FILES['attachment']['type'],
-                               'tmp_name' => $_FILES['attachment']['tmp_name'],
-                               'error' => $_FILES['attachment']['error'],
-                               'size' => $_FILES['attachment']['size']
+                               'name' => $_FILES['attachment']['name'][0],
+                               'type' => $_FILES['attachment']['type'][0],
+                               'tmp_name' => $_FILES['attachment']['tmp_name'][0],
+                               'error' => $_FILES['attachment']['error'][0],
+                               'size' => $_FILES['attachment']['size'][0]
                            
                       );
                     $rand = rand(0,100);
@@ -2780,7 +2768,17 @@ class Model {
                     elseif($udf->udf_type == "G"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][1];
+                        $i++;
+                        if ($i > 1){
+                            if ($_SESSION['udf_G'] > 1){
+                                $_SESSION['filenameudf'][0] = $_SESSION['filenameudf'][1];;
+                            }
+                        }
+                        
+                        if ($_SESSION['udf_G'] > 0 ){
+                            $udf_data = $_SESSION['filenameudf'][0];
+                        }
+                            
                         
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
@@ -2788,14 +2786,12 @@ class Model {
                     elseif($udf->udf_type == "B"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][0];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
                     elseif($udf->udf_type == "P"){
                         //$filename = "udf_".str_replace(':',"",str_replace(' ', '', $udf->udf_name));
                         //$udf_data = $this->processUDFAttachment($_FILES[$filename]);
-                        $udf_data = $_SESSION['filenameudf'][0];
                         //$udf_data = $this->processUDFAttachment($_FILES[$string]);
                         $ok=1;
                     }
@@ -3561,6 +3557,7 @@ class Model {
                 if($result->sms_sent_on_comp == true) $_SESSION['success_sms'] = 1;
 
                 
+                
                 #Adhoc stuff Below ---------------------------------------------------->
                 if($result->ws_message == "adhoc" && $result->ws_status == 2){
                     $_SESSION['action_id'] = $result->action_id;
@@ -3600,6 +3597,12 @@ class Model {
                 }
                 #Adhoc stuff Above ----------------------------------------------------->
                 
+                #Resubmit stuff Below ---------------------------------------------------->
+                if ($tempArray[2]=='Y') {
+                    $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
+                }
+                #Resubmit stuff Above ---------------------------------------------------->
+                
                 
                 else{
                     $_SESSION['action-id'] = $action_id;
@@ -3629,9 +3632,7 @@ class Model {
             $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=complete";
         }
     }
-
-    public function processAdhocOfficer2($params = NULL){
-    }
+  
     
     public function processAdhocOfficer($params = NULL){
         
