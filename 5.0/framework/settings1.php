@@ -11,9 +11,9 @@ define("COUNCIL_NAME", "Merit Technology"); // Your council name
 define("INACTIVITY", ""); // The time in minutes of inactivity before a user is logged out automatically with the browser still open. Optional.
 
 //WEB SERVICES AND LINKS
-define("SITE_LINK", "http://traveller/4.0/");
-define("WEBSITE", "http://traveller/4.0/"); // Traveller website address, with a slash on the end.
-define("LOCAL_LINK", "C:/projects/Merit2013/Merit.PHP.Traveller/4.0/"); // Traveller website address, with a slash on the end.
+define("SITE_LINK", "http://traveller/5.0/");
+define("WEBSITE", "http://traveller/5.0/"); // Traveller website address, with a slash on the end.
+define("LOCAL_LINK", "C:/projects/Merit2013/Merit.PHP.Traveller/5.0/"); // Traveller website address, with a slash on the end.
 define("WEB_SERVICES_PATH", "http://192.168.0.68:8086/merit_traveller/"); // Path to the webservices. With a slash on the end!
 define("MERIT_ACTION_FILE", "ws_merit_action.asmx");
 define("MERIT_REQUEST_FILE", "ws_merit_request.asmx");
