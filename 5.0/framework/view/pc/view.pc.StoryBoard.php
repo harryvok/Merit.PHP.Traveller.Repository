@@ -184,27 +184,25 @@
                                                <p>Provider: </p>
                                            </div>
                                            <div style="float:left; width:16%;">
-                                               <p><b><?php echo $GLOBALS['result']->request_type ?></b></p>
-                                               <p><b><?php echo $GLOBALS['result']->priority ?></b></p>
-                                               <p><b><?php echo $GLOBALS['result']->provider_name ?></b></p>
+                                               <p id="reqtype"><b><?php echo $GLOBALS['result']->request_type ?></b></p>
+                                               <p id="priority"><b><?php echo $GLOBALS['result']->priority ?></b></p>
+                                               <p id="provname"><b><?php echo $GLOBALS['result']->provider_name ?></b></p>
                                            </div>
                                            <div style="float:left; width:120px;">
                                                <p>How Received: </p>
-                                               <p>Notify Customer: </p>
                                                <p>Outcome: </p>
                                            </div>
                                             <div style="float:left; width:16%;">
-                                                <p><b><?php echo $GLOBALS['result']->how_received_name ?></b></p>
-                                                <p><b><?php echo $GLOBALS['result']->how_recieved_name ?></b></p>
-                                                <p><b><?php echo $GLOBALS['result']->outcome ?></b></p>
+                                                <p id="howrec"><b><?php echo $GLOBALS['result']->how_received_name ?></b></p>
+                                                <p id="outcome"><b><?php echo $GLOBALS['result']->outcome ?></b></p>
                                             </div>
                                             <div style="float:left; width:120px;">
                                                 <p>Centre: </p>
                                                 <p>Reference No: </p>
                                             </div>
                                             <div style="float:left; width:16%;">
-                                                <p><b><?php echo $GLOBALS['result']->centre_name ?></b></p>
-                                                <p><b><?php echo $GLOBALS['result']->refer_no ?></b></p>
+                                                <p id="centrename"><b><?php echo $GLOBALS['result']->centre_name ?></b></p>
+                                                <p id="referno"><b><?php echo $GLOBALS['result']->refer_no ?></b></p>
                                             </div>
                                         <div style="clear: both;"></div>
                                     </div>
