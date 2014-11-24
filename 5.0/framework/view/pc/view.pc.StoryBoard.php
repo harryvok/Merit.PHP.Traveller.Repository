@@ -123,10 +123,34 @@
                         <div class="expandable-panel" id="cp-1">
                             <div class="expandable-panel-heading">
                                 <h2>Request Details +<span class="icon-close-open"></span></h2>
-                                </div>
-                            <div class="expandable-panel-content">
-                                <div class="wrapper">
+                            </div>
 
+                            <div class="expandable-panel-content">
+                                <div class="reqdets">
+
+                                    <!-- PHP to generate correct date formats -->
+                                    <?php $createddate = date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']->request_datetime)));  ?>
+                                    <?php $duedate = date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']->due_datetime)));  ?>
+                                    <?php $completeddate = date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']->status_datetime)));  ?>
+
+
+                                    <div class="topcol">
+                                    <p><b>Description:</b><br /><?php echo $GLOBALS['result']->request_description;?></p>
+                                    <p><b>Instructions:</b><br /><?php echo $GLOBALS['result']->request_instruction;?></p>
+                                        <p>
+                                            <h4>
+                                                <b>Created: </b><span style="padding-right:100px;"><?php echo $createddate ?></span>
+                                                <b>Due: </b><span style="padding-right:100px;"><?php echo $duedate?></span>
+                                                <b>Completed: </b><span><?php echo $completeddate?></span>
+                                            </h4>
+                                        </p>
+                                    </div>
+                                    <div class="leftcol">
+                                       
+                                    </div>
+                                    <div class="rightcol">
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
