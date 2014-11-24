@@ -417,7 +417,6 @@
 [class*="cal-cell"]:hover {
   background-color: #ededed;
 }
-.cal-year-box [class*="span"],
 .cal-month-box [class*="cal-cell"] {
   min-height: 80px;
   height:auto;
@@ -425,7 +424,12 @@
   position: relative;
 }
 .cal-year-box [class*="span"] {
+    min-height: 100px;
+  height:auto;
+  border-right: 1px solid #e1e1e1;
+  position: relative;
 }
+
 .cal-year-box .row-fluid [class*="span"]:last-child,
 .cal-month-box .cal-row-fluid [class*="cal-cell"]:last-child {
   border-right: 0px;

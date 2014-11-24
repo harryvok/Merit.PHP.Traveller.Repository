@@ -31,14 +31,14 @@
         }
 
         var date_str = "01-"+getParameterByName('date');
-        alert(date_str);
-
+        var date = date_str.split("-").reverse().join("-");
         var date_spl = date_str.split('-');
         var date_mondiff = monthDiff(new Date(2013, 02, 01), new Date(parseInt(date_spl[2]), parseInt(date_spl[1]) - 1, 1));
         //var unfin = getParameterByName('unfin');
         //var unapp = getParameterByName('unapp');
         //var unpro = getParameterByName('unpro');
         //var finis = getParameterByName('finis');
+
         getcalendar_days(date_str);
 
     </script>
@@ -72,7 +72,7 @@
                     view: 'month',
                     tmpl_path: '/calendar/tmpls/',
                     tmpl_cache: false,
-                    day: '2013-03-12',
+                    day: date,
                     onAfterEventsLoad: function (events) {
                         if (!events) {
                             return;

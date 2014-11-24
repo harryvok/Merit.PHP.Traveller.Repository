@@ -28,10 +28,10 @@
             return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         }
 
-        var date_str = "01-"+getParameterByName('date');
-        alert(date_str);
+        var date_str = getParameterByName('date');
 
         var date_spl = date_str.split('-');
+        var date = date_spl[1] + "-01-01";
 
         //var date_mondiff = monthDiff(new Date(2013, 02, 01), new Date(parseInt(date_spl[2]), parseInt(date_spl[1]) - 1, 1));
 
@@ -98,7 +98,7 @@
                     view: 'month',
                     tmpl_path: '/calendar/tmpls/',
                     tmpl_cache: false,
-                    day: '2013-03-12',
+                    day: date,
                     onAfterEventsLoad: function (events) {
                         if (!events) {
                             return;
@@ -167,7 +167,7 @@
 
 </div>
 </body>
-<script>
+<!--<script>
     if (date_mondiff < 0)
     {
         for (var l = 0; l < date_mondiff; l++) {
@@ -183,7 +183,7 @@
     if (date_mondiff == 0) {
         document.getElementById('today_button').click();
     }
-</script>
+</script>-->
 <script>
     document.getElementById("year_button").click();
 </script>

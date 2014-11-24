@@ -6,8 +6,19 @@ function getcalendar_days(date) {
     title[j] =  "Dummy";
     url[j] = "/PermitIntray";
     classes[j] = "event-warning1";
-    start[j] = "10-01-1770";
-    end[j] = "10-01-1770";
+    start[j] = date;
+    end[j] = date;
+    j++;
+    size_calendar++;
+}
+
+function getcalendar_month(date) {
+    var j = 0;
+    title[j] = "Dummy";
+    url[j] = "/PermitIntray";
+    classes[j] = "event-warning1";
+    start[j] = date;
+    end[j] = date;
     j++;
     size_calendar++;
 }
