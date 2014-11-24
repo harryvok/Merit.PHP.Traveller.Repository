@@ -133,45 +133,37 @@
             <div id="homemaincontent">             
                 <div>
                     <script type="text/javascript">
-                        $(document).ready(function () {
-                            var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                            var date_cal = new Date();
+                        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                        var date_cal = new Date();
+                        $(document).ready(function () {                            
                             date_cal.setMonth(date_cal.getMonth());
                             document.getElementById('calendar-frame').src = '/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
                             document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
                             function call_calendar() {
-                                //document.getElementById('loader1').style.display = 'block';
-                                //$('#calendar-frame').on('load', function () {
-                                //    $('#loader1').hide();
-                                //});
-                                //document.getElementById('calendar-graphbutton').innerHTML = '<button class="btn btn-primary" data-calendar-view="month" onclick="call_graph();">Graph</button>';
-                                //if (yearbutton == 1) {
                                     document.getElementById('calendar-frame').src = '/Calendar_Months?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear() ;
-                                //}
-                                //else {
-                                //    document.getElementById('calendar-frame').src = '@Url.Content("~/Dashboard/Calendar_Days?date=")' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear() + '&unfin=' + unfin_butcheck + '&unapp=' + unapp_butcheck + '&unpro=' + unpro_butcheck + '&finis=' + finis_butcheck;
 
-                                //}
                                 document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
-                                //document.getElementById('color_bar').style.display = 'block';
-                                ////document.getElementById('nextprev_butgroup').style.display = 'block';
-                                ////document.getElementById('calendar-graphbutton').style.display = 'none';
-                                ////document.getElementById('yeamonth_group').style.display = 'block';
-                                ////document.getElementById('cal_date').style.display = 'block';
-                                //document.getElementById('calend_div').style.display = 'block';
-                                //document.getElementById('graph_div').style.display = 'none';
                             }
-
                         });
-                    </script>
-                    
+                        function prev_click() {
+                            date_cal.setMonth(date_cal.getMonth() - 1);
+                            document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
+                            document.getElementById('calendar-frame').src = '/calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
+                        }
+
+                        function next_click() {
+                            date_cal.setMonth(date_cal.getMonth() + 1);
+                            document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
+                            document.getElementById('calendar-frame').src = '/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
+                        }
+                    </script>                    
                     <div class="pull-right1 form-inline" style="margin-top:10px;">
                         <div style="float:left;margin-left:10px"><span id="cal_date" class="datec"></span></div>
                         <div style="float:right;margin-right:10px;">
                         <div class="btn-group">
-                            <button class="btn btn-primary" data-calendar-nav="prev" id="prev_button"><< Prev</button>
+                            <button class="btn btn-primary" data-calendar-nav="prev" id="prev_button" onclick="prev_click();"><< Prev</button>
                             <button class="btn" data-calendar-nav="today" id="today_button">Today</button>
-                            <button class="btn btn-primary" data-calendar-nav="next" id="next_button">Next >></button>
+                            <button class="btn btn-primary" data-calendar-nav="next" id="next_button" onclick="next_click();">Next >></button>
                         </div>
                         <div class="btn-group">
                             <button class="btn btn-warning" data-calendar-view="year">Year</button>
@@ -179,13 +171,9 @@
 
                         </div></div>
                     </div>
-                    <iframe id="calendar-frame" src="" width="90%" height="510px" scrolling="no" frameborder="1" style="margin-left:65px;margin-top:15px;"></iframe>
+                    <iframe id="calendar-frame" src="" width="90%" height="565px" scrolling="no" frameborder="1" style="margin-left:65px;margin-top:15px;"></iframe>
                 </div>
             </div>                       
         </div><!-- /.main-container -->
     </div>     
-
- 
-    
-
 </body>

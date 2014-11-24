@@ -365,9 +365,7 @@ if(!String.prototype.formatNum) {
 		this.options = $.extend(true, {position: {start: new Date(), end: new Date()}}, defaults, params);
 		this.setLanguage(this.options.language);
 		this.context = context;
-
 		context.css('width', this.options.width).addClass('cal-context');
-
 		this.view();
 		return this;
 	}

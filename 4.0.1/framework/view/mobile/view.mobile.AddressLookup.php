@@ -13,7 +13,9 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 			$('#i_ctype').val($('#ret_'+id+'_street_type').val());
 			$('#i_csuburb').val($('#ret_'+id+'_locality').val());
 			$('#cust_address_id').val($('#ret_' + id + '_address_id').val());
-			$('#cust_address_ctr').val($('#ret_'+id+'_address_ctr').val());
+			$('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
+			$('#i_cpostcode').val($('#ret_' + id + '_postcode').val());
+			$('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
 			$("#i_ctype").textinput('enable');
 			$("#i_csuburb").textinput('enable');
 			$('#popup').popup("close");
@@ -35,9 +37,10 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             <li id="continue"><a>Continue without address</a></li>
     <?php
     $i=0;
+    $set = 0;
     if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) > 1){
         foreach($GLOBALS['result']->address_list->address_lookup_det as $result_n_ar){
-            $set = $result_n_ar->address_id;
+            $set++;
             ?>
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
              <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>" />
@@ -74,7 +77,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     }
     elseif(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) == 1){
         $result_n_ar = $GLOBALS['result']->address_list->address_lookup_det;
-        $set = $result_n_ar->address_id;
+        $set++;
         ?>
          <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
              <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>" />
