@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <head>
     <title>Calendar - Actions</title>
-    <link rel="stylesheet" href="calendar/css/calendar.css" />
-    <link rel="stylesheet" href="calendar/components/bootstrap3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href='calendar/components/bootstrap2/css/bootstrap.css'>
-    <link rel="stylesheet" href='calendar/components/bootstrap2/css/bootstrap-responsive.css'>
-    <script src='calendar/js/eventslist.js'></script>
+    <link rel="stylesheet" href="css/calendar.css" />
+    <link rel="stylesheet" href="components/bootstrap3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href='components/bootstrap2/css/bootstrap.css'>
+    <link rel="stylesheet" href='components/bootstrap2/css/bootstrap-responsive.css'>
+    <script src='js/eventslist.js'></script>
 </head>
 <body>
     <div class="main-container" id="main-container">
@@ -174,7 +174,7 @@
 
                         function call_year() {
                             document.getElementById('cal_date').innerHTML = date_cal.getFullYear();
-                            document.getElementById('calendar-frame').src = 'calendar/calendar_months.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear() ;
+                            document.getElementById('calendar-frame').src = 'calendar/calendar_months.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
                             document.getElementById('nextprev_butgroup').innerHTML = '<button class="btn btn-primary" data-calendar-nav="prev" id="prev_button" onclick="prevYear_click();"><< Prev</button><button class="btn" data-calendar-nav="today" id="today_button" onclick="call_today();">Today</button><button class="btn btn-primary" data-calendar-nav="next" id="next_button" onclick="nextYear_click();">Next >></button>';
                             //yearbutton = 1;
                             //monthbutton = 0;
@@ -193,7 +193,7 @@
                         }
 
                         function call_month() {
-                            document.getElementById('calendar-frame').src = 'calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear() ;
+                            document.getElementById('calendar-frame').src = 'calendar/calendar_days.html?date=' + ("0" + (date_cal.getMonth() + 1)).slice(-2) + "-" + date_cal.getFullYear();
                             document.getElementById('cal_date').innerHTML = monthNames[date_cal.getMonth()] + " " + date_cal.getFullYear();
                             document.getElementById('nextprev_butgroup').innerHTML = '<button class="btn btn-primary" data-calendar-nav="prev" id="prev_button" onclick="prev_click();"><< Prev</button><button class="btn" data-calendar-nav="today" id="today_button" onclick="call_today();">Today</button><button class="btn btn-primary" data-calendar-nav="next" id="next_button" onclick="next_click();">Next >></button>';                           
                         }
