@@ -111,6 +111,8 @@ header, #header
 #banner {
     width:100%;
     height:100px;
+    /* background: url(/images/pc/banner2.jpg);  FOR LOCAL */
+    /* background: url(/crm/5.0/images/pc/banner2.jpg);  FOR LIVE */
     background: url(/images/pc/banner2.jpg);
     background-position: 70% 70%;
     background-size: cover;
