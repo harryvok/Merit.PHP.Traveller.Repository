@@ -40,6 +40,7 @@
                 obj.animate({ 'margin-top': 0 }, panelspeed);
                 if (highlightopen == true) {
                     $('#cp-' + currentpanel + ' .expandable-panel-heading').addClass('header-active');
+
                 }
             } else {
                 obj.clearQueue();

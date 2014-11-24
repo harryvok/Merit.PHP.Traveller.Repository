@@ -14,7 +14,7 @@ class Model {
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
         $parameters->request_id = $id;
-        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters);
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_request_details_sb", $parameters);
         return $result;
     }
     
