@@ -2698,8 +2698,9 @@ class Model {
             if(isset($GLOBALS['dontProcess']) && $GLOBALS['dontProcess'] == 1)$_SESSION['error_udfs']=1;
 
         }
-
-        $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'';
+        if ($_POST['requirement'] == "") {
+            $_SESSION['redirect'] = 'index.php?page=view-action&id='.$_POST['act_id'].'';
+        }
     }
 
     public function processEditUDFs($params = NULL){
@@ -3639,6 +3640,7 @@ class Model {
      /*DEBUG CODE */
      
         /*Generate Params for trigger action */
+        
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
