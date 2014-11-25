@@ -45,9 +45,11 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 				if ($("#i_csuburb").val().length > 0) {
 				    $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
 				}
-
 				if ($('#ret_' + name_id + '_name_id').val() > 0 || $('#ret_' + name_id + '_name_id').val() != "0" || $('#ret_' + name_id + '_name_id').val() != 0) {
 				    $("#CustSummary").removeAttr("disabled")
+				}
+				if ($('#ret_' + id + '_address_id').val() > 0 || $('ret_' + id + '_address_id').val() != "0" || $('ret_' + id + '_address_id').val() != 0) {
+				    $("#CustAddSummary").removeAttr("disabled")
 				}
 				$('#popup').fadeOut("fast");
 			});
