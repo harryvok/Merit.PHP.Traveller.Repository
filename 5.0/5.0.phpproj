@@ -1170,6 +1170,7 @@
     <Compile Include="page.attachmentError.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.resubmitAction.php" />
     <Compile Include="page.versionfive.php" />
     <Compile Include="page.myPreferences.php">
       <SubType>Code</SubType>

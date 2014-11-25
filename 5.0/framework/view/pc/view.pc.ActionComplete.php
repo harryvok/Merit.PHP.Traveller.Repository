@@ -1,59 +1,59 @@
 <script type="text/javascript">
-  $(document).ready(function(){
-	  // validate signup form on keyup and submit
-	  $('#requirement').change(function() {
+    $(document).ready(function () {
+        // validate signup form on keyup and submit
+        $('#requirement').change(function () {
             var reqid = $('#requirement').val();
             var splireqid = reqid.split('_')[1];
-        if(splireqid != "NORESPONSE" && reqid != ""){
-		       var id = $(this).find(':selected')[0].id;
-   		     if(id == "Y"){  $('#desc').addClass("required"); $("#indMand").show(); }
-		     else if(id == "N"){ $('#desc').removeClass("required"); $("#indMand").hide(); }
-		      Load();
-              
-		      $.ajax({
-			      url:'inc/ajax/ajax.getRequestUDFs.php',
-			      type: 'post',
-			      data: {
-				      view: "OutcomeUDFs",
-				      outcome: splireqid,
-				      id: $('#request_id').val(),
-				      act_id: $('#act_id').val()
-			      },
-			      success: function(data) {
-			          Unload();
-				      $('#outcome-udfs').html(data);	
-				      $('#outcome-udfs').show();
-			      }
-		      });
-          }
-          else{
-            $("#udfs_exist").val("0");
-            $("#outcome-udfs").html("");
-          }
-	  });
+            if (splireqid != "NORESPONSE" && reqid != "") {
+                var id = $(this).find(':selected')[0].id;
+                if (id == "Y") { $('#desc').addClass("required"); $("#indMand").show(); }
+                else if (id == "N") { $('#desc').removeClass("required"); $("#indMand").hide(); }
+                Load();
 
-	  $('#completeaction').validate();
-  });
+                $.ajax({
+                    url: 'inc/ajax/ajax.getRequestUDFs.php',
+                    type: 'post',
+                    data: {
+                        view: "OutcomeUDFs",
+                        outcome: splireqid,
+                        id: $('#request_id').val(),
+                        act_id: $('#act_id').val()
+                    },
+                    success: function (data) {
+                        Unload();
+                        $('#outcome-udfs').html(data);
+                        $('#outcome-udfs').show();
+                    }
+                });
+            }
+            else {
+                $("#udfs_exist").val("0");
+                $("#outcome-udfs").html("");
+            }
+        });
+
+        $('#completeaction').validate();
+    });
 </script>
 	<div class="summaryContainer">
   <h1>Complete Action</h1>
   <div>
 			
             <script type="text/javascript">
-			  $(document).ready(function(){
-				  // validate signup form on keyup and submit
-				  
-				  $("#completeaction").validate();
-                  
-                   $("#completeaction").submit(function(e){
-                        if($('#completeaction').validate().numberOfInvalids() == 0){
+                $(document).ready(function () {
+                    // validate signup form on keyup and submit
+
+                    $("#completeaction").validate();
+
+                    $("#completeaction").submit(function (e) {
+                        if ($('#completeaction').validate().numberOfInvalids() == 0) {
                             $("#submitbutton").prop('disabled', true);
                             return true;
-                            }else{
+                        } else {
                             $("#submitbutton").prop('disabled', false);
-                            }
-                  });
-			  });
+                        }
+                    });
+                });
 		    </script>
             <form id="completeaction" method="post" class="completeaction" enctype="multipart/form-data"  action="process.php">
                 <label  id="lab1">Outcome:</label>
@@ -63,7 +63,7 @@
                     <option value="">Select</option>
                     <?php
                         foreach($GLOBALS['result']['outcomes']->action_completed_det->action_completed_details as $result_outcomes){ ?>
-                        <option id="<?php if(isset($result_outcomes->note_ind)){ echo $result_outcomes->note_ind; } else { echo "N"; } ?>" value="<?php echo $result_outcomes->note_ind."_".$result_outcomes->action_code; ?>"><?php echo $result_outcomes->action_name; ?></option>
+                        <option id="<?php if(isset($result_outcomes->note_ind)){ echo $result_outcomes->note_ind; } else { echo "N"; } ?>" value="<?php echo $result_outcomes->note_ind."_".$result_outcomes->action_code."_".$result_outcomes->resubmit; ?>"><?php echo $result_outcomes->action_name; ?></option>
                     <?php } ?>
                 </select>
                 

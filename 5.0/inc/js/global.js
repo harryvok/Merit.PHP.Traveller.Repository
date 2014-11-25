@@ -444,8 +444,11 @@ $(document).on("click", ".closePopup", function () {
                     //added by harry
                     create: function (event, ui) {
 
-                        //if this is the serviceInput
-                        //autopopulate if there is one service
+
+
+                      /* Removed this for now,as when page loads the service input is always an empty term. James 25/11/14
+                        
+                        //if this is the serviceInput - autopopulate if there is one service
                         if ($(self).attr('id') == "serviceInput") {
                             $.ajax({
                                 url: ajax,
@@ -457,7 +460,8 @@ $(document).on("click", ".closePopup", function () {
                                         $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
                                 }
                             });
-                        }
+                        } 
+                     */
                     }
                     //end addition by harry
                 });
