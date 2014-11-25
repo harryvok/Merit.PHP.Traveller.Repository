@@ -2,11 +2,6 @@
 <!DOCTYPE html>
 <head>
     <title>Calendar - Actions</title>
-    <link rel="stylesheet" href="css/calendar.css" />
-    <link rel="stylesheet" href="components/bootstrap3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href='components/bootstrap2/css/bootstrap.css'>
-    <link rel="stylesheet" href='components/bootstrap2/css/bootstrap-responsive.css'>
-    <script src='js/eventslist.js'></script>
 </head>
 <body>
     <div class="main-container" id="main-container">
