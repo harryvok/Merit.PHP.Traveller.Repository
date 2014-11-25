@@ -1219,7 +1219,6 @@ class Model {
                     'udf_data'=>"",
                     'mobile_no'=>"",
                     'email_address'=> $_POST['emailAddress'],
-                    'name_type' => "",
                     'udf_dets' => array(
                         'udf_dets' => $udf_details
                     )

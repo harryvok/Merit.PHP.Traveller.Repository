@@ -1206,8 +1206,7 @@ class Model {
                     'telephone'=> $_POST['phoneNumber'],
                     'udf_data'=>"",
                     'mobile_no'=>"",
-                    'email_address'=> $_POST['emailAddress'],
-                    'name_type' => "",
+                    'email_address'=> $_POST['emailAddress'],                
                     'udf_dets' => array(
                         'udf_dets' => $udf_details
                     )
