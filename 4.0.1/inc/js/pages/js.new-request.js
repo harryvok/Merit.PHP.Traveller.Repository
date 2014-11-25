@@ -569,6 +569,9 @@ $(document).ready(function () {
                         if (parseInt(data.house_suffix) == parseInt(data.house_number)) {
                             $("#lfno").val("");
                         }
+                        if ($("#addressId").val() > 0 || $("#addressId").val() != "0" || $("#addressId").val() != 0) {
+                            $("#AddrSummary").removeAttr("disabled")
+                        }
 
                         if ($("#historyaddrtype").val() == "L") { CheckHistory("L"); }
                         showOnMap();
