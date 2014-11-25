@@ -3557,7 +3557,6 @@ class Model {
                 if($result->sms_sent_on_comp == true) $_SESSION['success_sms'] = 1;
 
                 
-                
                 #Adhoc stuff Below ---------------------------------------------------->
                 if($result->ws_message == "adhoc" && $result->ws_status == 2){
                     $_SESSION['action_id'] = $result->action_id;
@@ -3596,12 +3595,6 @@ class Model {
                     $_SESSION['redirect'] = "index.php?page=adhocOfficer&id=".$action_id;
                 }
                 #Adhoc stuff Above ----------------------------------------------------->
-                
-                #Resubmit stuff Below ---------------------------------------------------->
-                if ($tempArray[2]=='Y') {
-                    $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
-                }
-                #Resubmit stuff Above ---------------------------------------------------->
                 
                 
                 else{
