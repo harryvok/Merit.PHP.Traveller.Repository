@@ -179,16 +179,15 @@
                             }
 
                             function open_requests() {
-                                alert("open");
                                 window.location = "index.php?page=actions";
                             }
 
                             function completed_requests() {
-                                alert("completed");
+                                window.location = "index.php?page=actions";
                             }
 
                             function suspended_requests() {
-                                alert("suspended");
+                                window.location = "index.php?page=actions";
                             }
 
                         </script>                                        
