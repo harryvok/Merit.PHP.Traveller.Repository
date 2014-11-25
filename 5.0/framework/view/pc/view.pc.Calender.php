@@ -180,6 +180,7 @@
 
                             function open_requests() {
                                 alert("open");
+                                window.location = "index.php?page=actions";
                             }
 
                             function completed_requests() {
