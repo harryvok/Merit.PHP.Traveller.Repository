@@ -203,7 +203,7 @@
                                         <label>Mobile:</label>
                                         <input type="text" name="mobileNumber">
                                  </div>-->
-                                 <div class="column r20">
+                                 <div class="column r30">
                                         <label>Email:</label>
                                         <input type="text" name="emailAddress">
                                  </div>
