@@ -4,7 +4,6 @@ class Model {
 
     public function processresubmitAction ($params = NULL){
         
-        $test = 1;
         $datetime = $_POST['resubDate'].'T'.$_POST['resubTime'].':00+11:00';
         
         $c = strip_tags(addslashes($_POST['comment']));
@@ -17,7 +16,6 @@ class Model {
         $parameters->resubmit_datetime = $datetime;
         $parameters->comment = $c;
         
-      
         $result = $this->WebService(MERIT_ACTION_FILE, "ws_resubmit_action", $parameters);
 
         $_SESSION['success_action_resubmit'] = 1;
@@ -3524,7 +3522,7 @@ class Model {
             $completed_code = "NORESPONSE";
         }else{
             $tempArray = explode("_", $completed_code);
-            $completed_code = $tempArray[1];
+            $completed_code = $tempArray[0];
         }
         
         
@@ -3588,13 +3586,21 @@ class Model {
                     }
                     /* End fix redirect */
                     
-
                     $_SESSION['completed_code'] = $completed_code;
                     $_SESSION['adhoc-true'] = 1;
                     $_SESSION['redirect'] = "index.php?page=adhocOfficer&id=".$action_id;
+                    
+                    if ($tempArray[2]=='Y') {
+                        $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
+                    }
                 }
                 #Adhoc stuff Above ----------------------------------------------------->
                 
+                #Resubmit stuff Below ---------------------------------------------------->
+                else if ($tempArray[2]=='Y') {
+                    $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
+                }
+                #Resubmit stuff Above ---------------------------------------------------->
                 
                 else{
                     $_SESSION['action-id'] = $action_id;
