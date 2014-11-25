@@ -1341,8 +1341,6 @@
     <Content Include=".htaccess">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="calendar\calendar %282%29.html" />
-    <Content Include="calendar\calendar.html" />
     <Content Include="calendar\calendar_days.html" />
     <Content Include="calendar\calendar_months.html" />
     <Content Include="calendar\components\bootstrap2\css\bootstrap-responsive.css" />

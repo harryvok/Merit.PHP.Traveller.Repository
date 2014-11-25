@@ -165,7 +165,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         <p><strong>Y Coords</strong> <?php if(isset($loc_gis_y_coord)){ echo $loc_gis_y_coord; } ?></p>
     </li>
     <li>
-        <p><strong>Road< Type</strong> <?php if(isset($loc_property_no)){ echo $loc_road_type; } ?></p>
+        <p><strong>Road Type</strong> <?php if(isset($loc_property_no)){ echo $loc_road_type; } ?></p>
     </li>
     <li>
         <p><strong>Road Responsibility</strong> <?php if(isset($loc_property_no)){ echo $loc_road_responsibility; } ?></p>
