@@ -19,7 +19,7 @@
                             </div>  
                                 <br />
                                 <input type="hidden" name="action" value="resubmitAction" />
-                                <input type="submit" id="submit" value="Re-submit" />    
+                                <input type="submit" id="submit" value="Resubmit" />    
 			       </form>
                 </div>
            </div>
