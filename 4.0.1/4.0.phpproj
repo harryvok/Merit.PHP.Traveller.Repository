@@ -1136,6 +1136,7 @@
     <Compile Include="mobile\page.requests.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="mobile\page.resubmitAction.php" />
     <Compile Include="mobile\page.search.php">
       <SubType>Code</SubType>
     </Compile>
