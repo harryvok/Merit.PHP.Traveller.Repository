@@ -12,7 +12,7 @@ class Model {
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
         $parameters->request_id = $_SESSION['request_id'];
-        $parameters->action_id = $_SESSION['action_id'];
+        $parameters->action_id = $_SESSION['action-id'];
         $parameters->resubmit_datetime = $datetime;
         $parameters->comment = $c;
         
@@ -3619,6 +3619,7 @@ class Model {
                     $_SESSION['redirect'] = "index.php?page=adhocOfficer&id=".$action_id;
                     
                     if ($tempArray[2]=='Y') {
+                        $_SESSION['action-id']= $_POST['action_id'];
                         $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
                     }
                 }
@@ -3626,6 +3627,7 @@ class Model {
                 
                 #Resubmit stuff Below ---------------------------------------------------->
                 else if ($tempArray[2]=='Y') {
+                    $_SESSION['action-id']= $_POST['action_id'];
                     $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
                 }
                 #Resubmit stuff Above ---------------------------------------------------->
