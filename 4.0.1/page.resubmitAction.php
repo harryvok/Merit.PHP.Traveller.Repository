@@ -1,4 +1,19 @@
 
+<style>
+    input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    color: red;
+}
+input[type="date"]:hover:after {
+    content: " Date Picker ";
+    color: #555;
+    padding-right: 20px;
+}
+input[type="date"]::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
        <div class="summaryContainer">
            <h1>Resubmit Details</h1>
             <div class="float-left">

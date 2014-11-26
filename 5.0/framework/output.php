@@ -81,7 +81,7 @@ $error_array = array(
 $success_array = array(
     'success_request_created' => 'Request has been created ID: #<a href="index.php?page=view-request&id='.$request_id_fin.'">'.$request_id_fin.'</a>',
 	'success_action_submit' => 'The action with the request ID of #<a href="index.php?page=view-request&id='.$suc_id.'">'.$suc_id.'</a> has been processed.',
-    'success_action_resubmit' => 'The action with the request ID of #<a href="index.php?page=view-request&id='.$suc_id.'">'.$suc_id.'</a> has been resubmitted.',
+    'success_action_resubmit' => 'The action with the action ID of #<a href="index.php?page=view-action&id='.$_SESSION['action-id'].'">'.$_SESSION['action-id'].'</a> has been resubmitted.',
     'success_delete_action' => 'The action with the request ID of #<a href="index.php?page=view-request&id='.$req_id.'">'.$req_id.'</a> has been deleted.',
 	'success_comment' => 'Comment added.',
 	'success_attach' => 'Attachment uploaded.',
