@@ -196,7 +196,7 @@ else{
     if($page == "view-StoryBoard"){
         include("page.versionfive.php");
     } 
-    else if($page == "view-Calender") {
+    else if($page == "view-Calendar") {
         include("page.versionfive.php");
     } else {
 	    include("page.home.php");

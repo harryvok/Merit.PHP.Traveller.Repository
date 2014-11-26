@@ -43,7 +43,7 @@ $result_alias = $GLOBALS['result']->alias_sum_det;
                     ?>
                         <tr class="dark" onClick="GetAliasDetails('<?php echo $_GET['id']; ?>', '<?php echo $result_a_as->type_txt; ?>','<?php echo $result_a_as->type_desc; ?>','<?php echo $result_a_as->type_cnt; ?>','<?php echo $result_a_as->type_key; ?>','<?php echo $result_a_as->type_code; ?>')" title="">
                                 <td><?php echo $result_a_as->type_cnt; ?></td>
-                                <td><?php echo $result_a_as->type_desc."-".$result_a_as->type_key; ?> </td>
+                                <td><?php echo $result_a_as->type_desc."-".$result_a_as->type_key; ?></td>
                             </tr>
                         <?php
                 }

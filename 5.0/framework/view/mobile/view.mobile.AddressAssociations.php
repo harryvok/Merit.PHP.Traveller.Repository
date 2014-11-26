@@ -38,7 +38,7 @@
                         <input id="asso<?php echo $number; ?>-address_id" value="<?php echo $_GET['id']; ?>" type="hidden" />
 
                         <a href="#" id="<?php echo $number; ?>" class="assoc">
-                        <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
+                        <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?>(<?php echo $result_a_as->type_cnt; ?>)
                         </a>
                         
                     </li>
@@ -66,7 +66,7 @@
                         <input id="asso<?php echo $number ?>-key_name" value="<?php echo $result_a_as->key_name; ?>" type="hidden" />
                         <input id="asso<?php echo $number; ?>-address_id" value="<?php echo $_GET['id']; ?>" type="hidden" />
                         <a id="<?php echo $number ?>" class="assoc">
-                        <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
+                        <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?>(<?php echo $result_a_as->type_cnt; ?>)
                         </a>
                     </li>
                     <a href="#" name="anchorass<?php echo $number ?>"></a>

@@ -189,7 +189,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             $class = "light";
         }
             ?>
-            <tr class="<?php echo $class; ?> keyword_row" id="<?php echo $set; ?>" title="">
+            <tr class="<?php echo $class; ?>keyword_row" id="<?php echo $set; ?>" title="">
                 <input type="hidden" id="ret_<?php echo $set; ?>_service_code" value="<?php if(isset($result_n_ar->service_code)){ echo $result_n_ar->service_code; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_code" value="<?php if(isset($result_n_ar->request_code)){ echo $result_n_ar->request_code; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_code" value="<?php if(isset($result_n_ar->function_code)){ echo $result_n_ar->function_code; } else { echo ""; } ?>" />

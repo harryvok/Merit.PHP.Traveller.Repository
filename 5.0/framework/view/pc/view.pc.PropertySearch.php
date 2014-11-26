@@ -111,8 +111,8 @@
                         else{
                             $class = "light";
                         }
-                        ?>     
-                            <tr class="<?php echo $class; ?> address_row" id="<?php echo $set.$count; ?>" title="">
+                        ?>
+                            <tr class="<?php echo $class; ?>address_row" id="<?php echo $set.$count; ?>" title="">
                                 <?php
                                     if(isset($result_n_ar->house_suffix)){ 
                                         $hn = explode(" ",$result_n_ar->house_suffix,2); 

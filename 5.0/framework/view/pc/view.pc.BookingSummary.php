@@ -1,6 +1,6 @@
 <?php 
 if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['result']->booking_dets->booking_details) > 0){
-?> 
+?>
 <script type="text/javascript">
     $(document).ready(function () {
             $("#popup").fadeIn("fast");
@@ -138,7 +138,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 <?php
                       }
                  }
-                ?> 
+                ?>
             </tbody>
          </table>
          </div>
@@ -149,7 +149,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 <input type="button" id="stop" name="stop" value=""/>
 <?php 
 }else{
-?> 
+?>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#AddrBooking").attr("disabled","disabled");
@@ -157,4 +157,4 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 </script>
 <?php 
 }
-?> 
+?>

@@ -8,7 +8,7 @@
                   <li>
                      <a href="index.php?page=view-address&id=<?php echo $result_a_ad->address_id; ?>&ref=<?php echo $result_a_ad->address_id; ?>&ref_page=view-name">
                      
-                           <?php if(isset($result_a_ad->house_suffix) && isset($result_a_ad->house_number) && $result_a_ad->house_suffix != $result_a_ad->house_number){ echo $result_a_ad->house_suffix; } elseif(isset($result_a_ad->house_number)){ echo $result_a_ad->house_number; } ?> <?php echo $result_a_ad->street_name; ?> <?php echo $result_a_ad->street_type; ?> <?php echo $result_a_ad->locality; ?> <?php echo $result_a_ad->postcode; ?>
+                           <?php if(isset($result_a_ad->house_suffix) && isset($result_a_ad->house_number) && $result_a_ad->house_suffix != $result_a_ad->house_number){ echo $result_a_ad->house_suffix; } elseif(isset($result_a_ad->house_number)){ echo $result_a_ad->house_number; } ?><?php echo $result_a_ad->street_name; ?><?php echo $result_a_ad->street_type; ?><?php echo $result_a_ad->locality; ?><?php echo $result_a_ad->postcode; ?>
                       
                       </a>
                   </li>
@@ -22,7 +22,7 @@
                   <li>
                      <a href="index.php?page=view-address&id=<?php echo $result_a_ad->address_id; ?>&ref=<?php echo $result_a_ad->address_id; ?>&ref_page=view-name">
                      
-                           <?php if(isset($result_a_ad->house_suffix) && isset($result_a_ad->house_number) && $result_a_ad->house_suffix != $result_a_ad->house_number){ echo $result_a_ad->house_suffix; } elseif(isset($result_a_ad->house_number)){ echo $result_a_ad->house_number; } ?> <?php echo $result_a_ad->street_name; ?> <?php echo $result_a_ad->street_type; ?> <?php echo $result_a_ad->locality; ?> <?php echo $result_a_ad->postcode; ?>
+                           <?php if(isset($result_a_ad->house_suffix) && isset($result_a_ad->house_number) && $result_a_ad->house_suffix != $result_a_ad->house_number){ echo $result_a_ad->house_suffix; } elseif(isset($result_a_ad->house_number)){ echo $result_a_ad->house_number; } ?><?php echo $result_a_ad->street_name; ?><?php echo $result_a_ad->street_type; ?><?php echo $result_a_ad->locality; ?><?php echo $result_a_ad->postcode; ?>
                       
                       </a>
                   </li>

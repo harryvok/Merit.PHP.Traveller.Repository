@@ -81,7 +81,7 @@
                 <!--<div class="float-left">
                     <div class="column r45">
                         <label>Available</label><br />
-                        <input type="radio" name="availInd" value="Y" <?php echo $_SESSION['available_ind'] == "Y" ? "checked='checked'" : ""; ?> /> Yes <input type="radio" name="availInd" value="N" <?php echo $_SESSION['available_ind'] == "N" ? "checked='checked'" : ""; ?> /> No <br />
+                        <input type="radio" name="availInd" value="Y" <?php echo $_SESSION['available_ind'] == "Y" ? "checked='checked'" : ""; ?>/> Yes <input type="radio" name="availInd" value="N" <?php echo $_SESSION['available_ind'] == "N" ? "checked='checked'" : ""; ?>/> No <br />
                     </div>
                     
                 </div>
@@ -94,13 +94,13 @@
                 $availTo = explode("T", $_SESSION['avail_to']);
   
                 ?>
-                Date <span style="color:red;">*</span>: <input size="8" type="text" name="availFromDate" id="availFromDate" class="inline dateField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[0]) > 0 && $availFrom[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availFrom[0])); }  ?>" />
-                Time <span style="color:red;">*</span>: <input size="6" type="text" name="availFromTime" id="availFromTime" class="inline timeField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[1]) > 0 && $availFrom[1] != "00:00:00"){ echo date('h:i A',strtotime($availFrom[1])); }  ?>" />
+                Date <span style="color:red;">*</span>: <input size="8" type="text" name="availFromDate" id="availFromDate" class="inline dateField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availFrom[0]) > 0 && $availFrom[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availFrom[0])); }  ?>" />
+                Time <span style="color:red;">*</span>: <input size="6" type="text" name="availFromTime" id="availFromTime" class="inline timeField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availFrom[1]) > 0 && $availFrom[1] != "00:00:00"){ echo date('h:i A',strtotime($availFrom[1])); }  ?>" />
                 </div>
                 <div class="column r55">
                 <label>Unavailable To</label><br />
-                Date: <input type="text"  size="8" name="availToDate" id="availToDate" class="inline dateField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[0]) > 0 && $availTo[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availTo[0])); }  ?>" />
-                Time: <input type="text"  size="6" name="availToTime" id="availToTime" class="inline timeField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[1]) > 0 && $availTo[1] != "00:00:00"){ echo date('h:i A',strtotime($availTo[1])); }  ?>" />
+                Date: <input type="text"  size="8" name="availToDate" id="availToDate" class="inline dateField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availTo[0]) > 0 && $availTo[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availTo[0])); }  ?>" />
+                Time: <input type="text"  size="6" name="availToTime" id="availToTime" class="inline timeField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availTo[1]) > 0 && $availTo[1] != "00:00:00"){ echo date('h:i A',strtotime($availTo[1])); }  ?>" />
                 </div>
                 <div class="column r100">
                 <label>Alternate Officer</label>
@@ -130,7 +130,7 @@
             <div class="float-left">
                     <div class="column r55">
                         <label>Available</label><br />
-                        <input type="radio" name="availInd" value="Y" <?php echo $_SESSION['available_ind'] == "Y" ? "checked='checked'" : ""; ?> /> Yes <input type="radio" name="availInd" value="N" <?php echo $_SESSION['available_ind'] == "N" ? "checked='checked'" : ""; ?> /> No <br />
+                        <input type="radio" name="availInd" value="Y" <?php echo $_SESSION['available_ind'] == "Y" ? "checked='checked'" : ""; ?>/> Yes <input type="radio" name="availInd" value="N" <?php echo $_SESSION['available_ind'] == "N" ? "checked='checked'" : ""; ?>/> No <br />
                     </div><br /><br /><br />
                     <div class="column r55">
                 <label>Unavailable From</label>
@@ -140,13 +140,14 @@
                 /*echo $_SESSION['avail_from'].'<br>';
                 echo $_SESSION['avail_to'];*/
                 ?>
-                Date <span style="color:red;">*</span>: <input size="8" type="text" name="availFromDate" id="availFromDate" class="inline dateField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[0]) > 0 && $availFrom[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availFrom[0])); }  ?>" />
-                Time <span style="color:red;">*</span>: <input size="6" type="text" name="availFromTime" id="availFromTime" class="inline timeField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[1]) > 0 && $availFrom[1] != "00:00:00"){ echo date('h:i A',strtotime($availFrom[1])); }  ?>" />
+                Date <span style="color:red;">*</span>: <input size="8" type="text" name="availFromDate" id="availFromDate" class="inline dateField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availFrom[0]) > 0 && $availFrom[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availFrom[0])); }  ?>" />
+                Time <span style="color:red;">*</span>: <input size="6" type="text" name="availFromTime" id="availFromTime" class="inline timeField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availFrom[1]) > 0 && $availFrom[1] != "00:00:00"){ echo date('h:i A',strtotime($availFrom[1])); }  ?>" />
                 </div>
                 <div class="column r55">
                 <label>Unavailable To</label>
-                Date: <input type="text"  size="8" name="availToDate" id="availToDate" class="inline dateField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[0]) > 0 && $availTo[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availTo[0])); }  ?>" />
-                Time: <input type="text"  size="6" name="availToTime" id="availToTime" class="inline timeField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[1]) > 0 && $availTo[1] != "00:00:00"){ echo date('h:i A',strtotime($availTo[1])); }  ?>" />
+                Date: <input type="text"  size="8" name="availToDate" id="availToDate" class="inline dateField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availTo[0]) > 0 && $availTo[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availTo[0])); }  ?>" />
+                Time: <input type="text"  size="6" name="availToTime" id="availToTime" class="inline timeField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?>value="<?php if(strlen($availTo[1]) > 0 && $availTo[1] != "00:00:00"){ echo date('h:i A',strtotime($availTo[1])); }  ?>" />
+
                 </div>
                 <div class="column r100">
                 <label>Alternate Officer</label>

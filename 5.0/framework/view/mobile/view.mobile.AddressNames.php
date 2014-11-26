@@ -9,7 +9,7 @@
                 ?>
                 <li>
                     <a href="index.php?page=view-name&id=<?php echo $result_n_ar->name_id; ?>&ref=<?php echo $_GET['id']; ?>&ref_page=view-address">
-                    <?php echo $result_n_ar->given_names; ?> <?php echo $result_n_ar->surname; ?>
+                    <?php echo $result_n_ar->given_names; ?><?php echo $result_n_ar->surname; ?>
                     </a>
                 </li>
                 <?php
@@ -20,7 +20,7 @@
             ?>
             <li>
                 <a href="index.php?page=view-name&id=<?php echo $result_n_ar->name_id; ?>&ref=<?php echo $_GET['id']; ?>&ref_page=view-address">
-                    <?php echo $result_n_ar->given_names; ?> <?php echo $result_n_ar->surname; ?>
+                    <?php echo $result_n_ar->given_names; ?><?php echo $result_n_ar->surname; ?>
                 </a>
             </li>
             <?php

@@ -137,7 +137,7 @@ $action_id = $GLOBALS['result']['action']->action_id;
     ?>
     <li>
 
-        <a href='index.php?page=view-address&id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number) > 0 && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?> <?php if(isset($loc_street_name)){ echo $loc_street_name; } ?> <?php if(isset($loc_street_type)){ echo $loc_street_type; } ?> <?php if(isset($loc_locality)){ echo $loc_locality; } ?> <?php if(isset($loc_postcode)){ echo $loc_postcode; } ?> </a>
+        <a href='index.php?page=view-address&id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number) > 0 && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?><?php if(isset($loc_street_name)){ echo $loc_street_name; } ?><?php if(isset($loc_street_type)){ echo $loc_street_type; } ?><?php if(isset($loc_locality)){ echo $loc_locality; } ?><?php if(isset($loc_postcode)){ echo $loc_postcode; } ?></a>
 
 
     </li>
@@ -244,7 +244,7 @@ $action_id = $GLOBALS['result']['action']->action_id;
         if(strlen($cust_house_number) > 0 && $cust_house_number != 0 || strlen($cust_house_suffix) > 0 && $cust_house_suffix != 0 || strlen($cust_street_name) > 0 ||  strlen($cust_street_type) > 0 ||  strlen($cust_locality) > 0){
     ?>
     <li>
-        <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0 && isset($cust_house_number) && strlen($cust_house_number > 0) && $cust_house_number != $cust_house_suffix){ echo $cust_house_suffix; } elseif(isset($cust_house_number)){ echo $cust_house_number; } ?> <?php if(isset($cust_street_name)){ echo $cust_street_name; } ?> <?php if(isset($cust_street_type)){ echo $cust_street_type; } ?> <?php if(isset($cust_locality)){ echo $cust_locality; } ?> <?php if(isset($cust_postcode)){ echo $cust_postcode; } ?> </a>
+        <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0 && isset($cust_house_number) && strlen($cust_house_number > 0) && $cust_house_number != $cust_house_suffix){ echo $cust_house_suffix; } elseif(isset($cust_house_number)){ echo $cust_house_number; } ?><?php if(isset($cust_street_name)){ echo $cust_street_name; } ?><?php if(isset($cust_street_type)){ echo $cust_street_type; } ?><?php if(isset($cust_locality)){ echo $cust_locality; } ?><?php if(isset($cust_postcode)){ echo $cust_postcode; } ?></a>
     </li>
     <?php
         }
@@ -332,7 +332,7 @@ if($count_udf > 0){
 					if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
 						?>
 						<li>
-								  <p><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){  if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; } } else { echo "<b>".$udf->udf_name."</b>"; } }  else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; } } ?></b></p>
+								  <p><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){  if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; } } else { echo "<b>".$udf->udf_name."</b>"; } }  else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?><?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; } } ?></b></p>
 						   </li>
 						<?php  
 					}
@@ -343,7 +343,7 @@ if($count_udf > 0){
 				if($udf->udf_active_ind == "Y" && $udf->udf_action_id == 0){
 				?>
 				<li>
-						<p><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; } } else { echo "<b>".$udf->udf_name."</b>"; } } else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; } } ?></b></p>
+						<p><?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; } } else { echo "<b>".$udf->udf_name."</b>"; } } else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?><?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; } } ?></b></p>
 				   </li>
 				<?php  
 				}
@@ -395,7 +395,7 @@ if($count_udf > 0)
                                  <p>
             					<b> 
             					<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' href="#" class="ViewFile"> <?php } } } ?>
-                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?> </b>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?></b>
 								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
                                   </a>
                                     </p>
@@ -413,7 +413,7 @@ if($count_udf > 0)
                                 <p>
             					<b> 
             					<?php if($udf->udf_type == "G" || $udf->udf_type == "B" || $udf->udf_type == "P"){ ?><?php if(isset($udf->udf_data)) {  if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' href="#" class="ViewFile"> <?php } } } ?>
-                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?> </b>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?></b>
 								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
                                   </a>
                                     </p>

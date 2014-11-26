@@ -9,7 +9,7 @@
   else { 
       echo '<img width="10" height="9" src="images/dotRed.png" />'; 
   } 
-  ?>  
+  ?>
   <b><?php echo $GLOBALS['result']->service_name . " - " .$GLOBALS['result']->request_name; if(isset($GLOBALS['result']->function_name) && $GLOBALS['result']->function_name != '') echo " - " . $GLOBALS['result']->function_name; ?></b>  
 </p>
 <?php

@@ -407,7 +407,7 @@ if(isset($_GET['addAction'])){ $_SESSION["addAct"] = strip_tags($_GET['addAction
 	  ?>
   </div>
   <div class="content-secondary">
-          <?php $controller->Sidebar("viewrequest", "ipad"); ?>   
+          <?php $controller->Sidebar("viewrequest", "ipad"); ?>
     </div>
   <div class="iphone" data-role="panel" id="actionPanel" data-position="right" data-display="overlay" data-dismissible="true" data-theme="c">
 			

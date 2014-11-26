@@ -86,7 +86,7 @@ if(isset($GLOBALS['result']->request_search_details)){
             <tr class="<?php echo $class; ?>" data-new-window="index.php?page=view-request&id=<?php echo $result_search->request_id; ?>">
                 <td><?php echo $result_search->request_id; ?></td>
                 <td><?php echo $result_search->input_date; ?></td>
-                <td><?php echo base64_decode($result_search->service_name); ?> - <?php echo base64_decode($result_search->request_name); ?> - <?php if(isset($result_search->function_name)) echo base64_decode($result_search->function_name); ?></td>
+                <td><?php echo base64_decode($result_search->service_name); ?>- <?php echo base64_decode($result_search->request_name); ?>- <?php if(isset($result_search->function_name)) echo base64_decode($result_search->function_name); ?></td>
                 <td><?php echo $result_search->finalised_ind == "Y" ? "Yes" : "No"; ?></td>
                 <td><?php echo $result_search->count_only == "Y" ? "Yes" : "No"; ?></td>
                 <td><?php echo $result_search->intime_ind == "Y" ? "Yes" : "No"; ?></td>
@@ -107,7 +107,7 @@ if(isset($GLOBALS['result']->request_search_details)){
             <tr class="dark" data-new-window="index.php?page=view-request&id=<?php echo $result_search->request_id; ?>">
                 <td><?php echo $result_search->request_id; ?></td>
                 <td><?php echo $result_search->input_date; ?></td>
-                <td><?php echo base64_decode($result_search->service_name); ?> - <?php echo base64_decode($result_search->request_name); ?> - <?php if(isset($result_search->function_name)) echo base64_decode($result_search->function_name); ?></td>
+                <td><?php echo base64_decode($result_search->service_name); ?>- <?php echo base64_decode($result_search->request_name); ?>- <?php if(isset($result_search->function_name)) echo base64_decode($result_search->function_name); ?></td>
                 <td><?php echo $result_search->finalised_ind == "Y" ? "Yes" : "No"; ?></td>
                 <td><?php echo $result_search->count_only == "Y" ? "Yes" : "No"; ?></td>
                 <td><?php echo $result_search->intime_ind == "Y" ? "Yes" : "No"; ?></td>

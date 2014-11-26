@@ -19,7 +19,7 @@
                                     echo '<img width="10" height="9" src="images/dotRed.png" />';
                                 } 
                                 ?>
-                                <?php echo $result_ar->request_id; ?> - <b>
+                                <?php echo $result_ar->request_id; ?>- <b>
                                 <?php
                                       echo $result_ar->service_name . " - " .
                                            $result_ar->request_name . " - " . 
@@ -50,7 +50,7 @@
                           } 
                           ?>
                           </div>
-                          <?php echo $result_ar->action_id; ?> - <?php echo $result_ar->reason_assigned_name; ?> 
+                          <?php echo $result_ar->action_id; ?>- <?php echo $result_ar->reason_assigned_name; ?>
                       </p>
                       <p> <b>Date Assigned:</b> <?php if(strlen($result_ar->assign_datetime) > 0){ echo date('d/m/Y h:i A',strtotime($result_ar->assign_datetime)); } ?></p>
                        <p><b>Completed Date:</b> <?php if($result_ar->finalised_ind == "Y"){ if($result_ar->status_code != "OPEN"){ echo date('d/m/Y h:i A',strtotime($result_ar->outcome_datetime)); } } ?></p>

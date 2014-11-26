@@ -300,7 +300,7 @@
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
     <Compile Include="framework\view\pc\view.pc.BookingSummary.php" />
-    <Compile Include="framework\view\pc\view.pc.Calender.php" />
+    <Compile Include="framework\view\pc\view.pc.Calendar.php" />
     <Compile Include="framework\view\pc\view.pc.StoryBoard.php" />
     <Compile Include="framework\view\pc\view.pc.PropertySearch.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
@@ -1171,7 +1171,6 @@
     <Compile Include="page.attachmentError.php">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="page.resubmitAction.php" />
     <Compile Include="page.versionfive.php" />
     <Compile Include="page.myPreferences.php">
       <SubType>Code</SubType>
@@ -1203,7 +1202,7 @@
     <Compile Include="page.view-action.php">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="page.view-Calender.php" />
+    <Compile Include="page.view-Calendar.php" />
     <Compile Include="page.view-customer.php" />
     <Compile Include="page.view-address.php">
       <SubType>Code</SubType>
@@ -1214,7 +1213,6 @@
     <Compile Include="page.view-name.php">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="page.view-Calender.php" />
     <Compile Include="page.view-StoryBoard.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>

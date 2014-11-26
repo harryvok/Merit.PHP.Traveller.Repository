@@ -11,7 +11,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -20,7 +20,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -29,7 +29,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -38,7 +38,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -47,7 +47,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -56,7 +56,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -74,7 +74,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="javascript:alert('Summary not available.');">
-                        <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?> -  <?php echo $result_search->description; ?> 
+                        <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>-  <?php echo $result_search->description; ?>
                         </a>
                     </li>
                     <?php
@@ -88,7 +88,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -97,7 +97,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -106,7 +106,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -115,7 +115,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -124,7 +124,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ex=1&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -133,7 +133,7 @@ if(isset($GLOBALS['result']->search_details)){
                     ?>
                     <li>
                         <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ex=1&ref_page=search">
-                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
+                         <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>- <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
                     <?php
@@ -151,7 +151,7 @@ if(isset($GLOBALS['result']->search_details)){
                 ?>
                <li>
                         <a data-transition="slide" href="javascript:alert('Summary not available.');">
-                        <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?> -  <?php echo $result_search->description; ?> 
+                        <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>-  <?php echo $result_search->description; ?>
                         </a>
                     </li>
                 <?php

@@ -40,9 +40,9 @@ class Model {
         return $result;
     }
     
-    /* Calender */
+    /* Calendar */
     
-    public function getCalender($params = NULL){
+    public function getCalendar($params = NULL){
         $filter = $this->getDefaultFilter("A", "action");
         $from_date = (date("o")-20)."-01-"."01T00:00:00.000";
         $to_date = (date("o")+20)."-01-"."01T00:00:00.000";

@@ -56,7 +56,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                               strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
                     ?>
                         <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
-                    <?php }?>  
+                    <?php }?>
                 <?php } ?>
             </div>
               
@@ -96,7 +96,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                               strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
                     ?>
                         <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
-                    <?php }?>  
+                    <?php }?>
                 <?php } ?>
             </div>
               

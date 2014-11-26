@@ -62,12 +62,12 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                               <p><b>House Number:</b> <?php /*echo $result_n_ar->house_suffix;*/  echo $result_n_ar->house_suffix; ?>
                     <?php   }else{ ?>
                               
-                              <p><b>House Number:</b><?php echo $result_n_ar->house_suffix;?> 
+                              <p><b>House Number:</b><?php echo $result_n_ar->house_suffix;?>
                     <?php }?>
                    <?php if(isset($result_n_ar->street_name) && strlen($result_n_ar->street_name) > 0){ ?><p><b>Street Name:</b> <?php echo $result_n_ar->street_name."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->street_type) && strlen($result_n_ar->street_type) > 0){ ?><p><b>Street Type:</b> <?php echo $result_n_ar->street_type."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->locality) && strlen($result_n_ar->locality) > 0){ ?><p><b>Suburb:</b> <?php echo $result_n_ar->locality."</p>"; } else { echo ""; } ?>
-                    <?php  if(isset($result_n_ar->postcode) && strlen($result_n_ar->postcode) > 0){ ?><p><b>Postcode:</b> <?php echo $result_n_ar->postcode."</p>"; } else { echo ""; } ?>              
+                    <?php  if(isset($result_n_ar->postcode) && strlen($result_n_ar->postcode) > 0){ ?><p><b>Postcode:</b> <?php echo $result_n_ar->postcode."</p>"; } else { echo ""; } ?>
                     </a>
                   </li>
                 <?php
@@ -99,12 +99,12 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                               <p><b>House Number:</b> <?php /*echo $result_n_ar->house_suffix;*/  echo $result_n_ar->house_suffix; ?>
                     <?php   }else{ ?>
                               
-                              <p><b>House Number:</b><?php echo $result_n_ar->house_suffix;?> 
+                              <p><b>House Number:</b><?php echo $result_n_ar->house_suffix;?>
                     <?php }?>
                    <?php if(isset($result_n_ar->street_name) && strlen($result_n_ar->street_name) > 0){ ?><p><b>Street Name:</b> <?php echo $result_n_ar->street_name."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->street_type) && strlen($result_n_ar->street_type) > 0){ ?><p><b>Street Type:</b> <?php echo $result_n_ar->street_type."</p>"; } else { echo ""; } ?>
                     <?php if(isset($result_n_ar->locality) && strlen($result_n_ar->locality) > 0){ ?><p><b>Suburb:</b> <?php echo $result_n_ar->locality."</p>"; } else { echo ""; } ?>
-                    <?php  if(isset($result_n_ar->postcode) && strlen($result_n_ar->postcode) > 0){ ?><p><b>Postcode:</b> <?php echo $result_n_ar->postcode."</p>"; } else { echo ""; } ?>               
+                    <?php  if(isset($result_n_ar->postcode) && strlen($result_n_ar->postcode) > 0){ ?><p><b>Postcode:</b> <?php echo $result_n_ar->postcode."</p>"; } else { echo ""; } ?>
                    </a>
                   </li>
             <?php

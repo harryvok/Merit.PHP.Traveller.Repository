@@ -279,7 +279,8 @@ if(!isset($_GET['d'])){
 
                             <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
                             <input type="button" class="openDocumentPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
-                            <?php } ?> 
+                            <?php } ?>
+
                         </div>
                         <div class="float-left">
                             <div class="column r25">

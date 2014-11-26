@@ -52,7 +52,7 @@ if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); } else { $ex = ""; }
 			?>
 		</div>
         <div class="content-secondary">
-    <?php $controller->Sidebar("viewAddress", "ipad"); ?>      
+    <?php $controller->Sidebar("viewAddress", "ipad"); ?>
     </div>
      <div class="iphone" data-role="panel" id="actionPanel" data-position="right" data-display="overlay" data-dismissible="true" data-theme="b">
 			

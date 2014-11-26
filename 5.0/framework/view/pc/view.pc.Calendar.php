@@ -10,7 +10,7 @@
         <div id="sidebar" class="sidebar responsive">
             <ul class="nav nav-list" style="top: 0px;">
                 <li class="active">
-                    <a href="#">
+                    <a href="index.php?page=view-Calendar">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text">Show</span>
                     </a>
@@ -224,7 +224,7 @@
                             </div>  
                         </div>
                         <div class="pull-right1 form-inline" id="graph_div" style="display:none; margin-top:10px;">
-                            <div class="btn-group" id="calendar-graphbutton" style="float:right;margin-right:10px;">
+                            <div class="btn-group" id="calendar-graphbutton" style="float:left;margin-left:10px">
                                 <button class="btn btn-primary" data-calendar-view="month" onclick="call_calendar();">Calendar</button>
                             </div>
                             <span>&nbsp;&nbsp;</span>

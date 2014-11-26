@@ -11,7 +11,7 @@
   else { 
       echo '<img width="10" height="9" src="images/dotRed.png" />'; 
   } 
-  ?> 
+  ?>
 </h2>
 <?php
 $GLOBALS['finalised_ind'] = $GLOBALS['result']->finalised_ind;

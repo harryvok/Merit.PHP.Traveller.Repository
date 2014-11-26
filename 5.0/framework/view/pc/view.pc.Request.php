@@ -167,7 +167,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         <div class="column r50">
             <span class="summaryColumnTitle">Location Address</span>
             <div class="summaryColumn">                
-                <a href='index.php?page=view-address&amp;id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?> <?php if(isset($loc_street_name)){ echo $loc_street_name; } ?> <?php if(isset($loc_street_type)){ echo $loc_street_type; } ?> <?php if(isset($loc_locality)){ echo $loc_locality; } ?> <?php if(isset($loc_postcode)){ echo $loc_postcode; } ?> </a>
+                <a href='index.php?page=view-address&amp;id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?><?php if(isset($loc_street_name)){ echo $loc_street_name; } ?><?php if(isset($loc_street_type)){ echo $loc_street_type; } ?><?php if(isset($loc_locality)){ echo $loc_locality; } ?><?php if(isset($loc_postcode)){ echo $loc_postcode; } ?></a>
             </div>
         </div>
         <div class="column r50">
@@ -355,7 +355,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                     if(isset($cust_address_id) && $cust_address_id != 0){
                         if(strlen($cust_house_number) > 0 && $cust_house_number != 0 || strlen($cust_house_suffix) > 0 && $cust_house_suffix != 0 || strlen($cust_street_name) > 0 ||  strlen($cust_street_type) > 0 ||  strlen($cust_locality) > 0){
                     ?>
-                    <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0 && isset($cust_house_number) && strlen($cust_house_number > 0) && $cust_house_number != $cust_house_suffix){ echo $cust_house_suffix; } elseif(isset($cust_house_number)){ echo $cust_house_number; } ?> <?php if(isset($cust_street_name)){ echo $cust_street_name; } ?> <?php if(isset($cust_street_type)){ echo $cust_street_type; } ?> <?php if(isset($cust_locality)){ echo $cust_locality; } ?> <?php if(isset($cust_postcode)){ echo $cust_postcode; } ?> </a>
+                    <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0 && isset($cust_house_number) && strlen($cust_house_number > 0) && $cust_house_number != $cust_house_suffix){ echo $cust_house_suffix; } elseif(isset($cust_house_number)){ echo $cust_house_number; } ?><?php if(isset($cust_street_name)){ echo $cust_street_name; } ?><?php if(isset($cust_street_type)){ echo $cust_street_type; } ?><?php if(isset($cust_locality)){ echo $cust_locality; } ?><?php if(isset($cust_postcode)){ echo $cust_postcode; } ?></a>
                     <?php
                         }
                     }
@@ -407,7 +407,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     }  
     if ($show_hide > 0)
     {
-?>  
+?>
 <div class="summaryContainer">
     <h1>Additional Information</h1>
     <div>
@@ -584,7 +584,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                 if(count($result2->udf_ddlb_det->string) > 1){
                                     foreach($result2->udf_ddlb_det->string as $udf_ddld){
                                             ?>
-                                                    <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                                    <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                     <?php	
                                     }
                                 }
@@ -597,7 +597,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                             echo "selected"; 
                                         }
                                     }
-                                                        ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                                        ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                 <?php
                                 }
                                                 ?>
@@ -616,7 +616,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     <div class="float-left">
                                         <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text1" class="text-popup_udf <?php 
                                 if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                    echo "required"; ?> digits" value="<?php 
+                                    echo "required"; ?>digits" value="<?php 
                                 if(isset($udf->udf_data)) 
                                     echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                     </div>
@@ -633,7 +633,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     <div class="float-left">
                                         $<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text2" class="text-popup_udf <?php 
                                 if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                    echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                                    echo "required"; ?>number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                     </div>
                                     <?php
                             }
@@ -681,12 +681,12 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php 
                                 if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
                                     echo "checked"; 
-                                } ?>  value="Y" /> <b>No</b> <input class="<?php 
+                                } ?>value="Y" /> <b>No</b> <input class="<?php 
                                 if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                     echo "required"; ?>" type="radio" <?php 
                                 if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
                                     echo "checked"; 
-                                } ?> name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
+                                } ?>name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
                                     </div>
                                     <?php	
                             }
@@ -867,7 +867,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                             if(count($result2->udf_ddlb_det->string) > 1){
                                 foreach($result2->udf_ddlb_det->string as $udf_ddld){
                                                     ?>
-                                                            <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                                            <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                             <?php	
                                 }
                             }
@@ -879,7 +879,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                     if($udf->udf_data == $udf_ddld){ 
                                         echo "selected"; 
                                     } 
-                                } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                } ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                                         <?php
                             }
                                                         ?>
@@ -898,7 +898,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                             <div class="float-left">
                                                 <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text6" class="text-popup_udf <?php 
                             if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                echo "required"; ?> digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                                echo "required"; ?>digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                             </div>
                                             <?php
                         }
@@ -913,7 +913,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                             <div class="float-left">
                                                 <input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="Text7" class="text-popup_udf <?php 
                             if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
-                                echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+                                echo "required"; ?>number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
                                             </div>
                                             <?php
                         }
@@ -963,13 +963,13 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
                                 echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="Radio1" <?php 
                             if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ 
                                 echo "checked"; 
-                            } ?>  value="Y" /> <b>No</b> 
+                            } ?>value="Y" /> <b>No</b> 
                                                     <input class="<?php 
                             if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  
                                 echo "required"; ?>" type="radio" <?php 
                             if(isset($udf->udf_data) && $udf->udf_data == 'N'){ 
                                 echo "checked"; 
-                            } ?> name="udf_<?php echo $udf->udf_name; ?>" id="Radio2"  value="N" /> 
+                            } ?>name="udf_<?php echo $udf->udf_name; ?>" id="Radio2"  value="N" /> 
                                             </div>
                                             <?php	
                         }
@@ -1207,5 +1207,5 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         <?php
         }
     }
-}?> 
+}?>
       

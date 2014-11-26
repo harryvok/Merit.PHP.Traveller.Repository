@@ -108,7 +108,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                                 $class = "light";
                             }
                 ?>
-                <tr class="<?php echo $class; ?> Document<?php echo $metaDataDocumentID[$i]; ?>MetaData" id="DocumentMetaData<?php echo $i; ?>ParentObject">
+                <tr class="<?php echo $class; ?>Document<?php echo $metaDataDocumentID[$i]; ?>MetaData" id="DocumentMetaData<?php echo $i; ?>ParentObject">
                     <td><?php echo $metaTagArray[$i]; ?></td>
                     <td><?php echo $metaDataArray[$i]; ?></td>
                 </tr>

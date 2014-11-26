@@ -35,7 +35,7 @@ $result_attrib = $GLOBALS['result']->attrib_sum_det;
 					<input id="attr<?php echo $number ?>-status_ind" value="<?php echo $result_a_as->status_ind; ?>" type="hidden" />
 					
 					<a id="<?php echo $number; ?>" class="attribute">
-				   <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
+				   <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?>(<?php echo $result_a_as->type_cnt; ?>)
 					</a>
 				</li>
 				<a name="anchoratt<?php echo $number;?>"></a>
@@ -61,7 +61,7 @@ $result_attrib = $GLOBALS['result']->attrib_sum_det;
 					 <input id="attr<?php echo $number ?>-status_ind" value="<?php echo $result_a_as->status_ind; ?>" type="hidden" />
 					 
 					<a id="<?php echo $number ?>" class="attribute">
-					<?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
+					<?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?>(<?php echo $result_a_as->type_cnt; ?>)
 					</a>
 				</li>
 				<a name="anchoratt<?php echo $number;?>"></a>

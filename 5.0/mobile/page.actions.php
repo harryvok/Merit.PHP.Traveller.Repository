@@ -36,7 +36,7 @@ if(isset($_SESSION['user_id'])){
 		  <form name="jump" style="float:left; width:100%; display:block;">
 				<?php
 		$controller->Dropdown("Filters", "Filters", array("filter" => "A", "filter_type" => "action"));
-		?>  
+		?>
                                               
 		  </form>
 		  

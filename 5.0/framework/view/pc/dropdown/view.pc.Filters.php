@@ -30,7 +30,7 @@ if($_SESSION['roleSecurity']->allow_action == "Y") {
                     echo 'selected'; 
                 } 
             }
-        ?> value="<?php echo $action_filter->filter_no; ?>"><?php echo $action_filter->filter_name; ?></option>
+        ?>value="<?php echo $action_filter->filter_no; ?>"><?php echo $action_filter->filter_name; ?></option>
         <?php  
         }
     }

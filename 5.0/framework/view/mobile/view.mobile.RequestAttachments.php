@@ -1,7 +1,7 @@
 <?php
    if($_SESSION['roleSecurity']->view_attachment == "Y")
     {
-?> 
+?>
  <div data-role="collapsible">
 	<h4>Attachments <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?></span></h4>
     <p>
@@ -49,7 +49,7 @@
                 $result_at_get = $GLOBALS['result']->request_remark_details;
                         ?>
                         <li>
-						  <?php if(isset($result_at_get->attachment)) { if(stristr($result_at_get->attachment, str_ireplace("/", "\\", ATTACHMENT_FOLDER))){ ?><a style="font-size:14px;" href="#" id="<?php echo $result_at_get->attachment; ?>" class="ViewFile"><?php echo str_ireplace(str_ireplace("/", "\\", ATTACHMENT_FOLDER), "", $result_at_get->attachment); ?><?php } else { echo "<p style='font-size:14px;font-weight:bold;white-space:normal;'>".$result_at_get->attachment."</p>"; } } ?> 
+						  <?php if(isset($result_at_get->attachment)) { if(stristr($result_at_get->attachment, str_ireplace("/", "\\", ATTACHMENT_FOLDER))){ ?><a style="font-size:14px;" href="#" id="<?php echo $result_at_get->attachment; ?>" class="ViewFile"><?php echo str_ireplace(str_ireplace("/", "\\", ATTACHMENT_FOLDER), "", $result_at_get->attachment); ?><?php } else { echo "<p style='font-size:14px;font-weight:bold;white-space:normal;'>".$result_at_get->attachment."</p>"; } } ?>
                           <p style="padding-top:10px;"> <b>Date</b>: <?php if(strlen($result_at_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_at_get->note_datetime))); }  ?><br />
                            <b>Officer:</b> <?php echo $result_at_get->officer; ?><br />
                            <b>Type:</b> <?php echo $result_at_get->sub_type; ?><br />

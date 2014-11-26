@@ -41,7 +41,7 @@
                             <td><?php if(strlen($result_at_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_at_get->note_datetime))); }  ?></td>
                             <td><?php echo $result_at_get->officer; ?></td>
                             <td><span><?php if(isset($result_at_get->attachment)) {
-                                                echo str_ireplace(str_ireplace("/", "\\", ATTACHMENT_FOLDER), "", $result_at_get->attachment); ?> - </span><?php } ?><span><?php if(isset($result_at_get->description)){ echo " - ".base64_decode($result_at_get->description); } ?></span></td>
+                                                echo str_ireplace(str_ireplace("/", "\\", ATTACHMENT_FOLDER), "", $result_at_get->attachment); ?>- </span><?php } ?><span><?php if(isset($result_at_get->description)){ echo " - ".base64_decode($result_at_get->description); } ?></span></td>
                             <td><?php if(isset($result_at_get->attachment)) {
                                           if(stristr($result_at_get->attachment, str_ireplace("/", "\\", ATTACHMENT_FOLDER))){ ?><a id="<?php echo $result_at_get->attachment; ?>" class="ViewFile">View</a> <?php }
                                       }  ?></td>
@@ -70,7 +70,7 @@
                             <td><?php if(strlen($result_at_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_at_get->note_datetime))); }  ?></td>
                             <td><?php echo $result_at_get->officer; ?></td>
                             <td><span><?php if(isset($result_at_get->attachment)) {
-                                                echo str_ireplace(str_ireplace("/", "\\", ATTACHMENT_FOLDER), "", $result_at_get->attachment); ?> - </span><?php } ?><span><?php if(isset($result_at_get->description)){ echo " - ".base64_decode($result_at_get->description); } ?></td>
+                                                echo str_ireplace(str_ireplace("/", "\\", ATTACHMENT_FOLDER), "", $result_at_get->attachment); ?>- </span><?php } ?><span><?php if(isset($result_at_get->description)){ echo " - ".base64_decode($result_at_get->description); } ?></td>
                             <td><?php if(isset($result_at_get->attachment)) {
                                           if(stristr($result_at_get->attachment, str_ireplace("/", "\\", ATTACHMENT_FOLDER))){ ?><a id="<?php echo $result_at_get->attachment; ?>" class="ViewFile">View</a> <?php }
                                       }  ?></td>

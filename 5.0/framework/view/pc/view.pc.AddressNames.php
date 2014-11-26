@@ -32,7 +32,7 @@ $result_n = $GLOBALS['result']->name_dets;
                         ?>
                             <tr class="<?php echo $class; ?>" onClick="change_name('<?php echo $change; ?>')" title="">
                                 <td id="<?php echo $change; ?>"><?php if(strlen($result_n_ar->name_id) > 0){ echo $result_n_ar->name_id; } else { echo ""; } ?></td>
-                                <td><?php if(strlen($result_n_ar->given_names) > 0){ echo $result_n_ar->given_names; } else { echo ""; } ?> <?php if(strlen($result_n_ar->surname) > 0){ echo $result_n_ar->surname; } else { echo ""; } ?></td>
+                                <td><?php if(strlen($result_n_ar->given_names) > 0){ echo $result_n_ar->given_names; } else { echo ""; } ?><?php if(strlen($result_n_ar->surname) > 0){ echo $result_n_ar->surname; } else { echo ""; } ?></td>
                             </tr>
                             <?php
                     }
@@ -43,7 +43,7 @@ $result_n = $GLOBALS['result']->name_dets;
                     ?>
                         <tr class="dark" onClick="change_name('<?php echo $change; ?>')" title="">
                             <td id="<?php echo $change; ?>"><?php if(strlen($result_n_ar->name_id) > 0){ echo $result_n_ar->name_id; } else { echo ""; } ?></td>
-                            <td><?php if(strlen($result_n_ar->given_names) > 0){ echo $result_n_ar->given_names; } else { echo ""; } ?> <?php if(strlen($result_n_ar->surname) > 0){ echo $result_n_ar->surname; } else { echo ""; } ?></td>
+                            <td><?php if(strlen($result_n_ar->given_names) > 0){ echo $result_n_ar->given_names; } else { echo ""; } ?><?php if(strlen($result_n_ar->surname) > 0){ echo $result_n_ar->surname; } else { echo ""; } ?></td>
                         </tr>
                         <?php
                 }

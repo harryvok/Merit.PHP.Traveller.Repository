@@ -33,7 +33,7 @@
                         <input id="al<?php echo $number ?>-type_code" value="<?php echo $result_a_as->type_code; ?>" type="hidden" />
                         
                         <a id="<?php echo $number; ?>" class="alias">
-                        <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
+                        <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?>(<?php echo $result_a_as->type_cnt; ?>)
                         </a>
                     </li>
                     <a name="anchoral<?php echo $number ?>"></a>
@@ -59,7 +59,7 @@
                         <input id="al<?php echo $number; ?>-address_id" value="<?php echo $_GET['id']; ?>" type="hidden" />
                         
                         <a id="<?php echo $number ?>" class="alias">
-                       <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?> (<?php echo $result_a_as->type_cnt; ?>)
+                       <?php echo $result_a_as->type_desc." - ".$result_a_as->type_key; ?>(<?php echo $result_a_as->type_cnt; ?>)
                         </a>
                     </li>
                     <a name="anchoral<?php echo $number ?>"></a>

@@ -8,7 +8,7 @@
                 if($result_c_ar->sub_type == "Change"){
                     ?>
                     <li>
-                        <?php echo $result_c_ar->note_datetime; ?> - <?php echo base64_decode($result_c_ar->comment); ?>
+                        <?php echo $result_c_ar->note_datetime; ?>- <?php echo base64_decode($result_c_ar->comment); ?>
                     </li>
                     <?php
                 }
@@ -19,7 +19,7 @@
 				$result_c_ar = $GLOBALS['result']->request_remark_details;
             ?>
                <li>
-                        <?php echo $result_c_ar->note_datetime; ?> - <?php echo base64_decode($result_c_ar->comment); ?>
+                        <?php echo $result_c_ar->note_datetime; ?>- <?php echo base64_decode($result_c_ar->comment); ?>
                     </li>
                 <?php
             }

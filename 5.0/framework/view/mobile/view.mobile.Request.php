@@ -150,16 +150,16 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
     <a data-role="button" title="Edit Instructions" class="edit" id="EditInstructions"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
     <li data-role="list-divider">Location Details</li>
     <li>
-        <a href='index.php?page=view-address&id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>&ref_page=view-request&ref=<?php echo $_GET['id']; ?>&filter=<?php echo $filter; ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?> <?php if(isset($loc_street_name)){ echo $loc_street_name; } ?> <?php if(isset($loc_street_type)){ echo $loc_street_type; } ?> <?php if(isset($loc_locality)){ echo $loc_locality; } ?> <?php if(isset($loc_postcode)){ echo $loc_postcode; } ?> </a>
+        <a href='index.php?page=view-address&id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>&ref_page=view-request&ref=<?php echo $_GET['id']; ?>&filter=<?php echo $filter; ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?><?php if(isset($loc_street_name)){ echo $loc_street_name; } ?><?php if(isset($loc_street_type)){ echo $loc_street_type; } ?><?php if(isset($loc_locality)){ echo $loc_locality; } ?><?php if(isset($loc_postcode)){ echo $loc_postcode; } ?></a>
     </li>
     <li>
-        <p><strong>Location Address Descr:</strong> <?php if(isset($loc_desc)){ echo " ".$loc_desc; } ?> </p>
+        <p><strong>Location Address Descr:</strong> <?php if(isset($loc_desc)){ echo " ".$loc_desc; } ?></p>
     </li>
     <li>
-        <p><strong>Property Number</strong> <?php if(isset($loc_property_no)){ echo $loc_property_no; } ?> </p>
+        <p><strong>Property Number</strong> <?php if(isset($loc_property_no)){ echo $loc_property_no; } ?></p>
     </li>
     <li>
-        <p><strong>X Coords</strong> <?php if(isset($loc_gis_x_coord)){ echo $loc_gis_x_coord; } ?> </p>
+        <p><strong>X Coords</strong> <?php if(isset($loc_gis_x_coord)){ echo $loc_gis_x_coord; } ?></p>
     </li>
     <li>
         <p><strong>Y Coords</strong> <?php if(isset($loc_gis_y_coord)){ echo $loc_gis_y_coord; } ?></p>
@@ -282,7 +282,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             if(strlen($cust_house_number) > 0 && $cust_house_number != 0 || strlen($cust_house_suffix) > 0 && $cust_house_suffix != 0 || strlen($cust_street_name) > 0 ||  strlen($cust_street_type) > 0 ||  strlen($cust_locality) > 0){
         ?>
     <li>
-        <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0 && isset($cust_house_number) && strlen($cust_house_number > 0) && $cust_house_number != $cust_house_suffix){ echo $cust_house_suffix; } elseif(isset($cust_house_number)){ echo $cust_house_number; } ?> <?php if(isset($cust_street_name)){ echo $cust_street_name; } ?> <?php if(isset($cust_street_type)){ echo $cust_street_type; } ?> <?php if(isset($cust_locality)){ echo $cust_locality; } ?> <?php if(isset($cust_postcode)){ echo $cust_postcode; } ?> </a>
+        <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0 && isset($cust_house_number) && strlen($cust_house_number > 0) && $cust_house_number != $cust_house_suffix){ echo $cust_house_suffix; } elseif(isset($cust_house_number)){ echo $cust_house_number; } ?><?php if(isset($cust_street_name)){ echo $cust_street_name; } ?><?php if(isset($cust_street_type)){ echo $cust_street_type; } ?><?php if(isset($cust_locality)){ echo $cust_locality; } ?><?php if(isset($cust_postcode)){ echo $cust_postcode; } ?></a>
     </li>
     <?php
             }
@@ -362,7 +362,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                                                            if(isset($udf->udf_data)) {
                                                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; }
                                                            } else { echo "<b>".$udf->udf_name."</b>"; }
-                                                       }  else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
+                                                       }  else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?><?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
                                                        } ?></b></p>
 						               </li>
 						            <?php  
@@ -378,7 +378,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                                                  if(isset($udf->udf_data)) {
                                                      if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id="A1" class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; }
                                                  } else { echo "<b>".$udf->udf_name."</b>"; }
-                                             } else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
+                                             } else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?><?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
                                              } ?></b></p>
 				               </li>
 				            <?php  

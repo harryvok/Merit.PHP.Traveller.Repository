@@ -54,7 +54,7 @@
                                     <?php if($_SESSION['roleSecurity']->delete_comment == "Y"){ ?>
                                         <a class="delete" href="#" id="Comment<?php echo $i; ?>Parent" data-role="button" id="Comment<?php echo $i; ?>Parent" data-action="Comment" data-mode="DELETE" data-request-id="<?php echo $_SESSION['request_id']; ?>"  data-note-id="<?php echo $result_c_get->note_id; ?>" data-action-id="<?php echo $result_c_get->action_id; ?>" data-note-class="<?php echo $result_c_get->note_class; ?>"><img src="images/delete-icon.png" width="16" height="16" /> Delete</a>
                                     <?php } ?>
-                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?> 
+                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?>
                                         <a id="Comment<?php echo $i; ?>Close">Close</a>
                                     <?php } ?>
                                 </p>
@@ -78,7 +78,7 @@
                                     <?php if($_SESSION['roleSecurity']->delete_comment == "Y"){ ?>
                                         <a class="delete"  href="#" id="Comment<?php echo $i; ?>Parent" data-role="button" id="Comment<?php echo $i; ?>Parent" data-action="Comment" data-mode="DELETE" data-request-id="<?php echo $_SESSION['request_id']; ?>"  data-note-id="<?php echo $result_c_get->note_id; ?>" data-action-id="<?php echo $result_c_get->action_id; ?>" data-note-class="<?php echo $result_c_get->note_class; ?>"><img src="images/delete-icon.png" width="16" height="16" /> Delete</a>
                                     <?php } ?>
-                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?> 
+                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?>
                                         <a id="Comment<?php echo $i; ?>Close">Close</a>
                                     <?php } ?>
                                 </p>
@@ -110,7 +110,7 @@
                                     <?php if($_SESSION['roleSecurity']->delete_comment == "Y"){ ?>
                                         <a class="delete"  href="#" id="Comment<?php echo $i; ?>Parent" data-role="button" id="Comment<?php echo $i; ?>Parent" data-action="Comment" data-mode="DELETE" data-request-id="<?php echo $_SESSION['request_id']; ?>"  data-note-id="<?php echo $result_c_get->note_id; ?>" data-action-id="<?php echo $result_c_get->action_id; ?>" data-note-class="<?php echo $result_c_get->note_class; ?>"><img src="images/delete-icon.png" width="16" height="16" /> Delete</a>
                                     <?php } ?>
-                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?> 
+                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?>
                                         <a id="Comment<?php echo $i; ?>Close">Close</a>
                                     <?php } ?>
                                 </p>
@@ -133,7 +133,7 @@
                                     <?php if($_SESSION['roleSecurity']->delete_comment == "Y"){ ?>
                                         <a class="delete"  href="#" id="Comment<?php echo $i; ?>Parent" data-role="button" id="Comment<?php echo $i; ?>Parent" data-action="Comment" data-mode="DELETE" data-request-id="<?php echo $_SESSION['request_id']; ?>"  data-note-id="<?php echo $result_c_get->note_id; ?>" data-action-id="<?php echo $result_c_get->action_id; ?>" data-note-class="<?php echo $result_c_get->note_class; ?>"><img src="images/delete-icon.png" width="16" height="16" /> Delete</a>
                                     <?php } ?>
-                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?> 
+                                    <?php if($_SESSION['roleSecurity']->delete_comment == "Y" || $_SESSION['roleSecurity']->maint_comment == "Y"){ ?>
                                         <a id="Comment<?php echo $i; ?>Close">Close</a>
                                     <?php } ?>
                                 </p>

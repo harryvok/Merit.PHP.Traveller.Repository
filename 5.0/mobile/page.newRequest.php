@@ -58,6 +58,7 @@ if(isset($_SESSION['user_id'])){
 
 
                         <input type="hidden" name='request' id="request">
+                        <input type="hidden" id="need_r_booking" name="need_r_booking" />
                         <input type="hidden" id="request_helpText" />
                         <input type="hidden" id="request_helpURL" />
                         <div class="info">
@@ -69,6 +70,7 @@ if(isset($_SESSION['user_id'])){
 
 
                         <input type="hidden" name='function' id="function">
+                        <input type="hidden" id="need_f_booking" name="need_f_booking" />
                         <input type="hidden" id="function_helpText" />
                         <input type="hidden" id="function_helpURL" />
                         <div class="info">
@@ -199,6 +201,8 @@ if(isset($_SESSION['user_id'])){
 <!--                        <input type="hidden" name="lpostcode" id="lpostcode" />-->
                         <!--<input type="button" data-role="button" value="Show On Map" onclick="showOnMap()" />-->
                         <input type="button" data-role="button" value="Clear" onclick="clearLocationAddress()" />
+                        <script type="text/javascript">  var date = new Date().toISOString(); </script>
+                        <input type="button" value="Booking" disabled id="AddrBooking" onclick="GetBookingSummary(date)"  />
                     </p>
                 </div>
                 <div data-role="collapsible" class="col" data-content-theme="c">

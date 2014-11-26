@@ -88,7 +88,7 @@
     }
    ?>
     
-    <title><?php echo SITE_TITLE; ?> <?php if(isset($page) && $page != '') echo " - ".mb_ucfirst(str_ireplace("-"," ", $page)); ?></title>
+    <title><?php echo SITE_TITLE; ?><?php if(isset($page) && $page != '') echo " - ".mb_ucfirst(str_ireplace("-"," ", $page)); ?></title>
 </head>
 <body onload="initFastButtons();">
     <span id="fastclick">

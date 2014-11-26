@@ -37,14 +37,14 @@ if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['u
                         if(count($result2->udf_ddlb_det->string) > 1){
                             foreach($result2->udf_ddlb_det->string as $udf_ddld){
                             ?>
-								    <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+								    <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
 								    <?php	
                             }
                         }
                         elseif(count($result2->udf_ddlb_det->string) == 1){
                             $udf_ddld =  $result2->udf_ddlb_det->string
                                     ?>
-                                <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                 <?php
                         }
                                 ?>
@@ -59,7 +59,7 @@ if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['u
 						<label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 					</div>
 					<div class="float-left">
-						<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?> digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+						<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
 					</div>
 				<?php
 				}
@@ -70,7 +70,7 @@ if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['u
 						<label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 					</div>
 					<div class="float-left">
-						$<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+						$<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
 					</div>
 				<?php
 				}
@@ -103,7 +103,7 @@ if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['u
 						<label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 					</div>
 					<div class="float-left">
-						<b>Yes</b> <input type="radio" class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ echo "checked"; } ?>  value="Y" /> <b>No</b> <input type="radio" <?php if(isset($udf->udf_data) && $udf->udf_data == 'N'){ echo "checked"; } ?> class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
+						<b>Yes</b> <input type="radio" class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ echo "checked"; } ?>value="Y" /> <b>No</b> <input type="radio" <?php if(isset($udf->udf_data) && $udf->udf_data == 'N'){ echo "checked"; } ?>class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
 					</div>
 				<?php	
 				}
@@ -114,7 +114,7 @@ if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['u
 						<label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 					</div>
 					<div class="float-left">
-						<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?> timeField" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
+						<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>timeField" value="<?php if(isset($udf->udf_data) && strlen($udf->udf_data) > 0) echo date("h:i A", strtotime($udf->udf_data)); ?>" size="5" maxlength="10">
 					</div>
 				<?php	
 				}
@@ -261,14 +261,14 @@ elseif(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result'
                 if(count($result2->udf_ddlb_det->string) > 1){
                     foreach($result2->udf_ddlb_det->string as $udf_ddld){
                         ?>
-								    <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+								    <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
 								    <?php	
                     }
                 }
                 elseif(count($result2->udf_ddlb_det->string) == 1){
                     $udf_ddld =  $result2->udf_ddlb_det->string
                                     ?>
-                                <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>  value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
+                                <option <?php if(isset($udf->udf_data)){ if($udf->udf_data == $udf_ddld){ echo "selected"; } } ?>value="<?php echo $udf_ddld; ?>"><?php echo $udf_ddld; ?></option>
                                 <?php
                 }
                                 ?>
@@ -283,7 +283,7 @@ elseif(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result'
 					<label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 				</div>
 				<div class="float-left">
-					<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?> digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+					<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>digits" value="<?php if(isset($udf->udf_data)) echo $udf->udf_data; ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
 				</div>
 			<?php
 			}
@@ -294,7 +294,7 @@ elseif(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result'
 					<label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 				</div>
 				<div class="float-left">
-					$<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?> number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
+					$<input type="text" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>" class="text <?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>number" value="<?php if(isset($udf->udf_data)) echo str_ireplace("$","",$udf->udf_data); ?>" size="5" maxlength="<?php if($udf->udf_fld_size > 0){ echo $udf->udf_fld_size; } ?>">
 				</div>
 			<?php
 			}
@@ -327,7 +327,7 @@ elseif(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result'
 					<label  for="refno"><?php echo $udf->udf_name; ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "<span style='color:red;'>*</span>"; ?></label>
 				</div>
 				<div class="float-left">
-					<b>Yes</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ echo "checked"; } ?>  value="Y" /> <b>No</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" type="radio" <?php if(isset($udf->udf_data) && $udf->udf_data == 'N'){ echo "checked"; } ?> name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
+					<b>Yes</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" type="radio" name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_Y" <?php if(isset($udf->udf_data) && $udf->udf_data == 'Y'){ echo "checked"; } ?>value="Y" /> <b>No</b> <input class="<?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" && $outcome_id != "NORESPONSE" && $outcome_id != "" || $udf->udf_mandatory_ind == "I"&& $outcome_id != "NORESPONSE" && $outcome_id != "")  echo "required"; ?>" type="radio" <?php if(isset($udf->udf_data) && $udf->udf_data == 'N'){ echo "checked"; } ?>name="udf_<?php echo $udf->udf_name; ?>" id="udf_<?php echo $udf->udf_order; ?>_N"  value="N" /> 
 				</div>
 			<?php	
 			}

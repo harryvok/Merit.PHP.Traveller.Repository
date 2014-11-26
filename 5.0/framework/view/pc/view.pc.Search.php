@@ -73,25 +73,25 @@ if(isset($GLOBALS['result']->search_details)){
             
             <tr class="<?php echo $class; ?>" onclick="
             <?php 
-            if($result_search->result_type == "Request"){ ?> 
+            if($result_search->result_type == "Request"){ ?>
                 change_req('<?php echo $change; ?>'); <?php
             } 
-            elseif($result_search->result_type == "Action"){ ?> 
+            elseif($result_search->result_type == "Action"){ ?>
                 change_act('<?php echo $change; ?>'); <?php 
             } 
-            elseif($result_search->result_type == "Address" || $result_search->result_type == "Linked Address"){ ?> 
+            elseif($result_search->result_type == "Address" || $result_search->result_type == "Linked Address"){ ?>
                 change_add('<?php echo $change; ?>'); <?php 
             } 
-            elseif($result_search->result_type == "Name" || $result_search->result_type == "Linked Name"){ ?> 
+            elseif($result_search->result_type == "Name" || $result_search->result_type == "Linked Name"){ ?>
                 change_name('<?php echo $change; ?>'); <?php 
             } 
-            elseif($result_search->result_type == "Property&Rating Address"){ ?> 
+            elseif($result_search->result_type == "Property&Rating Address"){ ?>
                 change_addex('<?php echo $change; ?>'); <?php 
             } 
-            elseif($result_search->result_type == "Property&Rating Name"){ ?> 
+            elseif($result_search->result_type == "Property&Rating Name"){ ?>
                 change_nameex('<?php echo $change; ?>'); <?php 
             } 
-            elseif($result_search->result_type == "Officer"){ ?> 
+            elseif($result_search->result_type == "Officer"){ ?>
                 change_off('<?php echo $change; ?>', '<?php echo $result_search->key_id; ?>'); <?php 
             } 
             else{
@@ -114,25 +114,25 @@ if(isset($GLOBALS['result']->search_details)){
         <tr class="dark" 
         onclick="
         <?php 
-        if($GLOBALS['result']->search_details->result_type == "Request"){ ?> 
+        if($GLOBALS['result']->search_details->result_type == "Request"){ ?>
             change_req('1'); <?php
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Action"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Action"){ ?>
             change_act('1'); <?php 
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Address" || $GLOBALS['result']->search_details->result_type == "Linked Address"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Address" || $GLOBALS['result']->search_details->result_type == "Linked Address"){ ?>
             change_add('1'); <?php 
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Name" || $GLOBALS['result']->search_details->result_type == "Linked Name"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Name" || $GLOBALS['result']->search_details->result_type == "Linked Name"){ ?>
             change_name('1'); <?php 
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Property&Rating Address"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Property&Rating Address"){ ?>
             change_addex('1'); <?php 
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Property&Rating Name"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Property&Rating Name"){ ?>
             change_nameex('1'); <?php 
         } 
-        elseif($GLOBALS['result']->search_details->result_type == "Officer"){ ?> 
+        elseif($GLOBALS['result']->search_details->result_type == "Officer"){ ?>
             change_off('1', '<?php echo $GLOBALS["result"]->search_details->key_id; ?>'); <?php 
         } 
         else{

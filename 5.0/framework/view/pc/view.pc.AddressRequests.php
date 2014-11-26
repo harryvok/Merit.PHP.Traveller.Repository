@@ -67,7 +67,7 @@ else{
                               else{
                                   echo '<img width="10" height="9" src="images/dotRed.png" />';
                               }
-                                  ?>  
+                                  ?>
                               </td>
                               </tr>
                               <?php
@@ -92,7 +92,7 @@ else{
                       else{
                           echo '<img width="10" height="9" src="images/dotRed.png" />';
                       }
-                                  ?>  
+                                  ?>
                       </td>
                           </tr>
                           <?php

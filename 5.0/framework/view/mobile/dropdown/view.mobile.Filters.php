@@ -16,7 +16,7 @@
                 $GLOBALS['filterLink'] = $_GET['filter'];
             } 
         }
-        ?> value="<?php echo $action_filter->filter_no; ?>"><?php echo $action_filter->filter_name; ?></option>
+        ?>value="<?php echo $action_filter->filter_no; ?>"><?php echo $action_filter->filter_name; ?></option>
         <?php  
         }
     }

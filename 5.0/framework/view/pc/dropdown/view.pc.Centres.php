@@ -4,7 +4,7 @@
     <?php
     if(isset($GLOBALS['result']->centre_details) && count($GLOBALS['result']->centre_details) > 1){
         foreach($GLOBALS['result']->centre_details as $priority){ ?>
-            <option <?php echo $_SESSION['centre_code'] == $priority->centre_code ? "selected='selected'" : '' ?> value="<?php echo $priority->centre_code; ?>"><?php echo $priority->centre_name; ?></option>
+            <option <?php echo $_SESSION['centre_code'] == $priority->centre_code ? "selected='selected'" : '' ?>value="<?php echo $priority->centre_code; ?>"><?php echo $priority->centre_name; ?></option>
         <?php  
         }
     }

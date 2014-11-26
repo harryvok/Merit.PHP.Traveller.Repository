@@ -1,6 +1,6 @@
 <div style="float:left;">
 <h2>
-    <b><?php echo $GLOBALS['result']->animal_type; ?>: <?php echo $GLOBALS['result']->animal_name; ?> (<?php echo $GLOBALS['result']->animal_no; ?>)</b>
+    <b><?php echo $GLOBALS['result']->animal_type; ?>: <?php echo $GLOBALS['result']->animal_name; ?>(<?php echo $GLOBALS['result']->animal_no; ?>)</b>
     
  </h2>
  </div>

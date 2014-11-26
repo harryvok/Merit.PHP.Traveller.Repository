@@ -78,13 +78,13 @@
             }
         }
          ?>
-    <title><?php echo SITE_TITLE; ?> - <?php echo $defaultpage; ?></title>
+    <title><?php echo SITE_TITLE; ?>- <?php echo $defaultpage; ?></title>
 </head>
 <body>
     <a name="topAnc" title="topAnc"></a>
 	<div id="loadingbar"><img width="46" height="46" src="images/ajax-loader.gif" /></div>
     <div id="popup"></div>
-    <?php if(!isset($user)){ ?>    
+    <?php if(!isset($user)){ ?>
         <div id="header-container" align="center">
             <div id="header" align="center">
                 <a href="index.php?" class="logo" title="" rel="shadowbox"></a>
@@ -108,11 +108,11 @@
                         <!--<![endif]-->
                          <?php if($_SESSION['roleSecurity']->allow_action == "Y") { ?><a class="header-nav" href="index.php?page=actions">ACTIONS</a><?php } ?>
 <?php if($_SESSION['roleSecurity']->allow_request == "Y") { ?><a class="header-nav" href="index.php?page=requests">REQUESTS</a><?php } ?>
-                        <?php if($_SESSION['roleSecurity']->maint_new_request == "Y") { ?> <a class="header-nav" href="index.php?page=newRequest">NEW REQUEST</a><?php } ?>
+                        <?php if($_SESSION['roleSecurity']->maint_new_request == "Y") { ?><a class="header-nav" href="index.php?page=newRequest">NEW REQUEST</a><?php } ?>
                          <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?><a class="header-nav" href="index.php?page=search">SEARCH</a><?php } ?>
                          <a class="header-nav" href="process.php?action=logout">LOGOUT</a>
                          <a class="header-nav" href="index.php?page=view-StoryBoard&id=619990">STORYBOARD</a>
-                         <a class="header-nav" href="index.php?page=view-Calender">CALENDER</a>
+                         <a class="header-nav" href="index.php?page=view-Calendar">CALENDAR</a>
                          <span class="council-name cname-logged-in"><?php  echo COUNCIL_NAME;  ?></span>
               </div>
          </div>
@@ -156,7 +156,7 @@
 		        });
 		    </script>
     	    <div class="column r50"><div class="profImage"><img src="images/pc/prof.gif" width="20" height="20"></div><div class="welcome"><h3><b><?php if(isset($_SESSION['given_name'])) echo $_SESSION['given_name']; ?></b></h3></div><div class="bottomButtons"><a href="index.php?page=myPreferences">MY PREFERENCES</a><?php if($_SESSION['roleSecurity']->allow_settings == "Y") { ?><!--<?php if(defined('CHANGE_PASSWORD') && CHANGE_PASSWORD == 1 && $_SESSION['roleSecurity']->allow_cpwd == "Y"){ ?><a href="index.php?page=changePassword">CHANGE PASSWORD</a><?php } ?>--><a href="index.php?page=modifySettings">MODIFY SETTINGS</a><?php } ?></div></div>
-            <div class="column r50"><div class="version"><h3>v<?php if(isset($version)){ echo $version; } ?> &copy; Merit Technology</h3></div><div class="searchBar" style="width:290px"><b style="color:white">
+            <div class="column r50"><div class="version"><h3>v<?php if(isset($version)){ echo $version; } ?>&copy; Merit Technology</h3></div><div class="searchBar" style="width:290px"><b style="color:white">
             <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?>
                 Search: </b> <input type="text" placeholder="Search..." id="searchInput" style="width:200px">
             <?php }else{ ?>

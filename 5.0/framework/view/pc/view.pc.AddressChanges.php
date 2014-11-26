@@ -24,7 +24,7 @@
                               }
                               ?>
                                   <tr class="<?php echo $class; ?>">
-                                      <td><?php echo $result_c_ar->note_datetime;?> - <?php echo base64_decode($result_c_ar->comment); ?></td>
+                                      <td><?php echo $result_c_ar->note_datetime;?>- <?php echo base64_decode($result_c_ar->comment); ?></td>
                                   </tr>
                                   <?php
                           }
@@ -34,7 +34,7 @@
                       if($GLOBALS['result']->request_remark_details->sub_type == "Change"){
                       ?>
                           <tr class="dark" title="">
-                              <td><?php echo $GLOBALS['result']->request_remark_details->note_datetime; ?> - <?php echo base64_decode($GLOBALS['result']->request_remark_details->comment); ?></td>
+                              <td><?php echo $GLOBALS['result']->request_remark_details->note_datetime; ?>- <?php echo base64_decode($GLOBALS['result']->request_remark_details->comment); ?></td>
                           <?php
                       }
                   }

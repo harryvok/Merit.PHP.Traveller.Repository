@@ -32,10 +32,10 @@ if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); }
           if(isset($_GET['d']) && $_GET['d'] == "req"){
               $controller->Display("OfficerRequests", "OfficerRequests");
           }
-        ?>           
+        ?>
     </div>
           <div class="content-secondary">
-          <?php $controller->Sidebar("viewofficer", "ipad"); ?> 
+          <?php $controller->Sidebar("viewofficer", "ipad"); ?>
           </div>
           <div class="iphone" data-role="panel" id="actionPanel" data-position="right" data-display="overlay" data-dismissible="true" data-theme="b">
   
