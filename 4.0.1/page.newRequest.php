@@ -13,6 +13,7 @@ if(!isset($_GET['d'])){
 </div>
 
 <div id="newRequest">
+   
     <span style="color: red;"><b><?php echo COMPULSORY ?></b></span><br />
 
     <form enctype='multipart/form-data' id='newrequest' name="newrequest" action='process.php' method='post'>
@@ -25,6 +26,7 @@ if(!isset($_GET['d'])){
         <div class="summaryContainer">  
             <h1>Request Details</h1>
             <div>
+                <input type="hidden" id="testing" value="" />
                 <b><span id="rednote"></span></b><BR />
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
                 <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
