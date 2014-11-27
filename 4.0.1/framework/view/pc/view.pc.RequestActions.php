@@ -1,4 +1,5 @@
 <div class="summaryContainer">
+
     <h1>Actions (<?php if(isset($GLOBALS['result']['actions']->request_actions_det->request_actions_details)){echo count($GLOBALS['result']['actions']->request_actions_det->request_actions_details); } else { echo 0; } ?>) 
         <?php
         if($_SESSION['roleSecurity']->maint_new_action == "Y" && $GLOBALS['finalised_ind'] != "Y"){
@@ -20,6 +21,7 @@
                 $("#AddAction").trigger("click");
             });
         </script>
+        
         <?php
         }
         ?>
@@ -34,6 +36,7 @@
                     <th class="sortable">Date Assigned</th>
                     <th class="sortable">Due Date</th>
                     <th class="sortable">Completed Date</th>
+                    <th class="sortable">Options</th>
                     <th></th>
                 </tr>
             </thead>
@@ -59,6 +62,10 @@
                     <td><?php if(strlen($result_a_ar->assign_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_a_ar->assign_time)); } ?></td>
                     <td><?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?></td>
                     <td><?php if($result_a_ar->finalised_ind == "Y"){ if($result_a_ar->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->outcome_time)); } } ?></td>
+                    <td>
+                        <?php if($_SESSION['roleSecurity']->maint_comp_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y") { ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=complete" class="button">Complete</a><?php } ?>
+                        <?php if($_SESSION['roleSecurity']->maint_reassign_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y"){ ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=reassign" class="button">Reassign</a><?php } ?>
+                    </td>
                     <td><?php 
                         if($result_a_ar->status_code == "OPEN" || $result_a_ar->status_code == "REOPEN"){ 
                             echo '<div class="dotGreen" title="Open"></div>';
@@ -84,6 +91,10 @@
                     <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->assign_time) > 0){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->assign_time)); } ?></td>
                     <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time) > 0 && $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)); }  ?></td>
                     <td><?php if($GLOBALS['result']['actions']->request_actions_det->request_actions_details->finalised_ind == "Y"){ if($GLOBALS['result']['actions']->request_actions_det->request_actions_details->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->outcome_time)); } } ?></td>
+                    <td>
+                        <?php if($_SESSION['roleSecurity']->maint_comp_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y") { ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=complete" class="button">Complete</a><?php } ?>
+                        <?php if($_SESSION['roleSecurity']->maint_reassign_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y"){ ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=reassign" class="button">Reassign</a><?php } ?>
+                    </td>
                     <td><?php 
                     $result_a_ar = $GLOBALS['result']['actions']->request_actions_det->request_actions_details;
                     if($result_a_ar->status_code == "OPEN" || $result_a_ar->status_code == "REOPEN"){ 

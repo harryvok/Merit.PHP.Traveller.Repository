@@ -12,7 +12,7 @@ class Model {
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
         $parameters->request_id = $_SESSION['request_id'];
-        $parameters->action_id = $_SESSION['action-id'];
+        $parameters->action_id = $_SESSION['action_id'];
         $parameters->resubmit_datetime = $datetime;
         $parameters->comment = $c;
         
@@ -53,7 +53,7 @@ class Model {
                 $_SESSION['done'] = 1;
                 $_SESSION['error'] = 1;
                 $_SESSION['error_web_service'] = 1;
-                $_SESSION['custom_error'] = $e->getMessage();
+                $_SESSION['custom_error'] = $web_service." ".$e->getMessage();
                 header("Location: index.php");
                 die();
             }
@@ -3523,7 +3523,7 @@ class Model {
             $completed_code = "NORESPONSE";
         }else{
             $tempArray = explode("_", $completed_code);
-            $completed_code = $tempArray[0];
+            $completed_code = $tempArray[1];
         }
         
         
@@ -3591,8 +3591,8 @@ class Model {
                     $_SESSION['adhoc-true'] = 1;
                     $_SESSION['redirect'] = "index.php?page=adhocOfficer&id=".$action_id;
                     
-                    if ($tempArray[2]=='Y') {
-                        $_SESSION['action-id']= $_POST['action_id'];
+                    if ($tempArray[2]=='Y'){
+                        $_SESSION['action_id']= $_POST['action_id'];
                         $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
                     }
                 }
@@ -3600,7 +3600,7 @@ class Model {
                 
                 #Resubmit stuff Below ---------------------------------------------------->
                 else if ($tempArray[2]=='Y') {
-                    $_SESSION['action-id']= $_POST['action_id'];
+                    $_SESSION['action_id']= $_POST['action_id'];
                     $_SESSION['redirect'] = "index.php?page=resubmitAction&id=".$action_id;               
                 }
                 #Resubmit stuff Above ---------------------------------------------------->

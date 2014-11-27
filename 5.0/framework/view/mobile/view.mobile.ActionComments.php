@@ -40,7 +40,8 @@
                     <?php if($_SESSION['roleSecurity']->maint_comment == "Y" || $_SESSION['roleSecurity']->delete_comment == "Y"){ ?>
                     <li id="Comment<?php echo $i; ?>ParentObject"><a data-icon="modify" href="#" class="edit" id="Comment<?php echo $i; ?>">
                         	<p><b>Level:</b> <?php if($result_c_get->action_id == 0){ echo "Request"; } else { echo "Action"; } ?></p>
-                            <?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><p><b>Action Required:</b> <?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name; ?></p><?php } ?>
+                            
+                            <?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><p><b>Action Required:</b> <?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name;  echo " (".$result_c_get->action_id.")"?></p><?php } ?>
                             <p><b>Date</b>: <?php if(strlen($result_c_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_c_get->note_datetime))); }  ?></p>
                             <p><b>Officer:</b> <?php echo $result_c_get->officer; ?></p>
                             <p><b>Type:</b> <?php echo $result_c_get->sub_type; ?></p>

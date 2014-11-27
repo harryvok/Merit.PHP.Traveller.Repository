@@ -41,7 +41,7 @@
                     ?>
                     <tr class="<?php echo $class; ?>" id="Comment<?php echo $i; ?>ParentObject">
                         <td><?php if($result_c_get->action_id == 0){ echo "Request"; } else { echo "Action"; } ?></td>
-                        <td><?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name; ?><?php } ?></td>
+                        <td><?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name; echo " (".$result_c_get->action_id.")"?><?php } ?></td>
                         <td><?php if(strlen($result_c_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_c_get->note_datetime))); }  ?></td>
                         <td><?php echo $result_c_get->officer; ?></td>
                         <td><?php echo $result_c_get->sub_type; ?></td>
@@ -75,7 +75,7 @@
                     ?>
                     <tr class="dark" title="" id="CommentParentObject">
                         <td><?php if($result_c_get->action_id == 0){ echo "Request"; } else { echo "Action"; } ?></td>
-                        <td><?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name; ?><?php } ?></td>
+                        <td><?php if($result_c_get->action_id != 0 && isset($result_c_get->action_name)){ ?><?php if(isset($result_c_get->action_name)) echo $result_c_get->action_name; ?><?php } echo " (".$result_c_get->action_id.")" ?></td>
                         <td><?php if(strlen($result_c_get->note_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("T","", $result_c_get->note_datetime))); }  ?></td>
                         <td><?php echo $result_c_get->officer; ?></td>
                         <td><?php echo $result_c_get->sub_type; ?></td>
