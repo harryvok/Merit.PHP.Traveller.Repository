@@ -5,7 +5,6 @@ $(document).ready(function () {
     // Validation for customer type ( If data is in given or surname require a cust type ) if empty remove the requirement.
     $("#given").focusout(function () {        
         if ($("#given").val().length > 0) {
-            alert("given happened");
             $("#cust_type").addClass("required");
         }
         if ($("#given").val() == "" && $("#surname").val().length == "") {
@@ -15,7 +14,6 @@ $(document).ready(function () {
 
     $("#surname").focusout(function () {
         if ($("#surname").val().length > 0) {
-            alert("surname happened");
             $("#cust_type").addClass("required");
         }
         if ($("#given").val() == "" && $("#surname").val().length == "") {

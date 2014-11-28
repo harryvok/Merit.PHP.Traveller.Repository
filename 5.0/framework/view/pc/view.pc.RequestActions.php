@@ -55,6 +55,12 @@
                             $class = "light";
                         }
                 ?>
+                <?php 
+                        $i = 0;
+                        if($result_a_ar->status_code == "OPEN" || $result_a_ar->status_code == "REOPEN"){
+                         $i=1;   
+                        }
+                ?>
                 <tr class="<?php echo $class; ?>" onClick="change('<?php echo $change; ?>')" title="">
                     <td id="<?php echo $change; ?>"><?php if(strlen($result_a_ar->action_id) > 0){ echo $result_a_ar->action_id; } else { echo ""; } ?></td>
                     <td><?php if(strlen($result_a_ar->action_required) > 0){ echo $result_a_ar->action_required; } else { echo ""; } ?></td>
@@ -63,8 +69,10 @@
                     <td><?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?></td>
                     <td><?php if($result_a_ar->finalised_ind == "Y"){ if($result_a_ar->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->outcome_time)); } } ?></td>
                     <td>
+                        <?php if ($i == 1) { ?>
                         <?php if($_SESSION['roleSecurity']->maint_comp_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y") { ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=complete" class="button" style="text-decoration:none !important">Complete</a><?php } ?>
                         <?php if($_SESSION['roleSecurity']->maint_reassign_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y"){ ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=reassign" class="button" style="text-decoration:none !important">Reassign</a><?php } ?>
+                        <?php } ?>
                     </td>
                     <td><?php 
                         if($result_a_ar->status_code == "OPEN" || $result_a_ar->status_code == "REOPEN"){ 
