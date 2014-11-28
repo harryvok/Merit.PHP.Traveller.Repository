@@ -150,8 +150,11 @@
                 </div>
                 <div class="column r100">
                 <label>Alternate Officer</label>
-                <input class="text ui-autocomplete-input valid" name="alternateOfficer" id="alternateOfficer" data-officer="true"  placeholder="Search..." autocomplete="off" value="<?php echo $_SESSION['alternate_officer_name'] ?>">
-                <input type="hidden" name="alternateOfficerCode" id="alternateOfficerCode" value="<?php echo $_SESSION['alternative_officer'] ?>"/>
+                
+                
+                <input id="alternateOfficer" data-officer="true" class="required" placeholder="Search..." value="<?php if(isset($GLOBALS['result']->surname)){ echo $GLOBALS['result']->surname; } ?><?php if(isset($GLOBALS['result']->given_names)){ echo $GLOBALS['result']->given_names; } ?>" />
+                <input type="hidden" id="alternateOfficerCode" name="officer" value="<?php echo $GLOBALS['action_officer_code']; ?>" class="required" />
+                
                 </div>
                 </div>
         </div> 

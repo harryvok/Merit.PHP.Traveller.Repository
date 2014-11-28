@@ -59,9 +59,6 @@ $(document).ready(function () {
             $("#" + $(this).attr("id") + "Code").val("");
             $(this).val("");
             $(this).attr("readonly", false);
-
-            
-            
             $(this).autocomplete("search", "");
             
         }
