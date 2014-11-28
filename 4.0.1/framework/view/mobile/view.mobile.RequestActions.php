@@ -1,3 +1,6 @@
+
+
+
 <h2>Actions</h2>
 <?php if($_SESSION['roleSecurity']->maint_new_action == "Y" && $GLOBALS['finalised_ind'] != "Y"){ ?><a  href="index.php?page=view-request&id=<?php echo $GLOBALS['id']; ?>&d=add-action" data-role="button">Add</a><br /><?php }?>
     	<ul class="no-ellipses" data-role="listview" data-filter="true" data-filter-placeholder="Search actions..." data-inset="true">
@@ -27,7 +30,8 @@
                                 <p><b>Due Date:</b> <?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?> </p>
                                 <p><b>Completed Date:</b> <?php if($result_a_ar->finalised_ind == "Y"){ if($result_a_ar->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->outcome_time)); } } ?></p>
                                 <p><b>Action Officer:</b> <?php if(strlen($result_a_ar->action_officer) > 0){ echo $result_a_ar->action_officer; } else { echo ""; } ?></p>
-                            
+
+                                
                                 </a>
                             </li>
                         <?php
@@ -58,7 +62,6 @@
                         <p><b>Due Date:</b> <?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?> </p>
                         <p><b>Completed Date:</b> <?php if($result_a_ar->finalised_ind == "Y"){ if($result_a_ar->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->outcome_time)); } } ?></p>
                         <p><b>Action Officer:</b> <?php if(strlen($result_a_ar->action_officer) > 0){ echo $result_a_ar->action_officer; } else { echo ""; } ?></p>
-                    
                         </a>
                     </li>
 				<?php

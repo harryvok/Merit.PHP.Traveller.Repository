@@ -140,10 +140,13 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             CheckHistory($("#historyaddrtype").val());
         }
         if ($("#ret_" + id + "_function_name_type").val().length > 0) {
+            alert($("#ret_" + id + "_function_name_type").val());
             $("#cust_type").val($("#ret_" + id + "_function_name_type").val());
+            $("#testing").val($("#ret_" + id + "_function_name_type").val());
         }
         else {
             $("#cust_type").val($("#ret_" + id + "_request_name_type").val());
+            $("#testing").val($("#ret_" + id + "_request_name_type").val());
         }
         if ($("#textareaissue").length) {
             $("#textareaissue").focus();
@@ -303,11 +306,14 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
         CheckHistory();
         
+        
         if ($("#ret_function_name_type").val().length > 0) {
             $("#cust_type").val($("#ret_function_name_type").val());
+            $("#testing").val($("#ret_function_name_type").val());
         }
         else {
             $("#cust_type").val($("#ret_request_name_type").val());
+            $("#testing").val($("#ret_request_name_type").val());
         }
         <?php } ?>
     });

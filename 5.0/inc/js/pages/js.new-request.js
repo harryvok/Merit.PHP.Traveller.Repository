@@ -2,13 +2,33 @@
  
 $(document).ready(function () {
 
+    // Validation for customer type ( If data is in given or surname require a cust type ) if empty remove the requirement.
+    $("#given").focusout(function () {        
+        if ($("#given").val().length > 0) {
+            alert("given happened");
+            $("#cust_type").addClass("required");
+        }
+        if ($("#given").val() == "" && $("#surname").val().length == "") {
+            $("#cust_type").removeClass("required");
+        }
+    })
+
+    $("#surname").focusout(function () {
+        if ($("#surname").val().length > 0) {
+            alert("surname happened");
+            $("#cust_type").addClass("required");
+        }
+        if ($("#given").val() == "" && $("#surname").val().length == "") {
+            $("#cust_type").removeClass("required");
+        }
+    })
+
+    
+    
     // CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());    REMOVED FOR OPTIMIZATION
 
     /* INITIALISE */
     $("#keywordSearch").autoCompleteInit("inc/ajax/ajax.keywordList.php", null, keywordResponse);
-
-
-
 
     $("#lstreet").autoCompleteInit("inc/ajax/ajax.getStreets.php", { term: "" }, (streetResponse));
     $("#i_cstreet").autoCompleteInit("inc/ajax/ajax.getStreets.php", { term: "" }, cStreetResponse);
@@ -195,7 +215,7 @@ $(document).ready(function () {
             $("#cust_type option").prop("selected", false);
             $("#cust_type option[value=" + request_name_type + "]").prop("selected", true);
             $('#cust_type').selectmenuState('refresh', true);
-
+            $("#testing").val($("#cust_type").val());
             $("#requestInput").autocomplete("close");
             $("#functionInput").trigger("click");
         }
@@ -258,6 +278,7 @@ $(document).ready(function () {
             $("#cust_type option").prop("selected", false);
             $("#cust_type option[value=" + function_name_type + "]").prop("selected", true);
             $('#cust_type').selectmenuState('refresh', true);
+            $("#testing").val($("#cust_type").val());
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
             } else {
@@ -786,7 +807,16 @@ $(document).ready(function () {
         $("#cust_fax").val("");
         $("#email_address").val("");
         $("#company").val("");
-        $("#cust_type").val("");
+
+
+        if ($("#testing").val().length > 0) {
+        }
+        else {
+            $("#cust_type").val("");
+            $("#cust_type").removeClass("required");
+        }
+
+
         $("#name_id").val("0");
         $("#name_origin").val("");
         $("#name_ctr").val("");
@@ -912,6 +942,9 @@ $(document).ready(function () {
     /* */
 
     /* OTHER */
+
+
+    
 
     // Adhoc Officer
     if ($("#skipAdhocCount").val() == 0) { 
@@ -1216,6 +1249,7 @@ $(document).ready(function () {
         $("#email_address").val("");
         $("#company").val("");
         $("#cust_type").val("");
+        $("#cust_type").removeClass("required");
         $("#customerInfoXpert").attr("disabled", "disabled");
         $("#keywordSearch").val("");
         $("#refno").val("");
