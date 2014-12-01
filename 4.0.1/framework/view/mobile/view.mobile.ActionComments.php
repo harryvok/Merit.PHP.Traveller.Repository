@@ -18,8 +18,8 @@
                     <input type="hidden" name="action" value="AddComment" />
                     <input type="hidden" name="request_id" id="request_id" value="<?php echo $GLOBALS['request_id']; ?>" />
                     <input type="hidden" name="action_id" id="action_id" value="<?php echo $_GET['id']; ?>" />
-                    <input type="hidden" name="ref" vaue="<?php echo $_GET['ref']; ?>" />
-                    <input type="hidden" name="ref_page" vaue="<?php echo $_GET['ref_page']; ?>" />
+                    <input type="hidden" name="ref" value="<?php echo $_GET['ref']; ?>" />
+                    <input type="hidden" name="ref_page" value="<?php echo $_GET['ref_page']; ?>" />
                     <input type="hidden" name="action_required" value="<?php echo $_SESSION['assign_name']; ?>">
                     <input type="hidden" name="filter" value="<?php echo $_GET['filter']; ?>" />
           <input type="hidden" name="page" value="action" />

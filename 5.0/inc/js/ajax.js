@@ -111,7 +111,6 @@ function GetBookingSummary(paramdate) {
             $.ajax({
                 url: 'inc/ajax/ajax.getBookingSummary.php',
                 type: 'POST',
-
                 data: {
                     serviceID: serviceID,
                     requestID: requestID,
@@ -126,7 +125,6 @@ function GetBookingSummary(paramdate) {
                 },
                 success: function (data) {
                     Unload();
-                    $('#popup').html("");
                     $('#popup').html(data);
                 },
             });

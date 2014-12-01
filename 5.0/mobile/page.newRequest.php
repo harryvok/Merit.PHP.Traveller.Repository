@@ -105,6 +105,9 @@ if(isset($_SESSION['user_id'])){
                         <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
                         <input type="checkbox" name="notifyInsuranceOfficer" value="Y" style="width: 25px;height: 25px;margin-top: -18px; margin-left:170px">
                         <br />
+                        <span id="duedate"></span>
+                        <input type="hidden" id="due" name="due" />
+                        <br />
 
                         <span id="rednote"></span>
                         <label>Request Description<span class="request_description_label mandLabel" style="color: red; display: none;">*</span></label>
