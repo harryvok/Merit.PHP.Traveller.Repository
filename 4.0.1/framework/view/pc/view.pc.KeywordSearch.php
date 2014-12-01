@@ -2,13 +2,10 @@
 if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']->keyword_result_details) >1){
 ?>
 <script type="text/javascript">
-
     $(document).ready(function () {
         $("#popup").fadeIn("fast");
         $("#keywordHelpNotes").hide();
-
         $("#keywordsLookupTable").dataTable();
-
         $.ajax({
             url: "inc/ajax/ajax.getHelpNotes.php",
             dataType: "json",
@@ -33,17 +30,13 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 else {
                     $("#keyword_helpURL").html("");
                 }
-
-
             }
         });
     });
-
     $('#closeKeywords').click(function () {
         $('#popup').fadeOut("fast");
     });
-
-    $(document).on("click", ".keyword_row",function () {
+    $(document).on("click", ".keyword_row", function () {
         var id = $(this).attr('id');
         Load();
         $.ajax({
@@ -74,7 +67,6 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             }
         });
     });
-
     $(document).on("dblclick", ".keyword_row", function () {
         $('#popup').fadeOut("fast");
         var id = $(this).attr('id');
@@ -98,29 +90,25 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         $("#function").attr("disabled", false);
         $("#need_r_booking").val($("#ret_" + id + "_need_r_booking").val());
         $("#need_f_booking").val($("#ret_" + id + "_need_f_booking").val());
-
         if ($("#ret_" + id + "_request_need_func").val() == "Y") {
             $("#functionInput").addClass("required");
             $("#functionRequired").show();
-
         }
         else {
             $("#functionRequired").hide();
             $("#functionInput").removeClass("required");
         }
-
         if ($("#ret_" + id + "_function_name").val().length > 0) {
             $("#priority").val($("#ret_" + id + "_function_priority").val());
         }
         else {
             $("#priority").val($("#ret_" + id + "_request_priority").val());
         }
-
         $("#functionInput").attr("disabled", false);
         $("#requestInput").attr("disabled", false);
         $("#workflowSRF").prop("disabled", false);
         QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
-			<?php if (!isset($_POST['lite'])) { ?>
+        <?php if (!isset($_POST['lite'])) { ?>
         ClearHelpNotes();
         CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
         GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
@@ -153,11 +141,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         } else {
             $("#add-request-textarea").focus();
         }
-
-
         <?php } ?>
-        
-        
+
+
     });
 </script>
 <h1>Found Keywords <span class="closePopup">
@@ -189,7 +175,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             $class = "light";
         }
             ?>
-            <tr class="<?php echo $class; ?>keyword_row" id="<?php echo $set; ?>" title="">
+            <tr class="<?php echo $class; ?> keyword_row" id="<?php echo $set; ?>" title="">
                 <input type="hidden" id="ret_<?php echo $set; ?>_service_code" value="<?php if(isset($result_n_ar->service_code)){ echo $result_n_ar->service_code; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_code" value="<?php if(isset($result_n_ar->request_code)){ echo $result_n_ar->request_code; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_code" value="<?php if(isset($result_n_ar->function_code)){ echo $result_n_ar->function_code; } else { echo ""; } ?>" />
@@ -281,42 +267,39 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         if ($("#ret_request_need_func").val() == "Y") {
             $("#functionInput").addClass("required");
             $("#functionRequired").show();
-
         }
         else {
             $("#functionRequired").hide();
             $("#functionInput").removeClass("required");
         }
-
         if ($("#ret_function_name").val().length > 0) {
             $("#priority").val($("#ret_function_priority").val());
         }
         else {
             $("#priority").val($("#ret_request_priority").val());
         }
-
         $("#functionInput").attr("disabled", false);
         QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
-			<?php if (!isset($_POST['lite'])) { ?>
-        ClearHelpNotes();
-        GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
-        GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
-        GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
-        CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
-        CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
-        CheckHistory();
-
-
-        if ($("#ret_function_name_type").val().length > 0) {
-            $("#cust_type").val($("#ret_function_name_type").val());
-            $("#testing").val($("#ret_function_name_type").val());
-        }
-        else {
-            $("#cust_type").val($("#ret_request_name_type").val());
-            $("#testing").val($("#ret_request_name_type").val());
-        }
-        <?php } ?>
-    });
+        <?php if (!isset($_POST['lite'])) { ?>
+    ClearHelpNotes();      
+            GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
+            GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+            GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+            CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
+            CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
+            CheckHistory();
+        
+        
+            if ($("#ret_function_name_type").val().length > 0) {  
+                $("#cust_type").val($("#ret_function_name_type").val());
+                $("#testing").val($("#ret_function_name_type").val());
+            }
+            else {
+                $("#cust_type").val($("#ret_request_name_type").val());
+                $("#testing").val($("#ret_request_name_type").val());
+            }
+            <?php } ?>
+            });
 </script>
 <?php
 }
@@ -337,4 +320,3 @@ else{
     }
 }
 ?>
-
