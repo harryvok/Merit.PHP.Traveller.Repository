@@ -2,9 +2,7 @@
 if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']->keyword_result_details) >0){
 	?>
     <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-    <div data-role="header" data-tap-toggle="false">
-        <h1>Found Keywords</h1>
-    </div>
+    <div data-role="header" data-tap-toggle="false"><h1>Found Keywords</h1></div>
     <div data-role="content">
     	<p>
         <ul data-role="listview" data-filter="true" data-filter-placeholder="Search keywords..." data-inset="true">
