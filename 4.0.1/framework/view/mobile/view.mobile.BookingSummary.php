@@ -3,7 +3,6 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 ?>
     <script type="text/javascript">
         $(document).ready(function () {
-            alert("ok");
             $("#AddrBooking").prop("disabled", false).buttonState("enable");
             $("#AddrBooking").removeAttr("disabled");
             $("#AddrBooking").removeAttr("style");
@@ -70,7 +69,6 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 $("#stop" + id).click(function () {
                     var d = "";
                     d = $("#booking_date_BookingDetails" + id + "ParentObject").val();
-                    alert(d);
                     var act = "";
                     if ($("#stop" + id).val() == "Start") {
                         act = "START";
@@ -99,7 +97,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 <p><b>Maximum:</b> <span id="bookingMaximum"><?php echo $GLOBALS['result']->max_count;?></span></p>
                 <p><b>Response:</b> <span id="bookingResponse"><?php echo $GLOBALS['result']->response;?></span></p>
                 <p><b>Include:</b> <?php if ($GLOBALS['result']->include_saturday == "Y") echo "Saturday"; if ($GLOBALS['result']->include_sunday == "Y") echo " Sunday";  if ($GLOBALS['result']->include_holidays == "Y") echo " Holidays"; if ($GLOBALS['result']->include_sholidays == "Y") echo " Special Holidays"; ?></p>
-                <p><b>From: </b><input type="text" name="from" id="from" class="dateField" size="5" maxlength="10" style="width:35%" ><input type="button" id="get" name="get" value="Get"/></p>
+                <p><b>From: </b><input type="text" name="from" id="from" class="dateField" size="5" maxlength="10" style="width:100%" ><input type="button" id="get" name="get" value="Get"/></p>
                 
                 <?php
                 $set = 0;
