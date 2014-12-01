@@ -1,14 +1,11 @@
 <?php 
 if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['result']->booking_dets->booking_details) > 0){
 ?>
-<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-<div data-role="header" data-tap-toggle="false"> <h1>Booking Summary</h1> </div>
-<div data-role="content">
-    <p>
-    <ul data-role="listview" data-filter="true" data-filter-placeholder="Search keywords..." data-inset="true">
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#AddrBooking").prop("disabled", false).
+            alert("ok");
+            $("#AddrBooking").prop("disabled", false).buttonState("enable");
+            $("#AddrBooking").removeAttr("disabled");
             $("#AddrBooking").removeAttr("style");
             $("#popup").popup("open");
             $("#default").page('destroy');
@@ -18,79 +15,81 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
             $("#bookingFunction").html($("#functionInput").val());
             $("#from").datepicker({ dateFormat: "dd-M-yy" });
             $("#from").val("dd-mmm-yyyy");
-            //$("#selectedDate.html").html($("#from").val());      
-        });
-         
-        $("#get").click(function () {
-            //if user clicks on any date from popup table, following function converts date in to toISOString date formate 
-            //and calls getBookingSummary()
-            //to ftch result for the next 10 days from the selected date
-            //converted because webservice taking date in toISOString() format and returning normal date 
-            if ($("#from").val() == "" || $("#from").val() == "dd-mmm-yyyy") {
-                alert("Please select date");
-            }
-            else {
-                var d = $("#from").val();
-                var months = { 'jan': '01', 'feb': '02', 'mar': '03', 'apr': '04', 'may': '05', 'jun': '06', 'jul': '07', 'aug': '08', 'sep': '09', 'oct': '10', 'nov': '11', 'dec': '12' };
-                var splitArr = d.split('-'); // split based on '-'
-                var yyyy = parseInt(splitArr[2], 10); // add '20' before year
-                var mm = parseInt(months[splitArr[1].toLowerCase()], 10) - 1; // convert month into lower
-                var dd = parseInt(splitArr[0], 10) + 1;
-                var date = new Date(yyyy, mm, dd);
-                var isodate = date.toISOString();
-                GetBookingSummary(isodate);
-            }
-        });
 
-        $(".address_row").click(function () {
-            id = $(this).attr('id');
-            for (i = 1; i <= 10; i++) {
-                if ($("#booking" + i).css("display", "block")) {
-                    $("#booking" + i).css("display", "none")
+            $("#get").click(function () {
+                //if user clicks on any date from popup table, following function converts date in to toISOString date formate 
+                //and calls getBookingSummary()
+                //to ftch result for the next 10 days from the selected date
+                //converted because webservice taking date in toISOString() format and returning normal date 
+                if ($("#from").val() == "" || $("#from").val() == "dd-mmm-yyyy") {
+                    alert("Please select date");
                 }
-            }
-            var disp_date = $("#display_date_BookingDetails" + id + "ParentObject").val();
-            $("#from").val(disp_date);
-            if ($("#available" + id).val() == 0) {
-                $("#placeBookingDate" + id).prop("disabled", "disabled");
-            }
-
-            if ($("#startstop" + id).val() == "Stopped")
-                $("#stop" + id).val("Start");
-            else
-                $("#stop" + id).val("Stop");
-
-            $("#booking" + id).css("display", "block");
-
-            $("#stop" + id).click(function () {
-                var d = "";
-                d = $("#booking_date_BookingDetails" + id + "ParentObject").val();
-                alert(d);
-                var act = "";
-                if ($("#stop" + id).val() == "Start") {
-                    act = "START";
-                }
-                else if ($("#stop" + id).val() == "Stop") {
-                    act = "STOP"
-                }
-                var date = new Date(d);
-                var isodate = date.toISOString();
-                bookingStartStop(act, isodate);
-            });
-
-            $("#placeBookingDate" + id).click(function () {
-                if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
-                    $("#duedate").html("<label>Due Date: </label> " + $("#from").val() );
-                    $("#due").val($("#booking_date_BookingDetails" + id + "ParentObject").val());
-                    $("#popup").fadeOut("fast");
-                } else {
-                    alert("please select a date");
+                else {
+                    var d = $("#from").val();
+                    var months = { 'jan': '01', 'feb': '02', 'mar': '03', 'apr': '04', 'may': '05', 'jun': '06', 'jul': '07', 'aug': '08', 'sep': '09', 'oct': '10', 'nov': '11', 'dec': '12' };
+                    var splitArr = d.split('-'); // split based on '-'
+                    var yyyy = parseInt(splitArr[2], 10); // add '20' before year
+                    var mm = parseInt(months[splitArr[1].toLowerCase()], 10) - 1; // convert month into lower
+                    var dd = parseInt(splitArr[0], 10) + 1;
+                    var date = new Date(yyyy, mm, dd);
+                    var isodate = date.toISOString();
+                    GetBookingSummary(isodate);
                 }
             });
 
-        });        
+            $(".address_row").click(function () {
+                id = $(this).attr('id');
+                for (i = 1; i <= 10; i++) {
+                    if ($("#booking" + i).css("display", "block")) {
+                        $("#booking" + i).css("display", "none")
+                    }
+                }
+                var disp_date = $("#display_date_BookingDetails" + id + "ParentObject").val();
+                $("#from").val(disp_date);
+                if ($("#available" + id).val() == 0) {
+                    $("#placeBookingDate" + id).prop("disabled", "disabled");
+                }
+
+                $("#booking" + id).css("display", "block");
+
+                if ($("#startstop" + id).val() == "Stopped")
+                    $("#stop" + id).val("Start");
+                else
+                    $("#stop" + id).val("Stop");
+
+                $("#placeBookingDate" + id).click(function () {
+                    if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
+                        $("#duedate").html("<label>Due Date: </label> " + $("#from").val());
+                        $("#due").val($("#booking_date_BookingDetails" + id + "ParentObject").val());
+                        $("#popup").fadeOut("fast");
+                    } else {
+                        alert("please select a date");
+                    }
+                });
+
+                $("#stop" + id).click(function () {
+                    var d = "";
+                    d = $("#booking_date_BookingDetails" + id + "ParentObject").val();
+                    alert(d);
+                    var act = "";
+                    if ($("#stop" + id).val() == "Start") {
+                        act = "START";
+                    }
+                    else if ($("#stop" + id).val() == "Stop") {
+                        act = "STOP"
+                    }
+                    var date = new Date(d);
+                    var isodate = date.toISOString();
+                    bookingStartStop(act, isodate);
+                });
+            });
+        });
     </script> 
-    	
+    	<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+        <div data-role="header" data-tap-toggle="false"> <h1>Booking Summary</h1> </div>
+        <div data-role="content">
+            <p>
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="Search keywords..." data-inset="true">
                 <p><b>Service:</b> <span id="bookingService"></span></p>
                 <p><b>Request:</b> <span id="bookingRequest"></span></p>
                 <p><b>Function:</b> <span id="bookingFunction"></span></p>

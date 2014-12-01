@@ -189,7 +189,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             $class = "light";
         }
             ?>
-            <tr class="<?php echo $class; ?> keyword_row" id="<?php echo $set; ?>" title="">
+            <tr class="<?php echo $class; ?>keyword_row" id="<?php echo $set; ?>" title="">
                 <input type="hidden" id="ret_<?php echo $set; ?>_service_code" value="<?php if(isset($result_n_ar->service_code)){ echo $result_n_ar->service_code; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_code" value="<?php if(isset($result_n_ar->request_code)){ echo $result_n_ar->request_code; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_code" value="<?php if(isset($result_n_ar->function_code)){ echo $result_n_ar->function_code; } else { echo ""; } ?>" />
@@ -298,15 +298,15 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         $("#functionInput").attr("disabled", false);
         QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
 			<?php if (!isset($_POST['lite'])) { ?>
-        ClearHelpNotes();      
+        ClearHelpNotes();
         GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
         GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
         GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
         CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
         CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
         CheckHistory();
-        
-        
+
+
         if ($("#ret_function_name_type").val().length > 0) {
             $("#cust_type").val($("#ret_function_name_type").val());
             $("#testing").val($("#ret_function_name_type").val());

@@ -90,7 +90,7 @@ function GetAddressDetails() {
         });
     }    
 }
-function GetBookingSummary(paramdate) {
+function GetBookingSummary(paramdate) {    
     var date = "";
     if (paramdate == "")    
         date = new Date().toISOString();
@@ -125,6 +125,7 @@ function GetBookingSummary(paramdate) {
                 },
                 success: function (data) {
                     Unload();
+                    $('#popup').html("");
                     $('#popup').html(data);
                 },
             });

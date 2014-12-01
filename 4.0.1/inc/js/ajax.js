@@ -10,7 +10,7 @@ function getIntray(intray, i) {
             intray: intray,
             filterCode: i
         },
-        timeout: 3000000, 
+        timeout: 3000000,
         success: function (data) {
             Unload();
             $("#" + intray + "Intray").html(data);
@@ -81,18 +81,18 @@ function GetAddressDetails() {
                     $("#loc_address_ctr").val(data.address_ctr);
                     //proceed to check booking summary
                     var date = new Date().toISOString();
-                    GetBookingSummary(date);                   
-                }                
+                    GetBookingSummary(date);
+                }
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
                 $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
                 $("#larea_group").val(data.area_group);
             }
         });
-    }    
+    }
 }
 function GetBookingSummary(paramdate) {
-    var date = "";
-    if (paramdate == "")    
+     var date = "";
+    if (paramdate == "")
         date = new Date().toISOString();
     else
         date = paramdate;
@@ -111,7 +111,6 @@ function GetBookingSummary(paramdate) {
             $.ajax({
                 url: 'inc/ajax/ajax.getBookingSummary.php',
                 type: 'POST',
-
                 data: {
                     serviceID: serviceID,
                     requestID: requestID,
@@ -168,8 +167,8 @@ function bookingStartStop(action, bookingDate) {
 function GetCustomerAddressDetails() {
     $("#loc_address").val("N");
     $("#cust_address").val("Y");
-    if ($("#same").val() == "s" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
-        || $("#same").val() == "i" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
+    if ($("#same").val() == "s" && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0
+        || $("#same").val() == "i" && $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',
             type: 'POST',
@@ -317,12 +316,12 @@ function CheckCountOnlyAjax(ser, req, func) {
         },
         success: function (data) {
             if (data.flag_value == "Y") {
-                        $("#countOnlyInd").val("Y");
-                        $("#submit").prop('disabled', true).buttonState("disable");
-                        $("#saveMore").prop('disabled', true).buttonState("disable");
-                        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
-                        $("#workflowSRF").prop('disabled', true).buttonState("disable");
-                    
+                $("#countOnlyInd").val("Y");
+                $("#submit").prop('disabled', true).buttonState("disable");
+                $("#saveMore").prop('disabled', true).buttonState("disable");
+                $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                $("#workflowSRF").prop('disabled', true).buttonState("disable");
+
             }
             else if (data.flag_value == "N") {
                 $("#countOnlyInd").val("N");
@@ -367,7 +366,7 @@ function CheckCountOnly(count_only) {
 }
 
 function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
-    var sautoVal = "";  var rautoVal = ""; var fautoVal = "";
+    var sautoVal = ""; var rautoVal = ""; var fautoVal = "";
     if (keyword == "Y") {
         if ((sauto == "Y" && rauto == "Y" && fauto == "Y") || (sauto == "Y" && rauto == "N" && fauto == "Y") || (sauto == "N" && rauto == "Y" && fauto == "Y") || (sauto == "N" && rauto == "N" && fauto == "Y")) {
             sautoVal = "N"; raoutVal = "N"; fautoVal = "Y";
@@ -377,7 +376,7 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
         }
         else if (sauto == "Y" && rauto == "N" && fauto == "N") {
             rautoVal = "N"; faoutVal = "N"; sautoVal = "Y";
-        }        
+        }
     } else {
         sautoVal = sauto;
         rautoVal = rauto;
@@ -454,10 +453,10 @@ function GetHelpNotes(func, req, ser, sauto, rauto, fauto, keyword) {
                         $(".hoverDiv").fadeIn("fast");
                         $("#helpText_mobile").html(data.helpText);
                         $("#helpURL_mobile").html(data.helpURL);
-                        $("#popup").html($("#hoverDiv").html()).popup("open");                       
+                        $("#popup").html($("#hoverDiv").html()).popup("open");
                         $("#popup").css("top", "100px");
                     }
-                }                          
+                }
             }
             else {
                 $("#infoHover").fadeOut("fast");
@@ -740,7 +739,7 @@ function unlinkDocument(doc_id) {
         success: function (data) {
             //Unload();
             location.reload();
-            
+
         }
     });
 }
