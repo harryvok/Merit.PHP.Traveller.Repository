@@ -51,9 +51,24 @@ $(document).ready(function () {
     }
     
     
-    
-   
+    $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
+
     $("body").on("click", "input[data-officer]", function () {
+        if ($(this).hasClass("ui-autocomplete-input")) {
+            $("#" + $(this).attr("id") + "Code").val("");
+            $(this).val("");
+            $(this).attr("readonly", false);
+
+            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
+            $(this).autocomplete("search", "");
+
+        }
+        else {
+            $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
+        }
+    });
+   
+    /* $("body").on("click", "input[data-officer]", function () {
      
         if ($(this).hasClass("ui-autocomplete-input")) {
             $("#" + $(this).attr("id") + "Code").val("");
@@ -65,7 +80,7 @@ $(document).ready(function () {
         else{
             $("input[data-officer]").autoCompleteInit("inc/ajax/ajax.officerList.php", { term: "" }, officerResponse);
         }
-    });
+    }); */
 
     $("body").on("click", "input[data-adhocofficer]", function () {
 

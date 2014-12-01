@@ -19,9 +19,8 @@
                     var dd = today.getDate();
                     var mm = today.getMonth() + 1;
                     var yyyy = today.getFullYear();
+                    if (dd < 10) { dd = '0' + dd } if (mm < 10) { mm = '0' + mm }
 
-                    if (dd < 10) { dd = '0' + dd } if (mm < 10) { mm = '0' + mm } 
-                    
                     var hours = today.getHours();
                     var minutes = today.getMinutes();
                     var ampm = hours >= 12 ? 'pm' : 'am';
@@ -29,27 +28,22 @@
                     hours = hours ? hours : 12; // the hour '0' should be '12'
                     minutes = minutes < 10 ? '0' + minutes : minutes;
                     var strTime = hours + ':' + minutes + ' ' + ampm;
-
                     today = dd + '/' + mm + '/' + yyyy;
-
                     $("#availFromDate").val(today);
                     $("#availFromTime").val(strTime);
-
                 }
             });
-            
-            
+
+
             //since the filter dropdowns have the same name attribute when generated,
             //we need to change the names so that POST data is recognised for both
             $("#defreqfil").next().attr('name', 'defaultrequestfilter');
             $("#defactfil").next().attr('name', 'defaultactionfilter');
-            
+
             //we also need to prevent default javascript behaviour on both selects
-             $("#defreqfil").next().removeAttr("onchange");
-             $("#defactfil").next().removeAttr("onchange");
-
+            $("#defreqfil").next().removeAttr("onchange");
+            $("#defactfil").next().removeAttr("onchange");
             $("#myPreferences").validate();
-
             $("#myPreferences").submit(function () {
                 if ($(this).validate().numberOfInvalids() == 0) { $("#submit").attr("disabled", true); }
             });
@@ -118,7 +112,6 @@
                 <label>Name as</label><br />
                 <input type="radio" name="nameAs" value="FirstLast" /> First Last (e.g. John Smith)<br />
                 <input type="radio" name="nameAs" value="LastFirst" /> Last First (e.g. Smith John)<br /><br />
-
                 <label>Action Intray Status</label><br />
                 <input type="radio" name="actionIntrayStatus" value="StatusOnly" /> Status Only (e.g. Open)<br />
                 <input type="radio" name="actionIntrayStatus" value="StatusAssignment" /> Status and Assignment (e.g. Open, assigned to John Smith)
@@ -150,11 +143,8 @@
                 </div>
                 <div class="column r100">
                 <label>Alternate Officer</label>
-                
-                
-                <input id="alternateOfficer" data-officer="true" class="required" placeholder="Search..." value="<?php if(isset($GLOBALS['result']->surname)){ echo $GLOBALS['result']->surname; } ?><?php if(isset($GLOBALS['result']->given_names)){ echo $GLOBALS['result']->given_names; } ?>" />
-                <input type="hidden" id="alternateOfficerCode" name="officer" value="<?php echo $GLOBALS['action_officer_code']; ?>" class="required" />
-                
+                <input class="text ui-autocomplete-input valid" name="alternateOfficer" id="alternateOfficer" data-officer="true"  placeholder="Search..." autocomplete="off" value="<?php echo $_SESSION['alternate_officer_name'] ?>">
+                <input type="hidden" name="alternateOfficerCode" id="alternateOfficerCode" value="<?php echo $_SESSION['alternative_officer'] ?>"/>
                 </div>
                 </div>
         </div> 

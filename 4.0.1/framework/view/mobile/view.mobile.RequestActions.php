@@ -29,6 +29,7 @@
                                 <p><b>Date Assigned:</b> <?php if(strlen($result_a_ar->assign_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_a_ar->assign_time)); } ?></p>
                                 <p><b>Due Date:</b> <?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?> </p>
                                 <p><b>Completed Date:</b> <?php if($result_a_ar->finalised_ind == "Y"){ if($result_a_ar->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->outcome_time)); } } ?></p>
+                                <p><b>Outcome:</b> <?php if(strlen($result_a_ar->outcomee) > 0){ echo $result_a_ar->outcome; } else { echo ""; } ?></p>
                                 <p><b>Action Officer:</b> <?php if(strlen($result_a_ar->action_officer) > 0){ echo $result_a_ar->action_officer; } else { echo ""; } ?></p>
 
                                 
@@ -61,6 +62,7 @@
                         <p><b>Date Assigned:</b> <?php if(strlen($result_a_ar->assign_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_a_ar->assign_time)); } ?></p>
                         <p><b>Due Date:</b> <?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?> </p>
                         <p><b>Completed Date:</b> <?php if($result_a_ar->finalised_ind == "Y"){ if($result_a_ar->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->outcome_time)); } } ?></p>
+                        <p><b>Outcome:</b> <?php if(strlen($result_a_ar->outcomee) > 0){ echo $result_a_ar->outcome; } else { echo ""; } ?></p>
                         <p><b>Action Officer:</b> <?php if(strlen($result_a_ar->action_officer) > 0){ echo $result_a_ar->action_officer; } else { echo ""; } ?></p>
                         </a>
                     </li>
