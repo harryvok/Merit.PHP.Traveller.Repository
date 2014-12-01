@@ -98,8 +98,8 @@ if(isset($GLOBALS['result']->property_details)){
                                 <p><b>Postcode:</b><?php if(isset($result_n_ar->postcode)){ echo $result_n_ar->postcode; } else { echo ""; } ?></p>
                                 <p><b>Legal Description:</b><?php if(isset($result_n_ar->legal_description)){ echo $result_n_ar->legal_description; } else { echo ""; } ?></p>
                                 <p><b>Property No:</b><?php if(isset($result_n_ar->property_no)){ echo $result_n_ar->property_no; } else { echo ""; } ?></p>
-                                <p><b>Assessment No:</b><?php if(isset($result_n_ar->assessment_no)){ echo $result_n_ar->assessment_no; } else { echo ""; } ?></</p>
-                                <p><b>Status:</b><?php echo "Current"; ?></p>
+                                <p><b>Assessment No:</b><?php if(isset($result_n_ar->assessment_no)){ echo $result_n_ar->assessment_no; } else { echo ""; } ?></p>
+                                <p><b>Status:</b><?php if(isset($result_n_ar->status)){ echo $result_n_ar->status; } else { echo ""; } ?></p>
                                 <p><b>Property Type:</b><?php if(isset($result_n_ar->prop_type)){ echo $result_n_ar->prop_type; } else { echo ""; } ?></p>
                                 <p><b>Rate Analysis:</b><?php if(isset($result_n_ar->rate_analysis)){ echo $result_n_ar->rate_analysis; } else { echo ""; } ?></p>
                             </a>
@@ -108,7 +108,7 @@ if(isset($GLOBALS['result']->property_details)){
                         $count++;
                     }
                 }
-                ?>
+                        ?>
             </ul>
     	</p>
     </div>

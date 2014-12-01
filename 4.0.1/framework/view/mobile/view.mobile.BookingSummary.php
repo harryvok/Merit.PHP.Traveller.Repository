@@ -110,11 +110,12 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                         $date = substr($datetime,0,10);
                         $formated = date("d-M-Y", strtotime($date));
                         ?>
-                        <li class="address_row ui-li-has-arrow" id="<?php echo $set; ?>">
-                            <input type="hidden" id="booking_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $date; ?>" />
-                            <input type="hidden" id="display_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $formated; ?>" />
-                            <input type="hidden" id="startstop<?php echo $set; ?>" value="<?php echo $booking_detail->service_stopped; ?>" />
-                            <input type="hidden" id="available<?php echo $set; ?>" value="<?php echo $booking_detail->available_count; ?>" />
+                        <input type="hidden" id="booking_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $date; ?>" />
+                        <input type="hidden" id="display_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $formated; ?>" />
+                        <input type="hidden" id="startstop<?php echo $set; ?>" value="<?php echo $booking_detail->service_stopped; ?>" />
+                        <input type="hidden" id="available<?php echo $set; ?>" value="<?php echo $booking_detail->available_count; ?>" />
+                        <li class="address_row" id="<?php echo $set; ?>">  
+                            <a>                          
                             <p><b>Booked Date: </b><?php echo $day." ".$formated; ?></p>
                             <p><b>Booked Count: </b><?php echo $booking_detail->booked_count; ?></p>
                             <p><b>Available No. </b><?php echo $booking_detail->available_count; ?></p>
@@ -124,6 +125,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                                 <input type="button" value="Place" id="placeBookingDate<?php echo $set; ?>"/>
                                 <input type="button" id="stop<?php echo $set; ?>" name="stop" value=""/>                    
                             </p>
+                            </a>
                         </li>
                     <?php
                     }
@@ -133,13 +135,4 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
     	</p>
     </div>
 <?php
-}else{
-?>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#AddrBooking").css("visibility", "hidden");
-    });
-</script>
-<?php 
 }
-?>

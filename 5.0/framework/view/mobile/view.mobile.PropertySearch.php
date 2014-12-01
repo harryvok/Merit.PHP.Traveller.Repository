@@ -14,31 +14,31 @@ if(isset($GLOBALS['result']->property_details)){
                         $("#default").page('destroy');
                         $("#default").page();
                     });
-                    $('.address_row').click(function(){
+                    $('.address_row').click(function () {
                         var id = "";
                         var id = $(this).attr('id');
-	                    if ($("#loc_address").val() == "Y" && $("#cust_address").val() == "N") {
-	                        $('#lno').val($('#ret_' + id + '_house_number').val());
-	                        $('#lfno').val($('#ret_' + id + '_unit').val());
-	                        $('#property_no').removeClass("ui-autocomplete-loading");
-	                        $('#property_no').val($('#ret_' + id + '_property_no').val());
-	                        $('#addressId').val($('#ret_' + id + '_address_id').val());
-	                        $('#address').val($('#ret_' + id + '_address_id').val());
-		                    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
-			                    $("#AddrSummary").prop("disabled", true);
-		                    }
-	                    }
-	                    else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
-	                        $('#i_cno').val($('#ret_' + id + '_house_number').val());
-	                        $('#i_cfno').val($('#ret_' + id + '_unit').val());
-	                        $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
-	                        $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
-	                        $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
-		                    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
-			                    $("#CustAddSummary").prop("disabled", true);
-		                    }
-	                    }			
-	                    $("#popup").popup("close");
+                        if ($("#loc_address").val() == "Y" && $("#cust_address").val() == "N") {
+                            $('#lno').val($('#ret_' + id + '_house_number').val());
+                            $('#lfno').val($('#ret_' + id + '_unit').val());
+                            $('#property_no').removeClass("ui-autocomplete-loading");
+                            $('#property_no').val($('#ret_' + id + '_property_no').val());
+                            $('#addressId').val($('#ret_' + id + '_address_id').val());
+                            $('#address').val($('#ret_' + id + '_address_id').val());
+                            if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
+                                $("#AddrSummary").prop("disabled", true);
+                            }
+                        }
+                        else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
+                            $('#i_cno').val($('#ret_' + id + '_house_number').val());
+                            $('#i_cfno').val($('#ret_' + id + '_unit').val());
+                            $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
+                            $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+                            $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
+                            if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
+                                $("#CustAddSummary").prop("disabled", true);
+                            }
+                        }
+                        $("#popup").popup("close");
                     });
 
                 </script>
@@ -98,8 +98,8 @@ if(isset($GLOBALS['result']->property_details)){
                                 <p><b>Postcode:</b><?php if(isset($result_n_ar->postcode)){ echo $result_n_ar->postcode; } else { echo ""; } ?></p>
                                 <p><b>Legal Description:</b><?php if(isset($result_n_ar->legal_description)){ echo $result_n_ar->legal_description; } else { echo ""; } ?></p>
                                 <p><b>Property No:</b><?php if(isset($result_n_ar->property_no)){ echo $result_n_ar->property_no; } else { echo ""; } ?></p>
-                                <p><b>Assessment No:</b><?php if(isset($result_n_ar->assessment_no)){ echo $result_n_ar->assessment_no; } else { echo ""; } ?></</p>
-                                <p><b>Status:</b><?php echo "Current"; ?></p>
+                                <p><b>Assessment No:</b><?php if(isset($result_n_ar->assessment_no)){ echo $result_n_ar->assessment_no; } else { echo ""; } ?></p>
+                                <p><b>Status:</b><?php if(isset($result_n_ar->status)){ echo $result_n_ar->status; } else { echo ""; } ?></p>
                                 <p><b>Property Type:</b><?php if(isset($result_n_ar->prop_type)){ echo $result_n_ar->prop_type; } else { echo ""; } ?></p>
                                 <p><b>Rate Analysis:</b><?php if(isset($result_n_ar->rate_analysis)){ echo $result_n_ar->rate_analysis; } else { echo ""; } ?></p>
                             </a>
@@ -108,7 +108,7 @@ if(isset($GLOBALS['result']->property_details)){
                         $count++;
                     }
                 }
-                ?>
+                        ?>
             </ul>
     	</p>
     </div>

@@ -1,93 +1,93 @@
 <?php 
 if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['result']->booking_dets->booking_details) > 0){
-?>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#AddrBooking").prop("disabled", false).buttonState("enable");
-            $("#AddrBooking").removeAttr("disabled");
-            $("#AddrBooking").removeAttr("style");
-            $("#popup").popup("open");
-            $("#default").page('destroy');
-            $("#default").page();
-            $("#bookingService").html($("#serviceInput").val());
-            $("#bookingRequest").html($("#requestInput").val());
-            $("#bookingFunction").html($("#functionInput").val());
-            $("#from").datepicker({ dateFormat: "dd-M-yy" });
-            $("#from").val("dd-mmm-yyyy");
+    ?>
+    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+    <div data-role="header" data-tap-toggle="false"> <h1>Booking Summary</h1> </div>
+    <div data-role="content">
+        <p>
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search keywords..." data-inset="true">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#AddrBooking").prop("disabled", false).buttonState("enable");
+                $("#AddrBooking").removeAttr("disabled");
+                $("#AddrBooking").removeAttr("style");
+                $("#popup").popup("open");
+                $("#default").page('destroy');
+                $("#default").page();
+                $("#bookingService").html($("#serviceInput").val());
+                $("#bookingRequest").html($("#requestInput").val());
+                $("#bookingFunction").html($("#functionInput").val());
+                $("#from").datepicker({ dateFormat: "dd-M-yy" });
+                $("#from").val("dd-mmm-yyyy");
 
-            $("#get").click(function () {
-                //if user clicks on any date from popup table, following function converts date in to toISOString date formate 
-                //and calls getBookingSummary()
-                //to ftch result for the next 10 days from the selected date
-                //converted because webservice taking date in toISOString() format and returning normal date 
-                if ($("#from").val() == "" || $("#from").val() == "dd-mmm-yyyy") {
-                    alert("Please select date");
-                }
-                else {
-                    var d = $("#from").val();
-                    var months = { 'jan': '01', 'feb': '02', 'mar': '03', 'apr': '04', 'may': '05', 'jun': '06', 'jul': '07', 'aug': '08', 'sep': '09', 'oct': '10', 'nov': '11', 'dec': '12' };
-                    var splitArr = d.split('-'); // split based on '-'
-                    var yyyy = parseInt(splitArr[2], 10); // add '20' before year
-                    var mm = parseInt(months[splitArr[1].toLowerCase()], 10) - 1; // convert month into lower
-                    var dd = parseInt(splitArr[0], 10) + 1;
-                    var date = new Date(yyyy, mm, dd);
-                    var isodate = date.toISOString();
-                    GetBookingSummary(isodate);
-                }
-            });
-
-            $(".address_row").click(function () {
-                id = $(this).attr('id');
-                for (i = 1; i <= 10; i++) {
-                    if ($("#booking" + i).css("display", "block")) {
-                        $("#booking" + i).css("display", "none")
+                $("#get").click(function () {
+                    //if user clicks on any date from popup table, following function converts date in to toISOString date formate 
+                    //and calls getBookingSummary()
+                    //to ftch result for the next 10 days from the selected date
+                    //converted because webservice taking date in toISOString() format and returning normal date 
+                    if ($("#from").val() == "" || $("#from").val() == "dd-mmm-yyyy") {
+                        alert("Please select date");
                     }
-                }
-                var disp_date = $("#display_date_BookingDetails" + id + "ParentObject").val();
-                $("#from").val(disp_date);
-                if ($("#available" + id).val() == 0) {
-                    $("#placeBookingDate" + id).prop("disabled", "disabled");
-                }
-
-                $("#booking" + id).css("display", "block");
-
-                if ($("#startstop" + id).val() == "Stopped")
-                    $("#stop" + id).val("Start");
-                else
-                    $("#stop" + id).val("Stop");
-
-                $("#placeBookingDate" + id).click(function () {
-                    if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
-                        $("#duedate").html("<label>Due Date: </label> " + $("#from").val());
-                        $("#due").val($("#booking_date_BookingDetails" + id + "ParentObject").val());
-                        $("#popup").fadeOut("fast");
-                    } else {
-                        alert("please select a date");
+                    else {
+                        var d = $("#from").val();
+                        var months = { 'jan': '01', 'feb': '02', 'mar': '03', 'apr': '04', 'may': '05', 'jun': '06', 'jul': '07', 'aug': '08', 'sep': '09', 'oct': '10', 'nov': '11', 'dec': '12' };
+                        var splitArr = d.split('-'); // split based on '-'
+                        var yyyy = parseInt(splitArr[2], 10); // add '20' before year
+                        var mm = parseInt(months[splitArr[1].toLowerCase()], 10) - 1; // convert month into lower
+                        var dd = parseInt(splitArr[0], 10) + 1;
+                        var date = new Date(yyyy, mm, dd);
+                        var isodate = date.toISOString();
+                        GetBookingSummary(isodate);
                     }
                 });
 
-                $("#stop" + id).click(function () {
-                    var d = "";
-                    d = $("#booking_date_BookingDetails" + id + "ParentObject").val();
-                    var act = "";
-                    if ($("#stop" + id).val() == "Start") {
-                        act = "START";
+                $(".address_row").click(function () {
+                    id = $(this).attr('id');
+                    for (i = 1; i <= 10; i++) {
+                        if ($("#booking" + i).css("display", "block")) {
+                            $("#booking" + i).css("display", "none")
+                        }
                     }
-                    else if ($("#stop" + id).val() == "Stop") {
-                        act = "STOP"
+                    var disp_date = $("#display_date_BookingDetails" + id + "ParentObject").val();
+                    $("#from").val(disp_date);
+                    if ($("#available" + id).val() == 0) {
+                        $("#placeBookingDate" + id).prop("disabled", "disabled");
                     }
-                    var date = new Date(d);
-                    var isodate = date.toISOString();
-                    bookingStartStop(act, isodate);
+
+                    $("#booking" + id).css("display", "block");
+
+                    if ($("#startstop" + id).val() == "Stopped")
+                        $("#stop" + id).val("Start");
+                    else
+                        $("#stop" + id).val("Stop");
+
+                    $("#placeBookingDate" + id).click(function () {
+                        if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
+                            $("#duedate").html("<label>Due Date: </label> " + $("#from").val());
+                            $("#due").val($("#booking_date_BookingDetails" + id + "ParentObject").val());
+                            $("#popup").fadeOut("fast");
+                        } else {
+                            alert("please select a date");
+                        }
+                    });
+
+                    $("#stop" + id).click(function () {
+                        var d = "";
+                        d = $("#booking_date_BookingDetails" + id + "ParentObject").val();
+                        var act = "";
+                        if ($("#stop" + id).val() == "Start") {
+                            act = "START";
+                        }
+                        else if ($("#stop" + id).val() == "Stop") {
+                            act = "STOP"
+                        }
+                        var date = new Date(d);
+                        var isodate = date.toISOString();
+                        bookingStartStop(act, isodate);
+                    });
                 });
             });
-        });
-    </script> 
-    	<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-        <div data-role="header" data-tap-toggle="false"> <h1>Booking Summary</h1> </div>
-        <div data-role="content">
-            <p>
-            <ul data-role="listview" data-filter="true" data-filter-placeholder="Search keywords..." data-inset="true">
+        </script>     	
                 <p><b>Service:</b> <span id="bookingService"></span></p>
                 <p><b>Request:</b> <span id="bookingRequest"></span></p>
                 <p><b>Function:</b> <span id="bookingFunction"></span></p>
@@ -110,11 +110,12 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                         $date = substr($datetime,0,10);
                         $formated = date("d-M-Y", strtotime($date));
                         ?>
-                        <li class="address_row" id="<?php echo $set; ?>">
-                            <input type="hidden" id="booking_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $date; ?>" />
-                            <input type="hidden" id="display_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $formated; ?>" />
-                            <input type="hidden" id="startstop<?php echo $set; ?>" value="<?php echo $booking_detail->service_stopped; ?>" />
-                            <input type="hidden" id="available<?php echo $set; ?>" value="<?php echo $booking_detail->available_count; ?>" />
+                        <input type="hidden" id="booking_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $date; ?>" />
+                        <input type="hidden" id="display_date_BookingDetails<?php echo $set; ?>ParentObject" value="<?php echo $formated; ?>" />
+                        <input type="hidden" id="startstop<?php echo $set; ?>" value="<?php echo $booking_detail->service_stopped; ?>" />
+                        <input type="hidden" id="available<?php echo $set; ?>" value="<?php echo $booking_detail->available_count; ?>" />
+                        <li class="address_row" id="<?php echo $set; ?>">  
+                            <a>                          
                             <p><b>Booked Date: </b><?php echo $day." ".$formated; ?></p>
                             <p><b>Booked Count: </b><?php echo $booking_detail->booked_count; ?></p>
                             <p><b>Available No. </b><?php echo $booking_detail->available_count; ?></p>
@@ -124,6 +125,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                                 <input type="button" value="Place" id="placeBookingDate<?php echo $set; ?>"/>
                                 <input type="button" id="stop<?php echo $set; ?>" name="stop" value=""/>                    
                             </p>
+                            </a>
                         </li>
                     <?php
                     }
@@ -133,13 +135,4 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
     	</p>
     </div>
 <?php
-}else{
-?>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#AddrBooking").css("visibility", "hidden");
-    });
-</script>
-<?php 
 }
-?>
