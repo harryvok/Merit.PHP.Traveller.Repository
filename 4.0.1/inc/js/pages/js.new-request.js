@@ -1457,7 +1457,7 @@ function clearLocationAddress() {
     $("#AddrSummary").prop("disabled", true);
     $("#responsible").val("");
     $("#facilitydescription").val("");
-    $("#AddrBooking").attr("disabled", "disabled");
+    $("#AddrBooking").css("visibility", "hidden");
 }
 
 function ViewAddressDetails() {

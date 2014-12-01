@@ -202,7 +202,7 @@ if(isset($_SESSION['user_id'])){
                         <!--<input type="button" data-role="button" value="Show On Map" onclick="showOnMap()" />-->
                         <input type="button" data-role="button" value="Clear" onclick="clearLocationAddress()" />
                         <script type="text/javascript">  var date = new Date().toISOString(); </script>
-                        <input type="button" value="Booking" disabled id="AddrBooking" onclick="GetBookingSummary(date)"  />
+                        <input type="button" value="Booking" disabled style="visibility:hidden" id="AddrBooking" onclick="GetBookingSummary(date)"  />
                     </p>
                 </div>
                 <div data-role="collapsible" class="col" data-content-theme="c">

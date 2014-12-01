@@ -136,7 +136,7 @@ function GetBookingSummary(paramdate) {
         }
     }
     else {
-        $("#AddrBooking").attr("disabled", "disabled");
+        $("#AddrBooking").attr("disabled", "disabled");        
     }
 }
 

@@ -235,7 +235,7 @@ if(!isset($_GET['d'])){
                             <!--<input type="button" value="History" id="checkHistory" onclick="CheckHistoryDirect('L', 'N')" disabled="disabled" />-->
                             <input type="button" value="Summary" disabled id="AddrSummary" onclick="ViewAddressDetails()"  />
                             <script type="text/javascript">  var date = new Date().toISOString(); </script>
-                            <input type="button" value="Booking" disabled id="AddrBooking" onclick="GetBookingSummary(date)"  />
+                            <input type="button" value="Booking" disabled style="visibility:hidden" id="AddrBooking" onclick="GetBookingSummary(date)"  />
                             <!--<input type="button" value="Fac Summary" id="FacSummary" onclick="" disabled="disabled" />-->
                         </div>
                     </div>

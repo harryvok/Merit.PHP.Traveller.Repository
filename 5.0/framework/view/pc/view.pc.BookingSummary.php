@@ -5,6 +5,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
     $(document).ready(function () {
             $("#popup").fadeIn("fast");
             $("#AddrBooking").removeAttr("disabled");
+            $("#AddrBooking").removeAttr("style");
             $("#bookingService").html($("#serviceInput").val());
             $("#bookingRequest").html($("#requestInput").val());
             $("#bookingFunction").html($("#functionInput").val());

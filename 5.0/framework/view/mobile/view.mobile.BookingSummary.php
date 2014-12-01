@@ -4,6 +4,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
     <script type="text/javascript">
         $(document).ready(function () {
             $("#AddrBooking").removeAttr("disabled");
+            $("#AddrBooking").removeAttr("style");
             $("#popup").popup("open");
             $("#default").page('destroy').page();
             $("#bookingService").html($("#serviceInput").val());
