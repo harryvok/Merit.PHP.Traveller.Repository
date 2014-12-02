@@ -23,6 +23,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 var startStop = $(this).find("td:nth-child(6)").html();
                 if (startStop == "Stopped") {
                     $("#stop").val("Start");
+                    $("#placeBookingDate").prop("disabled", "disabled");
                 }
                 else {
                     $("#stop").val("Stop");

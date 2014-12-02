@@ -56,8 +56,10 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 
                     $("#booking" + id).css("display", "block");
 
-                    if ($("#startstop" + id).val() == "Stopped")
+                    if ($("#startstop" + id).val() == "Stopped") {
                         $("#stop" + id).val("Start");
+                        $("#placeBookingDate").prop("disabled", "disabled");
+                    }
                     else
                         $("#stop" + id).val("Stop");
 
