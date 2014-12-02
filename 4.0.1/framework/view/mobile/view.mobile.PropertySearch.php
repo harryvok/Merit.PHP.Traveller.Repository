@@ -39,6 +39,9 @@ if(isset($GLOBALS['result']->property_details)){
 		                    }
 	                    }			
 	                    $("#popup").popup("close");
+                        //proceed to check booking summary
+	                    var date = new Date().toISOString();
+	                    GetBookingSummary(date);
                     });
 
                 </script>
