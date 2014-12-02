@@ -98,6 +98,13 @@
                 if(isset($GLOBALS['result']['actions']->request_actions_det->request_actions_details) && count($GLOBALS['result']['actions']->request_actions_det->request_actions_details) == 1){
                     $change = $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_id;
                 ?>
+                <?php 
+                        $i = 0;
+                        if($result_a_ar->status_code == "OPEN" || $result_a_ar->status_code == "REOPEN"){
+                         $i=1;   
+                        }
+                ?>
+                
                 <tr class="dark" onClick="change('<?php echo $change; ?>')" title="">
                     <td id="<?php echo $change; ?>"><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_id) > 0){ echo $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_id; } else { echo ""; } ?></td>
                     <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_required) > 0){ echo $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_required; } else { echo ""; } ?></td>
@@ -107,7 +114,7 @@
                     <td><?php if($GLOBALS['result']['actions']->request_actions_det->request_actions_details->finalised_ind == "Y"){ if($GLOBALS['result']['actions']->request_actions_det->request_actions_details->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->outcome_time)); } } ?></td>
                     <td>
                         <?php if ($i != 1) { ?>
-                        <?php if(strlen($result_a_ar->outcome) > 0){ echo $result_a_ar->outcome; } else { echo ""; } ?>
+                        <?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_required) > 0){ echo $GLOBALS['result']['actions']->request_actions_det->request_actions_details->outcome; } else { echo ""; } ?>
                         <?php } ?>
                     </td>
                     <td>
