@@ -895,14 +895,15 @@ $(document).ready(function () {
         $("#i_ctype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("");
         return $("#i_cstreet").val();
     }
-    var cTypeResponse = function (event, ui) {
+
+    //var cTypeResponse = function (event, ui) {   --- changed for #151 by Poonam
+    function cTypeResponse(event, ui) {
         window.clicked["i_csuburb"] = false;
         var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
-            $("#i_cpropertynumber").val("");
-            $("#i_cpostcode").val("");
+            $("#i_cpropertynumber").val(""); $("#i_cpostcode").val("");
             var newlno = $("#i_cno").val();
             newlno = newlno.replace(/[^\d]/g, '');
             $("#newLno").val(newlno);
@@ -916,8 +917,9 @@ $(document).ready(function () {
         $("#i_csuburb").attr("readonly", false).val("").attr("disabled", false).removeClass("ui-disabled").textInputState('enable');
         return $("#i_ctype").val();
     }
-   
-    var cSuburbResponse = function (event, ui) {
+
+    //var cSuburbResponse = function (event, ui) {  --- changed for #151 by Poonam
+    function cSuburbResponse(event, ui) {
         var label = "";
         var postcode = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; postcode = ui.content[0].postcode; }
@@ -935,7 +937,7 @@ $(document).ready(function () {
 
     // Customer Details Change
     $('.cadd').change(function () {
-        GetCustomerAddressDetails();
+        //GetCustomerAddressDetails();
     });
 
     /* */

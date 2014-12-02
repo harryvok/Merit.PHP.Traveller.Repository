@@ -895,7 +895,9 @@ $(document).ready(function () {
         $("#i_ctype").attr("readonly", false).attr("disabled", false).removeClass("ui-disabled").val("");
         return $("#i_cstreet").val();
     }
-    var cTypeResponse = function (event, ui) {
+
+    //var cTypeResponse = function (event, ui) {   --- changed for #151 by Poonam
+    function cTypeResponse(event, ui) {
         window.clicked["i_csuburb"] = false;
         var label = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
@@ -916,7 +918,8 @@ $(document).ready(function () {
         return $("#i_ctype").val();
     }
    
-    var cSuburbResponse = function (event, ui) {
+    //var cSuburbResponse = function (event, ui) {  --- changed for #151 by Poonam
+    function cSuburbResponse (event, ui) {
         var label = "";
         var postcode = "";
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; postcode = ui.content[0].postcode; }
