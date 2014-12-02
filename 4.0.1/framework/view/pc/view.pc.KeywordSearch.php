@@ -68,6 +68,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         });
     });
     $(document).on("dblclick", ".keyword_row", function () {
+
         $('#popup').fadeOut("fast");
         var id = $(this).attr('id');
         var sauto = $("#ret_" + id + "_service_auto_help_notes").val();
@@ -90,6 +91,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         $("#function").attr("disabled", false);
         $("#need_r_booking").val($("#ret_" + id + "_need_r_booking").val());
         $("#need_f_booking").val($("#ret_" + id + "_need_f_booking").val());
+
         if ($("#ret_" + id + "_request_need_func").val() == "Y") {
             $("#functionInput").addClass("required");
             $("#functionRequired").show();
@@ -97,6 +99,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         else {
             $("#functionRequired").hide();
             $("#functionInput").removeClass("required");
+            $("#ret_" + id + "_function_name_type").val($("#ret_" + id + "_request_name_type").val())
         }
         if ($("#ret_" + id + "_function_name").val().length > 0) {
             $("#priority").val($("#ret_" + id + "_function_priority").val());
@@ -108,27 +111,10 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         $("#requestInput").attr("disabled", false);
         $("#workflowSRF").prop("disabled", false);
         QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
+
         <?php if (!isset($_POST['lite'])) { ?>
-        ClearHelpNotes();
-        CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
-        GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
-        GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
-        GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
-        CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val(), "Y");
-        var date = new Date().toISOString();
-        GetBookingSummary(date);
-        getSRFRedText();
-        if (($("#historyaddrtype").val() == "L" && $("#lsuburb").val().length > 0)
-            || ($("#historyaddrtype").val() == "C" && $("#i_csuburb").val().length > 0)
-            || ($("#historyaddrtype").val() == "C" && $("#o_csuburb").val().length > 0)
-            || ($("#historyaddrtype").val() == "B" && $("#lcsuburb").val().length > 0)
-            || ($("#historyaddrtype").val() == "B" && $("#i_csuburb").val().length > 0)
-            || ($("#historyaddrtype").val() == "B" && $("#o_csuburb").val().length > 0)
-            ) {
-            CheckHistory($("#historyaddrtype").val());
-        }
+
         if ($("#ret_" + id + "_function_name_type").val().length > 0) {
-            alert($("#ret_" + id + "_function_name_type").val());
             $("#cust_type").val($("#ret_" + id + "_function_name_type").val());
             $("#testing").val($("#ret_" + id + "_function_name_type").val());
         }
@@ -141,10 +127,29 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         } else {
             $("#add-request-textarea").focus();
         }
-        <?php } ?>
+
+        ClearHelpNotes();
+            CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
+            GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
+            GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+            GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+            CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val(), "Y");
+            var date = new Date().toISOString();
+            GetBookingSummary(date);
+            getSRFRedText();
+            if (($("#historyaddrtype").val() == "L" && $("#lsuburb").val().length > 0)
+                || ($("#historyaddrtype").val() == "C" && $("#i_csuburb").val().length > 0)
+                || ($("#historyaddrtype").val() == "C" && $("#o_csuburb").val().length > 0)
+                || ($("#historyaddrtype").val() == "B" && $("#lcsuburb").val().length > 0)
+                || ($("#historyaddrtype").val() == "B" && $("#i_csuburb").val().length > 0)
+                || ($("#historyaddrtype").val() == "B" && $("#o_csuburb").val().length > 0)
+                ) {
+                CheckHistory($("#historyaddrtype").val());
+            }
+            <?php } ?>
 
 
-    });
+            });
 </script>
 <h1>Found Keywords <span class="closePopup">
     <img src="images/delete-icon.png" />
@@ -175,7 +180,6 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             $class = "light";
         }
             ?>
-            
             <tr class="<?php echo $class; ?> keyword_row" id="<?php echo $set; ?>" title="">
                 <input type="hidden" id="ret_<?php echo $set; ?>_service_code" value="<?php if(isset($result_n_ar->service_code)){ echo $result_n_ar->service_code; } else { echo ""; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_code" value="<?php if(isset($result_n_ar->request_code)){ echo $result_n_ar->request_code; } else { echo ""; } ?>" />
@@ -220,7 +224,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 
 <?php
 }
-elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']->keyword_result_details) ==1){
+elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']->keyword_result_details) == 1){
 	$result_n_ar = $GLOBALS['result']->keyword_result_details;
 ?>
 <input type="hidden" id="ret_service_code" value="<?php if(isset($result_n_ar->service_code)){ echo $result_n_ar->service_code; } else { echo ""; } ?>" />
@@ -239,6 +243,9 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
 <input type="hidden" id="ret_function_name_type" value="<?php if(isset($result_n_ar->function_name_type)){ echo $result_n_ar->function_name_type; } else { echo ""; } ?>" />
 <input type="hidden" id="ret_need_r_booking" value="<?php if(isset($result_n_ar->request_count_ind)){ echo $result_n_ar->request_count_ind; } else { echo "N"; } ?>" />
 <input type="hidden" id="ret_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
+
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         var sauto = $("#ret_service_auto_help_notes").val();
@@ -272,6 +279,7 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         else {
             $("#functionRequired").hide();
             $("#functionInput").removeClass("required");
+            $("#ret_function_name_type").val($("#ret_request_name_type").val())
         }
         if ($("#ret_function_name").val().length > 0) {
             $("#priority").val($("#ret_function_priority").val());
@@ -281,7 +289,21 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         }
         $("#functionInput").attr("disabled", false);
         QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
+
+
         <?php if (!isset($_POST['lite'])) { ?>
+        if ($("#ret_function_name_type").val().length > 0) {
+            alert($("#ret_function_name_type").val());
+            alert($("#ret_request_name_type").val());
+
+            $("#cust_type").val($("#ret_function_name_type").val());
+            $("#testing").val($("#ret_function_name_type").val());
+        }
+        else {
+            $("#cust_type").val($("#ret_request_name_type").val());
+            $("#testing").val($("#ret_request_name_type").val());
+        }
+
     ClearHelpNotes();      
             GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
             GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
@@ -291,14 +313,7 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
             CheckHistory();
         
         
-            if ($("#ret_function_name_type").val().length > 0) {  
-                $("#cust_type").val($("#ret_function_name_type").val());
-                $("#testing").val($("#ret_function_name_type").val());
-            }
-            else {
-                $("#cust_type").val($("#ret_request_name_type").val());
-                $("#testing").val($("#ret_request_name_type").val());
-            }
+            
             <?php } ?>
             });
 </script>
