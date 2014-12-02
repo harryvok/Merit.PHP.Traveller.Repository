@@ -133,18 +133,18 @@ div#popup {
    -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    overflow:scroll; 
-    max-height:440px !important;
+    /*overflow:scroll;*/ 
 }
 
 div#popup h1+div {
     
     font-size: 14px;
-    padding:24px;
+    padding: 24px;
     background-color: #9dadc9;
-    /* overflow-y:scroll; */
-    /* max-height:440px !important; */
-    height: auto;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    max-height: 500px;
+    width: 94%;
 }
 
 div#popup h1+div iframe {

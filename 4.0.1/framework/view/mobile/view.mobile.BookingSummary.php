@@ -19,6 +19,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 $("#bookingFunction").html($("#functionInput").val());
                 $("#from").datepicker({ dateFormat: "dd-M-yy" });
                 $("#from").val("dd-mmm-yyyy");
+                //$("#popup").css("top", "100px");
 
                 $("#get").click(function () {
                     //if user clicks on any date from popup table, following function converts date in to toISOString date formate 
