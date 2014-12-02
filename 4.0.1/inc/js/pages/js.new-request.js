@@ -322,9 +322,15 @@ $(document).ready(function () {
                 Unload();
                 if (data == "None") {
                     alert("No workflow available.");
+                    $("#submit").prop('disabled', true).buttonState("disable");
+                    $("#saveMore").prop('disabled', true).buttonState("disable");
+                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
                 }
                 else {
                     $("#popup").html(data);
+                    $("#submit").prop('disabled', false).buttonState("enable");
+                    $("#saveMore").prop('disabled', false).buttonState("enable");
+                    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                 }
             }
         });
