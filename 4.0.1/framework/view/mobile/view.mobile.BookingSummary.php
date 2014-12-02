@@ -45,20 +45,20 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                     id = $(this).attr('id');
                     for (i = 1; i <= 10; i++) {
                         if ($("#booking" + i).css("display", "block")) {
-                            $("#booking" + i).css("display", "none")
+                            $("#booking" + i).css("display", "none");
                         }
                     }
                     var disp_date = $("#display_date_BookingDetails" + id + "ParentObject").val();
                     $("#from").val(disp_date);
                     if ($("#available" + id).val() == 0) {
-                        $("#placeBookingDate" + id).prop("disabled", "disabled");
+                        $("#placeBookingDate" + id).css("display", "none");
                     }
 
                     $("#booking" + id).css("display", "block");
 
                     if ($("#startstop" + id).val() == "Stopped") {
                         $("#stop" + id).val("Start");
-                        $("#placeBookingDate" + id).prop("disabled", "disabled");
+                        $("#placeBookingDate" + id).css("display", "none");
                     }
                     else
                         $("#stop" + id).val("Stop");
