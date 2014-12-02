@@ -58,7 +58,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 
                     if ($("#startstop" + id).val() == "Stopped") {
                         $("#stop" + id).val("Start");
-                        $("#placeBookingDate").prop("disabled", "disabled");
+                        $("#placeBookingDate" + id).prop("disabled", "disabled");
                     }
                     else
                         $("#stop" + id).val("Stop");
@@ -67,7 +67,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                         if ($("#from").val() != "yyyy/mm/dd" || $("#from").val() != "") {
                             $("#duedate").html("<label>Due Date: </label> " + $("#from").val());
                             $("#due").val($("#booking_date_BookingDetails" + id + "ParentObject").val());
-                            $("#popup").fadeOut("fast");
+                            $("#popup").popup("close");
                         } else {
                             alert("please select a date");
                         }
