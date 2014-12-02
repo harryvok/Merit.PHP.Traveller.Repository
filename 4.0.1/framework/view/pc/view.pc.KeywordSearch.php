@@ -293,8 +293,6 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
 
         <?php if (!isset($_POST['lite'])) { ?>
         if ($("#ret_function_name_type").val().length > 0) {
-            alert($("#ret_function_name_type").val());
-            alert($("#ret_request_name_type").val());
 
             $("#cust_type").val($("#ret_function_name_type").val());
             $("#testing").val($("#ret_function_name_type").val());
