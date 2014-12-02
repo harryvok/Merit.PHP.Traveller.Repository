@@ -20,7 +20,7 @@ input[type="date"]::-webkit-inner-spin-button {
                 <div class="column Fieldx1">                             
 		            <form style='display:inline;' enctype='multipart/form-data' action='process.php' id="ResubmitAction" method='post'>
                            
-                         <b>Action Name:</b> <?php echo $_SESSION['reason_assigned']; ?>
+                         <b>Action Name:</b> <?php echo $_SESSION['assign_name']; ?>
                             <div>   
                                     <label  id="lab1">Date:</label><br />
                                     <input type="date" name="resubDate" style="width:40%;"  class="required"><br />
