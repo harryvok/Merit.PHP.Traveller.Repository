@@ -34,17 +34,18 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 $("#function").attr("disabled", false);
                 $("#need_r_booking").val($("#ret_" + id + "_need_r_booking").val());
                 $("#need_f_booking").val($("#ret_" + id + "_need_f_booking").val());
-
                 $("#workflowSRF").prop("disabled", false);
+
                 if ($("#ret_" + id + "_request_need_func").val() == "Y") {
                     $("#functionInput").addClass("required");
                     $("#functionRequired").show();
-
                 }
                 else {
                     $("#functionRequired").hide();
-                    $("#functionInput").removeClass("required");
+                    $("#functionInput").removeClass("required"); 
+                    $("#ret_" + id + "_function_name_type").val($("#ret_" + id + "_request_name_type").val());
                 }
+
                 if ($("#ret_" + id + "_function_name").val().length > 0) {
                     var nameVar = $("#ret_" + id + "_function_priority").val();
                     $("#priority option").prop("selected", false);
@@ -54,6 +55,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                     var nameVar = $("#ret_" + id + "_request_priority").val();
                     $("#priority option").prop("selected", false);
                     $("#priority option[value=" + nameVar + "]").prop("selected", true);
+                    
                 }
                 $('#priority').selectmenu('refresh', true);
                 $("#functionInput").attr("disabled", false).textinput('enable');
@@ -176,7 +178,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 			$("#function").val($("#ret_function_code").val());
 			$("#need_f_booking").val($("#ret_need_f_booking").val());
 			$("#workflowSRF").prop("disabled", false);
-            if ($("#ret_request_need_func").val() == "Y") {
+
+			if ($("#ret_request_need_func").val() == "Y") {
                             $("#functionInput").addClass("required");
                             $("#functionRequired").show();
 
@@ -184,6 +187,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                         else {
                             $("#functionRequired").hide();
                             $("#functionInput").removeClass("required");
+                            $("#ret_function_name_type").val($("#ret_request_name_type").val());
                         }
              if($("#ret_function_name").val().length > 0){
                  var nameVar = $("#ret_function_priority").val();
