@@ -165,6 +165,8 @@ function bookingStartStop(action, bookingDate) {
 }
 
 function GetCustomerAddressDetails() {
+
+    alert("ok");
     $("#loc_address").val("N");
     $("#cust_address").val("Y");
     if ($("#same").val() == "s" &&  $("#i_cstreet").val().length > 0 && $("#i_ctype").val().length > 0 && $("#i_csuburb").val().length > 0

@@ -901,7 +901,8 @@ $(document).ready(function () {
         if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; }
         else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; }
         if (label.length > 0) {
-            $("#i_cpropertynumber").val(""); $("#i_cpostcode").val("");
+            $("#i_cpropertynumber").val("");
+            $("#i_cpostcode").val("");
             var newlno = $("#i_cno").val();
             newlno = newlno.replace(/[^\d]/g, '');
             $("#newLno").val(newlno);

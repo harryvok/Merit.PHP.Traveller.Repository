@@ -69,6 +69,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
+		    var date = new Date().toISOString();
+		    GetBookingSummary(date);
 		    getSRFRedText();
 			<?php } ?>
 		    $("#popup").popup("close");
@@ -205,6 +207,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
 		    CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
+		    var date = new Date().toISOString();
+		    GetBookingSummary(date);
 		    getSRFRedText();
 		    
 		    if ($("#ret_function_name_type").val().length > 0) {
