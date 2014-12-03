@@ -205,6 +205,7 @@ $(document).ready(function () {
             else {
                 $("#functionRequired").hide();
                 $("#functionInput").removeClass("required");
+                $("#checkforWorkflow").trigger("click");
             }           
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
             $("#functionInput").textInputState('enable');
@@ -279,6 +280,7 @@ $(document).ready(function () {
             $("#testing").val($("#cust_type").val());
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
+                $("#checkforWorkflow").trigger("click");
             } else {
                 $("#add-request-textarea").focus();
             }
@@ -328,6 +330,37 @@ $(document).ready(function () {
                 }
                 else {
                     $("#popup").html(data);
+                    $("#submit").prop('disabled', false).buttonState("enable");
+                    $("#saveMore").prop('disabled', false).buttonState("enable");
+                    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+                }
+            }
+        });
+    });
+
+    $("#checkforWorkflow").on(eventName, function () {
+        Load();
+        $.ajax({
+            url: 'inc/ajax/ajax.getWorkflowSRF.php',
+            type: 'get',
+            data: {
+                service_code: $("#service").val(),
+                request_code: $("#request").val(),
+                function_code: $("#function").val(),
+                serviceName: function () { return $("#serviceInput").val() },
+                requestName: function () { return $("#requestInput").val() },
+                functionName: function () { return $("#functionInput").val() },
+            },
+            dataType: 'html',
+            success: function (data) {
+                Unload();
+                if (data == "None") {
+                    alert("No workflow available.");
+                    $("#submit").prop('disabled', true).buttonState("disable");
+                    $("#saveMore").prop('disabled', true).buttonState("disable");
+                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                }
+                else {
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#saveMore").prop('disabled', false).buttonState("enable");
                     $("#saveCountOnly").prop('disabled', false).buttonState("enable");

@@ -117,10 +117,12 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         if ($("#ret_" + id + "_function_name_type").val().length > 0) {
             $("#cust_type").val($("#ret_" + id + "_function_name_type").val());
             $("#testing").val($("#ret_" + id + "_function_name_type").val());
+            $("#checkforWorkflow").trigger("click");
         }
         else {
             $("#cust_type").val($("#ret_" + id + "_request_name_type").val());
             $("#testing").val($("#ret_" + id + "_request_name_type").val());
+            $("#checkforWorkflow").trigger("click");
         }
         if ($("#textareaissue").length) {
             $("#textareaissue").focus();
@@ -293,11 +295,12 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
 
         <?php if (!isset($_POST['lite'])) { ?>
         if ($("#ret_function_name_type").val().length > 0) {
-
+            $("#checkforWorkflow").trigger("click");
             $("#cust_type").val($("#ret_function_name_type").val());
             $("#testing").val($("#ret_function_name_type").val());
         }
         else {
+            $("#checkforWorkflow").trigger("click");
             $("#cust_type").val($("#ret_request_name_type").val());
             $("#testing").val($("#ret_request_name_type").val());
         }
