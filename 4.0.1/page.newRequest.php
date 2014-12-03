@@ -382,7 +382,7 @@ if(!isset($_GET['d'])){
                         <div id="inside_ca" style="display: block;">
                             <div class="column r25">
                                 <label for="i_cfno">Flat/Unit Number</label>
-                                <input class="text cadd" name='i_cfaddno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
+                                <input class="text cadd" name='i_cfno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="i_cno">Street Number</label>
@@ -425,7 +425,7 @@ if(!isset($_GET['d'])){
                         <div id="outside_ca" style="display: none;">
                             <div class="column r25">
                                 <label for="o_cfno">Flat/Unit Number</label>
-                                <input class="text" name='o_cfaddno' onChange="" id="o_cfno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cno'])){ echo $_SESSION['rem_o_cno']; } ?>'>
+                                <input class="text" name='o_cfno' onChange="" id="o_cfno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cno'])){ echo $_SESSION['rem_o_cno']; } ?>'>
                             </div>
                             <div class="column r25">
                                 <label for="o_cno">Street Number</label>

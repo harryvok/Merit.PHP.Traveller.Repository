@@ -1663,7 +1663,7 @@ class Model {
 
         if($_POST['same'] == "i" || $_POST['same'] == "s"){
             $cust_address_number = strlen($_POST['i_cno']) > 0 ? strip_tags(addslashes($_POST['i_cno'])) : "";
-            $cust_address_fnumber = $_POST['i_cfaddno'] == $_POST['i_cno'] ? $_POST['i_cfaddno'] : "";
+            $cust_address_fnumber = $_POST['i_cfno'];
             $cust_address_street = $_POST['i_cstreet'];
             $cust_address_streettype = $_POST['i_ctype'];
             $cust_address_suburb = $_POST['i_csuburb'];
@@ -1674,7 +1674,7 @@ class Model {
         }
         else if($_POST['same'] == "o"){
             $cust_address_number = strlen($_POST['o_cno']) > 0 ? strip_tags(addslashes($_POST['o_cno'])) : "";
-            $cust_address_fnumber = $_POST['o_cfaddno'];
+            $cust_address_fnumber = $_POST['o_cfno'];
             $cust_address_street = $_POST['o_cstreet'];
             $cust_address_streettype = $_POST['o_ctype'];
             $cust_address_suburb = $_POST['o_csuburb'];
@@ -1707,7 +1707,7 @@ class Model {
             $address_details = array( array(
                                 "address_id" => $cust_address_id,
                                 "house_number" => $cust_address_number,
-                                "house_suffix" => strlen($cust_address_fnumber) > 0 ? $cust_address_fnumber . "/" . $cust_address_number : $cust_address_number,
+                                "house_suffix" => $cust_address_fnumber,
                                 "street_name" => $cust_address_street,
                                 "street_type" => $cust_address_streettype,
                                 "locality" => $cust_address_suburb,
@@ -1794,7 +1794,7 @@ class Model {
                     $address_details =   array(array(
                                         "address_id" => $cust_address_id,
                                         "house_number" => $cust_address_number,
-                                        "house_suffix" => strlen($cust_address_fnumber) > 0 ? $cust_address_fnumber . "/" . $cust_address_number : $cust_address_number,
+                                        "house_suffix" => $cust_address_fnumber,
                                         "street_name" => $cust_address_street,
                                         "street_type" => $cust_address_streettype,
                                         "locality" => $cust_address_suburb,
