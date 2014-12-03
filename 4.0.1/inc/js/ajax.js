@@ -325,9 +325,6 @@ function CheckCountOnlyAjax(ser, req, func) {
             }
             else if (data.flag_value == "N") {
                 $("#countOnlyInd").val("N");
-                $("#submit").prop('disabled', false).buttonState("enable");
-                $("#saveMore").prop('disabled', false).buttonState("enable");
-                $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                 $("#workflowSRF").prop('disabled', false).buttonState("enable");
             }
             else if (data.flag_value == "S") {

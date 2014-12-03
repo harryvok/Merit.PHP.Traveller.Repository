@@ -104,6 +104,7 @@ $(document).ready(function () {
         $("#workflowSRF").prop("disabled", true);
         $(".mandLabel").hide();
         $("[data-mand]").removeClass("required");
+        
         $("#submit").prop('disabled', false).buttonState("enable");
         $("#saveMore").prop('disabled', false).buttonState("enable");
         $("#saveCountOnly").prop('disabled', false).buttonState("enable");
@@ -326,13 +327,11 @@ $(document).ready(function () {
                     alert("No workflow available.");
                     $("#submit").prop('disabled', true).buttonState("disable");
                     $("#saveMore").prop('disabled', true).buttonState("disable");
-                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
                 }
                 else {
                     $("#popup").html(data);
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#saveMore").prop('disabled', false).buttonState("enable");
-                    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                 }
             }
         });
@@ -355,15 +354,12 @@ $(document).ready(function () {
             success: function (data) {
                 Unload();
                 if (data == "None") {
-                    alert("No workflow available.");
                     $("#submit").prop('disabled', true).buttonState("disable");
-                    $("#saveMore").prop('disabled', true).buttonState("disable");
-                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                    $("#saveMore").prop('disabled', true).buttonState("disable");                 
                 }
                 else {
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#saveMore").prop('disabled', false).buttonState("enable");
-                    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
                 }
             }
         });
@@ -1063,7 +1059,9 @@ $(document).ready(function () {
             ignore: ""
         });
 
-    }       
+    }
+
+    
 
     $('#saveMore').on(eventName, function (event) {
         $(".text_udf:not(:visible)").each(function () {
