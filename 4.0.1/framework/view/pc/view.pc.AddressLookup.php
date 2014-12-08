@@ -132,13 +132,11 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             if(isset($result_n_ar->house_suffix)  && !ctype_alnum($result_n_ar->house_suffix)){ 
                if(strpos($result_n_ar->house_suffix, "/") == true){$flat = explode("/", $result_n_ar->house_suffix);} 
                else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);}
-               
-               if(strpos($result_n_ar->house_suffix, "-") == true){ unset($flat); $flat[1] = $result_n_ar->house_suffix; }
             }
             
             ?>  
                     <input type="hidden" id="ret_<?php echo $set; ?>_unitno" value="<?php echo $flat[0]; ?>" />
-                    <input type="hidden" id="ret_<?php echo $set; ?>_houseno" value="<?php echo $flat[1]; ?>" />
+                    <input type="hidden" id="ret_<?php echo $set; ?>_houseno" value="<?php echo $flat[1]."".$flat[2]."".$flat[3]; ?>" />
                     
             
             
@@ -168,7 +166,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
         $set++;
         ?>
 
-            <!-- Suffix Code -->
+             <!-- Suffix Code -->
             <?php
             
             if(isset($result_n_ar->house_number)) {
@@ -183,13 +181,11 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             if(isset($result_n_ar->house_suffix)  && !ctype_alnum($result_n_ar->house_suffix)){ 
                if(strpos($result_n_ar->house_suffix, "/") == true){$flat = explode("/", $result_n_ar->house_suffix);} 
                else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);}
-               
-               if(strpos($result_n_ar->house_suffix, "-") == true){ unset($flat); $flat[1] = $result_n_ar->house_suffix; }
             }
             
             ?>  
                     <input type="hidden" id="ret_<?php echo $set; ?>_unitno" value="<?php echo $flat[0]; ?>" />
-                    <input type="hidden" id="ret_<?php echo $set; ?>_houseno" value="<?php echo $flat[1]; ?>" />
+                    <input type="hidden" id="ret_<?php echo $set; ?>_houseno" value="<?php echo $flat[1]."".$flat[2]."".$flat[3]; ?>" />
 
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?>" />
