@@ -117,32 +117,24 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             }
             ?>
 
-            <!-- Debug -->
-            <?php $testval = $result_n_ar->house_suffix."**".$result_n_ar->house_number;?>
-            <!-- Debug -->
-
-
             <!-- Suffix Code -->
             <?php
             
-            if(isset($result_n_ar->house_suffix) && isset($result_n_ar->house_number)) {
+            if(isset($result_n_ar->house_number)) {
                 if($result_n_ar->house_suffix == $result_n_ar->house_number){
-                    $flat[1] =  $result_n_ar->house_number;
+                    $flat[1] =  $result_n_ar->house_suffix;
                 } 
                 else {
-                    $flat[0] =  $result_n_ar->house_suffix;
-                    $flat[1] =  $result_n_ar->house_number;
+                    $flat[1] =  $result_n_ar->house_suffix;
                 }
             }
-            
-                       
+                                 
             if(isset($result_n_ar->house_suffix)  && !ctype_alnum($result_n_ar->house_suffix)){ 
                if(strpos($result_n_ar->house_suffix, "/") == true){$flat = explode("/", $result_n_ar->house_suffix);} 
-               else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);} 
-               else if(strpos($result_n_ar->house_suffix, "-") == true){$flat = explode("-", $result_n_ar->house_suffix);}
+               else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);}
+               
+               if(strpos($result_n_ar->house_suffix, "-") == true){ unset($flat); $flat[1] = $result_n_ar->house_suffix; }
             }
-            
-            
             
             ?>  
                     <input type="hidden" id="ret_<?php echo $set; ?>_unitno" value="<?php echo $flat[0]; ?>" />
