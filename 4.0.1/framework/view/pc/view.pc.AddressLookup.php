@@ -13,10 +13,13 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                 var id = "";
                 id = $(this).attr('id');
                 $('#same').val('i');
-                $('#i_cno').val($('#ret_' + id + '_house_number').val());
+
+                $('#i_cno').val($('#ret_' + id + '_houseno').val());
+
                 if ($('#ret_' + id + '_house_number').val() != $('#ret_' + id + '_house_suffix').val()) {
-                    $('#i_cfno').val($('#ret_' + id + '_house_suffix').val());
+                    $('#i_cfno').val($('#ret_' + id + '_unitno').val());
                 }
+
                 $('#i_cstreet').val($('#ret_' + id + '_street_name').val());
                 $('#i_ctype').val($('#ret_' + id + '_street_type').val());
                 $('#i_csuburb').val($('#ret_' + id + '_locality').val());
@@ -116,19 +119,36 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 
             <!-- Debug -->
             <?php $testval = $result_n_ar->house_suffix."**".$result_n_ar->house_number;?>
-            <input type="hidden" id="testhousevals" value="<?php echo $testval; ?>" />
             <!-- Debug -->
 
 
             <!-- Suffix Code -->
             <?php
+            
+            if(isset($result_n_ar->house_suffix) && isset($result_n_ar->house_number)) {
+                if($result_n_ar->house_suffix == $result_n_ar->house_number){
+                    $flat[1] =  $result_n_ar->house_number;
+                } 
+                else {
+                    $flat[0] =  $result_n_ar->house_suffix;
+                    $flat[1] =  $result_n_ar->house_number;
+                }
+            }
+            
+                       
             if(isset($result_n_ar->house_suffix)  && !ctype_alnum($result_n_ar->house_suffix)){ 
                if(strpos($result_n_ar->house_suffix, "/") == true){$flat = explode("/", $result_n_ar->house_suffix);} 
                else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);} 
                else if(strpos($result_n_ar->house_suffix, "-") == true){$flat = explode("-", $result_n_ar->house_suffix);}
             }
-            ?>
-            <?php #if(isset($flat)){echo $flat[0];} else {echo $result_n_ar->house_suffix;} if(isset($result_n_ar->house_number)) echo " / ".$result_n_ar->house_number; ?>
+            
+            
+            
+            ?>  
+                    <input type="hidden" id="ret_<?php echo $set; ?>_unitno" value="<?php echo $flat[0]; ?>" />
+                    <input type="hidden" id="ret_<?php echo $set; ?>_houseno" value="<?php echo $flat[1]; ?>" />
+                    
+            
             
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?>" />
@@ -158,18 +178,8 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 
             <!-- Debug -->
             <?php $testval = $result_n_ar->house_suffix."**".$result_n_ar->house_number;?>
-            <input type="hidden" id="testhousevals" value="<?php echo $testval; ?>" />
             <!-- Debug -->
 
-
-            <!-- Suffix Code -->
-            <?php
-            if(isset($result_n_ar->house_suffix)  && !ctype_alnum($result_n_ar->house_suffix)){ 
-               if(strpos($result_n_ar->house_suffix, "/") == true){$flat = explode("/", $result_n_ar->house_suffix);} 
-               else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);} 
-               else if(strpos($result_n_ar->house_suffix, "-") == true){$flat = explode("-", $result_n_ar->house_suffix);}
-            }
-            ?>
 
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?>" />
