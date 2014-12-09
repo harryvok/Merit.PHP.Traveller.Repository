@@ -4,7 +4,7 @@ if(isset($GLOBALS['result']->workflow_details) && count($GLOBALS['result']->work
 <script type="text/javascript">
 
     $(document).ready(function () {
-          $("#popup").fadeIn("fast");
+        $("#popup").fadeIn("fast");
     });
 
     $('#closeWorkflow').click(function () {
