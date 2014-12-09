@@ -93,7 +93,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    } else {
 		        $("#add-request-textarea").focus();
 		    }
-
+                 
 		});
 		 });
 	</script>
