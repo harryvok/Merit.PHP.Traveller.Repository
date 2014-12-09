@@ -26,7 +26,7 @@ $(document).ready(function () {
     // CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());    REMOVED FOR OPTIMIZATION
 
     /* INITIALISE */
-    $("#keywordSearch").autoCompleteInit("inc/ajax/ajax.keywordList.php", null, keywordResponse);
+    $("#keywordSearch").autoCompleteInit("inc/ajax/ajax.keywordList.php", "", keywordResponse);
 
     $("#lstreet").autoCompleteInit("inc/ajax/ajax.getStreets.php", { term: "" }, (streetResponse));
     $("#i_cstreet").autoCompleteInit("inc/ajax/ajax.getStreets.php", { term: "" }, cStreetResponse);
@@ -389,8 +389,8 @@ $(document).ready(function () {
         }
 
         $('.getlist').change(function () {
-            $('#name_id').val('0');
-            $('#name_ctr').val('0');
+            //$('#name_id').val('0');
+            //$('#name_ctr').val('0');
             $('#name_origin').val('');
             if ($("#given").val() == "" || $("#surname").val() == "") {
                 $("#customerInfoXpert").attr("disabled", "disabled");                
@@ -996,20 +996,87 @@ $(document).ready(function () {
             $(".req_text_udf:not(:visible)").each(function () {
                 $(this).removeClass("required");
             });
+            //alert($("#old_given").val() + $("#given").val() + $("#old_surname").val() + $("#surname").val())
+            if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                //alert("changed");
+                $("#namechange").val("No");
+                $.ajax({
+                    url: 'inc/ajax/ajax.changeNameDetails.php',
+                    type: 'post',
+                    data: {
+                        name_id: $("#name_id").val(),
+                        pref_title: $("#pref_title").val(),
+                        given: $("#given").val(),
+                        surname: $("#surname").val(),
+                        cust_mobile: $("#cust_mobile").val(),
+                        cust_phone: $("#cust_phone").val(),
+                        cust_work: $("#cust_work").val(),
+                        email_address: $("#email_address").val(),
+                        company: $("#company").val(),
+                        old_pref_title: $("#old_pref_title").val(),
+                        old_given: $("#old_given").val(),
+                        old_surname: $("#old_surname").val(),
+                        old_cust_phone: $("#old_cust_phone").val(),
+                        old_cust_work: $("#old_cust_work").val(),
+                        old_cust_mobile: $("#old_cust_mobile").val(),
+                        old_email_address: $("#old_email_address").val(),
+                        old_company: $("#old_company").val()
+                    },
+                    success: function (data) {
+                        $('#popup').html(data);
+                        $(self).removeClass("ui-autocomplete-loading");
+                    }
+                });
+            }
+            else {
+                //alert("not changed");
+                $("#namechange").val("Yes");
+            }
         });
 
         $("#newrequest").validate({
             submitHandler: function (form) {
-                $("#btnclick").val("N");
-                $("#submit").prop('disabled', true).buttonState("disable");
-                $("#saveMore").prop('disabled', true).buttonState("disable");
-                $("#saveCountOnly").prop('disabled', true).buttonState("disable");
-                if ($("#countOnlyInd").val() == "N") {
-                    Load();
-                    
-                    $("#newrequest").valid();
-                    if ($("#newrequest").validate().numberOfInvalids() == 0) {
-                        Unload();
+                if ($("#namechange").val() == "Yes")
+                {
+                    $("#btnclick").val("N");
+                    $("#submit").prop('disabled', true).buttonState("disable");
+                    $("#saveMore").prop('disabled', true).buttonState("disable");
+                    $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+                    if ($("#countOnlyInd").val() == "N") {
+                        Load();                    
+                        $("#newrequest").valid();
+                        if ($("#newrequest").validate().numberOfInvalids() == 0) {
+                            Unload();
+
+                            $.ajax({
+                                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                                type: 'post',
+                                data: {
+                                    ser: $("#service").val(),
+                                    req: $("#request").val(),
+                                    func: $("#function").val()
+                                },
+                                success: function (data) {
+                                
+                                    if ($("#deviceIndicator").val() == "pc") {
+                                        $('#popup').html(data);
+                                    } else {
+                                        $("#adhocOfficer").html(data).trigger("create");
+                                    }
+
+                                }
+                            });
+                        }
+                        else {
+                            $("#newrequest").validate();
+                            $("#saveMore").prop("disabled", false).buttonState("enable");
+                            $("#saveCountOnly").prop("disabled", false).buttonState("enable");
+                            $("#submit").prop('disabled', false).buttonState("enable");
+                            Unload();
+                        }
+                    }
+                    else {
+                        Load();
                         $.ajax({
                             url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
                             type: 'post',
@@ -1019,50 +1086,21 @@ $(document).ready(function () {
                                 func: $("#function").val()
                             },
                             success: function (data) {
-                                
                                 if ($("#deviceIndicator").val() == "pc") {
                                     $('#popup').html(data);
                                 } else {
                                     $("#adhocOfficer").html(data).trigger("create");
                                 }
-
                             }
                         });
                     }
-                    else {
-                        $("#newrequest").validate();
-                        $("#saveMore").prop("disabled", false).buttonState("enable");
-                        $("#saveCountOnly").prop("disabled", false).buttonState("enable");
-                        $("#submit").prop('disabled', false).buttonState("enable");
-                        Unload();
-                    }
-                }
-                else {
-                    Load();
-                    $.ajax({
-                        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                        type: 'post',
-                        data: {
-                            ser: $("#service").val(),
-                            req: $("#request").val(),
-                            func: $("#function").val()
-                        },
-                        success: function (data) {
-                            if ($("#deviceIndicator").val() == "pc") {
-                                $('#popup').html(data);
-                            } else {
-                                $("#adhocOfficer").html(data).trigger("create");
-                            }
-                        }
-                    });
                 }
             },
             invalidHandler: function (event, validator) {
                 $(".error").closest(".col").trigger("expand");
             },
             ignore: ""
-        });
-
+        });    
     }       
 
     $('#saveMore').on(eventName, function (event) {

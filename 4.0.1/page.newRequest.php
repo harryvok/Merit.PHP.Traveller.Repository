@@ -325,9 +325,19 @@ if(!isset($_GET['d'])){
                                 <br />
                             </div>
                         </div>
-                        <input type="hidden" name="name_id" id="name_id" value="0" />
+                        <input type="hidden" name="name_id" id="name_id"/>
                         <input type="hidden" name="name_origin" id="name_origin" />
                         <input type="hidden" name="name_ctr" id="name_ctr"  />
+                        <input type="hidden" name="old_name_id" id="old_name_id" />
+                        <input type="hidden" name="old_pref_title" id="old_pref_title" />
+                        <input type="hidden" name="old_surname" id="old_surname" />
+                        <input type="hidden" name="old_given" id="old_given" />
+                        <input type="hidden" name="old_cust_phone" id="old_cust_phone" />
+                        <input type="hidden" name="old_cust_work" id="old_cust_work" />
+                        <input type="hidden" name="old_cust_mobile" id="old_cust_mobile" />
+                        <input type="hidden" name="old_email_address" id="old_email_address" />
+                        <input type="hidden" name="old_company" id="old_company" />
+                        <input type="hidden" name="namechange" id="namechange" value="Yes" />
                     </div>
                 </div>
             </div>

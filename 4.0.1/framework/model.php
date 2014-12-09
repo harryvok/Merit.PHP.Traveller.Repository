@@ -437,7 +437,30 @@ class Model {
 
         return $result;
     }
-
+    
+    public function getChangeNameDetails($params = NULL){
+        $parameters = new stdClass();
+        $parameters->name_id = $_POST["name_id"];
+        $parameters->pref_title = $_POST["pref_title"];
+        $parameters->given = $_POST["given"];
+        $parameters->surname = $_POST["surname"];
+        $parameters->cust_phone = $_POST["cust_phone"];
+        $parameters->cust_work = $_POST["cust_work"];
+        $parameters->cust_mobile = $_POST["cust_mobile"];
+        $parameters->email_address = $_POST["email_address"];
+        $parameters->company = $_POST["company"];
+        $parameters->old_pref_title = $_POST["old_pref_title"];
+        $parameters->old_given = $_POST["old_given"];
+        $parameters->old_surname = $_POST["old_surname"];
+        $parameters->old_cust_phone = $_POST["old_cust_phone"];
+        $parameters->old_cust_work = $_POST["old_cust_work"];
+        $parameters->old_cust_mobile = $_POST["old_cust_mobile"];
+        $parameters->old_email_address = $_POST["old_email_address"];
+        $parameters->old_company = $_POST["old_company"];
+        return $parameters;
+    }
+    
+  
     public function getStreets($params = NULL){
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
@@ -539,6 +562,7 @@ class Model {
     }
 
     public function getNames($params = NULL){
+        if(isset($_POST['name_id'])) {$name_id = $_POST['name_id'];} else {$name_id='0';}
         if(isset($_POST['surname'])){ $surname = $_POST['surname'];} else{ $surname='';}
         if(isset($_POST['given'])) {$given = $_POST['given'];} else {$given='';}
         if(isset($_POST['pref_title'])) {$pref_title = $_POST['pref_title'];} else {$pref_title='';}
@@ -552,7 +576,7 @@ class Model {
         "user_id" => $_SESSION['user_id'],
         "password" => $_SESSION['password'],
             "search_param" => array(
-                "name_id" => '0',
+                "name_id" => $name_id,
                 "surname" => $surname,
                 "given_names" => $given,
                 "initials" => '',
@@ -4062,5 +4086,283 @@ class Model {
     }
     
 	/* */
+    
+    
+    public function processModifyNameDetails($params = NULL){
+        $date = '0001-01-01T00:00:00+11:00';
+        $parameters = new stdClass();
+        $address_details = array(array(
+            "address_id" => 0,
+            "house_number" => '',
+            "house_suffix" => '',
+            "street_name" => '',
+            "street_type" => '',
+            "locality" => '',
+            "postcode" => '',
+            "property_no" => '',
+            "gis_x_coord" => '',
+            "gis_y_coord" => '',
+            "address_ctr" => 0,
+            "melway_map" => '',
+            "melway_ref" => '',
+            "address_type" => '',
+            "address_desc" => '',
+            "address_type_code" => '',
+            "ws_status" => 0,
+            "ws_message" => '',
+            "confidential" => '',
+            "area_group" => '',
+            "municipality" => '',
+            "road_type" => '',
+            "road_responsibility" => '',
+            "street_id" => 0,
+            "facility_id" => 0,
+            "udf_dets" => null
+        ),
+        array(
+            "address_id" => 0,
+            "house_number" => '',
+            "house_suffix" => '',
+            "street_name" => '',
+            "street_type" => '',
+            "locality" => '',
+            "postcode" => '',
+            "property_no" => '',
+            "gis_x_coord" => '',
+            "gis_y_coord" => '',
+            "address_ctr" => 0,
+            "melway_map" => '',
+            "melway_ref" => '',
+            "address_type" => '',
+            "address_desc" => '',
+            "address_type_code" => '',
+            "ws_status" => 0,
+            "ws_message" => '',
+            "area_group" => '',
+            "municipality" => '',
+            "road_type" => '',
+            "road_responsibility" => '',
+            "street_id" => 0,
+            "facility_id" => 0,
+            "udf_dets" => null
+        ));
+        $request_details =array(array(
+            "request_id" => 0,
+            "service_code" => '',
+            "request_code" => '',
+            "function_code" => '',
+            "service_name" => '',
+            "request_name" => '',
+            "function_name" => '',
+            "request_type_code" => '',
+            "request_type" => '',
+            "request_datetime" => $date,
+            "due_datetime" => $date,
+            "status_datetime" => $date,
+            "division_code" => '',
+            "division_name" => '',
+            "department_code" => '',
+            "department_name" => '',
+            "provider_code" => '',
+            "provider_name" => '',
+            "outcome_code" => '',
+            "outcome" => '',
+            "in_time_ind" => '',
+            "finalised_ind" => '',
+            "count_only" => '',
+            "centre_code" => '',
+            "centre_name" => '',
+            "priority_code" => '',
+            "priority" => '',
+            "status" => '',
+            "refer_no" => '',
+            "officer_responsible_code" => '',
+            "officer_responsible_name" => '',
+            "input_by_code" => '',
+            "input_by_name" => '',
+            "how_received_code" => '',
+            "how_received_name" => '',
+            "request_description" => '',
+            "request_instruction" => '',
+            "customer_name_det " => null,
+            "address_det " => null,
+            "ws_status" => 0,
+            "ws_message" => '',
+            "request_actions_det " => null,
+            "request_comments" => '',
+            "name_id" => 0,
+            "address_id" => 0,
+            "location_id" => 0,
+            "escalated_ind" => '',
+            "name_addr_xref " => null,
+            "facility_det " => null,
+            "with_action" => '',
+            "address_type " => '',           
+            "address_desc" => '',
+            "audit_count" => 0,
+            "request_links " => null,            
+            "status_code " => ''
+        ),
+        array(
+            "request_id" => 0,
+            "service_code" => '',
+            "request_code" => '',
+            "function_code" => '',
+            "service_name" => '',
+            "request_name" => '',
+            "function_name" => '',
+            "request_type_code" => '',
+            "request_type" => '',
+            "request_datetime" => $date,
+            "due_datetime" => $date,
+            "status_datetime" => $date,
+            "division_code" => '',
+            "division_name" => '',
+            "department_code" => '',
+            "department_name" => '',
+            "provider_code" => '',
+            "provider_name" => '',
+            "outcome_code" => '',
+            "outcome" => '',
+            "in_time_ind" => '',
+            "finalised_ind" => '',
+            "count_only" => '',
+            "centre_code" => '',
+            "centre_name" => '',
+            "priority_code" => '',
+            "priority" => '',
+            "status" => '',
+            "refer_no" => '',
+            "officer_responsible_code" => '',
+            "officer_responsible_name" => '',
+            "input_by_code" => '',
+            "input_by_name" => '',
+            "how_received_code" => '',
+            "how_received_name" => '',
+            "request_description" => '',
+            "request_instruction" => '',
+            "customer_name_det " => null,
+            "address_det " => null,
+            "ws_status" => 0,
+            "ws_message" => '',
+            "request_actions_det " => null,
+            "request_comments" => '',
+            "name_id" => 0,
+            "address_id" => 0,
+            "location_id" => 0,
+            "escalated_ind" => '',
+            "name_addr_xref " => null,
+            "facility_det " => null,
+            "with_action" => '',
+            "address_type " => '',           
+            "address_desc" => '',
+            "audit_count" => 0,
+            "request_links " => null,            
+            "status_code " => ''
+        ));
+        $audit_details = array(array(
+            "audit_date" => $date,
+            "audit_field" => '',
+            "audit_operation" => '',
+            "before_data" => '',
+            "after_data" => '',
+            "audit_officer" => '',
+            "audit_type" => '',
+            "audit_description" => '',
+            "audit_level" => ''
+        ),
+        array(
+            "audit_date" => $date,
+            "audit_field" => '',
+            "audit_operation" => '',
+            "before_data" => '',
+            "after_data" => '',
+            "audit_officer" => '',
+            "audit_type" => '',
+            "audit_description" => '',
+            "audit_level" => ''
+        ));
+        $animal_details = array(array(
+            "animal_no" => '',
+            "animal_type" => '',
+            "licence_no" => '',
+            "dob" => $date,
+            "age" => '',
+            "status" => '',
+            "animal_name" => '',
+            "desexed" => '',
+            "breed" => '',
+            "colour" => '',
+            "gender" => '',
+            "chip_no" => '',
+            "owner_name" => '',
+            "owner_home_phone" => '',
+            "owner_mobile" => '',
+            "owner_work_phone" => '',
+            "property_no" => '',
+            "address" => '',
+            "ws_status" => 0,
+            "ws_message" => '',
+            "class" => ''
+        ),
+        array(
+            "animal_no" => '',
+            "animal_type" => '',
+            "licence_no" => '',
+            "dob" => $date,
+            "age" => '',
+            "status" => '',
+            "animal_name" => '',
+            "desexed" => '',
+            "breed" => '',
+            "colour" => '',
+            "gender" => '',
+            "chip_no" => '',
+            "owner_name" => '',
+            "owner_home_phone" => '',
+            "owner_mobile" => '',
+            "owner_work_phone" => '',
+            "property_no" => '',
+            "address" => '',
+            "ws_status" => 0,
+            "ws_message" => '',
+            "class" => ''            
+        ));
+        $parameters = array(
+            "user_id" => $_SESSION['user_id'],
+            "password" => $_SESSION['password'],
+            "request_id" => 0,
+            "name_dets" => array(
+                "name_id" => $_POST["name_id"],
+                "surname" => $_POST["surname"],                
+                "given_names" => $_POST["given"],
+                "initials" => substr($_POST["given"],0,1).substr($_POST["surname"],0,1),
+                "pref_title" => $_POST["pref_title"],
+                "telephone" => $_POST["cust_phone"],
+                "work_phone" => $_POST["cust_work"],
+                "mobile_no" => $_POST["cust_mobile"],
+                "fax_no" => '',
+                "email_address" => $_POST["email_address"], 
+                "company_name" => $_POST["company"], 
+                "name_ctr" => 0.0, 
+                "ws_status" => '', 
+                "ws_message" => '',
+                "address_det" => $address_details,
+                "req_dets" => $request_details,
+                "animal_dets" => $animal_details,
+                "audit_dets" => $audit_details
+            ),
+            "new_name" => 'Y'
+        );      
+        $parameters = array_to_objecttree($parameters);        
+        try {
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_modify_name", $parameters);
+        return true;       
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            return false;
+        }        
+    }    
 }
 ?>

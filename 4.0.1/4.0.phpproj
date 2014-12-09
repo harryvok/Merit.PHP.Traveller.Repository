@@ -299,6 +299,7 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
+    <Compile Include="framework\view\pc\view.pc.ChangeNameDetails.php" />
     <Compile Include="framework\view\pc\view.pc.BookingSummary.php" />
     <Compile Include="framework\view\pc\view.pc.PropertySearch.php" />
     <Compile Include="framework\view\pc\view.pc.Audit.php" />
@@ -442,7 +443,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="inc\ajax\ajax.adhocOfficerList.php" />
+    <Compile Include="inc\ajax\ajax.changeNameDetails.php" />
     <Compile Include="inc\ajax\ajax.bookingStartStop.php" />
+    <Compile Include="inc\ajax\ajax.modifyNameDetails.php" />
     <Compile Include="inc\ajax\ajax.getBookingSummary.php" />
     <Compile Include="inc\ajax\ajax.getDocumentSearch.php" />
     <Compile Include="inc\ajax\ajax.getOfficer.php" />

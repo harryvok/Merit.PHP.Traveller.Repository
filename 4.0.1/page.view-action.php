@@ -55,6 +55,7 @@ if(isset($_SESSION['user_id'])){
         "Priorities" => $_SESSION['roleSecurity']->maint_priority,
         "CountOnly" => $_SESSION['roleSecurity']->maint_new_request,
         "CheckAdhocOfficer" => $_SESSION['roleSecurity']->maint_new_request,
+        "ChangeNameDetails" => $_SESSION['roleSecurity']->maint_new_request,
         "NewRequest" => $_SESSION['roleSecurity']->maint_new_request,
         "Streets" => $_SESSION['roleSecurity']->maint_new_request,
         "StreetTypes" => $_SESSION['roleSecurity']->maint_new_request,
