@@ -575,7 +575,7 @@ class Model {
         "user_id" => $_SESSION['user_id'],
         "password" => $_SESSION['password'],
             "search_param" => array(
-                "name_id" => 0,
+                "name_id" => '0',
                 "surname" => $surname,
                 "given_names" => $given,
                 "initials" => '',
