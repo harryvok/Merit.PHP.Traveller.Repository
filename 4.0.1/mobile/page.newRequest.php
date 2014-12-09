@@ -21,9 +21,8 @@ if(isset($_SESSION['user_id'])){
                 
             </div>
             <form enctype='multipart/form-data' id='newrequest' name="newrequest" action='process.php' method='post'>
-
-                
-
+                <input type="hidden" id="testing" value="" />
+                <input type="hidden" id="checkforWorkflow" value="" />
                 <input type="hidden" name="lookup_enabled" id="lookup_enabled" value="<?php echo $_SESSION['roleSecurity']->maint_name_match; ?>" />
                 <input type="hidden" name="countonly_bypass" id="countonly_bypass" value="<?php echo $_SESSION['meritIni']['COUNTONLY_BYPASS_MAND_UDF']; ?>" />
                 <input type="hidden" name="historysearchautoopenoff" id="historysearchautoopenoff" value="<?php echo $_SESSION['meritIni']['HISTORYSEARCHAUTOOPENOFF']; ?>" />
@@ -43,11 +42,8 @@ if(isset($_SESSION['user_id'])){
 
                 <div data-role="collapsible" class="col" data-collapsed="false" data-content-theme="c">
                     <h4>Request Details</h4>
-                    
                     <p>
-                            <h2>test that it saves</h2>
-                        <input type="hidden" id="testing" value="" />
-                        <input type="hidden" id="checkforWorkflow" value="" />
+                        
 
                         <label>Keyword</label>
                         <input class="text" name='keyword' id="keywordSearch" maxlength='15' placeholder="Search...">
