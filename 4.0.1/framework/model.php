@@ -561,8 +561,7 @@ class Model {
         return $result;
     }
 
-    public function getNames($params = NULL){
-        if(isset($_POST['name_id'])) {$name_id = $_POST['name_id'];} else {$name_id='0';}
+    public function getNames($params = NULL){        
         if(isset($_POST['surname'])){ $surname = $_POST['surname'];} else{ $surname='';}
         if(isset($_POST['given'])) {$given = $_POST['given'];} else {$given='';}
         if(isset($_POST['pref_title'])) {$pref_title = $_POST['pref_title'];} else {$pref_title='';}
@@ -576,7 +575,7 @@ class Model {
         "user_id" => $_SESSION['user_id'],
         "password" => $_SESSION['password'],
             "search_param" => array(
-                "name_id" => $name_id,
+                "name_id" => 0,
                 "surname" => $surname,
                 "given_names" => $given,
                 "initials" => '',
