@@ -207,6 +207,7 @@ $(document).ready(function () {
                 $("#functionRequired").hide();
                 $("#functionInput").removeClass("required");
                 $("#checkforWorkflow").trigger("click");
+
             }           
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
             $("#functionInput").textInputState('enable');
@@ -351,7 +352,7 @@ $(document).ready(function () {
                 functionName: function () { return $("#functionInput").val() },
             },
             dataType: 'html',
-            success: function (data) {
+            success: function (data) {               
                 Unload();
                 if (data == "None") {
                     $("#submit").prop('disabled', true).buttonState("disable");

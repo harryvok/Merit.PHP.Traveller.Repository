@@ -95,7 +95,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         if ($("#ret_" + id + "_request_need_func").val() == "Y") {
             $("#functionInput").addClass("required");
             $("#functionRequired").show();
-            $("#checkforWorkflow").trigger("click");
+            $("#checkforWorkflow").trigger("click"); 
         }
         else {
             $("#functionRequired").hide();
