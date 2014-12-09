@@ -13,8 +13,13 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                 var id = "";
                 id = $(this).attr('id');
                 $('#same').val('i');
-                $('#i_cno').val($('#ret_' + id + '_house_number').val());
-                $('#i_cfno').val($('#ret_' + id + '_house_suffix').val());
+
+                $('#i_cno').val($('#ret_' + id + '_houseno').val());
+
+                if ($('#ret_' + id + '_house_number').val() != $('#ret_' + id + '_house_suffix').val()) {
+                    $('#i_cfno').val($('#ret_' + id + '_unitno').val());
+                }
+
                 $('#i_cstreet').val($('#ret_' + id + '_street_name').val());
                 $('#i_ctype').val($('#ret_' + id + '_street_type').val());
                 $('#i_csuburb').val($('#ret_' + id + '_locality').val());
@@ -98,7 +103,6 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     <tr>
         <!--<th class="job-id sortable">Unit/Flat Number</th>-->
         <th class="job-id sortable">Origin</th>
-        <th class="job-id sortable">House Suffix</th>
         <th class="job-id sortable">House Number</th>
         <th class="job-id sortable">Street Name</th>
         <th class="job-id sortable">Street Type</th>
@@ -125,8 +129,32 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                 $class = "light";
             }
             ?>
+
+            <!-- Suffix Code -->
+            <?php
+            
+            if(isset($result_n_ar->house_number)) {
+                if($result_n_ar->house_suffix == $result_n_ar->house_number){
+                    $flat[1] =  $result_n_ar->house_suffix;
+                } 
+                else {
+                    $flat[1] =  $result_n_ar->house_suffix;
+                }
+            }
+                                 
+            if(isset($result_n_ar->house_suffix)  && !ctype_alnum($result_n_ar->house_suffix)){ 
+               if(strpos($result_n_ar->house_suffix, "/") == true){$flat = explode("/", $result_n_ar->house_suffix);} 
+               else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);}
+            }
+            
+            ?>  
+                    <input type="hidden" id="ret_<?php echo $set; ?>_unitno" value="<?php echo $flat[0]; ?>" />
+                    <input type="hidden" id="ret_<?php echo $set; ?>_houseno" value="<?php echo $flat[1]."".$flat[2]."".$flat[3]; ?>" />
+                    
+            
+            
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
-            <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>" />
+            <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_house_number" value="<?php if(isset($result_n_ar->house_number)) echo $result_n_ar->house_number; ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_street_name" value="<?php if(isset($result_n_ar->street_name)){ echo $result_n_ar->street_name; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_street_type" value="<?php if(isset($result_n_ar->street_type)){ echo $result_n_ar->street_type; } else { echo ""; } ?>" />
@@ -136,23 +164,44 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             <input type="hidden" id="ret_<?php echo $set; ?>_address_ctr" value="<?php if(isset($result_n_ar->address_ctr)){ echo $result_n_ar->address_ctr; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_confidential" value="<?php if(isset($result_n_ar->confidential)){ echo $result_n_ar->confidential; } else { echo ""; } ?>" />
                 <tr class="<?php echo $class; ?> address_row" id="<?php echo $set; ?>" title="">
-                    <td><?php if(isset($result_n_ar->origin_name)){ echo $result_n_ar->origin_name; } else { echo ""; } ?></td>
-                    <td><?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?></td>
-                    <td><?php if(isset($result_n_ar->house_number)) echo $result_n_ar->house_number; ?></td>
+                    <td><?php if(isset($result_n_ar->origin_name)){ echo $result_n_ar->origin_name; } else { echo ""; } ?></td>                    
+                    <td><?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->street_name)){ echo $result_n_ar->street_name; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->street_type)){ echo $result_n_ar->street_type; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->locality)){ echo $result_n_ar->locality; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->postcode)){ echo $result_n_ar->postcode; } else { echo ""; } ?></td>
                 </tr>
-                <?php
+                <?php unset($flat);
         }
     }
     elseif(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) == 1){
         $result_n_ar = $GLOBALS['result']->address_list->address_lookup_det;
         $set++;
         ?>
+
+             <!-- Suffix Code -->
+            <?php
+            
+            if(isset($result_n_ar->house_number)) {
+                if($result_n_ar->house_suffix == $result_n_ar->house_number){
+                    $flat[1] =  $result_n_ar->house_suffix;
+                } 
+                else {
+                    $flat[1] =  $result_n_ar->house_suffix;
+                }
+            }
+                                 
+            if(isset($result_n_ar->house_suffix)  && !ctype_alnum($result_n_ar->house_suffix)){ 
+               if(strpos($result_n_ar->house_suffix, "/") == true){$flat = explode("/", $result_n_ar->house_suffix);} 
+               else if(strpos($result_n_ar->house_suffix, ",") == true){$flat = explode(",", $result_n_ar->house_suffix);}
+            }
+            
+            ?>  
+                    <input type="hidden" id="ret_<?php echo $set; ?>_unitno" value="<?php echo $flat[0]; ?>" />
+                    <input type="hidden" id="ret_<?php echo $set; ?>_houseno" value="<?php echo $flat[1]."".$flat[2]."".$flat[3]; ?>" />
+
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
-            <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>" />
+            <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_house_number" value="<?php if(isset($result_n_ar->house_number)) echo $result_n_ar->house_number; ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_street_name" value="<?php if(isset($result_n_ar->street_name)){ echo $result_n_ar->street_name; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_street_type" value="<?php if(isset($result_n_ar->street_type)){ echo $result_n_ar->street_type; } else { echo ""; } ?>" />
@@ -163,14 +212,13 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             <input type="hidden" id="ret_<?php echo $set; ?>confidential" value="<?php if(isset($result_n_ar->confidential)){ echo $result_n_ar->confidential; } else { echo ""; } ?>" />
             <tr class="<?php echo $class; ?> address_row" id="<?php echo $set; ?>" title="">
                 <td><?php if(isset($result_n_ar->origin_name)){ echo $result_n_ar->origin_name; } else { echo ""; } ?></td>
-                <td><?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?></td>
-                <td><?php if(isset($result_n_ar->house_number)) echo $result_n_ar->house_number; ?></td>
+                <td><?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->street_name)){ echo $result_n_ar->street_name; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->street_type)){ echo $result_n_ar->street_type; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->locality)){ echo $result_n_ar->locality; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->postcode)){ echo $result_n_ar->postcode; } else { echo ""; } ?></td>
             </tr>
-            <?php
+            <?php unset($flat);
     }
     ?>
     </tbody>

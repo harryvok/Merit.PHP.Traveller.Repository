@@ -21,6 +21,8 @@ if(isset($_SESSION['user_id'])){
                 
             </div>
             <form enctype='multipart/form-data' id='newrequest' name="newrequest" action='process.php' method='post'>
+                <input type="hidden" id="testing" value="" />
+                <input type="hidden" id="checkforWorkflow" value="" />
                 <input type="hidden" name="lookup_enabled" id="lookup_enabled" value="<?php echo $_SESSION['roleSecurity']->maint_name_match; ?>" />
                 <input type="hidden" name="countonly_bypass" id="countonly_bypass" value="<?php echo $_SESSION['meritIni']['COUNTONLY_BYPASS_MAND_UDF']; ?>" />
                 <input type="hidden" name="historysearchautoopenoff" id="historysearchautoopenoff" value="<?php echo $_SESSION['meritIni']['HISTORYSEARCHAUTOOPENOFF']; ?>" />

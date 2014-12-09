@@ -39,11 +39,13 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 if ($("#ret_" + id + "_request_need_func").val() == "Y") {
                     $("#functionInput").addClass("required");
                     $("#functionRequired").show();
+                    $("#checkforWorkflow").trigger("click");
                 }
                 else {
                     $("#functionRequired").hide();
                     $("#functionInput").removeClass("required"); 
                     $("#ret_" + id + "_function_name_type").val($("#ret_" + id + "_request_name_type").val());
+                    $("#checkforWorkflow").trigger("click");
                 }
 
                 if ($("#ret_" + id + "_function_name").val().length > 0) {
@@ -91,7 +93,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    } else {
 		        $("#add-request-textarea").focus();
 		    }
-
+                 
 		});
 		 });
 	</script>
@@ -182,12 +184,14 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 			if ($("#ret_request_need_func").val() == "Y") {
                             $("#functionInput").addClass("required");
                             $("#functionRequired").show();
+                            $("#checkforWorkflow").trigger("click");
 
                         }
                         else {
                             $("#functionRequired").hide();
                             $("#functionInput").removeClass("required");
                             $("#ret_function_name_type").val($("#ret_request_name_type").val());
+                            $("#checkforWorkflow").trigger("click");
                         }
              if($("#ret_function_name").val().length > 0){
                  var nameVar = $("#ret_function_priority").val();
