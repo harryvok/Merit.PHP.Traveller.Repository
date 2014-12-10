@@ -989,43 +989,7 @@ $(document).ready(function () {
             });
             $(".req_text_udf:not(:visible)").each(function () {
                 $(this).removeClass("required");
-            });
-            //alert($("#old_given").val() + $("#given").val() + $("#old_surname").val() + $("#surname").val())
-            if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                //alert("changed");
-                $("#namechange").val("No");
-                $.ajax({
-                    url: 'inc/ajax/ajax.changeNameDetails.php',
-                    type: 'post',
-                    data: {
-                        name_id: $("#name_id").val(),
-                        pref_title: $("#pref_title").val(),
-                        given: $("#given").val(),
-                        surname: $("#surname").val(),
-                        cust_mobile: $("#cust_mobile").val(),
-                        cust_phone: $("#cust_phone").val(),
-                        cust_work: $("#cust_work").val(),
-                        email_address: $("#email_address").val(),
-                        company: $("#company").val(),
-                        old_pref_title: $("#old_pref_title").val(),
-                        old_given: $("#old_given").val(),
-                        old_surname: $("#old_surname").val(),
-                        old_cust_phone: $("#old_cust_phone").val(),
-                        old_cust_work: $("#old_cust_work").val(),
-                        old_cust_mobile: $("#old_cust_mobile").val(),
-                        old_email_address: $("#old_email_address").val(),
-                        old_company: $("#old_company").val()
-                    },
-                    success: function (data) {
-                        $('#popup').html(data);
-                        $(self).removeClass("ui-autocomplete-loading");
-                    }
-                });
-            }
-            else {
-                //alert("not changed");
-                $("#namechange").val("Yes");
-            }
+            });            
         });
 
         $("#newrequest").validate({
@@ -1038,27 +1002,62 @@ $(document).ready(function () {
                     if ($("#countOnlyInd").val() == "N") {
                         Load();
                         $("#newrequest").valid();
-                        if ($("#newrequest").validate().numberOfInvalids() == 0) {
-                            Unload();
-
-                            $.ajax({
-                                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                                type: 'post',
-                                data: {
-                                    ser: $("#service").val(),
-                                    req: $("#request").val(),
-                                    func: $("#function").val()
-                                },
-                                success: function (data) {
-
-                                    if ($("#deviceIndicator").val() == "pc") {
+                        if ($("#newrequest").validate().numberOfInvalids() == 0) {                            
+                            //alert($("#old_given").val() + $("#given").val() + $("#old_surname").val() + $("#surname").val())
+                            if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                                //alert("changed");
+                                //$("#namechange").val("No");
+                                $.ajax({
+                                    url: 'inc/ajax/ajax.changeNameDetails.php',
+                                    type: 'post',
+                                    data: {
+                                        name_id: $("#name_id").val(),
+                                        pref_title: $("#pref_title").val(),
+                                        given: $("#given").val(),
+                                        surname: $("#surname").val(),
+                                        cust_mobile: $("#cust_mobile").val(),
+                                        cust_phone: $("#cust_phone").val(),
+                                        cust_work: $("#cust_work").val(),
+                                        email_address: $("#email_address").val(),
+                                        company: $("#company").val(),
+                                        old_pref_title: $("#old_pref_title").val(),
+                                        old_given: $("#old_given").val(),
+                                        old_surname: $("#old_surname").val(),
+                                        old_cust_phone: $("#old_cust_phone").val(),
+                                        old_cust_work: $("#old_cust_work").val(),
+                                        old_cust_mobile: $("#old_cust_mobile").val(),
+                                        old_email_address: $("#old_email_address").val(),
+                                        old_company: $("#old_company").val()
+                                    },
+                                    success: function (data) {
+                                        Unload();
                                         $('#popup').html(data);
-                                    } else {
-                                        $("#adhocOfficer").html(data).trigger("create");
+                                        $(self).removeClass("ui-autocomplete-loading");
                                     }
+                                });
+                            }
+                            else {
+                                //alert("not changed");
+                                //$("#namechange").val("Yes");
+                                $.ajax({
+                                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                                    type: 'post',
+                                    data: {
+                                        ser: $("#service").val(),
+                                        req: $("#request").val(),
+                                        func: $("#function").val()
+                                    },
+                                    success: function (data) {
 
-                                }
-                            });
+                                        if ($("#deviceIndicator").val() == "pc") {
+                                            $('#popup').html(data);
+                                        } else {
+                                            $("#adhocOfficer").html(data).trigger("create");
+                                        }
+
+                                    }
+                                });
+                            }
                         }
                         else {
                             $("#newrequest").validate();

@@ -4,6 +4,23 @@
         
         $("#existing").click(function () {
             $("#namechange").val("Yes");
+            $.ajax({
+                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                type: 'post',
+                data: {
+                    ser: $("#service").val(),
+                    req: $("#request").val(),
+                    func: $("#function").val()
+                },
+                success: function (data) {
+
+                    if ($("#deviceIndicator").val() == "pc") {
+                        $('#popup').html(data);
+                    } else {
+                        $("#adhocOfficer").html(data).trigger("create");
+                    }
+                }
+            });
         });
 
         $("#new").click(function () {
@@ -22,10 +39,29 @@
                     company: $("#new_company").val()
                 },
                 success: function (data) {
-                    $("#namechange").val("Yes");
-                    $("#submit").prop('disabled', false).buttonState("enable");
-                    $("#newrequest").unbind("submit");
-                    $("#submit").click();
+                    //alert(data);
+                    $('#popup').html("");
+                    $('#popup').fadeOut("fast");
+                    if (data != "") {
+                        $("#name_id").val(data);
+                    }
+                    $.ajax({
+                        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                        type: 'post',
+                        data: {
+                            ser: $("#service").val(),
+                            req: $("#request").val(),
+                            func: $("#function").val()
+                        },
+                        success: function (data) {
+
+                            if ($("#deviceIndicator").val() == "pc") {
+                                $('#popup').html(data);
+                            } else {
+                                $("#adhocOfficer").html(data).trigger("create");
+                            }
+                        }
+                    });
                 }
             });
         });

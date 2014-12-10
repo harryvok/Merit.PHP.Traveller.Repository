@@ -1731,7 +1731,7 @@ class Model {
             $address_details = array( array(
                                 "address_id" => $cust_address_id,
                                 "house_number" => $cust_address_number,
-                                "house_suffix" => $cust_address_fnumber,
+                                "house_suffix" => strlen($cust_address_fnumber) > 0 ? $cust_address_fnumber . "/" . $cust_address_number : $cust_address_number,
                                 "street_name" => $cust_address_street,
                                 "street_type" => $cust_address_streettype,
                                 "locality" => $cust_address_suburb,
@@ -4356,13 +4356,13 @@ class Model {
         );      
         $parameters = array_to_objecttree($parameters);        
         try {
-            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_modify_name", $parameters);
-        return true;       
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_modify_name", $parameters);      
         }
         catch (Exception $e) {
             echo $e -> getMessage ();
-            return false;
-        }        
+            $result = false;
+        }    
+        return $result;
     }    
 }
 ?>
