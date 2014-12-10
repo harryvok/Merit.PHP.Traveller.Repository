@@ -139,6 +139,9 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                 } 
                 else {
                     $flat[1] =  $result_n_ar->house_suffix;
+                    if ($result_n_ar->house_suffix == ""){
+                     $flat[1] = $result_n_ar->house_number;
+                    }
                 }
             }
                                  
@@ -188,6 +191,9 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                 } 
                 else {
                     $flat[1] =  $result_n_ar->house_suffix;
+                    if ($result_n_ar->house_suffix == ""){
+                        $flat[1] = $result_n_ar->house_number;
+                    }
                 }
             }
                                  

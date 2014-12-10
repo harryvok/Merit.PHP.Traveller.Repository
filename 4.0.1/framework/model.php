@@ -1693,6 +1693,7 @@ class Model {
             $cust_address_postcode = $_POST['i_cpostcode'];
             $cust_address_id = $_POST['cust_address_id'];
             $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
+            $cust_address_propnumb = $_POST['i_cpropertynumber'];
             
         }
         else if($_POST['same'] == "o"){
@@ -1735,7 +1736,7 @@ class Model {
                                 "street_type" => $cust_address_streettype,
                                 "locality" => $cust_address_suburb,
                                 "postcode" => $cust_address_postcode,
-                                "property_number" => '',
+                                "property_number" => $cust_address_propnumb,
                                 "gis_x_coord" => '',
                                 "gis_y_coord" => '',
                                 "address_ctr" => $cust_address_ctr,
@@ -1822,7 +1823,7 @@ class Model {
                                         "street_type" => $cust_address_streettype,
                                         "locality" => $cust_address_suburb,
                                         "postcode" => $cust_address_postcode,
-                                        "property_number" => '',
+                                        "property_number" => $cust_address_propnumb,
                                         "gis_x_coord" => '',
                                         "gis_y_coord" => '',
                                         "address_ctr" => $cust_address_ctr,

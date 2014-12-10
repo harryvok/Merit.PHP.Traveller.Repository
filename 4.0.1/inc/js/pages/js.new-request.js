@@ -1091,8 +1091,9 @@ $(document).ready(function () {
             },
             invalidHandler: function (event, validator) {
                 $(".error").closest(".col").trigger("expand");
+                $(".error").focus();
             },
-            ignore: ""
+           // ignore: ""
         });
     }
 
