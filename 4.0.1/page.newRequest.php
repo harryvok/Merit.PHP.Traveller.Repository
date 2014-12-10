@@ -337,7 +337,6 @@ if(!isset($_GET['d'])){
                         <input type="hidden" name="old_cust_mobile" id="old_cust_mobile" />
                         <input type="hidden" name="old_email_address" id="old_email_address" />
                         <input type="hidden" name="old_company" id="old_company" />
-                        <input type="hidden" name="namechange" id="namechange" value="Yes" />
                     </div>
                 </div>
             </div>

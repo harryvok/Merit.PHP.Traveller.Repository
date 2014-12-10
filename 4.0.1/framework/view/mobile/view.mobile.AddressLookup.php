@@ -5,7 +5,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 	 $(document).ready(function(){
 		$('.address_row').click(function(){
 			var id = $(this).attr('id');
-			$('#same').val('f');
+			$('#same').val('i');
 			changeLocationType();
 			$('#i_cno').val($('#ret_'+id+'_house_number').val());
 			$('#i_cfno').val($('#ret_'+id+'_house_suffix').val());

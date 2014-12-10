@@ -4352,7 +4352,7 @@ class Model {
                 "animal_dets" => $animal_details,
                 "audit_dets" => $audit_details
             ),
-            "new_name" => 'Y'
+            "new_name" => $_POST["new_name"]
         );      
         $parameters = array_to_objecttree($parameters);        
         try {

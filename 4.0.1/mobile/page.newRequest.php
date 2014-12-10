@@ -259,11 +259,18 @@ if(isset($_SESSION['user_id'])){
                         <label>Customer Type</label>
 
                         <?php $controller->Dropdown("CustomerTypes", "CustomerTypes"); ?>
-
-
-                        <input type="hidden" name="name_id" id="name_id" value="0" />
-                        <input type="hidden" name="name_origin" id="name_origin" value="" />
-                        <input type="hidden" name="name_ctr" id="name_ctr" value="0" />
+                        <input type="hidden" name="name_id" id="name_id"/>
+                        <input type="hidden" name="name_origin" id="name_origin" />
+                        <input type="hidden" name="name_ctr" id="name_ctr"  />
+                        <input type="hidden" name="old_name_id" id="old_name_id" />
+                        <input type="hidden" name="old_pref_title" id="old_pref_title" />
+                        <input type="hidden" name="old_surname" id="old_surname" />
+                        <input type="hidden" name="old_given" id="old_given" />
+                        <input type="hidden" name="old_cust_phone" id="old_cust_phone" />
+                        <input type="hidden" name="old_cust_work" id="old_cust_work" />
+                        <input type="hidden" name="old_cust_mobile" id="old_cust_mobile" />
+                        <input type="hidden" name="old_email_address" id="old_email_address" />
+                        <input type="hidden" name="old_company" id="old_company" />
                     </p>
                 </div>
                 <div data-role="collapsible" class="col" data-content-theme="c">

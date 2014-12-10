@@ -18,7 +18,15 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 			$('#company').val($('#ret_'+id+'_company_name').val());
 			$('#name_id').val($('#ret_'+id+'_name_id').val());
 			$('#name_ctr').val($('#ret_'+id+'_name_ctr').val());
-			$('#name_origin').val($('#ret_'+id+'_name_origin').val());
+			$('#name_origin').val($('#ret_' + id + '_name_origin').val());
+			$('#old_pref_title').val($('#ret_' + id + '_pref_title').val());
+			$('#old_given').val($('#ret_' + id + '_given_names').val());
+			$('#old_surname').val($('#ret_' + id + '_surname').val());
+			$('#old_cust_phone').val($('#ret_' + id + '_telephone').val());
+			$('#old_cust_work').val($('#ret_' + id + '_work_phone').val());
+			$('#old_cust_mobile').val($('#ret_' + id + '_mobile_no').val());
+			$('#old_email_address').val($('#ret_' + id + '_email_address').val());
+			$('#old_company').val($('#ret_' + id + '_company_name').val());
 			$("#popup").popup("close");
 			$.ajax({
 				url:'inc/ajax/ajax.getAddresses.php',

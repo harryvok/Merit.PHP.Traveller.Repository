@@ -1,26 +1,51 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#popup").fadeIn("fast");
-        
+        $("#pc_name_change_close").click(function () {
+            $("#submit").prop('disabled', false).buttonState("enable");
+        });
+
         $("#existing").click(function () {
-            $("#namechange").val("Yes");
             $.ajax({
-                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                url: 'inc/ajax/ajax.modifyNameDetails.php',
                 type: 'post',
                 data: {
-                    ser: $("#service").val(),
-                    req: $("#request").val(),
-                    func: $("#function").val()
+                    name_id: $("#name_id").val(),
+                    pref_title: $("#new_pref_title").val(),
+                    given: $("#new_given").val(),
+                    surname: $("#new_surname").val(),
+                    cust_mobile: $("#new_cust_mobile").val(),
+                    cust_phone: $("#new_cust_phone").val(),
+                    cust_work: $("#new_cust_work").val(),
+                    email_address: $("#new_email_address").val(),
+                    company: $("#new_company").val(),
+                    new_name: "N"
                 },
                 success: function (data) {
-
-                    if ($("#deviceIndicator").val() == "pc") {
-                        $('#popup').html(data);
-                    } else {
-                        $("#adhocOfficer").html(data).trigger("create");
+                    //alert(data);
+                    $('#popup').html("");
+                    $('#popup').fadeOut("fast");
+                    if (data != "") {
+                        $("#name_id").val(data);
                     }
+                    $.ajax({
+                        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                        type: 'post',
+                        data: {
+                            ser: $("#service").val(),
+                            req: $("#request").val(),
+                            func: $("#function").val()
+                        },
+                        success: function (data) {
+                            if ($("#deviceIndicator").val() == "pc") {
+                                $('#popup').html(data);
+                            } else {
+                                $("#adhocOfficer").html(data).trigger("create");
+                            }
+                        }
+                    });
                 }
-            });
+            });         
         });
 
         $("#new").click(function () {
@@ -36,7 +61,8 @@
                     cust_phone: $("#new_cust_phone").val(),
                     cust_work: $("#new_cust_work").val(),
                     email_address: $("#new_email_address").val(),
-                    company: $("#new_company").val()
+                    company: $("#new_company").val(),
+                    new_name: "Y"
                 },
                 success: function (data) {
                     //alert(data);
@@ -69,7 +95,7 @@
 </script>
 <div class="summaryContainer">
     <br />
-    <h1>Name Details Changed<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
+    <h1>Name Details Changed<span  class="closePopup"><img id="pc_name_change_close" src="images/delete-icon.png" /> Close</span></h1>
     <br />
     <b>You have changed the surname/given name details for an existing name record.</b>
     <br />
