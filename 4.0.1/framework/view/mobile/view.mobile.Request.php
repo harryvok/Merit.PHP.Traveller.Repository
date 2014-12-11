@@ -362,7 +362,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                                                            if(isset($udf->udf_data)) {
                                                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id='<?php echo str_ireplace("\\", "/", $udf->udf_data); ?>' class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; }
                                                            } else { echo "<b>".$udf->udf_name."</b>"; }
-                                                       }  else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
+                                                       }  else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>* </span>"; echo $udf->udf_name; } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
                                                        } ?></b></p>
 						               </li>
 						            <?php  
@@ -378,7 +378,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                                                  if(isset($udf->udf_data)) {
                                                      if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a href="#" id="A1" class="ViewFile"><b><?php echo $udf->udf_name; ?></b> View</a> <?php } else { echo "<b>".$udf->udf_name."</b>"; }
                                                  } else { echo "<b>".$udf->udf_name."</b>"; }
-                                             } else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
+                                             } else{ ?><?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><b><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>* </span>"; echo $udf->udf_name; ?></b><?php } ?> <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else { echo $udf->udf_data; }
                                              } ?></b></p>
 				               </li>
 				            <?php  
@@ -419,7 +419,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
              ?>
 <!--    <div data-role="collapsible">-->
         <div data-role="collapsible" class="col" data-content-theme="c">
-	<h4>All action UDFs for request <?php echo "(".$count_udf.")"; ?></h4>
+	<h4>Action UDFs<?php echo "(".$count_udf.")"; ?></h4>
     <p>
     	<ul data-role="listview" data-count-theme="b" data-inset="true">
 			<?php
@@ -435,7 +435,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                                                                                                                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A2" href="#" class="ViewFile"> <?php }
                                                                                                                            }
                                                                                                                                                          } ?>
-                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>* </span>"; echo $udf->udf_name; ?></b><?php } ?>
 								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
                                   </a>
                                     </p>
@@ -456,7 +456,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                                                                                                                                if(stristr(str_ireplace("\\", "/", $udf->udf_data), ATTACHMENT_FOLDER)){ ?><a id="A5" href="#" class="ViewFile"> <?php }
                                                                                                                            }
                                                                                                                                                          } ?>
-                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php echo $udf->udf_name; ?></b><?php } ?>
+                            	<?php if($udf->udf_type != "C" && $udf->udf_type != "E"){ ?><?php if(isset($udf->udf_mandatory_ind) && $udf->udf_mandatory_ind == "Y" || $udf->udf_mandatory_ind == "I")  echo "<span style='color:red;'>* </span>"; echo $udf->udf_name; ?></b><?php } ?>
 								   <?php if($udf->udf_type == "D"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y", strtotime(str_replace("/","-",$udf->udf_data))) : ""; } elseif($udf->udf_type == "V"){ echo strlen($udf->udf_data) > 0 ? date("d/m/Y h:i A", strtotime(str_replace("/", "-", $udf->udf_data))) : ""; } else{ echo $udf->udf_data;} ?>
                                   </a>
                                     </p>
