@@ -27,8 +27,7 @@ if(!isset($_GET['d'])){
             <h1>Request Details</h1>
             <div>
                 <input type="hidden" id="testing" value="" />
-                <input type="hidden" id="checkforWorkflow" value="" />
-                <b><span id="rednote"></span></b><BR />
+                <input type="hidden" id="checkforWorkflow" value="" />                
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
                 <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
                 <input type="button" value="InfoXpert Search" class="openDocumentPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
@@ -121,9 +120,10 @@ if(!isset($_GET['d'])){
                             </div>
                     <input type="hidden" name="chkCount" id="chkCount" value="0" />
                 </div>
-
-
                 <br />
+                <div class="float-left">
+                    <b><span id="rednote"></span></b>
+                </div>                     
                 <div class="float-left">
                     <label for="issue">Request Description<span class="request_description_label mandLabel" style="color: red""> *</span></label>
                     <textarea rows="2" spellcheck="true" class="text request-issue" name='issue' id='textareaissue' data-mand="request_description" maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
