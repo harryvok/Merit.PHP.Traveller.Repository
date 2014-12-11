@@ -2,6 +2,7 @@
     $(document).ready(function () {
         $("#popup").fadeIn("fast");
         $("#pc_name_change_close").click(function () {
+            //alert("cls");
             $("#submit").prop('disabled', false).buttonState("enable");
         });
 
@@ -95,7 +96,7 @@
 </script>
 <div class="summaryContainer">
     <br />
-    <h1>Name Details Changed<span  class="closePopup"><img id="pc_name_change_close" src="images/delete-icon.png" /> Close</span></h1>
+    <h1>Name Details Changed<span id="pc_name_change_close" class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
     <br />
     <b>You have changed the surname/given name details for an existing name record.</b>
     <br />
