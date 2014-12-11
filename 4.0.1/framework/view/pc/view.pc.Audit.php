@@ -5,6 +5,7 @@
             $(document).ready(function () {
                 var table = $("#auditTable").dataTable({
                     bPaginate: true,
+                    iDisplayLength: 25,
                     "aoColumns": [
                         null,
                         { "sType": "date-euro" },
