@@ -12,6 +12,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             $('.address_row').click(function () {                
                 var id = "";
                 id = $(this).attr('id');
+                //alert(id);
                 $('#same').val('i');
 
                 $('#i_cno').val($('#ret_' + id + '_houseno').val());
@@ -122,10 +123,11 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
         </tr>
     <?php
     $number=0;
-    $set = 0;
+    $i = 0;
     if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) > 1){
         foreach($GLOBALS['result']->address_list->address_lookup_det as $result_n_ar){
-            $set++;
+            $i++;
+            $set = "addressrow_".$i;
             $number = $number+1;
             if($number == 2){
                 $class = "dark";
@@ -185,7 +187,8 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     }
     elseif(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) == 1){
         $result_n_ar = $GLOBALS['result']->address_list->address_lookup_det;
-        $set++;
+        $i++;
+        $set = "addressrow_00";
         ?>
 
              <!-- Suffix Code -->
