@@ -127,7 +127,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) > 1){
         foreach($GLOBALS['result']->address_list->address_lookup_det as $result_n_ar){
             $i++;
-            $set = "addressrow_".$i;
+            $set = "addressrow_".$i.$result_n_ar->address_id.$result_n_ar->address_ctr;
             $number = $number+1;
             if($number == 2){
                 $class = "dark";
@@ -188,7 +188,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     elseif(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) == 1){
         $result_n_ar = $GLOBALS['result']->address_list->address_lookup_det;
         $i++;
-        $set = "addressrow_00";
+        $set = $set = "addressrow_".$i.$result_n_ar->address_id.$result_n_ar->address_ctr;
         ?>
 
              <!-- Suffix Code -->

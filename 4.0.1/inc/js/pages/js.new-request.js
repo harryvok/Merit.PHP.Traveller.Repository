@@ -980,6 +980,11 @@ $(document).ready(function () {
 
     /* OTHER */
 
+
+    function check_adhoc() {
+        alert("adhoc");
+    }
+
     // Adhoc Officer
     if ($("#skipAdhocCount").val() == 0) {
 
@@ -1040,6 +1045,7 @@ $(document).ready(function () {
                         else {
                             //alert("not changed");
                             //$("#namechange").val("Yes");
+                            check_adhoc();
                             $.ajax({
                                 url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
                                 type: 'post',

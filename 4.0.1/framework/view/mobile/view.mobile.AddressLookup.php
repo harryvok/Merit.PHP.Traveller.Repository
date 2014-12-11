@@ -35,12 +35,12 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     	<p>
         <ul data-role="listview" data-filter="true" data-filter-placeholder="Search addresses..." data-inset="true">
             <li id="continue"><a>Continue without address</a></li>
-    <?php
-    $i=0;
-    $set = 0;
+    <?php    
+    $i = 0;
     if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) > 1){
         foreach($GLOBALS['result']->address_list->address_lookup_det as $result_n_ar){
-            $set++;
+            $i++;
+            $set = "addressrow_".$i.$result_n_ar->address_id.$result_n_ar->address_ctr;
             ?>
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
              <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>" />
@@ -77,7 +77,8 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     }
     elseif(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS['result']->address_list->address_lookup_det) == 1){
         $result_n_ar = $GLOBALS['result']->address_list->address_lookup_det;
-        $set++;
+        $i++;
+        $set = $set = "addressrow_".$i.$result_n_ar->address_id.$result_n_ar->address_ctr;
         ?>
          <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
              <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>" />
