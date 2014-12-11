@@ -115,22 +115,20 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
 
         <?php if (!isset($_POST['lite'])) { ?>
-
-        if ($("#ret_" + id + "_function_name_type").val().length > 0) {
-            $("#cust_type").val($("#ret_" + id + "_function_name_type").val());
-            $("#testing").val($("#ret_" + id + "_function_name_type").val());
-        }
-        else {
-            $("#cust_type").val($("#ret_" + id + "_request_name_type").val());
-            $("#testing").val($("#ret_" + id + "_request_name_type").val());
-        }
-        if ($("#textareaissue").length) {
-            $("#textareaissue").focus();
-        } else {
-            $("#add-request-textarea").focus();
-        }
-
-        ClearHelpNotes();
+            if ($("#ret_" + id + "_function_name_type").val().length > 0) {
+                $("#cust_type").val($("#ret_" + id + "_function_name_type").val());
+                $("#testing").val($("#ret_" + id + "_function_name_type").val());
+            }
+            else {
+                $("#cust_type").val($("#ret_" + id + "_request_name_type").val());
+                $("#testing").val($("#ret_" + id + "_request_name_type").val());
+            }
+            if ($("#textareaissue").length) {
+                $("#textareaissue").focus();
+            } else {
+                $("#add-request-textarea").focus();
+            }
+            ClearHelpNotes();
             CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
             GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
             GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
@@ -148,10 +146,8 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 ) {
                 CheckHistory($("#historyaddrtype").val());
             }
-            <?php } ?>
-
-
-            });
+        <?php } ?>
+    });
 </script>
 <h1>Found Keywords <span class="closePopup">
     <img src="images/delete-icon.png" />
