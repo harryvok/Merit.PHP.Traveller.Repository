@@ -111,7 +111,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" id="due" name="due" />
                         <br />
 
-                        <span id="rednote"></span>
+                        <b><span id="rednote"></span></b>
                         <label>Request Description<span class="request_description_label mandLabel" style="color: red; display: none;">*</span></label>
                         <textarea spellcheck="true" rows="4" class="text request-issue " data-mand="request_description" name='issue' id='textareaissue' maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
                     </p>
