@@ -775,3 +775,88 @@ function getSRFRedText() {
         }
     });
 }
+
+// function gets called if customer name or surname gets changed - added by Poonam Hirpara
+function change_name() {
+    $.ajax({
+        url: 'inc/ajax/ajax.changeNameDetails.php',
+        type: 'post',
+        data: {
+            name_id: $("#name_id").val(),
+            pref_title: $("#pref_title").val(),
+            given: $("#given").val(),
+            surname: $("#surname").val(),
+            cust_mobile: $("#cust_mobile").val(),
+            cust_phone: $("#cust_phone").val(),
+            cust_work: $("#cust_work").val(),
+            email_address: $("#email_address").val(),
+            company: $("#company").val(),
+            old_pref_title: $("#old_pref_title").val(),
+            old_given: $("#old_given").val(),
+            old_surname: $("#old_surname").val(),
+            old_cust_phone: $("#old_cust_phone").val(),
+            old_cust_work: $("#old_cust_work").val(),
+            old_cust_mobile: $("#old_cust_mobile").val(),
+            old_email_address: $("#old_email_address").val(),
+            old_company: $("#old_company").val()
+        },
+        success: function (data) {
+            //alert("ok");
+            Unload();
+            $('#popup').html(data);
+            $(self).removeClass("ui-autocomplete-loading");
+        }
+    });
+}
+
+// function gets called user clicks Yes or No on name change details window - added by Poonam Hirpara
+function modify_name(new_name) {
+    $.ajax({
+        url: 'inc/ajax/ajax.modifyNameDetails.php',
+        type: 'post',
+        data: {
+            name_id: $("#name_id").val(),
+            pref_title: $("#new_pref_title").val(),
+            given: $("#new_given").val(),
+            surname: $("#new_surname").val(),
+            cust_mobile: $("#new_cust_mobile").val(),
+            cust_phone: $("#new_cust_phone").val(),
+            cust_work: $("#new_cust_work").val(),
+            email_address: $("#new_email_address").val(),
+            company: $("#new_company").val(),
+            new_name: new_name
+        },
+        success: function (data) {
+            //alert(data);
+            $('#popup').html("");
+            $('#popup').fadeOut("fast");
+            if (data != "") {
+                $("#name_id").val(data);
+            }
+            check_adhoc();
+        }
+    });
+}
+
+// function gets called to check adhoc officer - added by Poonam Hirpara
+function check_adhoc() {
+    Load();
+    $.ajax({
+        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+        type: 'post',
+        data: {
+            ser: $("#service").val(),
+            req: $("#request").val(),
+            func: $("#function").val()
+        },
+        success: function (data) {
+            if ($("#deviceIndicator").val() == "pc") {
+                $('#popup').html(data);
+            } else {
+                $("#adhocOfficer").html(data).trigger("create");
+            }
+
+        }
+    });
+}
+

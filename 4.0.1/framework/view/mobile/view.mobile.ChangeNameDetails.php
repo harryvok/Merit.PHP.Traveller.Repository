@@ -8,93 +8,20 @@
                     $("#popup").popup("open");
                     $("#default").page('destroy');
                     $("#default").page();
+
+                    $("#name_change_close").click(function () {
+                        $("#submit").prop('disabled', false).buttonState("enable");
+                    });
+
                     $("#existing").click(function () {
-                        $.ajax({
-                            url: 'inc/ajax/ajax.modifyNameDetails.php',
-                            type: 'post',
-                            data: {
-                                name_id: $("#name_id").val(),
-                                pref_title: $("#new_pref_title").val(),
-                                given: $("#new_given").val(),
-                                surname: $("#new_surname").val(),
-                                cust_mobile: $("#new_cust_mobile").val(),
-                                cust_phone: $("#new_cust_phone").val(),
-                                cust_work: $("#new_cust_work").val(),
-                                email_address: $("#new_email_address").val(),
-                                company: $("#new_company").val(),
-                                new_name: "N"
-                            },
-                            success: function (data) {
-                                //alert(data);
-                                $("#popup").popup("close");
-                                if (data != "") {
-                                    $("#name_id").val(data);
-                                }
-                                $.ajax({
-                                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                                    type: 'post',
-                                    data: {
-                                        ser: $("#service").val(),
-                                        req: $("#request").val(),
-                                        func: $("#function").val()
-                                    },
-                                    success: function (data) {
-                                        if ($("#deviceIndicator").val() == "pc") {
-                                            $('#popup').html(data);
-                                        } else {
-                                            $("#adhocOfficer").html(data).trigger("create");
-                                        }
-                                    }
-                                });
-                            }
-                        });         
+                        var new_name = "N";
+                        modify_name(new_name);
                     });
 
                     $("#new").click(function () {
-                        $.ajax({
-                            url: 'inc/ajax/ajax.modifyNameDetails.php',
-                            type: 'post',
-                            data: {
-                                name_id: $("#name_id").val(),
-                                pref_title: $("#new_pref_title").val(),
-                                given: $("#new_given").val(),
-                                surname: $("#new_surname").val(),
-                                cust_mobile: $("#new_cust_mobile").val(),
-                                cust_phone: $("#new_cust_phone").val(),
-                                cust_work: $("#new_cust_work").val(),
-                                email_address: $("#new_email_address").val(),
-                                company: $("#new_company").val(),
-                                new_name: "Y"
-                            },
-                            success: function (data) {
-                                //alert(data);   
-                                $("#popup").popup("close");
-                                if (data != "") {
-                                    $("#name_id").val(data);
-                                }
-                                $.ajax({
-                                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                                    type: 'post',
-                                    data: {
-                                        ser: $("#service").val(),
-                                        req: $("#request").val(),
-                                        func: $("#function").val()
-                                    },
-                                    success: function (data) {
-                                        if ($("#deviceIndicator").val() == "pc") {
-                                            $('#popup').html(data);
-                                        } else {
-                                            $("#adhocOfficer").html(data).trigger("create");
-                                        }
-                                    }
-                                });
-                            }
-                        });
+                        var new_name = "Y";
+                        modify_name(new_name);
                     });
-                });
-
-                $("#name_change_close").click(function () {
-                    $("#submit").prop('disabled', false).buttonState("enable");
                 });
             </script>
             <p><b>Surname/given name has changed for</b></p>
@@ -133,7 +60,7 @@
             <p>Tip: Update original name choose "Yes",</p>
             <p>or create new name choose "No".</p>
             <br />
-            <p><input type="button" id="existing" name="existing" value="Yes" />
+            <p style="align-content:center"><input type="button" id="existing" name="existing" value="Yes" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="button" id="new" name="new" value="No" /></p>
         </ul>
     </p>

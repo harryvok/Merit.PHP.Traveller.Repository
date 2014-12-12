@@ -980,11 +980,6 @@ $(document).ready(function () {
 
     /* OTHER */
 
-
-    function check_adhoc() {
-        alert("adhoc");
-    }
-
     // Adhoc Officer
     if ($("#skipAdhocCount").val() == 0) {
 
@@ -998,8 +993,7 @@ $(document).ready(function () {
         });
 
         $("#newrequest").validate({
-            submitHandler: function (form) {
-                
+            submitHandler: function (form) {                
                 $("#btnclick").val("N");
                 $("#submit").prop('disabled', true).buttonState("disable");
                 $("#saveMore").prop('disabled', true).buttonState("disable");
@@ -1007,63 +1001,14 @@ $(document).ready(function () {
                 if ($("#countOnlyInd").val() == "N") {
                     Load();
                     $("#newrequest").valid();
-                    if ($("#newrequest").validate().numberOfInvalids() == 0) {                            
-                        //alert($("#old_given").val() + $("#given").val() + $("#old_surname").val() + $("#surname").val())
+                    if ($("#newrequest").validate().numberOfInvalids() == 0) {                   
                         if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                            //alert("changed");
-                            //$("#namechange").val("No");
-                            $.ajax({
-                                url: 'inc/ajax/ajax.changeNameDetails.php',
-                                type: 'post',
-                                data: {
-                                    name_id: $("#name_id").val(),
-                                    pref_title: $("#pref_title").val(),
-                                    given: $("#given").val(),
-                                    surname: $("#surname").val(),
-                                    cust_mobile: $("#cust_mobile").val(),
-                                    cust_phone: $("#cust_phone").val(),
-                                    cust_work: $("#cust_work").val(),
-                                    email_address: $("#email_address").val(),
-                                    company: $("#company").val(),
-                                    old_pref_title: $("#old_pref_title").val(),
-                                    old_given: $("#old_given").val(),
-                                    old_surname: $("#old_surname").val(),
-                                    old_cust_phone: $("#old_cust_phone").val(),
-                                    old_cust_work: $("#old_cust_work").val(),
-                                    old_cust_mobile: $("#old_cust_mobile").val(),
-                                    old_email_address: $("#old_email_address").val(),
-                                    old_company: $("#old_company").val()
-                                },
-                                success: function (data) {
-                                    //alert("ok");
-                                    Unload();
-                                    $('#popup').html(data);
-                                    $(self).removeClass("ui-autocomplete-loading");
-                                }
-                            });
+                            //alert("changed");                          
+                            change_name();
                         }
                         else {
                             //alert("not changed");
-                            //$("#namechange").val("Yes");
-                            check_adhoc();
-                            $.ajax({
-                                url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                                type: 'post',
-                                data: {
-                                    ser: $("#service").val(),
-                                    req: $("#request").val(),
-                                    func: $("#function").val()
-                                },
-                                success: function (data) {
-
-                                    if ($("#deviceIndicator").val() == "pc") {
-                                        $('#popup').html(data);
-                                    } else {
-                                        $("#adhocOfficer").html(data).trigger("create");
-                                    }
-
-                                }
-                            });
+                            check_adhoc();                            
                         }
                     }
                     else {
@@ -1075,23 +1020,7 @@ $(document).ready(function () {
                     }
                 }
                 else {
-                    Load();
-                    $.ajax({
-                        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                        type: 'post',
-                        data: {
-                            ser: $("#service").val(),
-                            req: $("#request").val(),
-                            func: $("#function").val()
-                        },
-                        success: function (data) {
-                            if ($("#deviceIndicator").val() == "pc") {
-                                $('#popup').html(data);
-                            } else {
-                                $("#adhocOfficer").html(data).trigger("create");
-                            }
-                        }
-                    });
+                    check_adhoc();
                 }                
             },
             invalidHandler: function (event, validator) {
@@ -1117,24 +1046,31 @@ $(document).ready(function () {
                 $("#submit").prop('disabled', true).buttonState("disable");
                 Load();
                 $("#btnclick").val("Y");
-               
-                $.ajax({
-                    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                    type: 'post',
-                    data: {
-                        ser: $("#service").val(),
-                        req: $("#request").val(),
-                        func: $("#function").val()
-                    },
-                    success: function (data) {
-                        Unload();
-                        if($("#deviceIndicator").val() == "pc"){
-                            $('#popup').html(data);
-                        }else{
-                            $("#adhocOfficer").html(data).trigger("create");
-                        }  
-                    }
-                });
+                if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                    //alert("changed");                          
+                    change_name();
+                }
+                else {
+                    //alert("not changed");
+                    check_adhoc();
+                }               
+                //$.ajax({
+                //    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
+                //    type: 'post',
+                //    data: {
+                //        ser: $("#service").val(),
+                //        req: $("#request").val(),
+                //        func: $("#function").val()
+                //    },
+                //    success: function (data) {
+                //        Unload();
+                //        if($("#deviceIndicator").val() == "pc"){
+                //            $('#popup').html(data);
+                //        }else{
+                //            $("#adhocOfficer").html(data).trigger("create");
+                //        }  
+                //    }
+                //});
             }
             else {
                 Unload();
@@ -1142,7 +1078,6 @@ $(document).ready(function () {
                 $("#newrequest").validate();
                 $("#saveMore").prop("disabled", false).buttonState("enable");
                 $("#btnclick").val("");
-                //$("#saveCountOnly").prop("disabled", false).buttonState("enable");
                 $("#submit").prop('disabled', false).buttonState("enable");
             }
         }

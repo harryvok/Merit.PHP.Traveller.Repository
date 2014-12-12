@@ -6,9 +6,6 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
 
     $(document).ready(function () {
         $("#popup").fadeIn("fast");
-        
-
-
         // This function triggers on the first click of save
         // Prompts user to select a adhoc officer
         // On clicking "submit", it renables the save button, clicks it, unbinds the submit button so multiple officers can't be added and disables savemore
@@ -170,14 +167,6 @@ else{
         $(this).attr("disabled", true).buttonState("disable");
         $("#saveMore").attr("disabled", true).buttonState("disable");
         $("#submit").prop('disabled', true).buttonState("enable");
-
-
-        //Unload();
-        //$("#newrequest").unbind("submit");
-        //$("#newrequest INPUT[type=submit]").click();
-        //$("#submit").attr("disabled", true).buttonState("disable");
-        //$("#saveMore").attr("disabled", true).buttonState("disable");
-        ////$("#saveCountOnly").attr("disabled", true).buttonState("disable");
     }
 </script>
 <?php	

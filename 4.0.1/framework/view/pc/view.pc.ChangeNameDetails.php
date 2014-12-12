@@ -1,96 +1,19 @@
+<script src="../inc/js/pages/js.new-request.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#popup").fadeIn("fast");
         $("#pc_name_change_close").click(function () {
-            //alert("cls");
             $("#submit").prop('disabled', false).buttonState("enable");
-        });
+        });        
 
         $("#existing").click(function () {
-            $.ajax({
-                url: 'inc/ajax/ajax.modifyNameDetails.php',
-                type: 'post',
-                data: {
-                    name_id: $("#name_id").val(),
-                    pref_title: $("#new_pref_title").val(),
-                    given: $("#new_given").val(),
-                    surname: $("#new_surname").val(),
-                    cust_mobile: $("#new_cust_mobile").val(),
-                    cust_phone: $("#new_cust_phone").val(),
-                    cust_work: $("#new_cust_work").val(),
-                    email_address: $("#new_email_address").val(),
-                    company: $("#new_company").val(),
-                    new_name: "N"
-                },
-                success: function (data) {
-                    //alert(data);
-                    $('#popup').html("");
-                    $('#popup').fadeOut("fast");
-                    if (data != "") {
-                        $("#name_id").val(data);
-                    }
-                    $.ajax({
-                        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                        type: 'post',
-                        data: {
-                            ser: $("#service").val(),
-                            req: $("#request").val(),
-                            func: $("#function").val()
-                        },
-                        success: function (data) {
-                            if ($("#deviceIndicator").val() == "pc") {
-                                $('#popup').html(data);
-                            } else {
-                                $("#adhocOfficer").html(data).trigger("create");
-                            }
-                        }
-                    });
-                }
-            });         
+            var new_name = "N";
+            modify_name(new_name);
         });
 
         $("#new").click(function () {
-            $.ajax({
-                url: 'inc/ajax/ajax.modifyNameDetails.php',
-                type: 'post',
-                data: {
-                    name_id: $("#name_id").val(),
-                    pref_title: $("#new_pref_title").val(),
-                    given: $("#new_given").val(),
-                    surname: $("#new_surname").val(),
-                    cust_mobile: $("#new_cust_mobile").val(),
-                    cust_phone: $("#new_cust_phone").val(),
-                    cust_work: $("#new_cust_work").val(),
-                    email_address: $("#new_email_address").val(),
-                    company: $("#new_company").val(),
-                    new_name: "Y"
-                },
-                success: function (data) {
-                    //alert(data);
-                    $('#popup').html("");
-                    $('#popup').fadeOut("fast");
-                    if (data != "") {
-                        $("#name_id").val(data);
-                    }
-                    $.ajax({
-                        url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                        type: 'post',
-                        data: {
-                            ser: $("#service").val(),
-                            req: $("#request").val(),
-                            func: $("#function").val()
-                        },
-                        success: function (data) {
-
-                            if ($("#deviceIndicator").val() == "pc") {
-                                $('#popup').html(data);
-                            } else {
-                                $("#adhocOfficer").html(data).trigger("create");
-                            }
-                        }
-                    });
-                }
-            });
+            var new_name = "Y";
+            modify_name(new_name);
         });
     });
 </script>
