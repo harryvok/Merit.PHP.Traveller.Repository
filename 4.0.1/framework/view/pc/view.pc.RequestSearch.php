@@ -1,9 +1,7 @@
 <?php
 if(isset($GLOBALS['result']->request_search_details)){
 ?>
-<div class="float-left">
-
-    
+<div class="float-left">    
  <script type="text/javascript">
      $(document).ready(function () {
          var oTable = $('#searchTable1').dataTable({
@@ -128,6 +126,9 @@ if(isset($GLOBALS['result']->request_search_details)){
 <?php
 }
 else{
-	echo "Either no results found or you did not enter data in any fields.";	
+    //echo "Either no results found or you did not enter data in any fields.";
+    ?>
+<div id="advance_outcome" style="background:#eee;color:red;"><b>Either no results found or you did not enter data in any fields.</b></div>
+<?php
 }
 ?>

@@ -1003,12 +1003,10 @@ $(document).ready(function () {
                     $("#newrequest").valid();
                     if ($("#newrequest").validate().numberOfInvalids() == 0) {                   
                         if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                            //alert("changed");                          
-                            change_name();
+                            change_name(); // call if given name or surname changed
                         }
                         else {
-                            //alert("not changed");
-                            check_adhoc();                            
+                            check_adhoc(); //call if adhoc officer required                         
                         }
                     }
                     else {
@@ -1047,30 +1045,11 @@ $(document).ready(function () {
                 Load();
                 $("#btnclick").val("Y");
                 if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                    //alert("changed");                          
-                    change_name();
+                    change_name(); // call if given name or surname changed
                 }
                 else {
-                    //alert("not changed");
-                    check_adhoc();
+                    check_adhoc(); //call if adhoc officer required
                 }               
-                //$.ajax({
-                //    url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
-                //    type: 'post',
-                //    data: {
-                //        ser: $("#service").val(),
-                //        req: $("#request").val(),
-                //        func: $("#function").val()
-                //    },
-                //    success: function (data) {
-                //        Unload();
-                //        if($("#deviceIndicator").val() == "pc"){
-                //            $('#popup').html(data);
-                //        }else{
-                //            $("#adhocOfficer").html(data).trigger("create");
-                //        }  
-                //    }
-                //});
             }
             else {
                 Unload();
