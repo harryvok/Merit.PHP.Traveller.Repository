@@ -36,9 +36,7 @@ if(isset($GLOBALS['result']->request_search_details)){
              $("#table").val(JSON.stringify(rowsArray));
              $("#exportForm").submit();
          });
-
      });
-
 </script>
     <div class="float-right">
     <br /><br /><form method="post" id="exportForm" action="process.export.php"><input type="hidden" name="table" id="table" /><input type="hidden" name="name" id="name" value="Action-Intray" /></form><input type="button" id="export1" value="Export to Excel">

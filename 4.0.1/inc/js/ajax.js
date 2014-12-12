@@ -198,7 +198,11 @@ function GetCustomerAddressDetails() {
                         }
                     });
                 }
-                else {
+                else {                    
+                    if (data.house_suffix == "")
+                        $("#full_house_no").val(data.house_number);
+                    else
+                        $("#full_house_no").val(data.house_number);                    
                     $("#cust_address_id").val(data.address_id);
                     if (data.property_no == "0" || data.property_no == "") {
                         $("#i_cpropertynumber").val("").removeClass("ui-autocomplete-loading");

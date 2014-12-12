@@ -43,6 +43,7 @@
 			    $('#addressId').val($('#ret_' + id + '_address_id').val());
 			    $('#address').val($('#ret_' + id + '_address_id').val());
 			    $("#loc_address_ctr").val($('#ret_' + id + '_address_ctr').val());
+
 			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
 			        $("#AddrSummary").attr("disabled", "disabled");
 			    }
@@ -57,6 +58,7 @@
 			    $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
 			    $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
 			    $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
+			    $("#full_house_no").val($('#ret_' + id + '_house').val());
 			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
 			        $("#CustAddSummary").attr("disabled", "disabled");
 			    }
@@ -149,7 +151,7 @@
                                         }
                                     }                   
                                 ?>
-                                <input type="hidden" id="house" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; else echo $result_n_ar->house_number; ?>" />
+                                <input type="hidden" id="ret_<?php echo $set.$count; ?>_house" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; else echo $result_n_ar->house_number; ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_house_number" value="<?php if($streetno != "") echo $streetno; else echo $result_n_ar->house_number; ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_unit" value="<?php echo $unitno; ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_property_no" value="<?php if(isset($result_n_ar->property_no)){ echo $result_n_ar->property_no; } else { echo ""; } ?>" />
