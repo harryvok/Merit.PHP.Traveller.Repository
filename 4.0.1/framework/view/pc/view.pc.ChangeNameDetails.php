@@ -4,6 +4,7 @@
         $("#popup").fadeIn("fast");
         $("#pc_name_change_close").click(function () {
             $("#submit").prop('disabled', false).buttonState("enable");
+            $("#saveMore").prop("disabled", false).buttonState("enable");
         });        
 
         $("#existing").click(function () {
