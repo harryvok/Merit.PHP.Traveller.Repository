@@ -21,7 +21,7 @@ define("MERIT_ACTION_FILE", "ws_merit_action.asmx");
 define("MERIT_REQUEST_FILE", "ws_merit_request.asmx");
 define("MERIT_ADMIN_FILE", "ws_merit_admin.asmx");
 define("MERIT_TRAVELLER_FILE", "ws_traveller.asmx");
-define("ATTACHMENT_FOLDER", "//MERIT-DOMAINSVR/Pbase/temp/Attachments/"); // Folder where attachments will be uploaded, with a slash. MUST HAVE FORWARD SLASHES.
+define("ATTACHMENT_FOLDER", "//MERIT-DOMAINSVR/Pbase/temp/Attachments 1/"); // Folder where attachments will be uploaded, with a slash. MUST HAVE FORWARD SLASHES.
 // MUST be a separate location to the attachments folder inside Traveller.
 define("CHANGE_PASSWORD", 1); // whether or not users can change their password
 define("NEW_WINDOW", 0); // whether or not sidebar buttons open in a new windows
