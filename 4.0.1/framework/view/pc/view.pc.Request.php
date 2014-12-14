@@ -301,6 +301,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         ?>
     </div>    
 </div>
+
+
+<?php
+if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
+ ?>
 <div class="summaryContainer">
     <h1>Customer Details</h1>
     <div>
@@ -376,6 +381,12 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         </div>
     </div>
 </div>
+<?php
+        }
+?>
+
+
+
 <?php
 if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     $show_hide = 0;

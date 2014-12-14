@@ -227,6 +227,10 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
         ?>
     </div>
 </div>
+
+<?php
+if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
+ ?>
 <div class="summaryContainer">
     <h1>Customer Details</h1>
     <div>
@@ -295,6 +299,11 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
         </div>
     </div>
 </div>
+
+<?php
+        }
+?>
+
 <?php
 if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     $show_hide = 0;

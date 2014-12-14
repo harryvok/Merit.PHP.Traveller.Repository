@@ -221,6 +221,10 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         } 
     }
     ?>
+
+    <?php
+if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
+ ?>
     <li data-role="list-divider">Customer Details</li>
     <?php
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) > 0){
@@ -298,6 +302,8 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
     </li>
     <?php
     }
+         } 
+          
     if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         $show_hide = 0;
         if(count($GLOBALS['result']['udfs']->udf_details) > 1){
