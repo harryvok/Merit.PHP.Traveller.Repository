@@ -29,6 +29,10 @@ function GetAddressDetails() {
     //alert("coming ajax");
     $("#loc_address").val("Y");
     $("#cust_address").val("N");
+    //alert("camehere");
+    if ($("#lno").val() == "") {
+        $("#lno").val('0');
+    }
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
         $.ajax({
             url: 'inc/ajax/ajax.getAddressBasic.php',

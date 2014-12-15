@@ -1711,6 +1711,13 @@ class Model {
         $facility_id = $_POST['facilityId'] != "" ? $_POST['facilityId'] : 0;
 
         //Location details
+       
+        /* if($_POST['lno'] == ""){
+             $lno = 0;
+        } else {
+             $lno = $_POST['lno'];
+        } */
+        
         $lno = $_POST['lno'];
         $lfaddno = $_POST['lfaddno'];
         $lstreet = $_POST['lstreet'];

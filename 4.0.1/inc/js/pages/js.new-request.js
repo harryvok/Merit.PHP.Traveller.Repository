@@ -574,7 +574,8 @@ $(document).ready(function () {
         }
         if (label.length > 0) {
             
-            $("#property_no").val(""); $("#lpostcode").val("");
+            $("#property_no").val("");
+            $("#lpostcode").val("");
             $("#facilityInput").blur();
             $("#facilityInput").attr("readonly", true);
             $("#facilityInput").val(label);
