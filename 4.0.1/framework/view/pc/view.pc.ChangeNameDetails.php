@@ -10,11 +10,14 @@
         $("#existing").click(function () {
             var new_name = "N";
             modify_name(new_name);
+            $("#existing").prop('disabled', true).buttonState("disable");
+
         });
 
         $("#new").click(function () {
             var new_name = "Y";
             modify_name(new_name);
+            $("#new").prop('disabled', true).buttonState("disable");
         });
     });
 </script>

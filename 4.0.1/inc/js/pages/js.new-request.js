@@ -841,6 +841,7 @@ $(document).ready(function () {
         $("#cust_fax").val("");
         $("#email_address").val("");
         $("#company").val("");
+        $("#mydetsclicked").val("N");
 
 
         if ($("#testing").val().length > 0) {
@@ -877,6 +878,7 @@ $(document).ready(function () {
                 $("#company").val("");
                 $("#cust_type").val("STAFF");
                 $('#cust_type').selectmenuState('refresh');
+                $("#mydetsclicked").val("Y");
             }                
 
         });
@@ -1001,9 +1003,14 @@ $(document).ready(function () {
                 if ($("#countOnlyInd").val() == "N") {
                     Load();
                     $("#newrequest").valid();
-                    if ($("#newrequest").validate().numberOfInvalids() == 0) {                   
-                        if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                            change_name(); // call if given name or surname changed
+                    if ($("#newrequest").validate().numberOfInvalids() == 0) {
+                        if ($("#mydetsclicked").val()=="N") {
+                            if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                                change_name(); // call if given name or surname changed
+                            }
+                            else {
+                                check_adhoc(); //call if adhoc officer required
+                            }
                         }
                         else {
                             check_adhoc(); //call if adhoc officer required                         
@@ -1044,8 +1051,13 @@ $(document).ready(function () {
                 $("#submit").prop('disabled', true).buttonState("disable");
                 Load();
                 $("#btnclick").val("Y");
-                if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                    change_name(); // call if given name or surname changed
+                if ($("#mydetsclicked").val() == "N") {
+                    if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                        change_name(); // call if given name or surname changed
+                    }
+                    else {
+                        check_adhoc(); //call if adhoc officer required
+                    }
                 }
                 else {
                     check_adhoc(); //call if adhoc officer required
@@ -1239,6 +1251,7 @@ $(document).ready(function () {
         $("#cust_fax").val("");
         $("#email_address").val("");
         $("#company").val("");
+        $("#mydetsclicked").val("N");
         $("#cust_type").val("");
         $("#cust_type").removeClass("required");
         $("#customerInfoXpert").attr("disabled", "disabled");
