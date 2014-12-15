@@ -31,6 +31,7 @@ function GetAddressDetails() {
     $("#cust_address").val("N");
     //alert("camehere");
     if ($("#lno").val() == "") {
+        $("#lno").css('font-size', '0px');
         $("#lno").val('0');
     }
     if ($("#lno").val().length > 0 && $("#lstreet").val().length > 0 && $("#ltype").val().length > 0 && $("#lsuburb").val().length > 0) {
@@ -90,6 +91,10 @@ function GetAddressDetails() {
                 $("#lroad_type").val(data.road_type).removeClass("ui-autocomplete-loading");
                 $("#lroad_responsibility").val(data.road_responsibility).removeClass("ui-autocomplete-loading");
                 $("#larea_group").val(data.area_group);
+                if ($("#lno").val() == "0") {
+                    $("#lno").val('');
+                    $("#lno").css('font-size', '12px');
+                }
             }
         });
     }
