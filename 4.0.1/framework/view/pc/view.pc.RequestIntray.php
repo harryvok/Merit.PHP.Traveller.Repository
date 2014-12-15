@@ -1,4 +1,62 @@
 
+<?php if( $_SESSION['roleSecurity']->hide_customer_details == "N"){?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var oTable = $('#requestIntrayTable').dataTable({
+            iDisplayLength: 50,
+            "aaSorting": [[0, "desc"]],
+            "oLanguage": {
+                "sSearch": "Intray Filter: "
+            },
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "sType": "date-euro" },
+                { "sType": "date-euro" },
+                null,
+                null
+            ]
+        });
+
+        $("#export").click(function () {
+            $(this).attr("disabled", "disabled");
+            var oSettings = oTable.fnSettings();
+            var current = oSettings._iDisplayLength;
+            oSettings._iDisplayLength = 1000;
+            oTable.fnDraw();
+
+            var rowsArray = {};
+            var i = 0;
+            $('#requestIntrayTable tr').each(function () {
+                var i2 = 0;
+                rowsArray[i] = {};
+                $(this).find("th").each(function () {
+                    rowsArray[i][i2] = $(this).html();
+                    i2++;
+                });
+                $(this).find("td").each(function () {
+                    rowsArray[i][i2] = $(this).html();
+                    i2++;
+                });
+                i++;
+            });
+
+            oSettings._iDisplayLength = current;
+            oTable.fnDraw();
+
+            $("#tableArray").val(JSON.stringify(rowsArray));
+
+            $("#exportForm").submit();
+        });
+    });
+
+</script>
+
+<?php } else { ?>
  <script type="text/javascript">
 $(document).ready(function() {
     var oTable = $('#requestIntrayTable').dataTable({
@@ -8,7 +66,6 @@ $(document).ready(function() {
                 "sSearch": "Intray Filter: "
     },
         "aoColumns": [
-            null,
             null,
             null,
             null,
@@ -54,6 +111,7 @@ $(document).ready(function() {
 });
 
 </script>
+<?php } ?>
 <?php
 if(isset($_GET['filter'])){
 	$filter = $_GET['filter'];	
@@ -78,7 +136,7 @@ else{
             <th>Category</th>
             <th>Facility</th>
             <th>Location Address</th>
-            <th>Customer</th>
+            <?php if( $_SESSION['roleSecurity']->hide_customer_details == "N"){?><th>Customer</th><?php } ?>
             <th>Request Officer</th>
             <th>Received Date</th>
             <th>Due Date</th>
@@ -101,7 +159,7 @@ else{
                 <td><?php echo $request_details->service_name . " - " .$request_details->request_name; if(isset($request_details->function_name)){ echo " - " . $request_details->function_name; }?></td>
                 <td><?php if(isset($request_details->facility_name)){ echo $request_details->facility_name; } ?></td>
                 <td><?php if(isset($request_details->location_house_suffix) && isset($request_details->location_house_no) && strlen($request_details->location_house_no) > 0 && strlen($request_details->location_house_suffix) > 0 && $request_details->location_house_no != $request_details->location_house_suffix){ echo $request_details->location_house_suffix; } else{ echo $request_details->location_house_no; } if(isset($request_details->location_street_name)){ echo " " .$request_details->location_street_name; } if(isset($request_details->location_street_type)){ echo " " .$request_details->location_street_type; } if(isset($request_details->location_locality_name)){ echo " " .$request_details->location_locality_name; } ?></td>
-                <td><?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></td>
+                <?php if( $_SESSION['roleSecurity']->hide_customer_details == "N"){?><td><?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></td><?php } ?>
                 <td><?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;} ?></td>
                 <td><?php if(strlen($request_details->request_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->request_date))); } else { echo ""; } ?> <?php if(strlen($request_details->request_time) > 0){ echo date('h:i A',strtotime($request_details->request_time)); } else { echo ""; } ?></td>
                 <td><?php if(strlen($request_details->due_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->due_date))); } else { echo ""; } ?> <?php if(strlen($request_details->due_time) > 0){ echo date('h:i A',strtotime($request_details->due_time)); } else { echo ""; } ?></td>
@@ -131,7 +189,7 @@ else{
             <td><?php echo $request_details->service_name . " - " .$request_details->request_name; if(isset($request_details->function_name)){ echo " - " . $request_details->function_name; }?></td>
             <td><?php if(isset($request_details->facility_name)){ echo $request_details->facility_name; } ?></td>
             <td><?php if(isset($request_details->location_house_suffix) && isset($request_details->location_house_no) && strlen($request_details->location_house_no) > 0 && strlen($request_details->location_house_suffix) > 0 && $request_details->location_house_no != $request_details->location_house_suffix){ echo $request_details->location_house_suffix; } else{ echo $request_details->location_house_no; } if(isset($request_details->location_street_name)){ echo " " .$request_details->location_street_name; } if(isset($request_details->location_street_type)){ echo " " .$request_details->location_street_type; } if(isset($request_details->location_locality_name)){ echo " " .$request_details->location_locality_name; } ?></td>
-            <td><?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></td>
+            <?php if( $_SESSION['roleSecurity']->hide_customer_details == "N"){?><td><?php if(isset($request_details->customer_given_name)){ if($request_details->customer_given_name != "Used") echo $request_details->customer_given_name; } if(isset($request_details->customer_surname)){ if($request_details->customer_given_name != "Not") echo " " .$request_details->customer_surname; } ?></td><?php } ?>
             <td><?php if(isset($request_details->officer_given_name)) {echo $request_details->officer_given_name;} if(isset($request_details->officer_surname)) {echo " " .$request_details->officer_surname;} ?></td>
             <td><?php if(strlen($request_details->request_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->request_date))); } else { echo ""; } ?> <?php if(strlen($request_details->request_time) > 0){ echo date('h:i A',strtotime($request_details->request_time)); } else { echo ""; } ?></td>
             <td><?php if(strlen($request_details->due_date) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $request_details->due_date))); } else { echo ""; } ?> <?php if(strlen($request_details->due_time) > 0){ echo date('h:i A',strtotime($request_details->due_time)); } else { echo ""; } ?></td>
