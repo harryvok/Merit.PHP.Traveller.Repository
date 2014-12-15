@@ -1088,7 +1088,8 @@ $(document).ready(function () {
                         $("#submit").prop('disabled', true).buttonState("disable");
                         $("#saveMore").prop('disabled', true).buttonState("disable");
                         $("#saveCountOnly").prop('disabled', true).buttonState("disable");
-                        $("#reset").prop('disabled', true).buttonState("disable");
+                        $("#reset").prop('disabled', true).buttonState("disable");                        
+
                         $.ajax({
                             url: 'inc/ajax/ajax.saveCountOnly.php',
                             data: $("#newrequest").serialize(),
@@ -1115,6 +1116,13 @@ $(document).ready(function () {
                     $("#saveMore").prop('disabled', true).buttonState("disable");
                     $("#saveCountOnly").prop('disabled', true).buttonState("disable");
                     $("#reset").prop('disabled', true).buttonState("disable");
+
+                    if ($("#mydetsclicked").val() == "N") {
+                        if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                            change_name(); // call if given name or surname changed
+                        }
+                    }
+
                     $.ajax({
                         url: 'inc/ajax/ajax.saveCountOnly.php',
                         data: $("#newrequest").serialize(),
@@ -1170,6 +1178,7 @@ $(document).ready(function () {
                 if ($("#countOnlyInd").val() == "N") {
 
                     // Bypass is disabled, will only require UDF's
+                    
                     if (confirm("This SRF has associated workflow. Are you sure you want to save request as COUNT ONLY?")) { 
                         $("#newrequest").valid();
                         if ($("#newrequest").validate().numberOfInvalids() == 0) {
@@ -1178,6 +1187,7 @@ $(document).ready(function () {
                             $("#saveCountOnly").prop('disabled', true).buttonState("disable");
                             $("#reset").prop('disabled', true).buttonState("disable");
                             $("#countOnlyInd").val("Y");
+
                             $.ajax({
                                 url: 'inc/ajax/ajax.saveCountOnly.php',
                                 data: $("#newrequest").serialize(),
