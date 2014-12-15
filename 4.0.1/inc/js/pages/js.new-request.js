@@ -1062,7 +1062,8 @@ $(document).ready(function () {
                 }
                 else {
                     check_adhoc(); //call if adhoc officer required
-                }               
+                }
+                $("#attachment").val("");
             }
             else {
                 Unload();
