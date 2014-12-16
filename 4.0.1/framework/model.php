@@ -1685,15 +1685,63 @@ class Model {
         $cust_initials = substr($cust_given,0,1).substr($cust_surname,0,1);
 
         if($_POST['same'] == "i" || $_POST['same'] == "s"){
-            $cust_address_number = strlen($_POST['i_cno']) > 0 ? strip_tags(addslashes($_POST['i_cno'])) : "";
-            $cust_address_fnumber = $_POST['full_house_no'];
-            $cust_address_street = $_POST['i_cstreet'];
-            $cust_address_streettype = $_POST['i_ctype'];
-            $cust_address_suburb = $_POST['i_csuburb'];
-            $cust_address_postcode = $_POST['i_cpostcode'];
-            $cust_address_id = $_POST['cust_address_id'];
-            $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
-            $cust_address_propnumb = $_POST['i_cpropertynumber'];
+            
+            // Compare values of Old and Current Cust Address   
+            $comparesuffix = ($_POST['prefixholder'].$_POST['i_cfno'].$_POST['i_cfcode'].'/'.$_POST['i_cno'].$_POST['i_cscode']);
+            $comparesuffix = trim($comparesuffix);
+            $ifnewfill = $comparesuffix;
+            
+            /* Street Match */
+            if($_POST['i_cstreet'] != $_POST['comparei_cstreet']){
+                $comparesuffix = "";
+            }
+            /* Type Match */
+            if($_POST['i_ctype'] != $_POST['comparei_ctype']){
+                $comparesuffix = "";
+            }
+            /* Suburb Match */
+            if($_POST['i_csuburb'] != $_POST['comparei_csuburb']){
+                $comparesuffix = "";
+            }
+            /* Postcode Match */
+            if($_POST['i_cpostcode'] != $_POST['comparei_cpostcode']){
+                $comparesuffix = "";
+            }
+            /* PropNumb Match */
+            if($_POST['i_cpropertynumber'] != $_POST['comparei_cpropertynumber']){
+                $comparesuffix = "";
+            }
+            /* Address ID Match */
+            if($_POST['cust_address_id'] != $_POST['comparecust_address_id']){
+                $comparesuffix = "";
+            }
+                     
+            /* Don't Match */
+            if ($_POST['old_suffix'] != $comparesuffix) {
+                $cust_address_number = $_POST['i_cno'];
+                $cust_address_fnumber = $ifnewfill;
+                $cust_address_street = $_POST['i_cstreet'];
+                $cust_address_streettype = $_POST['i_ctype'];
+                $cust_address_suburb = $_POST['i_csuburb'];
+                $cust_address_postcode = $_POST['i_cpostcode'];
+                $cust_address_id = "";
+                $cust_address_propnumb = "";
+                $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
+                
+            }
+            /* Do Match: */
+            else {
+                $cust_address_number = $_POST['old_cno'];
+                $cust_address_fnumber = $_POST['old_suffix'];
+                $cust_address_street = $_POST['old_cstreet'];
+                $cust_address_streettype = $_POST['old_ctype'];
+                $cust_address_suburb = $_POST['old_csuburb'];
+                $cust_address_postcode =$_POST['old_cpostcode'];
+                $cust_address_id = $_POST['old_custid'];
+                $cust_address_propnumb = $_POST['old_cpropertynumber'];
+                $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
+            }
+            
             
         }
         else if($_POST['same'] == "o"){
@@ -1738,7 +1786,6 @@ class Model {
             $address_details = array( array(
                                 "address_id" => $cust_address_id,
                                 "house_number" => $cust_address_number,
-                                //"house_suffix" => strlen($cust_address_fnumber) > 0 ? $cust_address_fnumber . "/" . $cust_address_number : $cust_address_number,
                                 "house_suffix" => $cust_address_fnumber,
                                 "street_name" => $cust_address_street,
                                 "street_type" => $cust_address_streettype,
@@ -1826,8 +1873,7 @@ class Model {
                     $address_details =   array(array(
                                         "address_id" => $cust_address_id,
                                         "house_number" => $cust_address_number,
-                                        //"house_suffix" => strlen($cust_address_fnumber) > 0 ? $cust_address_fnumber . "/" . $cust_address_number : $cust_address_number,
-                                "house_suffix" => $cust_address_fnumber,
+                                        "house_suffix" => $cust_address_fnumber,
                                         "street_name" => $cust_address_street,
                                         "street_type" => $cust_address_streettype,
                                         "locality" => $cust_address_suburb,
