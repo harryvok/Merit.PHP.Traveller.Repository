@@ -30,6 +30,10 @@
                 var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
                 var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
                 
+                /* Catch exceptions */
+                var unitNumber;
+                var streetNumber;
+
                 /* If prefix is empty */
                 if (prefixOut == "") {
 
@@ -41,18 +45,25 @@
                         unitFromOut = "";
                         unitToOut = "";
                         unitCodeOut = "";
-                        alert(streetFromOut);
-                        alert(streetToOut);
-                        alert(streetCodeOut);
                     }
                 }
 
                 /* So "-"'s aren't added to empty fields */
                 if (unitFromOut != "") {
-                    unitNumber = unitFromOut + '-' + unitToOut;
+                    if (unitToOut != "") {
+                        unitNumber = unitFromOut + '-' + unitToOut;
+                    }
+                    else {
+                        unitNumber = unitFromOut;
+                    }
                 }
-                if (streetFromOut != ""){
-                    streetNumber = streetFromOut + '-' + streetToOut;
+                if (streetFromOut != "") {
+                    if (streetToOut != "") {
+                        streetNumber = streetFromOut + '-' + streetToOut;
+                    }
+                    else {
+                        streetNumber = streetFromOut;
+                    }
                 }
 
                 /* If no unit code the regEx will take this "/" from string, clear it */
