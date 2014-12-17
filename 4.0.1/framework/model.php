@@ -1593,7 +1593,6 @@ class Model {
     }
     
     public function processSendNotification($params = NULL){
-        $testtesttest = $_SESSION['user_id'];
         
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
@@ -1686,8 +1685,14 @@ class Model {
 
         if($_POST['same'] == "i" || $_POST['same'] == "s"){
             
-            // Compare values of Old and Current Cust Address   
-            $comparesuffix = ($_POST['prefixholder'].$_POST['i_cfno'].$_POST['i_cfcode'].'/'.$_POST['i_cno'].$_POST['i_cscode']);
+            // Compare values of Old and Current Cust Address 
+            if($_POST['i_cfno'] != "") {
+                $comparesuffix = ($_POST['prefixholder'].$_POST['i_cfno'].$_POST['i_cfcode'].'/'.$_POST['i_cno'].$_POST['i_cscode']);
+            }
+            else {
+                $comparesuffix = ($_POST['prefixholder'].$_POST['i_cno'].$_POST['i_cscode']);
+            }
+            
             $comparesuffix = trim($comparesuffix);
             $ifnewfill = $comparesuffix;
             

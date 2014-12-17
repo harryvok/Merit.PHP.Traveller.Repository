@@ -71,14 +71,15 @@
                     unitCodeOut = "";
                 }
 
-                /* Generate the full house numb for comparison */
+                /* Generate the full house numb for comparison 
                 if (unitNumber != "") {
                     comparesuffix = prefixOut + unitNumber + unitCodeOut + '/' + streetNumber + ' ' + streetCodeOut;
                 }
                 else {
                     comparesuffix = prefixOut + streetNumber + ' ' + streetCodeOut;
                 }
-                
+                */
+
                 $('#prefixholder').val(prefixOut);
 
                 /* Flat Number  */  $('#i_cfno').val(unitNumber);
