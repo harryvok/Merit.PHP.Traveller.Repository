@@ -133,7 +133,7 @@ div#popup {
    -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    /*overflow:scroll;*/ 
+    overflow:scroll;
 }
 
 div#popup h1+div {
