@@ -56,7 +56,7 @@
 			else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
 
 			    /* What to parse with regEx */
-			    var tocheck = $('#ret_' + id + '_house').val();
+			    var tocheck = $('#ret_' + id + '_house_number').val();
 
 			    /* Parse to variables */
 			    var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
@@ -197,14 +197,49 @@
                         }
                         ?>     
                             <tr class="<?php echo $class; ?> address_row" id="<?php echo $set.$count; ?>" title="">
-                                
-                                <input type="hidden" id="ret_<?php echo $set.$count; ?>_house" value="<?php if(isset($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; ?>" />
-                                <input type="hidden" id="ret_<?php echo $set.$count; ?>_house_number" value="<?php echo $result_n_ar->house_number; ?>" />
+                                <?php
+                                    if(isset($result_n_ar->house_suffix)){ 
+                                        $hn = explode(" ",$result_n_ar->house_suffix,2); 
+                                        if(count($hn) > 1)
+                                        {
+                                            if(preg_match("/^[a-zA-Z]*$/",$hn[0])) {
+                                                 $house = $hn[1];
+                                                 $no = explode("/",$house,2);
+                                                 if($hn[0] == "Unit"){
+                                                     $unitno = $no[0];
+                                                     $streetno = $no[1];
+                                                 }
+                                                 else if($hn[0] != "Unit")
+                                                 {
+                                                     $unitno = $hn[0]." ".$no[0]; 
+                                                     $streetno = $no[1];
+                                                 }
+                                            } 
+                                            else{
+                                                $house = $result_n_ar->house_suffix; 
+                                                $no = explode("/",$house,2);
+                                                if(count($no) > 1){
+                                                    $unitno = $no[0];
+                                                    $streetno = $no[1];
+                                                }
+                                                else{
+                                                    $streetno = $house;
+                                                }                                  
+                                            }
+                                        }
+                                        else{
+                                            $streetno = $result_n_ar->house_suffix;
+                                            $house = $result_n_ar->house_suffix;
+                                        }
+                                    }                   
+                                ?>
+                                <input type="hidden" id="ret_<?php echo $set.$count; ?>_house" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; else echo $result_n_ar->house_number; ?>" />
+                                <input type="hidden" id="ret_<?php echo $set.$count; ?>_house_number" value="<?php if($streetno != "") echo $streetno; else echo $result_n_ar->house_number; ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_unit" value="<?php echo $unitno; ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_property_no" value="<?php if(isset($result_n_ar->property_no)){ echo $result_n_ar->property_no; } else { echo ""; } ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
                                 <input type="hidden" id="ret_<?php echo $set.$count; ?>_address_ctr" value="<?php if(isset($result_n_ar->address_ctr)){ echo $result_n_ar->address_ctr; } else { echo ""; } ?>" />
-                                <td><?php echo $result_n_ar->house_suffix; ?></td>
+                                <td><?php echo $house; ?></td>
                                 <td><?php if(isset($result_n_ar->street_name) && ($result_n_ar->street_type )){ echo $result_n_ar->street_name." ".$result_n_ar->street_type; } else { echo ""; } ?></td>
                                 <td><?php if(isset($result_n_ar->locality)){ echo $result_n_ar->locality; } else { echo ""; } ?></td>
                                 <td><?php if(isset($result_n_ar->postcode)){ echo $result_n_ar->postcode; } else { echo ""; } ?></td>
