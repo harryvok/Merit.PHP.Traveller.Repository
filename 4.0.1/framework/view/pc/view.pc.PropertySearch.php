@@ -52,13 +52,95 @@
 			    }
 
 			}
+             /* Customer Address prompt */
 			else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
-			    $('#i_cno').val($('#ret_' + id + '_house_number').val());
-			    $('#i_cfno').val($('#ret_' + id + '_unit').val());
-			    $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
-			    $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
-			    $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
-			    $("#full_house_no").val($('#ret_' + id + '_house').val());
+
+			    /* What to parse with regEx */
+			    var tocheck = $('#ret_' + id + '_house').val();
+
+			    /* Parse to variables */
+			    var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
+			    var unitFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[2];
+			    var unitToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[3];
+			    var unitCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[4];
+			    var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
+			    var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
+			    var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
+
+			    /* Catch exceptions */
+			    var unitNumber;
+			    var streetNumber;
+
+			    /* If prefix is empty */
+			    if (prefixOut == "") {
+
+			        /* Set Unit values to Street values */
+			        if (streetFromOut == "") {
+			            streetFromOut = unitFromOut;
+			            streetToOut = unitToOut;
+			            streetCodeOut = unitCodeOut;
+			            unitFromOut = "";
+			            unitToOut = "";
+			            unitCodeOut = "";
+			        }
+			    }
+
+			    /* So "-"'s aren't added to empty fields */
+			    if (unitFromOut != "") {
+			        if (unitToOut != "") {
+			            unitNumber = unitFromOut + '-' + unitToOut;
+			        }
+			        else {
+			            unitNumber = unitFromOut;
+			        }
+			    }
+			    if (streetFromOut != "") {
+			        if (streetToOut != "") {
+			            streetNumber = streetFromOut + '-' + streetToOut;
+			        }
+			        else {
+			            streetNumber = streetFromOut;
+			        }
+			    }
+
+			    /* If no unit code the regEx will take this "/" from string, clear it */
+			    if (unitCodeOut == "/") {
+			        unitCodeOut = "";
+			    }
+
+
+			    $('#prefixholder').val(prefixOut);
+
+			    /* Flat Number  */  $('#i_cfno').val(unitNumber);
+			    /* Flat Code    */  $('#i_cfcode').val(unitCodeOut);
+			    /* House Number */  $('#i_cno').val(streetNumber);
+			    /* House Suffix */  $('#i_cscode').val(streetCodeOut);
+
+			    /* Compare */ $('#comparei_cstreet').val($('#ret_' + id + '_street_name').val());
+			    /* Compare */ $('#comparei_ctype').val($('#ret_' + id + '_street_type').val());
+			    /* Compare */    $('#comparei_csuburb').val($('#ret_' + id + '_locality').val());
+			    /* Compare */    $('#comparei_cpostcode').val($('#ret_' + id + '_postcode').val());
+			    /* Prop No. */    $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+			                      $('#i_cpropertynumber').removeClass("ui-autocomplete-loading");
+			    /* Compare */    $('#comparei_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+
+			    /* Cust add id */ $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
+			    /* Compare */   $('#comparecust_address_id').val($('#ret_' + id + '_address_id').val());
+			    /* Something */   $('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
+			    /* Compare */   $('#comparecust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
+
+
+			    /* Set the old values */
+			    $('#old_custid').val($('#ret_' + id + '_address_id').val());
+			    $('#old_cno').val($('#ret_' + id + '_house_number').val());
+			    $('#old_suffix').val($('#ret_' + id + '_house').val());
+			    $('#old_cstreet').val($('i_cstreet').val());
+			    $('#old_ctype').val($('i_cstype').val());
+			    $('#old_csuburb').val($('i_csuburb').val());
+			    $('#old_cpostcode').val($('i_cpostcode').val());
+			    $('#old_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+
+                // Address summary things
 			    if ($('#ret_' + id + '_address_id').val() == "0" || $('#ret_' + id + '_address_id').val() == 0 || $('#ret_' + id + '_address_id').val() == "") {
 			        $("#CustAddSummary").attr("disabled", "disabled");
 			    }

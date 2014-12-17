@@ -1720,32 +1720,45 @@ class Model {
             if($_POST['cust_address_id'] != $_POST['comparecust_address_id']){
                 $comparesuffix = "";
             }
-                     
-            /* Don't Match */
-            if ($_POST['old_suffix'] != $comparesuffix) {
-                $cust_address_number = $_POST['i_cno'];
-                $cust_address_fnumber = $ifnewfill;
-                $cust_address_street = $_POST['i_cstreet'];
-                $cust_address_streettype = $_POST['i_ctype'];
-                $cust_address_suburb = $_POST['i_csuburb'];
-                $cust_address_postcode = $_POST['i_cpostcode'];
-                $cust_address_id = "";
-                $cust_address_propnumb = "";
-                $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
+             if ($_POST['old_suffix'] != "") {        
+                /* Don't Match */
+                if ($_POST['old_suffix'] != $comparesuffix) {
+                    $cust_address_number = $_POST['i_cno'];
+                    $cust_address_fnumber = $ifnewfill;
+                    $cust_address_street = $_POST['i_cstreet'];
+                    $cust_address_streettype = $_POST['i_ctype'];
+                    $cust_address_suburb = $_POST['i_csuburb'];
+                    $cust_address_postcode = $_POST['i_cpostcode'];
+                    $cust_address_id = "";
+                    $cust_address_propnumb = "";
+                    $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
                 
-            }
-            /* Do Match: */
-            else {
-                $cust_address_number = $_POST['old_cno'];
-                $cust_address_fnumber = $_POST['old_suffix'];
-                $cust_address_street = $_POST['old_cstreet'];
-                $cust_address_streettype = $_POST['old_ctype'];
-                $cust_address_suburb = $_POST['old_csuburb'];
-                $cust_address_postcode =$_POST['old_cpostcode'];
-                $cust_address_id = $_POST['old_custid'];
-                $cust_address_propnumb = $_POST['old_cpropertynumber'];
-                $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
-            }
+                }
+                /* Do Match: */
+                else {
+                    $cust_address_number = $_POST['old_cno'];
+                    $cust_address_fnumber = $_POST['old_suffix'];
+                    $cust_address_street = $_POST['old_cstreet'];
+                    $cust_address_streettype = $_POST['old_ctype'];
+                    $cust_address_suburb = $_POST['old_csuburb'];
+                    $cust_address_postcode =$_POST['old_cpostcode'];
+                    $cust_address_id = $_POST['old_custid'];
+                    $cust_address_propnumb = $_POST['old_cpropertynumber'];
+                    $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
+                }
+             }
+             /* New Address */
+             else {
+                 $cust_address_number = $_POST['i_cno'];
+                 $cust_address_fnumber = $ifnewfill;
+                 $cust_address_street = $_POST['i_cstreet'];
+                 $cust_address_streettype = $_POST['i_ctype'];
+                 $cust_address_suburb = $_POST['i_csuburb'];
+                 $cust_address_postcode = $_POST['i_cpostcode'];
+                 $cust_address_id = $_POST['cust_address_id'];
+                 $cust_address_propnumb = $_POST['i_cpropertynumber'];
+                 $cust_address_desc = strip_tags(addslashes($_POST['i_cdesc']));
+             }
             
             
         }
