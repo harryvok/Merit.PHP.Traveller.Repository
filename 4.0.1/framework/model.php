@@ -1763,8 +1763,20 @@ class Model {
             
         }
         else if($_POST['same'] == "o"){
-            $cust_address_number = strlen($_POST['o_cno']) > 0 ? strip_tags(addslashes($_POST['o_cno'])) : "";
-            $cust_address_fnumber = $_POST['o_cfno'];
+            
+            // Compare values of Old and Current Cust Address 
+            if($_POST['o_cfno'] != "") {
+                $comparesuffix = ($_POST['prefixholder'].$_POST['o_cfno'].$_POST['o_cfcode'].'/'.$_POST['o_cno'].$_POST['o_cscode']);
+            }
+            else {
+                $comparesuffix = ($_POST['prefixholder'].$_POST['o_cno'].$_POST['o_cscode']);
+            }
+            
+            $comparesuffix = trim($comparesuffix);
+            $ifnewfill = $comparesuffix;
+            
+            $cust_address_number = $_POST['o_cno'];
+            $cust_address_fnumber = $ifnewfill;
             $cust_address_street = $_POST['o_cstreet'];
             $cust_address_streettype = $_POST['o_ctype'];
             $cust_address_suburb = $_POST['o_csuburb'];
@@ -1772,6 +1784,7 @@ class Model {
             $cust_address_desc = strip_tags(addslashes($_POST['o_cdesc']));
             $cust_address_postcode = $_POST['o_cpostcode'];
         }
+        
         $cust_address_ctr = $_POST['cust_address_ctr'];
 
         $facility_id = $_POST['facilityId'] != "" ? $_POST['facilityId'] : 0;

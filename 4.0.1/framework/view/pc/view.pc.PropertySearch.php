@@ -56,7 +56,7 @@
 			else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
 
 			    /* What to parse with regEx */
-			    var tocheck = $('#ret_' + id + '_house').val();
+			    var tocheck = $('#ret_' + id + '_house_number').val();
 
 			    /* Parse to variables */
 			    var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];

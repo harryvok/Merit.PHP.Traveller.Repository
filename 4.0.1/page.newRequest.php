@@ -398,100 +398,105 @@ if(!isset($_GET['d'])){
 
                         <div id="inside_ca" style="display: block;">
 
-                        <input type="hidden" name="old_custid" id="old_custid" />
-                        <input type="hidden" name="old_cstreet" id="old_cstreet" />
-                        <input type="hidden" name="old_ctype" id="old_ctype" />
-                        <input type="hidden" name="old_csuburb" id="old_csuburb" />
-                        <input type="hidden" name="old_cpostcode" id="old_cpostcode" />
-                        <input type="hidden" name="old_cpropertynumber" id="old_cpropertynumber" />
-                        <input type="hidden" name="old_cno" id="old_cno" />
-                        <input type="hidden" name="old_suffix" id="old_suffix" />
+		                        <div class="column r25">
+		                            <label for="i_cfno">Flat/Unit Number</label>
+		                            <input class="text cadd" name='i_cfno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
+		                        </div>
+		                        <div class="column r25">
+		                            <label for="i_cfcode">Flat Suffix</label>
+		                            <input class="text cadd" name='i_cfcode' onChange="" id="i_cfcode"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
+		                        </div>
 
-                        <input type="hidden" name="prefixholder" id="prefixholder" />
+		                        <div class="column r25">
+		                            <label for="i_cno">Street Number</label>
+		                            <input class="text cadd" name='i_cno' onChange="" id="i_cno"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
+		                        </div>
+		                        <div class="column r25">
+		                            <label for="i_cscode">Street Suffix</label>
+		                            <input class="text cadd" name='i_cscode' onChange="" id="i_cscode"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
+		                        </div>
 
-                            <div class="column r25">
-                                <label for="i_cfno">Flat/Unit Number</label>
-                                <input class="text cadd" name='i_cfno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
-                            </div>
-                            <div class="column r25">
-                                <label for="i_cfcode">Flat Suffix</label>
-                                <input class="text cadd" name='i_cfcode' onChange="" id="i_cfcode"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
-                            </div>
+		                        <div class="column r25">
+		                            <label for="i_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
+		                            <input class="text cadd checkNone" name='i_cstreet'  id="i_cstreet" data-mand="customer_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_cstreet'])){ echo $_SESSION['rem_i_cstreet']; } ?>'>
+		                            <input type="hidden" name="comparei_cstreet" id="comparei_cstreet" />
+		                        </div>
+		                        <div class="column r25">
+		                            <label for="i_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
+		                            <input class="text cadd checkNone" name='i_ctype'  id="i_ctype" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_ctype'])){ echo $_SESSION['rem_i_ctype']; } ?>'>
+		                            <input type="hidden" name="comparei_ctype" id="comparei_ctype" />
+		                        </div>
 
-                            <div class="column r25">
-                                <label for="i_cno">Street Number</label>
-                                <input class="text cadd" name='i_cno' onChange="" id="i_cno"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
-                            </div>
-                            <div class="column r25">
-                                <label for="i_cscode">Street Suffix</label>
-                                <input class="text cadd" name='i_cscode' onChange="" id="i_cscode"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
-                            </div>
+		    
+	                            <div class="column r25">
+	                                <label for="i_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
+	                                <input class="text cadd checkNone" name='i_csuburb' onchange="" id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; }  ?>'>
+	                                <input type="hidden" name="comparei_csuburb" id="comparei_csuburb" />
+	                            </div>
+	                            <div class="column r25">
+	                                <label for="i_cpostcode">Postcode</label>
+	                                <input class="text cadd" name='i_cpostcode'  id="i_cpostcode" maxlength='6'>
+	                                <input type="hidden" name="comparei_cpostcode" id="comparei_cpostcode" />
+	                            </div>
 
-                            <div class="column r25">
-                                <label for="i_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text cadd checkNone" name='i_cstreet'  id="i_cstreet" data-mand="customer_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_cstreet'])){ echo $_SESSION['rem_i_cstreet']; } ?>'>
-                                <input type="hidden" name="comparei_cstreet" id="comparei_cstreet" />
-                            </div>
-                            <div class="column r25">
-                                <label for="i_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text cadd checkNone" name='i_ctype'  id="i_ctype" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_ctype'])){ echo $_SESSION['rem_i_ctype']; } ?>'>
-                                <input type="hidden" name="comparei_ctype" id="comparei_ctype" />
-                            </div>
-
-                            
-                                <div class="column r25">
-                                    <label for="i_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                    <input class="text cadd checkNone" name='i_csuburb' onchange="" id="i_csuburb" data-mand="customer_address" disabled="disabled" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; }  ?>'>
-                                    <input type="hidden" name="comparei_csuburb" id="comparei_csuburb" />
-                                </div>
-                                <div class="column r25">
-                                    <label for="i_cpostcode">Postcode</label>
-                                    <input class="text cadd" name='i_cpostcode'  id="i_cpostcode" maxlength='6'>
-                                    <input type="hidden" name="comparei_cpostcode" id="comparei_cpostcode" />
-                                </div>
-                            <div class="float-left">
-                                <div class="column r25">
-                                    <label for="i_cpropertynumber">Property Number</label>
-                                    <input class="text cadd" name='i_cpropertynumber'  id="i_cpropertynumber" >
-                                    <input type="hidden" name="comparei_cpropertynumber" id="comparei_cpropertynumber" />
-                                </div>
-                                <div class="column r100">
-                                    <label for="i_cdesc">Description</label>
-                                    <textarea id="i_cdesc" name="i_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
-                                </div>
-                            </div>
+		                        <div class="float-left">
+		                            <div class="column r25">
+		                                <label for="i_cpropertynumber">Property Number</label>
+		                                <input class="text cadd" name='i_cpropertynumber'  id="i_cpropertynumber" >
+		                                <input type="hidden" name="comparei_cpropertynumber" id="comparei_cpropertynumber" />
+		                            </div>
+		                            <div class="column r100">
+		                                <label for="i_cdesc">Description</label>
+		                                <textarea id="i_cdesc" name="i_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_i_cdesc'])){ echo $_SESSION['rem_i_cdesc']; } ?>'></textarea>
+		                            </div>
+		                        </div>
                         </div>
 
 
 
                         <div id="outside_ca" style="display: none;">
-                            <div class="column r25">
-                                <label for="o_cfno">Flat/Unit Number</label>
-                                <input class="text" name='o_cfno' onChange="" id="o_cfno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cno'])){ echo $_SESSION['rem_o_cno']; } ?>'>
-                            </div>
-                            <div class="column r25">
-                                <label for="o_cno">Street Number</label>
-                                <input class="text" name='o_cno' onChange="" id="o_cno" maxlength='15' value='<?php if(isset($_SESSION['rem_o_cfaddno'])){ echo $_SESSION['rem_o_cfaddno']; } ?>'>
-                            </div>
-                            <div class="column r25">
-                                <label for="o_cstreet">Street Name<span id='o_cstreet_mand' class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text" name='o_cstreet' onChange="" data-mand="customer_address" id="o_cstreet" maxlength='100' value='<?php if(isset($_SESSION['rem_o_cstreet'])){ echo $_SESSION['rem_o_cstreet']; } else echo "not required"; ?>'>
-                            </div>
-                            <div class="column r25">
-                                <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                <input class="text" name='o_ctype' onChange="" id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if
-                                                                                                                                                      (isset($_SESSION['rem_o_ctype'])){ echo $_SESSION['rem_o_ctype']; } else echo "not required" ?>'>
-                            </div>
+
+                                <div class="column r25">
+		                            <label for="o_cfno">Flat/Unit Number</label>
+		                            <input class="text cadd" name='o_cfno' onChange="" id="o_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
+		                        </div>
+		                        <div class="column r25">
+		                            <label for="o_cfcode">Flat Suffix</label>
+		                            <input class="text cadd" name='o_cfcode' onChange="" id="o_cfcode"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
+		                        </div>
+
+		                        <div class="column r25">
+		                            <label for="o_cno">Street Number</label>
+		                            <input class="text cadd" name='o_cno' onChange="" id="o_cno"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
+		                        </div>
+		                        <div class="column r25">
+		                            <label for="o_cscode">Street Suffix</label>
+		                            <input class="text cadd" name='o_cscode' onChange="" id="o_cscode"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
+		                        </div>
+
+                             <div class="column r25">
+		                            <label for="o_cstreet">Street Name<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
+		                            <input class="text cadd checkNone" name='o_cstreet'  id="o_cstreet" data-mand="customer_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_cstreet'])){ echo $_SESSION['rem_i_cstreet']; } ?>'>
+		                            <input type="hidden" name="compareo_cstreet" id="compareo_cstreet" />
+		                        </div>
+		                        <div class="column r25">
+		                            <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
+		                            <input class="text cadd checkNone" name='o_ctype'  id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_i_ctype'])){ echo $_SESSION['rem_i_ctype']; } ?>'>
+		                            <input type="hidden" name="compareo_ctype" id="compareo_ctype" />
+		                        </div>
+		    
+	                            <div class="column r25">
+	                                <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
+	                                <input class="text cadd checkNone" name='o_csuburb' onchange="" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; }  ?>'>
+	                                <input type="hidden" name="compareo_csuburb" id="compareo_csuburb" />
+	                            </div>
+	                            <div class="column r25">
+	                                <label for="o_cpostcode">Postcode</label>
+	                                <input class="text cadd" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
+	                                <input type="hidden" name="compareo_cpostcode" id="compareo_cpostcode" />
+	                            </div>
+
                             <div class="float-left">
-                                <div class="column r25">
-                                    <label for="o_csuburb">Suburb<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
-                                    <input class="text" name='o_csuburb' onChange="" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if
-                                                                                                                                                                                          (isset($_SESSION['rem_o_csuburb'])){ echo $_SESSION['rem_o_csuburb']; } else echo "not required" ?>'>
-                                </div>
-                                <div class="column r25">
-                                    <label for="o_cpostcode">Postcode</label>
-                                    <input class="text" onChange="" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
-                                </div>
                                 <div class="column r100">
                                     <label for="o_cdesc">Description</label>
                                     <textarea id="o_cdesc" name="o_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'></textarea>
@@ -499,12 +504,24 @@ if(!isset($_GET['d'])){
                             </div>
                         </div>
 
+                            <input type="hidden" name="old_custid" id="old_custid" />
+		                    <input type="hidden" name="old_cstreet" id="old_cstreet" />
+		                    <input type="hidden" name="old_ctype" id="old_ctype" />
+		                    <input type="hidden" name="old_csuburb" id="old_csuburb" />
+		                    <input type="hidden" name="old_cpostcode" id="old_cpostcode" />
+		                    <input type="hidden" name="old_cpropertynumber" id="old_cpropertynumber" />
+		                    <input type="hidden" name="old_cno" id="old_cno" />
+		                    <input type="hidden" name="old_suffix" id="old_suffix" />
+
+		                    <input type="hidden" name="prefixholder" id="prefixholder" />
                         
-                        <input type="hidden" name="cust_address_id" id="cust_address_id" />
-                        <input type="hidden" name="comparecust_address_id" id="comparecust_address_id" />
-                        <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" />
-                        <input type="hidden" name="comparecust_address_ctr" id="comparecust_address_ctr" />
-                        <input type="hidden" name="cust_address" id="cust_address" value="" />
+                            <input type="hidden" name="cust_address_id" id="cust_address_id" />
+                            <input type="hidden" name="comparecust_address_id" id="comparecust_address_id" />
+
+                            <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" />
+                            <input type="hidden" name="comparecust_address_ctr" id="comparecust_address_ctr" />
+
+                            <input type="hidden" name="cust_address" id="cust_address" value="" />
                     </div>
                 </div>
                </div>

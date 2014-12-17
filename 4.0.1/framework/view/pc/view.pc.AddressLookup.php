@@ -88,18 +88,23 @@
                 /* House Suffix */  $('#i_cscode').val(streetCodeOut);
 
                 /* Street Name */ $('#i_cstreet').val($('#ret_' + id + '_street_name').val());
-                    /* Compare */ $('#comparei_cstreet').val($('#ret_' + id + '_street_name').val());
+                /* Compare */ $('#comparei_cstreet').val($('#ret_' + id + '_street_name').val());
+
                 /* Street Type */ $('#i_ctype').val($('#ret_' + id + '_street_type').val());
-                    /* Compare */ $('#comparei_ctype').val($('#ret_' + id + '_street_type').val());
+                /* Compare */ $('#comparei_ctype').val($('#ret_' + id + '_street_type').val());
+
                 /* Suburb */      $('#i_csuburb').val($('#ret_' + id + '_locality').val());
-                    /* Compare */    $('#comparei_csuburb').val($('#ret_' + id + '_locality').val());
+                /* Compare */    $('#comparei_csuburb').val($('#ret_' + id + '_locality').val());
+
                 /* Postcode */    $('#i_cpostcode').val($('#ret_' + id + '_postcode').val());
-                    /* Compare */    $('#comparei_cpostcode').val($('#ret_' + id + '_postcode').val());
+                /* Compare */    $('#comparei_cpostcode').val($('#ret_' + id + '_postcode').val());
+
                 /* Prop No. */    $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
-                    /* Compare */    $('#comparei_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+                /* Compare */    $('#comparei_cpropertynumber').val($('#ret_' + id + '_property_no').val());
 
                 /* Cust add id */ $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
-                    /* Compare */   $('#comparecust_address_id').val($('#ret_' + id + '_address_id').val());
+                    /* Compare */ $('#comparecust_address_id').val($('#ret_' + id + '_address_id').val());
+
                 /* Something */   $('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
                     /* Compare */   $('#comparecust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
 
