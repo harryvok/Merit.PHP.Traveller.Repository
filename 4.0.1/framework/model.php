@@ -3240,6 +3240,8 @@ class Model {
         
     }
     public function processChangePreferences($params = NULL){
+        unset($test);
+        $test = 1;
         // Change password
         if($_POST['changePassword'] == 1 && strlen($_POST['current']) > 1 && strlen($_POST['new']) > 1 && strlen($_POST['repeat']) > 1){
             if($_POST['current'] == $_SESSION['password'] && $_POST['new'] == $_POST['repeat']){
@@ -3429,6 +3431,8 @@ class Model {
         $parameters->responsible_code = $_SESSION['responsible_code'];
         $result_dfi = $this->WebService(MERIT_ADMIN_FILE, "ws_get_user_options", $parameters);
         
+        
+        // Requests
         $defaultRequestFilter = $this->getDefaultFilter("C", "complaint");
         if(isset($defaultRequestFilter) && $defaultRequestFilter !=  $_POST['defaultrequestfilter']){
             
@@ -3454,6 +3458,7 @@ class Model {
             }
         }
         
+        // Actions
         $defaultActionFilter = $this->getDefaultFilter("A", "Action");
         if(isset($defaultActionFilter) && $defaultActionFilter !=  $_POST['defaultactionfilter']){
             $parameters = new stdClass();

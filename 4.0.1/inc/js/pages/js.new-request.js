@@ -1005,11 +1005,18 @@ $(document).ready(function () {
                     Load();
                     $("#newrequest").valid();
                     if ($("#newrequest").validate().numberOfInvalids() == 0) {
-                        if ($("#mydetsclicked").val()=="N") {
+
+                        if ($("#mydetsclicked").val() == "N") {
+                            alert("camehere")
                             if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                                alert("camehere1")
                                 if ($("#old_given").val() != "") {
+                                    alert("camehere2")
                                     change_name(); // call if given name or surname changed
-                                }  
+                                }
+                                else {
+                                    check_adhoc();
+                                }
                             }
                             else {
                                 check_adhoc(); //call if adhoc officer required
