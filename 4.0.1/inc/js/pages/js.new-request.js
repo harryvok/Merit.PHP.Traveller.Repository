@@ -1063,7 +1063,12 @@ $(document).ready(function () {
                 $("#btnclick").val("Y");
                 if ($("#mydetsclicked").val() == "N") {
                     if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                        change_name(); // call if given name or surname changed
+                        if ($("#old_given").val() != "") {
+                            change_name(); // call if given name or surname changed
+                        }
+                        else {
+                            check_adhoc();
+                        }
                     }
                     else {
                         check_adhoc(); //call if adhoc officer required
