@@ -1079,7 +1079,7 @@ $(document).ready(function () {
             }
             else {
                 Unload();
-                alert("You must fill in the required fields.");
+                alert("You must fill in the required fields. ");
                 $("#newrequest").validate();
                 $("#saveMore").prop("disabled", false).buttonState("enable");
                 $("#btnclick").val("");
