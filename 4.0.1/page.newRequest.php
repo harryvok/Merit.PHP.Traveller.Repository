@@ -398,20 +398,20 @@ if(!isset($_GET['d'])){
 
                         <div id="inside_ca" style="display: block;">
 
-		                        <div class="column r25">
+		                        <div class="column r20">
 		                            <label for="i_cfno">Flat/Unit Number</label>
 		                            <input class="text cadd" name='i_cfno' onChange="" id="i_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
 		                        </div>
-		                        <div class="column r25">
+		                        <div class="column r15">
 		                            <label for="i_cfcode">Flat Suffix</label>
 		                            <input class="text cadd" name='i_cfcode' onChange="" id="i_cfcode"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
 		                        </div>
 
-		                        <div class="column r25">
+		                        <div class="column r20">
 		                            <label for="i_cno">Street Number</label>
 		                            <input class="text cadd" name='i_cno' onChange="" id="i_cno"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
 		                        </div>
-		                        <div class="column r25">
+		                        <div class="column r15">
 		                            <label for="i_cscode">Street Suffix</label>
 		                            <input class="text cadd" name='i_cscode' onChange="" id="i_cscode"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
 		                        </div>
@@ -452,6 +452,17 @@ if(!isset($_GET['d'])){
 		                        </div>
                         </div>
                         <script type="text/javascript">
+                            // REGEX to CHECK INPUTS
+                            $('#i_cfno').keypress(function (e) {
+                                var regex = new RegExp("^[0-9-?]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
                             $('#i_cfcode').keypress(function (e) {
                                 var regex = new RegExp("^[a-zA-Z]+$");
                                 var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
@@ -462,8 +473,28 @@ if(!isset($_GET['d'])){
                                 e.preventDefault();
                                 return false;
                             });
+                            $('#i_cno').keypress(function (e) {
+                                var regex = new RegExp("^[0-9-?]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
                             $('#i_cscode').keypress(function (e) {
                                 var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#o_cfno').keypress(function (e) {
+                                var regex = new RegExp("^[0-9-?]+$");
                                 var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
                                 if (regex.test(str)) {
                                     return true;
@@ -484,6 +515,16 @@ if(!isset($_GET['d'])){
                             });
                             $('#o_cscode').keypress(function (e) {
                                 var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#o_cno').keypress(function (e) {
+                                var regex = new RegExp("^[0-9-?]+$");
                                 var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
                                 if (regex.test(str)) {
                                     return true;
