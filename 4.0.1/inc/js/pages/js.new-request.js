@@ -1435,7 +1435,7 @@ function changeLocationType() {
 function clearCustomerAddress() {
     //$('#same').val("i");
     $('#i_cno').val('');
-    $('#i_cfno').val('');
+    $('#i_cfno').val(''); 
     window.clicked["i_ctype"] = false;
     window.clicked["i_csuburb"] = false;
     $('#i_cfcode').val('');
