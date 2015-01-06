@@ -451,7 +451,48 @@ if(!isset($_GET['d'])){
 		                            </div>
 		                        </div>
                         </div>
+                        <script type="text/javascript">
+                            $('#i_cfcode').keypress(function (e) {
+                                var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
 
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#i_cscode').keypress(function (e) {
+                                var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#o_cfcode').keypress(function (e) {
+                                var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#o_cscode').keypress(function (e) {
+                                var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                        </script>
 
 
                         <div id="outside_ca" style="display: none;">

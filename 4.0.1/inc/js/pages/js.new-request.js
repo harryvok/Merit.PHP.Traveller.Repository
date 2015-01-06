@@ -1438,12 +1438,16 @@ function clearCustomerAddress() {
     $('#i_cfno').val('');
     window.clicked["i_ctype"] = false;
     window.clicked["i_csuburb"] = false;
+    $('#i_cfcode').val('');
+    $('#i_cscode').val('');
     $('#i_cstreet').val('').attr("readonly", false);
     $('#i_ctype').val('').attr("readonly", true);
     $('#i_csuburb').val('');
     $('#i_cdesc').val('');
     $("#i_cpostcode").val("");
     $("#i_cpropertynumber").val("");
+    $('#o_cfcode').val('');
+    $('#o_cscode').val('');
     $('#o_cno').val("");
     $('#o_cfno').val("");
     $('#o_cstreet').val("");
