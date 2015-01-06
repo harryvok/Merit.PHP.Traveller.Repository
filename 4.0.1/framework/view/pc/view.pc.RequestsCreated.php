@@ -1,6 +1,6 @@
 
 <?php
-if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 0){
+if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) != 0){
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -35,7 +35,7 @@ if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result
                   <tbody>
                   <?php
     $number=0;
-    if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 0){
+    if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 1){
         foreach($GLOBALS['result']->requests_created_details as $result){
             $change = $result->request_id;
             $number = $number+1;
@@ -58,15 +58,15 @@ if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result
         }
         
     }
-    elseif(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) == 1){
+    else {
         $change = $GLOBALS['result']->requests_created_details;
                               ?>
-                         <tr class="dark" data-new-window="index.php?page=view-request&id=<?php echo $result->request_id; ?>">
-                                  <td><?php if(strlen($result->request_id) > 0){ echo $result->request_id; } else { echo ""; } ?></td>
-                                  <td><?php if(strlen($result->service_name) > 0){ echo $result->service_name; } else { echo ""; } ?><?php if(strlen($result->request_name) > 0){ echo " / ".$result->request_name; } else { echo ""; } ?><?php if(strlen($result->function_name) > 0){ echo " / ".$result->function_name; } else { echo ""; } ?></td>
-                                  <td><?php if(isset($result->location_address)) echo $result->location_address; ?></td>
-                                  <td><?php if(isset($result->customer_name)) echo $result->customer_name; ?></td>
-                                <td><?php if(isset($result->count_only)){ echo $result->count_only == "Y" ? "Yes": "No"; } ?></td>
+                         <tr class="dark" data-new-window="index.php?page=view-request&id=<?php echo $change->request_id; ?>">
+                                  <td><?php if(strlen($change->request_id) > 0){ echo $change->request_id; } else { echo ""; } ?></td>
+                                  <td><?php if(strlen($change->service_name) > 0){ echo $change->service_name; } else { echo ""; } ?><?php if(strlen($change->request_name) > 0){ echo " / ".$change->request_name; } else { echo ""; } ?><?php if(strlen($change->function_name) > 0){ echo " / ".$change->function_name; } else { echo ""; } ?></td>
+                                  <td><?php if(isset($change->location_address)) echo $change->location_address; ?></td>
+                                  <td><?php if(isset($change->customer_name)) echo $change->customer_name; ?></td>
+                                <td><?php if(isset($change->count_only)){ echo $change->count_only == "Y" ? "Yes": "No"; } ?></td>
                               </tr>
                           <?php
     }
