@@ -1,6 +1,6 @@
 
 <?php
-if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 1){
+if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 0){
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -35,7 +35,7 @@ if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result
                   <tbody>
                   <?php
     $number=0;
-    if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 1){
+    if(isset($GLOBALS['result']->requests_created_details) && count($GLOBALS['result']->requests_created_details) > 0){
         foreach($GLOBALS['result']->requests_created_details as $result){
             $change = $result->request_id;
             $number = $number+1;
