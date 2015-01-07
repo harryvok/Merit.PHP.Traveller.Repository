@@ -114,11 +114,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                     <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->officer_responsible_name)){ echo $GLOBALS['result']['request']->officer_responsible_name; } ?></div>
                 </div>
                 <div class="column r20">
-                    <span class="summaryColumnTitle">Division</span>
+                    <span class="summaryColumnTitle"><?php echo $_SESSION['div_name']; ?></span>
                     <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->division_name)){ echo $GLOBALS['result']['request']->division_name; } ?></div>
                 </div>
                 <div class="column r20">
-                    <span class="summaryColumnTitle">Department</span>
+                    <span class="summaryColumnTitle"><?php echo $_SESSION['dept_name']; ?></span>
                     <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->department_name)){ echo $GLOBALS['result']['request']->department_name; } ?></div>
                 </div>
             </div>

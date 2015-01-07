@@ -1552,6 +1552,9 @@ class Model {
                 $_SESSION['how_received_code'] = $result->how_received_code;
                 $_SESSION['centre_code'] = $result->centre_code;
                 $_SESSION['alternate_officer_name'] = $result->alternate_officer_name;
+                $_SESSION['notify_insurance'] = $result->notify_insurance;
+                $_SESSION['div_name'] = $result->div_name;
+                $_SESSION['dept_name'] = $result->dept_name;
                 
                 $parameters = new stdClass();
                 $parameters->user_id = $_SESSION["user_id"];
