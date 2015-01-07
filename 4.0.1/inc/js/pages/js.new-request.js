@@ -23,10 +23,7 @@ $(document).ready(function () {
 
     $(window).resize(function () {
         if ($(this).width() < 1050) {
-            $("#li_cstreet").html("Street Name<span class='customer_address_label mandLabel' style='color: red; display:none;'> *<br /><br /></span>");
-        }
-        else {
-
+            $("label[for='i_cstreet']").html("<span>Street Name</span><span class='customer_address_label mandLabel' style='color: red; display:none;'> *<br /><br /></span>");
         }
     });
     

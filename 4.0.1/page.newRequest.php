@@ -538,20 +538,20 @@ if(!isset($_GET['d'])){
 
                         <div id="outside_ca" style="display: none;">
 
-                                <div class="column r25">
+                                <div class="column r20">
 		                            <label for="o_cfno">Flat/Unit Number</label>
 		                            <input class="text cadd" name='o_cfno' onChange="" id="o_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
 		                        </div>
-		                        <div class="column r5">
+		                        <div class="column r15">
 		                            <label for="o_cfcode">Flat Suffix</label>
 		                            <input class="text cadd" name='o_cfcode' onChange="" id="o_cfcode"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
 		                        </div>
 
-		                        <div class="column r25">
+		                        <div class="column r20">
 		                            <label for="o_cno">Street Number</label>
 		                            <input class="text cadd" name='o_cno' onChange="" id="o_cno"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
 		                        </div>
-		                        <div class="column r5">
+		                        <div class="column r15">
 		                            <label for="o_cscode">Street Suffix</label>
 		                            <input class="text cadd" name='o_cscode' onChange="" id="o_cscode"  maxlength='15' value='<?php if(isset($_SESSION['rem_i_cfaddno'])){ echo $_SESSION['rem_i_cfaddno']; } ?>'>
 		                        </div>
@@ -561,6 +561,7 @@ if(!isset($_GET['d'])){
 		                            <input class="text cadd checkNone" name='o_cstreet'  id="o_cstreet" data-mand="customer_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_cstreet'])){ echo $_SESSION['rem_i_cstreet']; } ?>'>
 		                            <input type="hidden" name="compareo_cstreet" id="compareo_cstreet" />
 		                        </div>
+                            <div class="float-left">
 		                        <div class="column r25">
 		                            <label for="o_ctype">Street Type<span class="customer_address_label mandLabel" style="color: red; display:none;"> *</span></label>
 		                            <input class="text cadd checkNone" name='o_ctype'  id="o_ctype" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_i_ctype'])){ echo $_SESSION['rem_i_ctype']; } ?>'>
@@ -572,14 +573,14 @@ if(!isset($_GET['d'])){
 	                                <input class="text cadd checkNone" name='o_csuburb' onchange="" id="o_csuburb" data-mand="customer_address" maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; }  ?>'>
 	                                <input type="hidden" name="compareo_csuburb" id="compareo_csuburb" />
 	                            </div>
-	                            <div class="column r25">
+	                            <div class="column r20">
 	                                <label for="o_cpostcode">Postcode</label>
 	                                <input class="text cadd" name='o_cpostcode'  id="o_cpostcode" maxlength='6'>
 	                                <input type="hidden" name="compareo_cpostcode" id="compareo_cpostcode" />
 	                            </div>
-
+                                </div>
                             <div class="float-left">
-                                <div class="column r100">
+                                <div class="column r95">
                                     <label for="o_cdesc">Description</label>
                                     <textarea id="o_cdesc" name="o_cdesc" style="resize:none; height:4em" maxlength='1000' value='<?php if(isset($_SESSION['rem_o_cdesc'])){ echo $_SESSION['rem_o_cdesc']; } ?>'></textarea>
                                 </div>
