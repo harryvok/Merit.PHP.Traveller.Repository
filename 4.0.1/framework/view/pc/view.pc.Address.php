@@ -1,14 +1,92 @@
 <div class="summaryContainer">
+    
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () { 
+    /* What to parse with regEx */
+        var tocheck = $('#placeholder').val();
+
+                /* Parse to variables */
+                var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
+                var unitFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[2];
+                var unitToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[3];
+                var unitCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[4];
+                var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
+                var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
+                var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
+                
+                /* Catch exceptions */
+                var unitNumber;
+                var streetNumber;
+
+                /* If prefix is empty */
+                if (prefixOut == "") {
+
+                    /* Set Unit values to Street values */
+                    if (streetFromOut == "") {
+                        streetFromOut = unitFromOut;
+                        streetToOut = unitToOut;
+                        streetCodeOut = unitCodeOut;
+                        unitFromOut = "";
+                        unitToOut = "";
+                        unitCodeOut = "";
+                    }
+                }
+
+                /* So "-"'s aren't added to empty fields */
+                if (unitFromOut != "") {
+                    if (unitToOut != "") {
+                        unitNumber = unitFromOut + '-' + unitToOut;
+                    }
+                    else {
+                        unitNumber = unitFromOut;
+                    }
+                }
+                if (streetFromOut != "") {
+                    if (streetToOut != "") {
+                        streetNumber = streetFromOut + '-' + streetToOut;
+                    }
+                    else {
+                        streetNumber = streetFromOut;
+                    }
+                }
+
+                /* If no unit code the regEx will take this "/" from string, clear it */
+                if (unitCodeOut == "/") {
+                    unitCodeOut = "";
+                }
+
+            /* Create the Strings to feed into output */
+                unitNumber = unitNumber + unitCodeOut;
+                streetNumber = streetNumber + streetCodeOut;
+                
+                $('#unitFlatNumber').html(unitNumber);
+                $('#streetHouseNumber').html(streetNumber);
+        });
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <h1>Address Details</h5>
         <div>
             <div class="float-left">
                 <div class="column r15">
+                    <input type="hidden" id="placeholder" value="<?php echo $GLOBALS['result']->house_suffix ?>"/>
                     <span class="summaryColumnTitle">Unit/Flat Number</span>
-                    <div class="summaryColumn"><?php if(isset($GLOBALS['result']->house_number) && isset($GLOBALS['result']->house_suffix) && $GLOBALS['result']->house_suffix != $GLOBALS['result']->house_number && strpos($GLOBALS['result']->house_suffix, "-") == false && !ctype_alnum($GLOBALS['result']->house_suffix)){ $flat = explode("/", $GLOBALS['result']->house_suffix); echo $flat[0]; } ?></div>
+                    <div class="summaryColumn" id="unitFlatNumber"></div>
                 </div>
                 <div class="column r15">
                     <span class="summaryColumnTitle">House Number</span>
-                    <div class="summaryColumn"><?php if(isset($GLOBALS['result']->house_suffix) && strpos($GLOBALS['result']->house_suffix, "-") !== false || ctype_alnum($GLOBALS['result']->house_suffix)) echo $GLOBALS['result']->house_suffix; else echo $GLOBALS['result']->house_number; ?></div>
+                    <div class="summaryColumn" id="streetHouseNumber"></div>
                 </div>
             </div>
             <div class="float-left">
