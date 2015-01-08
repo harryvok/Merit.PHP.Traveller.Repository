@@ -48,7 +48,7 @@
             <?php } elseif($GLOBALS['finalised_ind'] == "N" && $_SESSION['roleSecurity']->maint_recat == "Y" || $GLOBALS['count_only'] == "Y" && $_SESSION['roleSecurity']->maint_recat == "Y"){  ?>
             <li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=recategoriseRequest'">Recategorise Request</li><?php } ?>
             <?php if($_SESSION['roleSecurity']->maint_req_del == "Y") { ?><li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=deleteRequest'">Delete Request</li><?php } ?>
-            <li class="notifyOfficerOption">Notify Insurance Officer</li>
+            <?php if($_SESSION['notify_insurance'] == "Y") { ?><li class="notifyOfficerOption">Notify Insurance Officer</li><?php } ?>
         </ul>
     </li>
     <?php } ?>
