@@ -1020,6 +1020,7 @@ $(document).ready(function () {
             if ($('#o_cpobox').val() != "") {
 
                 // Stuff to pass to function
+
                 var tocheck = $('#o_cpobox').val();
 
                 var pobox = getPOParts(tocheck);
@@ -1027,7 +1028,7 @@ $(document).ready(function () {
 
                 var number = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
                 var suffix = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
-                             
+
                 // Compare Prefix's, then save them in correct format to be passed to the final "save" var.
                 if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX") {
                     prefix = "PO Box:";
@@ -1035,7 +1036,6 @@ $(document).ready(function () {
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
                     prefix = "DX:";
                 }
-
                 var save = prefix + " " + number + " " + suffix;
 
                 alert(save);
@@ -1106,6 +1106,7 @@ $(document).ready(function () {
             if ($('#o_cpobox').val() != "") {
 
                 // Stuff to pass to function
+
                 var tocheck = $('#o_cpobox').val();
 
                 var pobox = getPOParts(tocheck);
@@ -1121,7 +1122,6 @@ $(document).ready(function () {
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
                     prefix = "DX:";
                 }
-
                 var save = prefix + " " + number + " " + suffix;
 
                 alert(save);
@@ -1178,6 +1178,7 @@ $(document).ready(function () {
             if ($('#o_cpobox').val() != "") {
 
                 // Stuff to pass to function
+
                 var tocheck = $('#o_cpobox').val();
 
                 var pobox = getPOParts(tocheck);
@@ -1193,7 +1194,6 @@ $(document).ready(function () {
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
                     prefix = "DX:";
                 }
-
                 var save = prefix + " " + number + " " + suffix;
 
                 alert(save);

@@ -503,7 +503,7 @@ if(!isset($_GET['d'])){
 		                            <input class="text " name='o_cfno' onChange="" id="o_cfno"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
 		                        </div>
 		                        <div class="column r15">
-		                            <label for="o_cfcode">Flat Suffix</label>
+		                            <label for="o_cfcode">Unit Suffix</label>
 		                            <input class="text " name='o_cfcode' onChange="" id="o_cfcode"maxlength='15' value='<?php if(isset($_SESSION['rem_i_cno'])){ echo $_SESSION['rem_i_cno']; } ?>'>
 		                        </div>
 

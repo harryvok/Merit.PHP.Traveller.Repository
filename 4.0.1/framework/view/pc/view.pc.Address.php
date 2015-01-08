@@ -3,7 +3,7 @@
     
     <script type="text/javascript">
 
-        $(document).ready(function () { 
+        $(document).ready(function () {
             /* What to parse with regEx */
             var tocheck = $('#placeholder').val();
 
@@ -15,11 +15,12 @@
             var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
             var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
             var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
+            alert(prefixOut);
 
             /* Catch exceptions */
             var unitNumber = "";
             var streetNumber = "";
-            
+
             var trimmed = $.trim(prefixOut);
             /* Catch PO or DX */
             if (trimmed == "PO Box:" || trimmed == "DX:") {
@@ -64,14 +65,14 @@
                     unitCodeOut = "";
                 }
 
-            /* Create the Strings to feed into output */
+                /* Create the Strings to feed into output */
                 unitNumber = unitNumber + unitCodeOut;
                 streetNumber = streetNumber + streetCodeOut;
 
             }
 
-                $('#unitFlatNumber').html(unitNumber);
-                $('#streetHouseNumber').html(streetNumber);
+            $('#unitFlatNumber').html(unitNumber);
+            $('#streetHouseNumber').html(streetNumber);
         });
     </script>
     
@@ -94,11 +95,11 @@
                     <div class="summaryColumn" id="unitFlatNumber"></div>
                 </div>
                 <div class="column r15">
-                    <span class="summaryColumnTitle">House Number</span>
+                    <span class="summaryColumnTitle">Street Number</span>
                     <div class="summaryColumn" id="streetHouseNumber"></div>
                 </div>
                 <div class="column r15">
-                    <span class="summaryColumnTitle">PO Box / DX</span>
+                    <span class="summaryColumnTitle">PO / DX Box</span>
                     <div class="summaryColumn" id="postOfficeBox"></div>
                 </div>
             </div>
