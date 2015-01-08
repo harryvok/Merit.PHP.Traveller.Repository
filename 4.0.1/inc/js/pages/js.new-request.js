@@ -988,6 +988,20 @@ $(document).ready(function () {
 
     /* OTHER */
 
+
+    // SPLITSTRINGINTOSTUFF
+    function getPOParts(input) {
+        var match1 = input.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
+        return match1;
+    }
+
+    function getDXParts(input) {
+        var match1 = input.match(/(\D{0,1})\s?(\D{0,1})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
+        var match2 = input.match(/(\D{0,1})\s?(\D{0,1})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
+        var finalmatch = $.trim(match1) + $.trim(match2);
+        return finalmatch;
+    }
+
     // Adhoc Officer
     if ($("#skipAdhocCount").val() == 0) {
 
@@ -1004,23 +1018,29 @@ $(document).ready(function () {
 
             /* What to parse with regEx */
             if ($('#o_cpobox').val() != "") {
+
+                // Stuff to pass to function
                 var tocheck = $('#o_cpobox').val();
 
-                var poboxPref = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
-                var poboxNumb = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
-                var poboxSuff = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
+                var pobox = getPOParts(tocheck);
+                var dxbox = getDXParts(tocheck);
 
-                var trimmed = $.trim(poboxPref);
-
-                if (trimmed == "po box" || trimmed == "Po Box" || trimmed == "PO Box" || trimmed == "PO BOX") {
-                    poboxPref = "PO Box:";
+                var number = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
+                var suffix = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
+                             
+                // Compare Prefix's, then save them in correct format to be passed to the final "save" var.
+                if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX") {
+                    prefix = "PO Box:";
                 }
-                else if (trimmed == "dx" || trimmed == "Dx" || trimmed == "DX") {
-                    poboxPref = "DX:";
+                else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
+                    prefix = "DX:";
                 }
 
-                var PoBox = poboxPref + " " + poboxNumb + " " + poboxSuff;
-                $('#o_cpobox').val(PoBox);
+                var save = prefix + " " + number + " " + suffix;
+
+                alert(save);
+
+                $('#o_cpobox').val(save);
             }
         });
 
@@ -1084,23 +1104,29 @@ $(document).ready(function () {
 
             /* What to parse with regEx */
             if ($('#o_cpobox').val() != "") {
+
+                // Stuff to pass to function
                 var tocheck = $('#o_cpobox').val();
 
-                var poboxPref = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
-                var poboxNumb = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
-                var poboxSuff = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
+                var pobox = getPOParts(tocheck);
+                var dxbox = getDXParts(tocheck);
 
-                var trimmed = $.trim(poboxPref);
+                var number = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
+                var suffix = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
 
-                if (trimmed == "po box" || trimmed == "Po Box" || trimmed == "PO Box" || trimmed == "PO BOX") {
-                    poboxPref = "PO Box:";
+                // Compare Prefix's, then save them in correct format to be passed to the final "save" var.
+                if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX") {
+                    prefix = "PO Box:";
                 }
-                else if (trimmed == "dx" || trimmed == "Dx" || trimmed == "DX") {
-                    poboxPref = "DX:";
+                else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
+                    prefix = "DX:";
                 }
 
-                var PoBox = poboxPref + " " + poboxNumb + " " + poboxSuff;
-                $('#o_cpobox').val(PoBox);
+                var save = prefix + " " + number + " " + suffix;
+
+                alert(save);
+
+                $('#o_cpobox').val(save);
             }
 
         });
@@ -1150,23 +1176,29 @@ $(document).ready(function () {
             
             /* What to parse with regEx */
             if ($('#o_cpobox').val() != "") {
+
+                // Stuff to pass to function
                 var tocheck = $('#o_cpobox').val();
 
-                var poboxPref = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
-                var poboxNumb = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
-                var poboxSuff = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
+                var pobox = getPOParts(tocheck);
+                var dxbox = getDXParts(tocheck);
 
-                var trimmed = $.trim(poboxPref);
+                var number = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
+                var suffix = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
 
-                if (trimmed == "po box" || trimmed == "Po Box" || trimmed == "PO Box" || trimmed == "PO BOX") {
-                    poboxPref = "PO Box:";
+                // Compare Prefix's, then save them in correct format to be passed to the final "save" var.
+                if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX") {
+                    prefix = "PO Box:";
                 }
-                else if (trimmed == "dx" || trimmed == "Dx" || trimmed == "DX") {
-                    poboxPref = "DX:";
+                else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
+                    prefix = "DX:";
                 }
 
-                var PoBox = poboxPref + " " + poboxNumb + " " + poboxSuff;
-                $('#o_cpobox').val(PoBox);
+                var save = prefix + " " + number + " " + suffix;
+
+                alert(save);
+
+                $('#o_cpobox').val(save);
             }
 
         });
