@@ -1168,8 +1168,7 @@ $(document).ready(function () {
         }
     });
 
-
-
+    
     $('#saveCountOnly').on(eventName, function (event) {
 
         $('#saveCountOnly').on(eventName, function (event) {

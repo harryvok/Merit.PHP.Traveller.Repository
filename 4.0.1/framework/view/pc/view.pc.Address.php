@@ -15,7 +15,6 @@
             var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
             var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
             var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
-            alert(prefixOut);
 
             /* Catch exceptions */
             var unitNumber = "";
@@ -99,7 +98,7 @@
                     <div class="summaryColumn" id="streetHouseNumber"></div>
                 </div>
                 <div class="column r15">
-                    <span class="summaryColumnTitle">PO / DX Box</span>
+                    <span class="summaryColumnTitle">PO Box / DX </span>
                     <div class="summaryColumn" id="postOfficeBox"></div>
                 </div>
             </div>
