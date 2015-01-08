@@ -4,21 +4,29 @@
     <script type="text/javascript">
 
         $(document).ready(function () { 
-    /* What to parse with regEx */
-        var tocheck = $('#placeholder').val();
+            /* What to parse with regEx */
+            var tocheck = $('#placeholder').val();
 
-                /* Parse to variables */
-                var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
-                var unitFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[2];
-                var unitToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[3];
-                var unitCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[4];
-                var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
-                var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
-                var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
-                
-                /* Catch exceptions */
-                var unitNumber = "";
-                var streetNumber = "";
+            /* Parse to variables */
+            var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
+            var unitFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[2];
+            var unitToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[3];
+            var unitCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[4];
+            var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
+            var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
+            var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
+            alert(prefixOut);
+
+            /* Catch exceptions */
+            var unitNumber = "";
+            var streetNumber = "";
+            
+            var trimmed = $.trim(prefixOut);
+            /* Catch PO or DX */
+            if (trimmed == "PO Box:" || trimmed == "DX:") {
+                var poboxNumb = prefixOut + " " + unitFromOut + " " + unitCodeOut;
+                $('#postOfficeBox').html(poboxNumb);
+            } else {
 
                 /* If prefix is empty */
                 if (prefixOut == "") {
@@ -60,7 +68,9 @@
             /* Create the Strings to feed into output */
                 unitNumber = unitNumber + unitCodeOut;
                 streetNumber = streetNumber + streetCodeOut;
-                
+
+            }
+
                 $('#unitFlatNumber').html(unitNumber);
                 $('#streetHouseNumber').html(streetNumber);
         });
@@ -87,6 +97,10 @@
                 <div class="column r15">
                     <span class="summaryColumnTitle">House Number</span>
                     <div class="summaryColumn" id="streetHouseNumber"></div>
+                </div>
+                <div class="column r15">
+                    <span class="summaryColumnTitle">PO / DX Box</span>
+                    <div class="summaryColumn" id="postOfficeBox"></div>
                 </div>
             </div>
             <div class="float-left">

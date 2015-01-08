@@ -1778,6 +1778,13 @@ class Model {
             $comparesuffix = trim($comparesuffix);
             $ifnewfill = $comparesuffix;
             
+            
+            // PO or DX Boxx shennanigans  
+            if ($ifnewfill == "") {
+                $ifnewfill = $_POST['o_cpobox']; 
+            }
+            // ^^ PO or DX Boxx shennanigans  
+            
             $cust_address_number = $_POST['o_cno'];
             $cust_address_fnumber = $ifnewfill;
             $cust_address_street = $_POST['o_cstreet'];

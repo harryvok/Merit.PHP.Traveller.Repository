@@ -1000,6 +1000,30 @@ $(document).ready(function () {
             });            
         });
 
+        $('#submit').on(eventName, function (event) {
+
+            /* What to parse with regEx */
+            if ($('#o_cpobox').val() != "") {
+                var tocheck = $('#o_cpobox').val();
+
+                var poboxPref = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
+                var poboxNumb = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
+                var poboxSuff = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
+
+                var trimmed = $.trim(poboxPref);
+
+                if (trimmed == "po box" || trimmed == "Po Box" || trimmed == "PO Box" || trimmed == "PO BOX") {
+                    poboxPref = "PO Box:";
+                }
+                else if (trimmed == "dx" || trimmed == "Dx" || trimmed == "DX") {
+                    poboxPref = "DX:";
+                }
+
+                var PoBox = poboxPref + " " + poboxNumb + " " + poboxSuff;
+                $('#o_cpobox').val(PoBox);
+            }
+        });
+
         $("#newrequest").validate({
             submitHandler: function (form) {                
                 $("#btnclick").val("N");
@@ -1056,6 +1080,31 @@ $(document).ready(function () {
             $(this).removeClass("required");
         });
 
+        $('#saveMore').on(eventName, function (event) {
+
+            /* What to parse with regEx */
+            if ($('#o_cpobox').val() != "") {
+                var tocheck = $('#o_cpobox').val();
+
+                var poboxPref = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
+                var poboxNumb = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
+                var poboxSuff = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
+
+                var trimmed = $.trim(poboxPref);
+
+                if (trimmed == "po box" || trimmed == "Po Box" || trimmed == "PO Box" || trimmed == "PO BOX") {
+                    poboxPref = "PO Box:";
+                }
+                else if (trimmed == "dx" || trimmed == "Dx" || trimmed == "DX") {
+                    poboxPref = "DX:";
+                }
+
+                var PoBox = poboxPref + " " + poboxNumb + " " + poboxSuff;
+                $('#o_cpobox').val(PoBox);
+            }
+
+        });
+
         if ($("#countOnlyInd").val() == "N") {
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
@@ -1095,7 +1144,32 @@ $(document).ready(function () {
 
 
 
-   $('#saveCountOnly').on(eventName, function (event) {
+    $('#saveCountOnly').on(eventName, function (event) {
+
+        $('#saveCountOnly').on(eventName, function (event) {
+            
+            /* What to parse with regEx */
+            if ($('#o_cpobox').val() != "") {
+                var tocheck = $('#o_cpobox').val();
+
+                var poboxPref = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[1];
+                var poboxNumb = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
+                var poboxSuff = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
+
+                var trimmed = $.trim(poboxPref);
+
+                if (trimmed == "po box" || trimmed == "Po Box" || trimmed == "PO Box" || trimmed == "PO BOX") {
+                    poboxPref = "PO Box:";
+                }
+                else if (trimmed == "dx" || trimmed == "Dx" || trimmed == "DX") {
+                    poboxPref = "DX:";
+                }
+
+                var PoBox = poboxPref + " " + poboxNumb + " " + poboxSuff;
+                $('#o_cpobox').val(PoBox);
+            }
+
+        });
         // IF bypass enabled (Y) -------------------------------------------------------------------------------------------------
             if ($("#countonly_bypass").val() == "Y") {
 

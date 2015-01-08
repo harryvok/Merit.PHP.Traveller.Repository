@@ -539,8 +539,8 @@ if(!isset($_GET['d'])){
 	                                <input type="hidden" name="compareo_cpostcode" id="compareo_cpostcode" />
 	                            </div>
                                 <div class="column r25">
-	                                <label for="o_cpobox">PO Box</label>
-	                                <input class="text" name='o_cpobox'  id="o_cpobox" maxlength='6'>
+	                                <label for="o_cpobox">PO Box / DX </label>
+	                                <input class="text" name='o_cpobox'  id="o_cpobox" maxlength='100'>
 	                            </div>
                                 </div>
                             <div class="float-left">
