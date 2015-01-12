@@ -247,6 +247,7 @@
                                             <textarea id="message" name="message" required></textarea>
 
                                             <label for="desc">File</label>
+                                            <?php unset($_SESSION['filenameudf']); ?>
                                             <input id="attachment" type="file" name="attachment" id="attachFile" />
                                         </td>
                                     </tr>

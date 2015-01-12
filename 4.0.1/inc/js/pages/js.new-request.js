@@ -1025,16 +1025,17 @@ $(document).ready(function () {
 
                 var pobox = getPOParts(tocheck);
                 var dxbox = getDXParts(tocheck);
+                var prefix = "";
 
                 var number = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[2];
                 var suffix = tocheck.match(/(\D{0,6})\s?[:]?[_]?[-]?\s?(\d{0,20})\s?-?\s?(\D{0,5})$/)[3];
 
                 // Compare Prefix's, then save them in correct format to be passed to the final "save" var.
-                if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX") {
-                    prefix = "PO Box:";
+                if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX" || pobox == "po") {
+                    prefix = "PO Box";
                 }
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
-                    prefix = "DX:";
+                    prefix = "DX";
                 }
                 var save = prefix + " " + number + " " + suffix;
 
@@ -1117,14 +1118,13 @@ $(document).ready(function () {
 
                 // Compare Prefix's, then save them in correct format to be passed to the final "save" var.
                 if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX") {
-                    prefix = "PO Box:";
+                    prefix = "PO Box";
                 }
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
-                    prefix = "DX:";
+                    prefix = "DX";
                 }
                 var save = prefix + " " + number + " " + suffix;
 
-                alert(save);
 
                 $('#o_cpobox').val(save);
             }
@@ -1155,7 +1155,6 @@ $(document).ready(function () {
                 else {
                     check_adhoc(); //call if adhoc officer required                         
                 }
-                $("#attachment").val("");
             }
             else {
                 Unload();
@@ -1164,6 +1163,7 @@ $(document).ready(function () {
                 $("#saveMore").prop("disabled", false).buttonState("enable");
                 $("#btnclick").val("");
                 $("#submit").prop('disabled', false).buttonState("enable");
+
             }
         }
     });
@@ -1188,14 +1188,12 @@ $(document).ready(function () {
 
                 // Compare Prefix's, then save them in correct format to be passed to the final "save" var.
                 if (pobox == "po box" || pobox == "Po Box" || pobox == "PO Box" || pobox == "PO BOX") {
-                    prefix = "PO Box:";
+                    prefix = "PO Box";
                 }
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
-                    prefix = "DX:";
+                    prefix = "DX";
                 }
                 var save = prefix + " " + number + " " + suffix;
-
-                alert(save);
 
                 $('#o_cpobox').val(save);
             }

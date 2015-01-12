@@ -144,7 +144,6 @@ div#popup h1+div {
     overflow-y: scroll;
     overflow-x: scroll;
     max-height: 500px;
-    width: 94%;
 }
 
 div#popup h1+div iframe {

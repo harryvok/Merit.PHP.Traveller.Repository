@@ -101,7 +101,7 @@
         Close</span></h1>
     <div>
         <script type="text/javascript" src="inc/js/pages/js.sendNotification.js"></script>
-        <form id="notificationForm" method="post" action="process.php" enctype='multipart/form-data'>
+        <form id="notificationForm" method="post" action="process.php" enctype='multipart/form-data' accept-charset="utf-8">
             <div class="summaryContainer">
                 <h1>Select Recipients</h1>
                 <div>
@@ -222,6 +222,7 @@
                     </div>
                     <div class="float-left">
                         <div class="column r25">
+                            <?php unset($_SESSION['filenameudf']); ?>
                             <label for="desc">File</label>
                             <input id="attachment" type="file" name="attachment" id="attachFile" />
                         </div>

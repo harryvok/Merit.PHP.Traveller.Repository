@@ -22,7 +22,7 @@
 
             var trimmed = $.trim(prefixOut);
             /* Catch PO or DX */
-            if (trimmed == "PO Box:" || trimmed == "DX:") {
+            if (trimmed == "PO Box" || trimmed == "DX") {
                 var poboxNumb = prefixOut + " " + unitFromOut + " " + unitCodeOut;
                 $('#postOfficeBox').html(poboxNumb);
             } else {
