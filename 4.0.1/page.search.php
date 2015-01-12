@@ -17,7 +17,6 @@
             });
             $('#search').keydown(function (event) {
                 if (event.which == 13) {
-                    alert("clicked me")
                     Search($("#search").val());
                     $("#search").select();
                 }

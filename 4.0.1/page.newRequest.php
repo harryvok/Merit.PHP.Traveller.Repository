@@ -17,6 +17,7 @@ if(!isset($_GET['d'])){
     <span style="color: red;"><b><?php echo COMPULSORY ?></b></span><br />
 
     <form enctype='multipart/form-data' id='newrequest' name="newrequest" action='process.php' method='post'>
+        <input type="button" id="clicktrigger" name="clicktrigger" style="display:none" />
         <input type="hidden" name="lookup_enabled" id="lookup_enabled" value="<?php echo $_SESSION['roleSecurity']->maint_name_match; ?>" />
         <input type='hidden' name='udfs_exist' id='udfs_exist' value='0' />
         <input type="hidden" name="countonly_bypass" id="countonly_bypass" value="<?php echo $_SESSION['meritIni']['COUNTONLY_BYPASS_MAND_UDF']; ?>" />

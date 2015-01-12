@@ -46,8 +46,8 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                             $("#reqType").val("");
                             $("#global-udfs").html("");
                             $("#udfs").slideUp("fast");
-                            // $("#attachFile").val("");
-                            // $("#attachDesc").val("");
+                            $("#attachFile").val("");
+                            $("#attachDesc").val("");
                             $(".mandLabel").hide();
                             $("[data-mand]").removeClass("required");
                             $("#refno").val("");
@@ -145,8 +145,8 @@ else{
                 $("#reqType").val("");
                 $("#global-udfs").html("");
                 $("#udfs").slideUp("fast");
-               // $("#attachFile").val("");
-               // $("#attachDesc").val("");
+                $("#attachFile").val("");
+                $("#attachDesc").val("");
                 $(".mandLabel").hide();
                 $("[data-mand]").removeClass("required");
                 $("#refno").val("");

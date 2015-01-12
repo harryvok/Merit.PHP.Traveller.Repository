@@ -437,6 +437,7 @@ $(document).ready(function () {
             $("#facilityInput").val("");
             $("#facilityTypeId").val("");
             $("#facilityId").val("");
+            $("#facilitydescription").val("");
             $("#responsible").val("");
             $("#property_no").val(""); $("#lpostcode").val("");
             $("#address_id").val("");
@@ -1093,7 +1094,9 @@ $(document).ready(function () {
         });
     }
 
+
     $('#saveMore').on(eventName, function (event) {
+        
         $(".text_udf:not(:visible)").each(function () {
             $(this).removeClass("required");
         });
@@ -1102,7 +1105,7 @@ $(document).ready(function () {
         });
 
         $('#saveMore').on(eventName, function (event) {
-
+            
             /* What to parse with regEx */
             if ($('#o_cpobox').val() != "") {
 
