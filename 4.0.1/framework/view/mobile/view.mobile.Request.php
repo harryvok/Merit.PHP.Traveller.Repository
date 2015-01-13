@@ -111,6 +111,24 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         <p><strong>Request Officer:</strong> <?php if(isset($GLOBALS['result']['request']->officer_responsible_name)){ echo $GLOBALS['result']['request']->officer_responsible_name; } ?></p>
     </li>
     <?php } ?>
+
+
+
+    <?php if(isset($GLOBALS['result']['request']->division_name) && strlen($GLOBALS['result']['request']->division_name) > 0){ ?>
+    <li>
+        <p><strong><?php echo $_SESSION['div_name']; ?>: </strong><?php if(isset($GLOBALS['result']['request']->division_name)){ echo $GLOBALS['result']['request']->division_name; } ?></p>
+    </li>
+    <?php } ?>
+    <?php if(isset($GLOBALS['result']['request']->department_name) && strlen($GLOBALS['result']['request']->department_name) > 0){ ?>
+    <li>
+        <p><strong><?php echo $_SESSION['dept_name']; ?>: </strong><?php if(isset($GLOBALS['result']['request']->department_name)){ echo $GLOBALS['result']['request']->department_name; } ?></p>
+    </li>
+    <?php } ?>
+    
+
+
+
+
     <?php if(isset($GLOBALS['result']['request']->input_by_name) && strlen($GLOBALS['result']['request']->input_by_name) > 0){ ?>
     <li>
         <p><strong>Input Officer:</strong> <?php if(isset($GLOBALS['result']['request']->input_by_name)){ echo $GLOBALS['result']['request']->input_by_name; } ?></p>

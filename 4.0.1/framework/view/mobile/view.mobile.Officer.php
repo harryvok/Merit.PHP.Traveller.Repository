@@ -13,8 +13,8 @@ $GLOBALS['result'] = $GLOBALS['result']->officer_det;
 <ul class="no-ellipses" data-role="listview" data-inset="true" data-divider-theme="b">
     <li data-role="list-divider">Organisation</li>
     <li><p><strong>Officer Title:</strong> <?php if(isset($GLOBALS['result']->class_name)) echo $GLOBALS['result']->class_name; ?></p></li>
-    <li><p><strong>Division:</strong> <?php if(isset($GLOBALS['result']->div_name)) echo $GLOBALS['result']->div_name; ?></p></li>
-    <li><p><strong>Department:</strong> <?php if(isset($GLOBALS['result']->dep_name)) echo $GLOBALS['result']->dep_name; ?></p></li> 
+    <li><p><strong><?php echo $_SESSION['div_name']; ?>:</strong> <?php if(isset($GLOBALS['result']->div_name)) echo $GLOBALS['result']->div_name; ?></p></li>
+    <li><p><strong><?php echo $_SESSION['dept_name']; ?>:</strong> <?php if(isset($GLOBALS['result']->dep_name)) echo $GLOBALS['result']->dep_name; ?></p></li> 
     <li><p><strong>Centre: </strong><?php if(isset($GLOBALS['result']->centre_name)) echo $GLOBALS['result']->centre_name; ?> </p></li>   
     <li><p><strong>Location:</strong> <?php if(isset($GLOBALS['result']->location)) echo $GLOBALS['result']->location; ?></p></li>
 </ul> 

@@ -53,13 +53,13 @@ $GLOBALS['result'] = $GLOBALS['result']->officer_det;
                     </div>
                 </div>
                 <div class="column Fieldx1"> 
-                    <span class="summaryColumnTitle">Division</span>
+                    <span class="summaryColumnTitle"><?php echo $_SESSION['div_name']; ?></span>
                     <div class="summaryColumn">
                         <?php if(isset($GLOBALS['result']->div_name)) echo $GLOBALS['result']->div_name; ?>
                     </div>
                 </div>
                 <div class="column Fieldx1"> 
-                    <span class="summaryColumnTitle">Department</span>
+                    <span class="summaryColumnTitle"><?php echo $_SESSION['dept_name']; ?></span>
                     <div class="summaryColumn">
                         <?php if(isset($GLOBALS['result']->dep_name)) echo $GLOBALS['result']->dep_name; ?>
                     </div>
