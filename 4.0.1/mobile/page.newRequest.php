@@ -274,83 +274,216 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" name="old_company" id="old_company" />
                     </p>
                 </div>
+
+            <!-- ------------------------------------------------------- -->
+            <!-- Start Customer Section -->
+            <!-- ------------------------------------------------------- -->
+
                 <div data-role="collapsible" class="col" data-content-theme="c">
                     <h4>Customer Address</h4>
 
-                    <p>
 
+                    <!-- Customer Resides -->
                         <label>Customer Resides</label>
-
                         <select class="text" name="same" id="same" onchange="changeLocationType();">
                             <option value='i'>Inside Council Area</option>
                             <option value='o'>Outside Council Area</option>
                             <option value='s'>Same as Location</option>
                         </select>
+                    <!-- Customer Resides -->
 
+
+
+                    <!-- INSIDE -->
                         <div id="inside_ca" style="display: block;">
+
                             <label>Flat/Unit Number</label>
-                            <input name='i_cfaddno' id="i_cfno"  maxlength='15' value='<?php if(isset($_SESSION['rem_cust_address_number'])){ echo $_SESSION['rem_cust_address_number']; } ?>'>
+                            <input name='i_cfno' id="i_cfno"  maxlength='15' value='<?php if(isset($_SESSION['rem_cust_address_number'])){ echo $_SESSION['rem_cust_address_number']; } ?>'>
+
+                            <label>Unit Suffix</label>
+                            <input name='i_cfcode' id="i_cfcode"  maxlength='15'>
 
                             <label>Street Number</label>
                             <input name='i_cno' id="i_cno"  maxlength='15' value='<?php if(isset($_SESSION['rem_cust_address_fnumber'])){ echo $_SESSION['rem_cust_address_fnumber']; } ?>'>
 
-                            <label>Street<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
+                            <label>Street Suffix</label>
+                            <input name='i_cscode' id="i_cscode"  maxlength='15'>
 
-                            <input name='i_cstreet' placeholder="Search..." id="i_cstreet" data-mand="customer_address"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_cstreet'])){ echo $_SESSION['rem_i_cstreet']; } ?>'>
+                            <label>Street Name<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
+                            <input name='i_cstreet' placeholder="Search..." id="i_cstreet" data-mand="customer_address"  maxlength='100'>
+                            <input type="hidden" name="comparei_cstreet" id="comparei_cstreet" />
 
-
-                            <label>Type<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
-
+                            <label>Street Type<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
                             <input name='i_ctype' placeholder="Search..." id="i_ctype" data-mand="customer_address"  disabled="disabled"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_ctype']; } ?>'>
-
+                             <input type="hidden" name="comparei_ctype" id="comparei_ctype" />
 
                             <label>Suburb<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
-
                             <input  name='i_csuburb' placeholder="Search..." id="i_csuburb" data-mand="customer_address"  disabled="disabled"  maxlength='100' value='<?php if(isset($_SESSION['rem_i_csuburb'])){ echo $_SESSION['rem_i_csuburb']; } ?>'>
-
+                            <input type="hidden" name="comparei_csuburb" id="comparei_csuburb" />
 
                             <label>Postcode</label>
                             <input name='i_cpostcode' id="i_cpostcode"  maxlength='6'>
+                            <input type="hidden" name="comparei_cpostcode" id="comparei_cpostcode" />
 
-                            <label>Property</label>
+                            <label>Property Number</label>
                             <input name='i_cpropertynumber' id="i_cpropertynumber" />
+                            <input type="hidden" name="comparei_cpropertynumber" id="comparei_cpropertynumber" />
 
                             <label>Description</label>
                             <textarea id="i_cdesc" name="i_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
 
                             <input type="button" data-role="button" value="Clear" onclick="clearCustomerAddress()" />
-
-
                         </div>
+                    <!-- ^^ INSIDE -->
+
+                    <script type="text/javascript">
+                        // REGEX to CHECK INPUTS
+                        $('#i_cfno').keypress(function (e) {
+                            var regex = new RegExp("^[0-9-?]+$");
+                            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                            if (regex.test(str)) {
+                                return true;
+                            }
+
+                            e.preventDefault();
+                            return false;
+                        });
+                        $('#i_cfcode').keypress(function (e) {
+                            var regex = new RegExp("^[a-zA-Z]+$");
+                            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                            if (regex.test(str)) {
+                                return true;
+                            }
+
+                            e.preventDefault();
+                            return false;
+                        });
+                        $('#i_cno').keypress(function (e) {
+                            var regex = new RegExp("^[0-9-?]+$");
+                            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                            if (regex.test(str)) {
+                                return true;
+                            }
+
+                            e.preventDefault();
+                            return false;
+                        });
+                        $('#i_cscode').keypress(function (e) {
+                            var regex = new RegExp("^[a-zA-Z]+$");
+                            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                            if (regex.test(str)) {
+                                return true;
+                            }
+
+                            e.preventDefault();
+                            return false;
+                        });
+                        </script>
+
+                    <!-- OUTSIDE -->
                         <div id="outside_ca" style="display: none">
+
                             <label>Flat/Unit Number</label>
-                            <input name='o_cfaddno' onChange="changeLocationType()" id="o_cfno"  maxlength='15' value='<?php if(isset($_SESSION['rem_cust_address_number'])){ echo $_SESSION['rem_cust_address_number']; } ?>'>
+                            <input name='o_cfno' id="o_cfno"  maxlength='15'>
+
+                            <label>Unit Suffix</label>
+                            <input name='o_cfcode' id="o_cfcode"  maxlength='15'>
 
                             <label>Street Number</label>
-                            <input name='o_cno' onChange="changeLocationType()" id="o_cno" maxlength='15' value='<?php if(isset($_SESSION['rem_cust_address_fnumber'])){ echo $_SESSION['rem_cust_address_fnumber']; } ?>'>
+                            <input name='o_cno' id="o_cno"  maxlength='15'>
 
-                            <label>Street<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
-                            <input name='o_cstreet' id="o_cstreet" data-mand="customer_address" onChange="changeLocationType()" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_street'])){ echo $_SESSION['rem_cust_address_street']; } ?>'>
+                            <label>Street Suffix</label>
+                            <input name='o_cscode' id="o_cscode"  maxlength='15'>
 
-                            <label>Type<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
-                            <input name='o_ctype' id="o_ctype" data-mand="customer_address" onChange="changeLocationType()" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_streettype'])){ echo $_SESSION['rem_cust_address_streettype']; } ?>'>
+                            <label>Street Name</label>
+                            <input name='o_cstreet' placeholder="Search..." id="o_cstreet">
 
-                            <label>Suburb<span class="customer_address_label mandLabel" style="color: red; display: none;">*</span></label>
-                            <input name='o_csuburb' id="o_csuburb" data-mand="customer_address"  onChange="changeLocationType()" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_suburb'])){ echo $_SESSION['rem_cust_address_suburb']; } ?>'>
+                            <label>Street Type</label>
+                            <input name='o_ctype' placeholder="Search..." id="o_ctype">
+
+                            <label>Suburb</label>
+                            <input  name='o_csuburb' placeholder="Search..." id="o_csuburb">
 
                             <label>Postcode</label>
-                            <input name='o_cpostcode' id="o_cpostcode" onChange="changeLocationType()" maxlength='50' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'>
+                            <input name='o_cpostcode' id="o_cpostcode"  maxlength='6'>
+
+                            <label>Po Box / DX</label>
+                            <input name='o_cpobox' id="o_cpobox" />
 
                             <label>Description</label>
-                            <textarea id="o_cdesc" name="o_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000' value='<?php if(isset($_SESSION['rem_cust_address_desc'])){ echo $_SESSION['rem_cust_address_desc']; } ?>'></textarea>
+                            <textarea id="o_cdesc" name="o_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000'></textarea>
 
                             <input type="button" data-role="button" value="Clear" onclick="clearCustomerAddress()" />
                         </div>
-                        <input type="hidden" name="cust_address_id" id="cust_address_id" value="0" />
-                        <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" value="0" />
-                        <input type="hidden" name="cust_address" id="cust_address" value="" />
-                    </p>
+                    <!-- ^^ OUTSIDE -->
+
+                        <script type="text/javascript">
+                            // REGEX to CHECK INPUTS
+                            $('#o_cfno').keypress(function (e) {
+                                var regex = new RegExp("^[0-9-?]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#o_cfcode').keypress(function (e) {
+                                var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#o_cscode').keypress(function (e) {
+                                var regex = new RegExp("^[a-zA-Z]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            $('#o_cno').keypress(function (e) {
+                                var regex = new RegExp("^[0-9-?]+$");
+                                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                                if (regex.test(str)) {
+                                    return true;
+                                }
+
+                                e.preventDefault();
+                                return false;
+                            });
+                            </script>
+
+                            <input type="hidden" name="old_custid" id="old_custid" />
+		                    <input type="hidden" name="old_cstreet" id="old_cstreet" />
+		                    <input type="hidden" name="old_ctype" id="old_ctype" />
+		                    <input type="hidden" name="old_csuburb" id="old_csuburb" />
+		                    <input type="hidden" name="old_cpostcode" id="old_cpostcode" />
+		                    <input type="hidden" name="old_cpropertynumber" id="old_cpropertynumber" />
+		                    <input type="hidden" name="old_cno" id="old_cno" />
+		                    <input type="hidden" name="old_suffix" id="old_suffix" />
+
+		                    <input type="hidden" name="prefixholder" id="prefixholder" />
+                        
+                            <input type="hidden" name="cust_address_id" id="cust_address_id" />
+                            <input type="hidden" name="comparecust_address_id" id="comparecust_address_id" />
+
+                            <input type="hidden" name="cust_address_ctr" id="cust_address_ctr" />
+                            <input type="hidden" name="comparecust_address_ctr" id="comparecust_address_ctr" />
+
+                            <input type="hidden" name="cust_address" id="cust_address" value="" />
                 </div>
+                <!-- End Customer Section -->
+                <!-- ------------------------------------------------------- -->
+
+
 
                 <div data-role="collapsible" class="col" data-content-theme="c">
                     <h4>Attachment</h4>

@@ -1,11 +1,93 @@
 
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        /* What to parse with regEx */
+        var tocheck = $('#placeholder').val();
+        $('#poholder').html("<strong>PO Box / DX:</strong>");
+        $('#suffixholder').html("<strong>Unit/Flat Number:</strong>");
+        $('#householder').html("<strong>House Number:</strong>");
+
+        /* Parse to variables */
+        var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
+        var unitFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[2];
+        var unitToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[3];
+        var unitCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[4];
+        var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
+        var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
+        var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
+
+        /* Catch exceptions */
+        var unitNumber = "";
+        var streetNumber = "";
+
+        var trimmed = $.trim(prefixOut);
+        /* Catch PO or DX */
+        if (trimmed == "PO Box" || trimmed == "DX") {
+            var poboxNumb = prefixOut + " " + unitFromOut + " " + unitCodeOut;
+            $('#poholder').html("<strong>PO Box / DX:</strong>" + " " + poboxNumb);
+        } else {
+
+            /* If prefix is empty */
+            if (prefixOut == "") {
+
+                /* Set Unit values to Street values */
+                if (streetFromOut == "") {
+                    streetFromOut = unitFromOut;
+                    streetToOut = unitToOut;
+                    streetCodeOut = unitCodeOut;
+                    unitFromOut = "";
+                    unitToOut = "";
+                    unitCodeOut = "";
+                }
+            }
+
+            /* So "-"'s aren't added to empty fields */
+            if (unitFromOut != "") {
+                if (unitToOut != "") {
+                    unitNumber = unitFromOut + '-' + unitToOut;
+                }
+                else {
+                    unitNumber = unitFromOut;
+                }
+            }
+            if (streetFromOut != "") {
+                if (streetToOut != "") {
+                    streetNumber = streetFromOut + '-' + streetToOut;
+                }
+                else {
+                    streetNumber = streetFromOut;
+                }
+            }
+
+            /* If no unit code the regEx will take this "/" from string, clear it */
+            if (unitCodeOut == "/") {
+                unitCodeOut = "";
+            }
+
+            /* Create the Strings to feed into output */
+            unitNumber = unitNumber + unitCodeOut;
+            streetNumber = streetNumber + streetCodeOut;
+        }
+        $('#suffixholder').html("<strong>Unit/Flat Number:</strong>" + " " + unitNumber);
+        $('#householder').html("<strong>House Number:</strong>" + " " + streetNumber);
+        
+    });
+    </script>
+
+
 <ul class="no-ellipses" data-role="listview" data-inset="true" data-divider-theme="d">
+
   	<li data-role="list-divider">Address Details</li>
-        <li>
-            <p><strong>Unit/Flat Number:</strong> <?php if(isset($GLOBALS['result']->house_number) && isset($GLOBALS['result']->house_suffix) && $GLOBALS['result']->house_suffix != $GLOBALS['result']->house_number && strpos($GLOBALS['result']->house_suffix, "-") == false && !ctype_alnum($GLOBALS['result']->house_suffix)){ $flat = explode("/", $GLOBALS['result']->house_suffix); echo $flat[0]; } ?></p> 
+        <li><input type="hidden" id="placeholder" value="<?php echo $GLOBALS['result']->house_suffix ?>"/>
+            <p id="suffixholder"></p> 
         </li>
         <li>
-            <p><strong>House Number:</strong> <?php if(isset($GLOBALS['result']->house_suffix) && strpos($GLOBALS['result']->house_suffix, "-") !== false || ctype_alnum($GLOBALS['result']->house_suffix)) echo $GLOBALS['result']->house_suffix; else echo $GLOBALS['result']->house_number; ?></p>
+            <p id="householder"></p>
+        </li>
+        <li>
+            <p id="poholder"></p>
         </li>
         <li>
             <p><strong>Property Number:</strong> <?php echo $GLOBALS['result']->property_no; ?></p>

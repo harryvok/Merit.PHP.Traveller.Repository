@@ -4,22 +4,154 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
     <script type="text/javascript">
 	 $(document).ready(function(){
 		$('.address_row').click(function(){
-			var id = $(this).attr('id');
-			$('#same').val('i');
-			changeLocationType();
-			$('#i_cno').val($('#ret_'+id+'_house_number').val());
-			$('#i_cfno').val($('#ret_'+id+'_house_suffix').val());
-			$('#i_cstreet').val($('#ret_'+id+'_street_name').val());
-			$('#i_ctype').val($('#ret_'+id+'_street_type').val());
-			$('#i_csuburb').val($('#ret_'+id+'_locality').val());
-			$('#cust_address_id').val($('#ret_' + id + '_address_id').val());
-			$('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
-			$('#i_cpostcode').val($('#ret_' + id + '_postcode').val());
-			$('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
-			$("#i_ctype").textinput('enable');
-			$("#i_csuburb").textinput('enable');
-			$('#popup').popup("close");
-			
+		    var id = "";
+		    id = $(this).attr('id');
+		    $('#same').val('i');
+
+            /* What to parse with regEx */
+                var tocheck = $('#ret_' + id + '_house_suffix').val();
+
+                /* Parse to variables */
+                var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
+                var unitFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[2];
+                var unitToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[3];
+                var unitCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[4];
+                var streetFromOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[5];
+                var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
+                var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
+
+             /*   alert("Prefix: " + prefixOut);
+                alert("Unit From: " + unitFromOut);
+                alert("Unit To: " + unitToOut);
+                alert("Unit Code: " + unitCodeOut);
+                alert("Street From: " + streetFromOut);
+                alert("Street To: " + streetToOut);
+                alert("Street Code: " + streetCodeOut); */
+                
+                /* Catch exceptions */
+                var unitNumber;
+                var streetNumber;
+
+                /* If prefix is empty */
+                if (prefixOut == "") {
+
+                    /* Set Unit values to Street values */
+                    if (streetFromOut == "") {
+                        streetFromOut = unitFromOut;
+                        streetToOut = unitToOut;
+                        streetCodeOut = unitCodeOut;
+                        unitFromOut = "";
+                        unitToOut = "";
+                        unitCodeOut = "";
+                    }
+                }
+
+                /* So "-"'s aren't added to empty fields */
+                if (unitFromOut != "") {
+                    if (unitToOut != "") {
+                        unitNumber = unitFromOut + '-' + unitToOut;
+                    }
+                    else {
+                        unitNumber = unitFromOut;
+                    }
+                }
+                if (streetFromOut != "") {
+                    if (streetToOut != "") {
+                        streetNumber = streetFromOut + '-' + streetToOut;
+                    }
+                    else {
+                        streetNumber = streetFromOut;
+                    }
+                }
+
+                /* If no unit code the regEx will take this "/" from string, clear it */
+                if (unitCodeOut == "/") {
+                    unitCodeOut = "";
+                }
+
+
+                $('#prefixholder').val(prefixOut);
+
+                /* Flat Number  */  $('#i_cfno').val(unitNumber);
+                /* Flat Code    */  $('#i_cfcode').val(unitCodeOut);
+                /* House Number */  $('#i_cno').val(streetNumber);
+                /* House Suffix */  $('#i_cscode').val(streetCodeOut);
+
+                /* Street Name */ $('#i_cstreet').val($('#ret_' + id + '_street_name').val());
+                /* Compare */ $('#comparei_cstreet').val($('#ret_' + id + '_street_name').val());
+
+                /* Street Type */ $('#i_ctype').val($('#ret_' + id + '_street_type').val());
+                /* Compare */ $('#comparei_ctype').val($('#ret_' + id + '_street_type').val());
+
+                /* Suburb */      $('#i_csuburb').val($('#ret_' + id + '_locality').val());
+                /* Compare */    $('#comparei_csuburb').val($('#ret_' + id + '_locality').val());
+
+                /* Postcode */    $('#i_cpostcode').val($('#ret_' + id + '_postcode').val());
+                /* Compare */    $('#comparei_cpostcode').val($('#ret_' + id + '_postcode').val());
+
+                /* Prop No. */    $('#i_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+                /* Compare */    $('#comparei_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+
+                /* Cust add id */ $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
+                    /* Compare */ $('#comparecust_address_id').val($('#ret_' + id + '_address_id').val());
+
+                /* Something */   $('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
+                    /* Compare */   $('#comparecust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
+
+
+                /* Set the old values */
+                $('#old_custid').val($('#ret_' + id + '_address_id').val());
+                $('#old_cno').val($('#ret_' + id + '_house_number').val());
+                $('#old_suffix').val($('#ret_' + id + '_house_suffix').val());
+                $('#old_cstreet').val($('#ret_' + id + '_street_name').val());
+                $('#old_ctype').val($('#ret_' + id + '_street_type').val());
+                $('#old_csuburb').val($('#ret_' + id + '_locality').val());
+                $('#old_cpostcode').val($('#ret_' + id + '_postcode').val());
+                $('#old_cpropertynumber').val($('#ret_' + id + '_property_no').val());
+                              
+                /* Rules */
+                $("#i_cpostcode").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+                $("#i_cpropertynumber").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+                
+                var name_id = "<?php echo $_POST['name_set']; ?>";
+                $('#pref_title').val($('#ret_' + name_id + '_pref_title').val());
+                $('#surname').val($('#ret_' + name_id + '_surname').val());
+                $('#given').val($('#ret_' + name_id + '_given_names').val());
+                $('#cust_phone').val($('#ret_' + name_id + '_telephone').val());
+                $('#cust_work').val($('#ret_' + name_id + '_work_phone').val());
+                $('#cust_mobile').val($('#ret_' + name_id + '_mobile_no').val());
+                $('#email_address').val($('#ret_' + name_id + '_email_address').val());
+                $('#company').val($('#ret_' + name_id + '_company_name').val());
+                $('#name_id').val($('#ret_' + name_id + '_name_id').val());
+                $('#name_ctr').val($('#ret_' + name_id + '_name_ctr').val());
+                $('#name_origin').val($('#ret_' + name_id + '_name_origin').val());
+		    //$('#old_name_id').val($('#ret_' + name_id + '_name_id').val());
+                $('#old_pref_title').val($('#ret_' + name_id + '_pref_title').val());
+                $('#old_given').val($('#ret_' + name_id + '_given_names').val());
+                $('#old_surname').val($('#ret_' + name_id + '_surname').val());
+                $('#old_cust_phone').val($('#ret_' + name_id + '_telephone').val());
+                $('#old_cust_work').val($('#ret_' + name_id + '_work_phone').val());
+                $('#old_cust_mobile').val($('#ret_' + name_id + '_mobile_no').val());
+                $('#old_email_address').val($('#ret_' + name_id + '_email_address').val());
+                $('#old_company').val($('#ret_' + name_id + '_company_name').val());
+
+
+                if ($("#i_ctype").val().length > 0) {
+                    $("#i_ctype").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+                }
+                if ($("#i_csuburb").val().length > 0) {
+                    $("#i_csuburb").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
+                }
+                if ($('#ret_' + name_id + '_name_id').val() > 0 || $('#ret_' + name_id + '_name_id').val() != "0" || $('#ret_' + name_id + '_name_id').val() != 0) {
+                    $("#CustSummary").removeAttr("disabled")
+                }
+                if ($('#ret_' + id + '_address_id').val() > 0 || $('ret_' + id + '_address_id').val() != "0" || $('ret_' + id + '_address_id').val() != 0) {
+                    $("#CustAddSummary").removeAttr("disabled")
+                }
+
+
+
+			$('#popup').popup("close");		
 		});
         
         $("#continue").click(function(){
@@ -43,8 +175,8 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
             $set = "addressrow_".$i.$result_n_ar->address_id.$result_n_ar->address_ctr;
             ?>
             <input type="hidden" id="ret_<?php echo $set; ?>_address_id" value="<?php if(isset($result_n_ar->address_id)){ echo $result_n_ar->address_id; } else { echo ""; } ?>" />
-             <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_number) && isset($result_n_ar->house_suffix) && $result_n_ar->house_suffix != $result_n_ar->house_number && strpos($result_n_ar->house_suffix, "-") == false && !ctype_alnum($result_n_ar->house_suffix)){ $flat = explode("/", $result_n_ar->house_suffix); echo $flat[0]; } ?>" />
-            <input type="hidden" id="ret_<?php echo $set; ?>_house_number" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; else echo $result_n_ar->house_number; ?>" />
+             <input type="hidden" id="ret_<?php echo $set; ?>_house_suffix" value="<?php if(isset($result_n_ar->house_suffix)){ echo $result_n_ar->house_suffix; } else { echo ""; } ?>" />
+            <input type="hidden" id="ret_<?php echo $set; ?>_house_number" value="<?php if(isset($result_n_ar->house_number)) echo $result_n_ar->house_number; ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_street_name" value="<?php if(isset($result_n_ar->street_name)){ echo $result_n_ar->street_name; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_street_type" value="<?php if(isset($result_n_ar->street_type)){ echo $result_n_ar->street_type; } else { echo ""; } ?>" />
             <input type="hidden" id="ret_<?php echo $set; ?>_locality" value="<?php if(isset($result_n_ar->locality)){ echo $result_n_ar->locality; } else { echo ""; } ?>" />

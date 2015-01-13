@@ -1040,7 +1040,6 @@ $(document).ready(function () {
                 }
                 var save = prefix + " " + number + " " + suffix;
 
-                alert(save);
 
                 $('#o_cpobox').val(save);
             }
