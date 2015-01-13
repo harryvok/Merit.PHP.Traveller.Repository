@@ -164,6 +164,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" id="defaultLat" value="-37.814107" />
                         <input type="hidden" id="defaultLng" value="144.96328" />
                         <input type="hidden" name="loc_address" id="loc_address" value="" />
+
                         <label>Facility Type</label>
                         <input class="text"  placeholder="Search..." name='facilityTypeInput' id="facilityTypeInput" value='<?php if(isset($_SESSION['rem_facilityTypeInput'])){ echo $_SESSION['rem_facilityTypeInput']; } ?>'>
                         <input type="hidden" name='facilityTypeId' id="facilityTypeId" value='<?php if(isset($_SESSION['rem_facilityTypeId'])){ echo $_SESSION['rem_facilityTypeId']; } ?>'>
@@ -171,6 +172,14 @@ if(isset($_SESSION['user_id'])){
                         <input class="text"  placeholder="Search..." name='facilityInput' data-mand="facility" id="facilityInput" value='<?php if(isset($_SESSION['rem_facilityInput'])){ echo $_SESSION['rem_facilityInput']; } ?>'>
                         <input type="hidden" name='facilityId' id="facilityId" value='<?php if(isset($_SESSION['rem_facilityId'])){ echo $_SESSION['rem_facilityId']; } ?>'>
                         <input type="hidden" name='addressId' id="addressId" />
+                       
+                         <label>Responsible</label>
+                        <input class="text" name='responsible' onChange="" readonly="readonly" id="responsible" value=''>
+                        <input type="hidden" name='officerName' id="officerName" />
+                            
+                        <label>Facility Description</label>
+                        <input class="text" name='facilitydescription' onChange="" readonly="readonly"  id="facilitydescription" value=''>
+                        <input type="hidden" name='facilityDesc' id="facilityDesc" />
 
                         <label>Flat/Unit Number</label>
                         <input name='lfaddno' onChange="changeLocationType()" id="lfno"  maxlength='15' value='<?php if(isset($_SESSION['rem_loc_address_number'])){ echo $_SESSION['rem_loc_address_number']; } ?>'>
