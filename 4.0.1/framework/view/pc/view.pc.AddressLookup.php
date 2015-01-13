@@ -30,6 +30,11 @@
                 var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
                 var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
                 
+
+                alert("Prefix: " + prefixOut);
+                alert("Number: " + unitFromOut);
+                alert("Code: " + unitCodeOut);
+
                 /* Catch exceptions */
                 var unitNumber;
                 var streetNumber;
@@ -150,6 +155,11 @@
                 if ($('#ret_' + id + '_address_id').val() > 0 || $('ret_' + id + '_address_id').val() != "0" || $('ret_' + id + '_address_id').val() != 0) {
                     $("#CustAddSummary").removeAttr("disabled")
                 }
+
+                if ($.trim(prefixOut) == "PO Box" || $.trim(prefixOut) == "DX") {
+                    alert("Detected that selection was PO or DX");
+                }
+
                 $('#popup').fadeOut("fast");
             });
 

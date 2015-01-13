@@ -90,9 +90,6 @@
             <p id="poholder"></p>
         </li>
         <li>
-            <p><strong>Property Number:</strong> <?php echo $GLOBALS['result']->property_no; ?></p>
-        </li>
-        <li>
             <p><strong>Street:</strong> <?php echo $GLOBALS['result']->street_name; ?></p>
         </li>
         <li>
@@ -103,6 +100,9 @@
         </li>
         <li>
             <p><strong>Postcode:</strong> <?php echo $GLOBALS['result']->postcode; ?></p>
+        </li>
+        <li>
+            <p><strong>Property Number:</strong> <?php echo $GLOBALS['result']->property_no; ?></p>
         </li>
         <li>
             <p><strong>Area Group:</strong> <?php echo $GLOBALS['result']->area_group; ?></p>

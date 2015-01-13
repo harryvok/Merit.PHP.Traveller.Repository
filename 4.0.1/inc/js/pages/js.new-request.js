@@ -1022,7 +1022,7 @@ $(document).ready(function () {
 
                 // Stuff to pass to function
 
-                var tocheck = $('#o_cpobox').val();
+                var tocheck = $('#o_cpobox').val().toUpperCase();
 
                 var pobox = getPOParts(tocheck);
                 var dxbox = getDXParts(tocheck);
@@ -1039,7 +1039,6 @@ $(document).ready(function () {
                     prefix = "DX";
                 }
                 var save = prefix + " " + number + " " + suffix;
-
 
                 $('#o_cpobox').val(save);
             }
@@ -1110,7 +1109,7 @@ $(document).ready(function () {
 
                 // Stuff to pass to function
 
-                var tocheck = $('#o_cpobox').val();
+                var tocheck = $('#o_cpobox').val().toUpperCase();
 
                 var pobox = getPOParts(tocheck);
                 var dxbox = getDXParts(tocheck);
@@ -1180,7 +1179,7 @@ $(document).ready(function () {
 
                 // Stuff to pass to function
 
-                var tocheck = $('#o_cpobox').val();
+                var tocheck = $('#o_cpobox').val().toUpperCase();
 
                 var pobox = getPOParts(tocheck);
                 var dxbox = getDXParts(tocheck);
