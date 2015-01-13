@@ -15,7 +15,6 @@ if(isset($GLOBALS['result']->property_details)){
                         $("#default").page();
                     });
                     $('.address_row').click(function(){
-                        var id = "";
                         var id = $(this).attr('id');
 	                    if ($("#loc_address").val() == "Y" && $("#cust_address").val() == "N") {
 	                        $('#lno').val($('#ret_' + id + '_house_number').val());
@@ -31,7 +30,7 @@ if(isset($GLOBALS['result']->property_details)){
 	                    else if ($("#loc_address").val() == "N" && $("#cust_address").val() == "Y") {
 
 	                        /* What to parse with regEx */
-	                        var tocheck = $('#house').val();
+	                        var tocheck = $('#ret_' + id + '_house').val();
 
 	                        /* Parse to variables */
 	                        var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
@@ -181,7 +180,7 @@ if(isset($GLOBALS['result']->property_details)){
                             }
                         }                   
                         ?>
-                        <input type="hidden" id="house" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; else echo $result_n_ar->house_number; ?>" />
+                        <input type="hidden" id="ret_<?php echo $set.$count; ?>_house" value="<?php if(isset($result_n_ar->house_suffix) && strpos($result_n_ar->house_suffix, "-") !== false || ctype_alnum($result_n_ar->house_suffix)) echo $result_n_ar->house_suffix; else echo $result_n_ar->house_number; ?>" />
                         <input type="hidden" id="ret_<?php echo $set.$count; ?>_house_number" value="<?php if($streetno != "") echo $streetno; else echo $result_n_ar->house_number; ?>" />
                         <input type="hidden" id="ret_<?php echo $set.$count; ?>_unit" value="<?php echo $unitno; ?>" />
                         <input type="hidden" id="ret_<?php echo $set.$count; ?>_property_no" value="<?php if(isset($result_n_ar->property_no)){ echo $result_n_ar->property_no; } else { echo ""; } ?>" />

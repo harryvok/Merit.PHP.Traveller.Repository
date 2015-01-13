@@ -114,7 +114,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                 $("#i_cpropertynumber").prop("disabled", false).prop("readonly", true).removeClass("ui-disabled").textInputState("enable");
                 
                 var name_id = "<?php echo $_POST['name_set']; ?>";
-                $('#pref_title').val($('#ret_' + name_id + '_pref_title').val());
+               /* $('#pref_title').val($('#ret_' + name_id + '_pref_title').val());
                 $('#surname').val($('#ret_' + name_id + '_surname').val());
                 $('#given').val($('#ret_' + name_id + '_given_names').val());
                 $('#cust_phone').val($('#ret_' + name_id + '_telephone').val());
@@ -124,7 +124,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                 $('#company').val($('#ret_' + name_id + '_company_name').val());
                 $('#name_id').val($('#ret_' + name_id + '_name_id').val());
                 $('#name_ctr').val($('#ret_' + name_id + '_name_ctr').val());
-                $('#name_origin').val($('#ret_' + name_id + '_name_origin').val());
+                $('#name_origin').val($('#ret_' + name_id + '_name_origin').val()); */
 		    //$('#old_name_id').val($('#ret_' + name_id + '_name_id').val());
                 $('#old_pref_title').val($('#ret_' + name_id + '_pref_title').val());
                 $('#old_given').val($('#ret_' + name_id + '_given_names').val());
