@@ -149,6 +149,21 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                     $("#CustAddSummary").removeAttr("disabled")
                 }
 
+                if ($.trim(prefixOut) == "PO Box" || $.trim(prefixOut) == "DX") {
+                    // alert("Detected that selection was PO or DX");
+                    $('#same').val('o');
+                    $('#same').selectmenu('refresh');
+                    $('#inside_ca').hide();
+                    $('#outside_ca').show();
+
+                    /* Street Name */ $('#o_cstreet').val($('#ret_' + id + '_street_name').val());
+                    /* Street Type */ $('#o_ctype').val($('#ret_' + id + '_street_type').val());
+                    /* Suburb */      $('#o_csuburb').val($('#ret_' + id + '_locality').val());
+                    /* Postcode */    $('#o_cpostcode').val($('#ret_' + id + '_postcode').val());
+                    /* Prop No. */    $('#o_cpobox').val(prefixOut + " " + unitFromOut + unitCodeOut);
+                    /* Cust add id */ $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
+                    /* Something */   $('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
+                }
 
 
 			$('#popup').popup("close");		

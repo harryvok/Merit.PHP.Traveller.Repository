@@ -30,11 +30,6 @@
                 var streetToOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[6];
                 var streetCodeOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[7];
                 
-
-                alert("Prefix: " + prefixOut);
-                alert("Number: " + unitFromOut);
-                alert("Code: " + unitCodeOut);
-
                 /* Catch exceptions */
                 var unitNumber;
                 var streetNumber;
@@ -157,7 +152,18 @@
                 }
 
                 if ($.trim(prefixOut) == "PO Box" || $.trim(prefixOut) == "DX") {
-                    alert("Detected that selection was PO or DX");
+                    // alert("Detected that selection was PO or DX");
+                    $('#same').val('o');
+                    $('#inside_ca').hide();
+                    $('#outside_ca').show();
+
+                    /* Street Name */ $('#o_cstreet').val($('#ret_' + id + '_street_name').val());
+                    /* Street Type */ $('#o_ctype').val($('#ret_' + id + '_street_type').val());
+                    /* Suburb */      $('#o_csuburb').val($('#ret_' + id + '_locality').val());
+                    /* Postcode */    $('#o_cpostcode').val($('#ret_' + id + '_postcode').val());
+                    /* Prop No. */    $('#o_cpobox').val(prefixOut + " " + unitFromOut + unitCodeOut);
+                    /* Cust add id */ $('#cust_address_id').val($('#ret_' + id + '_address_id').val());
+                    /* Something */   $('#cust_address_ctr').val($('#ret_' + id + '_address_ctr').val());
                 }
 
                 $('#popup').fadeOut("fast");

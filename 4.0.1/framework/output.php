@@ -6,6 +6,7 @@ if(isset($_SESSION['request_id'])){ $req_id =  $_SESSION['request_id']; } else{ 
 if(isset($_SESSION['custom_error'])){ $custom_error =  $_SESSION['custom_error']; } else{ $custom_error = 'None'; }
 if(isset($_SESSION['request_id_fin'])){ $request_id_fin =  $_SESSION['request_id_fin']; } else{ $request_id_fin = ''; }
 $error_array = array(
+    'error_toomanylogin' => 'Error user not active in Merit. Please contact your System Administrator',
 	'error_login' => 'Incorrect username or password.',
     'error_database' => 'Error connecting to the database.',
 	'error_action_submit_message' => $act_msg,

@@ -1,5 +1,5 @@
 <div data-role="collapsible" class="col" data-collapsed="true" data-corners="false" data-content-theme="c">
-    
+           <?php $triggerthebreak2 = 1; ?> 
     <h4>Notifications <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php if(isset($GLOBALS['result']['notifications']->notification_details)) echo count($GLOBALS['result']['notifications']->notification_details); else echo 0; ?></span></h4>
     <p>
         <strong>Filter</strong>
@@ -10,7 +10,9 @@
                 <option value="Action">Action</option>
                 <option value="Supervisor">Supervisor</option>
         </select>
+        <?php $triggerthebreak = 1; ?>
         <?php unset($_SESSION['filenameudf']); ?>
+        <?php unset($_FILES); ?>
         <ul class="no-ellipses" data-role="listview" data-count-theme="b" data-inset="true">
             <?php
             

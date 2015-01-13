@@ -1523,6 +1523,12 @@ class Model {
                 $_SESSION['error_database'] = 1;
                 $_SESSION['resfound_login'] = 0;
             }
+            if($result->ws_status == "-1" && $result->ws_message == "Error user not active in Merit. Please contact your System Administrator"){
+                $_SESSION['done'] = 1;
+                $_SESSION['error'] = 1;
+                $_SESSION['error_toomanylogin'] = 1;
+                $_SESSION['resfound_login'] = 0;
+            }
             elseif($result->ws_status == "-1"){
                 $_SESSION['done'] = 1;
                 $_SESSION['error'] = 1;
