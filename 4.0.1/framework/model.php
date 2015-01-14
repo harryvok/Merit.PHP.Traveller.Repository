@@ -2314,6 +2314,7 @@ class Model {
     }
 
     public function processAttachment($params = NULL){
+        unset($_SESSION['filenameudf']);
         $request_id = $_POST['request_id'];
         if(isset($_POST['action_id'])){ $action_id = $_POST['action_id']; }
         if(isset($_POST['act_officer'])){$act_officer = $_POST['act_officer']; }
@@ -2338,7 +2339,9 @@ class Model {
             $_SESSION['redirect'] = 'index.php?page='.$page.'&id='.$ref."&d=ca";
         }
         //used to be process direct attachment over here.
-        $this->processDirectAttachment($attachment, $request_id, $description);  
+        $this->processDirectAttachment($attachment, $request_id, $description);
+        unset($_FILES["attachment"]);
+        unset($_SESSION['filename']);
     }
     
     public function processEditAttachment($params = NULL){

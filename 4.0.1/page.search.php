@@ -134,7 +134,7 @@
                         url: 'inc/ajax/ajax.RequestSearch.php',
                         data: $("#advancedSearch").serialize(),
                         type: 'POST',
-                        timeout: 1000000,
+                        timeout: 10000,
                         success: function (data) {
                             Unload();
                             $("#searchResults").html(data);
@@ -143,10 +143,10 @@
                         error: function (x, t, m) {
                             Unload();
                             if (t == "timeout") {
-                                alert("Please narrow your search.");
+                                alert("Search timed out. Please narrow your search.");
                             }
                             else {
-                                alert("There was an error with the search.");
+                                alert("There was an error with the search. Please Narrow your search and try again.");
                             }
 
                         }
