@@ -12,6 +12,15 @@ $(document).ready(function () {
         }
     })
 
+    $('#o_cpobox').keydown(function () {
+        if ($('#o_cpobox').val().length > 0) {
+            $('#o_csuburb').addClass('required');
+        }
+        if ($('#o_cpobox').val().length < 1) {
+            $('#o_csuburb').removeClass('required');
+        }
+    });
+
     $("#surname").focusout(function () {
         if ($("#surname").val().length > 0) {
             $("#cust_type").addClass("required");
@@ -1038,7 +1047,7 @@ $(document).ready(function () {
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
                     prefix = "DX";
                 }
-                else {
+                else if ($.trim(tocheck) != ""){
                     prefix="PO Box"
                 }
                 var save = prefix + " " + number + " " + suffix;
