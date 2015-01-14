@@ -102,9 +102,12 @@ if(!isset($_GET['d'])){
                         </div>
                         <div class="column r25">
                             <br /><br />
+                            <?php if($_SESSION['notify_insurance'] == "Y") { ?>
                             <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
-                            <input type="checkbox" name="notifyInsuranceOfficer" value="Y"> <br />
-<!--                            <label for="duedate">Due Date: </label>-->
+                            <input type="checkbox" name="notifyInsuranceOfficer" value="Y"> 
+                            <?php } ?>
+                            <br />
+                       <!-- <label for="duedate">Due Date: </label>-->
                             <span id="duedate"></span>
                             <input type="hidden" id="due" name="due" />
                         </div>
