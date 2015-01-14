@@ -470,7 +470,6 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
                 }
                 elseif($count_udf == 1){               
                     $udf =$GLOBALS['result']['udfs']->udf_details;
-                    foreach($GLOBALS['result']['udfs']->udf_details as $udf){
                         if($udf->udf_active_ind == "Y"&& $udf->udf_action_id != 0){
                             ?>
                             <li>
@@ -487,7 +486,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
 							   </li>
 							<?php  
 						}
-                    }
+                    
                 }
                             ?>
 		</ul>

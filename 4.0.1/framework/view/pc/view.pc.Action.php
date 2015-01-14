@@ -304,6 +304,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
         }
 ?>
 
+
 <?php
 if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     $show_hide = 0;
@@ -348,7 +349,7 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
     }  
     if ($show_hide > 0)
     {
-?>  
+ ?>  
 <div class="summaryContainer">
     <h1>Additional Information</h1>
     <div>
