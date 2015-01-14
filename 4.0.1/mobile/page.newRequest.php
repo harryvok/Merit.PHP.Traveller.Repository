@@ -419,6 +419,8 @@ if(isset($_SESSION['user_id'])){
                             <label>Postcode</label>
                             <input name='o_cpostcode' id="o_cpostcode"  maxlength='6'>
 
+                            
+
                             <label>Description</label>
                             <textarea id="o_cdesc" name="o_cdesc" onchange="" style="resize:none; height:3em" maxlength='1000'></textarea>
 

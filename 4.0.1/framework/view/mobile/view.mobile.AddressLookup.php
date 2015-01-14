@@ -71,6 +71,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 
 
                 $('#prefixholder').val(prefixOut);
+                var poprefix = $('#prefixholder').val().toUpperCase();
 
                 /* Flat Number  */  $('#i_cfno').val(unitNumber);
                 /* Flat Code    */  $('#i_cfcode').val(unitCodeOut);
@@ -149,7 +150,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
                     $("#CustAddSummary").removeAttr("disabled")
                 }
 
-                if ($.trim(prefixOut) == "PO Box" || $.trim(prefixOut) == "DX") {
+                if ($.trim(poprefix) == "PO BOX" || $.trim(poprefix) == "DX") {
                     // alert("Detected that selection was PO or DX");
                     $('#same').val('o');
                     $('#same').selectmenu('refresh');
