@@ -1038,6 +1038,9 @@ $(document).ready(function () {
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
                     prefix = "DX";
                 }
+                else {
+                    prefix="PO Box"
+                }
                 var save = prefix + " " + number + " " + suffix;
 
                 $('#o_cpobox').val(save);
@@ -1124,6 +1127,9 @@ $(document).ready(function () {
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
                     prefix = "DX";
                 }
+                else {
+                    prefix = "PO Box"
+                }
                 var save = prefix + " " + number + " " + suffix;
 
 
@@ -1193,6 +1199,9 @@ $(document).ready(function () {
                 }
                 else if (dxbox == "dx" || dxbox == "d x" || dxbox == "Dx" || dxbox == "DX") {
                     prefix = "DX";
+                }
+                else {
+                    prefix = "PO Box"
                 }
                 var save = prefix + " " + number + " " + suffix;
 

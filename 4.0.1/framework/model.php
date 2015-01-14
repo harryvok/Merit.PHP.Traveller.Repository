@@ -1602,7 +1602,7 @@ class Model {
     }
     
     public function processSendNotification($params = NULL){
-        
+        unset($_SESSION['filename']);
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
             'password' => $_SESSION['password'],
@@ -2341,7 +2341,6 @@ class Model {
         //used to be process direct attachment over here.
         $this->processDirectAttachment($attachment, $request_id, $description);
         unset($_FILES["attachment"]);
-        unset($_SESSION['filename']);
     }
     
     public function processEditAttachment($params = NULL){
