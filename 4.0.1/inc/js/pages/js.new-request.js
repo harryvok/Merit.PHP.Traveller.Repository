@@ -281,14 +281,14 @@ $(document).ready(function () {
             }
             CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
             QueryUDFs($("#function").val(), $("#request").val(), $("#service").val());
-            GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto,"N");
+            GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto, "N");
             // Perform count only check on full SRF
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             var date = new Date().toISOString();
             GetBookingSummary(date);
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
-            getSRFRedText();          
+            getSRFRedText();
             $("#cust_type").val(function_name_type);
             $("#cust_type option").prop("selected", false);
             $("#cust_type option[value=" + function_name_type + "]").prop("selected", true);
@@ -300,7 +300,8 @@ $(document).ready(function () {
             } else {
                 $("#add-request-textarea").focus();
             }
-        }       
+        }             
+       
     }
 
     function functionSuccess(data) {
@@ -312,7 +313,9 @@ $(document).ready(function () {
         
         //$("#textareaissue").focus();
         if (data.length === 0) {
+            $("#functionInput").val("");
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
+
 
             // If function isn't entered, perform count only check
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), '');
@@ -370,11 +373,13 @@ $(document).ready(function () {
                 Unload();
                 if (data == "None") {
                     $("#submit").prop('disabled', true).buttonState("disable");
-                    $("#saveMore").prop('disabled', true).buttonState("disable");                 
+                    $("#saveMore").prop('disabled', true).buttonState("disable");
+                    
                 }
                 else {
-                    $("#submit").prop('disabled', false).buttonState("enable");
+                    $("#submit").prop('disabled', false).buttonState("disable");
                     $("#saveMore").prop('disabled', false).buttonState("enable");
+
                 }
             }
         });

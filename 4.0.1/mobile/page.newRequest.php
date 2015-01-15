@@ -2,6 +2,10 @@
 if(isset($_SESSION['user_id'])){
 ?>
 
+
+
+
+
 <div data-role="page" id="default">
     <div data-role="header" data-tap-toggle="false" data-position="fixed">
         <h1>New Request</h1>
@@ -45,7 +49,6 @@ if(isset($_SESSION['user_id'])){
                     <h4>Request Details</h4>
                     <p>
                         
-
                         <label>Keyword</label>
                         <input class="text" name='keyword' id="keywordSearch" maxlength='15' placeholder="Search...">
 
@@ -528,6 +531,7 @@ if(isset($_SESSION['user_id'])){
                     <input name="Submit input" type="submit" data-role="button" id="submit" value="Submit" />
                     <input type="button" data-role="button" id="saveMore" value="Save & More">
                     <input type="button" data-role="button" id="saveCountOnly" value="Count Only">
+                    <br />
                 </div>
 
                 <input type="hidden" name="saveCountOnly" id="countOnlyInd" value="N" />
