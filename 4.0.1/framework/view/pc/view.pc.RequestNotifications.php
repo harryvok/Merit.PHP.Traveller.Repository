@@ -2,6 +2,10 @@
       unset($_FILES); 
       unset($_SESSION['filename']);
 ?>
+ <?php
+
+ if($_SESSION['roleSecurity']->view_notifications == "Y" || $_SESSION['roleSecurity']->add_notification == "Y")  {
+ ?>
 <div class="summaryContainer">
     <h1>Notifications (<?php if(isset($GLOBALS['result']['notifications']->notification_details)) echo count($GLOBALS['result']['notifications']->notification_details); else echo 0; ?>)
         <?php if(isset($_SESSION['roleSecurity']->add_notification) && $_SESSION['roleSecurity']->add_notification == "Y"){?><span class="openPopup" id="SendNotification">
@@ -35,6 +39,7 @@
                 
             });
         </script>
+        <?php if($_SESSION['roleSecurity']->view_notifications == "Y") { ?>
         <table id="notificationsTable" class=" sortable" title="" cellspacing="0">
             <thead>
                 <tr>
@@ -92,7 +97,7 @@
                 ?>
             </tbody>
         </table>
-
+        <?php } ?>
     </div>
 </div>
 
@@ -272,3 +277,4 @@
         <div style="clear:both"></div>
     </div>
 </div>
+<?php } ?>
