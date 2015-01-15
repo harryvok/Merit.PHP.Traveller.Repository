@@ -1,5 +1,5 @@
 <?php
-    if($_SESSION['roleSecurity']->view_comment == "Y") 
+if($_SESSION['roleSecurity']->view_comment == "Y" || $_SESSION['roleSecurity']->add_comment == "Y")  
     {
  ?> 
   <div data-role="collapsible">
@@ -29,6 +29,7 @@
         </p>
         </div>
         <?php } ?>
+        <?php if($_SESSION['roleSecurity']->view_comment == "Y") { ?>
         <ul class="no-ellipses" data-role="listview" data-count-theme="b" data-inset="true">
         <?php
 		
@@ -149,6 +150,7 @@
     }
     ?>
     </ul>
+        <?php } ?>
      <script type="text/javascript">
 		$(document).ready(function(){
 			$("#view-job-form").validate();

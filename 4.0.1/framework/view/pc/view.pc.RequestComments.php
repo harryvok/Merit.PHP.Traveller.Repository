@@ -1,5 +1,5 @@
 <?php
-    if($_SESSION['roleSecurity']->view_comment == "Y") 
+if($_SESSION['roleSecurity']->view_comment == "Y" || $_SESSION['roleSecurity']->add_comment == "Y") 
     {
  ?>
     <div class="summaryContainer">
@@ -10,6 +10,7 @@
             <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET["id"]; ?>" />
             <input type="hidden" name="val-c" id="val-c" value="0" />
 
+            <?php if($_SESSION['roleSecurity']->view_comment == "Y") { ?>
             <input type="text" id="requestComments" class="tableSearch" placeholder="Search..." />
             <table id="requestCommentsTable" class=" sortable" title="" cellspacing="0">
                 <thead>
@@ -103,7 +104,7 @@
                         ?>
                 </tbody>
             </table>
-
+            <?php } ?>
         </div>
     </div>
     </div>

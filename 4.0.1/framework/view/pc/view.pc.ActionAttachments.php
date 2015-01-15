@@ -1,5 +1,5 @@
   <?php
-  if($_SESSION['roleSecurity']->view_attachment == "Y") 
+  if($_SESSION['roleSecurity']->view_attachment == "Y" || $_SESSION['roleSecurity']->add_attach == "Y") 
   {
   ?>
     <?php
@@ -12,7 +12,7 @@
             Add Attachment</span><?php } ?></h1>
         <div>
 
-        
+                <?php if($_SESSION['roleSecurity']->view_attachment == "Y") { ?>
                 <input type="text" id="actionAttachments" class="tableSearch" placeholder="Search..." />
                 <table id="actionAttachmentsTable" class=" sortable" title="" cellspacing="0">
                     <thead>
@@ -90,6 +90,7 @@
                             ?>
                         </tr>
                 </table>
+            <?php } ?>
             </div>
         </div>
         <div class="popupDetail" id="AttachmentsPopup">

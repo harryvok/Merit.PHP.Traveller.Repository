@@ -1,5 +1,6 @@
  <?php
-     if($_SESSION['roleSecurity']->view_comment == "Y") 
+
+ if($_SESSION['roleSecurity']->view_comment == "Y" || $_SESSION['roleSecurity']->add_comment == "Y")  
      {
  ?>
     <?php
@@ -13,7 +14,7 @@
             <input type="hidden" name="val-c" id="val-c" value="0" />
             
             
-
+            <?php if($_SESSION['roleSecurity']->view_comment == "Y") { ?>
             <input type="text" id="actionComments" class="tableSearch" placeholder="Search..." />
             <table id="actionCommentsTable" class=" sortable" title="" cellspacing="0">
                 <thead>
@@ -107,6 +108,7 @@
                         ?>
                 </tbody>
             </table>
+            <?php } ?>
 
         </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-   if($_SESSION['roleSecurity']->view_attachment == "Y")
+if($_SESSION['roleSecurity']->view_attachment == "Y" || $_SESSION['roleSecurity']->add_attach == "Y") 
     {
 ?> 
  <div data-role="collapsible">
@@ -24,6 +24,7 @@
         </p>
         </div>
         <?php } ?>
+        <?php if($_SESSION['roleSecurity']->view_attachment == "Y") { ?>
 	    <ul class="no-ellipses" data-role="listview" data-count-theme="b" data-inset="true">
           <?php
           if(isset($GLOBALS['result']->request_remark_details)){
@@ -69,6 +70,7 @@
       ?>
   
       </ul>
+        <?php } ?>
       <script type="text/javascript">
 					    $(document).ready(function(){
 						    // validate signup form on keyup and submit

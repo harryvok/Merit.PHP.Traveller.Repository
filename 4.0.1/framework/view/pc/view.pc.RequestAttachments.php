@@ -1,5 +1,5 @@
 <?php
-   if($_SESSION['roleSecurity']->view_attachment == "Y")
+if($_SESSION['roleSecurity']->view_attachment == "Y" || $_SESSION['roleSecurity']->add_attach == "Y")
     {
 ?>
     <div class="summaryContainer">
@@ -10,6 +10,7 @@
             <input type="hidden" name="val-at" id="val-at" value="0" />
             <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET["id"]; ?>" />
         
+                <?php if($_SESSION['roleSecurity']->view_attachment == "Y") { ?>
                 <input type="text" id="requestAttachments" class="tableSearch" placeholder="Search..." />
                 <table id="requestAttachmentsTable" class="sortable" title="" cellspacing="0">
                     <thead>
@@ -91,6 +92,7 @@
                             ?>
                     </tbody>
                 </table>
+            <?php } ?>
             </div>
         </div>
         <div class="popupDetail" id="AttachmentsPopup">
