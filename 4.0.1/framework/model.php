@@ -2013,7 +2013,8 @@ class Model {
                             "email_address" => $cust_email,
                             "company_name" => $cust_company,
                             "name_ctr" => $name_ctr,
-                            "name_type" => $cust_type
+                            "name_type" => $cust_type,
+                            "responsible_code " => $respCode
                         ),
                     )
                 ),

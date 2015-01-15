@@ -895,6 +895,7 @@ $(document).ready(function () {
                 $("#cust_type").val("STAFF");
                 $('#cust_type').selectmenuState('refresh');
                 $("#mydetsclicked").val("Y");
+                $('#respCode').val(data.responsible_code);
             }                
 
         });
