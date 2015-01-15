@@ -5,6 +5,7 @@
 <div data-role="collapsible">
     <h4>Comments <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?></span></h4>
     <p>
+        <?php if(isset($_SESSION['roleSecurity']->add_comment) && $_SESSION['roleSecurity']->add_comment == "Y"){ ?>
         <div data-role="collapsible">
             <h4>Add Comment</h4>
             <p>
@@ -26,6 +27,7 @@
                 </form>
             </p>
         </div>
+    <?php } ?>
         <ul class="no-ellipses" data-role="listview" data-count-theme="b" data-inset="true">
             <?php
 		

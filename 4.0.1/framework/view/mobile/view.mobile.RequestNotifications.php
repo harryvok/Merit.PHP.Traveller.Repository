@@ -10,7 +10,7 @@
                 <option value="Action">Action</option>
                 <option value="Supervisor">Supervisor</option>
         </select>
-        <?php $triggerthebreak = 1; ?>
+
         <?php unset($_SESSION['filenameudf']); ?>
         <?php unset($_FILES); ?>
         <ul class="no-ellipses" data-role="listview" data-count-theme="b" data-inset="true">
@@ -58,6 +58,7 @@
 
 
 <!-- Send Notification Div -->
+<?php if(isset($_SESSION['roleSecurity']->add_notification) && $_SESSION['roleSecurity']->add_notification == "Y"){?>
     <div data-role="collapsible" class="col" data-corners="false" data-collapsed="false" data-content-theme="c">
         <h4>Send Notification</h4>
 
@@ -332,5 +333,5 @@
                         }
                     </script>
             </div>
-
+<?php } ?>
         

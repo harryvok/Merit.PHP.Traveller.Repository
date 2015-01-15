@@ -7,9 +7,9 @@
       if(isset($_SESSION['request_id'])){
     ?>
     <div class="summaryContainer">
-        <h1>Attachments (<?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?>) <span class="openPopup" id="Attachments">
+        <h1>Attachments (<?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?>) <?php if(isset($_SESSION['roleSecurity']->add_attach) && $_SESSION['roleSecurity']->add_attach == "Y"){?><span class="openPopup" id="Attachments">
             <img src="images/iconAdd.png" />
-            Add Attachment</span></h1>
+            Add Attachment</span><?php } ?></h1>
         <div>
 
         
