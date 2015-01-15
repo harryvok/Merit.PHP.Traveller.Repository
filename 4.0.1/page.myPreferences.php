@@ -61,7 +61,7 @@
                     <option value="New Request" <?php echo $_SESSION['initial_screen'] == "New Request" ? "selected='selected'" : '' ?>>New Request</option>
                 </select>
 
-                <?php if(isset($_SESSION['roleSecurity']->my_pref_how_recieved) && $_SESSION['roleSecurity']->my_pref_how_recieved == "Y"){?>
+                <?php if(isset($_SESSION['roleSecurity']->my_pref_how_received) && $_SESSION['roleSecurity']->my_pref_how_received == "Y"){?>
                     <label>How Received</label>
                     <?php $controller->Dropdown("HowReceived", "HowReceived",  $_SESSION['how_received_code']); ?>
                 <?php } ?>
