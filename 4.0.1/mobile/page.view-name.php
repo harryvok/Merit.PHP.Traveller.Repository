@@ -34,6 +34,9 @@ if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); } else { $ex = ""; }
 			if(isset($_GET['d']) && $_GET['d'] == "addresses"){
 				$controller->Display("Name", "NameAddresses");
 			}
+            if(isset($_GET['d']) && $_GET['d'] == "audit"){
+                $controller->Display("Audit", "NameAudit", "N");
+            }
 			?>
 	</div>
     <div class="content-secondary">

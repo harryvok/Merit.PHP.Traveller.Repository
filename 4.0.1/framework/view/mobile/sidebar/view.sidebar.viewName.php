@@ -1,4 +1,5 @@
 <a data-role="button" href="index.php?page=view-name&id=<?php echo $_GET['id']; ?>&ex=<?php echo $ex; ?>" >Summary</a>
-       <?php if($GLOBALS['requestCount'] > 0){ ?><a data-role="button" href="index.php?page=view-name&id=<?php echo $_GET['id']; ?>&ex=<?php echo $_GET['ex']; ?>&d=requests" >Requests (<?php echo $GLOBALS['requestCount']; ?>)</a><?php } ?>
-       <?php if($GLOBALS['addressCount'] > 0){ ?><a data-role="button" href="index.php?page=view-name&id=<?php echo $_GET['id']; ?>&ex=<?php echo $_GET['ex']; ?>&d=addresses" >Addresses (<?php echo $GLOBALS['addressCount']; ?>)</a><?php } ?>
-        <a data-role="button" href="#demo-links" data-rel="close" data-role="button" data-theme="c" data-icon="delete" data-inline="true">Close panel</a>
+<?php if($GLOBALS['requestCount'] > 0){ ?><a data-role="button" href="index.php?page=view-name&id=<?php echo $_GET['id']; ?>&ex=<?php echo $_GET['ex']; ?>&d=requests" >Requests (<?php echo $GLOBALS['requestCount']; ?>)</a><?php } ?>
+<?php if($GLOBALS['addressCount'] > 0){ ?><a data-role="button" href="index.php?page=view-name&id=<?php echo $_GET['id']; ?>&ex=<?php echo $_GET['ex']; ?>&d=addresses" >Addresses (<?php echo $GLOBALS['addressCount']; ?>)</a><?php } ?>
+<?php if($GLOBALS['audit_count'] > 0){ ?><a data-role="button" href="index.php?page=view-name&id=<?php echo $_GET['id']; ?>?>&ex=<?php echo $_GET['ex']; ?>&d=audit" >Audit</a><?php } ?>
+<a data-role="button" href="#demo-links" data-rel="close" data-role="button" data-theme="c" data-icon="delete" data-inline="true">Close panel</a>
