@@ -22,12 +22,12 @@
         <table id="auditTable" class=" sortable" title="" cellspacing="0">
             <thead>
                 <tr>                    
-                    <th class="sortable" style="width:15%">Date</th>                    
-                    <th class="sortable">Officer</th>
-                    <th class="sortable">Field</th>
-                    <th class="sortable" style="width:25%">Operation</th>
-                    <th class="sortable">Before</th>
-                    <th class="sortable">After</th>
+                    <th class="sortable" style="width:12%">Date</th>                    
+                    <th class="sortable" style="width:12%">Officer</th>
+                    <th class="sortable" style="width:12%">Field</th>
+                    <th class="sortable" style="width:12%">Operation</th>
+                    <th class="sortable" style="width:26%">Before</th>
+                    <th class="sortable" style="width:26%">After</th>
                 </tr>
             </thead>
             <tbody>
