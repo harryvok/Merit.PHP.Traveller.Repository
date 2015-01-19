@@ -80,6 +80,9 @@ $action_id = $GLOBALS['result']['action']->action_id;
     <?php if(isset($GLOBALS['result']['action']->priority) && strlen($GLOBALS['result']['action']->priority) > 0){ ?><li>
         <p><strong>Priority:</strong> <?php echo $GLOBALS['result']['action']->priority; ?></p>
     </li><?php } ?>
+    <?php if(isset($GLOBALS['result']['action']->escalated_ind)){ ?><li>
+        <p><strong>Escalated:</strong> <?php echo $GLOBALS['result']['action']->escalated_ind == "Y" ? "Yes" : "No"; ?></p>
+    </li><?php } ?>
     <?php if(isset($GLOBALS['result']['action']->outcome_name) && strlen($GLOBALS['result']['action']->outcome_name) > 0){ ?><li>
         <p><strong>Completed Outcome:</strong> <?php if(isset($GLOBALS['result']['action']->outcome_name)){ echo $GLOBALS['result']['action']->outcome_name; } ?></p>
     </li><?php } ?>
