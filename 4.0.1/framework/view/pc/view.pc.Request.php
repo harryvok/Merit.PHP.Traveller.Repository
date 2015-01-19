@@ -99,10 +99,10 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                     <span class="summaryColumnTitle">Intime</span>
                     <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->in_time_ind)){ echo $GLOBALS['result']['request']->in_time_ind == "Y" ? "Yes" : "No"; } ?></div>
                 </div>
-                <div class="column r5">
+                <!--<div class="column r5">
                     <span class="summaryColumnTitle">Escalated</span>
-                    <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->escalated_ind)){ echo $GLOBALS['result']['request']->escalated_ind == "Y" ? "Yes" : "No"; } ?></div>
-                </div>
+                    <div class="summaryColumn"><?php # if(isset($GLOBALS['result']['request']->escalated_ind)){ echo $GLOBALS['result']['request']->escalated_ind == "Y" ? "Yes" : "No"; } ?></div>
+                </div>-->
             </div>
             <div class="float-left">
                 <div class="column r15">
