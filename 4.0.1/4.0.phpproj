@@ -300,6 +300,7 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
+    <Compile Include="framework\view\pc\view.pc.NameAudit.php" />
     <Compile Include="framework\view\pc\view.pc.ChangeNameDetails.php" />
     <Compile Include="framework\view\pc\view.pc.BookingSummary.php" />
     <Compile Include="framework\view\pc\view.pc.PropertySearch.php" />

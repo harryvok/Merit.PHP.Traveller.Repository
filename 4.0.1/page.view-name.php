@@ -23,5 +23,7 @@ if(isset($_GET['d']) && $_GET['d'] == "requests"){
 if(isset($_GET['d']) && $_GET['d'] == "addresses"){
 	$controller->Display("Name", "NameAddresses");
 }
-
+if(isset($_GET['d']) && $_GET['d'] == "audit"){
+    $controller->Display("Audit", "NameAudit", "N");
+}
 ?>
