@@ -26,7 +26,4 @@ if(isset($_GET['d']) && $_GET['d'] == "addresses"){
 if(isset($_GET['d']) && $_GET['d'] == "audit"){
     $controller->Display("Audit", "NameAudit", "N");
 }
-
-
-
 ?>
