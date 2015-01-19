@@ -1213,7 +1213,6 @@
     <Compile Include="page.view-name.php">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="page.view-Calender.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>
     </Compile>

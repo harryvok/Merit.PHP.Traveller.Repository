@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <DeleteExistingFiles>False</DeleteExistingFiles>
-    <SkipRemoteFilesCheck>False</SkipRemoteFilesCheck>
+    <SkipRemoteFilesCheck>True</SkipRemoteFilesCheck>
     <publishUrl>\\MERIT-LAPTOP-3\wwwroot\CRM\4.1</publishUrl>
     <WebPublishMethod>FileSystem</WebPublishMethod>
   </PropertyGroup>
