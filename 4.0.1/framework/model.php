@@ -4438,6 +4438,14 @@ class Model {
             "ws_message" => '',
             "class" => ''            
         ));
+        $name_ctr = 0.0;
+        if(isset($_POST["name_ctr"])){
+            $name_ctr = $_POST["name_ctr"];
+        }
+        $fax = "";
+        if(isset($_POST["fax"])){
+            $fax = $_POST["fax"];
+        }
         $parameters = array(
             "user_id" => $_SESSION['user_id'],
             "password" => $_SESSION['password'],
@@ -4451,10 +4459,10 @@ class Model {
                 "telephone" => $_POST["cust_phone"],
                 "work_phone" => $_POST["cust_work"],
                 "mobile_no" => $_POST["cust_mobile"],
-                "fax_no" => '',
+                "fax_no" => $fax,
                 "email_address" => $_POST["email_address"], 
                 "company_name" => $_POST["company"], 
-                "name_ctr" => 0.0, 
+                "name_ctr" => $name_ctr, 
                 "ws_status" => '', 
                 "ws_message" => '',
                 "address_det" => $address_details,
