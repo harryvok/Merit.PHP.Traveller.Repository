@@ -1,3 +1,20 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".drpdwn").css("display", "none");
+        $(".edit").on(eventName, function () {
+            $(".drpdwn").css("display", "block");
+        });
+        $("#close").on(eventName, function () {
+            $(".drpdwn").css("display", "none");
+        });
+        $("#saveModify").on(eventName, function () {
+            var sel = document.getElementById("notify_cust");
+            var val = sel.options[sel.selectedIndex].value;
+            
+            $(".drpdwn").css("display", "none");
+        });
+    });
+</script>
 <?php
 if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
 	foreach($GLOBALS['result']['request']->address_det->address_details as $address)
@@ -331,6 +348,16 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
                 <span class="summaryColumnTitle">Company Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?>
+                </div>
+            </div>
+            <div class="column r20">
+                <span class="summaryColumnTitle">Notify Customer      <a class="edit" id="EditNameDetails" style="color:white"><img src="images/modify-icon.png"></a></span>
+                <div class="drpdwn">
+                    <select name="notify_cust" id="notify_cust" style="width:70px;">
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>              
+                    <input type="button" id="saveModify" name="saveModify" value="Save" />       <input type="button" id="close" name="close" value="Close" />
                 </div>
             </div>
         </div>

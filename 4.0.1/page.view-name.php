@@ -8,7 +8,16 @@
 	</script>
 
 <?php
+include_once("model.php"); 
+$model = new Model();  
 $name_id = strip_tags($_GET['id']);
+$parameters = new stdClass();
+$parameters->user_id = $_SESSION['user_id'];
+$parameters->password = $_SESSION['password'];
+$parameters->a_id = $name_id;
+$parameters->a_type = "N";
+$GLOBALS["name_audit_count"] = $model->WebService(MERIT_REQUEST_FILE, "ws_get_audit_count", $parameters);
+
 if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); }
 if(isset($_GET['ref'])){ $ref = strip_tags($_GET['ref']); }
 if(isset($_GET['ref_page'])){ $page = strip_tags($_GET['ref_page']); }
