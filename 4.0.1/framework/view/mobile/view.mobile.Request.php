@@ -299,7 +299,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name) > 0){ ?>
     <li class="original">
         <p style="float:left">
-            <strong>Company Name:</strong> 
+            <strong>Company Name: &nbsp;</strong> 
             <p id="editCompany_name"><?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?></p>
         </p>
     </li>
@@ -309,7 +309,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     ?>
     <li class="original">
         <p style="float:left">
-            <strong>Phone Number:</strong>
+            <strong>Phone Number: &nbsp;</strong>
             <p id="editTelephone"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></p>
         </p>
     </li>
@@ -319,8 +319,8 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     ?>
     <li class="original">
         <p style="float:left">
-            <strong>Mobile Number:</strong> 
-            <p id="editMobile_no"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></p>
+            <strong>Mobile Number: &nbsp;</strong> 
+            <p id="editMobile_no" style="float:left"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></p>
         </p>
     </li>
     <?php
@@ -329,7 +329,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     ?>
     <li class="original">
         <p style="float:left">
-            <strong>Work Number:</strong> 
+            <strong>Work Number: &nbsp;</strong> 
             <p id="editWork_phone"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></p>
         </p>
     </li>
@@ -340,7 +340,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     ?>
     <li class="original">
         <p style="float:left">
-            <strong>Email Address:</strong>
+            <strong>Email Address: &nbsp;</strong>
             <p id="editEmail_address"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
         </p>
     </li>   
