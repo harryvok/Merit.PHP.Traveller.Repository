@@ -4481,6 +4481,22 @@ class Model {
             $result = false;
         }    
         return $result;
-    }    
+    }   
+    
+    public function processModifyNotifyCustomer($parameters = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_POST["request_id"];
+        $parameters->customer_notify_ind = $_POST["customer_notify_ind"];
+        try {
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_modify_customer_notify_flag", $parameters);      
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $result = false;
+        }    
+        return $result;
+    }
 }
 ?>

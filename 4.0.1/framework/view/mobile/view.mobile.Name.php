@@ -4,9 +4,11 @@
         $(".original").css("display", "block");
         $(".edited").css("display", "none");
         $(".edit").on(eventName, function () {
-            $(".textbox").css("height", "auto");
-            $(".original").css("display", "none");
-            $(".edited").css("display", "block");
+            if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
+                $(".textbox").css("height", "auto");
+                $(".original").css("display", "none");
+                $(".edited").css("display", "block");
+            }
         });
         $("#close").on(eventName, function () {
             $(".original").css("display", "block");
@@ -24,32 +26,30 @@
             $("#editName_ctr_val").val($("#editName_ctr").html().replace(/^\s+|\s+$/g, ''));
         });
 
-        $("#submitEditName").on(eventName, function () {
-            if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
-                Load();
-                $.ajax({
-                    url: 'inc/ajax/ajax.modifyNameDetails.php',
-                    type: 'post',
-                    data: {
-                        name_id: $("#name_id").val(),
-                        initial: $("#editInitial_val").val(),
-                        pref_title: $("#editPref_title_val").val(),
-                        given: $("#editGiven_names_val").val(),
-                        surname: $("#editSurname_val").val(),
-                        cust_mobile: $("#editMobile_no_val").val(),
-                        cust_phone: $("#editTelephone_val").val(),
-                        cust_work: $("#editWork_phone_val").val(),
-                        email_address: $("#editEmail_address_val").val(),
-                        company: $("#editCompany_name_val").val(),
-                        fax: $("#editFax_no_val").val(),
-                        name_ctr: $("#editName_ctr_val").val(),
-                        new_name: "N"
-                    },
-                    success: function (data) {
-                        location.reload();
-                    }
-                });
-            }
+        $("#submitEditName").on(eventName, function () {            
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.modifyNameDetails.php',
+                type: 'post',
+                data: {
+                    name_id: $("#name_id").val(),
+                    initial: $("#editInitial_val").val(),
+                    pref_title: $("#editPref_title_val").val(),
+                    given: $("#editGiven_names_val").val(),
+                    surname: $("#editSurname_val").val(),
+                    cust_mobile: $("#editMobile_no_val").val(),
+                    cust_phone: $("#editTelephone_val").val(),
+                    cust_work: $("#editWork_phone_val").val(),
+                    email_address: $("#editEmail_address_val").val(),
+                    company: $("#editCompany_name_val").val(),
+                    fax: $("#editFax_no_val").val(),
+                    name_ctr: $("#editName_ctr_val").val(),
+                    new_name: "N"
+                },
+                success: function (data) {
+                    location.reload();
+                }
+            });           
         });
     });
 </script>

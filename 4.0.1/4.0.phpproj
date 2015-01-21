@@ -448,6 +448,7 @@
     <Compile Include="inc\ajax\ajax.adhocOfficerList.php" />
     <Compile Include="inc\ajax\ajax.changeNameDetails.php" />
     <Compile Include="inc\ajax\ajax.bookingStartStop.php" />
+    <Compile Include="inc\ajax\ajax.modifyNotifyCustomer.php" />
     <Compile Include="inc\ajax\ajax.modifyNameDetails.php" />
     <Compile Include="inc\ajax\ajax.getBookingSummary.php" />
     <Compile Include="inc\ajax\ajax.getDocumentSearch.php" />
@@ -1215,6 +1216,7 @@
     <Compile Include="page.view-name.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="page.view-Calender.php" />
     <Compile Include="page.view-officer.php">
       <SubType>Code</SubType>
     </Compile>

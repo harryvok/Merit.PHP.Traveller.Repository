@@ -1,5 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
+        $(".summaryColumn").css("display", "block");
+        $(".EditNameEdit").css("display", "none");
         $(".drpdwn").css("display", "none");
         $(".edit").on(eventName, function () {
             $(".drpdwn").css("display", "block");
@@ -10,7 +12,18 @@
         $("#saveModify").on(eventName, function () {
             var sel = document.getElementById("notify_cust");
             var val = sel.options[sel.selectedIndex].value;
-            
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.modifyNotifyCustomer.php',
+                type: 'post',
+                data: {
+                    request_id: $("#req_id").val(),
+                    customer_notify_ind: val
+                },
+                success: function (data) {
+                    location.reload();
+                }
+            });
             $(".drpdwn").css("display", "none");
         });
     });
@@ -91,6 +104,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 ?>
 
 <div class="summaryContainer">
+    <input type="hidden" id="req_id" name="req_id" value="<?php echo $_SESSION["request_id"]; ?>" />
     <h1>Request Details</h1>
     <div>
         <div class="float-left"><?php if($GLOBALS['result']['request']->count_only == "Y"){ echo "Count Only"; } else { ?><input type="button" id="workflow" value="Show Workflow" data-service="<?php echo $GLOBALS['result']['request']->service_code; ?>" data-request="<?php echo $GLOBALS['result']['request']->request_code; ?>" data-function="<?php echo $GLOBALS['result']['request']->function_code; ?>" data-servicename="<?php echo $GLOBALS['result']['request']->service_name; ?>" data-requestname="<?php echo $GLOBALS['result']['request']->request_name; ?>" data-functionname="<?php echo $GLOBALS['result']['request']->function_name; ?>" data-requestid="<?php echo $_GET["id"]; ?>"  data-requestdate="<?php if(isset($GLOBALS['result']['request']->due_datetime) && strlen($GLOBALS['result']['request']->due_datetime) > 0){ echo date('d-M-y',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); } ?>" /><?php } ?></div>
@@ -324,13 +338,16 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
  ?>
 <div class="summaryContainer">
-    <h1>Customer Details</h1>
+    <h1>Customer Details <span class="summaryColumnTitle" style="float:right"><a class="modify" id="modify" style="color:white"><img src="images/modify-icon.png">Modify</a> </span></h1>
     <div>
         <div class="float-left">
             <div class="column r15">
                 <span class="summaryColumnTitle">Customer Type</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type;  }?>
+                </div>
+                <div class="EditNameEdit">
+                    <span>Surname</span> <input type="text" spellcheck="true" name="EditDescriptionText" id="Text13" value="<?php /* Display the surname */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->surname; } ?>" />
                 </div>
             </div>
             <div class="column r15">
@@ -343,11 +360,17 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
                     }
                     ?>
                 </div>
+                <div class="EditNameEdit">
+                    <span><strong>Given Name</strong> </span> <input type="text" spellcheck="true" name="EditDescriptionText" id="editGiven_names_val" value="<?php /* Display the given_names */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names; } ?>" />
+                </div>
             </div>
             <div class="column r20">
                 <span class="summaryColumnTitle">Company Name</span>
                 <div class="summaryColumn">
                     <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?>
+                </div>
+                <div class="EditNameEdit">
+                    <input type="text" spellcheck="true" name="EditDescriptionText" id="editCompany_name_val" value="<?php /* Display the company_name */  if(isset($GLOBALS['result']->company_name)){ echo $GLOBALS['result']->company_name; } ?>" />
                 </div>
             </div>
             <div class="column r20">
@@ -364,20 +387,32 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
         <div class="column r15">
             <span class="summaryColumnTitle">Phone Number</span>
             <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone;  }?></div>
+            <div class="EditNameEdit">
+                <input type="text" spellcheck="true" name="EditDescriptionText" id="editTelephone_val" value="<?php /* Display the telephone */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; } ?>" />
+            </div>
         </div>
         <div class="column r15">
             <span class="summaryColumnTitle">Mobile Number</span>
             <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no;  }?></div>
+            <div class="EditNameEdit">
+                <input type="text" spellcheck="true" name="EditDescriptionText" id="editMobile_no_val" value="<?php /* Display the mobile_no */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; } ?>" />
+            </div>
         </div>
         <div class="column r15">
             <span class="summaryColumnTitle">Work Number</span>
             <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; } ?></div>
+            <div class="EditNameEdit">
+                <input type="text" spellcheck="true" name="EditDescriptionText" id="editWork_phone_val" value="<?php /* Display the work_phone */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; } ?>" />
+            </div>
         </div>
         <div class="column r30">
             <span class="summaryColumnTitle">Customer Email</span>
             <div class="summaryColumn">
                 <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; }?>
             </div>
+            <div class="EditNameEdit">
+                    <input type="text" spellcheck="true" name="EditDescriptionText" id="editEmail_address_val" value="<?php /* Display the email_address */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; } ?>" />
+                </div>
         </div>
         <div class="float-left">
             <div class="column r50">
