@@ -12,17 +12,7 @@
         $("#close").on(eventName, function () {
             $(".summaryColumn").css("display", "block");
             $(".EditNameEdit").css("display", "none");
-            $("#editInitial_val").val($("#editInitial").html().replace(/^\s+|\s+$/g, ''));
-            $("#editPref_title_val").val($("#editPref_title").html().replace(/^\s+|\s+$/g, ''));
-            $("#editGiven_names_val").val($("#editGiven_names").html().replace(/^\s+|\s+$/g, ''));
-            $("#editSurname_val").val($("#editSurname").html().replace(/^\s+|\s+$/g, ''));
-            $("#editMobile_no_val").val($("#editMobile_no").html().replace(/^\s+|\s+$/g, ''));
-            $("#editTelephone_val").val($("#editTelephone").html().replace(/^\s+|\s+$/g, ''));
-            $("#editWork_phone_val").val($("#editWork_phone").html().replace(/^\s+|\s+$/g, ''));
-            $("#editEmail_address_val").val($("#editEmail_address").html().replace(/^\s+|\s+$/g, ''));
-            $("#editCompany_name_val").val($("#editCompany_name").html().replace(/^\s+|\s+$/g, ''));
-            $("#editFax_no_val").val($("#editFax_no").html().replace(/^\s+|\s+$/g, ''));
-            $("#editName_ctr_val").val($("#editName_ctr").html().replace(/^\s+|\s+$/g, ''));
+            resetdata();
         });
 
         $("#submitEditName").on(eventName, function () {           

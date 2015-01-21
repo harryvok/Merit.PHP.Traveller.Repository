@@ -31,8 +31,10 @@
             $(".drpdwn").css("display", "none");
         });
         $(".modify").on(eventName, function () {
-            $("#original").css("display", "none");
-            $("#edited").css("display", "block");
+            if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
+                $("#original").css("display", "none");
+                $("#edited").css("display", "block");
+            }
         });
         $("#closeEdit").on(eventName, function () {            
             $("#original").css("display", "block");

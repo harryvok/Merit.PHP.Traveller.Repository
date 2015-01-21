@@ -1,3 +1,29 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".edited").css("display", "none");        
+        $("#modify").on(eventName, function () {
+            if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
+                $(".original").css("display", "none");
+                $(".edited").css("display", "block");
+            }
+        });
+        $("#closeEdit").on(eventName, function () {
+            $(".original").css("display", "block");
+            $(".edited").css("display", "none");
+            $("#editGiven_names_val").val($("#original_given").val());
+            $("#editSurname_val").val($("#original_surname").val());
+            $("#editMobile_no_val").val($("#editMobile_no").html().replace(/^\s+|\s+$/g, ''));
+            $("#editTelephone_val").val($("#editTelephone").html().replace(/^\s+|\s+$/g, ''));
+            $("#editWork_phone_val").val($("#editWork_phone").html().replace(/^\s+|\s+$/g, ''));
+            $("#editEmail_address_val").val($("#editEmail_address").html().replace(/^\s+|\s+$/g, ''));
+            $("#editCompany_name_val").val($("#editCompany_name").html().replace(/^\s+|\s+$/g, ''));
+        });
+        $("#saveEdit").on(eventName, function () {
+            Load();
+            modifyCustomerDetails($("#name_id").val(), $("#original_initial").val(), $("#original_prefTitle").val(), $("#editGiven_names_val").val(), $("#editSurname_val").val(), $("#editMobile_no_val").val(), $("#editTelephone_val").val(), $("#editWork_phone_val").val(), $("#editEmail_address_val").val(), $("#editCompany_name_val").val(), $("#original_fax").val(), $("#original_name_ctr").val());
+        });
+    });
+</script>
 <?php
 if(isset($_GET['filter'])){ $filter = strip_tags($_GET['filter']); } else { $filter=""; }
 if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
@@ -243,7 +269,14 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
     <?php
 if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
  ?>
-    <li data-role="list-divider">Customer Details</li>
+    <li data-role="list-divider">Customer Details</li>  
+    <input type="hidden" id="name_id" name="name_id" value="<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->name_id; ?>" />
+    <input type="hidden" id="original_surname" name="original_surname" value="<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->surname; ?>" />
+    <input type="hidden" id="original_given" name="original_given" value="<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names; ?>" />
+    <input type="hidden" id="original_initial" name="original_initial" value="<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->initials; ?>" />
+    <input type="hidden" id="original_prefTitle" name="original_prefTitle" value="<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->pref_title; ?>" />
+    <input type="hidden" id="original_fax" name="original_fax" value="<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->fax_no; ?>" />
+    <input type="hidden" id="original_name_ctr" name="original_name_ctr" value="<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->name_ctr; ?>" />
     <?php
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type) > 0){
     ?>
@@ -255,7 +288,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names)  && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names) > 0 || isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname) > 0){
         
     ?>
-    <li>
+    <li class="original">
         <?php
         $customer = "<a href='index.php?page=view-name&id=".$GLOBALS['result']['request']->customer_name_det->customer_name_details->name_id."&ref=".$_GET['id']."&ref_page=view-request'>".$GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names." ".$GLOBALS['result']['request']->customer_name_det->customer_name_details->surname."</a>";
         echo $customer;
@@ -264,58 +297,129 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <?php
     }
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name) > 0){ ?>
-    <li>
-        <p><strong>Company Name:</strong> <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?></p>
+    <li class="original">
+        <p style="float:left">
+            <strong>Company Name:</strong> 
+            <p id="editCompany_name"><?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?></p>
+        </p>
     </li>
     <?php 
       } 
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone) > 0){
     ?>
-    <li>
-        <p><strong>Phone Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></p>
+    <li class="original">
+        <p style="float:left">
+            <strong>Phone Number:</strong>
+            <p id="editTelephone"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></p>
+        </p>
     </li>
     <?php
     }
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no) > 0){
     ?>
-    <li>
-        <p><strong>Mobile Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></p>
+    <li class="original">
+        <p style="float:left">
+            <strong>Mobile Number:</strong> 
+            <p id="editMobile_no"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></p>
+        </p>
     </li>
     <?php
     }
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone) > 0){
     ?>
-    <li>
-        <p><strong>Work Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></p>
+    <li class="original">
+        <p style="float:left">
+            <strong>Work Number:</strong> 
+            <p id="editWork_phone"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></p>
+        </p>
     </li>
     <?php
     }
     
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) > 0){
     ?>
-    <li>
-        <p><strong>Email Address:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
+    <li class="original">
+        <p style="float:left">
+            <strong>Email Address:</strong>
+            <p id="editEmail_address"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
+        </p>
+    </li>   
+    <a href="#" data-role="button" title="Edit Description" class="original" id="modify"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+    <li class="edited">
+        <p style="float:left">
+            <strong>Surname: &nbsp;</strong>
+            </p>
+        <div>
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editSurname_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname)){echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->surname; } ?>" />
+        </div>
+    </li>
+    <li class="edited">
+        <p style="float:left">
+            <strong>Given Name: &nbsp;</strong>
+            </p>
+        <div>
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editGiven_names_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names)){echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names; } ?>" />
+        </div>
+    </li>
+    <li class="edited">
+        <p style="float:left">
+            <strong>Company Name: &nbsp;</strong>
+            </p>
+        <div>
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editCompany_name_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?>" />            
+        </div>
+    </li>
+    <li class="edited">
+        <p style="float:left">
+            <strong>Phone Number: &nbsp;</strong>
+            </p>
+        <div>
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editTelephone_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone)){echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; } ?>" />            
+        </div>
+    </li>
+    <li class="edited">
+        <p style="float:left">
+            <strong>Mobile Number: &nbsp;</strong>
+            </p>
+        <div>
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editMobile_no_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no)){echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; } ?>" />            
+        </div>
+    </li>
+    <li class="edited">
+        <p style="float:left">
+            <strong>Work Number: &nbsp;</strong>
+            </p>
+        <div>
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editWork_phone_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone)){echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; } ?>" />            
+        </div>
+    </li>
+    <li class="edited">
+        <p style="float:left">
+            <strong>Email Address: &nbsp;</strong>
+            </p>
+        <div>
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editEmail_address_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address)){echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; } ?>" />            
+        </div>
+    </li>      
+    <li class="edited">
+    <input type="button" id="saveEdit" value="Save"  style="float:left"/> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="closeEdit" value="Close" />  
     </li>
     <?php
     }
-    ?></p>
-        <?php 
-            if(isset($cust_address_id) && $cust_address_id != 0){
-                if(strlen($cust_house_number) > 0 && $cust_house_number != 0 || strlen($cust_house_suffix) > 0 && $cust_house_suffix != 0 || strlen($cust_street_name) > 0 ||  strlen($cust_street_type) > 0 ||  strlen($cust_locality) > 0){
-                ?>
-                <li>
-                <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0) echo $cust_house_suffix; else echo $cust_house_number; ?> <?php if(isset($cust_street_name)){ echo $cust_street_name; } ?> <?php if(isset($cust_street_type)){ echo $cust_street_type; } ?> <?php if(isset($cust_locality)){ echo $cust_locality; } ?> <?php if(isset($cust_postcode)){ echo $cust_postcode; } ?> </a>
-                </li>
-                <?php
-                }
-            }
-                    ?>
+    if(isset($cust_address_id) && $cust_address_id != 0){
+        if(strlen($cust_house_number) > 0 && $cust_house_number != 0 || strlen($cust_house_suffix) > 0 && $cust_house_suffix != 0 || strlen($cust_street_name) > 0 ||  strlen($cust_street_type) > 0 ||  strlen($cust_locality) > 0){
+        ?>
+        <li>
+        <a href='index.php?page=view-address&amp;id=<?php if(isset($cust_address_id)){ echo $cust_address_id; } ?>'><?php if(isset($cust_house_suffix) && strlen($cust_house_suffix) > 0) echo $cust_house_suffix; else echo $cust_house_number; ?> <?php if(isset($cust_street_name)){ echo $cust_street_name; } ?> <?php if(isset($cust_street_type)){ echo $cust_street_type; } ?> <?php if(isset($cust_locality)){ echo $cust_locality; } ?> <?php if(isset($cust_postcode)){ echo $cust_postcode; } ?> </a>
+        </li>
+        <?php
+        }
+    }
+            ?>
     <?php if(isset($cust_desc) && strlen($cust_desc) > 0){ ?><li>
         <p>
             <strong>Address Description:</strong> <?php 
-              echo $cust_desc; 
-              
-                                                  ?>
+              echo $cust_desc; ?>
         </p>
     </li>
     <?php

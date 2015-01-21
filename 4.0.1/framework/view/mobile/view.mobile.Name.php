@@ -13,43 +13,12 @@
         $("#close").on(eventName, function () {
             $(".original").css("display", "block");
             $(".edited").css("display", "none");
-            $("#editInitial_val").val($("#editInitial").html().replace(/^\s+|\s+$/g, ''));
-            $("#editPref_title_val").val($("#editPref_title").html().replace(/^\s+|\s+$/g, ''));
-            $("#editGiven_names_val").val($("#editGiven_names").html().replace(/^\s+|\s+$/g, ''));
-            $("#editSurname_val").val($("#editSurname").html().replace(/^\s+|\s+$/g, ''));
-            $("#editMobile_no_val").val($("#editMobile_no").html().replace(/^\s+|\s+$/g, ''));
-            $("#editTelephone_val").val($("#editTelephone").html().replace(/^\s+|\s+$/g, ''));
-            $("#editWork_phone_val").val($("#editWork_phone").html().replace(/^\s+|\s+$/g, ''));
-            $("#editEmail_address_val").val($("#editEmail_address").html().replace(/^\s+|\s+$/g, ''));
-            $("#editCompany_name_val").val($("#editCompany_name").html().replace(/^\s+|\s+$/g, ''));
-            $("#editFax_no_val").val($("#editFax_no").html().replace(/^\s+|\s+$/g, ''));
-            $("#editName_ctr_val").val($("#editName_ctr").html().replace(/^\s+|\s+$/g, ''));
+            resetdata();
         });
 
         $("#submitEditName").on(eventName, function () {            
             Load();
-            $.ajax({
-                url: 'inc/ajax/ajax.modifyNameDetails.php',
-                type: 'post',
-                data: {
-                    name_id: $("#name_id").val(),
-                    initial: $("#editInitial_val").val(),
-                    pref_title: $("#editPref_title_val").val(),
-                    given: $("#editGiven_names_val").val(),
-                    surname: $("#editSurname_val").val(),
-                    cust_mobile: $("#editMobile_no_val").val(),
-                    cust_phone: $("#editTelephone_val").val(),
-                    cust_work: $("#editWork_phone_val").val(),
-                    email_address: $("#editEmail_address_val").val(),
-                    company: $("#editCompany_name_val").val(),
-                    fax: $("#editFax_no_val").val(),
-                    name_ctr: $("#editName_ctr_val").val(),
-                    new_name: "N"
-                },
-                success: function (data) {
-                    location.reload();
-                }
-            });           
+            modifyCustomerDetails($("#name_id").val(), $("#editInitial_val").val(), $("#editPref_title_val").val(), $("#editGiven_names_val").val(), $("#editSurname_val").val(), $("#editMobile_no_val").val(), $("#editTelephone_val").val(), $("#editWork_phone_val").val(), $("#editEmail_address_val").val(), $("#editCompany_name_val").val(), $("#editFax_no_val").val(), $("#editName_ctr_val").val());                      
         });
     });
 </script>
