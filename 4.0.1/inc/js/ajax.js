@@ -873,3 +873,29 @@ function check_adhoc() {
     });
 }
 
+function modifyCustomerDetails(name_id, initial, pref_title, given, surname, mobile, telephone, work, email, company, fax, name_ctr) {
+    alert(name_id + initial + pref_title + given + surname + mobile + telephone + work + email + company+ fax + name_ctr);
+    $.ajax({
+        url: 'inc/ajax/ajax.modifyNameDetails.php',
+        type: 'post',
+        data: {
+            name_id: name_id,
+            initial: initial,
+            pref_title: pref_title,
+            given: given,
+            surname: surname,
+            cust_mobile: mobile,
+            cust_phone: telephone,
+            cust_work: work,
+            email_address: email,
+            company: company,
+            fax: fax,
+            name_ctr: name_ctr,
+            new_name: "N"
+        },
+        success: function (data) {
+            location.reload();
+        }
+    });
+
+}

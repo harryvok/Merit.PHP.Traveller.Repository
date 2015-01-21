@@ -8,10 +8,10 @@
                 ?>
                 <li>
                     <p><b>Date:</b> <?php if($result->audit_date != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result->audit_date)); } ?></p>
-                    <p><b>Operation:</b> <?php echo isset($result->audit_type) ? $result->audit_type : ""; ?></p>
+                    <p><b>Type:</b> <?php echo isset($result->audit_type) ? $result->audit_type : ""; ?></p>
                     <p><b>Officer:</b> <?php echo isset($result->audit_officer) ? $result->audit_officer : ""; ?></p>
                     <p><b>Field:</b> <?php echo isset($result->audit_field) ? $result->audit_field : ""; ?></p>                    
-                    <p><b>Before:</b><?php echo isset($result->audit_description) ? $result->audit_description : ""; ?></p>                                      
+                    <p><b>description:</b><?php echo isset($result->audit_description) ? $result->audit_description : ""; ?></p>                                      
                 </li>
                 <?php                                             
             }
@@ -21,11 +21,10 @@
             ?>
             <li>
                 <p><b>Date:</b> <?php if($result->audit_date != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result->audit_date)); } ?></p>
+                <p><b>Type:</b> <?php echo isset($result->audit_type) ? $result->audit_type : ""; ?></p>
                 <p><b>Officer:</b> <?php echo isset($result->audit_officer) ? $result->audit_officer : ""; ?></p>
-                <p><b>Field:</b> <?php echo isset($result->audit_field) ? $result->audit_field : ""; ?></p>
-                <p><b>Operation:</b> <?php echo isset($result->audit_operation) ? $result->audit_operation : ""; ?></p>
-                <p><b>Before:</b><?php echo isset($result->before_data) ? $result->before_data : ""; ?></p>
-                <p><b>After:</b><?php echo isset($result->after_data) ? $result->after_data : ""; ?></p>                        
+                <p><b>Field:</b> <?php echo isset($result->audit_field) ? $result->audit_field : ""; ?></p>                    
+                <p><b>description:</b><?php echo isset($result->audit_description) ? $result->audit_description : ""; ?></p>                         
             </li>
             <?php                                             
         }

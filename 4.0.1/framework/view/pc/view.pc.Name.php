@@ -3,8 +3,10 @@
         $(".summaryColumn").css("display", "block");
         $(".EditNameEdit").css("display", "none");
         $(".edit").on(eventName, function () {
-            $(".summaryColumn").css("display", "none");
-            $(".EditNameEdit").css("display", "block");
+            if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
+                $(".summaryColumn").css("display", "none");
+                $(".EditNameEdit").css("display", "block");
+            }
         });
 
         $("#close").on(eventName, function () {
@@ -23,32 +25,9 @@
             $("#editName_ctr_val").val($("#editName_ctr").html().replace(/^\s+|\s+$/g, ''));
         });
 
-        $("#submitEditName").on(eventName, function () {
-            if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
-                Load();
-                $.ajax({
-                    url: 'inc/ajax/ajax.modifyNameDetails.php',
-                    type: 'post',
-                    data: {
-                        name_id: $("#name_id").val(),
-                        initial: $("#editInitial_val").val(),
-                        pref_title: $("#editPref_title_val").val(),
-                        given: $("#editGiven_names_val").val(),
-                        surname: $("#editSurname_val").val(),
-                        cust_mobile: $("#editMobile_no_val").val(),
-                        cust_phone: $("#editTelephone_val").val(),
-                        cust_work: $("#editWork_phone_val").val(),
-                        email_address: $("#editEmail_address_val").val(),
-                        company: $("#editCompany_name_val").val(),
-                        fax: $("#editFax_no_val").val(),
-                        name_ctr: $("#editName_ctr_val").val(),
-                        new_name: "N"
-                    },
-                    success: function (data) {
-                        location.reload();
-                    }
-                });
-            }
+        $("#submitEditName").on(eventName, function () {           
+            Load();
+            modifyCustomerDetails($("#name_id").val(), $("#editInitial_val").val(), $("#editPref_title_val").val(), $("#editGiven_names_val").val(), $("#editSurname_val").val(), $("#editMobile_no_val").val(), $("#editTelephone_val").val(), $("#editWork_phone_val").val(), $("#editEmail_address_val").val(), $("#editCompany_name_val").val(), $("#editFax_no_val").val(), $("#editName_ctr_val").val());
         });
     });
 </script>

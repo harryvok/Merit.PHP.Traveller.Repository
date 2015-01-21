@@ -59,11 +59,10 @@
                 ?>
                 <tr class="dark" title="">
                     <td><?php if($result->audit_date != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result->audit_date)); } ?></td>
+                    <td><?php echo isset($result->audit_type) ? $result->audit_type : ""; ?></td>
                     <td><?php echo isset($result->audit_officer) ? $result->audit_officer : ""; ?></td>
                     <td><?php echo isset($result->audit_field) ? $result->audit_field : ""; ?></td>
-                    <td><?php echo isset($result->audit_operation) ? $result->audit_operation : ""; ?></td>
-                    <td><?php echo isset($result->before_data) ? $result->before_data : ""; ?></td>
-                    <td><?php echo isset($result->after_data) ? $result->after_data : ""; ?></td>
+                    <td><?php echo isset($result->audit_description) ? $result->audit_description : ""; ?></td>
                 </tr>
                 <?php
                 }
