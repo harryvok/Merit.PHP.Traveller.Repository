@@ -27,7 +27,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Surname: &nbsp;</strong>
-            <p id="editSurname" class="original"><?php /* Display the description */  echo $GLOBALS['result']->surname; ?></p>
+            <p id="editSurname" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->surname; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -37,7 +37,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Given Names: &nbsp;</strong>
-            <p id="editGiven_names" class="original"><?php /* Display the description */  echo $GLOBALS['result']->given_names; ?></p>
+            <p id="editGiven_names" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->given_names; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -47,7 +47,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Initials: &nbsp;</strong>
-            <p id="editInitial" class="original"><?php /* Display the description */  echo $GLOBALS['result']->initials; ?></p>
+            <p id="editInitial" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->initials; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -57,7 +57,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Title: &nbsp;</strong>
-            <p id="editPref_title" class="original"><?php /* Display the description */  echo $GLOBALS['result']->pref_title; ?></p>
+            <p id="editPref_title" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->pref_title; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -67,7 +67,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Email Address: &nbsp;</strong>
-            <p id="editEmail_address" class="original"><?php /* Display the description */  echo $GLOBALS['result']->email_address; ?></p>
+            <p id="editEmail_address" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->email_address; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -77,7 +77,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Company Name: &nbsp;</strong>
-            <p id="editCompany_name" class="original"><?php /* Display the description */  echo $GLOBALS['result']->company_name; ?></p>
+            <p id="editCompany_name" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->company_name; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -87,7 +87,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Telephone: &nbsp;</strong>
-            <p id="editTelephone" class="original"><?php /* Display the description */  echo $GLOBALS['result']->telephone; ?></p>
+            <p id="editTelephone" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->telephone; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -97,7 +97,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Work Phone: &nbsp;</strong>
-            <p id="editWork_phone" class="original"><?php /* Display the description */  echo $GLOBALS['result']->work_phone; ?></p>
+            <p id="editWork_phone" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->work_phone; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -107,7 +107,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Mobile phone: &nbsp;</strong>
-            <p id="editMobile_no" class="original"><?php /* Display the description */  echo $GLOBALS['result']->mobile_no; ?></p>
+            <p id="editMobile_no" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->mobile_no; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -117,7 +117,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>FAX No: &nbsp;</strong>
-            <p id="editFax_no" class="original"><?php /* Display the description */  echo $GLOBALS['result']->fax_no; ?></p>
+            <p id="editFax_no" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->fax_no; ?></p>
         </p>
         <div class="edited">
             <br />
@@ -127,7 +127,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>NAR ID: &nbsp;</strong>
-            <p id="editName_ctr" class="original"><?php /* Display the description */  echo $GLOBALS['result']->name_ctr; ?></p>
+            <p id="editName_ctr" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->name_ctr; ?></p>
         </p>
         <div class="edited">
             <br />
