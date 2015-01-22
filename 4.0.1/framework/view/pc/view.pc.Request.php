@@ -366,7 +366,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
 <div class="summaryContainer">
     <h1>Customer Details 
         <?php
-        if($GLOBALS['result']['request']->finalised_ind != "N"){
+        if($GLOBALS['result']['request']->finalised_ind == "N"){
             if($_SESSION['roleSecurity']->modify_name == "Y"){
                 ?> <span class="summaryColumnTitle" style="float:right"><a class="modify" id="modify" style="color:white"><img src="images/modify-icon.png">Modify</a></span>
             <?php

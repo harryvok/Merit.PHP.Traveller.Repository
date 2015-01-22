@@ -387,8 +387,8 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
         </p>
     </li>   
     <?php
-    if($GLOBALS['result']['request']->finalised_ind != "N"){
-        if($_SESSION['roleSecurity']->modify_name == "Y"){?>
+    if($GLOBALS['result']['request']->finalised_ind == "N"){
+            if($_SESSION['roleSecurity']->modify_name == "Y"){
             <a href="#" data-role="button" title="Edit Description" class="original1" id="modify"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
         <?php
         }
