@@ -3,10 +3,12 @@
         $("#edited").css("display", "none");
         $(".drpdwn").css("display", "none");
         $(".edit").on(eventName, function () {
+            $("#flag_val").css("display", "none");
             $(".drpdwn").css("display", "block");
         });
         $("#close").on(eventName, function () {
             $("#notify_cust").val($("#flag_val").val());
+            $("#flag_val").css("display", "block");
             $(".drpdwn").css("display", "none");
         });
         $("#saveModify").on(eventName, function () {
@@ -27,8 +29,7 @@
                 success: function (data) {
                     location.reload();
                 }
-            });
-            $(".drpdwn").css("display", "none");
+            });            
         });
         $(".modify").on(eventName, function () {
             if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
@@ -397,10 +398,10 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
                     <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->company_name; } ?>
                 </div>
             </div>
-            <div class="column r20">
+            <div class="column r15">
                 <span class="summaryColumnTitle">Notify Customer      <a class="edit" id="EditNameDetails" style="color:white"><img src="images/modify-icon.png"></a></span>
                 <?php $flag = $GLOBALS['result']['request']->notify_customer_ind ?>
-                <input type="hidden" id="flag_val" name="flag_val" value="<?php echo $flag; ?>" />
+                <div class="summaryColumn" id="flag_val" style="width:50px;"><?php echo $flag; ?></div>
                 <div class="drpdwn">
                     <select name="notify_cust" id="notify_cust" style="width:70px;">
                         <option value="Yes" <?php if ($flag == "Yes") echo 'selected'; ?> >Yes</option>

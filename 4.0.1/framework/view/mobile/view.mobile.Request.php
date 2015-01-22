@@ -1,14 +1,20 @@
 <script type="text/javascript">
     $(document).ready(function () {
+        $(".original").css("height", "15px");
+        $(".drpdwn").css("display", "none");
         $(".edited").css("display", "none");        
         $("#modify").on(eventName, function () {
             if (confirm("Warning - Any changes to this Name Record will impact all requests associated with this name!") == true) {
+                $(".original").css("height", "auto");
                 $(".original").css("display", "none");
+                $(".original1").css("display", "none");
                 $(".edited").css("display", "block");
             }
         });
         $("#closeEdit").on(eventName, function () {
+            $(".original").css("height", "15px");
             $(".original").css("display", "block");
+            $(".original1").css("display", "block");
             $(".edited").css("display", "none");
             $("#editGiven_names_val").val($("#original_given").val());
             $("#editSurname_val").val($("#original_surname").val());
@@ -21,6 +27,39 @@
         $("#saveEdit").on(eventName, function () {
             Load();
             modifyCustomerDetails($("#name_id").val(), $("#original_initial").val(), $("#original_prefTitle").val(), $("#editGiven_names_val").val(), $("#editSurname_val").val(), $("#editMobile_no_val").val(), $("#editTelephone_val").val(), $("#editWork_phone_val").val(), $("#editEmail_address_val").val(), $("#editCompany_name_val").val(), $("#original_fax").val(), $("#original_name_ctr").val());
+        });
+        $(".modify").on(eventName, function () {
+            $(".flagval").css("height", "auto");
+            $("#flag_val").css("display", "none");            
+            $(".drpdwn").css("display", "block");
+            $(".modify").css("display", "none");
+        });
+        $("#closeFlag").on(eventName, function () {
+            $("#notify_cust").val($("#originalFlag").val());
+            $("#flag_val").css("display", "block");
+            $(".modify").css("display", "block");
+            $(".drpdwn").css("display", "none");
+            $(".flagval").css("height", "15px");
+        });
+        $("#saveFlag").on(eventName, function () {
+            var sel = document.getElementById("notify_cust");
+            var val = sel.options[sel.selectedIndex].value;            
+            if (val == "Yes")
+                var flag = "Y"
+            else if (val == "No")
+                flag = "N";
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.modifyNotifyCustomer.php',
+                type: 'post',
+                data: {
+                    request_id: $("#req_id").val(),
+                    customer_notify_ind: flag
+                },
+                success: function (data) {                    
+                    location.reload();
+                }
+            });
         });
     });
 </script>
@@ -101,6 +140,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 ?>
 <ul class="no-ellipses" class="no-ellipses" data-role="listview" data-inset="true" data-divider-theme="d">
     <li data-role="list-divider">Request Details</li>
+    <input type="hidden" id="req_id" name="req_id" value="<?php echo $_SESSION["request_id"]; ?>" />
     <li>
         <p><?php if($GLOBALS['result']['request']->count_only == "Y"){ echo "Count Only"; }  ?></p>
     </li>
@@ -288,7 +328,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names)  && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names) > 0 || isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->surname) > 0){
         
     ?>
-    <li class="original">
+    <li class="original1">
         <?php
         $customer = "<a href='index.php?page=view-name&id=".$GLOBALS['result']['request']->customer_name_det->customer_name_details->name_id."&ref=".$_GET['id']."&ref_page=view-request'>".$GLOBALS['result']['request']->customer_name_det->customer_name_details->given_names." ".$GLOBALS['result']['request']->customer_name_det->customer_name_details->surname."</a>";
         echo $customer;
@@ -332,7 +372,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
             <strong>Work Number: &nbsp;</strong> 
             <p id="editWork_phone" style="float:left"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></p>
         </p>
-    </li>
+    </li>    
     <?php
     }
     
@@ -344,8 +384,8 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
             <p id="editEmail_address" style="float:left"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
         </p>
     </li>   
-    <a href="#" data-role="button" title="Edit Description" class="original" id="modify"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
-    <li class="edited">
+    <a href="#" data-role="button" title="Edit Description" class="original1" id="modify"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+        <li class="edited">
         <p style="float:left">
             <strong>Surname: &nbsp;</strong>
             </p>
@@ -404,6 +444,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <li class="edited">
     <input type="button" id="saveEdit" value="Save"  style="float:left"/> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="closeEdit" value="Close" />  
     </li>
+    <div class="edited"><br /></div>
     <?php
     }
     if(isset($cust_address_id) && $cust_address_id != 0){
@@ -425,6 +466,27 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <?php
     }
          } 
+?>
+<li class="flagval" style="height:15px;">
+        <p style="float:left">
+            <?php $flag = $GLOBALS['result']['request']->notify_customer_ind ?>
+            <input type="hidden" id="originalFlag" value="<?php echo $flag; ?>" />
+            <strong>Notify Customer: &nbsp;</strong> 
+            <p id="flag_val" style="float:left"><?php echo $flag; ?></p>
+            <div class="drpdwn">
+                <select name="notify_cust" id="notify_cust" >
+                    <option value="Yes" <?php if ($flag == "Yes") echo 'selected'; ?> >Yes</option>
+                    <option value="No" <?php if ($flag == "No") echo 'selected'; ?> >No</option>
+                </select> 
+            </div>
+        </p>
+    </li>
+    <a href="#" data-role="button" title="Edit Description" class="modify" id="modify_flag"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+    <li class="drpdwn">
+    <input type="button" id="saveFlag" value="Save"  style="float:left"/> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="closeFlag" value="Close" />  
+    </li>
+    <div class="drpdwn"><br /></div>
+    <?php
           
     if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         $show_hide = 0;

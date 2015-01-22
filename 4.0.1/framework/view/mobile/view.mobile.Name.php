@@ -11,6 +11,7 @@
             }
         });
         $("#close").on(eventName, function () {
+            $(".textbox").css("height", "10px");
             $(".original").css("display", "block");
             $(".edited").css("display", "none");
             resetdata();
