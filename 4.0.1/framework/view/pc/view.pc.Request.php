@@ -364,14 +364,23 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
 if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
  ?>
 <div class="summaryContainer">
-    <h1>Customer Details <span class="summaryColumnTitle" style="float:right"><a class="modify" id="modify" style="color:white"><img src="images/modify-icon.png">Modify</a> </span></h1>
+    <h1>Customer Details 
+        <?php
+        if($GLOBALS['result']['request']->finalised_ind != "N"){
+            if($_SESSION['roleSecurity']->modify_name == "Y"){
+                ?> <span class="summaryColumnTitle" style="float:right"><a class="modify" id="modify" style="color:white"><img src="images/modify-icon.png">Modify</a></span>
+            <?php
+            }
+        }
+        ?>
+    </h1>
     <div>
         <div id="original">
         <div class="float-left">
             <div class="column r15">
                 <span class="summaryColumnTitle">Customer Type</span>
                 <div class="summaryColumn">
-                    <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type;  }?>
+                    <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->name_type;  } ?>
                 </div>
             </div>
             <div class="column r15">

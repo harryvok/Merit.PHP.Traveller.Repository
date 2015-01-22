@@ -139,6 +139,11 @@
             <input type="button" id="close" value="Close" />
         </div>
     </li>                
-    
-    <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+    <?php
+        if($_SESSION['roleSecurity']->modify_name == "Y"){
+            ?>
+            <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+            <?php
+        }
+    ?>
 </ul>

@@ -386,8 +386,15 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
             <p id="editEmail_address" style="float:left"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
         </p>
     </li>   
-    <a href="#" data-role="button" title="Edit Description" class="original1" id="modify"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
-        <li class="edited">
+    <?php
+    if($GLOBALS['result']['request']->finalised_ind != "N"){
+        if($_SESSION['roleSecurity']->modify_name == "Y"){?>
+            <a href="#" data-role="button" title="Edit Description" class="original1" id="modify"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+        <?php
+        }
+    }
+    ?>
+    <li class="edited">
         <p style="float:left">
             <strong>Surname: &nbsp;</strong>
             </p>

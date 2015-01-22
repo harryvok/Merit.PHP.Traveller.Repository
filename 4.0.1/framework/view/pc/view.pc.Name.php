@@ -22,7 +22,15 @@
     });
 </script>
 <div class="summaryContainer">
-    <h1>Details <span class="summaryColumnTitle" style="float:right"><a class="edit" id="EditNameDetails" style="color:white"><img src="images/modify-icon.png">Modify</a> </span></h1>
+    <h1>Details <span class="summaryColumnTitle" style="float:right">
+        <?php
+        if($_SESSION['roleSecurity']->modify_name == "Y"){
+            ?>
+            <a class="edit" id="EditNameDetails" style="color:white"><img src="images/modify-icon.png">Modify</a> </span>
+            <?php
+        }
+        ?>
+    </h1>
     <div> 
         <div class="float-left">
             <div class="column r50">
