@@ -474,7 +474,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
         </div>
         <div>
             <div class="column r15">
-                <span class="summaryColumnTitle">Phone number</span>
+                <span class="summaryColumnTitle">Phone Number</span>
                 <input type="text" spellcheck="true" name="EditDescriptionText" id="editTelephone_val" value="<?php /* Display the telephone */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; } ?>" />
             </div>
             <div class="column r15">
