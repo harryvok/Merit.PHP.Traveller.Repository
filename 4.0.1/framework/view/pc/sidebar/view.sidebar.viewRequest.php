@@ -34,7 +34,7 @@
             <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?><li class="la" onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=documents'">Documents</li><?php }?>
             <?php if($GLOBALS['audit_count'] > 0 && $_SESSION['roleSecurity']->view_audit == "Y"){ ?><li class="la" onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=audit'" <?php if(isset($_GET['d']) && $_GET['d'] == "audit"){ ?>class="act"<?php } ?>>Audit</li><?php } ?>
             <?php if(($GLOBALS['count_only'] == "N" || $GLOBALS['count_only'] == "") && $_SESSION['roleSecurity']->view_request_show_actions == "Y"){ ?><li class="la" onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=actions'" <?php if(isset($_GET['d']) && $_GET['d'] == "actions"){ ?>class="act"<?php } ?>>Actions</li><?php } ?>
-            <?php if($GLOBALS['finalised_ind'] == "Y" && $GLOBALS['count_only'] == "N" && $_SESSION['roleSecurity']->maint_req_reopen == "Y" || $GLOBALS['finalised_ind'] == "Y" && $_SESSION['roleSecurity']->maint_recat == "Y" || $GLOBALS['count_only'] == "Y" && $_SESSION['roleSecurity']->maint_recat == "Y" || $_SESSION['roleSecurity']->maint_req_del == "Y"){ ?>
+            <?php if(($GLOBALS['finalised_ind'] == "Y" && $GLOBALS['count_only'] == "N" && $_SESSION['roleSecurity']->maint_req_reopen == "Y") || ($GLOBALS['finalised_ind'] == "N" && $_SESSION['roleSecurity']->maint_recat == "Y") || ($GLOBALS['count_only'] == "Y" && $_SESSION['roleSecurity']->maint_recat == "Y") || $_SESSION['roleSecurity']->maint_req_del == "Y" || $_SESSION['notify_insurance'] == "Y"){ ?>
     <li class="la" id="optTop">Options  
          <script>
              $("#optTop").on("click", function () {
@@ -45,7 +45,7 @@
          <ul id="optMenu" style="display:none">
             <?php if($GLOBALS['finalised_ind'] == "Y" && $GLOBALS['count_only'] == "N" && $_SESSION['roleSecurity']->maint_req_reopen == "Y"){ ?>
             <li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=reopenRequest'">Reopen Request</li>
-            <?php } elseif($GLOBALS['finalised_ind'] == "N" && $_SESSION['roleSecurity']->maint_recat == "Y" || $GLOBALS['count_only'] == "Y" && $_SESSION['roleSecurity']->maint_recat == "Y"){  ?>
+            <?php } elseif(($GLOBALS['finalised_ind'] == "N" && $_SESSION['roleSecurity']->maint_recat == "Y") || ($GLOBALS['count_only'] == "Y" && $_SESSION['roleSecurity']->maint_recat == "Y")){  ?>
             <li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=recategoriseRequest'">Recategorise Request</li><?php } ?>
             <?php if($_SESSION['roleSecurity']->maint_req_del == "Y") { ?><li onclick="self.location.href='index.php?page=view-request&id=<?php echo $_GET['id']; ?>&d=deleteRequest'">Delete Request</li><?php } ?>
             <?php if($_SESSION['notify_insurance'] == "Y") { ?><li class="notifyOfficerOption">Notify Insurance Officer</li><?php } ?>
