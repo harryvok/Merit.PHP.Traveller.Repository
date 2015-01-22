@@ -14,11 +14,11 @@
                 null,
                 null,
                 null,
+                null,                
+                null,
                 null,
                 { "sType": "date-euro" },
-                { "sType": "date-euro" },
-                null,
-                null
+                { "sType": "date-euro" }
             ]
         });
 
@@ -70,11 +70,11 @@ $(document).ready(function() {
             null,
             null,
             null,
+            null,            
             null,
-            {"sType": "date-euro" },
-            {"sType": "date-euro" },
             null,
-            null
+            { "sType": "date-euro" },
+            { "sType": "date-euro" }
         ]
     });
     
