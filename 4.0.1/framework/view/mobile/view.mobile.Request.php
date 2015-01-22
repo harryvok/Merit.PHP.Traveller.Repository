@@ -28,19 +28,21 @@
             Load();
             modifyCustomerDetails($("#name_id").val(), $("#original_initial").val(), $("#original_prefTitle").val(), $("#editGiven_names_val").val(), $("#editSurname_val").val(), $("#editMobile_no_val").val(), $("#editTelephone_val").val(), $("#editWork_phone_val").val(), $("#editEmail_address_val").val(), $("#editCompany_name_val").val(), $("#original_fax").val(), $("#original_name_ctr").val());
         });
-        $(".modify").on(eventName, function () {
+        $(".modify").on(eventName, function () {            
             $(".flagval").css("height", "auto");
             $("#flag_val").css("display", "none");            
             $(".drpdwn").css("display", "block");
             $(".modify").css("display", "none");
         });
+
         $("#closeFlag").on(eventName, function () {
-            $("#notify_cust").val($("#originalFlag").val());
             $("#flag_val").css("display", "block");
             $(".modify").css("display", "block");
             $(".drpdwn").css("display", "none");
-            $(".flagval").css("height", "15px");
+            $(".flagval").css("height", "15px");            
+            $('#notify_cust').val($("#originalFlag").val()).trigger("change");
         });
+
         $("#saveFlag").on(eventName, function () {
             var sel = document.getElementById("notify_cust");
             var val = sel.options[sel.selectedIndex].value;            

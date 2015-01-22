@@ -2,18 +2,18 @@
     $(document).ready(function () {
         $("#edited").css("display", "none");
         $(".drpdwn").css("display", "none");
-        $(".edit").on(eventName, function () {
+        $(".edit").on(eventName, function () {           
             $("#flag_val").css("display", "none");
             $(".drpdwn").css("display", "block");
         });
-        $("#close").on(eventName, function () {
-            $("#notify_cust").val($("#flag_val").val());
+        $("#close").on(eventName, function () {                    
             $("#flag_val").css("display", "block");
             $(".drpdwn").css("display", "none");
+            $('#notify_cust').val($("#flag_val").html()).trigger();
         });
-        $("#saveModify").on(eventName, function () {
+        $("#saveModify").on(eventName, function () {            
             var sel = document.getElementById("notify_cust");
-            var val = sel.options[sel.selectedIndex].value;
+            var val = sel.options[sel.selectedIndex].value;            
             if (val == "Yes")
                 var flag = "Y"
             else if (val == "No")
@@ -474,7 +474,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
         </div>
         <div>
             <div class="column r15">
-                <span class="summaryColumnTitle">Phone Numeber</span>
+                <span class="summaryColumnTitle">Phone number</span>
                 <input type="text" spellcheck="true" name="EditDescriptionText" id="editTelephone_val" value="<?php /* Display the telephone */  if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; } ?>" />
             </div>
             <div class="column r15">
