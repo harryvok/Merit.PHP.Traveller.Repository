@@ -142,7 +142,7 @@
     <?php
         if($_SESSION['roleSecurity']->modify_name == "Y"){
             ?>
-            <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+            <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
             <?php
         }
     ?>

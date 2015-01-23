@@ -220,7 +220,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <a href="#" class="editClose" id="EditDescriptionClose">Close</a>
         </div>
     </li>
-    <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+    <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
     <li class="textbox">
         <p>
             <strong>Request Instruction:</strong>
@@ -233,7 +233,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <a class="editClose" id="EditInstructionsClose">Close</a>
         </div>
     </li>
-    <a data-role="button" title="Edit Instructions" class="edit" id="EditInstructions"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+    <a data-role="button" title="Edit Instructions" class="edit" id="EditInstructions" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
     <li data-role="list-divider">Location Details</li>
     <li>
         <a href='index.php?page=view-address&id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>&ref_page=view-request&ref=<?php echo $_GET['id']; ?>&filter=<?php echo $filter; ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?> <?php if(isset($loc_street_name)){ echo $loc_street_name; } ?> <?php if(isset($loc_street_type)){ echo $loc_street_type; } ?> <?php if(isset($loc_locality)){ echo $loc_locality; } ?> <?php if(isset($loc_postcode)){ echo $loc_postcode; } ?> </a>
@@ -390,7 +390,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     if($GLOBALS['result']['request']->finalised_ind == "N"){
             if($_SESSION['roleSecurity']->modify_name == "Y"){
                 ?>
-            <a href="#" data-role="button" title="Edit Description" class="original1" id="modify"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+            <a href="#" data-role="button" title="Edit Description" class="original1" id="modify" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
         <?php
         }
     }
@@ -491,7 +491,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
             </div>
         </p>
     </li>
-    <a href="#" data-role="button" title="Edit Description" class="modify" id="modify_flag"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+    <a href="#" data-role="button" title="Edit Description" class="modify" id="modify_flag" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
     <li class="drpdwn">
     <input type="button" id="saveFlag" value="Save"  style="float:left"/> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="closeFlag" value="Close" />  
     </li>
