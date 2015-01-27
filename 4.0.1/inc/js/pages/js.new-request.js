@@ -1062,7 +1062,9 @@ $(document).ready(function () {
                 $('#o_cpobox').val(save);
             }
         });
-
+        $.validator.setDefaults({
+            ignore: ""
+        })
         $("#newrequest").validate({
             submitHandler: function (form) {                
                 $("#btnclick").val("N");
@@ -1153,7 +1155,9 @@ $(document).ready(function () {
             }
 
         });
-
+        $.validator.setDefaults({
+            ignore: ""
+        })
         if ($("#countOnlyInd").val() == "N") {
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {
