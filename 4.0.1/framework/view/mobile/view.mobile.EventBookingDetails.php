@@ -82,7 +82,7 @@
                     </tr>
                     <tr style="font-size:small">
                         <td></td>
-                        <td>(ensure location address is entered.)</td>
+                        <td>(ensure location address is entered)</td>
                     </tr>
                 </table>
             </p>

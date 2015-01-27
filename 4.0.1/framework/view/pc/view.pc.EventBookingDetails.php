@@ -78,7 +78,7 @@
     </div>      
     <div>
         <br /><br />
-        <b>Transport Reqd: </b><input type="checkbox" name="trns_req" id="trns_req" style="height:18px;width:40px;"/> (ensure location address is entered.)
+        <b>Transport Reqd: </b><input type="checkbox" name="trns_req" id="trns_req" style="height:18px;width:40px;"/> (ensure location address is entered)
         <br /><br />
         <input type="button" value="    Ok    " id="placeEvent"/>        
         <input type="button" id="stop" name="stop" value="Cancel"/>
