@@ -39,7 +39,7 @@
             $("#flag_val").css("display", "block");
             $(".modify").css("display", "block");
             $(".drpdwn").css("display", "none");
-            $(".flagval").css("height", "15px");            
+            $(".flagval").css("height", "25px");            
             $('#notify_cust').val($("#originalFlag").val()).trigger("change");
         });
 
@@ -214,26 +214,27 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <br />
             <div id="EditDescriptionLabel"><?php /* Display the description */  echo base64_decode($GLOBALS['result']['request']->request_description); ?></div>
         </p>
+        <div><img src="images/modify-icon.png" width="16" height="16" title="Edit Description" class="edit" id="EditDescription" /></div>
         <div id="EditDescriptionEdit" class="editTextDiv">
             <textarea spellcheck="true" name="EditDescriptionText" id="EditDescriptionTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo base64_decode($GLOBALS['result']['request']->request_description); } ?></textarea>
             <input type="button" id="EditDescriptionSubmit" data-action="Request" value="Save" />
             <a href="#" class="editClose" id="EditDescriptionClose">Close</a>
         </div>
     </li>
-    <a href="#" data-role="button" title="Edit Description" class="edit" id="EditDescription" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+    
     <li class="textbox">
         <p>
             <strong>Request Instruction:</strong>
             <br />
             <div id="EditInstructionsLabel"><?php /* Display the description */  echo base64_decode($GLOBALS['result']['request']->request_instruction); ?></div>
         </p>
+        <div><img src="images/modify-icon.png" width="16" height="16" title="Edit Description" class="edit" id="EditInstructions" /></div>
         <div id="EditInstructionsEdit" class="editTextDiv">
             <textarea spellcheck="true" name="EditInstructionsText" id="EditInstructionsTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></textarea>
             <input type="button" id="EditInstructionsSubmit" data-action="Request" value="Save" />
-            <a class="editClose" id="EditInstructionsClose">Close</a>
+            <a href="#" class="editClose" id="EditInstructionsClose">Close</a>
         </div>
     </li>
-    <a data-role="button" title="Edit Instructions" class="edit" id="EditInstructions" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
     <li data-role="list-divider">Location Details</li>
     <li>
         <a href='index.php?page=view-address&id=<?php if(isset($loc_address_id)){ echo $loc_address_id; } ?>&ref_page=view-request&ref=<?php echo $_GET['id']; ?>&filter=<?php echo $filter; ?>'><?php if(isset($loc_house_suffix) && strlen($loc_house_suffix) > 0 && isset($loc_house_number) && strlen($loc_house_number > 0) && $loc_house_number != $loc_house_suffix){ echo $loc_house_suffix; } elseif(isset($loc_house_number)){ echo $loc_house_number; } ?> <?php if(isset($loc_street_name)){ echo $loc_street_name; } ?> <?php if(isset($loc_street_type)){ echo $loc_street_type; } ?> <?php if(isset($loc_locality)){ echo $loc_locality; } ?> <?php if(isset($loc_postcode)){ echo $loc_postcode; } ?> </a>
@@ -477,21 +478,22 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     }
          } 
 ?>
-<li class="flagval" style="height:15px;">
-        <p style="float:left">
+<li class="flagval" style="height:25px;">
+        <p>
             <?php $flag = $GLOBALS['result']['request']->notify_customer_ind ?>
             <input type="hidden" id="originalFlag" value="<?php echo $flag; ?>" />
-            <strong>Notify Customer: &nbsp;</strong> 
-            <p id="flag_val" style="float:left"><?php echo $flag; ?></p>
+            <strong>Notify Customer: &nbsp;</strong> <?php echo $flag; ?> 
+            <div style="float:left">
+                <img src="images/modify-icon.png" width="16" height="16" title="Edit Description" class="modify" id="modify_flag" />
+            </div>
             <div class="drpdwn">
                 <select name="notify_cust" id="notify_cust" >
                     <option value="Yes" <?php if ($flag == "Yes") echo 'selected'; ?> >Yes</option>
                     <option value="No" <?php if ($flag == "No") echo 'selected'; ?> >No</option>
                 </select> 
-            </div>
-        </p>
-    </li>
-    <a href="#" data-role="button" title="Edit Description" class="modify" id="modify_flag" style="width:120px;margin:10px auto;"><img src="images/modify-icon.png" width="16" height="16" />Modify</a>
+            </div>                       
+        </p> 
+    </li>   
     <li class="drpdwn">
     <input type="button" id="saveFlag" value="Save"  style="float:left"/> &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="closeFlag" value="Close" />  
     </li>
