@@ -2301,7 +2301,8 @@ class Model {
             else{
                 $_SESSION['done'] = 1;
                 $_SESSION['error'] = 1;
-                $_SESSION['error_web_service'] = 1;
+                //$_SESSION['error_web_service'] = 1;
+                $_SESSION['error_recategorise_srf'] = 1;
                 $_SESSION['error_recategorise_request'] = 1;
                 $_SESSION['custom_error'] = $ws_message;
                 $_SESSION['redirect'] = "index.php?page=view-request&id=".$_POST['request_id']."&d=recategoriseRequest";
