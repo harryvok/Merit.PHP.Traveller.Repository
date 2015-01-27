@@ -88,7 +88,6 @@
                 <input type="hidden" name="status_code" id="status_code" value="<?php echo $GLOBALS['result']['outcomes']->finalised_ind; ?>" />
                 <input type="hidden" name="assign_name" id="assign_name" value="<?php echo $GLOBALS['result']['outcomes']->assign_name; ?>" />
                 <input  type='submit' id="submitbutton" value='Complete' />
-            </form>
-          
-	</div>
+            </form>          
+	    </div>
   </div>
