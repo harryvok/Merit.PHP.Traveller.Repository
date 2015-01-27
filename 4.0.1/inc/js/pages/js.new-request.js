@@ -370,15 +370,11 @@ $(document).ready(function () {
                 Unload();
                 if (data == "None") {
                     $("#submit").prop('disabled', true).buttonState("disable");
-                    $("#saveMore").prop('disabled', true).buttonState("disable");
-                    
-                    /* Need to somehow manage to disable jquery mobile overlays */
-                    
+                    $("#saveMore").prop('disabled', true).buttonState("disable");                 
                 }
                 else {
                     $("#submit").prop('disabled', false).buttonState("enable");
                     $("#saveMore").prop('disabled', false).buttonState("enable");
-                    $("#submit").removeClass('ui-disabled');
                 }
             }
         });
@@ -1025,7 +1021,7 @@ $(document).ready(function () {
             });
             $(".req_text_udf:not(:visible)").each(function () {
                 $(this).removeClass("required");
-            });         
+            });            
         });
 
         $('#submit').on(eventName, function (event) {
@@ -1059,10 +1055,6 @@ $(document).ready(function () {
                 $('#o_cpobox').val(save);
             }
         });
-
-        $.validator.setDefaults({
-            ignore: ""
-        })
 
         $("#newrequest").validate({
             submitHandler: function (form) {                
@@ -1154,10 +1146,6 @@ $(document).ready(function () {
             }
 
         });
-
-        $.validator.setDefaults({
-            ignore: ""
-        })
 
         if ($("#countOnlyInd").val() == "N") {
             $("#newrequest").valid();

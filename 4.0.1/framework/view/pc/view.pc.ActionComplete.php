@@ -29,11 +29,7 @@
           else{
             $("#udfs_exist").val("0");
             $("#outcome-udfs").html("");
-        }
-
-	      // On outcome change.
-        alert("Came Here");
-
+          }
 	  });
 
 	  $('#completeaction').validate();
@@ -74,7 +70,6 @@
                 <!-- adhoc label here -->
                 <!-- adhoc select here -->
 
-                <?php $test = 123; ?>
 
                   <label  id="lab2">Comment: <span id="indMand" style="color:red; display:none;">*</span></label> 
                   <textarea spellcheck="true" name="comment_act" class="text" id="desc" style="width:100%; height:40px; padding:5px;"></textarea>
