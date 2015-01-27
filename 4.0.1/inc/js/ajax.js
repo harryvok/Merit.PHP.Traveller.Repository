@@ -99,6 +99,32 @@ function GetAddressDetails() {
         });
     }
 }
+
+function getEventBookingDetails() {    
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {
+        if ($("#functionInput").val() == "Australia Day") {
+            var serviceID = $("#service").val();
+            var requestID = $("#request").val();
+            var functionID = $("#function").val();
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.getEventBookingDetails.php',
+                type: 'POST',
+                data: {
+                    serviceID: serviceID,
+                    requestID: requestID,
+                    functionID: functionID
+                },
+                success: function (data) {
+                    Unload();
+                    $('#popup').html("");
+                    $('#popup').html(data);
+                },
+            });
+        }
+    }
+}
+
 function GetBookingSummary(paramdate) {
      var date = "";
     if (paramdate == "")
