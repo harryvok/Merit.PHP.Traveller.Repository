@@ -122,6 +122,10 @@ function getEventBookingDetails() {
                 },
             });
         }
+        else {
+            $("#event_booking").attr("disabled", "disabled");
+            $("#event_booking").css("display", "none");
+        }
     }
 }
 

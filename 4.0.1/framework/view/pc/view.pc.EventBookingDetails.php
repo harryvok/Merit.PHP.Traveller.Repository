@@ -3,13 +3,15 @@
         $("#popup").fadeIn("fast");
         $("#popup").css("width", "50%");
         $("#popup").css("margin", "110px auto");
+        $("#event_booking").removeAttr("disabled");
+        $("#event_booking").removeAttr("style");
         $("#stop").click(function () {
             $("#popup").fadeOut("fast");
         });
         $("#placeEvent").click(function () {
             if ($("#attendees_no").val() != "") {
                 $("#duedate").html("<label>Due Date:</label> " + $("#evnt_date").val());
-                //$("#due").val($("#booking_date_" + id).val());
+                $("#due").val($("#actual_due").val());
                 $("#udf_1").val($("#attendees_no").val());
                 $("#popup").fadeOut("fast");
             } else {
@@ -30,6 +32,7 @@
     <b>Event: </b><?php echo $GLOBALS['result']->event_name; ?>
     <br /><br />
     <b>Event Date: </b><?php echo $formated; ?>
+    <input type="hidden" name="actual_due" id="actual_due" value="<?php echo $date; ?>" />
     <input type="hidden" name="evnt_date" id="evnt_date" value="<?php echo $formated;?>"/>
     <br /><br />
     <b>Booking Date: </b><?php echo date("d-M-Y"); ?>
@@ -75,7 +78,7 @@
     </div>      
     <div>
         <br /><br />
-        <b>Transport Reqd: </b><input type="checkbox" name="trns_req" id="trns_req" style="height:18px;width:40px;"/> (ensure location address is set if used.)
+        <b>Transport Reqd: </b><input type="checkbox" name="trns_req" id="trns_req" style="height:18px;width:40px;"/> (ensure location address is entered.)
         <br /><br />
         <input type="button" value="    Ok    " id="placeEvent"/>        
         <input type="button" id="stop" name="stop" value="Cancel"/>

@@ -89,8 +89,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" name="workflowInd" id="workflowInd">
                         <input type="hidden" name="countOnly" id="countOnly" value="0">
 
-                        <input type="hidden" id="chkCount" val="0" />
-                        
+                        <input type="hidden" id="chkCount" val="0" />                        
                         <?php
                         if(isset($_SESSION['roleSecurity']->show_reference_no) && $_SESSION['roleSecurity']->show_reference_no == "Y"){
                             ?>
@@ -121,7 +120,8 @@ if(isset($_SESSION['user_id'])){
                         <b><span id="rednote"></span></b>
                         <label>Request Description<span class="request_description_label mandLabel" style="color: red; display: none;">*</span></label>
                         <textarea spellcheck="true" rows="4" class="text request-issue " data-mand="request_description" name='issue' id='textareaissue' maxlength='2000'><?php if(isset($_SESSION['rem_issue'])){ echo $_SESSION['rem_issue']; } ?></textarea>
-                    </p>
+                    </p>                    
+                    <input type="button" value="Booking" disabled style="visibility:hidden" id="event_booking" onclick="getEventBookingDetails()"  />
                 </div>
                 <div id="udfs" style="display: none;">
                     <div data-role="collapsible" class="col" data-content-theme="c" data-collapsed="false">

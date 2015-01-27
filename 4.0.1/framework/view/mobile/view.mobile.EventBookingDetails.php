@@ -5,6 +5,9 @@
         <ul data-role="listview"  data-inset="true">
             <script type="text/javascript">
                 $(document).ready(function () {
+                    $("#event_booking").prop("disabled", false).buttonState("enable");
+                    $("#event_booking").removeAttr("disabled");
+                    $("#event_booking").removeAttr("style");
                     $("#popup").popup("open");
                     $("#default").page('destroy');
                     $("#default").page();                   
@@ -79,7 +82,7 @@
                     </tr>
                     <tr style="font-size:small">
                         <td></td>
-                        <td>(ensure location address is set if used.)</td>
+                        <td>(ensure location address is entered.)</td>
                     </tr>
                 </table>
             </p>

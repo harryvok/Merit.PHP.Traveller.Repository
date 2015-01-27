@@ -1438,6 +1438,7 @@ $(document).ready(function () {
         $("#lstreet").val("").attr("readonly", false);
         $("#ltype").val("").attr("readonly", false).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
         $("#lsuburb").val("").attr("readonly", false).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
+        $("#event_booking").css("visibility", "hidden");
     });
 });
 

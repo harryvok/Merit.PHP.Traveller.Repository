@@ -30,9 +30,10 @@ if(!isset($_GET['d'])){
                 <input type="hidden" id="testing" value="" />
                 <input type="hidden" id="checkforWorkflow" value="" />
                 <input type="hidden" id="mydetsclicked" value="N" />           
-                <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>
+                <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>                
                 <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
                 <input type="button" value="InfoXpert Search" class="openDocumentPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
+                <input type="button" value="Booking" disabled style="visibility:hidden" id="event_booking" onclick="getEventBookingDetails()"  />
                 <?php } ?>
                 <div class="column r60">
                     <div class="column r25">
