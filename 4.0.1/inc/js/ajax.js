@@ -99,6 +99,32 @@ function GetAddressDetails() {
         });
     }
 }
+
+function getEventBookingDetails() {    
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {
+        if ($("#functionInput").val() == "Australia Day") {
+            var serviceID = $("#service").val();
+            var requestID = $("#request").val();
+            var functionID = $("#function").val();
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.getEventBookingDetails.php',
+                type: 'POST',
+                data: {
+                    serviceID: serviceID,
+                    requestID: requestID,
+                    functionID: functionID
+                },
+                success: function (data) {
+                    Unload();
+                    $('#popup').html("");
+                    $('#popup').html(data);
+                },
+            });
+        }
+    }
+}
+
 function GetBookingSummary(paramdate) {
      var date = "";
     if (paramdate == "")
@@ -873,3 +899,42 @@ function check_adhoc() {
     });
 }
 
+function modifyCustomerDetails(name_id, initial, pref_title, given, surname, mobile, telephone, work, email, company, fax, name_ctr) {
+    //alert(name_id + initial + pref_title + given + surname + mobile + telephone + work + email + company + fax + name_ctr);
+    $.ajax({
+        url: 'inc/ajax/ajax.modifyNameDetails.php',
+        type: 'post',
+        data: {
+            name_id: name_id,
+            initial: initial,
+            pref_title: pref_title,
+            given: given,
+            surname: surname,
+            cust_mobile: mobile,
+            cust_phone: telephone,
+            cust_work: work,
+            email_address: email,
+            company: company,
+            fax: fax,
+            name_ctr: name_ctr,
+            new_name: "N"
+        },
+        success: function (data) {
+            location.reload();
+        }
+    });
+}
+
+function resetdata() {
+    $("#editInitial_val").val($("#editInitial").html().replace(/^\s+|\s+$/g, ''));
+    $("#editPref_title_val").val($("#editPref_title").html().replace(/^\s+|\s+$/g, ''));
+    $("#editGiven_names_val").val($("#editGiven_names").html().replace(/^\s+|\s+$/g, ''));
+    $("#editSurname_val").val($("#editSurname").html().replace(/^\s+|\s+$/g, ''));
+    $("#editMobile_no_val").val($("#editMobile_no").html().replace(/^\s+|\s+$/g, ''));
+    $("#editTelephone_val").val($("#editTelephone").html().replace(/^\s+|\s+$/g, ''));
+    $("#editWork_phone_val").val($("#editWork_phone").html().replace(/^\s+|\s+$/g, ''));
+    $("#editEmail_address_val").val($("#editEmail_address").html().replace(/^\s+|\s+$/g, ''));
+    $("#editCompany_name_val").val($("#editCompany_name").html().replace(/^\s+|\s+$/g, ''));
+    $("#editFax_no_val").val($("#editFax_no").html().replace(/^\s+|\s+$/g, ''));
+    $("#editName_ctr_val").val($("#editName_ctr").html().replace(/^\s+|\s+$/g, ''));
+}

@@ -18,10 +18,10 @@ $(document).ready(function() {
             null,
             null,
             null,
-            {"sType": "date-uk"},
-            {"sType": "date-euro" },
             null,
-            null
+            null,
+            {"sType": "date-uk"},
+            {"sType": "date-euro" }            
         ]
     });
   
@@ -77,11 +77,11 @@ $(document).ready(function() {
                 null,
                 null,
                 null,
+                null,                
+                null,
                 null,
                 { "sType": "date-uk" },
-                { "sType": "date-euro" },
-                null,
-                null
+                { "sType": "date-euro" }
             ]
         });
 

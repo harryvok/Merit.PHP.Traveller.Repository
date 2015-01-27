@@ -6,9 +6,9 @@
                 var table = $("#auditTable").dataTable({
                     bPaginate: true,
                     iDisplayLength: 25,
-                    "aoColumns": [
-                        null,                        
+                    "aoColumns": [                       
                         { "sType": "date-euro" },
+                        null,
                         null,
                         null,
                         null,
@@ -16,17 +16,16 @@
                     ],
 
                 });
-                table.fnSort([[1, 'desc']]);
+                table.fnSort([[0, 'desc']]);
             });
         </script>
         <table id="auditTable" class=" sortable" title="" cellspacing="0">
             <thead>
-                <tr>
-                    <th>Level</th>
-                    <th class="sortable">Date</th>
-                    <th class="sortable">Type</th>
-                    <th class="sortable">Officer</th>
-                    <th class="sortable">Field</th>
+                <tr>                    
+                    <th class="sortable" style="width:12%">Date</th> 
+                    <th class="sortable" style="width:12%">Type</th>                   
+                    <th class="sortable" style="width:12%">Officer</th>                    
+                    <th class="sortable" style="width:12%">Field</th>
                     <th class="sortable">Description</th>                    
                 </tr>
             </thead>
@@ -45,13 +44,12 @@
                             $class = "light";
                         }
                         ?>
-                <tr class="<?php echo $class; ?>"title="">
-                    <td><?php echo $result->audit_level == "R" ? "Request" : "Action"; ?></td>
+                <tr class="<?php echo $class; ?>"title="">                    
                     <td><?php if($result->audit_date != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result->audit_date)); } ?></td>
-                    <td><?php echo isset($result->audit_type) ? $result->audit_type : ""; ?></td>                    
+                    <td><?php echo isset($result->audit_type) ? $result->audit_type : ""; ?></td>
                     <td><?php echo isset($result->audit_officer) ? $result->audit_officer : ""; ?></td>
                     <td><?php echo isset($result->audit_field) ? $result->audit_field : ""; ?></td>
-                    <td><?php echo isset($result->audit_description) ? str_replace(";","<br/>",$result->audit_description)  : ""; ?></td>
+                    <td><?php echo isset($result->audit_description) ? $result->audit_description : ""; ?></td>
                 </tr>
                 <?php
                     }
@@ -60,12 +58,11 @@
                     $result = $GLOBALS['result']->audit_details;
                 ?>
                 <tr class="dark" title="">
-                    <td><?php echo $result->audit_level == "R" ? "Request" : "Action"; ?></td>
                     <td><?php if($result->audit_date != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result->audit_date)); } ?></td>
                     <td><?php echo isset($result->audit_type) ? $result->audit_type : ""; ?></td>
-                    <td><?php echo isset($result->audit_officer) ? $result->audit_officer : ""; ?></td>                    
+                    <td><?php echo isset($result->audit_officer) ? $result->audit_officer : ""; ?></td>
                     <td><?php echo isset($result->audit_field) ? $result->audit_field : ""; ?></td>
-                    <td><?php echo isset($result->audit_description) ? str_replace(";","<br/>",$result->audit_description) : ""; ?></td>
+                    <td><?php echo isset($result->audit_description) ? $result->audit_description : ""; ?></td>
                 </tr>
                 <?php
                 }

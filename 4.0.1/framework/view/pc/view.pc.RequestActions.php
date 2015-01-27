@@ -118,8 +118,8 @@
                         <?php } ?>
                     </td>
                     <td>
-                        <?php if($_SESSION['roleSecurity']->maint_comp_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y") { ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=complete" class="button" style="text-decoration:none !important">Complete</a><?php } ?>
-                        <?php if($_SESSION['roleSecurity']->maint_reassign_action == "Y" && $GLOBALS['act_finalised_ind'] != "Y"){ ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=reassign" class="button" style="text-decoration:none !important">Reassign</a><?php } ?>
+                        <?php if($_SESSION['roleSecurity']->maint_comp_action == "Y" && $GLOBALS['result']['actions']->finalised_ind != "Y") { ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=complete" class="button" style="text-decoration:none !important">Complete</a><?php } ?>
+                        <?php if($_SESSION['roleSecurity']->maint_reassign_action == "Y" && $GLOBALS['result']['actions']->finalised_ind != "Y"){ ?><a href="index.php?page=view-action&id=<?php echo $change ?>&d=reassign" class="button" style="text-decoration:none !important">Reassign</a><?php } ?>
                     </td>
                     <td><?php 
                     $result_a_ar = $GLOBALS['result']['actions']->request_actions_det->request_actions_details;

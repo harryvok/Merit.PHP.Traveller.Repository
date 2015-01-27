@@ -2,6 +2,10 @@
 if(isset($_SESSION['user_id'])){
 ?>
 
+
+
+
+
 <div data-role="page" id="default">
     <div data-role="header" data-tap-toggle="false" data-position="fixed">
         <h1>New Request</h1>
@@ -45,7 +49,6 @@ if(isset($_SESSION['user_id'])){
                     <h4>Request Details</h4>
                     <p>
                         
-
                         <label>Keyword</label>
                         <input class="text" name='keyword' id="keywordSearch" maxlength='15' placeholder="Search...">
 
@@ -102,9 +105,10 @@ if(isset($_SESSION['user_id'])){
     }
                         ?>
 
-                        <label>Request Type<span class="request_type_label mandLabel" style="color: red; display: none;">*</span></label>
-                        <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
-
+                        <?php if(isset($_SESSION['roleSecurity']->show_request_type) && $_SESSION['roleSecurity']->show_request_type == "Y"){?>
+                            <label>Request Type<span class="request_type_label mandLabel" style="color: red; display: none;">*</span></label>
+                            <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
+                        <?php } ?>
                          <?php if($_SESSION['notify_insurance'] == "Y") { ?>
                         <label for="notifyInsuranceOfficer">Notify Insurance Officer</label>
                         <input type="checkbox" name="notifyInsuranceOfficer" value="Y" style="width: 25px;height: 25px;margin-top: -18px; margin-left:170px">
@@ -241,6 +245,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="button" id="myDetails" value="My Details" data-role="button" />
                         <input type="button" id="clearDetails" value="Clear" data-role="button" />
                         <input type="button" id="customerInfoXpert" data-role="button" disabled value="infoXpert"  onclick="$('#cust_searchResults').slideToggle()"/>
+                        <input type="hidden" id="respCode" value="" />
                         <div id="cust_searchResults" hidden></div>
 
 
@@ -526,7 +531,10 @@ if(isset($_SESSION['user_id'])){
                 <div id="submitButton">
                     <input name="Submit input" type="submit" data-role="button" id="submit" value="Submit" />
                     <input type="button" data-role="button" id="saveMore" value="Save & More">
-                    <input type="button" data-role="button" id="saveCountOnly" value="Count Only">
+                    <?php if(isset($_SESSION['roleSecurity']->show_count_only) && $_SESSION['roleSecurity']->show_count_only == "Y"){?>
+                        <input type="button" data-role="button" id="saveCountOnly" value="Count Only">
+                    <?php } ?>
+                    <br />
                 </div>
 
                 <input type="hidden" name="saveCountOnly" id="countOnlyInd" value="N" />

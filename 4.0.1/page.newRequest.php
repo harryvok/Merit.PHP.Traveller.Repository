@@ -96,8 +96,10 @@ if(!isset($_GET['d'])){
                         ?>
 
                         <div class="column r25">
-                            <label for="refno">Request Type<span class="request_type_label mandLabel" style="color:red;display:none;"> *</span></label>
-                            <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
+                            <?php if(isset($_SESSION['roleSecurity']->show_request_type) && $_SESSION['roleSecurity']->show_request_type == "Y"){?>                        
+                                <label for="refno">Request Type<span class="request_type_label mandLabel" style="color:red;display:none;"> *</span></label>
+                                <?php $controller->Dropdown("RequestTypesDD", "RequestTypes"); ?>
+                            <?php } ?>
 
                         </div>
                         <div class="column r25">
@@ -285,6 +287,7 @@ if(!isset($_GET['d'])){
                             <input type="button" name="myDetails" id="myDetails" value="My Details" />
                             <input type="button" name="clearDetails" id="clearDetails" value="Clear" />
                             <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()" />
+                            <input type="hidden" id="respCode" value="" />
 
                             <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
                             <input type="button" class="openDocumentPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
@@ -662,7 +665,9 @@ if(!isset($_GET['d'])){
             <!--<input id="submit" type='submit' value='Save' />-->
             <input name="Submit input" type="submit" data-role="button" id="submit" value="Submit" />
             <input id="saveMore" type='button' value='Save & More' />
-            <input id="saveCountOnly" type='button' value='Count Only'  />
+            <?php if(isset($_SESSION['roleSecurity']->show_count_only) && $_SESSION['roleSecurity']->show_count_only == "Y"){?>
+                <input id="saveCountOnly" type='button' value='Count Only'  />
+            <?php } ?>
             <input id="reset" type='button' value='Reset'  />
         </div>
 

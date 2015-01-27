@@ -394,10 +394,22 @@ class Model {
         $parameters->street_type = $_POST['street_type'];
         
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_booking_details", $parameters);
-        return $result;
-        
-      
+        return $result;      
     }
+    
+    public function getEventBookingDetails($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->service_code = $_POST['serviceID'];
+        $parameters->request_code = $_POST['requestID'];
+        $parameters->function_code = $_POST['functionID'];
+        $parameters->customer_surname = '';
+        $parameters->customer_given_name = '';
+        $parameters->customer_title = '';        
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_event_details", $parameters);
+        return $result;      
+    }    
 
     public function getIfWorkflow(){
         if(isset($_GET['service_code']) && strlen($_GET['service_code']) > 0){ $service_code = $_GET['service_code']; } else { $service_code = ''; }
@@ -2013,7 +2025,8 @@ class Model {
                             "email_address" => $cust_email,
                             "company_name" => $cust_company,
                             "name_ctr" => $name_ctr,
-                            "name_type" => $cust_type
+                            "name_type" => $cust_type,
+                            "responsible_code " => $respCode
                         ),
                     )
                 ),
@@ -4437,6 +4450,14 @@ class Model {
             "ws_message" => '',
             "class" => ''            
         ));
+        $name_ctr = 0.0;
+        if(isset($_POST["name_ctr"])){
+            $name_ctr = $_POST["name_ctr"];
+        }
+        $fax = "";
+        if(isset($_POST["fax"])){
+            $fax = $_POST["fax"];
+        }
         $parameters = array(
             "user_id" => $_SESSION['user_id'],
             "password" => $_SESSION['password'],
@@ -4450,10 +4471,10 @@ class Model {
                 "telephone" => $_POST["cust_phone"],
                 "work_phone" => $_POST["cust_work"],
                 "mobile_no" => $_POST["cust_mobile"],
-                "fax_no" => '',
+                "fax_no" => $fax,
                 "email_address" => $_POST["email_address"], 
                 "company_name" => $_POST["company"], 
-                "name_ctr" => 0.0, 
+                "name_ctr" => $name_ctr, 
                 "ws_status" => '', 
                 "ws_message" => '',
                 "address_det" => $address_details,
@@ -4472,6 +4493,22 @@ class Model {
             $result = false;
         }    
         return $result;
-    }    
+    }   
+    
+    public function processModifyNotifyCustomer($parameters = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_POST["request_id"];
+        $parameters->customer_notify_ind = $_POST["customer_notify_ind"];
+        try {
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_modify_customer_notify_flag", $parameters);      
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $result = false;
+        }    
+        return $result;
+    }
 }
 ?>

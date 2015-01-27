@@ -4,7 +4,7 @@
     <!--<?php if($_SESSION['roleSecurity']->maint_udf == "Y" && $GLOBALS['result'] > 1){ ?><li><a href="index.php?page=view-action&id=<?php echo $_GET['id']; ?>&d=udfs">User Defined Fields</a></li><?php } ?>-->
     <!--<li><a href="index.php?page=view-action&id=<?php echo $_GET['id']; ?>&d=notifications">Notifications</a></li>-->
 
-    <?php if($_SESSION['roleSecurity']->view_comment == "Y" || $_SESSION['roleSecurity']->view_attachment == "Y"){ ?>
+    <?php if($_SESSION['roleSecurity']->view_comment == "Y" || $_SESSION['roleSecurity']->view_attachment == "Y" || $_SESSION['roleSecurity']->add_attach == "Y" || $_SESSION['roleSecurity']->add_comment == "Y"){ ?>
         <li><a href="index.php?page=view-action&id=<?php echo $_GET['id']; ?>&d=ca">Comments & Attachments</a></li><?php
       } ?>
     <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?><li><a  href="index.php?page=view-action&id=<?php echo $_GET['id']; ?>&d=documents">Documents</a></li><?php }?>

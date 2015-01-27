@@ -1,15 +1,16 @@
 <?php
-   if($_SESSION['roleSecurity']->view_attachment == "Y")
+if($_SESSION['roleSecurity']->view_attachment == "Y" || $_SESSION['roleSecurity']->add_attach == "Y")
     {
 ?>
     <div class="summaryContainer">
-        <h1>Attachments (<?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?>) <span class="openPopup" id="Attachments">
+        <h1>Attachments (<?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?>) <?php if(isset($_SESSION['roleSecurity']->add_attach) && $_SESSION['roleSecurity']->add_attach == "Y"){?><span class="openPopup" id="Attachments">
             <img src="images/iconAdd.png" />
-            Add Attachment</span></h1>
+            Add Attachment</span><?php } ?></h1>
         <div>
             <input type="hidden" name="val-at" id="val-at" value="0" />
             <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET["id"]; ?>" />
         
+                <?php if($_SESSION['roleSecurity']->view_attachment == "Y") { ?>
                 <input type="text" id="requestAttachments" class="tableSearch" placeholder="Search..." />
                 <table id="requestAttachmentsTable" class="sortable" title="" cellspacing="0">
                     <thead>
@@ -91,6 +92,7 @@
                             ?>
                     </tbody>
                 </table>
+            <?php } ?>
             </div>
         </div>
         <div class="popupDetail" id="AttachmentsPopup">

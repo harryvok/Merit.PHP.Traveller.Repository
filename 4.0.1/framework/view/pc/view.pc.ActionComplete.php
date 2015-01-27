@@ -4,7 +4,8 @@
 	  $('#requirement').change(function() {
             var reqid = $('#requirement').val();
             var splireqid = reqid.split('_')[1];
-        if(splireqid != "NORESPONSE" && reqid != ""){
+	      //if(splireqid != "NORESPONSE" && reqid != ""){
+            if (reqid != "") {
 		       var id = $(this).find(':selected')[0].id;
    		     if(id == "Y"){  $('#desc').addClass("required"); $("#indMand").show(); }
 		     else if(id == "N"){ $('#desc').removeClass("required"); $("#indMand").hide(); }
@@ -63,7 +64,7 @@
                     <option value="">Select</option>
                     <?php
                         foreach($GLOBALS['result']['outcomes']->action_completed_det->action_completed_details as $result_outcomes){ ?>
-                        <option id="<?php if(isset($result_outcomes->note_ind)){ echo $result_outcomes->note_ind; } else { echo "N"; } ?>" value="<?php echo $result_outcomes->note_ind."_".$result_outcomes->action_code."_".$result_outcomes->resubmit; ?>"><?php echo $result_outcomes->action_name; ?></option>
+                        <option id="<?php if(isset($result_outcomes->note_ind)){ echo $result_outcomes->note_ind; } else { echo 'N'; } ?>" value="<?php echo $result_outcomes->note_ind."_".$result_outcomes->action_code."_".$result_outcomes->resubmit; ?>"><?php echo $result_outcomes->action_name; ?></option>
                     <?php } ?>
                 </select>
                 

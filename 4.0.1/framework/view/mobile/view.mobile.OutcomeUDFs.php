@@ -3,7 +3,7 @@
  $outcome_id = $_POST['outcome'];
 
 
-	if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['udfs']->udf_details)>1){
+ if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['udfs']->udf_details)>1){
 		$i=0;
 		
 		foreach($GLOBALS['result']['udfs']->udf_details as $udf){
@@ -216,13 +216,13 @@
 	<?php	
 		}
 	}
-	elseif(isset($GLOBALS['result']->udf_details) && count($GLOBALS['result']->udf_details)== 1){
+ elseif(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['udfs']->udf_details)== 1){
     ?>
 	<script language="javascript">
 		$("#udf_exist").val("1");
 	</script>
 	<?php
-		$udf = $GLOBALS['result']->udf_details;
+     $udf = $GLOBALS['result']['udfs']->udf_details;
 		$i=0;
 		if($udf->udf_active_ind == "Y" && $udf->udf_action_id == $_POST['act_id']){
             if($udf->udf_action_comp == $outcome_id || $udf->udf_action_comp == ""){

@@ -1,6 +1,15 @@
 
 
 <?php
+include_once("model.php"); 
+$model = new Model();  
+$name_id = strip_tags($_GET['id']);
+$parameters = new stdClass();
+$parameters->user_id = $_SESSION['user_id'];
+$parameters->password = $_SESSION['password'];
+$parameters->a_id = $name_id;
+$parameters->a_type = "N";
+$GLOBALS["name_audit_count"] = $model->WebService(MERIT_REQUEST_FILE, "ws_get_audit_count", $parameters);
 $name_id = strip_tags($_GET['id']);
 $address = array();
 if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); } else { $ex = ""; }
@@ -34,6 +43,9 @@ if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); } else { $ex = ""; }
 			if(isset($_GET['d']) && $_GET['d'] == "addresses"){
 				$controller->Display("Name", "NameAddresses");
 			}
+            if(isset($_GET['d']) && $_GET['d'] == "audit"){
+                $controller->Display("Audit", "NameAudit", "N");
+            }
 			?>
 	</div>
     <div class="content-secondary">

@@ -1,15 +1,16 @@
 <?php
-    if($_SESSION['roleSecurity']->view_comment == "Y") 
+if($_SESSION['roleSecurity']->view_comment == "Y" || $_SESSION['roleSecurity']->add_comment == "Y") 
     {
  ?>
     <div class="summaryContainer">
-        <h1>Comments (<?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?>) <span class="openPopup" id="Comments">
+        <h1>Comments (<?php if(isset($GLOBALS['result']->request_remark_details)) echo count($GLOBALS['result']->request_remark_details); else echo 0; ?>) <?php if(isset($_SESSION['roleSecurity']->add_comment) && $_SESSION['roleSecurity']->add_comment == "Y"){?><span class="openPopup" id="Comments">
             <img src="images/iconAdd.png" />
-            Add Comment</span></h1>
+            Add Comment</span><?php } ?></h1>
         <div>
             <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET["id"]; ?>" />
             <input type="hidden" name="val-c" id="val-c" value="0" />
 
+            <?php if($_SESSION['roleSecurity']->view_comment == "Y") { ?>
             <input type="text" id="requestComments" class="tableSearch" placeholder="Search..." />
             <table id="requestCommentsTable" class=" sortable" title="" cellspacing="0">
                 <thead>
@@ -103,7 +104,7 @@
                         ?>
                 </tbody>
             </table>
-
+            <?php } ?>
         </div>
     </div>
     </div>

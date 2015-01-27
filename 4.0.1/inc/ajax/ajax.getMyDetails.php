@@ -3,8 +3,15 @@ include("../../framework/controller.php");
 $controller = new Controller();
 $result = $controller->Get("SpecificOfficer");
 $GLOBALS['officer_id'] = $_SESSION['responsible_code'];
+
+if($result->responsible_code != ""){ 
+    $respcode = $result->responsible_code;
+} else {
+   $respcode = "";
+}
+
 $array = array(
-				"responsible_code" => $result->responsible_code, 
+				"responsible_code" => $respcode, 
 				"surname" => $result->surname, 
 				"given_names" => $result->given_names, 
 				"mail_id" => $result->mail_id, 

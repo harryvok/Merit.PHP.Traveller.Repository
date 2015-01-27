@@ -60,12 +60,18 @@
                     <option value="Request Intray" <?php echo $_SESSION['initial_screen'] == "Request Intray" ? "selected='selected'" : '' ?>>Request Intray</option>
                     <option value="New Request" <?php echo $_SESSION['initial_screen'] == "New Request" ? "selected='selected'" : '' ?>>New Request</option>
                 </select>
-                <label>How Received</label>
-                <?php $controller->Dropdown("HowReceived", "HowReceived",  $_SESSION['how_received_code']); ?>
-                
-                <label>Centre</label>
-                <?php $controller->Dropdown("Centres", "Centres",  $_SESSION['centre_code']); ?>
-                
+
+                <?php if(isset($_SESSION['roleSecurity']->my_pref_how_received) && $_SESSION['roleSecurity']->my_pref_how_received == "Y"){?>
+                    <label>How Received</label>
+                    <?php $controller->Dropdown("HowReceived", "HowReceived",  $_SESSION['how_received_code']); ?>
+                <?php } ?>
+
+                <?php if(isset($_SESSION['roleSecurity']->my_pref_centre) && $_SESSION['roleSecurity']->my_pref_centre == "Y"){?>
+                    <label>Centre</label>
+                    <?php $controller->Dropdown("Centres", "Centres",  $_SESSION['centre_code']); ?>
+                <?php } ?>
+
+
                 <label id="defreqfil">Default Request Filter</label>
                 <?php $controller->Dropdown("Filters", "Filters", array("filter" => "C", "filter_type" => "complaint")); ?>
                 
@@ -118,37 +124,39 @@
             </div>
         </div>
               !-->
-         <div class="summaryContainer">
-            <h1>Availability</h1>
-            <div class="float-left">
+        <?php if(isset($_SESSION['roleSecurity']->my_pref_availability) && $_SESSION['roleSecurity']->my_pref_availability == "Y"){?>
+             <div class="summaryContainer">
+                <h1>Availability</h1>
+                <div class="float-left">
+                        <div class="column r55">
+                            <label>Available</label><br />
+                            <input type="radio" name="availInd" value="Y" <?php echo $_SESSION['available_ind'] == "Y" ? "checked='checked'" : ""; ?> /> Yes <input type="radio" name="availInd" value="N" <?php echo $_SESSION['available_ind'] == "N" ? "checked='checked'" : ""; ?> /> No <br />
+                        </div><br /><br /><br />
+                        <div class="column r55">
+                    <label>Unavailable From</label>
+                    <?php
+                    $availFrom = explode("T", $_SESSION['avail_from']);
+                    $availTo = explode("T", $_SESSION['avail_to']);
+                    /*echo $_SESSION['avail_from'].'<br>';
+                    echo $_SESSION['avail_to'];*/
+                    ?>
+                    Date <span style="color:red;">*</span>: <input size="8" type="text" name="availFromDate" id="availFromDate" class="inline dateField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[0]) > 0 && $availFrom[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availFrom[0])); }  ?>" />
+                    Time <span style="color:red;">*</span>: <input size="6" type="text" name="availFromTime" id="availFromTime" class="inline timeField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[1]) > 0 && $availFrom[1] != "00:00:00"){ echo date('h:i A',strtotime($availFrom[1])); }  ?>" />
+                    </div>
                     <div class="column r55">
-                        <label>Available</label><br />
-                        <input type="radio" name="availInd" value="Y" <?php echo $_SESSION['available_ind'] == "Y" ? "checked='checked'" : ""; ?> /> Yes <input type="radio" name="availInd" value="N" <?php echo $_SESSION['available_ind'] == "N" ? "checked='checked'" : ""; ?> /> No <br />
-                    </div><br /><br /><br />
-                    <div class="column r55">
-                <label>Unavailable From</label>
-                <?php
-                $availFrom = explode("T", $_SESSION['avail_from']);
-                $availTo = explode("T", $_SESSION['avail_to']);
-                /*echo $_SESSION['avail_from'].'<br>';
-                echo $_SESSION['avail_to'];*/
-                ?>
-                Date <span style="color:red;">*</span>: <input size="8" type="text" name="availFromDate" id="availFromDate" class="inline dateField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[0]) > 0 && $availFrom[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availFrom[0])); }  ?>" />
-                Time <span style="color:red;">*</span>: <input size="6" type="text" name="availFromTime" id="availFromTime" class="inline timeField required" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availFrom[1]) > 0 && $availFrom[1] != "00:00:00"){ echo date('h:i A',strtotime($availFrom[1])); }  ?>" />
-                </div>
-                <div class="column r55">
-                <label>Unavailable To</label>
-                Date: <input type="text"  size="8" name="availToDate" id="availToDate" class="inline dateField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[0]) > 0 && $availTo[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availTo[0])); }  ?>" />
-                Time: <input type="text"  size="6" name="availToTime" id="availToTime" class="inline timeField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[1]) > 0 && $availTo[1] != "00:00:00"){ echo date('h:i A',strtotime($availTo[1])); }  ?>" />
-                </div>
-                <div class="column r100">
-                <label>Alternate Officer</label>
-                <input class="text ui-autocomplete-input valid" name="alternateOfficer" id="alternateOfficer" data-officer="true"  placeholder="Search..." autocomplete="off" value="<?php echo $_SESSION['alternate_officer_name'] ?>">
-                <input type="hidden" name="alternateOfficerCode" id="alternateOfficerCode" value="<?php echo $_SESSION['alternative_officer'] ?>"/>
-                </div>
-                </div>
-        </div> 
-        
+                    <label>Unavailable To</label>
+                    Date: <input type="text"  size="8" name="availToDate" id="availToDate" class="inline dateField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[0]) > 0 && $availTo[0] != "1900-01-01"){ echo date('d/m/Y',strtotime($availTo[0])); }  ?>" />
+                    Time: <input type="text"  size="6" name="availToTime" id="availToTime" class="inline timeField" <?php echo $_SESSION['available_ind'] == "Y" ? "disabled='disabled'" : ""; ?> value="<?php if(strlen($availTo[1]) > 0 && $availTo[1] != "00:00:00"){ echo date('h:i A',strtotime($availTo[1])); }  ?>" />
+                    </div>
+                    <div class="column r100">
+                    <label>Alternate Officer</label>
+                    <input class="text ui-autocomplete-input valid" name="alternateOfficer" id="alternateOfficer" data-officer="true"  placeholder="Search..." autocomplete="off" value="<?php echo $_SESSION['alternate_officer_name'] ?>">
+                    <input type="hidden" name="alternateOfficerCode" id="alternateOfficerCode" value="<?php echo $_SESSION['alternative_officer'] ?>"/>
+                    </div>
+                    </div>
+            </div> 
+        <?php } ?>
+
         <p>&nbsp;</p>
         <input type="hidden" name="action" value="ChangePreferences" />
     <input type="submit" value="Submit" id="submit">
