@@ -1,7 +1,9 @@
 
- <?php
- $outcome_id = $_POST['outcome'];
-
+<?php
+$outcome_id = "";
+if($_POST['outcome'] != "NORESPONSE"){
+$outcome_id = $_POST['outcome'];
+}
 
  if(isset($GLOBALS['result']['udfs']->udf_details) && count($GLOBALS['result']['udfs']->udf_details)>1){
 		$i=0;

@@ -8,7 +8,8 @@ if($_SESSION['roleSecurity']->maint_comp_action == "Y"){
 	  $('#requirement').change(function() {
             var reqid = $('#requirement').val();
             var splireqid = reqid.split('_')[1];
-        if(splireqid != "NORESPONSE" && reqid != ""){
+	      //if(splireqid != "NORESPONSE" && reqid != ""){
+            if (reqid != "") {
 		      var id = $(this).find(':selected')[0].id;
    		     if(id == "Y"){  $('#desc').addClass("required"); $("#indMand").show(); }
 		     else if(id == "N"){ $('#desc').removeClass("required"); $("#indMand").hide(); }
