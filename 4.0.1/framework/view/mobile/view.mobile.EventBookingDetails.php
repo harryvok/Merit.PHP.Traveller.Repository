@@ -38,8 +38,8 @@
             <p><b>Event:</b> <?php echo $GLOBALS['result']->event_name; ?></p>
             <p><b>Event Date:</b> <?php echo $formated; ?></p>
             <p><b>Booking Date:</b> <?php echo date("d-M-Y"); ?></p>
-            <p><b>Attend: </b> <?php echo $GLOBALS['result']->total_attendees; ?>
-            <p><b>Free: </b> <?php echo $GLOBALS['result']->free_slots; ?>
+            <p><b>Attending: </b> <?php echo $GLOBALS['result']->total_attendees; ?>
+            <p><b>Available: </b> <?php echo $GLOBALS['result']->free_slots; ?>
             <p><b>Total: </b> <?php echo $GLOBALS['result']->maximum_slot; ?>
             <p>  
                 <table>

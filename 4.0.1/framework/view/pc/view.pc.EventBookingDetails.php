@@ -41,8 +41,8 @@
         <table id="event_bookings" title="" cellspacing="0" style="width:50%;float:right">
             <thead>
                 <tr>
-                    <th style="width:170px; text-align:center">Attend</th>
-                    <th style="width:150px; text-align:center">Free</th>
+                    <th style="width:170px; text-align:center">Attending</th>
+                    <th style="width:150px; text-align:center">Available</th>
                     <th style="width:150px; text-align:center">Total</th>                    
                 </tr>
             </thead>
