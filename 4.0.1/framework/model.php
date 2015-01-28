@@ -1,7 +1,12 @@
 <?php
 
 class Model {
-
+    
+    
+    public function getDateFilter($params = NULL){
+        $emptyval = "";
+    }
+    
     public function processresubmitAction ($params = NULL){
         
         $datetime = $_POST['resubDate'].'T'.$_POST['resubTime'].':00+11:00';
@@ -172,16 +177,26 @@ class Model {
     }
 
     public function getActionIntray($params = NULL){
-        $filter = $this->getDefaultFilter("A", "action");
-        $from_date = (date("o")-20)."-01-"."01T00:00:00.000";
-        $to_date = (date("o")+20)."-01-"."01T00:00:00.000";
+
+        if($_GET['from_date'] == ""){
+            // No data
+            $setfrom_date = (date("o")-20)."-01-"."01T00:00:00.000";
+            $setto_date = (date("o")+20)."-01-"."01T00:00:00.000";           
+        }
+        else {
+            // Data
+            $setfrom_date = $_GET['from_date']."T00:00:00.000";
+            $setto_date = $_GET['to_date']."T00:00:00.000";
+        }
+        
+        $filter = $this->getDefaultFilter("A", "action");              
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
         $parameters->data_group = $_SESSION['data_group'];
         $parameters->filter_no = $filter;
-        $parameters->from_date = $from_date;
-        $parameters->to_date = $to_date;
+        $parameters->from_date = $setfrom_date;
+        $parameters->to_date = $setto_date;
         $result = $this->WebService(MERIT_ACTION_FILE, "ws_get_action_intray", $parameters)->action_intray_det;
         $GLOBALS['default_filter'] = $filter;
         return $result;

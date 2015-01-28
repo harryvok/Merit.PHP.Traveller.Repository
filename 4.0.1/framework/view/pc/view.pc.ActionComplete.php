@@ -83,7 +83,7 @@
                 <input type="hidden" name="action_id" id="action_id" value="<?php echo $_GET['id']; ?>" />
                 <input type="hidden" name="request_id" id="request_id" value="<?php echo $GLOBALS['result']['action']->request_id; ?>" />
                 <input type="hidden" name="service_name" id="service_name" value="<?php echo $GLOBALS['result']['action']->service_name; ?>" />				
-                <input type="hidden" name="action" id="action" value="CompleteAction" />
+                <input type="hidden" name="action" value="CompleteAction" />
                 <input type="hidden" name="status_code" id="status_code" value="<?php echo $GLOBALS['result']['outcomes']->finalised_ind; ?>" />
                 <input type="hidden" name="assign_name" id="assign_name" value="<?php echo $GLOBALS['result']['outcomes']->assign_name; ?>" />
                 <input  type='submit' id="submitbutton" value='Complete' />

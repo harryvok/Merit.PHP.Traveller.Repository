@@ -2,27 +2,42 @@
 
 function getIntray(intray, i) {
     $("#filter").blur();
-    Load();
-    $.ajax({
-        url: "inc/ajax/ajax.getIntray.php",
-        dataType: "html",
-        data: {
-            intray: intray,
-            filterCode: i
-        },
-        timeout: 3000000,
-        success: function (data) {
-            Unload();
-            $("#" + intray + "Intray").html(data);
-            $("#default").trigger("create");
+    
+    if ($("#filter option:selected").val() == 612371) {
 
-        },
-        error: function (request, status, error) {
-            Unload();
-            $("#" + intray + "Intray").html("<div class='float-left'>There has been an error: " + error + ". Please try again. If it continues please contact Merit.</div>");
+        $.ajax({
+            url: 'inc/ajax/ajax.dateFilter.php',
+            dataType: "html",
+            success: function (data) {
+                $('#popup').html(data);
+                Unload();
+            }
+        });
+    }
 
-        }
-    });
+    else {
+        Load();
+        $.ajax({
+            url: "inc/ajax/ajax.getIntray.php",
+            dataType: "html",
+            data: {
+                intray: intray,
+                filterCode: i,
+            },
+            timeout: 3000000,
+            success: function (data) {
+                Unload();
+                $("#" + intray + "Intray").html(data);
+                $("#default").trigger("create");
+
+            },
+            error: function (request, status, error) {
+                Unload();
+                $("#" + intray + "Intray").html("<div class='float-left'>There has been an error: " + error + ". Please try again. If it continues please contact Merit.</div>");
+
+            }
+        });
+    }
 }
 
 function GetAddressDetails() {
