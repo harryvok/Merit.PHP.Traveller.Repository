@@ -84,6 +84,10 @@ function GetAddressDetails() {
                         $("#AddrSummary").removeAttr("disabled");
                     }
                     $("#loc_address_ctr").val(data.address_ctr);
+
+                    //proceed to check allowance summary
+                    getAllowanceDetails();
+
                     //proceed to check booking summary
                     var date = new Date().toISOString();
                     GetBookingSummary(date);
@@ -125,6 +129,35 @@ function getEventBookingDetails() {
         else {
             $("#event_booking").attr("disabled", "disabled");
             $("#event_booking").css("display", "none");
+        }
+    }
+}
+
+function getAllowanceDetails() {
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
+        if ($("#functionInput").val() == "Removal") {
+            var serviceID = $("#service").val();
+            var requestID = $("#request").val();
+            var functionID = $("#function").val();
+            var property_no = $("#property_no").val();
+            var address_id = $("#addressId").val();
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.getAllowanceDetails.php',
+                type: 'POST',
+                data: {
+                    serviceID: serviceID,
+                    requestID: requestID,
+                    functionID: functionID,
+                    property_no: property_no,
+                    address_id: address_id
+                },
+                success: function (data) {
+                    Unload();
+                    $('#popup').html("");
+                    $('#popup').html(data);
+                },
+            });
         }
     }
 }

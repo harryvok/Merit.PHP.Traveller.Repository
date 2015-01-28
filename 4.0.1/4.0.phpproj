@@ -104,6 +104,7 @@
     <Compile Include="framework\view\mobile\view.mobile.ActionDelete.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionDocuments.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionReopen.php" />
+    <Compile Include="framework\view\mobile\view.mobile.AllowanceDetails.php" />
     <Compile Include="framework\view\mobile\view.mobile.EventBookingDetails.php" />
     <Compile Include="framework\view\mobile\view.mobile.NameAudit.php" />
     <Compile Include="framework\view\mobile\view.mobile.Audit.php" />
@@ -302,6 +303,7 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
+    <Compile Include="framework\view\pc\view.pc.AllowanceDetails.php" />
     <Compile Include="framework\view\pc\view.pc.EventBookingDetails.php" />
     <Compile Include="framework\view\pc\view.pc.NameAudit.php" />
     <Compile Include="framework\view\pc\view.pc.ChangeNameDetails.php" />
@@ -450,6 +452,7 @@
     <Compile Include="inc\ajax\ajax.adhocOfficerList.php" />
     <Compile Include="inc\ajax\ajax.changeNameDetails.php" />
     <Compile Include="inc\ajax\ajax.bookingStartStop.php" />
+    <Compile Include="inc\ajax\ajax.getAllowanceDetails.php" />
     <Compile Include="inc\ajax\ajax.getEventBookingDetails.php" />
     <Compile Include="inc\ajax\ajax.modifyNotifyCustomer.php" />
     <Compile Include="inc\ajax\ajax.modifyNameDetails.php" />
