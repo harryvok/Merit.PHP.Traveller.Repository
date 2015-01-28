@@ -302,6 +302,7 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
+    <Compile Include="framework\view\pc\view.pc.DateFilter.php" />
     <Compile Include="framework\view\pc\view.pc.EventBookingDetails.php" />
     <Compile Include="framework\view\pc\view.pc.NameAudit.php" />
     <Compile Include="framework\view\pc\view.pc.ChangeNameDetails.php" />
@@ -451,6 +452,7 @@
     <Compile Include="inc\ajax\ajax.changeNameDetails.php" />
     <Compile Include="inc\ajax\ajax.bookingStartStop.php" />
     <Compile Include="inc\ajax\ajax.getEventBookingDetails.php" />
+    <Compile Include="inc\ajax\ajax.dateFilter.php" />
     <Compile Include="inc\ajax\ajax.modifyNotifyCustomer.php" />
     <Compile Include="inc\ajax\ajax.modifyNameDetails.php" />
     <Compile Include="inc\ajax\ajax.getBookingSummary.php" />
@@ -1433,6 +1435,7 @@
     <Content Include="images\delete-icon.png" />
     <Content Include="images\logo1.png" />
     <Content Include="images\modify-icon.png" />
+    <Content Include="inc\js\libraries\jquery.form.js" />
     <Content Include="inc\js\pages\js.adhocOfficer.js">
       <SubType>Content</SubType>
     </Content>

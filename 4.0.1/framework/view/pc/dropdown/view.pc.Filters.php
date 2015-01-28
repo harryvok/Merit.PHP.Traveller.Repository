@@ -10,9 +10,9 @@ if($_SESSION['roleSecurity']->allow_action == "Y") {
     $defaultpage = "request";
 }
 
-?>
+?> 
 
-<!--<select name="filter" id="filter" class="dropdown" OnChange="getIntray('<?php if(isset($_GET['page']) && $_GET['page'] == $defaultpage || !isset($_GET['page'])) echo "action"; elseif(isset($_GET['page']) && $_GET['page'] == "requests") echo "request"; ?>',this.options[selectedIndex].value)">-->
+
 <select name="filter" id="filter" class="dropdown" OnChange="getIntray('<?php if(isset($_GET['page']) && $_GET['page'] == "actions") echo "action"; elseif(isset($_GET['page']) && $_GET['page'] == "requests") echo "request";else echo $defaultpage; ?>',this.options[selectedIndex].value)">
     
 <?php
@@ -41,7 +41,7 @@ if($_SESSION['roleSecurity']->allow_action == "Y") {
     }
 	else{
 		?>
-        <option value="">None</option>
+       <!-- <option value="">None</option> -->
         <?php	
 	}
     ?>
