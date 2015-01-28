@@ -286,6 +286,7 @@ $(document).ready(function () {
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             var date = new Date().toISOString();
             getEventBookingDetails();
+            getAllowanceDetails();
             GetBookingSummary(date);
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
@@ -1074,23 +1075,31 @@ $(document).ready(function () {
                 if ($("#countOnlyInd").val() == "N") {
                     Load();
                     $("#newrequest").valid();
-                    if ($("#newrequest").validate().numberOfInvalids() == 0) {
-                        event.stopPropagation();
-                        if ($("#mydetsclicked").val() == "N") {
-                            if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                                if ($("#old_given").val() != "") {
-                                    change_name(); // call if given name or surname changed
+                    if ($("#newrequest").validate().numberOfInvalids() == 0) {                        
+                        if ($("#process_allowance").val() == "No" && $("#functionInput").val() == "Removal") {
+                            $("#saveMore").prop("disabled", false).buttonState("enable");
+                            $("#saveCountOnly").prop("disabled", false).buttonState("enable");
+                            $("#submit").prop('disabled', false).buttonState("enable");
+                            getAllowanceDetails();
+                        }                        
+                        else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
+                            event.stopPropagation();
+                            if ($("#mydetsclicked").val() == "N") {
+                                if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
+                                    if ($("#old_given").val() != "") {
+                                        change_name(); // call if given name or surname changed
+                                    }
+                                    else {
+                                        check_adhoc();
+                                    }
                                 }
                                 else {
-                                    check_adhoc();
+                                    check_adhoc(); //call if adhoc officer required
                                 }
                             }
                             else {
-                                check_adhoc(); //call if adhoc officer required
+                                check_adhoc(); //call if adhoc officer required                         
                             }
-                        }
-                        else {
-                            check_adhoc(); //call if adhoc officer required                         
                         }
                     }
                     else {
@@ -1160,27 +1169,35 @@ $(document).ready(function () {
         })
         if ($("#countOnlyInd").val() == "N") {
             $("#newrequest").valid();
-            if ($("#newrequest").validate().numberOfInvalids() == 0) {
-                $("#saveMore").attr("disabled", true).buttonState("disable");
-                $("#saveCountOnly").attr("disabled", true).buttonState("disable");
-                $("#submit").prop('disabled', true).buttonState("disable");
-                Load();
-                $("#btnclick").val("Y");
-                if ($("#mydetsclicked").val() == "N") {
-                    if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
-                        if ($("#old_given").val() != "") {
-                            change_name(); // call if given name or surname changed
+            if ($("#newrequest").validate().numberOfInvalids() == 0) {    
+                if ($("#process_allowance").val() == "No" && $("#functionInput").val() == "Removal") {
+                    $("#saveMore").prop("disabled", false).buttonState("enable");
+                    $("#saveCountOnly").prop("disabled", false).buttonState("enable");
+                    $("#submit").prop('disabled', false).buttonState("enable");
+                    getAllowanceDetails();
+                }
+                else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
+                    $("#saveMore").attr("disabled", true).buttonState("disable");
+                    $("#saveCountOnly").attr("disabled", true).buttonState("disable");
+                    $("#submit").prop('disabled', true).buttonState("disable");
+                    Load();
+                    $("#btnclick").val("Y");
+                    if ($("#mydetsclicked").val() == "N") {
+                        if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {                       
+                            if ($("#old_given").val() != "") {
+                                change_name(); // call if given name or surname changed
+                            }
+                            else {
+                                check_adhoc();
+                            }
                         }
                         else {
-                            check_adhoc();
+                            check_adhoc(); //call if adhoc officer required
                         }
                     }
                     else {
-                        check_adhoc(); //call if adhoc officer required
+                        check_adhoc(); //call if adhoc officer required                         
                     }
-                }
-                else {
-                    check_adhoc(); //call if adhoc officer required                         
                 }
             }
             else {
