@@ -29,21 +29,7 @@
           else{
             $("#udfs_exist").val("0");
             $("#outcome-udfs").html("");
-            }
-
-            Load();
-            $.ajax({
-                url: 'inc/ajax/ajax.getRequestUDFs.php',
-                type: 'post',
-                data: {
-                    outcome: splireqid,
-                    req_id: $('#request_id').val(),
-                    act_id: $('#act_id').val()
-                },
-                success: function (data) {
-
-                }
-            });
+          }
 	  });
 
 	  $('#completeaction').validate();
@@ -104,6 +90,7 @@
             </form>          
 	    </div>
   </div>
+<<<<<<< HEAD
 
   <div class="summaryContainer">
   <h1>Next Steps / Action</h1>
@@ -111,3 +98,5 @@
 
       </div>
   </div>
+=======
+>>>>>>> parent of e15ebc3... test

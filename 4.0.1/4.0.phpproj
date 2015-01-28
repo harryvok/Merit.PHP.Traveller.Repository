@@ -303,11 +303,10 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
-<<<<<<< HEAD
+
     <Compile Include="framework\view\pc\view.pc.AllowanceDetails.php" />
-=======
+
     <Compile Include="framework\view\pc\view.pc.DateFilter.php" />
->>>>>>> cd7a7d5459cd3b7f425900086f1c1841cddf5f40
     <Compile Include="framework\view\pc\view.pc.EventBookingDetails.php" />
     <Compile Include="framework\view\pc\view.pc.NameAudit.php" />
     <Compile Include="framework\view\pc\view.pc.ChangeNameDetails.php" />
