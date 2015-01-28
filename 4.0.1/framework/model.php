@@ -2,6 +2,16 @@
 
 class Model {
     
+    public function getNextActions($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_POST['id'];
+        $parameters->action_id = $_POST['act_id'];
+        $parameters->outcome_code = $_POST['outcome'];
+        unset($_SESSION['nActDets']);
+        $_SESSION['nActDets'] = $this->WebService(MERIT_ACTION_FILE, "ws_get_next_actions", $parameters);
+    }
     
     public function getDateFilter($params = NULL){
         $emptyval = "";

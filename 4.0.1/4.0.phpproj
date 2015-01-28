@@ -303,9 +303,7 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
-
     <Compile Include="framework\view\pc\view.pc.AllowanceDetails.php" />
-
     <Compile Include="framework\view\pc\view.pc.DateFilter.php" />
     <Compile Include="framework\view\pc\view.pc.EventBookingDetails.php" />
     <Compile Include="framework\view\pc\view.pc.NameAudit.php" />
@@ -458,6 +456,7 @@
     <Compile Include="inc\ajax\ajax.getAllowanceDetails.php" />
     <Compile Include="inc\ajax\ajax.getEventBookingDetails.php" />
     <Compile Include="inc\ajax\ajax.dateFilter.php" />
+    <Compile Include="inc\ajax\ajax.getNextActions.php" />
     <Compile Include="inc\ajax\ajax.modifyNotifyCustomer.php" />
     <Compile Include="inc\ajax\ajax.modifyNameDetails.php" />
     <Compile Include="inc\ajax\ajax.getBookingSummary.php" />
