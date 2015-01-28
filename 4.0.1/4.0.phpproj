@@ -1242,6 +1242,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Script1.php" />
+    <Compile Include="view.pc.DateFilter.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="attachments\" />
