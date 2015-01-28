@@ -10,11 +10,11 @@
         <div>
             <form>
                 <label>From: </label>
-                <input type="date" name="datefrom" id="datefrom" style="width:35%">
+                <input type="date" name="datefrom" id="datefrom" style="width:20%">
 
                 <br />
                 <label>To: &nbsp&nbsp&nbsp</label>
-                <input type="date" name="dateto" id="dateto" style="width:35%">
+                <input type="date" name="dateto" id="dateto" style="width:20%">
             </form>
         </div>
 

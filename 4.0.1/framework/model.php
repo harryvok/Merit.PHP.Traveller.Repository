@@ -7,6 +7,18 @@ class Model {
         $emptyval = "";
     }
     
+    public function getNextAction($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = ;
+        $parameters->action_id = ;
+        $parameters->outcome_code = ;
+        $result = $this->WebService(MERIT_ACTION_FILE, "ws_get_next_actions", $parameters)->ws_get_next_actionsResult;
+
+        return $result;
+    }
+    
     public function processresubmitAction ($params = NULL){
         
         $datetime = $_POST['resubDate'].'T'.$_POST['resubTime'].':00+11:00';
