@@ -19,7 +19,7 @@
                     $("#placeEvent").click(function () {
                         if ($("#attendees_no").val() != "") {
                             $("#duedate").html("<label>Due Date:</label> " + $("#evnt_date").val());
-                            //$("#due").val($("#booking_date_" + id).val());
+                            $("#due").val($("#actual_due").val());
                             $("#udf_1").val($("#attendees_no").val());
                             $("#popup").popup("close");
                         } else {
@@ -34,6 +34,7 @@
             $date = substr($datetime,0,10);
             $formated = date("d-M-Y", strtotime($date));
             ?>
+            <input type="hidden" name="actual_due" id="actual_due" value="<?php echo $date; ?>" />
             <input type="hidden" name="evnt_date" id="evnt_date" value="<?php echo $formated;?>"/>    	
             <p><b>Event:</b> <?php echo $GLOBALS['result']->event_name; ?></p>
             <p><b>Event Date:</b> <?php echo $formated; ?></p>

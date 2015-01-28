@@ -8,9 +8,8 @@
             if (reqid != "") {
 		       var id = $(this).find(':selected')[0].id;
    		     if(id == "Y"){  $('#desc').addClass("required"); $("#indMand").show(); }
-		     else if(id == "N"){ $('#desc').removeClass("required"); $("#indMand").hide(); }
-		      Load();
-              
+   		     else if (id == "N" || splireqid == "NORESPONSE") { $('#desc').removeClass("required"); $("#indMand").hide(); }
+		      Load();              
 		      $.ajax({
 			      url:'inc/ajax/ajax.getRequestUDFs.php',
 			      type: 'post',
