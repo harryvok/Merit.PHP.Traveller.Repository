@@ -436,7 +436,20 @@ class Model {
         $parameters->customer_title = '';        
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_event_details", $parameters);
         return $result;      
-    }    
+    }
+    
+    public function getAllowanceDetails($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->service_code = $_POST['serviceID'];
+        $parameters->request_code = $_POST['requestID'];
+        $parameters->function_code = $_POST['functionID'];
+        $parameters->address_id = $_POST['address_id'];
+        $parameters->property_no = $_POST['property_no'];  
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);
+        return $result;      
+    }
 
     public function getIfWorkflow(){
         if(isset($_GET['service_code']) && strlen($_GET['service_code']) > 0){ $service_code = $_GET['service_code']; } else { $service_code = ''; }

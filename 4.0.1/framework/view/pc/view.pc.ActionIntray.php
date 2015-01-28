@@ -128,12 +128,13 @@ $(document).ready(function() {
 
 
 <?php
-if(isset($_GET['filter'])){
-	$filter = $_GET['filter'];	
-}
-else{
-	$filter = $GLOBALS['default_filter'];
-}
+//if(isset($_GET['filter'])){
+//    $filter = $_GET['filter'];	
+//}
+//else{
+//    $filter = $GLOBALS['default_filter'];
+//}
+$filter = $GLOBALS['default_filter'];
 ?>
 <div class="float-right">
     <br /><br /><form method="post" id="exportForm" action="process.export.php"><input type="hidden" name="tableArray" id="tableArray" /><input type="hidden" name="name" id="name" value="Action-Intray" /></form><input type="button" id="export" value="Export to Excel">

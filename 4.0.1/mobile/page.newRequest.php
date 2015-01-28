@@ -1,11 +1,6 @@
 <?php
 if(isset($_SESSION['user_id'])){
 ?>
-
-
-
-
-
 <div data-role="page" id="default">
     <div data-role="header" data-tap-toggle="false" data-position="fixed">
         <h1>New Request</h1>
@@ -170,6 +165,7 @@ if(isset($_SESSION['user_id'])){
                         <input type="hidden" id="defaultLat" value="-37.814107" />
                         <input type="hidden" id="defaultLng" value="144.96328" />
                         <input type="hidden" name="loc_address" id="loc_address" value="" />
+                        <input type="hidden" name="process_allowance" id="process_allowance" value="No" />
 
                         <label>Facility Type</label>
                         <input class="text"  placeholder="Search..." name='facilityTypeInput' id="facilityTypeInput" value='<?php if(isset($_SESSION['rem_facilityTypeInput'])){ echo $_SESSION['rem_facilityTypeInput']; } ?>'>
