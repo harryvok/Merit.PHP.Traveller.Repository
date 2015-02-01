@@ -4,18 +4,7 @@
 	  // validate signup form on keyup and submit
         $('#requirement').change(function () {
             $("#nextActs").hide();
-          /*  $("#rs1").html();
-            $("#nac1").html();
-            $("#nac2").html();
-            $("#nac3").html();
-            $("#nan1").html();
-            $("#nan2").html();
-            $("#nan3").html();
-            $("#nao1").html();
-            $("#nao2").html();
-            $("#nao3").html(); */
-
-
+ 
 
             var reqid = $('#requirement').val();
             var splireqid = reqid.split('_')[1];
@@ -124,64 +113,45 @@
   <h1>Next Steps / Action</h1>
       <div>
           <div class="float-left">
-
             <div class="column r100">
-                <span class="summaryColumnTitle">Request Status</span>
-                <div class="summaryColumn" id="rs1"><?php echo $_SESSION['nActDets']->request_status; ?></div>
+                <span class="summaryColumnTitle">Req Status</span>
+                <div class="summaryColumn" id="rs1" style="color:red"><?php echo $_SESSION['nActDets']->request_status; ?></div>
             </div>
 
-            <div class="column r100">
-                <span class="summaryColumnTitle">Next Action Code</span>
-                <div class="summaryColumn" id="nac1"><b>Action 1: </b><?php echo $_SESSION['nActDets']->next_action_code->string[0]; ?></div>
-                <?php 
-                if($_SESSION['nActDets']->next_action_code->string[1] != ""){
-                    ?>
-                        <div class="summaryColumn" id="nac2"><b>Action 2: </b><?php echo $_SESSION['nActDets']->next_action_code->string[1]; ?></div>
-                    <?php
-                }
-                ?>
-                <?php 
-                if($_SESSION['nActDets']->next_action_code->string[2] != ""){
-                    ?>
-                        <div class="summaryColumn" id="nac3"><b>Action 3: </b><?php echo $_SESSION['nActDets']->next_action_code->string[2]; ?></div>
-                    <?php
-                }
-                ?>
-            </div>
-
-            <div class="column r100">
+            
+            <div class="column r50">
                 <span class="summaryColumnTitle">Next Action Name</span>
-                <div class="summaryColumn" id="nan1"><b>Action 1: </b><?php echo $_SESSION['nActDets']->next_action_name->string[0]; ?></div>
+                <div class="summaryColumn" id="nan1"><b>Action Name: </b><?php echo $_SESSION['nActDets']->next_action_name->string[0]; ?></div>
                 <?php 
                 if($_SESSION['nActDets']->next_action_name->string[1] != ""){
                     ?>
-                        <div class="summaryColumn" id="nan2"><b>Action 2: </b><?php echo $_SESSION['nActDets']->next_action_name->string[1]; ?></div>
+                        <div class="summaryColumn" id="nan2"><b>Action Name: </b><?php echo $_SESSION['nActDets']->next_action_name->string[1]; ?></div>
                     <?php
                 }
                 ?>
                 <?php 
                 if($_SESSION['nActDets']->next_action_name->string[2] != ""){
                     ?>
-                        <div class="summaryColumn" id="nan3"><b>Action 3: </b><?php echo $_SESSION['nActDets']->next_action_name->string[2]; ?></div>
+                        <div class="summaryColumn" id="nan3"><b>Action Name: </b><?php echo $_SESSION['nActDets']->next_action_name->string[2]; ?></div>
                     <?php
                 }
                 ?>
             </div>
 
-            <div class="column r100">
+            <div class="column r50">
                 <span class="summaryColumnTitle">Next Action Officer</span>
-                <div class="summaryColumn" id="nao1"><b>Action 1: </b><?php echo $_SESSION['nActDets']->next_action_officer->string[0]; ?></div>
+                <div class="summaryColumn" id="nao1"><b>For: </b><?php echo $_SESSION['nActDets']->next_action_officer->string[0]; ?></div>
                 <?php 
-                if($_SESSION['nActDets']->next_action_officer->string[1] != ""){
+                if($_SESSION['nActDets']->next_action_name->string[1] != ""){
                     ?>
-                        <div class="summaryColumn" id="nao2"><b>Action 2: </b><?php echo $_SESSION['nActDets']->next_action_officer->string[1]; ?></div>
+                        <div class="summaryColumn" id="nao2"><b>For: </b><?php echo $_SESSION['nActDets']->next_action_officer->string[1]; ?></div>
                     <?php
                 }
                 ?>
                 <?php 
-                if($_SESSION['nActDets']->next_action_officer->string[2] != ""){
+                if($_SESSION['nActDets']->next_action_name->string[2] != ""){
                     ?>
-                        <div class="summaryColumn" id="nao3"><b>Action 2: </b><?php echo $_SESSION['nActDets']->next_action_officer->string[2]; ?></div>
+                        <div class="summaryColumn" id="nao3"><b>For: </b><?php echo $_SESSION['nActDets']->next_action_officer->string[2]; ?></div>
                     <?php
                 }
                 ?>
