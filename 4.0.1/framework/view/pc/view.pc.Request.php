@@ -138,7 +138,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
             <div class="float-left">
                 <div class="column r15">
                     <span class="summaryColumnTitle">Date Input</span>
-                    <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->request_datetime) && strlen($GLOBALS['result']['request']->request_datetime) > 0){ echo date('d/m/Y H:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->request_datetime))); } else { echo "No date found."; } ?></div>
+                    <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->request_datetime) && strlen($GLOBALS['result']['request']->request_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->request_datetime))); } else { echo "No date found."; } ?></div>
                 </div>
                 <div class="column r15">
                     <span class="summaryColumnTitle">Date Due</span>

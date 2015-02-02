@@ -75,7 +75,7 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
         <div class="float-left">
             <div class="column r15">
                 <span class="summaryColumnTitle">Date Input</span>
-                <div class="summaryColumn"><?php if(strlen($GLOBALS['result']['action']->assign_datetime) > 0){ echo date('d/m/Y H:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->assign_datetime))); }?></div>
+                <div class="summaryColumn"><?php if(strlen($GLOBALS['result']['action']->assign_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->assign_datetime))); }?></div>
             </div>
             <div class="column r15">
                 <span class="summaryColumnTitle">Due Date</span>
