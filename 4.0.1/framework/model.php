@@ -10,8 +10,7 @@ class Model {
         $parameters->action_id = $_POST['act_id'];
         $parameters->outcome_code = $_POST['outcome'];
         $result = $this->WebService(MERIT_ACTION_FILE, "ws_get_next_actions", $parameters);
-       
-        
+              
         $reqstat = $result->request_status;
         
         if (gettype($result->next_action_name->string) == "string"){
@@ -144,6 +143,8 @@ class Model {
 	/* Actions */
 
     public function getFilters($params = NULL){
+        
+
         $filter = $this->getDefaultFilter($params['filter'], $params['filter_type']);
 
         $parameters_fi = new stdClass();
@@ -152,7 +153,15 @@ class Model {
         $parameters_fi->filter_type = $params['filter_type'];
         $result_fi = $this->WebService(MERIT_ACTION_FILE, "ws_get_officer_filters", $parameters_fi)->filter_det;
         
-        if ($filter == ""){$filter = $_SESSION['act_def_filter'];}
+        
+        
+        if($params['filter_type'] == "action") {
+            if ($filter == ""){$filter = $_SESSION['act_def_filter'];}
+        } else {
+            if ($filter == ""){$filter = $_SESSION['req_def_filter'];}
+        }
+        
+        
         $result_array = array("Default" => $filter, "Array" => $result_fi);
         return $result_array;
     }
@@ -169,7 +178,12 @@ class Model {
             foreach($result_dfi->user_display as $action_dfilter){
                 if($action_dfilter->window_type == $l){
                     $default = $action_dfilter->init_filter_no;
-                    $_SESSION['act_def_filter'] = $default;
+
+                    if($ft == "action") {
+                        $_SESSION['act_def_filter'] = $default;
+                    } else {
+                        $_SESSION['req_def_filter'] = $default;
+                    }
                     break;
                 }
 
@@ -179,7 +193,11 @@ class Model {
             $action_dfilter = $result_dfi->user_display;
             if($action_dfilter->window_type == $l){
                 $default = $action_dfilter->init_filter_no;
-                $_SESSION['act_def_filter'] = $default;
+                if($ft == "action") {
+                    $_SESSION['act_def_filter'] = $default;
+                } else {
+                    $_SESSION['req_def_filter'] = $default;
+                }
             }
 
         }
@@ -3559,7 +3577,7 @@ class Model {
         }
         
         // Actions
-        $defaultActionFilter = $this->getDefaultFilter("A", "Action");
+        $defaultActionFilter = $this->getDefaultFilter("A", "action");
         if(isset($defaultActionFilter) && $defaultActionFilter !=  $_POST['defaultactionfilter']){
             $parameters = new stdClass();
             $parameters->user_id = $_SESSION['user_id'];
@@ -3829,7 +3847,7 @@ class Model {
                         $_SESSION['success_action_submit'] = 1;
                         $_SESSION['done'] = 1;
                         $_SESSION['success'] = 1;
-                        $_SESSION['redirect'] = "index.php?page=actions";
+                        $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_def_filter'];
                     }
                     else{
                         $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=complete";
