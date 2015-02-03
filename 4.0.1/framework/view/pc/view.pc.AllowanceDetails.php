@@ -30,7 +30,7 @@
     <br /><br />
     <b>Location address: </b><span id="location_addr"></span><br />
     <br /><br />
-    <b>Number to Allocate: </b><input type="text" name="alloc_no" id="alloc_no" value="<?php if (count($GLOBALS['result']->allowance_history->annual_allowance_history) == $GLOBALS['result']->annual_allowance_count) echo 0; else echo 1; ?>" disabled="disabled" style="width:30px;"/> <?php if (count($GLOBALS['result']->allowance_history->annual_allowance_history) > 0) echo "( ".$GLOBALS['result']->available_text." )"; else echo "( None still available )";  ?>
+    <b>Number to Allocate: </b><input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" disabled="disabled" style="width:30px;"/> <?php echo "( ".$GLOBALS['result']->available_text." )";  ?>
     <br /><br />
     <div>
         <table id="allowance_bookings" title="" cellspacing="0">
