@@ -1,5 +1,6 @@
 <?php
 include("../../framework/controller.php");
 $controller = new Controller();
-$controller->Get("NextActions");
+$result = $controller->Get("NextActions");
+echo json_encode($result);
 ?>
