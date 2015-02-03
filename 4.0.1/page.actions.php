@@ -9,7 +9,7 @@ if(isset($_SESSION['user_id'])){
 	?>
 
 	<script type="text/javascript">
-	$(document).ready(function(){
+	    $(document).ready(function () {
 	    getIntray("action", "<?php if(isset($_GET['filter'])) echo $_GET['filter']; elseif(isset($_SESSION['act_back_filter'])) echo $_SESSION['act_back_filter']; ?>");
 
 	    setInterval(function () {
