@@ -5,9 +5,6 @@
         <ul data-role="listview"  data-inset="true">
             <script type="text/javascript">
                 $(document).ready(function () {
-                    //$("#event_booking").prop("disabled", false).buttonState("enable");
-                    //$("#event_booking").removeAttr("disabled");
-                    //$("#event_booking").removeAttr("style");
                     $("#popup").popup("open");
                     $("#default").page('destroy');
                     $("#default").page();
@@ -30,8 +27,7 @@
                         $("#popup").popup("close");
                     })                    
                 });
-            </script> 
-            <input type="hidden" name="evnt_date" id="evnt_date" value="<?php echo $formated;?>"/>    	
+            </script>              	
             <p><b>Service: </b> <span id="bookingService"></span>
             <p><b>Request: </b> <span id="bookingRequest"></span>
             <p><b>Function: </b> <span id="bookingFunction"></span>
