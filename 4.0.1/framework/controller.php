@@ -15,9 +15,7 @@ class Controller {
 	 
 	 // Constructor
      public function __construct()  
-     {  
-			
-			
+     {  					
           $this->model = new Model();  
 		  $dev = new Mobile_Detect();
 		  if($dev->isTablet() || $dev->isMobile()){

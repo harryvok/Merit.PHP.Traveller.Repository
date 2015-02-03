@@ -9,8 +9,35 @@ class Model {
         $parameters->request_id = $_POST['id'];
         $parameters->action_id = $_POST['act_id'];
         $parameters->outcome_code = $_POST['outcome'];
-        unset($_SESSION['nActDets']);
-        $_SESSION['nActDets'] = $this->WebService(MERIT_ACTION_FILE, "ws_get_next_actions", $parameters);
+        $result = $this->WebService(MERIT_ACTION_FILE, "ws_get_next_actions", $parameters);
+       
+        
+        $reqstat = $result->request_status;
+        
+        if (gettype($result->next_action_name->string) == "string"){
+            $nextname1 = $result->next_action_name->string;
+            $nextoff1 = $result->next_action_officer->string;
+            $nextname2 = "";
+            $nextname3 = "";
+            $nextoff2 = "";
+            $nextoff3 = "";         
+        }
+        else {
+            $nextname1 = $result->next_action_name->string[0];
+                if ($nextname1 == NULL){$nextname1 = "";};
+            $nextname2 = $result->next_action_name->string[1];
+                if ($nextname2 == NULL){$nextname2 = "";};
+            $nextname3 = $result->next_action_name->string[2];
+                if ($nextname3 == NULL){$nextname3 = "";};
+            $nextoff1 = $result->next_action_officer->string[0];
+                if ($nextoff1 == NULL){$nextoff1 = "";};
+            $nextoff2 = $result->next_action_officer->string[1];
+                if ($nextoff2 == NULL){$nextoff2 = "";};
+            $nextoff3 = $result->next_action_officer->string[2];
+                if ($nextoff3 == NULL){$nextoff3 = "";};
+        }            
+        return array("requestStatus" => $reqstat, "nextn1" =>  $nextname1, "nextn2" =>  $nextname2, "nextn3" =>  $nextname3, "nexto1" =>  $nextoff1, "nexto2" =>  $nextoff2, "nexto3" =>  $nextoff3 );
+        
     }
     
     public function getDateFilter($params = NULL){
@@ -124,7 +151,8 @@ class Model {
         $parameters_fi->password = $_SESSION['password'];
         $parameters_fi->filter_type = $params['filter_type'];
         $result_fi = $this->WebService(MERIT_ACTION_FILE, "ws_get_officer_filters", $parameters_fi)->filter_det;
-
+        
+        if ($filter == ""){$filter = $_SESSION['act_def_filter'];}
         $result_array = array("Default" => $filter, "Array" => $result_fi);
         return $result_array;
     }
@@ -141,6 +169,7 @@ class Model {
             foreach($result_dfi->user_display as $action_dfilter){
                 if($action_dfilter->window_type == $l){
                     $default = $action_dfilter->init_filter_no;
+                    $_SESSION['act_def_filter'] = $default;
                     break;
                 }
 
@@ -150,6 +179,7 @@ class Model {
             $action_dfilter = $result_dfi->user_display;
             if($action_dfilter->window_type == $l){
                 $default = $action_dfilter->init_filter_no;
+                $_SESSION['act_def_filter'] = $default;
             }
 
         }

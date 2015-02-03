@@ -50,7 +50,7 @@
         });
     </script>
     <div class="column r50">
-            
+       <?php $test ?>     
         <div class="summaryContainer">
             <h1>Your Defaults</h1>
             <div>

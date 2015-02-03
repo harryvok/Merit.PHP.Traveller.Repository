@@ -15,7 +15,8 @@ if($_SESSION['roleSecurity']->allow_action == "Y") {
 
 <select name="filter" id="filter" class="dropdown" OnChange="getIntray('<?php if(isset($_GET['page']) && $_GET['page'] == "actions") echo "action"; elseif(isset($_GET['page']) && $_GET['page'] == "requests") echo "request";else echo $defaultpage; ?>',this.options[selectedIndex].value)">
     
-<?php
+<?php 
+
     if(isset($GLOBALS['result']['Array']->filter_details) && count($GLOBALS['result']['Array']->filter_details) > 1){
         foreach($GLOBALS['result']['Array']->filter_details as $action_filter){ ?>
             <option <?php 
