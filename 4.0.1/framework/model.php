@@ -3529,7 +3529,7 @@ class Model {
         }
         
         // Actions
-        $defaultActionFilter = $this->getDefaultFilter("A", "Action");
+        $defaultActionFilter = $this->getDefaultFilter("A", "action");
         if(isset($defaultActionFilter) && $defaultActionFilter !=  $_POST['defaultactionfilter']){
             $parameters = new stdClass();
             $parameters->user_id = $_SESSION['user_id'];
