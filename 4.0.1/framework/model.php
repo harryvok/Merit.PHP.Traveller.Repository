@@ -151,7 +151,8 @@ class Model {
         $parameters_fi->password = $_SESSION['password'];
         $parameters_fi->filter_type = $params['filter_type'];
         $result_fi = $this->WebService(MERIT_ACTION_FILE, "ws_get_officer_filters", $parameters_fi)->filter_det;
-
+        
+        if ($filter == ""){$filter = $_SESSION['act_def_filter'];}
         $result_array = array("Default" => $filter, "Array" => $result_fi);
         return $result_array;
     }
@@ -168,6 +169,7 @@ class Model {
             foreach($result_dfi->user_display as $action_dfilter){
                 if($action_dfilter->window_type == $l){
                     $default = $action_dfilter->init_filter_no;
+                    $_SESSION['act_def_filter'] = $default;
                     break;
                 }
 
@@ -177,6 +179,7 @@ class Model {
             $action_dfilter = $result_dfi->user_display;
             if($action_dfilter->window_type == $l){
                 $default = $action_dfilter->init_filter_no;
+                $_SESSION['act_def_filter'] = $default;
             }
 
         }
