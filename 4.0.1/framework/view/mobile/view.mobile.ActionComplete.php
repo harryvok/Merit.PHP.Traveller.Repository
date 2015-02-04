@@ -174,18 +174,18 @@ if($_SESSION['roleSecurity']->maint_comp_action == "Y"){
 <div data-role="collapsible" data-content-theme="c" data-collapsed="false" id="nextActs">
    <h3>Next Steps / Actions</h3>
    <label style="padding-bottom:5px;">Request Status</label>
-        <textarea disabled name="name" id="rs1" style="width:100%; margin-top:2px; color:red" data-role="none"></textarea>
+        <b><span id="rs1" style="width:100%; margin-top:2px; color:red;font-size:smaller" data-role="none"; ></span></b>
 
         <label style="padding-bottom:5px;">Next Action/s</label>
 
-        <input type="text" disabled name="name" id="nan1" value="" data-role="none" style="width:100%; margin-top:10px; font-weight:700;"/>
-        <input type="text" disabled name="name" id="nao1" value="" data-role="none" style="width:100%;; font-weight:700;"/>
+        <input type="text" disabled name="name" id="nan1" value="" data-role="none" style="width:100%; margin-top:10px; font-weight:700;color:black"/>
+        <input type="text" disabled name="name" id="nao1" value="" data-role="none" style="width:100%; font-weight:700;color:black"/>
 
-        <input type="text" disabled name="name" id="nan2" value="" data-role="none" style="width:100%; margin-top:10px"; font-weight:700;/>
-        <input type="text" disabled name="name" id="nao2" value="" data-role="none" style="width:100%;"; font-weight:700;/>
+        <input type="text" disabled name="name" id="nan2" value="" data-role="none" style="width:100%; margin-top:10px; font-weight:700;color:black"/>
+        <input type="text" disabled name="name" id="nao2" value="" data-role="none" style="width:100%;; font-weight:700;color:black"/>
 
-        <input type="text" disabled name="name" id="nan3" value="" data-role="none" style="width:100%; margin-top:10px"; font-weight:700;/>
-        <input type="text" disabled name="name" id="nao3" value="" data-role="none" style="width:100%;"; font-weight:700;/>
+        <input type="text" disabled name="name" id="nan3" value="" data-role="none" style="width:100%; margin-top:10px; font-weight:700;color:black"/>
+        <input type="text" disabled name="name" id="nao3" value="" data-role="none" style="width:100%;; font-weight:700;color:black"/>
     
         
         
