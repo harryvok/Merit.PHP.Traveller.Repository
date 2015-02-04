@@ -156,7 +156,9 @@ class Model {
         
         
         if($params['filter_type'] == "action") {
-            if ($filter == ""){$filter = $_SESSION['act_def_filter'];}
+            $_SESSION['act_back_filter'] ="";
+            $_SESSION['req_back_filter'] ="";
+            if ($filter == "" || $filter == $_SESSION['req_def_filter']){$filter = $_SESSION['act_def_filter'];}
         } else {
             if ($filter == ""){$filter = $_SESSION['req_def_filter'];}
         }
@@ -248,6 +250,9 @@ class Model {
         }
         
         $filter = $this->getDefaultFilter("A", "action");              
+        
+        if ($filter == "" || $filter == $_SESSION['req_def_filter']){$filter = $_SESSION['act_def_filter'];}
+        
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
@@ -266,6 +271,7 @@ class Model {
 
     public function getRequestIntray($params = NULL){
         $filter = $this->getDefaultFilter("C", "complaint");
+        if ($filter == "" || $filter == $_SESSION['act_def_filter']){$filter = $_SESSION['req_def_filter'];}
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
