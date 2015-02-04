@@ -29,14 +29,14 @@
                 });
             </script>     
             <?php
-                $line = explode("for ", $GLOBALS['result']->available_text);     
+                $line = explode("to ", $GLOBALS['result']->available_text);     
             ?>    	
             <p><b>Service: </b> <span id="bookingService"></span>
             <p><b>Request: </b> <span id="bookingRequest"></span>
             <p><b>Function: </b> <span id="bookingFunction"></span>
             <p><b>Location address: </b> <span id="location_addr"></span>
             <p><b>Number to Allocate: </b> <input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" disabled="disabled"/> <?php echo "( ".$line[0];   ?>  </p> 
-            <p><?php echo "for ".$line[1] . ")"; ?></p>       
+            <p><?php echo "to ".$line[1] . ")"; ?></p>       
             <?php
             if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) > 0){
                 foreach($GLOBALS['result']->allowance_history->annual_allowance_history as $allowance_detail){                        
