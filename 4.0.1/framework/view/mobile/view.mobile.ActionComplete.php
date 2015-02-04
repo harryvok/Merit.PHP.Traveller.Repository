@@ -178,14 +178,14 @@ if($_SESSION['roleSecurity']->maint_comp_action == "Y"){
 
         <label style="padding-bottom:5px;">Next Action/s</label>
 
-        <input type="text" name="name" id="nan1" value="" readonly="readonly" data-role="none" style="width:100%; margin-top:10px; font-weight:700;color:black;"/>
-        <input type="text" readonly="readonly" name="name" id="nao1" value="" data-role="none" style="width:100%; font-weight:700;color:black"/>
+        <input type="text" name="name" id="nan1" value="" readonly="readonly" data-role="none" style="width:100%; margin-top:10px; color:black;"/>
+        <input type="text" readonly="readonly" name="name" id="nao1" value="" data-role="none" style="width:100%;color:black"/>
 
-        <input type="text" readonly="readonly" name="name" id="nan2" value="" data-role="none" style="width:100%; margin-top:10px; font-weight:700;color:black"/>
-        <input type="text" readonly="readonly" name="name" id="nao2" value="" data-role="none" style="width:100%;; font-weight:700;color:black"/>
+        <input type="text" readonly="readonly" name="name" id="nan2" value="" data-role="none" style="width:100%; margin-top:10px;color:black"/>
+        <input type="text" readonly="readonly" name="name" id="nao2" value="" data-role="none" style="width:100%;color:black"/>
 
-        <input type="text" readonly="readonly" name="name" id="nan3" value="" data-role="none" style="width:100%; margin-top:10px; font-weight:700;color:black"/>
-        <input type="text" readonly="readonly" name="name" id="nao3" value="" data-role="none" style="width:100%;; font-weight:700;color:black"/>
+        <input type="text" readonly="readonly" name="name" id="nan3" value="" data-role="none" style="width:100%; margin-top:10px; color:black"/>
+        <input type="text" readonly="readonly" name="name" id="nao3" value="" data-role="none" style="width:100%;color:black"/>
     
         
         
