@@ -2169,7 +2169,23 @@ class Model {
         
         try {
             $result = $this->WebService(MERIT_REQUEST_FILE, "ws_create_request", $parameters);
-
+            
+            if($functionInput == "Removal"){
+                $parameters = new stdClass();
+                $parameters->user_id = $_SESSION['user_id'];
+                $parameters->password = $_SESSION['password'];
+                $parameters->address_id = $addressId;
+                $parameters->service_code = $service;
+                $parameters->request_code = $request;
+                $parameters->function_code = $function;
+                $parameters->property_no = $property_no;
+                $parameters->allowance_date = "";
+                $parameters->number_used = 1;
+                $parameters->type_ind = "ADD";
+                $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);
+                return $result;                
+            }
+            
             $ws_status = $result->ws_status;
             $ws_message = $result->ws_message;
             if($ws_status != -1){

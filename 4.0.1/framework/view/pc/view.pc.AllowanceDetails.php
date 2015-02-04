@@ -43,7 +43,7 @@
             </thead>
             <tbody> 
                 <?php
-                if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) > 0){
+                if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) > 1){
                      foreach($GLOBALS['result']->allowance_history->annual_allowance_history as $allowance_detail){
                         $i=$i+1;
                         $number = $number+1;
@@ -63,6 +63,15 @@
                         <?php
                       }
                  }
+                else if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) == 1){
+                        ?>
+                    <tr class="light">
+                        <td style="width:75%"><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->srf_description; ?></td>
+                        <td style="text-align:center; width:15%"><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->allowance_date; ?></td>
+                        <td style="text-align:center; width:10%"><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->number_used; ?></td>                                
+                    </tr>
+                <?php
+                }
                 else{
                     ?>
                     <tr class="light"> 
