@@ -9,6 +9,7 @@ class Model {
         $parameters->request_id = $_POST['id'];
         $parameters->action_id = $_POST['act_id'];
         $parameters->outcome_code = $_POST['outcome'];
+        $parameters->resubmit_ind = "";
         $result = $this->WebService(MERIT_ACTION_FILE, "ws_get_next_actions", $parameters);
               
         $reqstat = $result->request_status;

@@ -93,14 +93,14 @@
                         $('#naoh').show();
 
                         // Show First Action fields
-                        $('#nan1').val("Action: " + nan1);
+                        $('#nan1').val(nan1);
                         $('#nan1').show();
                         if (nao1 == "") {
                             $('#nao1').val("-");
                             $('#nao1').show();
                         }
                         else {
-                            $('#nao1').val("For: " + nao1);
+                            $('#nao1').val(nao1);
                             $('#nao1').show();
                         }
                     }
@@ -113,9 +113,9 @@
 
                     if (nan2 != "") {
                         // Show Second Action fields
-                        $('#nan2').val("Action: " + nan2);
+                        $('#nan2').val(nan2);
                         $('#nan2').show();
-                        $('#nao2').val("For: " + nao2);
+                        $('#nao2').val(nao2);
                         $('#nao2').show();
                     }
                     else {
@@ -125,9 +125,9 @@
 
                     if (nan3 != "") {
                         // Show Third Action fields
-                        $('#nan3').val("Action: " + nan3);
+                        $('#nan3').val(nan3);
                         $('#nan3').show();
-                        $('#nao3').val("For: " + nao3);
+                        $('#nao3').val(nao3);
                         $('#nao3').show();
                     }
                     else {
