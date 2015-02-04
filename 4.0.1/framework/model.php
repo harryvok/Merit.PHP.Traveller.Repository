@@ -3586,8 +3586,7 @@ class Model {
             try {
                 $result = $this->WebService(MERIT_ADMIN_FILE, "ws_set_default_filter", $parameters);
                 $_SESSION['done'] = 1;
-                $_SESSION['success'] = 1;
-                $_SESSION['success_default_request_filter'] = 1;  
+                $_SESSION['success'] = 1;                  
                 $_SESSION['req_back_filter'] = $_POST['defaultrequestfilter'];
                 
             }
@@ -3611,8 +3610,7 @@ class Model {
             try {
                 $result = $this->WebService(MERIT_ADMIN_FILE, "ws_set_default_filter", $parameters);
                 $_SESSION['done'] = 1;
-                $_SESSION['success'] = 1;
-                $_SESSION['success_default_action_filter'] = 1;
+                $_SESSION['success'] = 1;                
                 $_SESSION['act_back_filter'] = $_POST['defaultactionfilter'];
             }
             catch (Exception $e) {
@@ -3680,10 +3678,10 @@ class Model {
                 }
             }
         }*/
-        
-
+        $_SESSION['success_default_action_filter'] = 1;
+        $_SESSION['success_default_request_filter'] = 1;
         $_SESSION['redirect'] = "index.php?page=myPreferences";
-
+        
     }
     
     public function processModifyRequest($params = NULL){
