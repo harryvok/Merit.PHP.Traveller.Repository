@@ -499,7 +499,8 @@ class Model {
         $parameters->request_code = $_POST['requestID'];
         $parameters->function_code = $_POST['functionID'];
         $parameters->address_id = $_POST['address_id'];
-        $parameters->property_no = $_POST['property_no'];  
+        $parameters->property_no = $_POST['property_no'];
+        $parameters->show_all = $_POST['show_all'];
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);
         $_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
         return $result;      

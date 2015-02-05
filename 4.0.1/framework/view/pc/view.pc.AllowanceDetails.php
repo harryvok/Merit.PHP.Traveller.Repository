@@ -22,6 +22,15 @@
             $("#popup").fadeOut("fast");
         });
     });
+
+    function getallowance() {
+        alert("ok");
+        if (viewall.checked == true) {
+            alert("y");
+            var show = "Y";
+            getAllowanceDetails(show);
+        }
+    }
 </script>
 <div class="summaryContainer">
     <h1>Address Booked Services<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
@@ -32,6 +41,7 @@
     <br /><br />
     <b>Number to Allocate: </b><input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" disabled="disabled" style="width:30px;"/> <?php echo "( ".$GLOBALS['result']->available_text." )";  ?>
     <br /><br />
+    <div style="float:right"><input type="checkbox" name="viewall" id="viewall" style="height:18px;width:40px;" onchange="getallowance()"/>Show All</div>
     <div>
         <table id="allowance_bookings" title="" cellspacing="0">
             <thead>

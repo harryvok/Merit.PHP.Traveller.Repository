@@ -150,7 +150,8 @@
 			}			
 			$('#popup').fadeOut("fast");
 
-			getAllowanceDetails();
+			var show = "N";
+			getAllowanceDetails(show);
             //proceed to check booking summary
 			var date = new Date().toISOString();
 			GetBookingSummary(date);

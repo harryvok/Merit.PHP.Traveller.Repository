@@ -19,7 +19,7 @@
         if(isset($user)){
             ?>
             <script src="inc\js\libraries\jquery.form.js"></script> 
-<!--            <script src="inc\js\libraries\jquery-1.9.1.js"></script>-->
+            <script src="inc\js\libraries\jquery-1.9.1.js"></script>
             <script src="inc\js\libraries\jquery.validate.min.js "></script>
             <script src="inc\js\libraries\sorttable.js "></script>
             <script src="inc\js\libraries\jquery-ui-1.10.3.custom.js"></script>
