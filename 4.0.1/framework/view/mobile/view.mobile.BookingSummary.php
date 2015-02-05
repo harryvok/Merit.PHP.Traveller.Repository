@@ -14,7 +14,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 $("#popup").popup("open");
                 $("#default").page('destroy');
                 $("#default").page();
-                $(document).scrollTop(1500);
+                $(document).scrollTop(1700);
                 $("#bookingService").html($("#serviceInput").val());
                 $("#bookingRequest").html($("#requestInput").val());
                 $("#bookingFunction").html($("#functionInput").val());
