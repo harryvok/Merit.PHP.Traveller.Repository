@@ -1,5 +1,5 @@
 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-<div data-role="header" data-tap-toggle="false"> <h1>Event Booking Details</h1> </div>
+<div data-role="header" data-tap-toggle="false"> <h1>Address Booked Services</h1> </div>
 <div data-role="content">
     <p>
         <ul data-role="listview"  data-inset="true">
