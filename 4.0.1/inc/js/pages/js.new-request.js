@@ -438,8 +438,8 @@ $(document).ready(function () {
                     success: function (data) {
                         $('#popup').html(data);
                         $(self).removeClass("ui-autocomplete-loading");
-                        $('#popup').css("margin-top", "25%");
-                        $('#popup').css("margin-left", "25%");
+                        $('#popup').css("margin-top", "-260px");
+                        $('#popup').css("margin-left", "auto");
                         $('#popup').css("position", "absolute");
                     }
                 });
