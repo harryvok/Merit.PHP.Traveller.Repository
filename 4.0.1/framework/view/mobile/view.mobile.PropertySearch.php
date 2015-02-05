@@ -13,7 +13,7 @@ if(isset($GLOBALS['result']->property_details)){
                         $("#popup").popup("open");
                         $("#default").page('destroy');
                         $("#default").page();
-                        $(document).scrollTop(0);
+                        $(document).scrollTop(300);
                     });
                     $('.address_row').click(function(){
                         var id = $(this).attr('id');
