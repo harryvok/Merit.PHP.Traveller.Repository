@@ -269,7 +269,7 @@ $(document).ready(function () {
             $("#need_f_booking").val(booking_required);
             $("#priority option").prop("selected", false);
             $("#priority option[value=" + priority + "]").prop("selected", true);
-            //$('#priority').selectmenuState('refresh', true);
+            $('#priority').selectmenuState('refresh', true);
             if (($("#historyaddrtype").val() == "L" && $("#lsuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#i_csuburb").val().length > 0)
                 || ($("#historyaddrtype").val() == "C" && $("#o_csuburb").val().length > 0)
