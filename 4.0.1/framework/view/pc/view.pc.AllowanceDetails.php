@@ -24,10 +24,8 @@
     });
 
     function getallowance() {
-        alert("ok");
         if (viewall.checked == true) {
-            alert("y");
-            var show = "Y";
+              var show = "Y";
             getAllowanceDetails(show);
         }
     }

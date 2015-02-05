@@ -34,9 +34,7 @@
                 });
 
                 function getallowance() {
-                    alert("ok");
                     if (viewall.checked == true) {
-                        alert("y");
                         var show = "Y";
                         getAllowanceDetails(show);
                     }
