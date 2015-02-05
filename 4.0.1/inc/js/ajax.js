@@ -72,6 +72,9 @@ function GetAddressDetails() {
                         success: function (data) {
                             Unload();
                             $('#popup').html(data);
+                            //$('#popup').css("margin-top", "25%");
+                            //$('#popup').css("margin-left", "25%");
+                            //$('#popup').css("position", "absolute");
                         },
                         error: function (request, status, error) {
                             Unload();
