@@ -6,8 +6,8 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 	 $(document).ready(function(){
 	    $("#popup").popup("open");	     
 	    $("#default").page('destroy').page();
-	    $("li").first().focus();
-		//$('.name_row').click(function(){
+	    //$("li").first().focus();
+		$('.name_row').click(function(){
 			var id = $(this).attr('id');
 			$('#pref_title').val($('#ret_'+id+'_pref_title').val());
 			$('#surname').val($('#ret_'+id+'_surname').val());
