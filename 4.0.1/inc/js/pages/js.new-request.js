@@ -440,8 +440,7 @@ $(document).ready(function () {
                     success: function (data) {
                         $('#popup').html(data);
                         $(self).removeClass("ui-autocomplete-loading");
-                        $('#popup').css("margin-top", "-260px");
-                        $('#popup').css("position", "absolute");
+                        $('#popup').css("margin-top", "-260px");                        
                     }
                 });
             }
