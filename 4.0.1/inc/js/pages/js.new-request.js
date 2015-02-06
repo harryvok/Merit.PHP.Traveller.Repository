@@ -439,8 +439,7 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         $('#popup').html(data);
-                        $(self).removeClass("ui-autocomplete-loading");
-                        $('#popup').css("margin-top", "-260px");                        
+                        $(self).removeClass("ui-autocomplete-loading");                                        
                     }
                 });
             }
