@@ -74,6 +74,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    var date = new Date().toISOString();
 		    getEventBookingDetails();
 		    var show = "N";
+		    $("#chk_showall").val("No");
 		    getAllowanceDetails(show);
 		    GetBookingSummary(date);
 		    getSRFRedText();
@@ -219,6 +220,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 		    var date = new Date().toISOString();
 		    getEventBookingDetails();
 		    var show = "N";
+		    $("#chk_showall").val("No");
 		    getAllowanceDetails(show);
 		    GetBookingSummary(date);
 		    getSRFRedText();

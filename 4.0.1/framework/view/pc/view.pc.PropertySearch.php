@@ -151,6 +151,7 @@
 			$('#popup').fadeOut("fast");
 
 			var show = "N";
+			$("#chk_showall").val("No");
 			getAllowanceDetails(show);
             //proceed to check booking summary
 			var date = new Date().toISOString();

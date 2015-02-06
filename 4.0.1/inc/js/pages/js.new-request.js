@@ -287,6 +287,7 @@ $(document).ready(function () {
             var date = new Date().toISOString();
             getEventBookingDetails();
             var show = "N";
+            $("#chk_showall").val("No");
             getAllowanceDetails(show);
             GetBookingSummary(date);
             $("#workflowSRF").prop("disabled", false);
@@ -1084,6 +1085,7 @@ $(document).ready(function () {
                             $("#saveCountOnly").prop("disabled", false).buttonState("enable");
                             $("#submit").prop('disabled', false).buttonState("enable");
                             var show = "N";
+                            $("#chk_showall").val("No");
                             getAllowanceDetails(show);
                         }                        
                         else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
@@ -1179,6 +1181,7 @@ $(document).ready(function () {
                     $("#saveCountOnly").prop("disabled", false).buttonState("enable");
                     $("#submit").prop('disabled', false).buttonState("enable");
                     var show = "N";
+                    $("#chk_showall").val("No");
                     getAllowanceDetails(show);
                 }
                 else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {

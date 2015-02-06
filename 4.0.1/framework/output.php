@@ -77,6 +77,7 @@ $error_array = array(
     'error_link_document' => 'Error Linking Uocument',
     'error_unlink_document' => 'Error Unlinking Document',
     'error_notify_officer' => 'Error Notifying Insurance Officer',
+    'error_annual_allowance' => 'Error Updating Allowance',
     "error_custom" => $custom_error
 );
 

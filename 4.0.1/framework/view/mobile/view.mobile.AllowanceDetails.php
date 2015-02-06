@@ -11,6 +11,10 @@
                     $("#bookingService").html($("#serviceInput").val());
                     $("#bookingRequest").html($("#requestInput").val());
                     $("#bookingFunction").html($("#functionInput").val());
+                    //alert($("#chk_showall").val());
+                    if ($("#chk_showall").val() == "Yes") {            
+                        $("#viewall").attr("checked", "checked");
+                    }
                     var addr = $("#lno").val();
                     if ($("#lfno").val() != "" && $("#lfno").val() != null) {
                         addr += " /" + $("#lfno").val();
@@ -19,35 +23,38 @@
                     $("#location_addr").html(addr);
 
                     $("#stop").click(function () {
-                        $("#popup").popup("close");
+                        $("#popup").fadeOut("fast");
                     });
-
-                    if (document.getElementById("viewall").checked) {
-                        var show = "Y";
-                        getAllowanceDetails(show);
-                    }
 
                     $("#placeaAllowance").click(function () {
                         $("#process_allowance").val("Yes");
-                        $("#popup").popup("close");
-                    })                    
+                        $("#popup").fadeOut("fast");
+                    });
                 });
 
                 function getallowance() {
                     if (viewall.checked == true) {
                         var show = "Y";
+                        $("#chk_showall").val("Yes");
+                        getAllowanceDetails(show);
+                    }
+                    else {
+                        var show = "N";
+                        $("#chk_showall").val("No");
                         getAllowanceDetails(show);
                     }
                 }
-            </script>   
+            </script>
              	
             <p><b>Service: </b> <span id="bookingService"></span>
             <p><b>Request: </b> <span id="bookingRequest"></span>
             <p><b>Function: </b> <span id="bookingFunction"></span>
             <p><b>Location address: </b> <span id="location_addr"></span>
-            <p><b>Number to Allocate:  <input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" disabled="disabled" style="color:black"/> </b><?php echo $GLOBALS['result']->available_text; ?>  </p> 
+            <p><b>Number to Allocate:  <input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" readonly="readonly" style="color:black"/> </b><?php echo $GLOBALS['result']->available_text; ?>  </p> 
            
-            <p><b>Show All:</b><input type="checkbox" name="viewall" id="viewall" value="N" style="height:18px;width:40px;" onchange="getallowance()"/></p>
+            <p style="display:inline"><b>Show All:</b><input type="checkbox" name="viewall" id="viewall" style="height:18px;width:40px;margin-left:12%;margin-top:-15px;" onchange="getallowance()"/></p>
+            </br>
+            <br />
             <?php
             if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) > 0){
                 foreach($GLOBALS['result']->allowance_history->annual_allowance_history as $allowance_detail){                        

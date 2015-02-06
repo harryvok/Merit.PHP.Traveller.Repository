@@ -44,8 +44,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 				        $("#popup").popup("open");
 				    }
 					$("#default").page('destroy').page();
-				}
-				
+				}				
 			});
 		});
 	 });

@@ -2185,8 +2185,14 @@ class Model {
                 $parameters->allowance_date = "";
                 $parameters->number_used = 1;
                 $parameters->type_ind = "ADD";
-                $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);
-                return $result;                
+                try {
+                    $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);           
+                }
+                catch (Exception $e) {
+                    $_SESSION['custom_error'] = $e->getMessage();
+                    $_SESSION['error'] = 1;
+                    $_SESSION['error_annual_allowance'] = 1;
+                }                                 
             }
             
             $ws_status = $result->ws_status;
@@ -2306,6 +2312,7 @@ class Model {
                         echo $e -> getMessage ();
                         $_SESSION['error'];
                         $_SESSION['error_notify_officer'] = 1;
+                        $_SESSION['redirect'] = "index.php?page=newRequest";
                     }
                 }
                 

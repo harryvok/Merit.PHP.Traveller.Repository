@@ -100,6 +100,7 @@ function GetAddressDetails() {
 
                     //proceed to check allowance summary
                     var show = "N";
+                    $("#chk_showall").val("No");
                     getAllowanceDetails(show);
 
                     //proceed to check booking summary
@@ -169,7 +170,7 @@ function getAllowanceDetails(show_all) {
                 },
                 success: function (data) {
                     Unload();
-                    $('#popup').html("");
+                    $('#popup').html("");                                      
                     $('#popup').html(data);
                 },
             });

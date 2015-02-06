@@ -136,6 +136,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val(), "Y");
             getEventBookingDetails();
             var show = "N";
+            $("#chk_showall").val("No");
             getAllowanceDetails(show);
             var date = new Date().toISOString();
             GetBookingSummary(date);
@@ -273,6 +274,7 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         var date = new Date().toISOString();
         getEventBookingDetails();
         var show = "N";
+        $("#chk_showall").val("No");
         getAllowanceDetails(show);
         GetBookingSummary(date);
         getSRFRedText();

@@ -135,6 +135,7 @@ if(isset($GLOBALS['result']->property_details)){
                         //proceed to check booking summary
 	                    var date = new Date().toISOString();
 	                    var show = "N";
+	                    $("#chk_showall").val("No");
 	                    getAllowanceDetails(show);
 	                    GetBookingSummary(date);
                     });

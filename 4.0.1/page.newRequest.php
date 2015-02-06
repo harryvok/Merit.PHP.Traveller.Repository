@@ -269,7 +269,8 @@ if(!isset($_GET['d'])){
                     <input type="hidden" id="address_gps" name="address_gps" />
                     <input type="hidden" name="loc_address" id="loc_address" value="" />
                     <input type="hidden" name="loc_address_ctr" id="loc_address_ctr" />
-                    <input type="hidden" name="process_allowance" id="process_allowance" value="No" />
+                    <input type="hidden" name="process_allowance" id="process_allowance" value="No" /> 
+                    <input type="hidden" name="chk_showall" id="chk_showall" value="No" />                   
                 </div>
             </div>
         </div>
