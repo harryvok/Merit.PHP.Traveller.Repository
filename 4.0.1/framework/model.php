@@ -3574,7 +3574,11 @@ class Model {
         
         
         // Requests
+        $defaultRequestFilter = "";
         $defaultRequestFilter = $this->getDefaultFilter("C", "complaint");
+
+        if ($defaultRequestFilter == ""){$defaultRequestFilter = $_SESSION['req_def_filter'];}
+               
         if(isset($defaultRequestFilter) && $defaultRequestFilter !=  $_POST['defaultrequestfilter']){
             
             $parameters = new stdClass();
@@ -3600,7 +3604,11 @@ class Model {
         }
         
         // Actions
+        $defaultActionFilter = "";
         $defaultActionFilter = $this->getDefaultFilter("A", "action");
+        
+        if ($defaultActionFilter == ""){$defaultActionFilter = $_SESSION['act_def_filter'];}
+        
         if(isset($defaultActionFilter) && $defaultActionFilter !=  $_POST['defaultactionfilter']){
             $parameters = new stdClass();
             $parameters->user_id = $_SESSION['user_id'];
