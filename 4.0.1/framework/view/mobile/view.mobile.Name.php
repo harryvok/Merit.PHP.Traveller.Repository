@@ -88,7 +88,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Telephone: &nbsp;</strong>
-            <p id="editTelephone" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->telephone; ?></p>
+            <p id="editTelephone" class="original" style="float:left"><a href="tel:<?php echo $GLOBALS['result']->telephone; ?>"><?php echo $GLOBALS['result']->telephone; ?></a></p>
         </p>
         <div class="edited">
             <br />
@@ -98,7 +98,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Work Phone: &nbsp;</strong>
-            <p id="editWork_phone" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->work_phone; ?></p>
+            <p id="editWork_phone" class="original" style="float:left"><a href="tel:<?php echo $GLOBALS['result']->work_phone; ?>"><?php echo $GLOBALS['result']->work_phone; ?></a></p>
         </p>
         <div class="edited">
             <br />
@@ -108,7 +108,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Mobile phone: &nbsp;</strong>
-            <p id="editMobile_no" class="original" style="float:left"><a href="tel:+<?php echo $GLOBALS['result']->mobile_no; ?>"><?php echo $GLOBALS['result']->mobile_no; ?></a></p>
+            <p id="editMobile_no" class="original" style="float:left"><a href="tel:<?php echo $GLOBALS['result']->mobile_no; ?>"><?php echo $GLOBALS['result']->mobile_no; ?></a></p>
         </p>
         <div class="edited">
             <br />
