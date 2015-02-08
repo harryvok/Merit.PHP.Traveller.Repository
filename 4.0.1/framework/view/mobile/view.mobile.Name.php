@@ -68,7 +68,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Email Address: &nbsp;</strong>
-            <p id="editEmail_address" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->email_address; ?></p>
+            <p id="editEmail_address" class="original" style="float:left"><a href="mailto:<?php echo $GLOBALS['result']->email_address; ?>"><?php echo $GLOBALS['result']->email_address; ?></a></p>
         </p>
         <div class="edited">
             <br />
