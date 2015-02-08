@@ -135,7 +135,9 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val(), "Y");
             getEventBookingDetails();
-            getAllowanceDetails();
+            var show = "N";
+            $("#chk_showall").val("No");
+            getAllowanceDetails(show);
             var date = new Date().toISOString();
             GetBookingSummary(date);
             getSRFRedText();
@@ -271,7 +273,9 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         $("#workflowSRF").prop("disabled", false);
         var date = new Date().toISOString();
         getEventBookingDetails();
-        getAllowanceDetails();
+        var show = "N";
+        $("#chk_showall").val("No");
+        getAllowanceDetails(show);
         GetBookingSummary(date);
         getSRFRedText();
         if ($("#ret_request_need_func").val() == "Y") {

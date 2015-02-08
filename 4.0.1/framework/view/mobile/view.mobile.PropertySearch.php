@@ -13,6 +13,7 @@ if(isset($GLOBALS['result']->property_details)){
                         $("#popup").popup("open");
                         $("#default").page('destroy');
                         $("#default").page();
+                        $(document).scrollTop(1400);
                     });
                     $('.address_row').click(function(){
                         var id = $(this).attr('id');
@@ -133,7 +134,9 @@ if(isset($GLOBALS['result']->property_details)){
 	                    $("#popup").popup("close");
                         //proceed to check booking summary
 	                    var date = new Date().toISOString();
-	                    getAllowanceDetails();
+	                    var show = "N";
+	                    $("#chk_showall").val("No");
+	                    getAllowanceDetails(show);
 	                    GetBookingSummary(date);
                     });
 

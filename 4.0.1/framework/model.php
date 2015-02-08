@@ -499,10 +499,12 @@ class Model {
         $parameters->request_code = $_POST['requestID'];
         $parameters->function_code = $_POST['functionID'];
         $parameters->address_id = $_POST['address_id'];
-        $parameters->property_no = $_POST['property_no'];  
+        $parameters->property_no = $_POST['property_no'];
+        $parameters->show_all = $_POST['show_all'];
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);
+        $_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
         return $result;      
-    }
+    }  
 
     public function getIfWorkflow(){
         if(isset($_GET['service_code']) && strlen($_GET['service_code']) > 0){ $service_code = $_GET['service_code']; } else { $service_code = ''; }
@@ -2183,8 +2185,14 @@ class Model {
                 $parameters->allowance_date = "";
                 $parameters->number_used = 1;
                 $parameters->type_ind = "ADD";
-                $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);
-                return $result;                
+                try {
+                    $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);           
+                }
+                catch (Exception $e) {
+                    $_SESSION['custom_error'] = $e->getMessage();
+                    $_SESSION['error'] = 1;
+                    $_SESSION['error_annual_allowance'] = 1;
+                }                                 
             }
             
             $ws_status = $result->ws_status;
@@ -2304,6 +2312,7 @@ class Model {
                         echo $e -> getMessage ();
                         $_SESSION['error'];
                         $_SESSION['error_notify_officer'] = 1;
+                        $_SESSION['redirect'] = "index.php?page=newRequest";
                     }
                 }
                 
@@ -3590,8 +3599,8 @@ class Model {
             try {
                 $result = $this->WebService(MERIT_ADMIN_FILE, "ws_set_default_filter", $parameters);
                 $_SESSION['done'] = 1;
-                $_SESSION['success'] = 1;
-                $_SESSION['success_default_request_filter'] = 1;  
+                $_SESSION['success'] = 1;    
+                $_SESSION['success_default_request_filter'] = 1;
                 $_SESSION['req_back_filter'] = $_POST['defaultrequestfilter'];
                 
             }
@@ -3619,7 +3628,7 @@ class Model {
             try {
                 $result = $this->WebService(MERIT_ADMIN_FILE, "ws_set_default_filter", $parameters);
                 $_SESSION['done'] = 1;
-                $_SESSION['success'] = 1;
+                $_SESSION['success'] = 1;                
                 $_SESSION['success_default_action_filter'] = 1;
                 $_SESSION['act_back_filter'] = $_POST['defaultactionfilter'];
             }
@@ -3689,9 +3698,9 @@ class Model {
             }
         }*/
         
-
+        
         $_SESSION['redirect'] = "index.php?page=myPreferences";
-
+        
     }
     
     public function processModifyRequest($params = NULL){

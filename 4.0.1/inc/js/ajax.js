@@ -72,6 +72,9 @@ function GetAddressDetails() {
                         success: function (data) {
                             Unload();
                             $('#popup').html(data);
+                            //$('#popup').css("margin-top", "25%");
+                            //$('#popup').css("margin-left", "25%");
+                            //$('#popup').css("position", "absolute");
                         },
                         error: function (request, status, error) {
                             Unload();
@@ -96,7 +99,9 @@ function GetAddressDetails() {
                     $("#loc_address_ctr").val(data.address_ctr);
 
                     //proceed to check allowance summary
-                    getAllowanceDetails();
+                    var show = "N";
+                    $("#chk_showall").val("No");
+                    getAllowanceDetails(show);
 
                     //proceed to check booking summary
                     var date = new Date().toISOString();
@@ -143,7 +148,7 @@ function getEventBookingDetails() {
     }
 }
 
-function getAllowanceDetails() {
+function getAllowanceDetails(show_all) {
     if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
         if ($("#functionInput").val() == "Removal") {
             var serviceID = $("#service").val();
@@ -160,11 +165,12 @@ function getAllowanceDetails() {
                     requestID: requestID,
                     functionID: functionID,
                     property_no: property_no,
-                    address_id: address_id
+                    address_id: address_id,
+                    show_all:show_all
                 },
                 success: function (data) {
                     Unload();
-                    $('#popup').html("");
+                    $('#popup').html("");                                      
                     $('#popup').html(data);
                 },
             });

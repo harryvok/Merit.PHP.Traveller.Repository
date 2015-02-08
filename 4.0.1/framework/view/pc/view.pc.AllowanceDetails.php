@@ -6,6 +6,10 @@
         $("#bookingService").html($("#serviceInput").val());
         $("#bookingRequest").html($("#requestInput").val());
         $("#bookingFunction").html($("#functionInput").val());
+        //alert($("#chk_showall").val());
+        if ($("#chk_showall").val() == "Yes") {            
+            $("#viewall").attr("checked", "checked");
+        }
         var addr = $("#lno").val();
         if ($("#lfno").val() != "" && $("#lfno").val() != null) {
             addr += " /" + $("#lfno").val();
@@ -22,6 +26,19 @@
             $("#popup").fadeOut("fast");
         });
     });
+
+    function getallowance() {
+        if (viewall.checked == true) {
+            var show = "Y";
+            $("#chk_showall").val("Yes");
+            getAllowanceDetails(show);
+        }
+        else {
+            var show = "N";
+            $("#chk_showall").val("No");
+            getAllowanceDetails(show);
+        }
+    }
 </script>
 <div class="summaryContainer">
     <h1>Address Booked Services<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
@@ -32,7 +49,8 @@
     <br /><br />
     <b>Number to Allocate: </b><input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" disabled="disabled" style="width:30px;"/> <?php echo "( ".$GLOBALS['result']->available_text." )";  ?>
     <br /><br />
-    <div>
+    <div style="float:right"><input type="checkbox" name="viewall" id="viewall" style="height:18px;width:40px;" onchange="getallowance()"/>Show All</div>
+    <div>        
         <table id="allowance_bookings" title="" cellspacing="0">
             <thead>
                 <tr>
@@ -85,7 +103,7 @@
     </div>       
     <div>        
         <br /><br />
-        <input type="button" value="    Ok    " id="placeaAllowance" <?php if (count($GLOBALS['result']->allowance_history->annual_allowance_history) == $GLOBALS['result']->annual_allowance_count) echo "disabled='disabled'"; ?> />       
+        <input type="button" value="    Ok    " id="placeaAllowance" <?php if ($GLOBALS['result']->available_count == 0) echo "disabled='disabled'"; ?> />       
         <input type="button" id="stop" name="stop" value="Cancel"/>
     </div>
 </div>

@@ -286,7 +286,9 @@ $(document).ready(function () {
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
             var date = new Date().toISOString();
             getEventBookingDetails();
-            getAllowanceDetails();
+            var show = "N";
+            $("#chk_showall").val("No");
+            getAllowanceDetails(show);
             GetBookingSummary(date);
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
@@ -438,6 +440,7 @@ $(document).ready(function () {
                     success: function (data) {
                         $('#popup').html(data);
                         $(self).removeClass("ui-autocomplete-loading");
+                        $('#popup').css("margin-top", "2500px");                        
                     }
                 });
             }
@@ -1080,7 +1083,9 @@ $(document).ready(function () {
                             $("#saveMore").prop("disabled", false).buttonState("enable");
                             $("#saveCountOnly").prop("disabled", false).buttonState("enable");
                             $("#submit").prop('disabled', false).buttonState("enable");
-                            getAllowanceDetails();
+                            var show = "N";
+                            $("#chk_showall").val("No");
+                            getAllowanceDetails(show);
                         }                        
                         else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
                             event.stopPropagation();
@@ -1174,7 +1179,9 @@ $(document).ready(function () {
                     $("#saveMore").prop("disabled", false).buttonState("enable");
                     $("#saveCountOnly").prop("disabled", false).buttonState("enable");
                     $("#submit").prop('disabled', false).buttonState("enable");
-                    getAllowanceDetails();
+                    var show = "N";
+                    $("#chk_showall").val("No");
+                    getAllowanceDetails(show);
                 }
                 else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
                     $("#saveMore").attr("disabled", true).buttonState("disable");

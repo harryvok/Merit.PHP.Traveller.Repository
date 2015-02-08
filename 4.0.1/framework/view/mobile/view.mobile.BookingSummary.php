@@ -14,12 +14,12 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 $("#popup").popup("open");
                 $("#default").page('destroy');
                 $("#default").page();
+                $(document).scrollTop(1700);
                 $("#bookingService").html($("#serviceInput").val());
                 $("#bookingRequest").html($("#requestInput").val());
                 $("#bookingFunction").html($("#functionInput").val());
                 $("#from").datepicker({ dateFormat: "dd-M-yy" });
-                $("#from").val("dd-mmm-yyyy");
-                window.scrollTo(0, 1400);
+                $("#from").val("dd-mmm-yyyy");               
 
                 $("#get").click(function () {
                     //if user clicks on any date from popup table, following function converts date in to toISOString date formate 
