@@ -52,7 +52,7 @@
             <p><b>Location address: </b> <span id="location_addr"></span>
             <p><b>Number to Allocate:  <input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" readonly="readonly" style="color:black"/> </b><?php echo $GLOBALS['result']->available_text; ?>  </p> 
            
-            <p style="display:inline"><b>Show All:</b><input type="checkbox" name="viewall" id="viewall" style="height:18px;width:40px;margin-left:15%;margin-top:-15px;" onchange="getallowance()"/></p>
+            <p style="display:inline"><b>Show All:</b><input type="checkbox" name="viewall" id="viewall" style="height:18px;width:40px;margin-left:18%;margin-top:-15px;" onchange="getallowance()"/></p>
             </br>
             <br />
             <?php
