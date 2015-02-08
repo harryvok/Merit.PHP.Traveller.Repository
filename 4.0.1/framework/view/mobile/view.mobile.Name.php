@@ -108,7 +108,7 @@
     <li class="textbox">
         <p style="float:left">
             <strong>Mobile phone: &nbsp;</strong>
-            <p id="editMobile_no" class="original" style="float:left"><?php /* Display the description */  echo $GLOBALS['result']->mobile_no; ?></p>
+            <p id="editMobile_no" class="original" style="float:left"><a href="tel:+<?php echo $GLOBALS['result']->mobile_no; ?>"><?php echo $GLOBALS['result']->mobile_no; ?></a></p>
         </p>
         <div class="edited">
             <br />
