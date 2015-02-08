@@ -17,18 +17,18 @@
                     }
                     var addr = $("#lno").val();
                     if ($("#lfno").val() != "" && $("#lfno").val() != null) {
-                        addr += " /" + $("#lfno").val();
+                        addr += " /" + $("#lfno").val();newRe
                     }
                     addr += " " + $("#lstreet").val() + " " + $("#ltype").val() + " " + $("#lsuburb").val() + " " + $("#lpostcode").val();
                     $("#location_addr").html(addr);
 
                     $("#stop").click(function () {
-                        $("#popup").fadeOut("fast");
+                        $("#popup").popup("close");
                     });
 
                     $("#placeaAllowance").click(function () {
                         $("#process_allowance").val("Yes");
-                        $("#popup").fadeOut("fast");
+                        $("#popup").popup("close");
                     });
                 });
 
