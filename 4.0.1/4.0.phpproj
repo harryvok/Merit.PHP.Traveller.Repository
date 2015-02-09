@@ -303,6 +303,7 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
+    <Compile Include="framework\view\pc\view.pc.AddressAllowanceAvail.php" />
     <Compile Include="framework\view\pc\view.pc.AddressAllowance.php" />
     <Compile Include="framework\view\pc\view.pc.AllowanceDetails.php" />
     <Compile Include="framework\view\pc\view.pc.DateFilter.php" />
