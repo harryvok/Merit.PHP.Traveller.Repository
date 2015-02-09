@@ -103,7 +103,7 @@
     </div>       
     <div>        
         <br /><br />
-        <input type="button" value="    Ok    " id="placeaAllowance" <?php if ($GLOBALS['result']->available_count == 0) echo "disabled='disabled'"; ?> />       
+        <input type="button" value="    Ok    " id="placeaAllowance" <?php if ($GLOBALS['result']->available_count <= 0) echo "disabled='disabled'"; ?> />       
         <input type="button" id="stop" name="stop" value="Cancel"/>
     </div>
 </div>
