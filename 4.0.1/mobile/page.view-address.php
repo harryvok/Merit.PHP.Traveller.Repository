@@ -37,6 +37,10 @@ if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); } else { $ex = ""; }
 			 if(isset($_GET['d']) && $_GET['d'] == "requests"){
 				 $controller->Display("Address", "AddressRequests", $_GET['id']);
 			 }
+             if(isset($_GET['d']) && $_GET['d'] == "allowance"){     
+                 $controller->Display("AddressAllowanceAvail", "AddressAllowanceAvail", $address_id);
+                 $controller->Display("AddressAllowance", "AddressAllowance", $address_id);
+             }
 			 if(isset($_GET['d']) && $_GET['d'] == "names"){
 				 $controller->Display("Address", "AddressNames", $_GET['id']);
 			 }

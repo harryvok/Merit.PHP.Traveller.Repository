@@ -104,6 +104,8 @@
     <Compile Include="framework\view\mobile\view.mobile.ActionDelete.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionDocuments.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionReopen.php" />
+    <Compile Include="framework\view\mobile\view.mobile.AddressAllowance.php" />
+    <Compile Include="framework\view\mobile\view.mobile.AddressAllowanceAvail.php" />
     <Compile Include="framework\view\mobile\view.mobile.AllowanceDetails.php" />
     <Compile Include="framework\view\mobile\view.mobile.EventBookingDetails.php" />
     <Compile Include="framework\view\mobile\view.mobile.NameAudit.php" />
