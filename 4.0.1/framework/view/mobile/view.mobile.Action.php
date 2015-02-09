@@ -242,7 +242,8 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
 	if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) > 0){
     ?>
     <li>
-        <p><strong>Email Address: </strong><a href="mailto:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></a></p>
+        <p><strong>Phone Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></p>
+        <!--<p><strong>Email Address: </strong><a href="mailto:<?php #echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?>"><?php #echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></a></p>-->
     </li>
     <?php
 	}
