@@ -37,7 +37,7 @@
                 $(function () {
                     $('a').click(function () {
                         if (typeof $(this).attr('href') != 'undefined' && $(this).attr('href').charAt(0) != "#") {
-                            Load();
+                            // Load();
                             document.location = $(this).attr('href');
                             return false;
                         }

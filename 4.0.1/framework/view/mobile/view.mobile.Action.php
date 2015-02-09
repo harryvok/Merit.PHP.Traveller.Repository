@@ -221,28 +221,28 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone) > 0){
     ?>
     <li>
-        <p><strong>Phone Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></p>
+        <p><strong>Phone Number: </strong><a href="tel:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></a></p>
     </li>
     <?php
     }
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no) > 0){
     ?>
     <li>
-        <p><strong>Mobile Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></p>
+        <p><strong>Mobile Number: </strong><a href="tel:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></a></p>
     </li>
     <?php
     }
     if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone) > 0){
     ?>
     <li>
-        <p><strong>Work Number:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></p>
+        <p><strong>Work Number: </strong><a href="tel:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></a></p>
     </li>
     <?php
     }
 	if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) > 0){
     ?>
     <li>
-        <p><strong>Email Address:</strong> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
+        <p><strong>Email Address: </strong><a href="mailto:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></a></p>
     </li>
     <?php
 	}
