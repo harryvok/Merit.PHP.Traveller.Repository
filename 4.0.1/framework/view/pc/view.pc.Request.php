@@ -435,7 +435,8 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
         <div class="column r30">
             <span class="summaryColumnTitle">Customer Email</span>
             <div class="summaryColumn" id="editEmail_address">
-                <?php if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address)){ echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; }?>
+                <a href="mailto:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></a>
+                
             </div>
         </div>
         <div class="float-left">
