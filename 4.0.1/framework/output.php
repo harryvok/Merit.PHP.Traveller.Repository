@@ -132,6 +132,7 @@ $realNameArray = array(
 	 "requests" => "Requests", 
 	 "attrib" => "Attributes", 
 	 "aliases" => "Aliases", 
+     "allowance" => "Allowance",
 	 "assoc" => "Associations",
 	 "hist" => "History of Actual Changes", 
 	 "addresses" => "Addresses", 

@@ -39,6 +39,8 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                             $(".mandLabel").hide();
                             $("[data-mand]").removeClass("required");
                             $("#refno").val("");
+                            $("#process_allowance").val("No");
+                            $("#countOnlyInd").val("N");
                             $("#submit").prop('disabled', false).buttonState("enable");
                             $("#saveMore").prop('disabled', false).buttonState("enable");
                             //$("#saveCountOnly").prop('disabled', false).buttonState("enable");
@@ -151,6 +153,8 @@ else{
                 $(".mandLabel").hide();
                 $("[data-mand]").removeClass("required");
                 $("#refno").val("");
+                $("#process_allowance").val("No");
+                $("#countOnlyInd").val("N");
                 $("#submit").prop('disabled', false).buttonState("enable");
                 $("#saveMore").prop('disabled', false).buttonState("enable");
                 //$("#saveCountOnly").prop('disabled', false).buttonState("enable");

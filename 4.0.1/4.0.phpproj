@@ -104,6 +104,8 @@
     <Compile Include="framework\view\mobile\view.mobile.ActionDelete.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionDocuments.php" />
     <Compile Include="framework\view\mobile\view.mobile.ActionReopen.php" />
+    <Compile Include="framework\view\mobile\view.mobile.AddressAllowance.php" />
+    <Compile Include="framework\view\mobile\view.mobile.AddressAllowanceAvail.php" />
     <Compile Include="framework\view\mobile\view.mobile.AllowanceDetails.php" />
     <Compile Include="framework\view\mobile\view.mobile.EventBookingDetails.php" />
     <Compile Include="framework\view\mobile\view.mobile.NameAudit.php" />
@@ -303,6 +305,7 @@
     </Compile>
     <Compile Include="framework\view\pc\view.pc.ActionDocuments.php" />
     <Compile Include="framework\view\pc\view.pc.ActionReopen.php" />
+    <Compile Include="framework\view\pc\view.pc.AddressAllowanceAvail.php" />
     <Compile Include="framework\view\pc\view.pc.AddressAllowance.php" />
     <Compile Include="framework\view\pc\view.pc.AllowanceDetails.php" />
     <Compile Include="framework\view\pc\view.pc.DateFilter.php" />

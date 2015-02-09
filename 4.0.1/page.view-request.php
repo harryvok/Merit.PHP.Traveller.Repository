@@ -157,6 +157,16 @@ $parameters_r->password = $_SESSION['password'];
 $parameters_r->request_id = $_GET['id'];
 $requestData = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters_r);
 
+$addr_id = "";
+foreach ($requestData->address_det as $reqdata){
+    if($reqdata->address_type == "Location"){
+        $addr_id = $reqdata->address_id;
+    }
+}
+
+$allowance = $model->getAddressAllowance($addr_id);
+$_SESSION["allowance_count"] = count($allowance->allowance_history->annual_allowance_history);
+
 $controller->Display("Request", "RequestHeader",$model,$device,$actionData, $requestData);
 
 if(isset($_GET['d']) && $_GET['d'] == "summary" ||  !isset($_GET['d'])){

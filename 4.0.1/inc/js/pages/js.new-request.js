@@ -439,8 +439,7 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         $('#popup').html(data);
-                        $(self).removeClass("ui-autocomplete-loading");
-                        $('#popup').css("margin-top", "2500px");                        
+                        $(self).removeClass("ui-autocomplete-loading");               
                     }
                 });
             }
@@ -1172,7 +1171,7 @@ $(document).ready(function () {
         $.validator.setDefaults({
             ignore: ""
         })
-        if ($("#countOnlyInd").val() == "N") {
+        if ($("#countOnlyInd").val() == "N") {           
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {    
                 if ($("#process_allowance").val() == "No" && $("#functionInput").val() == "Removal") {
