@@ -35,7 +35,8 @@ $GLOBALS['result'] = $GLOBALS['result']->officer_det;
              </div>
              <div class="column r30">
                <span class="summaryColumnTitle">Email Address</span>
-               <div class="summaryColumn"><a href="mailto:<?php echo $GLOBALS['result']->mail_id; ?>"><?php echo $GLOBALS['result']->mail_id; ?></a></div> 
+                 <div class="summaryColumn"><?php if(isset($GLOBALS['result']->mail_id)) echo $GLOBALS['result']->mail_id; ?></div> 
+               <!--<div class="summaryColumn"><a href="mailto:<?php #echo $GLOBALS['result']->mail_id; ?>"><?php #echo $GLOBALS['result']->mail_id; ?></a></div> -->
              </div>
              <div class="column r50">              
          </div>

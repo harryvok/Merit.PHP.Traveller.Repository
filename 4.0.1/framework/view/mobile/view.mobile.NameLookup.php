@@ -4,7 +4,10 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 	?>
     <script type="text/javascript">
 	 $(document).ready(function(){
-	    $("#popup").popup("open");	     
+	     $("#popup").popup("open");
+	     //$("#popup").attr("data-position-to", "window");
+	     //document.getElementById("title_name").focus();
+	     //$("#popup").attr("data-relation", "popup");
 	    $("#default").page('destroy').page(); 
 		$('.name_row').click(function(){
 			var id = $(this).attr('id');
@@ -51,7 +54,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 	</script>
 	<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
     <div data-role="header" data-tap-toggle="false">
-        <h1>Found Names</h1>
+        <h1 id="title_name">Found Names</h1>
     </div>
     <div data-role="content">
     	<p>
