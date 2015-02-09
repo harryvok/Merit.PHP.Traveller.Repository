@@ -501,8 +501,15 @@ class Model {
         $parameters->address_id = $address_id;
         $parameters->property_no = "";  
         $parameters->show_all = "Y";
-        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);  
-        $_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);          
+        return $result;
+    }
+    public function getAddressAllowanceAvail($address_id){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];        
+        $parameters->address_id = $address_id;       
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance_avail", $parameters);          
         return $result;
     }
     
