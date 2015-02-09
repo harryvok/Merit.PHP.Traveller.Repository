@@ -70,7 +70,7 @@
             else if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) == 1){
                 ?>                        
                     <li>                           
-                        <p><b>Description: </b><?php $GLOBALS['result']->allowance_history->annual_allowance_history->srf_description; ?></p>
+                        <p><b>Description: </b><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->srf_description; ?></p>
                         <p><b>Used: </b><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->allowance_date; ?></p>
                         <p><b>Number: </b><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->number_used; ?></p>                                                     
                     </li>
