@@ -353,7 +353,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <li class="original">
         <p style="float:left">
             <strong>Phone Number: &nbsp;</strong>
-            <p id="editTelephone" style="float:left"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></p>
+            <p id="editTelephone" style="float:left"><a href="tel:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->telephone; ?></a></p>
         </p>
     </li>
     <?php
@@ -363,7 +363,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <li class="original">
         <p style="float:left">
             <strong>Mobile Number: &nbsp;</strong> 
-            <p id="editMobile_no" style="float:left"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></p>
+            <p id="editMobile_no" style="float:left"><a href="tel:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->mobile_no; ?></a></p>
         </p>
     </li>
     <?php
@@ -373,7 +373,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <li class="original">
         <p style="float:left">
             <strong>Work Number: &nbsp;</strong> 
-            <p id="editWork_phone" style="float:left"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></p>
+            <p id="editWork_phone" style="float:left"><a href="tel:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->work_phone; ?></a></p>
         </p>
     </li>    
     <?php
@@ -384,7 +384,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <li class="original">
         <p style="float:left">
             <strong>Email Address: &nbsp;</strong>
-            <p id="editEmail_address" style="float:left"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
+            <p id="editEmail_address" style="float:left"><a href="mailto:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></a></p>
         </p>
     </li>   
     <?php
