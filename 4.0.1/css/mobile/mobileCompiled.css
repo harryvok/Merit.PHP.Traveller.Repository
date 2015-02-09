@@ -5741,7 +5741,7 @@ ol.ui-listview .ui-li-jsnumbering:before {
 }
 
 .ui-popup {
-    position: relative;
+    position: absolute;
 }
 
     .ui-popup.ui-content, .ui-popup .ui-content {
