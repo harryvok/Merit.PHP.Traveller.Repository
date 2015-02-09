@@ -491,7 +491,7 @@ class Model {
         return $result;      
     }
     
-    public function getAddressAllowance($param = NULL){
+    public function getAddressAllowance($address_id){
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
@@ -517,7 +517,7 @@ class Model {
         $parameters->property_no = $_POST['property_no'];
         $parameters->show_all = $_POST['show_all'];
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);
-        //$_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
+        $_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
         return $result;      
     }  
 
@@ -2309,7 +2309,7 @@ class Model {
                 }
                 
                 //update allowance if requested
-                if($functionInput == "Removal"){
+                if($functionInput == "Removal" && $_POST['countOnlyInd'] == "N"){
                     $parameters = new stdClass();
                     $parameters->user_id = $_SESSION['user_id'];
                     $parameters->password = $_SESSION['password'];
