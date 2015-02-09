@@ -1173,6 +1173,7 @@ $(document).ready(function () {
             ignore: ""
         })
         if ($("#countOnlyInd").val() == "N") {
+            alert("coming");
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {    
                 if ($("#process_allowance").val() == "No" && $("#functionInput").val() == "Removal") {

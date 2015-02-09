@@ -2309,7 +2309,7 @@ class Model {
                 }
                 
                 //update allowance if requested
-                if($functionInput == "Removal" && $_POST['countOnlyInd'] == "N"){
+                if($functionInput == "Removal" && $_POST['saveCountOnly'] == "N"){
                     $parameters = new stdClass();
                     $parameters->user_id = $_SESSION['user_id'];
                     $parameters->password = $_SESSION['password'];
@@ -2322,7 +2322,7 @@ class Model {
                     $parameters->number_used = 1;
                     $parameters->type_ind = "ADD";
                     try {
-                        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);           
+                        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);                        
                     }
                     catch (Exception $e) {
                         $_SESSION['custom_error'] = $e->getMessage();

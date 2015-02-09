@@ -407,6 +407,7 @@ function CheckCountOnlyAjax(ser, req, func) {
             request_code: req, service_code: ser, function_code: func
         },
         success: function (data) {
+            alert(data.flag_value);
             if (data.flag_value == "Y") {
                 $("#countOnlyInd").val("Y");
                 $("#submit").prop('disabled', true).buttonState("disable");
