@@ -34,6 +34,8 @@
 
     });
 </script>
+<input type="hidden" value="<?php echo date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" />
+<input type="hidden" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" />
 <?php
 $_SESSION['sidebar_action_status'] = $GLOBALS['result']['action']->status_code;
 if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
@@ -121,8 +123,8 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
             
                 <!-- Edit Goes Here -->
                     
-                    <div><strong>Date:  </strong><input type="date" name="moddate" id="moddate" style="width:160px; margin-right:0px" /></div>                  
-                    <div><strong>Time: </strong><input type="time" name="modtime" id="modtime" style="width:160px; margin-right:0px" /></div>
+                    <div><strong>Date:  </strong><input type="date" name="moddate" id="moddate" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>                  
+                    <div><strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>
                     <div><input type="button" id="saveDate" name="saveDate" value="Save" /><input type="button" id="close" name="close" value="Close" /></div>
                     
                 </div>     
