@@ -52,7 +52,7 @@
             <p><b>Location address: </b> <span id="location_addr"></span>
             <p><b>Number to Allocate:  <input type="text" name="alloc_no" id="alloc_no" value="<?php if ($GLOBALS['result']->available_count > 0) echo 1; else echo 0; ?>" readonly="readonly" style="color:black"/> </b><?php echo $GLOBALS['result']->available_text; ?>  </p> 
            
-            <p style="display:inline"><b>Show All:</b><input type="checkbox" name="viewall" id="viewall" style="height:18px;width:40px;margin-left:18%;margin-top:-15px;" onchange="getallowance()"/></p>
+            <p style="display:inline"><b>Show All:</b><input type="checkbox" name="viewall" id="viewall" style="height:18px;width:40px;margin-left:20%;margin-top:-15px;" onchange="getallowance()"/></p>
             </br>
             <br />
             <?php
@@ -66,6 +66,22 @@
                         </li>
                     <?php
                 }
+            }
+            else if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) == 1){
+                ?>                        
+                    <li>                           
+                        <p><b>Description: </b><?php $GLOBALS['result']->allowance_history->annual_allowance_history->srf_description; ?></p>
+                        <p><b>Used: </b><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->allowance_date; ?></p>
+                        <p><b>Number: </b><?php echo $GLOBALS['result']->allowance_history->annual_allowance_history->number_used; ?></p>                                                     
+                    </li>
+                <?php
+            }
+            else{
+                 ?>                        
+                    <li>                           
+                        <p><?php echo "No data found"; ?> </p>
+                    </li>
+                <?php
             }
                     ?>
             <br />
