@@ -24,6 +24,7 @@
             <script src="inc\js\libraries\sorttable.js "></script>
             <script src="inc\js\libraries\jquery-ui-1.10.3.custom.js"></script>
             <script src="inc\js\libraries\jquery.dataTables.js"></script>
+            <script src="inc\js\libraries\title-numeric.js"></script>
             <script src="inc\js\libraries\modernizr.js"></script>
             <script src="inc\js\ajax.js"></script>
             <script src="inc\js\global.js"></script>

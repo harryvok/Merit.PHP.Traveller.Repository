@@ -462,6 +462,7 @@
     <Compile Include="inc\ajax\ajax.getEventBookingDetails.php" />
     <Compile Include="inc\ajax\ajax.dateFilter.php" />
     <Compile Include="inc\ajax\ajax.getNextActions.php" />
+    <Compile Include="inc\ajax\ajax.modifyDueDate.php" />
     <Compile Include="inc\ajax\ajax.modifyNotifyCustomer.php" />
     <Compile Include="inc\ajax\ajax.modifyNameDetails.php" />
     <Compile Include="inc\ajax\ajax.getBookingSummary.php" />
@@ -1446,6 +1447,7 @@
     <Content Include="images\logo1.png" />
     <Content Include="images\modify-icon.png" />
     <Content Include="inc\js\libraries\jquery.form.js" />
+    <Content Include="inc\js\libraries\title-numeric.js" />
     <Content Include="inc\js\pages\js.adhocOfficer.js">
       <SubType>Content</SubType>
     </Content>

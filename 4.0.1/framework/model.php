@@ -4659,5 +4659,33 @@ class Model {
         }    
         return $result;
     }
+    
+    public function processModifyDueDate($parameters = NULL){
+        
+        $date = $_POST["getdate"];
+        $time = $_POST["gettime"];
+        
+        // Date and time need to be formated into a correct datetime field
+
+        $newdate = date("Y-m-d",strtotime(str_replace("/", "-", $date)))."T".date("H:i:s",strtotime($time));
+    
+        
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->request_id = $_POST["request_id"];
+        $parameters->action_id = $_POST["action_id"];
+        $parameters->new_duedate = $newdate;
+        $parameters->comments = "";
+       
+        try {
+            $result = $this->WebService(MERIT_ACTION_FILE, "ws_change_act_due", $parameters);      
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+            $result = false;
+        }    
+        return $result;
+    }
 }
 ?>

@@ -1,3 +1,39 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".drpdwn").css("display", "none");
+        $(".edit").on(eventName, function () {
+            $("#duedatelocked").css("display", "none");
+            $(".drpdwn").css("display", "block");
+        });
+        $("#close").on(eventName, function () {
+            $("#duedatelocked").css("display", "block");
+            $(".drpdwn").css("display", "none");
+        });
+
+        $("#saveDate").on(eventName, function () {
+            var date = $("#moddate").val();
+            var time = $("#modtime").val();
+            var req_id = $("#requestID").val();
+            var act_id = $("#actionID").val();
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.modifyDueDate.php',
+                type: 'post',
+                data: {
+                    getdate: date,
+                    gettime: time,
+                    request_id: req_id,
+                    action_id: act_id
+                },
+                success: function (data) {
+                    alert("Due Date successfully Changed.")
+                    location.reload();
+                }
+            });
+        });
+
+    });
+</script>
 <?php
 $_SESSION['sidebar_action_status'] = $GLOBALS['result']['action']->status_code;
 if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
@@ -78,9 +114,20 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
                 <div class="summaryColumn"><?php if(strlen($GLOBALS['result']['action']->assign_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->assign_datetime))); }?></div>
             </div>
             <div class="column r15">
-                <span class="summaryColumnTitle">Due Date</span>
-                <div class="summaryColumn"><?php if(strlen($GLOBALS['result']['action']->due_datetime) > 0 && $GLOBALS['result']['action']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); }?></div>
+                <span class="summaryColumnTitle">Due Date  <?php if($GLOBALS['result']['action']->change_due_date != "N"){ ?> <a class="edit" id="EditDateDetails" style="color:white"><img src="images/modify-icon.png"></a><?php } ?></span>
+
+                <div class="summaryColumn" id="duedatelocked"><?php if(strlen($GLOBALS['result']['action']->due_datetime) > 0 && $GLOBALS['result']['action']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); }?></div>
+                <div class="drpdwn">
+            
+                <!-- Edit Goes Here -->
+                    
+                    <div><strong>Date:  </strong><input type="date" name="moddate" id="moddate" style="width:160px; margin-right:0px" /></div>                  
+                    <div><strong>Time: </strong><input type="time" name="modtime" id="modtime" style="width:160px; margin-right:0px" /></div>
+                    <div><input type="button" id="saveDate" name="saveDate" value="Save" /><input type="button" id="close" name="close" value="Close" /></div>
+                    
+                </div>     
             </div>
+
             <div class="column r15">
                 <span class="summaryColumnTitle">Completed Date</span>
                 <div class="summaryColumn"><?php if($GLOBALS['result']['action']->finalised_ind == "Y"){echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['action']->outcome_datetime)); } ?></div>
