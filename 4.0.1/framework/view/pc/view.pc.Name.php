@@ -76,7 +76,8 @@
             <div class="column r50"> 
                 <span class="summaryColumnTitle">Email Address</span>
                 <div class="summaryColumn" id="editEmail_address" style="width:100%;">
-                    <a href="mailto:<?php echo $GLOBALS['result']->email_address; ?>"><?php echo $GLOBALS['result']->email_address; ?></a>
+                    <?php echo $GLOBALS['result']->email_address; ?>
+                    <!--<a href="mailto:<?php #echo $GLOBALS['result']->email_address; ?>"><?php #echo $GLOBALS['result']->email_address; ?></a>-->
                 </div>
                 <div class="EditNameEdit">
                     <input type="text" spellcheck="true" name="EditDescriptionText" id="editEmail_address_val" value="<?php /* Display the email_address */  if(isset($GLOBALS['result']->email_address)){ echo $GLOBALS['result']->email_address; } ?>" />
