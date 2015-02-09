@@ -491,6 +491,21 @@ class Model {
         return $result;      
     }
     
+    public function getAddressAllowance($param = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->service_code = "";
+        $parameters->request_code = "";
+        $parameters->function_code = "";
+        $parameters->address_id = $address_id;
+        $parameters->property_no = "";  
+        $parameters->show_all = "Y";
+        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);  
+        $_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
+        return $result;
+    }
+    
     public function getAllowanceDetails($params = NULL){
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
@@ -502,7 +517,7 @@ class Model {
         $parameters->property_no = $_POST['property_no'];
         $parameters->show_all = $_POST['show_all'];
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_get_annual_allowance", $parameters);
-        $_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
+        //$_SESSION["allowance_count"] = count($GLOBALS['result']->allowance_history->annual_allowance_history);
         return $result;      
     }  
 
@@ -2166,35 +2181,12 @@ class Model {
                   );
                 array_push($array, $adhoc_officer_det);
             }
-            $parameters['req_input']['adhoc_officer']['adhoc_officer_det'] = $array;
+            $parameters['req_input']['adhoc_officer']['adhoc_officer_det'] = $array;                                       
         }
         $parameters = array_to_objecttree($parameters);
         
         try {
-            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_create_request", $parameters);
-            
-            if($functionInput == "Removal"){
-                $parameters = new stdClass();
-                $parameters->user_id = $_SESSION['user_id'];
-                $parameters->password = $_SESSION['password'];
-                $parameters->address_id = $addressId;
-                $parameters->service_code = $service;
-                $parameters->request_code = $request;
-                $parameters->function_code = $function;
-                $parameters->property_no = $property_no;
-                $parameters->allowance_date = "";
-                $parameters->number_used = 1;
-                $parameters->type_ind = "ADD";
-                try {
-                    $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);           
-                }
-                catch (Exception $e) {
-                    $_SESSION['custom_error'] = $e->getMessage();
-                    $_SESSION['error'] = 1;
-                    $_SESSION['error_annual_allowance'] = 1;
-                }                                 
-            }
-            
+            $result = $this->WebService(MERIT_REQUEST_FILE, "ws_create_request", $parameters);            
             $ws_status = $result->ws_status;
             $ws_message = $result->ws_message;
             if($ws_status != -1){
@@ -2316,6 +2308,29 @@ class Model {
                     }
                 }
                 
+                //update allowance if requested
+                if($functionInput == "Removal"){
+                    $parameters = new stdClass();
+                    $parameters->user_id = $_SESSION['user_id'];
+                    $parameters->password = $_SESSION['password'];
+                    $parameters->address_id = $addressId;
+                    $parameters->service_code = $service;
+                    $parameters->request_code = $request;
+                    $parameters->function_code = $function;
+                    $parameters->property_no = $property_no;
+                    $parameters->allowance_date = "";
+                    $parameters->number_used = 1;
+                    $parameters->type_ind = "ADD";
+                    try {
+                        $result = $this->WebService(MERIT_REQUEST_FILE, "ws_update_annual_allowance", $parameters);           
+                    }
+                    catch (Exception $e) {
+                        $_SESSION['custom_error'] = $e->getMessage();
+                        $_SESSION['error'] = 1;
+                        $_SESSION['error_annual_allowance'] = 1;
+                    }                                 
+                }
+                
                 // Tells the user that the request has been successfully submitted.
                 $_SESSION['request_id_fin'] = $GLOBALS['request_id'];
                 $_SESSION['done'] = 1;
@@ -2340,7 +2355,8 @@ class Model {
                 $_SESSION['custom_error'] = $ws_message;
                 $_SESSION['redirect'] = "index.php?page=newRequest";
                 return false;
-            }
+            }          
+            
         }
         catch (Exception $e) {
             echo $e -> getMessage ();
@@ -2356,7 +2372,6 @@ class Model {
             
             return false;
         }
-
     }
     public function processNotifyInsuranceOfficer($params = NULL){
         $parameters = new stdClass();

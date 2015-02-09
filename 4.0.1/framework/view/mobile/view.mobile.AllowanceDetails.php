@@ -56,7 +56,7 @@
             </br>
             <br />
             <?php
-            if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) > 0){
+            if(isset($GLOBALS['result']->allowance_history->annual_allowance_history) && count($GLOBALS['result']->allowance_history->annual_allowance_history) > 1){
                 foreach($GLOBALS['result']->allowance_history->annual_allowance_history as $allowance_detail){                        
             ?>                        
                         <li>                           
