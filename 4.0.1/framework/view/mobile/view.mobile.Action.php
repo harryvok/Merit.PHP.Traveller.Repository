@@ -242,6 +242,7 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
 	if(isset($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) && strlen($GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address) > 0){
     ?>
     <li>
+        
         <p><strong>Email Address: </strong><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
     </li>
     <?php

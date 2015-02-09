@@ -384,7 +384,8 @@ if( $_SESSION['roleSecurity']->hide_customer_details == "N"){
     <li class="original">
         <p style="float:left">
             <strong>Email Address: &nbsp;</strong>
-            <p id="editEmail_address" style="float:left"><a href="mailto:<?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?>"><?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></a></p>
+            <p id="P1" style="float:left"> <?php echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></p>
+            <!--<p id="editEmail_address" style="float:left"><a href="mailto:<?php # echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?>"><?php #echo $GLOBALS['result']['request']->customer_name_det->customer_name_details->email_address; ?></a></p>-->
         </p>
     </li>   
     <?php
