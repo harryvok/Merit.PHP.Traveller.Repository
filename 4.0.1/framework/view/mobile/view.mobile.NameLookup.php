@@ -4,7 +4,9 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 	?>
     <script type="text/javascript">
 	 $(document).ready(function(){
-	    $("#popup").popup("open");	     
+	     $("#popup").popup("open");
+	     $("#popup").attr("data-position-to", "origin");
+	     //$("#popup").attr("data-relation", "popup");
 	    $("#default").page('destroy').page(); 
 		$('.name_row').click(function(){
 			var id = $(this).attr('id');
