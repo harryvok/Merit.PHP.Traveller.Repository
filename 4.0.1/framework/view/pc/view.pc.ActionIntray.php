@@ -19,9 +19,10 @@ $(document).ready(function() {
             null,
             null,
             null,
-            null,
-            {"sType": "date-uk"},
-            {"sType": "date-euro" }            
+            { "sType": "date-uk" },
+            { "sType": "date-euro" },
+            { "iDataSort": 12 },
+            null
         ]
     });
   
@@ -79,10 +80,11 @@ $(document).ready(function() {
                 null,
                 null,                
                 null,
-                null,
                 { "sType": "date-uk" },
-                { "sType": "date-euro" }
-            ]
+                { "sType": "date-euro" },
+                {"iDataSort": 11},
+                null
+            ]           
         });
 
         $("#export").click(function () {
@@ -160,6 +162,7 @@ else{
             <th>Received</th>
             <th>Due</th>
             <th></th>
+            <th style="display:none"></th>
         </tr>
     </thead>
 
@@ -186,6 +189,7 @@ else{
                         <td><?php if(isset($action_details->assign_date) && $action_details->assign_date != "1970-01-01T00:00:00" && strlen($action_details->assign_date) > 0){ echo date('d/m/Y',strtotime($action_details->assign_date)); } else { echo ""; }  ?></td>
                         <td><?php if(isset($action_details->due_time) && $action_details->due_time != "1970-01-01T00:00:00" && strlen($action_details->due_time) > 0){ echo date('d/m/Y h:i A',strtotime($action_details->due_time)); } else { echo ""; }  ?></td>
                         <td><?php if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo '<div class="dotGreen" title="Open"></div>'; } elseif($action_details->status_code == "SUSPENDED"){ echo '<div class="dotYellow" title="Suspended"></div>'; } else { echo '<div class="dotRed" tile="Finalised"></div>'; } ?></td>
+                        <td style="display:none"><?php if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo 'a'.$action_details->request_id; } elseif($action_details->status_code == "SUSPENDED"){ echo 'b'.$action_details->request_id; } else { echo 'c'.$action_details->request_id; } ?></td>
                     </tr>
                     <?php
                 }
@@ -207,6 +211,7 @@ else{
                     <td><?php if(isset($action_details->assign_date) && $action_details->assign_date != "1970-01-01T00:00:00" && strlen($action_details->assign_date) > 0){ echo date('d/m/Y',strtotime($action_details->assign_date)); } else { echo ""; }  ?></td>
                     <td><?php if(isset($action_details->due_time) && $action_details->due_time != "1970-01-01T00:00:00" && strlen($action_details->due_time) > 0){ echo date('d/m/Y h:i A',strtotime($action_details->due_time)); } else { echo ""; }  ?></td>
                     <td><?php if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo '<div class="dotGreen" title="Open"></div>'; } elseif($action_details->status_code == "SUSPENDED"){ echo '<div class="dotYellow" title="Suspended"></div>'; } else { echo '<div class="dotRed" tile="Finalised"></div>'; } ?></td>
+                    <td style="display:none"><?php if($action_details->status_code == "OPEN" || $action_details->status_code == "REOPEN"){ echo 'a'.$action_details->request_id; } elseif($action_details->status_code == "SUSPENDED"){ echo 'b'.$action_details->request_id; } else { echo 'c'.$action_details->request_id; } ?></td>
                 </tr>
                 <?php
             }
