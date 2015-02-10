@@ -16,9 +16,10 @@
                 null,
                 null,                
                 null,
-                null,
                 { "sType": "date-euro" },
-                { "sType": "date-euro" }
+                { "sType": "date-euro" },
+                { "iDataSort": 10 },
+                null
             ]
         });
 
@@ -72,9 +73,10 @@ $(document).ready(function() {
             null,
             null,            
             null,
-            null,
             { "sType": "date-euro" },
-            { "sType": "date-euro" }
+            { "sType": "date-euro" }, ,
+            { "iDataSort": 9 },
+            null
         ]
     });
     
@@ -141,7 +143,7 @@ else{
             <th>Received Date</th>
             <th>Due Date</th>
             <th></th>
-            
+            <th style="display:none"></th>
         </tr>
     </thead>
     <tbody>
@@ -173,7 +175,8 @@ else{
                     else{
                         echo '<img width="10" height="9" src="images/dotRed.png" />';
                     } 
-                    ?></td>                
+                    ?></td> 
+                    <td style="display:none"><?php if($request_details->status_code == "OPEN"){ echo 'a'.$request_details->request_id; } elseif($request_details->status_code == "SUSPENDED"){ echo 'b'.$request_details->request_id; } else { echo 'c'.$request_details->request_id; } ?></td>
             </tr>
             <?php
         }
@@ -203,7 +206,8 @@ else{
                     else{
                         echo '<img width="10" height="9" src="images/dotRed.png" />';
                     } 
-                    ?></td>            
+                    ?></td>  
+            <td style="display:none"><?php if($request_details->status_code == "OPEN"){ echo 'a'.$request_details->request_id; } elseif($request_details->status_code == "SUSPENDED"){ echo 'b'.$request_details->request_id; } else { echo 'c'.$request_details->request_id; } ?></td>          
         </tr>
         <?php
     }
