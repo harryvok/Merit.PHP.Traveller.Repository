@@ -21,7 +21,7 @@ $(document).ready(function() {
             null,
             null,
             {"sType": "date-uk"},
-            {"sType": "date-euro" }            
+            { "sType": "date-euro" }
         ]
     });
   
