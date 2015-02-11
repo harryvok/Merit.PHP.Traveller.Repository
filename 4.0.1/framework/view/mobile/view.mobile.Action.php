@@ -1,5 +1,42 @@
-<?php
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".drpdwn").css("display", "none");
+        $(".editdue").on(eventName, function () {
+            $("#duedatelocked").css("display", "none");
+            $(".drpdwn").css("display", "block");
+        });
+        $("#closedue").on(eventName, function () {
+            $("#duedatelocked").css("display", "block");
+            $(".drpdwn").css("display", "none");
+        });
+
+        $("#saveDate").on(eventName, function () {
+            var date = $("#moddate").val();
+            var time = $("#modtime").val();
+            var req_id = $("#requestID").val();
+            var act_id = $("#actionID").val();
+            Load();
+            $.ajax({
+                url: 'inc/ajax/ajax.modifyDueDate.php',
+                type: 'post',
+                data: {
+                    getdate: date,
+                    gettime: time,
+                    request_id: req_id,
+                    action_id: act_id
+                },
+                success: function (data) {
+                    alert("Due Date successfully Changed.")
+                    location.reload();
+                }
+            });
+        });
+
+    });
+</script>
+
+<?php
 
 if(isset($GLOBALS['result']['request']->address_det->address_details) && count($GLOBALS['result']['request']->address_det->address_details) > 1){
 	foreach($GLOBALS['result']['request']->address_det->address_details as $address)
@@ -71,9 +108,18 @@ $action_id = $GLOBALS['result']['action']->action_id;
     <?php if(isset($GLOBALS['result']['action']->assign_datetime) && strlen($GLOBALS['result']['action']->assign_datetime) > 0){ ?><li>
         <p><strong>Date Assigned:</strong> <?php if(strlen($GLOBALS['result']['action']->assign_datetime) > 0){ echo date('d/m/Y',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->assign_datetime))); }?></p>
     </li><?php } ?>
+
     <?php if(isset($GLOBALS['result']['action']->due_datetime) && strlen($GLOBALS['result']['action']->due_datetime) > 0){ ?><li>
-        <p><strong>Due Date:</strong> <?php if(strlen($GLOBALS['result']['action']->due_datetime) > 0 && $GLOBALS['result']['action']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); }?></p>
+        <p id="duedatelocked"><strong>Due Date: </strong><?php if(strlen($GLOBALS['result']['action']->due_datetime) > 0 && $GLOBALS['result']['action']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); }?><?php if($GLOBALS['result']['action']->change_due_date != "N"){ ?>&nbsp&nbsp<img src="images/modify-icon.png" width="16" height="16" title="Edit Description" class="editdue" id="EditDescription" /><?php } ?></p>
+        <p class="drpdwn">
+                    <strong>Date:  </strong><input type="date" name="moddate" id="moddate" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" />               
+                    <strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" />
+                    <input type="button" id="saveDate" name="saveDate" value="Save" />&nbsp<input type="button" id="closedue" name="closedue" value="Close" />
+        </p>
     </li><?php } ?>
+
+
+
     <?php if(isset($GLOBALS['result']['action']->finalised_ind) && strlen($GLOBALS['result']['action']->finalised_ind) > 0){ ?><li>
         <p><strong>Completed Date:</strong> <?php if($GLOBALS['result']['action']->finalised_ind == "Y"){echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['action']->outcome_datetime)); } ?></p>
     </li><?php } ?>
@@ -112,7 +158,7 @@ $action_id = $GLOBALS['result']['action']->action_id;
         <div id="EditDescriptionEdit" class="editTextDiv">
             <textarea spellcheck="true" name="EditDescriptionText" id="EditDescriptionTextVal" data-request-id="<?php echo $GLOBALS['result']['action']->request_id; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo base64_decode($GLOBALS['result']['request']->request_description); } ?></textarea>
             <input type="button" id="EditDescriptionSubmit" value="Save" data-action="Request" />
-            <a class="editClose" id="EditDescriptionClose">Close</a>
+            <input type="button" id="EditDescriptionClose" name="EditDescriptionClose" value="Close" />
         </div>
 
     </li>
@@ -129,7 +175,7 @@ $action_id = $GLOBALS['result']['action']->action_id;
         <div id="EditInstructionsEdit" class="editTextDiv">
             <textarea spellcheck="true" name="EditInstructionsText" id="EditInstructionsTextVal" data-request-id="<?php echo $GLOBALS['result']['action']->request_id; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_instruction)){ echo base64_decode($GLOBALS['result']['request']->request_instruction); } ?></textarea>
             <input type="button" id="EditInstructionsSubmit" value="Save" data-action="Request" />
-            <a class="editClose" id="EditInstructionsClose">Close</a>
+            <input type="button" id="EditInstructionsClose" name="EditInstructionsClose" value="Close" />
         </div>
 
     </li>
