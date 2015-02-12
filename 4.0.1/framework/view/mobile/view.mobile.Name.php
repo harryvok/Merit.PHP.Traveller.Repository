@@ -42,7 +42,7 @@
         </p>
         <div class="edited">
             <br />
-            <input type="text" spellcheck="true" name="EditInstructionsText" id="editGiven_names_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']->given_names)){echo $GLOBALS['result']->sugiven_namesrname; } ?>" />            
+            <input type="text" spellcheck="true" name="EditInstructionsText" id="editGiven_names_val" value="<?php /* Display the description */  if(isset($GLOBALS['result']->given_names)){echo $GLOBALS['result']->given_names; } ?>" />            
         </div>
     </li>    
     <li class="textbox">
