@@ -463,6 +463,7 @@
     <Compile Include="inc\ajax\ajax.dateFilter.php" />
     <Compile Include="inc\ajax\ajax.getNextActions.php" />
     <Compile Include="inc\ajax\ajax.modifyDueDate.php" />
+    <Compile Include="inc\ajax\ajax.modifyDueReqDate.php" />
     <Compile Include="inc\ajax\ajax.modifyNotifyCustomer.php" />
     <Compile Include="inc\ajax\ajax.modifyNameDetails.php" />
     <Compile Include="inc\ajax\ajax.getBookingSummary.php" />
