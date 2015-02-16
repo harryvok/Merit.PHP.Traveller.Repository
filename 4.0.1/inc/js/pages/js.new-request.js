@@ -439,6 +439,7 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         $('#popup').html(data);
+                        //$("#popup").attr("data-position-to", "window");
                         $(self).removeClass("ui-autocomplete-loading");               
                     }
                 });
@@ -1482,6 +1483,9 @@ function changeLocationType() {
     $("#o_cstreet").val("not required");
     $("#o_ctype").val("not required");
     $("#o_csuburb").val("not required");
+    $('#o_cstreet').attr("placeholder", "Search...");
+    $('#o_ctype').attr("placeholder", "Search...");
+    $('#o_csuburb').attr("placeholder", "Search...");
 
     /* IF SAME = S, (SAME AS LOCATION PICKED) */
 
@@ -1523,6 +1527,9 @@ function changeLocationType() {
         $('#i_cstreet').val('');
         $('#i_ctype').val('');
         $('#i_csuburb').val('');
+        $('#o_cstreet').attr("placeholder", "Search...");
+        $('#o_ctype').attr("placeholder", "Search...");
+        $('#o_csuburb').attr("placeholder", "Search...");
         $('#i_cdesc').val('');
         $("#i_cpostcode").val("");
         $("#i_cpropertynumber").val("");
@@ -1577,6 +1584,9 @@ function changeLocationType() {
         $('#o_cstreet').val("");
         $('#o_ctype').val("");
         $('#o_csuburb').val("");
+        $('#o_cstreet').removeAttr("placeholder");
+        $('#o_ctype').removeAttr("placeholder");
+        $('#o_csuburb').removeAttr("placeholder");
         $('#o_cdesc').val("");
         $("#o_cpostcode").val("");      
 
@@ -1615,6 +1625,9 @@ function clearCustomerAddress() {
     $('#o_cstreet').val("");
     $('#o_ctype').val("");
     $('#o_csuburb').val("");
+    $('#o_cstreet').attr("placeholder", "Search...");
+    $('#o_ctype').attr("placeholder", "Search...");
+    $('#o_csuburb').attr("placeholder", "Search...");
     $('#o_cdesc').val("");
     $("#o_cpostcode").val("");
     $("#cust_address_id").val("");
