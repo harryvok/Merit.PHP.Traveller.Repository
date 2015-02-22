@@ -252,8 +252,7 @@ class Model {
         
         $filter = $this->getDefaultFilter("A", "action");              
         
-        if ($filter == "" || $filter == $_SESSION['req_def_filter']){$filter = $_SESSION['act_def_filter'];}
-        
+        if ($filter == "" || $filter == $_SESSION['req_def_filter']){$filter = $_SESSION['act_def_filter'];}        
         $parameters = new stdClass();
         $parameters->user_id = $_SESSION['user_id'];
         $parameters->password = $_SESSION['password'];
@@ -1329,34 +1328,34 @@ class Model {
                     'service_code' => $_POST['service'],
                     'request_code' => $_POST['request'],
                     'function_code' => $_POST['function'],
-                    'input_officer' => $_POST['typeInputOffrCode'],
-                    'action_officer' => $_POST['actionOfficerCode'],
-                    'responsible_officer' => $_POST['responsibleOfficerCode'],
+                    'input_officer' => isset($_POST['typeInputOffrCode']) ? $_POST['typeInputOffrCode'] : "",
+                    'action_officer' => isset($_POST['actionOfficerCode']) ? $_POST['actionOfficerCode'] : "",
+                    'responsible_officer' => isset($_POST['responsibleOfficerCode']) ? $_POST['responsibleOfficerCode'] : "",
                     'request_from_date' => $_POST['dateFrom'],
                     'request_to_date' => $_POST['dateTo'],
-                    'finalised_ind' => $_POST['finalised'],
-                    'count_only' => $_POST['countOnly'],
-                    'in_time_ind' => $_POST['intime'],
-                    'escalated_ind' => $_POST['escalated'],
-                    'received_via' => $_POST['howReceived'],
-                    'request_description' => $_POST['requestDetails'],
+                    'finalised_ind' => isset($_POST['finalised']) ? $_POST['finalised'] : "",
+                    'count_only' => isset($_POST['countOnly']) ? $_POST['countOnly'] : "",
+                    'in_time_ind' => isset($_POST['intime']) ? $_POST['intime'] : "",
+                    'escalated_ind' => isset($_POST['escalated']) ? $_POST['escalated'] : "",
+                    'received_via' => isset($_POST['howReceived']) ? $_POST['howReceived'] : "",
+                    'request_description' => isset($_POST['requestDetails']) ? $_POST['requestDetails'] : "",
                     'customer_surname' => $_POST['nameSurname'],
                     'customer_given_name' => $_POST['nameGiven'],
-                    'name_type' => $_POST['cust_type'],
-                    'company_name' => $_POST['company'],
+                    'name_type' => isset($_POST['cust_type']) ? $_POST['cust_type'] : "",
+                    'company_name' => isset($_POST['company']) ? $_POST['company'] : "",
                     'house_number' => $_POST['lno'],
                     'street_name' => $_POST['lstreet'],
                     'street_type' => $_POST['ltype'],
                     'locality_name' => $_POST['lsuburb'],
-                    'gis_x_coord' => $_POST['addressX'],
-                    'gis_y_coord' => $_POST['addressY'],
-                    'address_details' => $_POST['addressDets'],
-                    'facility_type' => $_POST['facilityTypeInput'],
-                    'facility_name' => $_POST['facilityInput'],
-                    'telephone'=> $_POST['phoneNumber'],
+                    'gis_x_coord' => isset($_POST['addressX']) ? $_POST['addressX'] : "",
+                    'gis_y_coord' => isset($_POST['addressY']) ? $_POST['addressY'] : "",
+                    'address_details' => isset($_POST['addressDets']) ? $_POST['addressDets'] : "",
+                    'facility_type' => isset($_POST['facilityTypeInput']) ? $_POST['facilityTypeInput'] : "",
+                    'facility_name' => isset($_POST['facilityInput']) ? $_POST['facilityInput'] : "",
+                    'telephone'=> isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : "",
                     'udf_data'=>"",
                     'mobile_no'=>"",
-                    'email_address'=> $_POST['emailAddress'],                
+                    'email_address'=> isset($_POST['emailAddress']) ? $_POST['emailAddress'] : "",             
                     'udf_dets' => array(
                         'udf_dets' => $udf_details
                     )
