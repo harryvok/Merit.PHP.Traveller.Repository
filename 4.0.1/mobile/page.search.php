@@ -18,12 +18,16 @@
                     $("#basic").css("display", "none");
                     $("#advanced").css("display", "block");
                     $("#action").val("RequestSearch");
+                    $('#adv_search_query').css("display", "block");
+                    $('#search_query').css("display", "none");
                 });
 
                 $("#search_basic").click(function () {                   
                     $("#basic").css("display", "block");
                     $("#advanced").css("display", "none");
                     $("#action").val("Search");
+                    $('#adv_search_query').css("display", "none");
+                    $('#search_query').css("display", "block");
                 });
 
                 $("#submit").click(function () {
@@ -196,7 +200,7 @@
         <div id="search_query">
             <!-- resulr will be dispalyed here -->
         </div>
-        <div id="adv_search_query">
+        <div id="adv_search_query" style="display:none">
             <!-- resulr will be dispalyed here -->
         </div>
     </div>
