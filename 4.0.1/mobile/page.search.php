@@ -65,6 +65,7 @@
                             success: function (data) {
                                 Unload();                                
                                 $('#adv_search_query').html(data).trigger("create");
+                                window.scrollTo(0, 725);
                             }
                         });
                     }                    
