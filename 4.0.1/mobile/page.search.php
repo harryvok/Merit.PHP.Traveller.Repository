@@ -92,7 +92,7 @@
         </div>
         <div id="advanced" class="subPageContainer" <?php if(isset($_GET['action']) && $_GET['action'] == "advanced") echo "style='display:block;'"; else echo "style='display:none;'"; ?>>
             <form id="advancedSearch">
-				<h2>Advance Search</h2>
+				<h2>Advanced</h2>
                 <div data-role="collapsible" data-collapsed="false" class="col" data-content-theme="c">
                     <h4>Type</h4>
                     <table style="width:100%" >
