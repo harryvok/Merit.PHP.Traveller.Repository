@@ -60,7 +60,7 @@
                             type: 'POST',
                             success: function (data) {
                                 Unload();                                
-                                $('#search_query').html(data).trigger("create");
+                                $('#adv_search_query').html(data).trigger("create");
                             }
                         });
                     }                    
@@ -69,13 +69,14 @@
                 $("#reset").click(function(){
                     if ($("#action").val() == "Search") {                        
                         $("#search").val("");
+                        $('#search_query').html("");
                     }
                     else {
                         document.getElementById("advancedSearch").reset();
                         $("#requestInput").attr("disabled", "disabled");
                         $("#functionInput").attr("disabled", "disabled");
-                    }
-                    $('#search_query').html("");
+                        $('#adv_search_query').html("");
+                    }                    
                 });
             });            
         </script>
@@ -92,7 +93,7 @@
         </div>
         <div id="advanced" class="subPageContainer" <?php if(isset($_GET['action']) && $_GET['action'] == "advanced") echo "style='display:block;'"; else echo "style='display:none;'"; ?>>
             <form id="advancedSearch">
-				<h2>Advanced</h2>
+				<h2>Advanced Search</h2>
                 <div data-role="collapsible" data-collapsed="false" class="col" data-content-theme="c">
                     <h4>Type</h4>
                     <table style="width:100%" >
@@ -193,6 +194,9 @@
             <input type="reset" value="Reset" id="reset" name="reset">
         </div>
         <div id="search_query">
+            <!-- resulr will be dispalyed here -->
+        </div>
+        <div id="adv_search_query">
             <!-- resulr will be dispalyed here -->
         </div>
     </div>
