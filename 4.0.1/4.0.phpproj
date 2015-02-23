@@ -1161,9 +1161,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="mobile\page.resubmitAction.php" />
-    <Compile Include="mobile\page.search.php">
+    <Compile Include="mobile\page.search2.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="mobile\page.search.php" />
     <Compile Include="mobile\page.view-action.php">
       <SubType>Code</SubType>
     </Compile>
