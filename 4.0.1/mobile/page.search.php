@@ -6,8 +6,13 @@
         min-width:150px;
         width:auto;
     }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+         .ui-input-search, #adv_search_query, #search_query {         
+         margin-left: 307px;
+    }
+}
 </style>
-<div data-role="page" id="default" data-dom-cache="true">
+<div data-role="page" id="search_data" data-dom-cache="true">
     <div data-role="header" data-tap-toggle="false" data-position="fixed">
         <h1>Search</h1>
         <script src="inc/js/pages/js.search.js"></script>
@@ -65,7 +70,8 @@
                             success: function (data) {
                                 Unload();                                
                                 $('#adv_search_query').html(data).trigger("create");
-                                window.scrollTo(0, 1300);
+                                var os = $("#adv_search_query").offset();                                
+                                window.scrollTo(0, os.top);
                             }
                         });
                     }                    
@@ -90,7 +96,7 @@
         <?php include("mobile/page.navSidebar.php"); ?>
         <input type="button" id="search_basic" name="search_basic" value="Basic" />
         <input type="button" id="search_adv" name="search_adv" value="Advanced" />
-        <div id="basic" <?php if(isset($_GET['action']) &&$_GET['action'] == "advanced") echo "style='display:none;'"; else echo "style='display:block;'"; ?>>            
+        <div id="basic" <?php if(isset($_GET['action']) && $_GET['action'] == "advanced") echo "style='display:none;'"; else echo "style='display:block;'"; ?>>            
             <form id="basicSearch">
 				<h2>Basic Search</h2>
                 <input type="search" name="search" id="search" value="" />
@@ -120,17 +126,37 @@
                     <h4>Request Details</h4>
                     <table style="width:100%">
                         <tr>
-                            <td class="label">To:</td>
-                            <td class="box"><input type="text" class="dateField" name="dateTo" id="dateTo" value='<?php if(isset($_SESSION['dateTo'])){ echo $_SESSION['dateTo']; } ?>'></td>
-                        </tr>
-                        <tr>
                             <td class="label">From:</td>
                             <td class="box"><input type="text" class="dateField" name="dateFrom" id="dateFrom" value='<?php if(isset($_SESSION['dateFrom'])){ echo $_SESSION['dateFrom']; } ?>'></td>
                         </tr>    
                         <tr>
+                            <td class="label">To:</td>
+                            <td class="box"><input type="text" class="dateField" name="dateTo" id="dateTo" value='<?php if(isset($_SESSION['dateTo'])){ echo $_SESSION['dateTo']; } ?>'></td>
+                        </tr>                        
+                        <tr>
                             <td class="label">Request Description:</td>
                             <td><input type="text" name="requestDetails" /></td>
-                        </tr>                       
+                        </tr> 
+                        <tr>
+                            <td class="label">Count Only:</td>
+                            <td>
+                                <select name="countOnly">
+                                    <option value="N">No</option>
+                                    <option value="Y">Yes</option>
+                                    <option value="">All</option>
+                                </select>
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td class="label">Finalised:</td>
+                            <td>
+                                <select name="finalised">
+                                    <option value="">All</option>
+                                    <option value="N">No</option>
+                                    <option value="Y">Yes</option>
+                                </select>
+                            </td>
+                        </tr>                     
                     </table>
                 </div>
                 <div data-role="collapsible" data-collapsed="true" class="col" data-content-theme="c">

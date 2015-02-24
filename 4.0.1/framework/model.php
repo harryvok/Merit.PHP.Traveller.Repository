@@ -1546,7 +1546,7 @@ class Model {
     
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_request_search", $parameters)->request_search_dets;
         
-        if(strlen($_POST['nameSurname']) > 0 || strlen($_POST['nameSurname']) > 0) $result->customer_entered = "Y"; else  $result->customer_entered = "N";   
+        if(strlen($_POST['nameSurname']) > 0 || strlen($_POST['nameGiven']) > 0) $result->customer_entered = "Y"; else  $result->customer_entered = "N";   
         if(strlen($_POST['company']) > 0) $result->company_entered = "Y"; else  $result->company_entered = "N";   
         if(strlen($_POST['facilityTypeInput']) > 0 || strlen($_POST['facilityInput']) > 0) $result->facility_entered = "Y"; else  $result->facility_entered = "N";  
         if(strlen($_POST['lno']) > 0 || strlen($_POST['lstreet']) > 0 || strlen($_POST['ltype']) > 0 || strlen($_POST['lsuburb']) > 0) $result->location_entered = "Y"; else  $result->location_entered = "N";   
@@ -3907,6 +3907,13 @@ class Model {
                 }
                 #Resubmit stuff Above ---------------------------------------------------->
                 
+                #Due Date stuff Below ---------------------------------------------------->
+                #else if ($tempArray[2]=='Y') {
+                #    $_SESSION['action_id']= $_POST['action_id'];
+                #    $_SESSION['redirect'] = "index.php?page=dueDateAction&id=".$action_id;               
+                #}
+                #Due Date stuff Above ---------------------------------------------------->
+                
                 else{
                     $_SESSION['action-id'] = $action_id;
                     $_SESSION['request-id'] = $request_id;
@@ -3916,7 +3923,7 @@ class Model {
                         $_SESSION['success_action_submit'] = 1;
                         $_SESSION['done'] = 1;
                         $_SESSION['success'] = 1;
-                        $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_def_filter'];
+                        $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_back_filter'];
                     }
                     else{
                         $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=complete";
