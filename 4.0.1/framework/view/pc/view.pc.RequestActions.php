@@ -1,12 +1,32 @@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".drpdwn").css("display", "none");
+                $(".edit").on(eventName, function () {
+                    $("#duedatelocked").css("display", "none");
+                    $(".drpdwn").css("display", "block");
+                });
+                $("#close").on(eventName, function () {
+                    $("#duedatelocked").css("display", "block");
+                    $(".drpdwn").css("display", "none");
+                });
+    });
+</script>
+
 <div class="summaryContainer">
+
+
     <div class="drpdwn">
         <!-- Edit Goes Here -->
-                    
+            <h1 style="margin-top:0px; width:300px;">Enter a new due date for selected action: </h1>
+        <div style="width:300px;">  
             <div><strong>Date:  </strong><input type="date" name="moddate" id="moddate" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>                  
             <div><strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>
             <div><input type="button" id="saveDate" name="saveDate" value="Save" /><input type="button" id="close" name="close" value="Close" /></div>
-                    
+        </div>               
     </div>
+
+
     <h1>Actions (<?php if(isset($GLOBALS['result']['actions']->request_actions_det->request_actions_details)){echo count($GLOBALS['result']['actions']->request_actions_det->request_actions_details); } else { echo 0; } ?>) 
         <?php
         if($_SESSION['roleSecurity']->maint_new_action == "Y" && $GLOBALS['finalised_ind'] != "Y"){
@@ -260,12 +280,13 @@
     .drpdwn {
         position:absolute;
         padding:20px;
+        width:300px;
         left:40%;
         top:15%;
         background-color: rgb(214, 223, 239);
         border-color: rgb(42, 86, 105);
         border: 2px solid;
-        height: 150px;
+        height: 160px;
         z-index: 9999;
     }
 </style>

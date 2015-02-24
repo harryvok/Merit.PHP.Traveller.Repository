@@ -3923,7 +3923,12 @@ class Model {
                         $_SESSION['success_action_submit'] = 1;
                         $_SESSION['done'] = 1;
                         $_SESSION['success'] = 1;
-                        $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_back_filter'];
+                        if(isset($_SESSION['act_back_filter'])){
+                            $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_back_filter'];
+                        } else {
+                            $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_def_filter'];
+                        }
+                        
                     }
                     else{
                         $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=complete";
