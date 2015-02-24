@@ -113,7 +113,7 @@ $action_id = $GLOBALS['result']['action']->action_id;
         <p id="duedatelocked"><strong>Due Date: </strong><?php if(strlen($GLOBALS['result']['action']->due_datetime) > 0 && $GLOBALS['result']['action']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); }?><?php if($GLOBALS['result']['action']->change_due_date != "N" && $GLOBALS['result']['action']->status_code == "OPEN"){ ?>&nbsp&nbsp<img src="images/modify-icon.png" width="16" height="16" title="Edit Description" class="editdue" id="EditDescription" /><?php } ?></p>
         <p class="drpdwn">
                     <strong>Date:  </strong><input type="date" name="moddate" id="moddate" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" />               
-                    <strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" />
+                    <strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('H:i',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" />
                     <input type="button" id="saveDate" name="saveDate" value="Save" />&nbsp<input type="button" id="closedue" name="closedue" value="Close" />
         </p>
     </li><?php } ?>
