@@ -136,8 +136,7 @@
 			          if(event.which == 13){
 				          window.location="index.php?page=search&search="+$("#searchInput").val();
 				          $("#searchInput").attr("disabled", true);
-			          }
-			  
+			          }			  
 		          });
 		            //logout code for inactive session
 		          var refreshIntervalId;

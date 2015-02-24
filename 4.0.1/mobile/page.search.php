@@ -65,7 +65,8 @@
                             success: function (data) {
                                 Unload();                                
                                 $('#adv_search_query').html(data).trigger("create");
-                                window.scrollTo(0, 1300);
+                                var os = $("#adv_search_query").offset();                                
+                                window.scrollTo(0, os.top);
                             }
                         });
                     }                    
@@ -120,17 +121,27 @@
                     <h4>Request Details</h4>
                     <table style="width:100%">
                         <tr>
-                            <td class="label">To:</td>
-                            <td class="box"><input type="text" class="dateField" name="dateTo" id="dateTo" value='<?php if(isset($_SESSION['dateTo'])){ echo $_SESSION['dateTo']; } ?>'></td>
-                        </tr>
-                        <tr>
                             <td class="label">From:</td>
                             <td class="box"><input type="text" class="dateField" name="dateFrom" id="dateFrom" value='<?php if(isset($_SESSION['dateFrom'])){ echo $_SESSION['dateFrom']; } ?>'></td>
                         </tr>    
                         <tr>
+                            <td class="label">To:</td>
+                            <td class="box"><input type="text" class="dateField" name="dateTo" id="dateTo" value='<?php if(isset($_SESSION['dateTo'])){ echo $_SESSION['dateTo']; } ?>'></td>
+                        </tr>                        
+                        <tr>
                             <td class="label">Request Description:</td>
                             <td><input type="text" name="requestDetails" /></td>
-                        </tr>                       
+                        </tr> 
+                        <tr>
+                            <td class="label">Count Only:</td>
+                            <td>
+                                <select name="countOnly">
+                                    <option value="N">No</option>
+                                    <option value="Y">Yes</option>
+                                    <option value="">All</option>
+                                </select>
+                            </td>
+                        </tr>                      
                     </table>
                 </div>
                 <div data-role="collapsible" data-collapsed="true" class="col" data-content-theme="c">

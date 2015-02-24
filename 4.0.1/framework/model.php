@@ -1546,7 +1546,7 @@ class Model {
     
         $result = $this->WebService(MERIT_REQUEST_FILE, "ws_request_search", $parameters)->request_search_dets;
         
-        if(strlen($_POST['nameSurname']) > 0 || strlen($_POST['nameSurname']) > 0) $result->customer_entered = "Y"; else  $result->customer_entered = "N";   
+        if(strlen($_POST['nameSurname']) > 0 || strlen($_POST['nameGiven']) > 0) $result->customer_entered = "Y"; else  $result->customer_entered = "N";   
         if(strlen($_POST['company']) > 0) $result->company_entered = "Y"; else  $result->company_entered = "N";   
         if(strlen($_POST['facilityTypeInput']) > 0 || strlen($_POST['facilityInput']) > 0) $result->facility_entered = "Y"; else  $result->facility_entered = "N";  
         if(strlen($_POST['lno']) > 0 || strlen($_POST['lstreet']) > 0 || strlen($_POST['ltype']) > 0 || strlen($_POST['lsuburb']) > 0) $result->location_entered = "Y"; else  $result->location_entered = "N";   
