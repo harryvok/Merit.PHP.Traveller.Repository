@@ -250,6 +250,7 @@
     <Compile Include="framework\view\mobile\view.mobile.RoleSecurity.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="framework\view\mobile\view.mobile.RequestSearch.php" />
     <Compile Include="framework\view\mobile\view.mobile.Search.php">
       <SubType>Code</SubType>
     </Compile>
@@ -1160,9 +1161,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="mobile\page.resubmitAction.php" />
-    <Compile Include="mobile\page.search.php">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="mobile\page.search.php" />
     <Compile Include="mobile\page.view-action.php">
       <SubType>Code</SubType>
     </Compile>

@@ -23,6 +23,7 @@ function getIntray(intray, i) {
             },
             timeout: 3000000,
             success: function (data) {
+                //alert(data);
                 Unload();
                 $("#" + intray + "Intray").html(data);
                 $("#default").trigger("create");

@@ -1,6 +1,6 @@
 
 <script type="text/javascript">
-	function change(id){
+    function change(id) {        
 		window.location = "index.php?page=view-action&id="+id;
 	}
 	function change_add(id){

@@ -2,13 +2,12 @@
 include("../../framework/controller.php");
 $controller = new Controller();
 $controller->Display("AdhocOfficers", "OfficerList");
-
 $input = $_GET['term'];
 $array = array();
 if(isset($GLOBALS['result']->officer_details)){
 	$i = 0;
 	foreach($GLOBALS['result']->officer_details as $result){
-        if(strlen($input) >0){
+        if(strlen($input) > 0){
             if(isset($result->surname) && stristr(strtolower($result->surname), strtolower($input)) || isset($result->given_names) && stristr(strtolower($result->given_names), strtolower($input)) ){
                 if(isset($result->given_names)){
                     $array[$i] = array("label" => $result->surname.", ".$result->given_names, "index" => $result->responsible_code);
@@ -33,6 +32,5 @@ if(isset($GLOBALS['result']->officer_details)){
 		
 	}
 }
-
 echo json_encode($array);
 ?>
