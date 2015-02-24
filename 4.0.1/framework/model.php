@@ -1298,7 +1298,61 @@ class Model {
     }
     
     public function getRequestSearch($params = NULL){
-        
+        if(isset($_POST['serviceInput'])){
+            $_SESSION['serviceInput'] = $_POST['serviceInput'];
+        }
+        if(isset($_POST['requestInput'])){
+            $_SESSION['requestInput'] = $_POST['requestInput'];
+        }
+        if(isset($_POST['functionInput'])){
+            $_SESSION['functionInput'] = $_POST['functionInput'];
+        }
+        if(isset($_POST['dateFrom'])){
+            $_SESSION['dateFrom'] = $_POST['dateFrom'];
+        }        
+        if(isset($_POST['dateTo'])){
+            $_SESSION['dateTo'] = $_POST['dateTo'];
+        }
+        if(isset($_POST['requestDetails'])){
+            $_SESSION['requestDetails'] = $_POST['requestDetails'];
+        }
+        if(isset($_POST['countOnly'])){
+            $_SESSION['countOnly'] = $_POST['countOnly'];
+        }
+        if(isset($_POST['finalised'])){
+            $_SESSION['finalised'] = $_POST['finalised'];
+        }
+        if(isset($_POST['nameGiven'])){
+            $_SESSION['nameGiven'] = $_POST['nameGiven'];
+        }
+        if(isset($_POST['nameSurname'])){
+            $_SESSION['nameSurname'] = $_POST['nameSurname'];
+        }
+        if(isset($_POST['phoneNumber'])){
+            $_SESSION['phoneNumber'] = $_POST['phoneNumber'];
+        }
+        if(isset($_POST['emailAddress'])){
+            $_SESSION['emailAddress'] = $_POST['emailAddress'];
+        }
+        if(isset($_POST['lno'])){
+            $_SESSION['lno'] = $_POST['lno'];
+        }
+        if(isset($_POST['lstreet'])){
+            $_SESSION['lstreet'] = $_POST['lstreet'];
+        }
+        if(isset($_POST['ltype'])){
+            $_SESSION['ltype'] = $_POST['ltype'];
+        }
+         if(isset($_POST['lsuburb'])){
+            $_SESSION['lsuburb'] = $_POST['lsuburb'];
+        }
+         if(isset($_POST['facilityTypeInput'])){
+            $_SESSION['facilityTypeInput'] = $_POST['facilityTypeInput'];
+        }
+        if(isset($_POST['facilityInput'])){
+            $_SESSION['facilityInput'] = $_POST['facilityInput'];
+        }
+       
         $udf_details = array(
                                 'udf_number' => 0,
                                 'udf_order' => 0,
@@ -2110,7 +2164,7 @@ class Model {
                                ));
         }
         if($_POST["due"] != ""){
-            $duedate = $_POST["due"];
+            $duedate = $_POST["due"]. "T" . date("H:i:s");
         }
         else{
             $duedate = "";
@@ -2125,7 +2179,7 @@ class Model {
                 'function_type' => $function,
                 'issue_type' => $reqType,
                 'request_datetime' => date("Y-m-d") . "T" . date("H:i:s"),
-                'due_datetime' => $duedate . "T" . date("H:i:s"),
+                'due_datetime' => $duedate,
                 'count_only' => isset($saveCountOnly) ? $saveCountOnly : '',
                 'centre' => 'WEB',
                 'priority' => $priority,
