@@ -7,7 +7,7 @@
         width:auto;
     }
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-         .ui-input-search, #adv_search_query, #search_query {         
+         .ui-input-search, #adv_search_query, #search_query, #advanced, #button_grp{         
          margin-left: 307px;
     }
 }
@@ -219,7 +219,7 @@
                 </div>                                			    
             </form>
         </div>
-        <div>       
+        <div id="button_grp">       
             <input type="hidden" name="action" id="action" value="" />
             <input type="submit" id="submit" value="Search" />
             <input type="reset" value="Reset" id="reset" name="reset">
