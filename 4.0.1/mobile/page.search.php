@@ -7,7 +7,7 @@
         width:auto;
     }
 </style>
-<div data-role="page" id="default" data-dom-cache="true">
+<div data-role="page" id="search_data" data-dom-cache="true">
     <div data-role="header" data-tap-toggle="false" data-position="fixed">
         <h1>Search</h1>
         <script src="inc/js/pages/js.search.js"></script>
@@ -141,7 +141,17 @@
                                     <option value="">All</option>
                                 </select>
                             </td>
-                        </tr>                      
+                        </tr> 
+                        <tr>
+                            <td class="label">Finalised:</td>
+                            <td>
+                                <select name="finalised">
+                                    <option value="">All</option>
+                                    <option value="N">No</option>
+                                    <option value="Y">Yes</option>
+                                </select>
+                            </td>
+                        </tr>                     
                     </table>
                 </div>
                 <div data-role="collapsible" data-collapsed="true" class="col" data-content-theme="c">
