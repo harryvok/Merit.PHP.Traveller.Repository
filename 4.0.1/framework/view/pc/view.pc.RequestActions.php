@@ -117,7 +117,7 @@
                         $change = $result_a_ar->action_id;
                         $number = $number+1;
                         $datevalue = date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $result_a_ar->due_time)));
-                        $timevalue = date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $result_a_ar->due_time)));
+                        $timevalue = date('H:i',strtotime(str_ireplace("00:00:00.000", "", $result_a_ar->due_time)));
                         if($number == 2){
                             $class = "dark";
                             $number = 0;
@@ -168,7 +168,7 @@
                 if(isset($GLOBALS['result']['actions']->request_actions_det->request_actions_details) && count($GLOBALS['result']['actions']->request_actions_det->request_actions_details) == 1){
                     $change = $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_id;
                     $datevalue = date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)));
-                    $timevalue = date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)));
+                    $timevalue = date('H:i',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)));
                 ?>
                 <?php 
                         $i = 0;
