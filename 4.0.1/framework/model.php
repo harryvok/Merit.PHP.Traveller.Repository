@@ -3900,6 +3900,13 @@ class Model {
                 }
                 #Resubmit stuff Above ---------------------------------------------------->
                 
+                #Due Date stuff Below ---------------------------------------------------->
+                #else if ($tempArray[2]=='Y') {
+                #    $_SESSION['action_id']= $_POST['action_id'];
+                #    $_SESSION['redirect'] = "index.php?page=dueDateAction&id=".$action_id;               
+                #}
+                #Due Date stuff Above ---------------------------------------------------->
+                
                 else{
                     $_SESSION['action-id'] = $action_id;
                     $_SESSION['request-id'] = $request_id;
@@ -3909,7 +3916,7 @@ class Model {
                         $_SESSION['success_action_submit'] = 1;
                         $_SESSION['done'] = 1;
                         $_SESSION['success'] = 1;
-                        $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_def_filter'];
+                        $_SESSION['redirect'] = "index.php?page=actions&filter=".$_SESSION['act_back_filter'];
                     }
                     else{
                         $_SESSION['redirect'] = "index.php?page=view-action&id=".$action_id."&d=complete";
