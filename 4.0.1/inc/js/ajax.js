@@ -933,10 +933,12 @@ function modify_name(new_name) {
 
 // function gets called to check adhoc officer - added by Poonam Hirpara
 function check_adhoc() {
+
     Load();
     $.ajax({
         url: 'inc/ajax/ajax.chooseAdhocOfficer.php',
         type: 'post',
+        async: false,
         data: {
             ser: $("#service").val(),
             req: $("#request").val(),

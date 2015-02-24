@@ -2,6 +2,8 @@
  
 $(document).ready(function () {
 
+    
+
     // Validation for customer type ( If data is in given or surname require a cust type ) if empty remove the requirement.
     $("#given").focusout(function () {        
         if ($("#given").val().length > 0) {
@@ -1034,7 +1036,7 @@ $(document).ready(function () {
                 $(this).removeClass("required");
             });            
         });
-
+        //$("#newrequest").bind("submit", submitHandler);
         $('#submit').on(eventName, function (event) {
 
             /* What to parse with regEx */
@@ -1070,7 +1072,8 @@ $(document).ready(function () {
             ignore: ""
         })
         $("#newrequest").validate({
-            submitHandler: function (form) {                
+            submitHandler: function (form) {
+
                 $("#btnclick").val("N");
                 $("#submit").prop('disabled', true).buttonState("disable");
                 $("#saveMore").prop('disabled', true).buttonState("disable");
@@ -1088,7 +1091,7 @@ $(document).ready(function () {
                             getAllowanceDetails(show);
                         }                        
                         else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
-                            event.stopPropagation();
+                            //event.stopPropagation();
                             if ($("#mydetsclicked").val() == "N") {
                                 if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
                                     if ($("#old_given").val() != "") {

@@ -1717,10 +1717,18 @@ class Model {
                 $parameters->password = $_SESSION['password'];
                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
 
-                if($result->ws_message == "Integration not enabled")
+                if($result->ws_status == -1){
                     $_SESSION['EDMSAvailable'] = "N";
-                else
+                    if($result->ws_message != "Integration not enabled"){
+                        $_SESSION['error'] = 1;
+                        $_SESSION['error_custom'] = 1;
+                        $_SESSION['custom_error'] = $result->ws_message;
+                    }
+                }
+                else{
                     $_SESSION['EDMSAvailable'] = "Y";
+                    $_SESSION['EDMSName'] = $result->ws_edms_system;
+                }
                 
                 
             }

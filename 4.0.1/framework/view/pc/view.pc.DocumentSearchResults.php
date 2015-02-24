@@ -33,7 +33,7 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                 <tr>
                     <th>Document ID</th>
                     <th>Description</th>
-                    <th>URL</th>
+                    
                 </tr>
             </thead>
             <tbody>

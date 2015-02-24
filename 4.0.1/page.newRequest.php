@@ -32,7 +32,8 @@ if(!isset($_GET['d'])){
                 <input type="hidden" id="mydetsclicked" value="N" />           
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>                
                 <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
-                <input type="button" value="InfoXpert Search" class="openDocumentPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
+                <input type="button" value="<?php echo $_SESSION['EDMSName'];?> Search" class="openDocumentPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
+
                 <input type="button" value="Booking" disabled style="visibility:hidden" id="event_booking" onclick="getEventBookingDetails()"  />
                 <?php } ?>
                 <div class="column r60">
@@ -293,7 +294,7 @@ if(!isset($_GET['d'])){
                             <input type="hidden" id="respCode" value="" />
 
                             <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
-                            <input type="button" class="openDocumentPopup" name="customerInfoXpert" id="customerInfoXpert" value="InfoXpert" disabled="disabled" />
+                            <input type="button" class="openDocumentPopup" name="customerInfoXpert" id="customerInfoXpert" value="<?php echo $_SESSION['EDMSName'];?>" disabled="disabled" />
                             <?php } ?> 
                         </div>
                         <div class="float-left">
@@ -719,13 +720,34 @@ if(!isset($_GET['d'])){
         </script>
       <h1>Link Document <span class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
       <a title="Link Document"></a>
-
+        <?php 
+        $CustomerName = "";
+        $DocumentName = "";
+        $DocumentID = "";
+        $Company = "";
+        $FullText = "";
+            if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {
+                $CustomerName = "Author (surname,given)";
+                $DocumentName = "Title Word";
+                $DocumentID = "Record Number";
+                $Company = "Company"; 
+            } else { 
+                $CustomerName = "Correspondent (surname,given)";
+                $DocumentName = "Document Name/Description";
+                $DocumentID = "Document ID";
+                $Company = "Company"; 
+                $FullText = "Full text";
+            }
+        ?>
       <div>
-        <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Correspondent (surname,given)</b></label>&nbsp
-        <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Document Name/Description</b></label>&nbsp
-        <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Document ID</b></label>&nbsp
-        <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b>Company</b></label>&nbsp
-        <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b>Full text</b></label>&nbsp
+        <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b><?php echo $CustomerName;?></b></label>&nbsp
+        <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b><?php echo $DocumentName;?></b></label>&nbsp
+        <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b><?php echo $DocumentID;?></b></label>&nbsp
+        <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b><?php echo $Company;?></b></label>&nbsp
+        <?php if(strtoupper($_SESSION['EDMSName']) != "TRIM"){?> 
+            <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b><?php echo $FullText;?></b></label>&nbsp
+        <?php } ?>
+        
         <input type="button" id="searchDocument" value="Search"/>
         <div class="column r55"><input type="text" id="searchterm" placeholder="Search...."/></div>
         <div class="summaryContainer">
