@@ -1,3 +1,5 @@
+
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#nextActs").hide();
@@ -144,7 +146,7 @@
 	<div class="summaryContainer">
   <h1>Complete Action</h1>
   <div>
-			
+			<?php $test123 = "123"; ?>
             <script type="text/javascript">
 			  $(document).ready(function(){
 				  // validate signup form on keyup and submit

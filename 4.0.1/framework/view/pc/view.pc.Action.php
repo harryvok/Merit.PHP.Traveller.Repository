@@ -116,7 +116,7 @@ $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
                 <div class="summaryColumn"><?php if(strlen($GLOBALS['result']['action']->assign_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->assign_datetime))); }?></div>
             </div>
             <div class="column r15">
-                <span class="summaryColumnTitle">Due Date  <?php if($GLOBALS['result']['action']->change_due_date != "N"){ ?> <a class="edit" id="EditDateDetails" style="color:white"><img src="images/modify-icon.png"></a><?php } ?></span>
+                <span class="summaryColumnTitle">Due Date  <?php if($GLOBALS['result']['action']->change_due_date != "N" && $GLOBALS['result']['action']->status_code == "OPEN"){ ?> <a class="edit" id="EditDateDetails" style="color:white"><img src="images/modify-icon.png"></a><?php } ?></span>
 
                 <div class="summaryColumn" id="duedatelocked"><?php if(strlen($GLOBALS['result']['action']->due_datetime) > 0 && $GLOBALS['result']['action']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); }?></div>
                 <div class="drpdwn">
