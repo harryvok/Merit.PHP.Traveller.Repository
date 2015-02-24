@@ -6,6 +6,11 @@
         min-width:150px;
         width:auto;
     }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+         .ui-input-search, #adv_search_query, #search_query {         
+         margin-left: 307px;
+    }
+}
 </style>
 <div data-role="page" id="search_data" data-dom-cache="true">
     <div data-role="header" data-tap-toggle="false" data-position="fixed">
@@ -91,7 +96,7 @@
         <?php include("mobile/page.navSidebar.php"); ?>
         <input type="button" id="search_basic" name="search_basic" value="Basic" />
         <input type="button" id="search_adv" name="search_adv" value="Advanced" />
-        <div id="basic" <?php if(isset($_GET['action']) &&$_GET['action'] == "advanced") echo "style='display:none;'"; else echo "style='display:block;'"; ?>>            
+        <div id="basic" <?php if(isset($_GET['action']) && $_GET['action'] == "advanced") echo "style='display:none;'"; else echo "style='display:block;'"; ?>>            
             <form id="basicSearch">
 				<h2>Basic Search</h2>
                 <input type="search" name="search" id="search" value="" />
