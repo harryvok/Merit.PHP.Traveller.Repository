@@ -2113,7 +2113,7 @@ class Model {
             $duedate = $_POST["due"];
         }
         else{
-            $duedate = date("Y-m-d");
+            $duedate = "";
         }
         $parameters = array(
             'user_id' => $_SESSION['user_id'],
