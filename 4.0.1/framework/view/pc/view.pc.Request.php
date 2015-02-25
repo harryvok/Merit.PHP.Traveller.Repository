@@ -177,27 +177,11 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
                     <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->request_datetime) && strlen($GLOBALS['result']['request']->request_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->request_datetime))); } else { echo "No date found."; } ?></div>
                 </div>
 
-
-            <div class="column r15">
-                <span class="summaryColumnTitle">Due Date  <?php if(isset($GLOBALS['result']['request']) && $GLOBALS['result']['request'] == "Y"){ ?> <a class="editdd" id="EditDateDetails" style="color:white"><img src="images/modify-icon.png"></a><?php } ?></span>
-                <!-- When change due date in request added, this will restrict based on Y/N - $GLOBALS['result']['request']->change_due_date != "Y" -->
-                <div class="summaryColumn" id="duedatelocked"><?php if(strlen($GLOBALS['result']['request']->due_datetime) > 0 && $GLOBALS['result']['request']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); }?></div>
-                <div class="drpdwndd">
-            
-                <!-- Edit Goes Here -->
-                    
-                    <div><strong>Date:  </strong><input type="date" name="moddate" id="moddate" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>                  
-                    <div><strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>
-                    <div><input type="button" id="saveDate" name="saveDate" value="Save" /><input type="button" id="closedd" name="close" value="Close" /></div>
-                    
-                </div>     
-            </div>
-
                 <div class="column r15">
                     <span class="summaryColumnTitle">Date Due</span>
-                    <div class="summaryColumn"><?php if(isset($GLOBALS['result']['request']->due_datetime) && strlen($GLOBALS['result']['request']->due_datetime) > 0){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); } else { echo "No date found."; } ?></div>
+                    <!-- When change due date in request added, this will restrict based on Y/N - $GLOBALS['result']['request']->change_due_date != "Y" -->
+                    <div class="summaryColumn" id="duedatelocked"><?php if(strlen($GLOBALS['result']['request']->due_datetime) > 0 && $GLOBALS['result']['request']->due_datetime != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['request']->due_datetime))); }?></div>  
                 </div>
-
 
                 <div class="column r15">
                     <span class="summaryColumnTitle">Date Completed</span>

@@ -10,7 +10,7 @@ if(isset($GLOBALS['result']->search_details)){
                 if($result_search->result_type == "Request"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -19,7 +19,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Action"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -28,7 +28,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Address" || $result_search->result_type == "Linked Address"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -37,7 +37,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Name" || $result_search->result_type == "Linked Name"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -46,7 +46,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Property&Rating Address"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -55,7 +55,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Property&Rating Name"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -64,7 +64,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Officer"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-officer&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-officer&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -87,7 +87,7 @@ if(isset($GLOBALS['result']->search_details)){
            if($result_search->result_type == "Request"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -96,7 +96,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Action"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -105,7 +105,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Address" || $result_search->result_type == "Linked Address"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -114,7 +114,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Name" || $result_search->result_type == "Linked Name"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -123,7 +123,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Property&Rating Address"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ex=1&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-address&id=<?php echo $result_search->key_id; ?>&ex=1&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -132,7 +132,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Property&Rating Name"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ex=1&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-name&id=<?php echo $result_search->key_id; ?>&ex=1&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->key_id; ?>  - <?php echo $result_search->description; ?><br />
                         </a>
                     </li>
@@ -141,7 +141,7 @@ if(isset($GLOBALS['result']->search_details)){
                 elseif($result_search->result_type == "Officer"){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-officer&id=<?php echo $result_search->key_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-officer&id=<?php echo $result_search->key_id; ?>&ref_page=Search">
                          <b><?php echo $result_search->result_type; ?>:</b> <?php echo $result_search->description; ?><br />
                         </a>
                     </li>

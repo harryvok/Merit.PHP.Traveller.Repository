@@ -9,7 +9,7 @@
                   <li>
                   	<p><b>Alias Ctr:</b> <?php echo $result_a_al->alias_ctr; ?></p>
                   </li>
-                  <li>
+                  <li> 
                     <p><b>Alias Type:</b> <?php echo $result_a_al->alias_type; ?></p>
                   </li>
                   <li>

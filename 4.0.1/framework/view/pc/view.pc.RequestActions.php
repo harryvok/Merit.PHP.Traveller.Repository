@@ -1,4 +1,71 @@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".drpdwn").css("display", "none");
+        $(".edit").on(eventName, function () {
+                    $("#val1").val("1");
+                    $("#duedatelocked").css("display", "none");
+                    $(".drpdwn").css("display", "block");
+                    
+                });
+                $("#close").on(eventName, function () {
+                    $("#duedatelocked").css("display", "block");
+                    $(".drpdwn").css("display", "none");
+                    $("#val1").val("0");
+                    event.stopPropagation();
+                });
+
+                $("#saveDate").on(eventName, function () {
+                    var date = $("#moddate").val();
+                    var time = $("#modtime").val();
+                    var req_id = $("#id").val();
+                    var act_id = $("#action_ID").val();
+                    Load();
+                    $(".drpdwn").css("display", "none");
+                    $.ajax({
+                        url: 'inc/ajax/ajax.modifyDueDate.php',
+                        type: 'post',
+                        data: {
+                            getdate: date,
+                            gettime: time,
+                            request_id: req_id,
+                            action_id: act_id
+                        },
+                        success: function (data) {
+                            alert("Due Date successfully Changed.")
+                            location.reload();
+                        }
+                    });
+                });
+    });
+</script>
+<script type="text/javascript">
+    function divFunction(changeval, dateval, timeval) {
+        if ($("#val1").val() == "1") {
+            $("#moddate").val(dateval);
+            $("#modtime").val(timeval);
+            $("#action_ID").val(changeval);
+            
+            event.stopPropagation();
+        } else {
+            change(changeval);
+        }
+    }
+                </script>
 <div class="summaryContainer">
+
+
+    <div class="drpdwn">
+        <!-- Edit Goes Here -->
+            <h1 style="margin-top:0px; width:300px;">Enter a new due date for selected action: </h1>
+        <div style="width:300px;">
+            <input type="hidden" id="action_ID" value=""/>
+            <div><strong>Date:  </strong><input type="date" name="moddate" id="moddate" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>                  
+            <div><strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('H:i',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>
+            <div><input type="button" id="saveDate" name="saveDate" value="Save" /><input type="button" id="close" name="close" value="Close" /></div>
+        </div>               
+    </div>
+
 
     <h1>Actions (<?php if(isset($GLOBALS['result']['actions']->request_actions_det->request_actions_details)){echo count($GLOBALS['result']['actions']->request_actions_det->request_actions_details); } else { echo 0; } ?>) 
         <?php
@@ -25,6 +92,7 @@
         <?php
         }
         ?>
+        <input type="hidden" name="val1" id="val1" value="0" />
         <input type="hidden" name="val" id="val" value="0" />
         <input type="text" id="requestActions" class="tableSearch" placeholder="Search..." />
         <table id="requestActionsTable" class=" sortable" title="" cellspacing="0">
@@ -48,6 +116,8 @@
                     foreach($GLOBALS['result']['actions']->request_actions_det->request_actions_details as $result_a_ar){
                         $change = $result_a_ar->action_id;
                         $number = $number+1;
+                        $datevalue = date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $result_a_ar->due_time)));
+                        $timevalue = date('H:i',strtotime(str_ireplace("00:00:00.000", "", $result_a_ar->due_time)));
                         if($number == 2){
                             $class = "dark";
                             $number = 0;
@@ -62,12 +132,12 @@
                          $i=1;   
                         }
                 ?>
-                <tr class="<?php echo $class; ?>" onClick="change('<?php echo $change; ?>')" title="">
+                <tr class="<?php echo $class; ?>" onClick="divFunction('<?php echo $change; ?>','<?php echo $datevalue; ?>','<?php echo $timevalue; ?>')" title="">
                     <td id="<?php echo $change; ?>"><?php if(strlen($result_a_ar->action_id) > 0){ echo $result_a_ar->action_id; } else { echo ""; } ?></td>
                     <td><?php if(strlen($result_a_ar->action_required) > 0){ echo $result_a_ar->action_required; } else { echo ""; } ?></td>
                     <td><?php if(strlen($result_a_ar->action_officer) > 0){ echo $result_a_ar->action_officer; } else { echo ""; } ?></td>
                     <td><?php if(strlen($result_a_ar->assign_time) > 0){ echo date('d/m/Y h:i A',strtotime($result_a_ar->assign_time)); } ?></td>
-                    <td><?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?></td>
+                    <td><?php if(strlen($result_a_ar->due_time) > 0 && $result_a_ar->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->due_time)); }  ?><?php if($result_a_ar->can_modify_act_due != "N" && $result_a_ar->status_code == "OPEN"){ ?><a class="edit" id="EditDateDetails" style="color:white"><img src="images/modify-icon.png"></a><?php } ?></td>
                     <td><?php if($result_a_ar->finalised_ind == "Y"){ if($result_a_ar->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($result_a_ar->outcome_time)); } } ?></td>
                     <td>
                         <?php if ($i != 1) { ?>
@@ -97,6 +167,8 @@
                 }
                 if(isset($GLOBALS['result']['actions']->request_actions_det->request_actions_details) && count($GLOBALS['result']['actions']->request_actions_det->request_actions_details) == 1){
                     $change = $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_id;
+                    $datevalue = date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)));
+                    $timevalue = date('H:i',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)));
                 ?>
                 <?php 
                         $i = 0;
@@ -104,13 +176,15 @@
                          $i=1;   
                         }
                 ?>
+
                 
-                <tr class="dark" onClick="change('<?php echo $change; ?>')" title="">
+
+                <tr class="dark" onClick="divFunction('<?php echo $change; ?>','<?php echo $datevalue; ?>','<?php echo $timevalue; ?>')" title="">
                     <td id="<?php echo $change; ?>"><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_id) > 0){ echo $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_id; } else { echo ""; } ?></td>
                     <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_required) > 0){ echo $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_required; } else { echo ""; } ?></td>
                     <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_officer) > 0){ echo $GLOBALS['result']['actions']->request_actions_det->request_actions_details->action_officer; } else { echo ""; } ?></td>
                     <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->assign_time) > 0){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->assign_time)); } ?></td>
-                    <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time) > 0 && $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)); }  ?></td>
+                    <td><?php if(strlen($GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time) > 0 && $GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time != "1970-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->due_time)); }  ?><?php if($GLOBALS['result']['actions']->request_actions_det->request_actions_details->can_modify_act_due != "N" && $GLOBALS['result']['actions']->request_actions_det->request_actions_details->status_code == "OPEN"){ ?><a class="edit" id="EditDateDetails" style="color:white"><img src="images/modify-icon.png"></a><?php } ?></td>
                     <td><?php if($GLOBALS['result']['actions']->request_actions_det->request_actions_details->finalised_ind == "Y"){ if($GLOBALS['result']['actions']->request_actions_det->request_actions_details->outcome_time != "0001-01-01T00:00:00"){ echo date('d/m/Y h:i A',strtotime($GLOBALS['result']['actions']->request_actions_det->request_actions_details->outcome_time)); } } ?></td>
                     <td>
                         <?php if ($i != 1) { ?>
@@ -140,14 +214,7 @@
             </tbody>
         </table>
     </div>
-    <div class="drpdwn">
-        <!-- Edit Goes Here -->
-                    
-            <div><strong>Date:  </strong><input type="date" name="moddate" id="moddate" value="<?php  echo date('Y-m-d',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>                  
-            <div><strong>Time: </strong><input type="time" name="modtime" id="modtime" value="<?php echo date('h:i:s',strtotime(str_ireplace("00:00:00.000", "", $GLOBALS['result']['action']->due_datetime))); ?>" style="width:160px; margin-right:0px" /></div>
-            <div><input type="button" id="saveDate" name="saveDate" value="Save" /><input type="button" id="close" name="close" value="Close" /></div>
-                    
-    </div>
+    
     <div class="popupDetail" id="AddActionPopup">
         <h1>Add Action<span class="closePopup"><img src="images/delete-icon.png" />
             Close</span></h1>
@@ -259,16 +326,14 @@
 <style>
     .drpdwn {
         position:absolute;
-        padding: 10px;
+        padding:20px;
+        width:300px;
+        left:40%;
+        top:15%;
         background-color: rgb(214, 223, 239);
         border-color: rgb(42, 86, 105);
         border: 2px solid;
-        margin-right: auto;
-        width: 200px;
-        height: 100px;
-        margin-left: auto;
-        border-radius: 5px;
-        display: block;
-        z-index: -1;
+        height: 160px;
+        z-index: 9999;
     }
 </style>
