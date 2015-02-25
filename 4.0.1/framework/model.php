@@ -1297,7 +1297,7 @@ class Model {
         return $result;
     }
     
-    public function getRequestSearch($params = NULL){
+    public function getRequestSearch($params = NULL){        
         if(isset($_POST['serviceInput'])){
             $_SESSION['serviceInput'] = $_POST['serviceInput'];
         }
@@ -1351,6 +1351,18 @@ class Model {
         }
         if(isset($_POST['facilityInput'])){
             $_SESSION['facilityInput'] = $_POST['facilityInput'];
+        }
+        if(isset($_POST['service'])){
+            $_SESSION['service'] = $_POST['service'];
+        }
+        if(isset($_POST['request'])){
+            $_SESSION['request'] = $_POST['request'];
+        }
+        if(isset($_POST['function'])){
+            $_SESSION['function'] = $_POST['function'];
+        }
+        if(isset($_POST['facilityTypeId'])){
+            $_SESSION['facilityTypeId'] = $_POST['facilityTypeId'];
         }
        
         $udf_details = array(

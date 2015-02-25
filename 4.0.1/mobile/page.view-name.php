@@ -13,6 +13,11 @@ $GLOBALS["name_audit_count"] = $model->WebService(MERIT_REQUEST_FILE, "ws_get_au
 $name_id = strip_tags($_GET['id']);
 $address = array();
 if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); } else { $ex = ""; }
+if(isset($_GET["ref_page"])){  
+    if($_GET["ref_page"] == "Search" || $_GET["ref_page"] == "RequestSearch"){
+        $_SESSION["backLink"] = "index.php?page=search&back_act=".$_GET["ref_page"];
+    }
+}
 ?>
 <div data-role="page" id="view-name">
   <div data-role="header" data-tap-toggle="false" data-position="fixed">

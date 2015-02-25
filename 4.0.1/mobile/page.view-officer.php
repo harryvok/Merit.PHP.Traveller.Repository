@@ -2,6 +2,11 @@
 <?php
 $name_id = strip_tags($_GET['id']);
 if(isset($_GET['ex'])){ $ex = strip_tags($_GET['ex']); }
+if(isset($_GET["ref_page"])){  
+    if($_GET["ref_page"] == "Search" || $_GET["ref_page"] == "RequestSearch"){
+        $_SESSION["backLink"] = "index.php?page=search&back_act=".$_GET["ref_page"];
+    }
+}
 ?>
 <div data-role="page" id="view-request">
   <div data-role="header" data-tap-toggle="false" data-position="fixed">

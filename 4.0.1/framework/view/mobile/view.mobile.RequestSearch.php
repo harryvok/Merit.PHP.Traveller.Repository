@@ -9,7 +9,7 @@ if(isset($GLOBALS['result']->request_search_details)){
                 if($result_search->request_id != 0){
                     ?>
                     <li>
-                        <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->request_id; ?>&ref_page=search">
+                        <a data-transition="slide" href="index.php?page=view-request&id=<?php echo $result_search->request_id; ?>&ref_page=RequestSearch">
                             <p><b>Request Id: </b> <?php echo $result_search->request_id; ?> </p>
                             <p><b>Input Date: </b> <?php echo $result_search->input_date; ?> </p>
                             <p><b>SRF: </b> <?php echo base64_decode($result_search->service_name); ?> - <?php echo base64_decode($result_search->request_name); ?> - <?php if(isset($result_search->function_name)) echo base64_decode($result_search->function_name); ?></p>
