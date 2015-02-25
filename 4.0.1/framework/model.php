@@ -1786,6 +1786,7 @@ class Model {
                 if($result->ws_status == -1){
                     $_SESSION['EDMSAvailable'] = "N";
                     if($result->ws_message != "Integration not enabled"){
+                        $_SESSION['done'] = 1;
                         $_SESSION['error'] = 1;
                         $_SESSION['error_custom'] = 1;
                         $_SESSION['custom_error'] = $result->ws_message;
