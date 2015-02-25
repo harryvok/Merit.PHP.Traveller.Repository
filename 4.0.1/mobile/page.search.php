@@ -72,7 +72,15 @@
                         $('#search_query').html("");
                     }
                     else {
-                        document.getElementById("advancedSearch").reset();
+                        $('#advancedSearch').find('input, textarea, select').each(function (x, field) {
+                            if (field.name == "dateFrom" || field.name == "dateTo") {
+                                field.value = "dd/mm/yyyy";
+                            }
+                            else {
+                                field.value = "";
+                            }
+                        });
+                        //document.getElementById("advancedSearch").reset();
                         $("#requestInput").attr("disabled", "disabled");
                         $("#functionInput").attr("disabled", "disabled");
                         $('#adv_search_query').html("");
