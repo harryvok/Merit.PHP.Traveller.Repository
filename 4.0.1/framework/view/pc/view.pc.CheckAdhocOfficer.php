@@ -44,7 +44,7 @@ if(isset($GLOBALS['result']->adhoc_officer_det) && count($GLOBALS['result']->adh
                             $("#requestInput").val("");
                             $("#functionInput").val("");
                             $("#textareaissue").val("");
-                            $("#reqType").val("");
+                            $("#reqType").prop('selectedIndex', 0);
                             $("#global-udfs").html("");
                             $("#udfs").slideUp("fast");
                             $("#attachFile").val("");
