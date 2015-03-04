@@ -61,7 +61,8 @@ if(!isset($_GET['d'])){
                         </div>
                         <input class="text required" name='requestInput' disabled="disabled" id="requestInput" value='<?php if(isset($_SESSION['rem_requestInput'])){ echo $_SESSION['rem_requestInput']; } ?>'>
                         <input type="hidden" name='request' id="request">
-                        <input type="hidden" id="need_r_booking" name="need_r_booking" />
+                        <input type="hidden" id="request_allowance" name="request_allowance" />
+                        <input type="hidden" id="Hidden1" name="need_r_booking" />
                         <input type="hidden" id="request_helpText" />
                         <input type="hidden" id="request_helpURL" />
 
@@ -74,6 +75,7 @@ if(!isset($_GET['d'])){
                         <input class="text required checkNone" name='functionInput' disabled="disabled" id="functionInput" value='<?php if(isset($_SESSION['rem_functionInput'])){ echo $_SESSION['rem_functionInput']; } ?>'>
                         <input type="hidden" name='function' id="function">
                         <input type="hidden" id="need_f_booking" name="need_f_booking" />
+                        <input type="hidden" id="function_allowance" name="function_allowance" />
                         <input type="hidden" id="function_helpText" />
                         <input type="hidden" id="function_helpURL" />
                     </div>
