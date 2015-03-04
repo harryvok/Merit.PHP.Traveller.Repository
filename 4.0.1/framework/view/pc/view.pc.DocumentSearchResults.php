@@ -10,19 +10,27 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
         //show rows based on user click event
         $("#requestDocumentTable tbody tr ").click(function () {
             $("#requestDocumentMetadataTable tbody tr").hide();
-            var id = $(this).find("td:first-child").html();
-            $(".Document" + id + "MetaData").show();
+
+            //document_id or document_uri 
+            var key = $(this).find("td:first-child").attr("data-key");
+
+            $(".Document" + String(key) + "MetaData").show();
             var desc = $(this).find("td:nth-child(2)").html();
-            $("#selectedDocument").val(id);
+            $("#selectedDocument").val(key);
             $("#selectedDocDesc").html("Selected: <b>" + desc+"</b>");
             $('#linkbutton').removeAttr('disabled');
 
             //for use in new request customer documents popup
-            $("#cust_selectedDocument").val(id);
+            $("#cust_selectedDocument").val(key);
             $("#cust_selectedDocDesc").html("Selected: <b>" + desc + "</b>");
             $('#cust_linkbutton').removeAttr('disabled');
 
-        });  
+        });
+
+        $(".downloadButton").click(function () {
+            var document_uri = $(this).attr("data-document_uri");
+            DownloadEDMSDocument(document_uri);
+        });
     });
 </script>
 <div class="summaryContainer">
@@ -31,13 +39,20 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
         <table id="requestDocumentTable" class=" sortable" title="" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Document ID</th>
-                    <th>Description</th>
                     
+                <?php
+                    if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
+                     <th>Record Number</th>     
+                <?php }else{ ?>
+                    <th>Document ID</th>  
+                <?php } ?>    
+                    <th>Description</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
+
                 
                 //store metadata here to be used later on in metadatatable
                 $metaDataDocumentID= array();
@@ -59,30 +74,47 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                         }
                 ?>
                             <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
-                                 <td><?php echo $document->document_id; ?></td>
+                                 <td data-key="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>"><?php echo $document->document_id; ?></td>
                                  <td><?php echo $document->document_desc; ?></td>
-                                 <td><a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="View"/></a></td>
+                                 <td>
+                                     <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
+                                        <input type="button" data-document_uri="<?php echo $document->document_uri; ?>" class="downloadButton" value="View"/>
+                                     <?php }else{ ?>
+                                        <a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="View"/></a>
+                                      <?php } ?>
+                                 </td>
                             </tr>
                              <?php
+                             
+                        $key = (strtoupper ($_SESSION['EDMSName']) == 'TRIM' ? $document->document_uri :  $document->document_id);
+                             
                         for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
                             array_push($metaTagArray,$document->document_metadata->doc_meta_data[$var]->meta_tag);
                             array_push($metaDataArray, $document->document_metadata->doc_meta_data[$var]->meta_data);
-                            array_push($metaDataDocumentID,  $document->document_id);
+                            array_push($metaDataDocumentID,  $key);
                         }
                     }
                 }elseif(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['result']->doc_dets->document_details) == 1){
                     $document = $GLOBALS['result']->doc_dets->document_details;
                              ?>
                 <tr class="light_nocur" id="Document<?php echo $i; ?>ParentObject">
-                     <td><?php echo $document->document_id; ?></td>
+                     <td data-key="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>"><?php echo $document->document_id; ?></td>
                      <td><?php echo $document->document_desc; ?></td>
-                     <td><a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="view"/></a></td>
+                     <td>
+                        <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
+                            <input type="button" data-document_uri="<?php echo $document->document_uri; ?>"  class="downloadButton" value="View"/>                
+                        <?php }else{ ?>
+                            <a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="View"/></a>
+                        <?php } ?>
+                    </td>
                 </tr>
                 <?php
+                  
+                    $key = (strtoupper ($_SESSION['EDMSName']) == 'TRIM' ? $document->document_uri :  $document->document_id);
                     for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
                         array_push($metaTagArray,$document->document_metadata->doc_meta_data[$var]->meta_tag);
                         array_push($metaDataArray, $document->document_metadata->doc_meta_data[$var]->meta_data);
-                        array_push($metaDataDocumentID,  $document->document_id);
+                        array_push($metaDataDocumentID,  $key);
                     }
                 }?>
             </tbody>
@@ -95,6 +127,7 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                 <tr>
                     <th>Meta Tag</th>
                     <th>Meta Data</th>
+                   
                 </tr>
             </thead>
             <tbody>

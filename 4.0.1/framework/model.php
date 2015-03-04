@@ -4318,48 +4318,65 @@ class Model {
     }
 
     public function processRequestLinkDocument($params = NULL){
-        $parameters = new stdClass();
-        $parameters->user_id = $_SESSION['user_id'];
-        $parameters->password = $_SESSION['password'];
-        $parameters->doc_id = $_POST['selectedDocument'];
-        $parameters->request_id = $_SESSION['request_id'];
         
-        try {
-            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
-            $_SESSION['done'] = 1;
-            $_SESSION['success'] = 1;
-            $_SESSION['success_link_document'] = 1;
-            $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
-        }
-        catch (Exception $e) {
-            echo $e -> getMessage ();
-            $_SESSION['done'] = 1;
-            $_SESSION['error'];
-            $_SESSION['error_link_document'] = 1;
-            $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+        if($_POST['selectedDocument'] != "_newDocument_"){
+            $parameters = new stdClass();
+            $parameters->user_id = $_SESSION['user_id'];
+            $parameters->password = $_SESSION['password'];
+            $parameters->doc_id = $_POST['selectedDocument'];
+            $parameters->request_id = $_SESSION['request_id'];
+        
+            try {
+                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
+                $_SESSION['done'] = 1;
+                $_SESSION['success'] = 1;
+                $_SESSION['success_link_document'] = 1;
+                $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+            }
+            catch (Exception $e) {
+                echo $e -> getMessage ();
+                $_SESSION['done'] = 1;
+                $_SESSION['error']=1;
+                $_SESSION['error_link_document'] = 1;
+                $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+            }
+        }else{
+            $parameters = new stdClass();
+            $parameters->user_id = $_SESSION['user_id'];
+            $parameters->password = $_SESSION['password'];
+            $parameters->request_id = $_SESSION['request_id'];
+            $parameters->file_name = $_FILES["newDocument"]["name"];
+            $parameters->base64_document = base64_encode(file_get_contents( $_FILES["newDocument"]['tmp_name']));
+            
+            try {
+                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_new_document",$parameters);
+                if($result->ws_status == 0){
+                    $_SESSION['done'] = 1;
+                    $_SESSION['success'] = 1;
+                    $_SESSION['success_link_document'] = 1;
+                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                }else{
+                    $_SESSION['done'] = 1;
+                    $_SESSION['error']=1;
+                    $_SESSION['error_link_document'] = 1;
+                    $_SESSION['error_custom'] = 1;
+                    $_SESSION['custom_error'] = $result->ws_message;
+                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                }
+            }
+            catch (Exception $e) {
+                echo $e -> getMessage ();
+                $_SESSION['done'] = 1;
+                $_SESSION['error'];
+                $_SESSION['error_link_document'] = 1;
+                $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+            }
+            
         }
     }
     public function processActionLinkDocument($params = NULL){
-        $parameters = new stdClass();
-        $parameters->user_id = $_SESSION['user_id'];
-        $parameters->password = $_SESSION['password'];
-        $parameters->doc_id = $_POST['selectedDocument'];
-        $parameters->request_id = $_SESSION['request_id'];
-        
-        try {
-            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
-            $_SESSION['done'] = 1;
-            $_SESSION['success'] = 1;
-            $_SESSION['success_link_document'] = 1;
-            $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
-        }
-        catch (Exception $e) {
-            echo $e -> getMessage ();
-            $_SESSION['done'] = 1;
-            $_SESSION['error'];
-            $_SESSION['error_link_document'] = 1;
-            $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
-        }
+        //functionality same as in request document linking
+        $this->processRequestLinkDocument();
     }
     
     public function processBookingStartStop($params = null){
@@ -4403,6 +4420,16 @@ class Model {
             $_SESSION['error_unlink_document'] = 1;
             return false;
         }
+    }
+    public function getEDMSDocument($params = NULL){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->document_id = $_POST['document_uri'];
+        $parameters->request_id = ($_SESSION['request_id']== "" ? 0 : $_SESSION['request_id']);
+        
+        return $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_view_document",$parameters);
+
     }
     
     public function getSRFRedText($params = NULL){

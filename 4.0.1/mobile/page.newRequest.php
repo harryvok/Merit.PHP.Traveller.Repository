@@ -226,13 +226,34 @@ if(isset($_SESSION['user_id'])){
                     </p>
                 </div>
                 <div data-role="collapsible" class="col" data-content-theme="c">
-                    <h4>InfoXpert Search</h4>
+                    <h4><?php echo $_SESSION['EDMSName'];?> Search</h4>
+                    <?php 
+                    $CustomerName = "";
+                    $DocumentName = "";
+                    $DocumentID = "";
+                    $Company = "";
+                    $FullText = "";
+                        if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {
+                            $CustomerName = "Author (surname,given)";
+                            $DocumentName = "Title Word";
+                            $DocumentID = "Record Number";
+                            $Company = "Company"; 
+                        } else { 
+                            $CustomerName = "Correspondent (surname,given)";
+                            $DocumentName = "Document Name/Description";
+                            $DocumentID = "Document ID";
+                            $Company = "Company"; 
+                            $FullText = "Full text";
+                        }
+                    ?>
                     <input class="text" name='keyword' id="searchterm"  placeholder="Search...">
-                    <label for="search_type1"><b>Correspondent (surname,given)</b></label><input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT">
-                    <label for="search_type2"><b>Document Name/Description</b></label><input type="radio" id="search_type2" name="Search_type" value="DOCNAME">
-                    <label for="search_type3"><b>Document ID</b></label><input type="radio" id="search_type3" name="Search_type" value="DOCID">
-                    <label for="search_type4"><b>Company</b></label><input type="radio" id="search_type4" name="Search_type" value="COMPANY">
-                    <label for="search_type5"><b>Full text</b></label><input type="radio" id="search_type5" name="Search_type" value="KEYWORD">
+                    <label for="search_type1"><b><?php echo $CustomerName;?></b></label><input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT">
+                    <label for="search_type2"><b><?php echo $DocumentName;?></b></label><input type="radio" id="search_type2" name="Search_type" value="DOCNAME">
+                    <label for="search_type3"><b><?php echo $DocumentID;?></b></label><input type="radio" id="search_type3" name="Search_type" value="DOCID">
+                    <label for="search_type4"><b><?php echo $Company;?></b></label><input type="radio" id="search_type4" name="Search_type" value="COMPANY">
+                    <?php if(strtoupper($_SESSION['EDMSName']) != "TRIM"){?> 
+                    <label for="search_type5"><b><?php echo $FullText;?></b></label><input type="radio" id="search_type5" name="Search_type" value="KEYWORD">
+                    <?php } ?>
                     <a data-role="button" class="documentSearchButton" href="#">Search...</a>
 
                     <div id="searchResults"></div>

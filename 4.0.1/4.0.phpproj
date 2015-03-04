@@ -11,7 +11,7 @@
     <AssemblyName>4.0</AssemblyName>
     <IISProjectUrl>http://localhost:65236/</IISProjectUrl>
     <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-    <Server>PHPDev</Server>
+    <Server>IISExpress</Server>
     <PublishEvent>None</PublishEvent>
     <PHPDevAutoPort>True</PHPDevAutoPort>
     <PHPDevPort>29268</PHPDevPort>
@@ -458,6 +458,7 @@
     <Compile Include="inc\ajax\ajax.adhocOfficerList.php" />
     <Compile Include="inc\ajax\ajax.changeNameDetails.php" />
     <Compile Include="inc\ajax\ajax.bookingStartStop.php" />
+    <Compile Include="inc\ajax\ajax.downloadEDMSDocument.php" />
     <Compile Include="inc\ajax\ajax.getAllowance.php" />
     <Compile Include="inc\ajax\ajax.getAllowanceDetails.php" />
     <Compile Include="inc\ajax\ajax.getEventBookingDetails.php" />

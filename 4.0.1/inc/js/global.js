@@ -189,6 +189,7 @@ $(document).ready(function () {
         }
     });
     $(".Unlink").on(eventName, function () {
+
         var docID = $(this).attr("data-docid");
         unlinkDocument(docID);
     });
