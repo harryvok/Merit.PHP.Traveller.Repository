@@ -44,6 +44,10 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
 
         });
     });
+    $(".downloadButton").click(function () {
+        var document_uri = $(this).attr("data-document_uri");
+        DownloadEDMSDocument(document_uri);
+    });
 
     $(".Metadata").on(eventName, function () {
         var rownum = $(this).attr("data-rownum");
@@ -92,15 +96,23 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
  ?>
        <li id="SearchDocument<?php echo $i; ?>ParentObject">
            <a data-icon="modify" href="#" class="edit" id="SearchDocument<?php echo $i; ?>">
-              <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
-              <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
+              <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+               <p><b>Record Number:</b> <?php echo $document->document_id; ?></p> 
+               <?php }else{?>
+               <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
+               <?php }?>
+               <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
            </a>
       </li>
       <li id="SearchDocument<?php echo $i; ?>Edit" style="display:none">
             <p>
-             <a class="View" target="_blank" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+                 <a class="downloadButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
+             <?php }else{?>
+                <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <?php }?>
              <a class="Metadata" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
-             <a class="Link" href="#" data-docid="<?php echo $document->document_id; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
+             <a class="Link" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
              <a class="closeEdit" href="#" id="SearchDocument<?php echo $i; ?>Close">Close</a> 
             </p>
             <div id="SearchDocument<?php echo $i; ?>MetaData" hidden >
@@ -131,15 +143,23 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
 
     <li id="SearchDocument0ParentObject">
            <a data-icon="modify" href="#" class="edit" id="SearchDocument0">
-              <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
-              <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
+               <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+               <p><b>Record Number:</b> <?php echo $document->document_id; ?></p> 
+               <?php }else{?>
+               <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
+               <?php }?>
+               <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
            </a>
       </li>
       <li id="SearchDocument0Edit" style="display:none">
             <p>
-             <a class="View" target="_blank" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+            <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+                 <a class="downloadButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
+             <?php }else{?>
+                <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <?php }?>
              <a class="Metadata" href="#" data-rownum="0" data-role="button" > Metadata</a>
-             <a class="Link" href="#" data-docid="<?php echo $document->document_id; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
+             <a class="Link" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
              <a class="closeEdit" href="#" id="SearchDocument0Close">Close</a> 
             </p>
             <div id="SearchDocument0MetaData" hidden >

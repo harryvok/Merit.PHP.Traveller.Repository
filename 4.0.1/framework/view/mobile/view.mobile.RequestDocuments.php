@@ -1,19 +1,60 @@
 <?php 
 if($GLOBALS['result']['errorConnecting']== false){
 ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#newDocument").change(function () {
+            if ($("#newDocument").val() != "") {
+                $("#selectedDocument").val("_newDocument_");
+            } else {
+                $("#selectedDocument").val("");
+            }
+        });
+        $(".downloadButton").click(function () {
+            var document_uri = $(this).attr("data-document_uri");
+            DownloadEDMSDocument(document_uri);
+        });
+
+    });
+</script>
 <a  href="#" class="toggleLinkDocForm" data-role="button">Link Document</a>
 <form method="post" enctype="multipart/form-data" id="linkdocument" action="process.php" hidden>
     <label>Search</label>
     <input class="text" name='keyword' id="searchterm"  placeholder="Search...">
-
-    <label for="search_type1"><b>Correspondent (surname,given)</b></label><input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT">
-    <label for="search_type2"><b>Document Name/Description</b></label><input type="radio" id="search_type2" name="Search_type" value="DOCNAME">
-    <label for="search_type3"><b>Document ID</b></label><input type="radio" id="search_type3" name="Search_type" value="DOCID">
-    <label for="search_type4"><b>Company</b></label><input type="radio" id="search_type4" name="Search_type" value="COMPANY">
-    <label for="search_type5"><b>Full text</b></label><input type="radio" id="search_type5" name="Search_type" value="KEYWORD">
-    <a data-role="button" class="documentSearchButton" href="#">Search...</a>
-    
+     <?php 
+        $CustomerName = "";
+        $DocumentName = "";
+        $DocumentID = "";
+        $Company = "";
+        $FullText = "";
+            if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {
+                $CustomerName = "Author (surname,given)";
+                $DocumentName = "Title Word";
+                $DocumentID = "Record Number";
+                $Company = "Company"; 
+            } else { 
+                $CustomerName = "Correspondent (surname,given)";
+                $DocumentName = "Document Name/Description";
+                $DocumentID = "Document ID";
+                $Company = "Company"; 
+                $FullText = "Full text";
+            }
+        ?>
+    <label for="search_type1"><b><?php echo $CustomerName;?></b></label><input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT">
+    <label for="search_type2"><b><?php echo $DocumentName;?></b></label><input type="radio" id="search_type2" name="Search_type" value="DOCNAME">
+    <label for="search_type3"><b><?php echo $DocumentID;?></b></label><input type="radio" id="search_type3" name="Search_type" value="DOCID">
+    <label for="search_type4"><b><?php echo $Company;?></b></label><input type="radio" id="search_type4" name="Search_type" value="COMPANY">
+    <?php if(strtoupper($_SESSION['EDMSName']) != "TRIM"){?> 
+    <label for="search_type5"><b><?php echo $FullText;?></b></label><input type="radio" id="search_type5" name="Search_type" value="KEYWORD">
+    <?php } ?>
+    <a data-role="button" class="button left documentSearchButton" href="#">Search...</a>
+    <!--<input  class="button left documentSearchButton" type='button' value='Search...' />-->
     <div id="searchResults"></div>
+    <hr />
+    <label>New File</label>
+    <input type="file" id="newDocument" name="newDocument" />
+    <input id="submitButton" class="button left" type='submit' value='Submit' />
+    
     <input type="hidden" name="selectedDocument" id="selectedDocument" />
     <input type="hidden" name="action" value="RequestLinkDocument" />
 </form>
@@ -30,15 +71,24 @@ if($GLOBALS['result']['errorConnecting']== false){
  ?>
        <li id="Document<?php echo $i; ?>ParentObject">
            <a data-icon="modify" href="#" class="edit" id="Document<?php echo $i; ?>">
-              <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
-              <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
+               <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+               <p><b>Record Number:</b> <?php echo $document->document_id; ?></p> 
+               <?php }else{?>
+               <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
+               <?php }?>
+               <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
            </a>
       </li>
       <li id="Document<?php echo $i; ?>Edit" style="display:none">
             <p>
-             <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+                 <a class="downloadButton" href="#" data-document_uri="<?php echo $document->document_uri; ?>"  data-role="button" > View</a>
+             <?php }else{?>
+                <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <?php }?>
+
              <a class="Metadata" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
-             <a class="Unlink" href="#" data-docid="<?php echo $document->document_id; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <a class="Unlink" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
              <a class="closeEdit" href="#" id="Document<?php echo $i; ?>Close">Close</a> 
             </p>
             <div id="Document<?php echo $i; ?>MetaData" hidden >
@@ -70,15 +120,23 @@ if($GLOBALS['result']['errorConnecting']== false){
 
     <li id="Document0ParentObject">
            <a data-icon="modify" href="#" class="edit" id="Document0">
-              <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
+              <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+               <p><b>Record Number:</b> <?php echo $document->document_id; ?></p> 
+               <?php }else{?>
+               <p><b>Document ID:</b> <?php echo $document->document_id; ?></p>
+               <?php }?>
               <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
            </a>
       </li>
       <li id="Document0Edit" style="display:none">
             <p>
+            <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+             <a class="downloadButton" href="#" data-document_uri="<?php echo $document->document_uri; ?>"  data-role="button" > View</a>
+             <?php }else{?>
              <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <?php }?>
              <a class="Metadata" href="#" data-rownum="0" data-role="button" > Metadata</a>
-             <a class="Unlink" href="#" data-docid="<?php echo $document->document_id; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <a class="Unlink" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
              <a class="closeEdit" href="#" id="Document0Close">Close</a> 
             </p>
             <div id="Document0MetaData" hidden >

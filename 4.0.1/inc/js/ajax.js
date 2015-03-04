@@ -833,6 +833,21 @@ function unlinkDocument(doc_id) {
         }
     });
 }
+function DownloadEDMSDocument(document_uri) {
+    Load()
+    $.ajax({
+        url: "inc/ajax/ajax.downloadEDMSDocument.php",
+        type: 'post',
+        data: {
+            document_uri: document_uri,
+        },
+        success: function (data) {
+            Unload();
+            var win = window.open(data, '_blank');
+            win.focus();
+        }
+    });
+}
 
 function notifyInsuranceOfficer() {
     Load()
