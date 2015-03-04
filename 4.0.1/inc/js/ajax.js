@@ -36,11 +36,9 @@ function getIntray(intray, i) {
     }
 }
 
-function GetAddressDetails() {
-    //alert("coming ajax");
+function GetAddressDetails() {   
     $("#loc_address").val("Y");
     $("#cust_address").val("N");
-    //alert("camehere");
     if ($("#lno").val() == "") {
         $("#lno").css('font-size', '0px');
         $("#lno").val('0');
@@ -151,7 +149,7 @@ function getEventBookingDetails() {
 
 function getAllowanceDetails(show_all) {
     if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {        
-        if ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) {
+        if ($("#property_no").val() != "" && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
             var serviceID = $("#service").val();
             var requestID = $("#request").val();
             var functionID = $("#function").val();
