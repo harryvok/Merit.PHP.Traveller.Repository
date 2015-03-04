@@ -1084,7 +1084,7 @@ $(document).ready(function () {
                     Load();
                     $("#newrequest").valid();
                     if ($("#newrequest").validate().numberOfInvalids() == 0) {                        
-                        if ($("#process_allowance").val() == "No" && $("#functionInput").val() == "Removal") {
+                        if ($("#process_allowance").val() == "No" && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
                             $("#saveMore").prop("disabled", false).buttonState("enable");
                             $("#saveCountOnly").prop("disabled", false).buttonState("enable");
                             $("#submit").prop('disabled', false).buttonState("enable");
@@ -1092,7 +1092,7 @@ $(document).ready(function () {
                             $("#chk_showall").val("No");
                             getAllowanceDetails(show);
                         }                        
-                        else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
+                        else if (($("#process_allowance").val() == "No" && ($("#request_allowance").val() == 0 || $("#function_allowance").val() == 0)) || ($("#process_allowance").val() == "Yes" && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0))) {
                             //event.stopPropagation();
                             if ($("#mydetsclicked").val() == "N") {
                                 if ($("#old_given").val() != $("#given").val() || $("#old_surname").val() != $("#surname").val()) {
@@ -1180,7 +1180,7 @@ $(document).ready(function () {
         if ($("#countOnlyInd").val() == "N") {           
             $("#newrequest").valid();
             if ($("#newrequest").validate().numberOfInvalids() == 0) {    
-                if ($("#process_allowance").val() == "No" && $("#functionInput").val() == "Removal") {
+                if ($("#process_allowance").val() == "No" && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
                     $("#saveMore").prop("disabled", false).buttonState("enable");
                     $("#saveCountOnly").prop("disabled", false).buttonState("enable");
                     $("#submit").prop('disabled', false).buttonState("enable");
@@ -1188,7 +1188,7 @@ $(document).ready(function () {
                     $("#chk_showall").val("No");
                     getAllowanceDetails(show);
                 }
-                else if (($("#process_allowance").val() == "No" && $("#functionInput").val() != "Removal") || ($("#process_allowance").val() == "Yes" && $("#functionInput").val() == "Removal")) {
+                else if (($("#process_allowance").val() == "No" && ($("#request_allowance").val() == 0 || $("#function_allowance").val() == 0)) || ($("#process_allowance").val() == "Yes" && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0))) {
                     $("#saveMore").attr("disabled", true).buttonState("disable");
                     $("#saveCountOnly").attr("disabled", true).buttonState("disable");
                     $("#submit").prop('disabled', true).buttonState("disable");

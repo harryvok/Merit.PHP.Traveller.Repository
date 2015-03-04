@@ -2390,7 +2390,7 @@ class Model {
                 }
                 
                 //update allowance if requested
-                if($functionInput == "Removal" && $_POST['saveCountOnly'] == "N"){
+                if(($function_allowance > 0 || $request_allowance > 0)  && $_POST['saveCountOnly'] == "N"){
                     $parameters = new stdClass();
                     $parameters->user_id = $_SESSION['user_id'];
                     $parameters->password = $_SESSION['password'];
