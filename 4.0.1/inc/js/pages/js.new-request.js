@@ -482,6 +482,7 @@ $(document).ready(function () {
     $("#gmaps_Use").on(eventName, function (event) {
         $("#lfno").val($("#gmaps_FNumber").val()).attr("readonly", false);
         $("#lno").val($("#gmaps_Number").val()).attr("readonly", false);
+        $("#newLno").val($("#lno").val());
         $("#lstreet").val($("#gmaps_StreetName").val()).attr("readonly", false);
         $("#ltype").val($("#gmaps_StreetType").val()).attr("disabled", false).textInputState('enable');
         $("#lsuburb").val($("#gmaps_Suburb").val()).attr("disabled", false).textInputState('enable');
@@ -492,7 +493,6 @@ $(document).ready(function () {
         $("#addressId").val("");
         GetAddressDetails();
         $("#use_gmaps_coord").val(1);
-
         if ($("#historyaddrtype").val() == "L") { CheckHistory("L"); }
     });
 
