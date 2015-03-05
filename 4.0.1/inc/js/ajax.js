@@ -157,9 +157,6 @@ function getAllowanceDetails(show_all) {
             $("#saveCountOnly").prop('disabled', true).buttonState("disable");           
         }
         else if (($("#addressId").val() > 0 || $("#addressId").val() != "") && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
-            $("#submit").prop('disabled', false).buttonState("enable");
-            $("#saveMore").prop('disabled', false).buttonState("enable");
-            $("#saveCountOnly").prop('disabled', false).buttonState("enable");
             var serviceID = $("#service").val();
             var requestID = $("#request").val();
             var functionID = $("#function").val();
@@ -460,6 +457,10 @@ function CheckCountOnly(count_only) {
         $("#saveMore").prop('disabled', false).buttonState("enable");
         $("#saveCountOnly").prop('disabled', true).buttonState("disable");
         $("#workflowSRF").prop('disabled', false).buttonState("enable");
+    }
+    if (($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) && ($("#addressId").val() == 0 || $("#addressId").val() == "") && $("#property_no").val() == "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
+        $("#submit").prop('disabled', true).buttonState("disable");
+        $("#saveMore").prop('disabled', true).buttonState("disable");
     }
 }
 
