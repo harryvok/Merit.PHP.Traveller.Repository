@@ -147,7 +147,7 @@ function getEventBookingDetails() {
 function getAllowanceDetails(show_all) {
     if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {        
         if ($("#property_no").val() == "" && ($("#addressId").val() == 0 || $("#addressId").val() == "") && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
-            alert("You can not create request with this Service-Request-Function and address. Please change your Service-Request-Function or address.");
+            alert("This category is set to annual allowance and cannot be saved as the selected address does not exist in the system (i.e. no address id). To save this request, please change the address or select a different category.");
             $("#submit").prop('disabled', true).buttonState("disable");
             $("#saveMore").prop('disabled', true).buttonState("disable");
             $("#saveCountOnly").prop('disabled', true).buttonState("disable");
