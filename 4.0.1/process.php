@@ -4,7 +4,10 @@ session_start();
 // Backend of site. Deals with queries, inserts, updates and deletes.
 
 // Database connection
-include("/framework/controller.php");
+include("framework/controller.php");
+
+//uncomment this if forward slash needed
+//include("/framework/controller.php");
 
 // Establish controller
 $controller = new Controller();

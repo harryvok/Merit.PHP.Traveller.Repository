@@ -264,7 +264,7 @@ if(isset($_SESSION['user_id'])){
                     <p>
                         <input type="button" id="myDetails" value="My Details" data-role="button" />
                         <input type="button" id="clearDetails" value="Clear" data-role="button" />
-                        <input type="button" id="customerInfoXpert" data-role="button" disabled value="InfoXpert"  onclick="$('#cust_searchResults').slideToggle()"/>
+                        <input type="button" id="customerInfoXpert" data-role="button" disabled value="<?php echo $_SESSION['EDMSName'];?>"  onclick="$('#cust_searchResults').slideToggle()"/>
                         <input type="hidden" id="respCode" value="" />
                         <div id="cust_searchResults" hidden></div>
 
