@@ -88,8 +88,12 @@ function GetAddressDetails() {
                     }
                     $("#address").val(data.address_id);
                     $("#addressId").val(data.address_id);
+
                     //check if address_id is not zero and enable the summuary button
-                    if ($("#addressId").val() != "0" || $("#addressId").val() != "" || $("#addressId").val() != 0) {
+                    if ($("#addressId").val() == "0" || $("#addressId").val() == "" || $("#addressId").val() == 0) {
+                        $("#AddrSummary").attr("disabled", "disabled");
+                    }
+                    else if ($("#addressId").val() != "0" || $("#addressId").val() != "" || $("#addressId").val() != 0) {
                         $("#AddrSummary").removeAttr("disabled");
                     }
                     $("#loc_address_ctr").val(data.address_ctr);
@@ -145,14 +149,17 @@ function getEventBookingDetails() {
 }
 
 function getAllowanceDetails(show_all) {
-    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {        
-        if ($("#property_no").val() == "" && ($("#addressId").val() == 0 || $("#addressId").val() == "") && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {       
+        if ($("#property_no").val() == "" && ($("#addressId").val() == 0 || $("#addressId").val() == "") && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {            
             alert("This category is set to annual allowance and cannot be saved as the selected address does not exist in the system (i.e. no address id). To save this request, please change the address or select a different category.");
             $("#submit").prop('disabled', true).buttonState("disable");
             $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+            $("#saveCountOnly").prop('disabled', true).buttonState("disable");           
         }
-        else if ($("#property_no").val() != "" && ($("#addressId").val() > 0 || $("#addressId").val() != "") && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
+        else if (($("#addressId").val() > 0 || $("#addressId").val() != "") && ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0)) {
+            $("#submit").prop('disabled', false).buttonState("enable");
+            $("#saveMore").prop('disabled', false).buttonState("enable");
+            $("#saveCountOnly").prop('disabled', false).buttonState("enable");
             var serviceID = $("#service").val();
             var requestID = $("#request").val();
             var functionID = $("#function").val();
@@ -427,9 +434,9 @@ function CheckCountOnlyAjax(ser, req, func) {
                 $("#saveMore").prop('disabled', false).buttonState("enable");
                 $("#saveCountOnly").prop('disabled', true).buttonState("disable");
                 $("#workflowSRF").prop('disabled', false).buttonState("enable");
-            }
+            }           
         }
-    });
+    });    
 }
 
 function CheckCountOnly(count_only) {

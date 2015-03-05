@@ -120,10 +120,16 @@ $(document).ready(function () {
         $("#workflowSRF").prop("disabled", true);
         $(".mandLabel").hide();
         $("[data-mand]").removeClass("required");
-        
-        $("#submit").prop('disabled', false).buttonState("enable");
-        $("#saveMore").prop('disabled', false).buttonState("enable");
-        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+        if ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) {
+            $("#submit").prop('disabled', true).buttonState("disable");
+            $("#saveMore").prop('disabled', true).buttonState("disable");
+            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
+        }
+        else {
+            $("#submit").prop('disabled', false).buttonState("enable");
+            $("#saveMore").prop('disabled', false).buttonState("enable");
+            $("#saveCountOnly").prop('disabled', false).buttonState("enable");
+        }
         $("#udfs_exist").val("0");
         $("#udfs").slideUp("fast");
 
@@ -307,7 +313,7 @@ $(document).ready(function () {
                 $("#checkforWorkflow").trigger("click");
             } else {
                 $("#add-request-textarea").focus();
-            }
+            }            
         }             
        
     }
@@ -385,8 +391,14 @@ $(document).ready(function () {
                     
                 }
                 else {
-                    $("#submit").prop('disabled', false).buttonState("disable");
-                    $("#saveMore").prop('disabled', false).buttonState("enable");
+                    if (($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) && ($("#addressId").val() == 0 || $("#addressId").val() == "") && $("#property_no").val() == "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
+                        $("#submit").prop('disabled', true).buttonState("disable");
+                        $("#saveMore").prop('disabled', true).buttonState("disable");
+                    }
+                    else {
+                        $("#submit").prop('disabled', false).buttonState("disable");
+                        $("#saveMore").prop('disabled', false).buttonState("enable");
+                    }
 
                 }
             }
@@ -1673,6 +1685,9 @@ function clearLocationAddress() {
     $("#responsible").val("");
     $("#facilitydescription").val("");
     $("#AddrBooking").css("visibility", "hidden");
+    $("#submit").prop('disabled', false).buttonState("enable");
+    $("#saveMore").prop('disabled', false).buttonState("enable");
+    $("#saveCountOnly").prop('disabled', false).buttonState("enable");
 }
 
 function ViewAddressDetails() {
