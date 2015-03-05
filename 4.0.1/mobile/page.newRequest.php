@@ -60,7 +60,7 @@ if(isset($_SESSION['user_id'])){
 
                         <input type="hidden" name='request' id="request">
                         <input type="hidden" id="need_r_booking" name="need_r_booking" />
-                        <input type="hidden" id="request_allowance" name="request_allowance" />
+                        <input type="hidden" id="request_allowance" name="request_allowance" value="0" />
                         <input type="hidden" id="request_helpText" />
                         <input type="hidden" id="request_helpURL" />
                         <div class="info">
@@ -73,7 +73,7 @@ if(isset($_SESSION['user_id'])){
 
                         <input type="hidden" name='function' id="function">
                         <input type="hidden" id="need_f_booking" name="need_f_booking" />
-                        <input type="hidden" id="function_allowance" name="function_allowance" />
+                        <input type="hidden" id="function_allowance" name="function_allowance" value="0"/>
                         <input type="hidden" id="function_helpText" />
                         <input type="hidden" id="function_helpURL" />
                         <div class="info">

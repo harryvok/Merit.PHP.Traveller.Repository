@@ -93,7 +93,10 @@ $(document).ready(function () {
 
     // Service Input
     $("#serviceInput").on(eventName, function (event) {
-       $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
+        $("#serviceInput").val("").attr("readonly", false).autocomplete("search", "");
+        $("#submit").prop('disabled', false).buttonState("enable");
+        $("#saveMore").prop('disabled', false).buttonState("enable");
+        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
         setTimeout(function () {
             serviceReset();
         }, 0);
@@ -119,17 +122,7 @@ $(document).ready(function () {
         //$("#service").val("");
         $("#workflowSRF").prop("disabled", true);
         $(".mandLabel").hide();
-        $("[data-mand]").removeClass("required");
-        if ($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) {
-            $("#submit").prop('disabled', true).buttonState("disable");
-            $("#saveMore").prop('disabled', true).buttonState("disable");
-            $("#saveCountOnly").prop('disabled', true).buttonState("disable");
-        }
-        else {
-            $("#submit").prop('disabled', false).buttonState("enable");
-            $("#saveMore").prop('disabled', false).buttonState("enable");
-            $("#saveCountOnly").prop('disabled', false).buttonState("enable");
-        }
+        $("[data-mand]").removeClass("required");        
         $("#udfs_exist").val("0");
         $("#udfs").slideUp("fast");
 
@@ -206,6 +199,7 @@ $(document).ready(function () {
             $("#rednote").html(request_note);
             $("#need_r_booking").val(booking_required);
             $("#request_allowance").val(request_allowance);
+            $("#function_allowance").val(0);
             CheckMandatoryFields($("#service").val(), $("#request").val(), '');
             $("#priority option").prop("selected", false);
             $("#priority option[value=" + priority + "]").prop("selected", true);
@@ -383,14 +377,15 @@ $(document).ready(function () {
                 functionName: function () { return $("#functionInput").val() },
             },
             dataType: 'html',
-            success: function (data) {               
+            success: function (data) {              
                 Unload();
                 if (data == "None") {
+                    
                     $("#submit").prop('disabled', true).buttonState("disable");
                     $("#saveMore").prop('disabled', true).buttonState("disable");
                     
                 }
-                else {
+                else {                    
                     if (($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) && ($("#addressId").val() == 0 || $("#addressId").val() == "") && $("#property_no").val() == "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
                         $("#submit").prop('disabled', true).buttonState("disable");
                         $("#saveMore").prop('disabled', true).buttonState("disable");
