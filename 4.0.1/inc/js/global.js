@@ -437,9 +437,9 @@ $(document).on("click", ".closePopup", function () {
     $.fn.autoCompleteInit = function (ajax, dataPass, response) {
         var self = this;
         $(this).addClass("ui-autocomplete-loading");
-        $(this).blur(function () {
-            $(this).autocomplete("close");
-        });
+        //$(this).blur(function () {
+        //    $(this).autocomplete("close");
+        //});
         $.ajax({
             url: ajax,
             dataType: "json",
@@ -492,9 +492,9 @@ $(document).on("click", ".closePopup", function () {
         clicked[$(self).attr("id")] = false;
         current[$(self).attr("id")] = null;
 
-        $(self).blur(function () {
-            $(self).autocomplete("close");
-        });
+        //$(self).blur(function () {
+        //    $(self).autocomplete("close");
+        //});
 
         $(self).click(function () {
             var prevVal = init();
@@ -571,9 +571,9 @@ $(document).on("click", ".closePopup", function () {
 
         });
 
-        $(self).blur(function () {
-            $(self).autocomplete("close");
-        });
+        //$(self).blur(function () {
+        //    $(self).autocomplete("close");
+        //});
     };
 
     $.fn.facClick = function () {

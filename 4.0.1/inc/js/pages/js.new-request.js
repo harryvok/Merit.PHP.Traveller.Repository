@@ -1,8 +1,7 @@
 // New Request Common JS
  
 $(document).ready(function () {
-
-    
+  
 
     // Validation for customer type ( If data is in given or surname require a cust type ) if empty remove the requirement.
     $("#given").focusout(function () {        

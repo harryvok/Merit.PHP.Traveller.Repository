@@ -692,7 +692,7 @@ class Model {
     public function getNames($params = NULL){        
         if(isset($_POST['surname'])){ $surname = $_POST['surname'];} else{ $surname='';}
         if(isset($_POST['given'])) {$given = $_POST['given'];} else {$given='';}
-        if(isset($_POST['pref_title'])) {$pref_title = $_POST['pref_title'];} else {$pref_title='';}
+        //if(isset($_POST['pref_title'])) {$pref_title = $_POST['pref_title'];} else {$pref_title='';}
         if(isset($_POST['cust_phone'])) {$cust_phone = $_POST['cust_phone'];} else {$cust_phone='';}
         if(isset($_POST['cust_work'])) {$cust_work = $_POST['cust_work'];} else {$cust_work='';}
         if(isset($_POST['cust_mobile'])) {$cust_mobile = $_POST['cust_mobile'];} else {$cust_mobile='';}
@@ -707,7 +707,7 @@ class Model {
                 "surname" => $surname,
                 "given_names" => $given,
                 "initials" => '',
-                "pref_title" => $pref_title,
+                "pref_title" => '',
                 "telephone" => $cust_phone,
                 "work_phone" => $cust_work,
                 "mobile_no" => $cust_mobile,
