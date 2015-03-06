@@ -42,7 +42,8 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                     
                 <?php
                     if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
-                     <th>Record Number</th>     
+                     <th>Record Number</th>
+                     <th>Record Type</th>     
                 <?php }else{ ?>
                     <th>Document ID</th>  
                 <?php } ?>    
@@ -75,6 +76,9 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                 ?>
                             <tr class="<?php echo $class; ?>" id="Document<?php echo $i; ?>ParentObject">
                                  <td data-key="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>"><?php echo $document->document_id; ?></td>
+                                 <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
+                                 <td><?php echo $document->document_record_type; ?></td>
+                                 <?php } ?>
                                  <td><?php echo $document->document_desc; ?></td>
                                  <td>
                                      <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
@@ -99,6 +103,9 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                              ?>
                 <tr class="light_nocur" id="Document<?php echo $i; ?>ParentObject">
                      <td data-key="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>"><?php echo $document->document_id; ?></td>
+                     <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
+                     <td><?php echo $document->document_record_type; ?></td>
+                     <?php } ?>
                      <td><?php echo $document->document_desc; ?></td>
                      <td>
                         <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>

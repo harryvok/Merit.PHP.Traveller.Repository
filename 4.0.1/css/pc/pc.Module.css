@@ -1339,3 +1339,7 @@ div.editTextDiv {
 .column-filter-widgets a.filter-term { display: block; text-decoration: none;font-size: 14px; width:auto; padding:10px; color:#152848; font-weight:bold; float:left; }
 .column-filter-widgets a.filter-term:hover { text-decoration: line-through !important; }
 .column-filter-widget-selected-terms { clear:left; float:left; }
+
+#linkbutton {
+    margin-top:5px;
+}

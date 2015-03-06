@@ -93,6 +93,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         $("#need_f_booking").val($("#ret_" + id + "_need_f_booking").val());
         $("#request_allowance").val($("#ret_" + id + "_request_allowance").val());
         $("#function_allowance").val($("#ret_" + id + "_function_allowance").val());
+        $("#edms_autosave_attach").val($("#ret_" + id + "_edms_autosave_attach").val());
         if ($("#ret_" + id + "_request_need_func").val() == "Y") {
             $("#functionInput").addClass("required");
             $("#functionRequired").show();
@@ -202,6 +203,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 <input type="hidden" id="ret_<?php echo $set; ?>_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_request_allowance" value="<?php if(isset($result_n_ar->request_annual_allow_no)){ echo $result_n_ar->request_annual_allow_no; } else { echo 0; } ?>" />
                 <input type="hidden" id="ret_<?php echo $set; ?>_function_allowance" value="<?php if(isset($result_n_ar->function_annual_allow_no)){ echo $result_n_ar->function_annual_allow_no; } else { echo 0; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_edms_autosave_attach" value="<?php if(isset($result_n_ar->edms_autosave_attach)){ echo $result_n_ar->edms_autosave_attach; } else { echo "N"; } ?>" />
 			                                   
                 <td><?php if(isset($result_n_ar->keyword)){ echo $result_n_ar->keyword; } else { echo ""; } ?></td>
                 <td><?php if(isset($result_n_ar->service_name)){ echo $result_n_ar->service_name; } else { echo ""; } ?></td>
@@ -250,6 +252,7 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
 <input type="hidden" id="ret_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
 <input type="hidden" id="ret_request_allowance" value="<?php if(isset($result_n_ar->request_annual_allow_no)){ echo $result_n_ar->request_annual_allow_no; } else { echo 0; } ?>" />
 <input type="hidden" id="ret_function_allowance" value="<?php if(isset($result_n_ar->function_annual_allow_no)){ echo $result_n_ar->function_annual_allow_no; } else { echo 0; } ?>" />
+<input type="hidden" id="ret_edms_autosave_attach" value="<?php if(isset($result_n_ar->edms_autosave_attach)){ echo $result_n_ar->edms_autosave_attach; } else { echo "Nf"; } ?>" />
 
 
 <script type="text/javascript">
@@ -277,6 +280,7 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
         $("#request_allowance").val($("#ret_request_allowance").val());
         $("#function_allowance").val($("#ret_function_allowance").val());
         $("#workflowSRF").prop("disabled", false);
+        $("#edms_autosave_attach").val($("#ret_edms_autosave_attach").val());
         var date = new Date().toISOString();
         getEventBookingDetails();
         var show = "N";

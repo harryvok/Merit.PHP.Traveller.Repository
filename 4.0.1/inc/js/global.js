@@ -190,8 +190,10 @@ $(document).ready(function () {
     });
     $(".Unlink").on(eventName, function () {
 
-        var docID = $(this).attr("data-docid");
-        unlinkDocument(docID);
+        if (confirm("Are you sure you want to unlink this document?")) {
+            var docID = $(this).attr("data-docid");
+            unlinkDocument(docID);
+        } 
     });
 
     $(".Metadata").on(eventName, function () {

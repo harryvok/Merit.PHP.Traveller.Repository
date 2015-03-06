@@ -2296,6 +2296,38 @@ class Model {
                             array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
                             
                             $_SESSION['filenameudf'][] = $tempname;
+                            
+                            //if edms_autosave_attach == Y, link attachment
+                            if(  $_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y"){
+                                $parameters = new stdClass();
+                                $parameters->user_id = $_SESSION['user_id'];
+                                $parameters->password = $_SESSION['password'];
+                                $parameters->request_id = $GLOBALS['request_id'];
+                                $parameters->file_name = $_FILES['attachment']['name'][$i];
+                                $parameters->base64_document = base64_encode(file_get_contents( $_FILES["attachment"]['tmp_name'][$i]));
+                                
+                                try {
+                                    $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_new_document",$parameters);
+                                    if($result->ws_status == 0){
+                                        $_SESSION['done'] = 1;
+                                        $_SESSION['success'] = 1;
+                                        $_SESSION['success_link_document'] = 1;
+                                    }else{
+                                        $_SESSION['done'] = 1;
+                                        $_SESSION['error']=1;
+                                        $_SESSION['error_link_document'] = 1;
+                                        $_SESSION['error_custom'] = 1;
+                                        $_SESSION['custom_error'] = $result->ws_message;
+                                    }
+                                    
+                                }
+                                catch (Exception $e) {
+                                    echo $e -> getMessage ();
+                                    $_SESSION['done'] = 1;
+                                    $_SESSION['error'];
+                                    $_SESSION['error_link_document'] = 1;
+                                }
+                            }
                         }
 
                     }
@@ -2314,8 +2346,42 @@ class Model {
                     array_push($filenamearray, $tempname);
                     array_push($filedescriptionarray,$_POST["attachDesc"][0]);
                     $_SESSION['filenameudf'][] = $tempname;
+                    
+                    //if edms_autosave_attach == Y, link attachment
+                    if($_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y"){
+                        $parameters = new stdClass();
+                        $parameters->user_id = $_SESSION['user_id'];
+                        $parameters->password = $_SESSION['password'];
+                        $parameters->request_id = $GLOBALS['request_id'];
+                        $parameters->file_name = $_FILES['attachment']['name'][0];
+                        $parameters->base64_document = base64_encode(file_get_contents( $_FILES["attachment"]['tmp_name'][0]));
+                        
+                        try {
+                            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_new_document",$parameters);
+                            if($result->ws_status == 0){
+                                $_SESSION['done'] = 1;
+                                $_SESSION['success'] = 1;
+                                $_SESSION['success_link_document'] = 1;
+                            }else{
+                                $_SESSION['done'] = 1;
+                                $_SESSION['error']=1;
+                                $_SESSION['error_link_document'] = 1;
+                                $_SESSION['error_custom'] = 1;
+                                $_SESSION['custom_error'] = $result->ws_message;
+                            }
+                            
+                        }
+                        catch (Exception $e) {
+                            echo $e -> getMessage ();
+                            $_SESSION['done'] = 1;
+                            $_SESSION['error'];
+                            $_SESSION['error_link_document'] = 1;
+                        }
+                    }
+                    
                 }
-                 
+                
+                //register attachments through web service
                 if ($totalfiles > 0 && $_FILES['attachment']['name'][0] != "") {
 
                     $parameters_att = array(
@@ -2774,7 +2840,7 @@ class Model {
             $parameters_att->user_id = $_SESSION['user_id'];
             $parameters_att->password = $_SESSION['password'];
             $parameters_att->request_id = $requestID;
-            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name'][0]);
+            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']/*[0]*/);
             $parameters_att->description = $description;
         }
         else{
@@ -4354,13 +4420,17 @@ class Model {
                     $_SESSION['done'] = 1;
                     $_SESSION['success'] = 1;
                     $_SESSION['success_link_document'] = 1;
-                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
                 }else{
                     $_SESSION['done'] = 1;
                     $_SESSION['error']=1;
                     $_SESSION['error_link_document'] = 1;
                     $_SESSION['error_custom'] = 1;
                     $_SESSION['custom_error'] = $result->ws_message;
+                }
+                
+                if(isset($_POST["action_id"])){
+                    $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
+                }else{
                     $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
                 }
             }

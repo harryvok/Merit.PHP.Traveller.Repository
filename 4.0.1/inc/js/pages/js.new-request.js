@@ -188,9 +188,9 @@ $(document).ready(function () {
     }
 
     function requestResponse(event, ui) {
-        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = ""; var request_note = ""; var rauto = ""; var request_name_type = ""; var booking_required = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note = ui.content[0].request_note; rauto = ui.content[0].request_auto_help_notes; request_name_type = ui.content[0].request_name_type; booking_required = ui.content[0].booking_required; request_allowance = ui.content[0].request_allowance; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note; rauto = ui.item.request_auto_help_notes; request_name_type = ui.item.request_name_type; booking_required = ui.item.booking_required; request_allowance = ui.item.request_allowance; }
+        var label = ""; var code = ""; var priority = ""; var count_only = ""; var need_function = ""; var request_note = ""; var rauto = ""; var request_name_type = ""; var booking_required = ""; var edms_autosave_attach ="";
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; need_function = ui.content[0].need_function; request_note = ui.content[0].request_note; rauto = ui.content[0].request_auto_help_notes; request_name_type = ui.content[0].request_name_type; booking_required = ui.content[0].booking_required; request_allowance = ui.content[0].request_allowance; edms_autosave_attach = ui.content[0].edms_autosave_attach; }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; need_function = ui.item.need_function; request_note = ui.item.request_note; rauto = ui.item.request_auto_help_notes; request_name_type = ui.item.request_name_type; booking_required = ui.item.booking_required; request_allowance = ui.item.request_allowance; edms_autosave_attach = ui.item.edms_autosave_attach; }
         if (label.length > 0 || code.length > 0) {
             $(this).removeClass("ui-autocomplete-loading");
             $("#request").val(code);
@@ -234,6 +234,7 @@ $(document).ready(function () {
             $("#cust_type option[value=" + request_name_type + "]").prop("selected", true);
             $('#cust_type').selectmenuState('refresh', true);
             $("#testing").val($("#cust_type").val());
+            $("#edms_autosave_attach").val(edms_autosave_attach);
             $("#requestInput").autocomplete("close");
             $("#functionInput").trigger("click");
         }
@@ -260,9 +261,9 @@ $(document).ready(function () {
     }
 
     function functionResponse(event, ui) {        
-        var label = ""; var code = ""; var priority = ""; var count_only = ""; var function_note = ""; var fauto = ""; var function_name_type;
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; function_name_type = ui.content[0].function_name_type; booking_required = ui.content[0].booking_required; function_allowance = ui.content[0].function_allowance; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; function_name_type = ui.item.function_name_type; booking_required = ui.item.booking_required; function_allowance = ui.item.function_allowance; }
+        var label = ""; var code = ""; var priority = ""; var count_only = ""; var function_note = ""; var fauto = ""; var function_name_type; var edms_autosave_attach = "";
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; function_name_type = ui.content[0].function_name_type; booking_required = ui.content[0].booking_required; function_allowance = ui.content[0].function_allowance; edms_autosave_attach = ui.content[0].edms_autosave_attach; }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; function_name_type = ui.item.function_name_type; booking_required = ui.item.booking_required; function_allowance = ui.item.function_allowance; edms_autosave_attach = ui.item.edms_autosave_attach; }
         if (label.length > 0 || code.length > 0) {
             $("#functionInput").removeClass("ui-autocomplete-loading");
             $("#function").val(code);
@@ -302,6 +303,7 @@ $(document).ready(function () {
             $("#cust_type option[value=" + function_name_type + "]").prop("selected", true);
             $('#cust_type').selectmenuState('refresh', true);
             $("#testing").val($("#cust_type").val());
+            $("#edms_autosave_attach").val(edms_autosave_attach);
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
                 $("#checkforWorkflow").trigger("click");

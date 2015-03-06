@@ -43,7 +43,7 @@ if($GLOBALS['result']['errorConnecting']== false){
     <label for="search_type2"><b><?php echo $DocumentName;?></b></label><input type="radio" id="search_type2" name="Search_type" value="DOCNAME">
     <label for="search_type3"><b><?php echo $DocumentID;?></b></label><input type="radio" id="search_type3" name="Search_type" value="DOCID">
     <label for="search_type4"><b><?php echo $Company;?></b></label><input type="radio" id="search_type4" name="Search_type" value="COMPANY">
-    <?php if(strtoupper($_SESSION['EDMSName']) != "TRIM"){?> 
+    <?php if(strtoupper($_SESSION['EDMSName']) != "TRIM" ){?> 
     <label for="search_type5"><b><?php echo $FullText;?></b></label><input type="radio" id="search_type5" name="Search_type" value="KEYWORD">
     <?php } ?>
     <a data-role="button" class="documentSearchButton" href="#">Search...</a>
@@ -79,33 +79,50 @@ if($GLOBALS['result']['errorConnecting']== false){
                <p><b>Description:</b> <?php echo $document->document_desc; ?></p>
            </a>
       </li>
-      <li id="Document<?php echo $i; ?>Edit" style="display:none">
+      <li id="Document<?php echo $i; ?>Edit" style="display:none;min-width:60px;">
             <p>
             <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
-                 <a class="downloadButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
+                 <a class="downloadButton DocumentOptionButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
              <?php }else{?>
-                <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+                <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <?php }?>
-             <a class="Metadata" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
-             <a class="Unlink" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <a class="Metadata DocumentOptionButton" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
+             <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <br /><br /><br /><br />
              <a class="closeEdit" href="#" id="Document<?php echo $i; ?>Close">Close</a> 
             </p>
             <div id="Document<?php echo $i; ?>MetaData" hidden >
-                 <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
-                    <?php if($document->document_metadata->doc_meta_data[$var]->meta_tag == "Name" ||
-                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CreationDate" ||
-                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "ModificationDate" ||
-                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "CheckoutBy" ||
-                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisterDate" ||
-                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisteredBy" ||
-                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "Author" ||
-                              $document->document_metadata->doc_meta_data[$var]->meta_tag == "FolderId" ||
-                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_CORRESPONDENT") !== false ||
-                              strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
-                    ?>
-                        <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
-                    <?php }?>  
-                <?php } ?>
+                <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
+                    <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
+                        <?php if($document->document_metadata->doc_meta_data[$var]->meta_tag == "Author" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "Date Created" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "Date Registered" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "Container" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "Assignee" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "Edit Status" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "Addressee"){
+                        ?>
+                            <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
+                        <?php }?>  
+                    <?php } ?>
+                 <?php }else{?>  
+
+                     <?php for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){ ?>
+                        <?php if($document->document_metadata->doc_meta_data[$var]->meta_tag == "Name" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "CreationDate" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "ModificationDate" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "CheckoutBy" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisterDate" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "RegisteredBy" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "Author" ||
+                                  $document->document_metadata->doc_meta_data[$var]->meta_tag == "FolderId" ||
+                                  strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_CORRESPONDENT") !== false ||
+                                  strpos($document->document_metadata->doc_meta_data[$var]->meta_tag,"IX_INTEGRATION") !== false){
+                        ?>
+                            <span><?php echo $document->document_metadata->doc_meta_data[$var]->meta_tag ?></span><br /> <span style="font-weight:normal"><?php if($document->document_metadata->doc_meta_data[$var]->meta_data !="") {echo $document->document_metadata->doc_meta_data[$var]->meta_data;}else{echo "-";} ?></span><br /><br />
+                        <?php }?>  
+                    <?php } ?>
+                <?php }?>  
             </div>
               
       </li>
@@ -130,12 +147,13 @@ if($GLOBALS['result']['errorConnecting']== false){
       <li id="Document0Edit" style="display:none">
             <p>
              <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
-                 <a class="downloadButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
+                 <a class="downloadButton DocumentOptionButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
              <?php }else{?>
-                <a class="View" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+                <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <?php }?>
-             <a class="Metadata" href="#" data-rownum="0" data-role="button" > Metadata</a>
-             <a class="Unlink" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <a class="Metadata DocumentOptionButton" href="#" data-rownum="0" data-role="button" > Metadata</a>
+             <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <br /><br /><br /><br />
              <a class="closeEdit" href="#" id="Document0Close">Close</a> 
             </p>
             <div id="Document0MetaData" hidden >

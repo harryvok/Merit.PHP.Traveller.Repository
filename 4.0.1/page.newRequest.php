@@ -682,6 +682,7 @@ if(!isset($_GET['d'])){
         <input type="hidden" name="documentsToLink" id="documentsToLink" />
         <input type="hidden" name="btnclick" id="btnclick" value="" />
         <input type="hidden" name="deviceIndicator" id="deviceIndicator" value="pc" />
+        <input type="hidden" name="edms_autosave_attach" id="edms_autosave_attach" />
         </div>
         
         <div class="popupDetail" id="DocumentsPopup">

@@ -221,3 +221,9 @@ div.summaryColumn {
 .fixFormat {
     padding:7px 5%;
 }
+.DocumentOptionButton {
+    float:left;
+    min-width:120px;
+    padding-left:5px;
+
+}
