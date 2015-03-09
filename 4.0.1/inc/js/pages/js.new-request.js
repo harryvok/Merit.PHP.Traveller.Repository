@@ -42,12 +42,8 @@ $(document).ready(function () {
 
     /* INITIALISE */
     $("#keywordSearch").autoCompleteInit("inc/ajax/ajax.keywordList.php", null, keywordResponse);
-
     $("#lstreet").autoCompleteInit("inc/ajax/ajax.getStreets.php", { term: "" }, (streetResponse));
     $("#i_cstreet").autoCompleteInit("inc/ajax/ajax.getStreets.php", { term: "" }, cStreetResponse);
-
-
-
     $("#requestInput").autoCompleteInitSeq(requestInit, "inc/ajax/ajax.getRequestTypes.php", { term: "", service_code: function () { return $("#service").val(); } }, requestResponse);
     $("#functionInput").autoCompleteInitSeq(functionInit, "inc/ajax/ajax.getFunctionTypes.php", { term: "", service_code: function () { return $("#service").val(); }, request_code: function () { return $("#request").val(); } }, functionResponse, functionSuccess);
     $("#i_ctype").autoCompleteInitSeq(cTypeInit, "inc/ajax/ajax.getStreetTypes.php", { term: $("#i_cstreet").val(), id: "i_ctype", street: function () { return $('#i_cstreet').val(); } }, cTypeResponse);
@@ -57,9 +53,6 @@ $(document).ready(function () {
     $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
     $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
     $("#facilityInput").autoCompleteInitSeq(facilityInit, "inc/ajax/ajax.getFacilitiesLookup.php", { term: "", facilitiesName: function () { return $("#facilityInput").val(); }, facilitiesType: function () { return $("#facilityTypeInput").val(); } }, facilityResponse);
-
-
-
     $("#serviceInput").autoCompleteInit("inc/ajax/ajax.getServiceTypes.php", { term: "" }, serviceResponse);
 
 
@@ -67,6 +60,9 @@ $(document).ready(function () {
     // Keyword Typealong
     $("#keywordSearch").on(eventName, function (event) {
         $("#infoHover").fadeOut("fast");
+        $("#submit").prop('disabled', false).buttonState("enable");
+        $("#saveMore").prop('disabled', false).buttonState("enable");
+        $("#saveCountOnly").prop('disabled', false).buttonState("enable");
         $("#keywordSearch").val("").autocomplete("search", "");
     });
 
