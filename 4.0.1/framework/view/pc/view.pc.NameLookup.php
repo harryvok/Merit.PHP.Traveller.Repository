@@ -40,6 +40,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
     <thead>
     <tr>
         <th class="job-id sortable">Origin</th>
+        <th>Title</th>
         <th class="date sortable">Name</th>
         <th class="job-id sortable">Telephone</th>
         <th class="job-id sortable">Work Phone</th>
@@ -79,6 +80,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
             <input type="hidden" id="ret_<?php echo $set; ?>_name_origin_code" value="<?php if(isset($result_n_ar->name_origin_code)){ echo $result_n_ar->name_origin_code; } else { echo ""; } ?>" />
                 <tr class="<?php echo $class; ?> name_row" id="<?php echo $set; ?>" title="">
                     <td ><?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?></td>
+                    <td><?php if(isset($result_n_ar->pref_title)){ echo $result_n_ar->pref_title; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->given_names)){ echo $result_n_ar->given_names; } else { echo ""; } ?> <?php if(isset($result_n_ar->surname)){ echo $result_n_ar->surname; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->telephone)){ echo $result_n_ar->telephone; } else { echo ""; } ?></td>
                     <td><?php if(isset($result_n_ar->work_phone)){ echo $result_n_ar->work_phone; } else { echo ""; } ?></td>
@@ -112,6 +114,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
         <input type="hidden" id="ret_<?php echo $set; ?>_name_origin_code" value="<?php if(isset($result_n_ar->name_origin_code)){ echo $result_n_ar->name_origin_code; } else { echo ""; } ?>" />
         <tr class="dark name_row"  id="<?php echo $set; ?>" title="">
             <td><?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?></td>
+            <td><?php if(isset($result_n_ar->pref_title)){ echo $result_n_ar->pref_title; } else { echo ""; } ?></td>
             <td><?php if(isset($result_n_ar->given_names)){ echo $result_n_ar->given_names; } else { echo ""; } ?> <?php if(isset($result_n_ar->surname)){ echo $result_n_ar->surname; } else { echo ""; } ?></td>
             <td><?php if(isset($result_n_ar->telephone)){ echo $result_n_ar->telephone; } else { echo ""; } ?></td>
             <td><?php if(isset($result_n_ar->work_phone)){ echo $result_n_ar->work_phone; } else { echo ""; } ?></td>
