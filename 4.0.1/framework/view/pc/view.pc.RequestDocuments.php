@@ -29,8 +29,9 @@ if($GLOBALS['result']['errorConnecting']== false){
 <div class="summaryContainer">
     <h1>Documents</h1>
     <div>
+       <?php if(strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
         <input type="button"  class="openDocumentPopup" id="Documents" value="Link Document"/>
-        
+        <?php } ?>
         <table id="requestDocumentTable" class=" sortable" title="" cellspacing="0">
             <thead>
                 <tr>

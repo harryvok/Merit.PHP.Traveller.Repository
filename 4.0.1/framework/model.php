@@ -2348,7 +2348,7 @@ class Model {
                     $_SESSION['filenameudf'][] = $tempname;
                     
                     //if edms_autosave_attach == Y, link attachment
-                    if($_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y"){
+                    if($_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){
                         $parameters = new stdClass();
                         $parameters->user_id = $_SESSION['user_id'];
                         $parameters->password = $_SESSION['password'];
@@ -2419,13 +2419,45 @@ class Model {
                 if(isset($_POST["documentsToLink"]) && $_POST["documentsToLink"] != ""){
                     $documents = explode("-",$_POST["documentsToLink"]);
                     
-                      for($i =0; $i< count($documents); $i++){
+                    for($i =0; $i< count($documents); $i++){
+                        if(strpos($documents[$i],"_newDocument_") !== false){
+                            $newDocumentName = str_replace("_newDocument_","",$documents[$i]);
+                            $parameters = new stdClass();
+                            $parameters->user_id = $_SESSION['user_id'];
+                            $parameters->password = $_SESSION['password'];
+                            $parameters->request_id = $GLOBALS['request_id'];
+                            $parameters->file_name = $_FILES['newDocument']['name'][0];
+                            $parameters->base64_document = base64_encode(file_get_contents( $_FILES["newDocument"]['tmp_name'][0]));
+                            
+                            try {
+                                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_new_document",$parameters);
+                                if($result->ws_status == 0){
+                                    $_SESSION['done'] = 1;
+                                    $_SESSION['success'] = 1;
+                                    $_SESSION['success_link_document'] = 1;
+                                }else{
+                                    $_SESSION['done'] = 1;
+                                    $_SESSION['error']=1;
+                                    $_SESSION['error_link_document'] = 1;
+                                    $_SESSION['error_custom'] = 1;
+                                    $_SESSION['custom_error'] = $result->ws_message;
+                                }
+                                
+                            }
+                            catch (Exception $e) {
+                                echo $e -> getMessage ();
+                                $_SESSION['done'] = 1;
+                                $_SESSION['error'];
+                                $_SESSION['error_link_document'] = 1;
+                            } 
+                           
+                        }else{
                             $parameters = new stdClass();
                             $parameters->user_id = $_SESSION['user_id'];
                             $parameters->password = $_SESSION['password'];
                             $parameters->doc_id = $documents[$i];
                             $parameters->request_id = $GLOBALS['request_id'];
-                    
+                            
                             try {
                                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
                             }
@@ -2435,6 +2467,8 @@ class Model {
                                 $_SESSION['error_link_document'] = 1;
                             }
                         }
+                        
+                    }
                 }
                 
                 //process notify insurance officer

@@ -15,7 +15,7 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
             var key = $(this).find("td:first-child").attr("data-key");
 
             $(".Document" + String(key) + "MetaData").show();
-            var desc = $(this).find("td:nth-child(2)").html();
+            var desc = $(this).find("td:nth-child(3)").html();
             $("#selectedDocument").val(key);
             $("#selectedDocDesc").html("Selected: <b>" + desc+"</b>");
             $('#linkbutton').removeAttr('disabled');

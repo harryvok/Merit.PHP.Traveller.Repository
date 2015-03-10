@@ -221,10 +221,11 @@ if(isset($_SESSION['user_id'])){
 <!--                        <input type="hidden" name="lpostcode" id="lpostcode" />-->
                         <!--<input type="button" data-role="button" value="Show On Map" onclick="showOnMap()" />-->
                         <input type="button" data-role="button" value="Clear" onclick="clearLocationAddress()" />
-                        <script type="text/javascript">  var date = new Date().toISOString(); </script>
+                        <script type="text/javascript">  var date = new Date().toISOString(); </script> 
                         <input type="button" value="Booking" disabled style="visibility:hidden" id="AddrBooking" onclick="GetBookingSummary(date)"  />
                     </p>
                 </div>
+                <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
                 <div data-role="collapsible" class="col" data-content-theme="c">
                     <h4><?php echo $_SESSION['EDMSName'];?> Search</h4>
                     <?php 
@@ -259,12 +260,15 @@ if(isset($_SESSION['user_id'])){
                     <div id="searchResults"></div>
                     <input type="hidden" name="selectedDocument" id="selectedDocument" />
                 </div>
+                <?php } ?>
                 <div data-role="collapsible" class="col" data-content-theme="c">
                     <h4>Customer Details</h4>
                     <p>
                         <input type="button" id="myDetails" value="My Details" data-role="button" />
                         <input type="button" id="clearDetails" value="Clear" data-role="button" />
+                        <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
                         <input type="button" id="customerInfoXpert" data-role="button" disabled value="<?php echo $_SESSION['EDMSName'];?>"  onclick="$('#cust_searchResults').slideToggle()"/>
+                        <?php } ?>
                         <input type="hidden" id="respCode" value="" />
                         <div id="cust_searchResults" hidden></div>
 

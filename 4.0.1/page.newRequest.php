@@ -31,11 +31,39 @@ if(!isset($_GET['d'])){
                 <input type="hidden" id="checkforWorkflow" value="" />
                 <input type="hidden" id="mydetsclicked" value="N" />           
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>                
-                <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
+                <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
                 <input type="button" value="<?php echo $_SESSION['EDMSName'];?> Search" class="openDocumentPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
+                
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#newDocument").change(function () {
+
+                            var currentdocuments = $("#documentsToLink").val();
+                            if (currentdocuments != "") {
+                                if (currentdocuments.indexOf(selectedDocument) >= 0) {
+                                    alert("You have already selected that document");
+                                } else {
+                                    if (confirm("Click OK to link this document when request is saved")) {
+                                        $("#documentsToLink").val(currentdocuments + "-" + "_newDocument_" + $("#newDocument").val().split('\\').pop());
+                                        $("#newDocument").attr("disabled", "disabled");
+                                    }
+                                }
+                            } else {
+                                if (confirm("Click OK to link this document when request is saved")) {
+                                    $("#documentsToLink").val("_newDocument_" + $("#newDocument").val().split('\\').pop());
+                                    $("#newDocument").attr("disabled", "disabled");
+                                }
+                            }
+                        });
+
+                    });
+                </script>
+                <input type="button" value="New <?php echo $_SESSION['EDMSName'];?> Document" onclick="$('#newDocument').click()"/>
+                <input type="file" id="newDocument" name="newDocument" value="" style="display:none;"/>
 
                 <input type="button" value="Booking" disabled style="visibility:hidden" id="event_booking" onclick="getEventBookingDetails()"  />
                 <?php } ?>
+                
                 <div class="column r60">
                     <div class="column r25">
                         <label for="service">Keyword</label>
@@ -295,7 +323,7 @@ if(!isset($_GET['d'])){
                             <input type="button" value="Summary" disabled id="CustSummary" onclick="ViewCustomerDetails()" />
                             <input type="hidden" id="respCode" value="" />
 
-                            <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y"){ ?>
+                            <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
                             <input type="button" class="openDocumentPopup" name="customerInfoXpert" id="customerInfoXpert" value="<?php echo $_SESSION['EDMSName'];?>" disabled="disabled" />
                             <?php } ?> 
                         </div>
@@ -710,12 +738,28 @@ if(!isset($_GET['d'])){
                         } else {
                             if (confirm("Click OK to link this document when request is saved")) {
                                 $("#documentsToLink").val(currentdocuments + "-" + selectedDocument);
+                                if (selectedDocument.indexOf("_newDocument_") > -1) {
+                                    $("#newDocument").attr("disabled", "disabled");
+                                }
                             }
                         }
                     } else {
                         if (confirm("Click OK to link this document when request is saved")) {
                             $("#documentsToLink").val(selectedDocument);
+                            if (selectedDocument.indexOf("_newDocument_") > -1) {
+                                $("#newDocument").attr("disabled", "disabled");
+                            }
                         }
+                    }
+                });
+                $("#newDocument").change(function () {
+                    if ($("#newDocument").val() != "") {
+                        $("#selectedDocDesc").html("Selected: <b>" + $("#newDocument").val().split('\\').pop() + "</b>");
+                        $('#linkbutton').removeAttr('disabled');
+                        $("#selectedDocument").val("_newDocument_" + $("#newDocument").val().split('\\').pop());
+                    } else {
+                        $("#selectedDocDesc").html("Selected: <b>" + "</b>");
+                        $("#selectedDocument").val("");
                     }
                 });
                 
@@ -752,6 +796,13 @@ if(!isset($_GET['d'])){
         <?php } ?>
         
         <input type="button" id="searchDocument" value="Search"/>
+           <!--<?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) != "INFOXPERT"){?> 
+          <div style="float:right">
+              <b>Add new:</b>
+              <input type="file" id="newDocument" name="newDocument" value="" style="width:200px;padding-bottom:23px;"/>
+          </div>
+            
+        <?php } ?>-->
         <div class="column r55"><input type="text" id="searchterm" placeholder="Search...."/></div>
         <div class="summaryContainer">
             <input type="hidden" name="selectedDocument" id="selectedDocument"/>

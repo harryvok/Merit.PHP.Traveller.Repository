@@ -17,8 +17,20 @@ if($GLOBALS['result']['errorConnecting']== false){
 
     });
 </script>
+<?php if(strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
 <a  href="#" class="toggleLinkDocForm" data-role="button">Link Document</a>
+<?php } ?>
 <form method="post" enctype="multipart/form-data" id="linkdocument" action="process.php" hidden>
+    <script>
+        $(document).ready(function () {
+            $("#linkdocument").keypress(function () {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    $(".documentSearchButton").trigger('click');
+                }
+            });
+        });
+    </script>
     <label>Search</label>
     <input class="text" name='keyword' id="searchterm"  placeholder="Search...">
      <?php 
