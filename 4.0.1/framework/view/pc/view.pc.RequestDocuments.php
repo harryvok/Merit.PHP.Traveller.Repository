@@ -75,7 +75,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                                      <?php }else{ ?>
                                         <a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="View"/></a>
                                       <?php } ?>
-                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_uri; ?>" value="Unlink"/></td>
+                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" value="Unlink"/></td>
                             </tr>
                              <?php
                             $key = (strtoupper ($_SESSION['EDMSName']) == 'TRIM' ? $document->document_uri :  $document->document_id);
@@ -97,7 +97,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                                      <?php }else{ ?>
                                         <a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="View"/></a>
                                       <?php } ?>
-                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_uri; ?>" value="Unlink"/></td>
+                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" value="Unlink"/></td>
                 </tr>
                 <?php
                         $key = (strtoupper ($_SESSION['EDMSName']) == 'TRIM' ? $document->document_uri :  $document->document_id);

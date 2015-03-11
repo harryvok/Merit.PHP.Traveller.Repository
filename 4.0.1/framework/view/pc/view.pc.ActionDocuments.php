@@ -75,11 +75,11 @@ if($GLOBALS['result']['errorConnecting']== false){
                                      <?php }else{ ?>
                                         <a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="View"/></a>
                                       <?php } ?>
-                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_uri; ?>" value="Unlink"/></td>
+                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" value="Unlink"/></td>
                             </tr>
                              <?php
                             $key = (strtoupper ($_SESSION['EDMSName']) == 'TRIM' ? $document->document_uri :  $document->document_id);
-                             
+                            
                             for($var = 0; $var < count($document->document_metadata->doc_meta_data); $var++){
                                 array_push($metaTagArray,$document->document_metadata->doc_meta_data[$var]->meta_tag);
                                 array_push($metaDataArray, $document->document_metadata->doc_meta_data[$var]->meta_data);
@@ -88,7 +88,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                         }
                     }elseif(isset($GLOBALS['result']['docdets']->document_details) && count($GLOBALS['result']['docdets']->document_details) == 1){
                         $document = $GLOBALS['result']['docdets']->document_details;
-                    ?>
+                             ?>
                 <tr class="light_nocur" id="Document<?php echo $i; ?>ParentObject">
                      <td data-key="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>"><?php echo $document->document_id; ?></td>
                      <td><?php echo $document->document_desc; ?></td>
@@ -97,7 +97,7 @@ if($GLOBALS['result']['errorConnecting']== false){
                                      <?php }else{ ?>
                                         <a target="_blank"  href="<?php echo $document->document_url; ?>"><input type="button" value="View"/></a>
                                       <?php } ?>
-                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php echo $document->document_uri; ?>" value="Unlink"/></td>
+                                     &nbsp<input type="button" class="unlinkbutton" id="unlink<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" value="Unlink"/></td>
                 </tr>
                 <?php
                         $key = (strtoupper ($_SESSION['EDMSName']) == 'TRIM' ? $document->document_uri :  $document->document_id);

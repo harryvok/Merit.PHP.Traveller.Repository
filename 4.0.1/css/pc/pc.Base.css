@@ -509,7 +509,10 @@ input[type=radio] {
     border: none;
     margin: 0;
     padding: 0;
-    height: 13px;
+    height: 18px;
+    width:18px;
+    margin-top: -1px;
+    vertical-align: middle;
 }
 
 label {

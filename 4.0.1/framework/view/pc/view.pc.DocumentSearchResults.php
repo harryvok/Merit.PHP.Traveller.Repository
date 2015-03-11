@@ -46,7 +46,8 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                      <th>Record Type</th>     
                 <?php }else{ ?>
                     <th>Document ID</th>  
-                <?php } ?>    
+                <?php } ?>
+                    <th></th>    
                     <th>Description</th>
                     <th></th>
                 </tr>
@@ -78,6 +79,8 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                                  <td data-key="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>"><?php echo $document->document_id; ?></td>
                                  <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
                                  <td><?php echo $document->document_record_type; ?></td>
+                                 <?php }else{ ?>
+                                    <td></td> 
                                  <?php } ?>
                                  <td><?php echo $document->document_desc; ?></td>
                                  <td>
@@ -105,6 +108,8 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
                      <td data-key="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>"><?php echo $document->document_id; ?></td>
                      <?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
                      <td><?php echo $document->document_record_type; ?></td>
+                     <?php }else{ ?>
+                     <td></td> 
                      <?php } ?>
                      <td><?php echo $document->document_desc; ?></td>
                      <td>

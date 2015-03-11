@@ -62,13 +62,16 @@ if($GLOBALS['result']['errorConnecting']== false){
     <a data-role="button" class="button left documentSearchButton" href="#">Search...</a>
     <!--<input  class="button left documentSearchButton" type='button' value='Search...' />-->
     <div id="searchResults"></div>
+    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) != "INFOXPERT"){?> 
     <hr />
     <label>New File</label>
     <input type="file" id="newDocument" name="newDocument" />
     <input id="submitButton" class="button left" type='submit' value='Submit' />
-    
+    <?php } ?>
+
     <input type="hidden" name="selectedDocument" id="selectedDocument" />
     <input type="hidden" name="action" value="RequestLinkDocument" />
+    
 </form>
 
 <br />
@@ -100,7 +103,7 @@ if($GLOBALS['result']['errorConnecting']== false){
              <?php }?>
 
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
-             <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
              <a class="closeEdit" href="#" id="Document<?php echo $i; ?>Close">Close</a> 
             </p>
             <br /><br /><br /><br />
@@ -165,7 +168,7 @@ if($GLOBALS['result']['errorConnecting']== false){
              <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <?php }?>
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="0" data-role="button" > Metadata</a>
-             <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
+             <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
              <br /><br /><br /><br />
              <a class="closeEdit" href="#" id="Document0Close">Close</a> 
             </p>

@@ -61,10 +61,12 @@ if($GLOBALS['result']['errorConnecting']== false){
     <a data-role="button" class="documentSearchButton" href="#">Search...</a>
     
     <div id="searchResults"></div>
+    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) != "INFOXPERT"){?> 
     <hr />
     <label>New File</label>
     <input type="file" id="newDocument" name="newDocument" />
     <input id="submitButton" class="button left" type='submit' value='Submit' />
+    <?php } ?>
 
     <input type="hidden" name="selectedDocument" id="selectedDocument" />
     <input type="hidden" name="action" value="ActionLinkDocument" />

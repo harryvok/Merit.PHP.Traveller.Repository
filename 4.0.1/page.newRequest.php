@@ -45,13 +45,11 @@ if(!isset($_GET['d'])){
                                 } else {
                                     if (confirm("Click OK to link this document when request is saved")) {
                                         $("#documentsToLink").val(currentdocuments + "-" + "_newDocument_" + $("#newDocument").val().split('\\').pop());
-                                        $("#newDocument").attr("disabled", "disabled");
                                     }
                                 }
                             } else {
                                 if (confirm("Click OK to link this document when request is saved")) {
                                     $("#documentsToLink").val("_newDocument_" + $("#newDocument").val().split('\\').pop());
-                                    $("#newDocument").attr("disabled", "disabled");
                                 }
                             }
                         });
@@ -59,7 +57,7 @@ if(!isset($_GET['d'])){
                     });
                 </script>
                 <input type="button" value="New <?php echo $_SESSION['EDMSName'];?> Document" onclick="$('#newDocument').click()"/>
-                <input type="file" id="newDocument" name="newDocument" value="" style="display:none;"/>
+                <input type="file" id="newDocument" name="newDocument[]" value="" style="display:none;"/>
 
                 <input type="button" value="Booking" disabled style="visibility:hidden" id="event_booking" onclick="getEventBookingDetails()"  />
                 <?php } ?>
@@ -787,6 +785,7 @@ if(!isset($_GET['d'])){
             }
         ?>
       <div>
+
         <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b><?php echo $CustomerName;?></b></label>&nbsp
         <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b><?php echo $DocumentName;?></b></label>&nbsp
         <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b><?php echo $DocumentID;?></b></label>&nbsp
@@ -796,13 +795,7 @@ if(!isset($_GET['d'])){
         <?php } ?>
         
         <input type="button" id="searchDocument" value="Search"/>
-           <!--<?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) != "INFOXPERT"){?> 
-          <div style="float:right">
-              <b>Add new:</b>
-              <input type="file" id="newDocument" name="newDocument" value="" style="width:200px;padding-bottom:23px;"/>
-          </div>
-            
-        <?php } ?>-->
+           
         <div class="column r55"><input type="text" id="searchterm" placeholder="Search...."/></div>
         <div class="summaryContainer">
             <input type="hidden" name="selectedDocument" id="selectedDocument"/>
