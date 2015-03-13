@@ -308,8 +308,8 @@
                         var sms = "<?php echo $sms ?>";
                         $(document).ready(function () {
                             $("#notificationForm").validate();
-                            $("#sendbutton").click(function () {                       
-                                $("#notificationForm").submit();
+                            $("#notificationForm").submit(function () {
+                                if ($(this).validate().numberOfInvalids() == 0) { $("#sendbutton").attr("disabled", true); }
                             });
                         });
                         if (email < 1) {
