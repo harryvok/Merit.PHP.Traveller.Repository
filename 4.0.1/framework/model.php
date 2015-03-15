@@ -153,9 +153,6 @@ class Model {
         $parameters_fi->password = $_SESSION['password'];
         $parameters_fi->filter_type = $params['filter_type'];
         $result_fi = $this->WebService(MERIT_ACTION_FILE, "ws_get_officer_filters", $parameters_fi)->filter_det;
-        
-        
-        
         if($params['filter_type'] == "action") {
             $_SESSION['act_back_filter'] ="";
             $_SESSION['req_back_filter'] ="";

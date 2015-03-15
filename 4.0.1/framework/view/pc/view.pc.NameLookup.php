@@ -89,7 +89,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                                 <td><?php if(isset($result_n_ar->company_name)){ echo $result_n_ar->company_name; } else { echo ""; } ?></td>
                             </tr>
                             <tr id="<?php echo $set; ?>-addressRow" style="display:none;" class="addressRow">
-                	            <td id="<?php echo $set; ?>-addresses" colspan="7">
+                	            <td id="<?php echo $set; ?>-addresses" colspan="8">
                                 </td>
                             </tr>
                             <?php
@@ -123,7 +123,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                         <td><?php if(isset($result_n_ar->company_name)){ echo $result_n_ar->company_name; } else { echo ""; } ?></td>
                     </tr>
                     <tr id="<?php echo $set; ?>-addressRow" style="display:none;" class="addressRow">
-                            <td id="<?php echo $set; ?>-addresses" colspan="7">
+                            <td id="<?php echo $set; ?>-addresses" colspan="8">
                             </td>
                         </tr>
                     <?php
