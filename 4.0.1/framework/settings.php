@@ -13,8 +13,8 @@ define("REFRESHTABLE", ""); // The time Before a table refresh occurs
 define("EMAIL_SUBJECT_PREFIX", "Merit Technology Pty Ltd -"); // The Email Subject Prefix - eg. "Merit Technology Pty Ltd:" Request XXXXX - Updated Settings
 
 //WEB SERVICES AND LINKS
-define("SITE_LINK", "http://traveller.merit.com.au/4.0.1/");
-define("WEBSITE", "http://traveller.merit.com.au/4.0.1/"); // Traveller website address, with a slash on the end.
+define("SITE_LINK", "http://traveller.merit.com.au/CRM/Dev/4.1.6/");
+define("WEBSITE", "http://traveller.merit.com.au/CRM/Dev/4.1.6/"); // Traveller website address, with a slash on the end.
 define("LOCAL_LINK", "C:/projects/Merit2013/Merit.PHP.Traveller/4.0/"); // Traveller website address, with a slash on the end.
 define("WEB_SERVICES_PATH", "http://192.168.0.88/merit_traveller/"); // Path to the webservices. With a slash on the end!
 define("MERIT_ACTION_FILE", "ws_merit_action.asmx");
@@ -39,7 +39,7 @@ define("PROP_USER", "proclaim"); // database username
 define("PROP_PASS", "proclaim"); // database password
 
 //EXTERNAL SERVICES
-define("DEFAULT_ADDRESS", "");
+define("DEFAULT_ADDRESS", "608 St Kilda Rd Melbourne");
 define("INTRAMAPS", "");
 define("INTRAMAPS_MOBILE", "");
 
