@@ -94,19 +94,19 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                 $i++;
                 $set = "namerow_00";
                 ?>
-                <input type="hidden" id="Hidden1" value="<?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden2" value="<?php if(isset($result_n_ar->name_ctr)){ echo $result_n_ar->name_ctr; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden3" value="<?php if(isset($result_n_ar->name_id)){ echo $result_n_ar->name_id; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden4" value="<?php if(isset($result_n_ar->surname)){ echo $result_n_ar->surname; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden5" value="<?php if(isset($result_n_ar->given_names)){ echo $result_n_ar->given_names; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden6" value="<?php if(isset($result_n_ar->pref_title)){ echo $result_n_ar->pref_title; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden7" value="<?php if(isset($result_n_ar->telephone)){ echo $result_n_ar->telephone; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden8" value="<?php if(isset($result_n_ar->work_phone)){ echo $result_n_ar->work_phone; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden9" value="<?php if(isset($result_n_ar->mobile_no)){ echo $result_n_ar->mobile_no; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden10" value="<?php if(isset($result_n_ar->email_address)){ echo $result_n_ar->email_address; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden11" value="<?php if(isset($result_n_ar->company_name)){ echo $result_n_ar->company_name; } else { echo ""; } ?>" />
-                <input type="hidden" id="Hidden12" value="<?php if(isset($result_n_ar->name_origin_code)){ echo $result_n_ar->name_origin_code; } else { echo ""; } ?>" />
-           	    <li class="name_row" id="Li1">
+                <input type="hidden" id="ret_<?php echo $set; ?>_name_origin" value="<?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_name_ctr" value="<?php if(isset($result_n_ar->name_ctr)){ echo $result_n_ar->name_ctr; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_name_id" value="<?php if(isset($result_n_ar->name_id)){ echo $result_n_ar->name_id; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_surname" value="<?php if(isset($result_n_ar->surname)){ echo $result_n_ar->surname; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_given_names" value="<?php if(isset($result_n_ar->given_names)){ echo $result_n_ar->given_names; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_pref_title" value="<?php if(isset($result_n_ar->pref_title)){ echo $result_n_ar->pref_title; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_telephone" value="<?php if(isset($result_n_ar->telephone)){ echo $result_n_ar->telephone; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_work_phone" value="<?php if(isset($result_n_ar->work_phone)){ echo $result_n_ar->work_phone; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_mobile_no" value="<?php if(isset($result_n_ar->mobile_no)){ echo $result_n_ar->mobile_no; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_email_address" value="<?php if(isset($result_n_ar->email_address)){ echo $result_n_ar->email_address; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_company_name" value="<?php if(isset($result_n_ar->company_name)){ echo $result_n_ar->company_name; } else { echo ""; } ?>" />
+                <input type="hidden" id="ret_<?php echo $set; ?>_name_origin_code" value="<?php if(isset($result_n_ar->name_origin_code)){ echo $result_n_ar->name_origin_code; } else { echo ""; } ?>" />
+           	    <li class="name_row" id="<?php echo $set; ?>">
 				    <a>
                         <?php if(isset($result_n_ar->name_origin) && strlen($result_n_ar->name_origin) > 0){ ?><p><b>Origin:</b><?php  echo $result_n_ar->name_origin."</p>"; } else { echo ""; } ?>
                         <?php if(isset($result_n_ar->pref_title) && strlen($result_n_ar->pref_title) > 0){ ?><p><b>Title:</b><?php  echo $result_n_ar->pref_title."</p>";} else { echo ""; } ?>

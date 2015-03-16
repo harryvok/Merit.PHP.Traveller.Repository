@@ -95,7 +95,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                             <?php
                     }
                 }
-                elseif(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
+                else if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
                     $result_n_ar = $GLOBALS['result']->name_search_det->name_search;
                     $i++;
                     $set = "namerow_00";
