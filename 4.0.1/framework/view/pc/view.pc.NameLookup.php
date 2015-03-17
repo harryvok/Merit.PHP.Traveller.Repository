@@ -138,4 +138,11 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
     </div>
 <?php
 }
+else{
+    ?>
+    <script type="text/javascript">
+        $(document).ready(function () { $('#popup').fadeOut("fast"); });
+    </script>
+<?php
+}
 ?>
