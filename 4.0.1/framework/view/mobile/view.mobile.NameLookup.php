@@ -1,7 +1,7 @@
 <?php
 
 if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) >0){
-	?>
+?>
     <script type="text/javascript">
 	 $(document).ready(function(){
 	     $("#popup").popup("open");
@@ -60,12 +60,12 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
     	<p>
         <ul data-role="listview" data-filter="true" data-filter-placeholder="Search names..." data-inset="true">
             <?php
-            $i = 0;
-            if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) > 1){
-                foreach($GLOBALS['result']->name_search_det->name_search as $result_n_ar){
-                    $i++;
-                    $set = "namerow_".$i;            
-                     ?>
+    $i = 0;
+    if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) > 1){
+        foreach($GLOBALS['result']->name_search_det->name_search as $result_n_ar){
+            $i++;
+            $set = "namerow_".$i;            
+            ?>
                     <input type="hidden" id="ret_<?php echo $set; ?>_name_origin" value="<?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?>" />
                     <input type="hidden" id="ret_<?php echo $set; ?>_name_ctr" value="<?php if(isset($result_n_ar->name_ctr)){ echo $result_n_ar->name_ctr; } else { echo ""; } ?>" />
                     <input type="hidden" id="ret_<?php echo $set; ?>_name_id" value="<?php if(isset($result_n_ar->name_id)){ echo $result_n_ar->name_id; } else { echo ""; } ?>" />
@@ -80,27 +80,36 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                     <input type="hidden" id="ret_<?php echo $set; ?>_name_origin_code" value="<?php if(isset($result_n_ar->name_origin_code)){ echo $result_n_ar->name_origin_code; } else { echo ""; } ?>" />
                         <li class="name_row" id="<?php echo $set; ?>">
                             <a>
-                                <?php if(isset($result_n_ar->name_origin) && strlen($result_n_ar->name_origin) > 0){ ?><p><b>Origin:</b><?php  echo $result_n_ar->name_origin."</p>"; } else { echo ""; ?>
-                                <?php if(isset($result_n_ar->pref_title) && strlen($result_n_ar->pref_title) > 0){ ?><p><b>Title:</b><?php  echo $result_n_ar->pref_title."</p>";} else { echo ""; } ?>
-                                <?php if(isset($result_n_ar->given_names) && strlen($result_n_ar->given_names) > 0 || isset($result_n_ar->surname) && strlen($result_n_ar->surname) > 0){ ?><p><b>Name:</b> <?php  echo $result_n_ar->given_names." ".$result_n_ar->surname."</p>"; } else { echo ""; } ?>
-                                <?php if(isset($result_n_ar->telephone) && strlen($result_n_ar->telephone) > 0){ ?><p><b>Phone:</b> <?php echo $result_n_ar->telephone."</p>"; } else { echo ""; } ?>
-                                <?php if(isset($result_n_ar->work_phone) && strlen($result_n_ar->work_phone) > 0){ ?><p><b>Work Phone:</b> <?php echo $result_n_ar->work_phone."</p>"; } else { echo ""; } ?>
-                                <?php if(isset($result_n_ar->mobile_no) && strlen($result_n_ar->mobile_no) > 0){ ?><p><b>Mobile No:</b> <?php echo $result_n_ar->mobile_no."</p>"; } else { echo ""; } ?>
-                                <?php if(isset($result_n_ar->email_address) && strlen($result_n_ar->email_address) > 0){ ?><p><b>Email:</b> <?php echo $result_n_ar->email_address."</p>"; } else { echo ""; } ?>
-                                <?php if(isset($result_n_ar->company_name) && strlen($result_n_ar->company_name) > 0){ ?><p><b>Company Name:</b> <?php echo $result_n_ar->company_name."</p>"; } else { echo ""; } ?>
+                                <?php if(isset($result_n_ar->name_origin) && strlen($result_n_ar->name_origin) > 0){ ?><p><b>Origin:</b><?php  echo $result_n_ar->name_origin."</p>";
+                                      } else {
+                                          echo ""; ?>
+                                <?php if(isset($result_n_ar->pref_title) && strlen($result_n_ar->pref_title) > 0){ ?><p><b>Title:</b><?php  echo $result_n_ar->pref_title."</p>";
+                                      } else { echo ""; } ?>
+                                <?php if(isset($result_n_ar->given_names) && strlen($result_n_ar->given_names) > 0 || isset($result_n_ar->surname) && strlen($result_n_ar->surname) > 0){ ?><p><b>Name:</b> <?php  echo $result_n_ar->given_names." ".$result_n_ar->surname."</p>";
+                                      } else { echo ""; } ?>
+                                <?php if(isset($result_n_ar->telephone) && strlen($result_n_ar->telephone) > 0){ ?><p><b>Phone:</b> <?php echo $result_n_ar->telephone."</p>";
+                                      } else { echo ""; } ?>
+                                <?php if(isset($result_n_ar->work_phone) && strlen($result_n_ar->work_phone) > 0){ ?><p><b>Work Phone:</b> <?php echo $result_n_ar->work_phone."</p>";
+                                      } else { echo ""; } ?>
+                                <?php if(isset($result_n_ar->mobile_no) && strlen($result_n_ar->mobile_no) > 0){ ?><p><b>Mobile No:</b> <?php echo $result_n_ar->mobile_no."</p>";
+                                      } else { echo ""; } ?>
+                                <?php if(isset($result_n_ar->email_address) && strlen($result_n_ar->email_address) > 0){ ?><p><b>Email:</b> <?php echo $result_n_ar->email_address."</p>";
+                                      } else { echo ""; } ?>
+                                <?php if(isset($result_n_ar->company_name) && strlen($result_n_ar->company_name) > 0){ ?><p><b>Company Name:</b> <?php echo $result_n_ar->company_name."</p>";
+                                      } else { echo ""; } ?>
                             </a> 
                         </li>
                     <?php
-                    $i++;
-                    }
-                }
-            }
-            else if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
-                $result_n_ar = $GLOBALS['result']->name_search_det->name_search;
-                $i++;
-                $set = "namerow_00";
-                ?>
-                    input type="hidden" id="ret_<?php echo $set; ?>_name_origin" value="<?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?>" />
+                                          $i++;
+                                          
+                                      }
+        }
+    }else if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
+        $result_n_ar = $GLOBALS['result']->name_search_det->name_search;
+        $i++;
+        $set = "namerow_00";
+                    ?>
+                    <input type="hidden" id="ret_<?php echo $set; ?>_name_origin" value="<?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?>" />
                     <input type="hidden" id="ret_<?php echo $set; ?>_name_ctr" value="<?php if(isset($result_n_ar->name_ctr)){ echo $result_n_ar->name_ctr; } else { echo ""; } ?>" />
                     <input type="hidden" id="ret_<?php echo $set; ?>_name_id" value="<?php if(isset($result_n_ar->name_id)){ echo $result_n_ar->name_id; } else { echo ""; } ?>" />
                     <input type="hidden" id="ret_<?php echo $set; ?>_surname" value="<?php if(isset($result_n_ar->surname)){ echo $result_n_ar->surname; } else { echo ""; } ?>" />
@@ -114,20 +123,30 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                     <input type="hidden" id="ret_<?php echo $set; ?>_name_origin_code" value="<?php if(isset($result_n_ar->name_origin_code)){ echo $result_n_ar->name_origin_code; } else { echo ""; } ?>" />
            	        <li class="name_row" id="<?php echo $set; ?>">
 				        <a>
-                            <?php if(isset($result_n_ar->name_origin) && strlen($result_n_ar->name_origin) > 0){ ?><p><b>Origin:</b><?php  echo $result_n_ar->name_origin."</p>"; } else { echo ""; ?>
-                            <?php if(isset($result_n_ar->pref_title) && strlen($result_n_ar->pref_title) > 0){ ?><p><b>Title:</b><?php  echo $result_n_ar->pref_title."</p>";} else { echo ""; } ?>
-                            <?php if(isset($result_n_ar->given_names) && strlen($result_n_ar->given_names) > 0 || isset($result_n_ar->surname) && strlen($result_n_ar->surname) > 0){ ?><p><b>Name:</b> <?php  echo $result_n_ar->given_names." ".$result_n_ar->surname."</p>"; } else { echo ""; } ?>
-                            <?php if(isset($result_n_ar->telephone) && strlen($result_n_ar->telephone) > 0){ ?><p><b>Phone:</b> <?php echo $result_n_ar->telephone."</p>"; } else { echo ""; } ?>
-                            <?php if(isset($result_n_ar->work_phone) && strlen($result_n_ar->work_phone) > 0){ ?><p><b>Work Phone:</b> <?php echo $result_n_ar->work_phone."</p>"; } else { echo ""; } ?>
-                            <?php if(isset($result_n_ar->mobile_no) && strlen($result_n_ar->mobile_no) > 0){ ?><p><b>Mobile No:</b> <?php echo $result_n_ar->mobile_no."</p>"; } else { echo ""; } ?>
-                            <?php if(isset($result_n_ar->email_address) && strlen($result_n_ar->email_address) > 0){ ?><p><b>Email:</b> <?php echo $result_n_ar->email_address."</p>"; } else { echo ""; } ?>
-                            <?php if(isset($result_n_ar->company_name) && strlen($result_n_ar->company_name) > 0){ ?><p><b>Company Name:</b> <?php echo $result_n_ar->company_name."</p>"; } else { echo ""; } ?>
+                            <?php if(isset($result_n_ar->name_origin) && strlen($result_n_ar->name_origin) > 0){ ?><p><b>Origin:</b><?php  echo $result_n_ar->name_origin."</p>";
+                                  } else {
+                                      echo ""; ?>
+                            <?php if(isset($result_n_ar->pref_title) && strlen($result_n_ar->pref_title) > 0){ ?><p><b>Title:</b><?php  echo $result_n_ar->pref_title."</p>";
+                                  } else { echo ""; } ?>
+                            <?php if(isset($result_n_ar->given_names) && strlen($result_n_ar->given_names) > 0 || isset($result_n_ar->surname) && strlen($result_n_ar->surname) > 0){ ?><p><b>Name:</b> <?php  echo $result_n_ar->given_names." ".$result_n_ar->surname."</p>";
+                                  } else { echo ""; } ?>
+                            <?php if(isset($result_n_ar->telephone) && strlen($result_n_ar->telephone) > 0){ ?><p><b>Phone:</b> <?php echo $result_n_ar->telephone."</p>";
+                                  } else { echo ""; } ?>
+                            <?php if(isset($result_n_ar->work_phone) && strlen($result_n_ar->work_phone) > 0){ ?><p><b>Work Phone:</b> <?php echo $result_n_ar->work_phone."</p>";
+                                  } else { echo ""; } ?>
+                            <?php if(isset($result_n_ar->mobile_no) && strlen($result_n_ar->mobile_no) > 0){ ?><p><b>Mobile No:</b> <?php echo $result_n_ar->mobile_no."</p>";
+                                  } else { echo ""; } ?>
+                            <?php if(isset($result_n_ar->email_address) && strlen($result_n_ar->email_address) > 0){ ?><p><b>Email:</b> <?php echo $result_n_ar->email_address."</p>";
+                                  } else { echo ""; } ?>
+                            <?php if(isset($result_n_ar->company_name) && strlen($result_n_ar->company_name) > 0){ ?><p><b>Company Name:</b> <?php echo $result_n_ar->company_name."</p>";
+                                  } else { echo ""; } ?>
                         </a>
                     </li><?php
-                }
-            ?>
+                                  }
+                         ?>
         </ul>
     </div>
 <?php
+    }
 }
 ?>

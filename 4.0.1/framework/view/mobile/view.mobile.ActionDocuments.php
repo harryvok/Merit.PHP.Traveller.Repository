@@ -61,7 +61,7 @@ if($GLOBALS['result']['errorConnecting']== false){
     <a data-role="button" class="documentSearchButton" href="#">Search...</a>
     
     <div id="searchResults"></div>
-    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) != "INFOXPERT"){?> 
+    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" ){?> 
     <hr />
     <label>New File</label>
     <input type="file" id="newDocument" name="newDocument" />
