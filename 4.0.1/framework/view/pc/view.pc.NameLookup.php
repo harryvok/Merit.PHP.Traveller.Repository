@@ -40,7 +40,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
             <thead>
             <tr>
                 <th class="job-id sortable">Origin</th>
-                <th>Title</th>
+                <th class="job-id sortable">Title</th>
                 <th class="date sortable">Name</th>
                 <th class="job-id sortable">Telephone</th>
                 <th class="job-id sortable">Work Phone</th>
