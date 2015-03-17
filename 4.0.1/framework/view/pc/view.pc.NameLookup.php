@@ -83,7 +83,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                         
 
                             <tr class="<?php echo $class; ?> name_row" id="<?php echo $set; ?>" title="">
-                                <td ><?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?></td>
+                                <td><?php if(isset($result_n_ar->name_origin)){ echo $result_n_ar->name_origin; } else { echo ""; } ?></td>
                                 <td><?php if(isset($result_n_ar->pref_title)){ echo $result_n_ar->pref_title; } else { echo ""; } ?></td>
                                 <td><?php if(isset($result_n_ar->given_names)){ echo $result_n_ar->given_names; } else { echo ""; } ?> <?php if(isset($result_n_ar->surname)){ echo $result_n_ar->surname; } else { echo ""; } ?></td>
                                 <td><?php if(isset($result_n_ar->telephone)){ echo $result_n_ar->telephone; } else { echo ""; } ?></td>
@@ -93,13 +93,13 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                                 <td><?php if(isset($result_n_ar->company_name)){ echo $result_n_ar->company_name; } else { echo ""; } ?></td>
                             </tr>
                             <tr id="<?php echo $set; ?>-addressRow" style="display:none;" class="addressRow">
-                	            <td id="<?php echo $set; ?>-addresses" colspan="7">
+                	            <td id="<?php echo $set; ?>-addresses" colspan="8">
                                 </td>
                             </tr>
                             <?php
                     }
                 }
-                elseif(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
+                else if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['result']->name_search_det->name_search) == 1){
                     $result_n_ar = $GLOBALS['result']->name_search_det->name_search;
                     $i++;
                     $set = "namerow_00";
@@ -127,7 +127,7 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
                         <td><?php if(isset($result_n_ar->company_name)){ echo $result_n_ar->company_name; } else { echo ""; } ?></td>
                     </tr>
                     <tr id="<?php echo $set; ?>-addressRow" style="display:none;" class="addressRow">
-                            <td id="<?php echo $set; ?>-addresses" colspan="7">
+                            <td id="<?php echo $set; ?>-addresses" colspan="8">
                             </td>
                         </tr>
                     <?php

@@ -1114,16 +1114,16 @@ if( $_SESSION['roleSecurity']->maint_udf == "Y"){
         <input type="hidden" name="val-u" id="Hidden1" value="0" />
         <span class="summaryColumnTitle">Action User Defined Fields   </span>
         <?php
-            if($count_udf > 0 && $GLOBALS['act_finalised_ind'] == "N" && $_SESSION['roleSecurity']->mod_udf == "Y"){
-        ?>
-        <div style="float:right;" class="openPopup">
-        <span style="text-decoration:none;">
-        <img src="images/iconAdd.png" /> 
-        </span>
-        <span  class="openPopup" id="RequestUDFs">Modify</span>
-        </div>
-        <?php
-            }
+        if($count_udf > 0 && $GLOBALS['act_finalised_ind'] == "N" && $_SESSION['roleSecurity']->mod_udf == "Y"){
+            ?>
+            <div style="float: right;" class="openPopup">
+                <span style="text-decoration: none;">
+                    <img src="images/iconAdd.png" />
+                </span>
+                <span class="openPopup" id="RequestUDFs">Modify</span>
+            </div>
+            <?php
+        }
         ?>
         <div id="Div2" class="dropdown">
 

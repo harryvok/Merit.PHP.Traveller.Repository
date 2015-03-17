@@ -153,9 +153,6 @@ class Model {
         $parameters_fi->password = $_SESSION['password'];
         $parameters_fi->filter_type = $params['filter_type'];
         $result_fi = $this->WebService(MERIT_ACTION_FILE, "ws_get_officer_filters", $parameters_fi)->filter_det;
-        
-        
-        
         if($params['filter_type'] == "action") {
             $_SESSION['act_back_filter'] ="";
             $_SESSION['req_back_filter'] ="";
@@ -1849,6 +1846,7 @@ class Model {
         $parameters->notify_input->sms_name = array("string" => $_POST['sms_name']);
         $parameters->notify_input->sms_name_type = array("string" => $_POST['sms_name_type']);
         $parameters->notify_input->sms_name_code = array("string" => $_POST['sms_name_code']);
+        $parameters->notify_input->manual_ind = "Y";
         
         try {
             $result = $this->WebService(MERIT_REQUEST_FILE, "ws_send_manual_notification", $parameters);

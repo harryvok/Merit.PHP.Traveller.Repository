@@ -447,7 +447,7 @@ $(document).ready(function () {
                     },
                     success: function (data) {
                         $('#popup').html(data);
-                        //$("#popup").attr("data-position-to", "window");
+                        //alert(data);
                         $(self).removeClass("ui-autocomplete-loading");               
                     }
                 });
