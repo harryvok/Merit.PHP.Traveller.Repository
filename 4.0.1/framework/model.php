@@ -1856,7 +1856,11 @@ class Model {
             $_SESSION['done'] = 1;
             $_SESSION['success'] = 1;
             $_SESSION['success_send_notification'] = 1;
-
+            
+            $_SESSION['error']=1;
+            $_SESSION['error_custom'] = 1;
+            $_SESSION['custom_error'] = $_SESSION['test'];
+            
             // Redirect to the request
             if(strlen($_POST['action_id']) > 0) $id = $_POST['action_id']; else $id = $_POST['request_id'];
             $_SESSION['redirect'] = "index.php?page=view-"."request"."&id=".$id;

@@ -328,11 +328,11 @@ if(!isset($_GET['d'])){
                         <div class="float-left">
                             <div class="column r25">
                                 <label for="pref_title">Title<span class="pref_title_label mandLabel" style="color:red; display:none;"> *</span></label>
-                                <input  class="text getlist" name='cust_title' data-mand="pref_title" id="pref_title" maxlength='5' value='<?php if(isset($_SESSION['rem_cust_title'])){ echo $_SESSION['rem_cust_title']; } ?>' onChange="capitalise('pref_title')">
+                                <input  class="text" name='cust_title' data-mand="pref_title" id="pref_title" maxlength='5' value='<?php if(isset($_SESSION['rem_cust_title'])){ echo $_SESSION['rem_cust_title']; } ?>' onChange="capitalise('pref_title')">
                             </div>
                             <div class="column r25">
                                 <label for="given">Given<span class="given_name_label mandLabel" style="color:red; display:none;"> *</span></label>
-                                <input class="text getlist" name='cust_given' data-mand="given_name" id="given" maxlength='30' value='<?php if(isset($_SESSION['rem_cust_given'])){ echo $_SESSION['rem_cust_given']; } ?>' onChange="capitalise('given')">
+                                <input class="text" name='cust_given' data-mand="given_name" id="given" maxlength='30' value='<?php if(isset($_SESSION['rem_cust_given'])){ echo $_SESSION['rem_cust_given']; } ?>' onChange="capitalise('given')">
                             </div>
                             <div class="column r25">
                                 <label for="surname">Surname<span class="surname_label mandLabel" style="color:red; display:none;"> *</span></label>

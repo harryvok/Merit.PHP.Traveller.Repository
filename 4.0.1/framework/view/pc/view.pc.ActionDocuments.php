@@ -206,7 +206,7 @@ if($GLOBALS['result']['errorConnecting']== false){
             <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b><?php echo $FullText;?></b></label>&nbsp
         <?php } ?>
         <input type="button" id="searchDocument" value="Search"/>
-        <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) != "INFOXPERT"){?> 
+        <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT"){?> 
           <div style="float:right">
               <b>Add new:</b>
               <input type="file" id="newDocument" name="newDocument" value="" style="width:200px;padding-bottom:23px;"/>
