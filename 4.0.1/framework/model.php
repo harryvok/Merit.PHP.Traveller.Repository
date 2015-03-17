@@ -1846,6 +1846,7 @@ class Model {
         $parameters->notify_input->sms_name = array("string" => $_POST['sms_name']);
         $parameters->notify_input->sms_name_type = array("string" => $_POST['sms_name_type']);
         $parameters->notify_input->sms_name_code = array("string" => $_POST['sms_name_code']);
+        $parameters->notify_input->manual_ind = "Y";
         
         try {
             $result = $this->WebService(MERIT_REQUEST_FILE, "ws_send_manual_notification", $parameters);

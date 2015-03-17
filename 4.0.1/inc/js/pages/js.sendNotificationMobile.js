@@ -132,7 +132,9 @@ $(document).ready(function () {
     // SUBMIT BUTTON ---------------------------------------------------------
 
     $("#sendbutton").click(function () {
+        $("#sendbutton").remove();
         $("#notificationForm").submit();
+        
     });
     // -----------------------------------------------------------------------
 
