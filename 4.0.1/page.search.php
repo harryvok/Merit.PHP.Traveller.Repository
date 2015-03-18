@@ -134,8 +134,9 @@
                         url: 'inc/ajax/ajax.RequestSearch.php',
                         data: $("#advancedSearch").serialize(),
                         type: 'POST',
-                        timeout: 30000,
+                        timeout: 60000,
                         success: function (data) {
+                            Unload();
                             $("#searchResults").html(data);
                             window.scrollTo(0, 0);
                         },
@@ -150,7 +151,7 @@
 
                         }                       
                     });
-                    Unload();
+                    
                 }
 
                 $("#reset").click(function () {

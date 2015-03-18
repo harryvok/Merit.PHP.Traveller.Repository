@@ -3,7 +3,7 @@
   <PropertyGroup>
     <DeleteExistingFiles>False</DeleteExistingFiles>
     <SkipRemoteFilesCheck>True</SkipRemoteFilesCheck>
-    <publishUrl>\\MERIT-DBSERVER\Traveller_Test\CRM\Dev\4.1.4</publishUrl>
+    <publishUrl>\\MERIT-DBSERVER\Traveller_Test\CRM\Dev\4.1.6</publishUrl>
     <WebPublishMethod>FileSystem</WebPublishMethod>
   </PropertyGroup>
 </Project>
