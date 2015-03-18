@@ -136,7 +136,6 @@
                         type: 'POST',
                         timeout: 60000,
                         success: function (data) {
-                            Unload();
                             $("#searchResults").html(data);
                             window.scrollTo(0, 0);
                         },
@@ -151,7 +150,7 @@
 
                         }                       
                     });
-                    
+                    Unload();
                 }
 
                 $("#reset").click(function () {
