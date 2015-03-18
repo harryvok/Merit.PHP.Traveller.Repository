@@ -180,11 +180,17 @@
                         </tr>
                         <tr>
                             <td class="label">Request:</td>
-                            <td class="box"><input name='requestInput' id="requestInput"  placeholder="Search..." value='<?php if(isset($_SESSION['requestInput'])){ echo $_SESSION['requestInput']; } ?>'><input type="hidden" name='request' id="request" value='<?php if(isset($_SESSION['request'])){ echo $_SESSION['request']; } ?>'></td>
+                            <td class="box">
+                                <input name='requestInput' id="requestInput"  placeholder="Search..." value='<?php if(isset($_SESSION['requestInput'])){ echo $_SESSION['requestInput']; } ?>'>
+                                <input type="hidden" name='request' id="request" value='<?php if(isset($_SESSION['request'])){ echo $_SESSION['request']; } ?>'>
+                            </td>
                         </tr>
                         <tr>
                             <td class="label">Function:</td>
-                            <td class="box"><input name='functionInput' id="functionInput"  placeholder="Search..." value='<?php if(isset($_SESSION['functionInput'])){ echo $_SESSION['functionInput']; } ?>'><input type="hidden" name='function' id="function" value='<?php if(isset($_SESSION['function'])){ echo $_SESSION['function']; } ?>'></td>
+                            <td class="box">
+                                <input name='functionInput' id="functionInput"  placeholder="Search..." value='<?php if(isset($_SESSION['functionInput'])){ echo $_SESSION['functionInput']; } ?>'>
+                                <input type="hidden" name='function' id="function" value='<?php if(isset($_SESSION['function'])){ echo $_SESSION['function']; } ?>'>
+                            </td>
                         </tr>
                     </table>
                 </div>

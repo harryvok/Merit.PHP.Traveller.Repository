@@ -10,32 +10,33 @@ $_SESSION['search'] = $search;
 ?>
 <script type="text/javascript">
 	function change_req(id){
-		var rowId = document.getElementById(id).innerHTML;
-		window.location = "index.php?page=view-request&id="+rowId;
+	    var rowId = document.getElementById(id).innerHTML;
+        window.location = "index.php?page=view-request&id=" + rowId;
 	}
 
-	function change_act(id){
-		var rowId = document.getElementById(id).innerHTML;
-		window.location = "index.php?page=view-action&id="+rowId;
+	function change_act(id) {
+	    var rowId = document.getElementById(id).innerHTML;
+	    window.location = "index.php?page=view-action&id=" + rowId;
 	}
-	function change_add(id){
-		var rowId = document.getElementById(id).innerHTML;
-		window.location = "index.php?page=view-address&id="+rowId;
+	function change_add(id) {
+	    var rowId = document.getElementById(id).innerHTML;
+	   window.location = "index.php?page=view-address&id=" + rowId;
 	}
-	function change_name(id){
-		var rowId = document.getElementById(id).innerHTML;
-		window.location = "index.php?page=view-name&id="+rowId;
+	function change_name(id) {
+	    var rowId = document.getElementById(id).innerHTML;
+	    window.location = "index.php?page=view-name&id=" + rowId;
 	}
-	function change_addex(id){
-		var rowId = document.getElementById(id).innerHTML;
-		window.location = "index.php?page=view-address&id="+rowId+"&ex=1";
+	function change_addex(id) {
+	    var rowId = document.getElementById(id).innerHTML;
+	    window.location = "index.php?page=view-address&id=" + rowId + "&ex=1";
 	}
-	function change_nameex(id){
-		var rowId = document.getElementById(id).innerHTML;
-		window.location = "index.php?page=view-name&id="+rowId+"&ex=1";
+	function change_nameex(id) {
+	    var rowId = document.getElementById(id).innerHTML;
+	    window.location = "index.php?page=view-name&id=" + rowId + "&ex=1";
 	}
-	function change_off(id, rowId){
-		window.location = "index.php?page=view-officer&id="+rowId;
+	function change_off(id, rowId) {
+	    var rowId = document.getElementById(id).innerHTML;
+	    window.location = "index.php?page=view-officer&id=" + rowId;
 	}
 	function change_ani(id){
 		var rowId = document.getElementById(id).innerHTML;
