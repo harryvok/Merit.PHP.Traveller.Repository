@@ -96,6 +96,79 @@
     <div id="adv_search_query" style="display:none">
     </div>
     <div id="form">
+<<<<<<< HEAD
+=======
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#submit").click(function () {
+                    $(".dateField").each(function (index, element) {
+                        if ($(element).val() == "dd/mm/yyyy") {
+                            $(element).val("");
+                        }
+                    });
+                    $(".timeField").each(function (index, element) {
+                        if ($(element).val() == "--:-- --") {
+                            $(element).val("");
+                        }
+                    });
+                    submit();
+                });
+
+                $('body').on('keyup', function (e) {
+                    if (e.which == 13) {
+                        $(".dateField").each(function (index, element) {
+                            if ($(element).val() == "dd/mm/yyyy") {
+                                $(element).val("");
+                            }
+                        });
+                        $(".timeField").each(function (index, element) {
+                            if ($(element).val() == "--:-- --") {
+                                $(element).val("");
+                            }
+                        });
+                        submit();
+                    }
+                });
+                $("input[type='reset']").click(function () {
+                    $("input[type=text],textarea,select").val("");
+                    $("#global-udfs").html("");
+                    $("#udfs").hide();
+                    $("#service").val("");
+                    $("#request").val("");
+                    $("#function").val("");
+                });
+
+                function submit() {
+
+                    Load();
+                    $.ajax({
+                        url: 'inc/ajax/ajax.RequestSearch.php',
+                        data: $("#advancedSearch").serialize(),
+                        type: 'POST',            
+                        success: function (data) {
+                            Unload();
+                            $("#searchResults").html(data);
+                            window.scrollTo(0, 0);
+                        },
+                        error: function (x, t, m) {
+                            Unload();                        
+                                alert("There was an error with the search. Please Narrow your search and try again.");                         
+                        }                       
+                    });
+                }
+
+                $("#reset").click(function () {
+                    $("#searchResults").html("");
+                });
+
+                
+
+            });
+
+        </script>
+
+
+>>>>>>> 016598e8728d4f10317209d49465d3f604410989
         <form id="advancedSearch">
             <input type='hidden' name='udfs_exist' id='udfs_exist' value='0' />
             <div class="float-left">

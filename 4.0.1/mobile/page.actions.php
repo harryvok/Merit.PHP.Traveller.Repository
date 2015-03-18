@@ -18,36 +18,28 @@ if(isset($_SESSION['user_id'])){
 	        getIntray("action", filtercode);
 	    }, settime);
 	});
-	
-	</script>
-	
-	<div data-role="page" id="default">
-      <div data-role="header" data-tap-toggle="false" data-position="fixed">
-          <h1>Actions</h1>
-      </div>
-      <div data-role="content">
+</script>
+<div data-role="page" id="default">
+    <div data-role="header" data-tap-toggle="false" data-position="fixed">
+        <h1>Actions</h1>
+    </div>
+    <div data-role="content">
         <?php include("mobile/page.navSidebar.php"); ?>
         <div class="content-primary">
-          <div style="float:left; width:100%; display:block;"><?php
-		  include("mobile/page.output.php");
-          ?>
-		  </div>
-		  
-		  <form name="jump" style="float:left; width:100%; display:block;">
-				<?php
-		$controller->Dropdown("Filters", "Filters", array("filter" => "A", "filter_type" => "action"));
-		?>  
-                                              
-		  </form>
-		  
-		  
-		  <div id="actionIntray">
-          
-          </div>
-		 </div>
-      </div>
-	
-	<?php
+            <?php
+            include("mobile/page.output.php");
+            ?>		  
+            <form name="jump">
+                <?php
+                $controller->Dropdown("Filters", "Filters", array("filter" => "A", "filter_type" => "action"));
+                ?>                           
+            </form>		  
+            <div id="actionIntray">
+            </div>
+        </div>
+    </div>
+</div>
+<?php
 	
 }
 else{

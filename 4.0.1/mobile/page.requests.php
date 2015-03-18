@@ -20,33 +20,27 @@ $(document).on('pageinit', function(){
 });
 </script>
 	
-	<div data-role="page" id="default">
-      <div data-role="header" data-tap-toggle="false" data-position="fixed">
-      	<h1>Requests</h1>
-      </div>
-      <div data-role="content">
-      <?php include("mobile/page.navSidebar.php"); ?>
+<div data-role="page" id="default">
+    <div data-role="header" data-tap-toggle="false" data-position="">
+        <h1>Requests</h1>
+    </div>
+    <div data-role="content">
+        <?php include("mobile/page.navSidebar.php"); ?>
         <div class="content-primary">
-          <?php
-		  include("mobile/page.output.php");
-		  ?>
-		 
-		  <form name="jump">
-				<?php
-		$controller->Dropdown("Filters", "Filters", array("filter" => "C", "filter_type" => "complaint"));
-		?>
-                
-		  </form>
-		  
-		  
-		  <div id="requestIntray">
-          
-          </div>
-		  </div>
-      </div>
-	
-	<?php
-	
+            <?php
+            include("mobile/page.output.php");
+            ?>
+            <form name="jump">
+                <?php
+                $controller->Dropdown("Filters", "Filters", array("filter" => "C", "filter_type" => "complaint"));
+                ?>
+            </form>
+            <div id="requestIntray">
+            </div>
+        </div>
+    </div>
+</div>
+<?php
 }
 else{
 	$_SESSION['error_not_logged_in'] = 1;
