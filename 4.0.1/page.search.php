@@ -96,8 +96,6 @@
     <div id="adv_search_query" style="display:none">
     </div>
     <div id="form">
-<<<<<<< HEAD
-=======
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#submit").click(function () {
@@ -166,9 +164,6 @@
             });
 
         </script>
-
-
->>>>>>> 016598e8728d4f10317209d49465d3f604410989
         <form id="advancedSearch">
             <input type='hidden' name='udfs_exist' id='udfs_exist' value='0' />
             <div class="float-left">
