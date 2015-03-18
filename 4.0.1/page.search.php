@@ -133,24 +133,17 @@
                     $.ajax({
                         url: 'inc/ajax/ajax.RequestSearch.php',
                         data: $("#advancedSearch").serialize(),
-                        type: 'POST',
-                        timeout: 60000,
+                        type: 'POST',            
                         success: function (data) {
+                            Unload();
                             $("#searchResults").html(data);
                             window.scrollTo(0, 0);
                         },
                         error: function (x, t, m) {
-                            Unload();
-                            if (t == "timeout") {
-                                alert("Search timed out. Please narrow your search.");
-                            }
-                            else {
-                                alert("There was an error with the search. Please Narrow your search and try again.");
-                            }
-
+                            Unload();                        
+                                alert("There was an error with the search. Please Narrow your search and try again.");                         
                         }                       
                     });
-                    Unload();
                 }
 
                 $("#reset").click(function () {
