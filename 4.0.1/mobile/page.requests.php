@@ -39,7 +39,6 @@ $(document).on('pageinit', function(){
             </div>
         </div>
     </div>
-</div>
 <?php
 }
 else{
