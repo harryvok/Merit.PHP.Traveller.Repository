@@ -12,6 +12,10 @@ if(isset($GLOBALS['result']->name_search_det->name_search) && count($GLOBALS['re
 
         });
         $('.name_row').click(function () {
+            $("#o_cstreet").removeClass("required");
+            $("#o_ctype").removeClass("required");
+            $("#o_csuburb").removeClass("required");
+            $(this).removeClass("required");
             var id = $(this).attr('id');
             //alert(id);
             $(".addressRow").hide();

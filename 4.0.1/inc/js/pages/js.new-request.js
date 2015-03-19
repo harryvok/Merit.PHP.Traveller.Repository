@@ -1077,6 +1077,7 @@ $(document).ready(function () {
         $.validator.setDefaults({
             ignore: ""
         })
+        
         $("#newrequest").validate({
             submitHandler: function (form) {
 
