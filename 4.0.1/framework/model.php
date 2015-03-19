@@ -91,11 +91,13 @@ class Model {
                 return $result;
             }
             catch(Exception $e){
-                $_SESSION['redirect'] = "index.php";
-                $_SESSION['done'] = 1;
-                $_SESSION['error'] = 1;
-                $_SESSION['error_web_service'] = 1;
-                $_SESSION['custom_error'] = $web_service." ".$e->getMessage();
+                if(($web_service != "ws_search") && ($web_service != "ws_request_search")){
+                    $_SESSION['redirect'] = "index.php";
+                    $_SESSION['done'] = 1;
+                    $_SESSION['error'] = 1;
+                    $_SESSION['error_web_service'] = 1;
+                    $_SESSION['custom_error'] = $web_service." ".$e->getMessage();                
+                }
                 header("Location: index.php");
                 die();
             }
