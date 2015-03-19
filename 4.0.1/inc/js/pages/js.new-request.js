@@ -1643,14 +1643,17 @@ function clearCustomerAddress() {
     $("#cust_address_id").val("");
     $("#CustAddSummary").prop("disabled", true);
     if ($('#same').val() == "i" || $('#same').val() == "s") {
-        $('#inside_ca').show();
         $('#outside_ca').hide();
+        $('#inside_ca').show();        
         $('#same').val("i");
+        $('#same').selectmenu('refresh');
     }
     else if ($('#same').val() == "o")
     {
         $('#inside_ca').hide();
         $('#outside_ca').show();
+        $('#same').val("i");
+        $('#same').selectmenu('refresh');
     }
 }
 
