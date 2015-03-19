@@ -319,13 +319,13 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
             $("#testing").val($("#ret_request_name_type").val());
         }
 
-    ClearHelpNotes();      
-            GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
-            GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
-            GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
-            CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
-            CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
-            CheckHistory();
+        ClearHelpNotes();      
+        GetHelpNotes("", "", $("#service").val(), sauto, rauto, fauto, "Y");
+        GetHelpNotes("", $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+        GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), sauto, rauto, fauto, "Y");
+        CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
+        CheckMandatoryFields($("#service").val(), $("#request").val(), $("#function").val());
+        CheckHistory();
         
         
             
