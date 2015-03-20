@@ -1,3 +1,11 @@
+<?php  
+if(isset($_GET['clear']) && $_GET['clear'] == 1){
+    unset($_SESSION['search']);	
+}
+if(isset($_GET['search'])){
+        $_SESSION['search'] = $_GET['search'];
+    }
+?>
 <div id="search_form">
     <script type="text/javascript">
          $(document).ready(function () {
@@ -40,7 +48,6 @@
                             $(element).val("");
                         }
                     });
-
                     get_search();
                 }
             });
@@ -85,9 +92,6 @@
                         if (t == "timeout") {
                             alert("Search timed out. Please narrow your search.");
                         }
-                        else {
-                            alert("There was an error with the search. Please Narrow your search and try again.");
-                        }
                     }
                 });
             }
@@ -117,9 +121,9 @@
                         if (t == "timeout") {
                             alert("Search timed out. Please narrow your search.");
                         }
-                        else {
-                            alert("There was an error with the search. Please Narrow your search and try again.");
-                        }
+                        //else {
+                        //    alert("There was an error with the search. Please Narrow your search and try again.");
+                        //}
                     }
                 });
             }

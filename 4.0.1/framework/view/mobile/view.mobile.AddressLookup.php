@@ -3,13 +3,13 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 	?>
     <script type="text/javascript">
 	 $(document).ready(function(){
-		$('.address_row').click(function(){
+	     $('.address_row').click(function () {
 		    var id = "";
 		    id = $(this).attr('id');
 		    $('#same').val('i');
 
             /* What to parse with regEx */
-                var tocheck = $('#ret_' + id + '_house_suffix').val();
+                var tocheck = $('#ret_' + id + '_house_number').val();
 
                 /* Parse to variables */
                 var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];

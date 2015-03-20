@@ -198,18 +198,6 @@
                     <h4>Request Details</h4>
                     <table style="width:100%">
                         <tr>
-                            <td class="label">From:</td>
-                            <td class="box"><input type="text" class="dateField" name="dateFrom" id="dateFrom" value='<?php if(isset($_SESSION['dateFrom'])){ echo $_SESSION['dateFrom']; } ?>'></td>
-                        </tr>    
-                        <tr>
-                            <td class="label">To:</td>
-                            <td class="box"><input type="text" class="dateField" name="dateTo" id="dateTo" value='<?php if(isset($_SESSION['dateTo'])){ echo $_SESSION['dateTo']; } ?>'></td>
-                        </tr>                        
-                        <tr>
-                            <td class="label">Request Description:</td>
-                            <td><input type="text" name="requestDetails" id="requestDetails" value='<?php if(isset($_SESSION['requestDetails'])){ echo $_SESSION['requestDetails']; } ?>'/></td>
-                        </tr> 
-                        <tr>
                             <td class="label">Count Only:</td>
                             <td>
                                 <select name="countOnly" id="countOnly">
@@ -228,7 +216,20 @@
                                     <option <?php if(isset($_SESSION['finalised'])){if ($_SESSION['finalised'] == "Y") { echo "selected"; }} ?> value="Y">Yes</option>
                                 </select>
                             </td>
-                        </tr>                     
+                        </tr>  
+                        <tr>
+                            <td class="label">From:</td>
+                            <td class="box"><input type="text" class="dateField" name="dateFrom" id="dateFrom" value='<?php if(isset($_SESSION['dateFrom'])){ echo $_SESSION['dateFrom']; } ?>'></td>
+                        </tr>    
+                        <tr>
+                            <td class="label">To:</td>
+                            <td class="box"><input type="text" class="dateField" name="dateTo" id="dateTo" value='<?php if(isset($_SESSION['dateTo'])){ echo $_SESSION['dateTo']; } ?>'></td>
+                        </tr>                        
+                        <tr>
+                            <td class="label">Request Description:</td>
+                            <td><input type="text" name="requestDetails" id="requestDetails" value='<?php if(isset($_SESSION['requestDetails'])){ echo $_SESSION['requestDetails']; } ?>'/></td>
+                        </tr> 
+                                           
                     </table>
                 </div>
                 <div id="name_info" data-role="collapsible" data-collapsed="true" class="col" data-content-theme="c">

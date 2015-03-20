@@ -1,3 +1,4 @@
+
 <div id="mobile-footer" data-role="footer" data-id="Traveller" data-position="fixed" data-tap-toggle="false">
         <div data-role="navbar" data-iconpos="bottom" >
         <ul>

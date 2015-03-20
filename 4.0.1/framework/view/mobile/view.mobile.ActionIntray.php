@@ -79,5 +79,4 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
 ?>
 </ul>
 
-
 <a href="#topAnc" data-role="button" data-icon="arrow-u" data-inline="true" data-mini="true"  style="float:right;"data-ajax="false">Go to top</a>

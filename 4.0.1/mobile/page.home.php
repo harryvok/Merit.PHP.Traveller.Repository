@@ -143,7 +143,7 @@
                 }
                 else{
                     if(file_exists("mobile/page.".$page.".php")){
-                        include("mobile/page.".$page.".php");
+                        include("mobile/page.".$page.".php");                    
                         include("mobile/page.navFooter.php");
                     }
                     else{
