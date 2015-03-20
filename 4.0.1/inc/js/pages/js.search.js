@@ -145,13 +145,16 @@ $(document).ready(function () {
     }
 
     /* */
-
     /* INITIALISE */
+    $("#search_adv").on(eventName, function (event) {
+        $("#serviceInput").autoCompleteInit("inc/ajax/ajax.getServiceTypes.php", { term: "" }, serviceResponse);
+        $("#requestInput").autoCompleteInitSeq(requestInit, "inc/ajax/ajax.getRequestTypes.php", { term: "", service_code: function () { return $("#service").val(); } }, requestResponse, function (test) { return true; }, false);
+        $("#functionInput").autoCompleteInitSeq(functionInit, "inc/ajax/ajax.getFunctionTypes.php", { term: "", service_code: function () { return $("#service").val(); }, request_code: function () { return $("#request").val(); } }, functionResponse, function (test) { return true; }, false);
+        $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
 
-    $("#serviceInput").autoCompleteInit("inc/ajax/ajax.getServiceTypes.php", { term: "" }, serviceResponse);
-    $("#requestInput").autoCompleteInitSeq(requestInit, "inc/ajax/ajax.getRequestTypes.php", { term: "", service_code: function () { return $("#service").val(); } }, requestResponse, function (test) { return true; }, false);
-    $("#functionInput").autoCompleteInitSeq(functionInit, "inc/ajax/ajax.getFunctionTypes.php", { term: "", service_code: function () { return $("#service").val(); }, request_code: function () { return $("#request").val(); } }, functionResponse, function (test) { return true; }, false);
-    $("#facilityTypeInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesTypeLookup.php", { term: "" }, facilityTypeResponse);
-
-    /* */
+        /* */
+      
+    });
+    
+    
 });
