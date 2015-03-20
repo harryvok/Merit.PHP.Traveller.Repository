@@ -259,6 +259,7 @@
     </Compile>
     <Compile Include="framework\view\mobile\view.mobile.PropertySearch.php" />
     <Compile Include="framework\view\mobile\view.mobile.ChangeNameDetails.php" />
+    <Compile Include="framework\view\mobile\view.mobile.WorkflowSRF.php" />
     <Compile Include="framework\view\pc\dropdown\view.pc.Centres.php">
       <SubType>Code</SubType>
     </Compile>

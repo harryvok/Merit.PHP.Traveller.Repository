@@ -361,6 +361,7 @@ $(document).ready(function () {
     });
 
     $("#checkforWorkflow").on(eventName, function () {
+    
         Load();
         $.ajax({
             url: 'inc/ajax/ajax.getWorkflowSRF.php',
@@ -376,8 +377,9 @@ $(document).ready(function () {
             dataType: 'html',
             success: function (data) {              
                 Unload();
+ 
                 if (data == "None") {
-                    
+
                     $("#submit").prop('disabled', true).buttonState("disable");
                     $("#saveMore").prop('disabled', true).buttonState("disable");
                     
@@ -388,7 +390,9 @@ $(document).ready(function () {
                         $("#saveMore").prop('disabled', true).buttonState("disable");
                     }
                     else {
-                        $("#submit").prop('disabled', false).buttonState("disable");
+                        $("#submit").prop('disabled', false);
+                        //Harry: why does the code below enable then disable the button? this disables the button in mobile but not pc which isnt right. so ive changed it
+                        //$("#submit").prop('disabled', false).buttonState("disable");
                         $("#saveMore").prop('disabled', false).buttonState("enable");
                     }
 

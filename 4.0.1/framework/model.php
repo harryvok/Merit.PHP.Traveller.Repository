@@ -2458,6 +2458,13 @@ class Model {
                             
                             try {
                                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
+                                if($result->ws_status == -1){
+                                    $_SESSION['done'] = 1;
+                                    $_SESSION['error']=1;
+                                    $_SESSION['error_link_document'] = 1;
+                                    $_SESSION['error_custom'] = 1;
+                                    $_SESSION['custom_error'] = htmlentities($result->ws_message);
+                                }
                             }
                             catch (Exception $e) {
                                 echo $e -> getMessage ();
@@ -4426,10 +4433,19 @@ class Model {
         
             try {
                 $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_document",$parameters);
-                $_SESSION['done'] = 1;
-                $_SESSION['success'] = 1;
-                $_SESSION['success_link_document'] = 1;
-                $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                if($result->ws_status == -1){
+                    $_SESSION['done'] = 1;
+                    $_SESSION['error']=1;
+                    $_SESSION['error_link_document'] = 1;
+                    $_SESSION['error_custom'] = 1;
+                    $_SESSION['custom_error'] = $result->ws_message;
+                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                }else{
+                    $_SESSION['done'] = 1;
+                    $_SESSION['success'] = 1;
+                    $_SESSION['success_link_document'] = 1;
+                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                }
             }
             catch (Exception $e) {
                 echo $e -> getMessage ();

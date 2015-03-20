@@ -11,6 +11,46 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 	?>
     <script type="text/javascript">
         $(document).ready(function () {
+
+            function checkForWorkFlowSRF() {
+                Load();
+                $.ajax({
+                    url: 'inc/ajax/ajax.getWorkflowSRF.php',
+                    type: 'get',
+                    data: {
+                        service_code: $("#service").val(),
+                        request_code: $("#request").val(),
+                        function_code: $("#function").val(),
+                        serviceName: function () { return $("#serviceInput").val() },
+                        requestName: function () { return $("#requestInput").val() },
+                        functionName: function () { return $("#functionInput").val() },
+                    },
+                    dataType: 'html',
+                    success: function (data) {
+                        Unload();
+                        if (data == "None") {
+
+                            $("#submit").prop('disabled', true).buttonState("disable");
+                            $("#saveMore").prop('disabled', true).buttonState("disable");
+
+                        }
+                        else {
+                            if (($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) && ($("#addressId").val() == 0 || $("#addressId").val() == "") && $("#property_no").val() == "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
+                                $("#submit").prop('disabled', true).buttonState("disable");
+                                $("#saveMore").prop('disabled', true).buttonState("disable");
+                            }
+                            else {
+                                $("#submit").prop('disabled', false);
+                                //Harry: why does the code below enable then disable the button? this disables the button in mobile but not pc which isnt right. so ive changed it
+                                //$("#submit").prop('disabled', false).buttonState("disable");
+                                $("#saveMore").prop('disabled', false).buttonState("enable");
+                            }
+
+                        }
+                    }
+                });
+            }
+
             $("#popup").popup("open");
             $("#default").page('destroy');
             $("#default").page();
@@ -36,18 +76,23 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
                 $("#need_f_booking").val($("#ret_" + id + "_need_f_booking").val());
                 $("#request_allowance").val($("#ret_" + id + "_request_allowance").val());
                 $("#function_allowance").val($("#ret_" + id + "_function_allowance").val());
+                $("#edms_autosave_attach").val($("#ret_" + id + "_edms_autosave_attach").val());
                 $("#workflowSRF").prop("disabled", false);
 
+                
                 if ($("#ret_" + id + "_request_need_func").val() == "Y") {
+                    
                     $("#functionInput").addClass("required");
                     $("#functionRequired").show();
-                    $("#checkforWorkflow").trigger("click");
+                    // $("#checkforWorkflow").trigger("click");
+                    checkForWorkFlowSRF();
                 }
                 else {
                     $("#functionRequired").hide();
                     $("#functionInput").removeClass("required"); 
                     $("#ret_" + id + "_function_name_type").val($("#ret_" + id + "_request_name_type").val());
-                    $("#checkforWorkflow").trigger("click");
+                    //$("#checkforWorkflow").trigger("click");
+                    checkForWorkFlowSRF();
                 }
 
                 if ($("#ret_" + id + "_function_name").val().length > 0) {
@@ -128,6 +173,7 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
         <input type="hidden" id="ret_<?php echo $set; ?>_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
         <input type="hidden" id="ret_<?php echo $set; ?>_request_allowance" value="<?php if(isset($result_n_ar->request_annual_allow_no)){ echo $result_n_ar->request_annual_allow_no; } else { echo 0; } ?>" />
         <input type="hidden" id="ret_<?php echo $set; ?>_function_allowance" value="<?php if(isset($result_n_ar->function_annual_allow_no)){ echo $result_n_ar->function_annual_allow_no; } else { echo 0; } ?>" />
+        <input type="hidden" id="ret_<?php echo $set; ?>_edms_autosave_attach" value="<?php if(isset($result_n_ar->edms_autosave_attach)){ echo $result_n_ar->edms_autosave_attach; } else { echo "N"; } ?>" />
 			<li class="keyword_row" id="<?php echo $set; ?>">
             	<a>
 				<p><b>Keyword:</b> <?php if(isset($result_n_ar->keyword)){ echo $result_n_ar->keyword; } else { echo ""; } ?></p>
@@ -167,8 +213,48 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
     <input type="hidden" id="ret_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
     <input type="hidden" id="ret_request_allowance" value="<?php if(isset($result_n_ar->request_annual_allow_no)){ echo $result_n_ar->request_annual_allow_no; } else { echo 0; } ?>" />
     <input type="hidden" id="ret_function_allowance" value="<?php if(isset($result_n_ar->function_annual_allow_no)){ echo $result_n_ar->function_annual_allow_no; } else { echo 0; } ?>" />
+    <input type="hidden" id="ret_edms_autosave_attach" value="<?php if(isset($result_n_ar->edms_autosave_attach)){ echo $result_n_ar->edms_autosave_attach; } else { echo "N"; } ?>" />
 	<script type="text/javascript">
-		$(document).ready(function() {
+	    $(document).ready(function () {
+
+	        function checkForWorkFlowSRF() {
+	            Load();
+	            $.ajax({
+	                url: 'inc/ajax/ajax.getWorkflowSRF.php',
+	                type: 'get',
+	                data: {
+	                    service_code: $("#service").val(),
+	                    request_code: $("#request").val(),
+	                    function_code: $("#function").val(),
+	                    serviceName: function () { return $("#serviceInput").val() },
+	                    requestName: function () { return $("#requestInput").val() },
+	                    functionName: function () { return $("#functionInput").val() },
+	                },
+	                dataType: 'html',
+	                success: function (data) {
+	                    Unload();
+	                    if (data == "None") {
+
+	                        $("#submit").prop('disabled', true).buttonState("disable");
+	                        $("#saveMore").prop('disabled', true).buttonState("disable");
+
+	                    }
+	                    else {
+	                        if (($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) && ($("#addressId").val() == 0 || $("#addressId").val() == "") && $("#property_no").val() == "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
+	                            $("#submit").prop('disabled', true).buttonState("disable");
+	                            $("#saveMore").prop('disabled', true).buttonState("disable");
+	                        }
+	                        else {
+	                            $("#submit").prop('disabled', false);
+                                //Harry: why does the code below enable then disable the button? this disables the button in mobile but not pc which isnt right. so ive changed it
+	                            //$("#submit").prop('disabled', false).buttonState("disable");
+	                            $("#saveMore").prop('disabled', false).buttonState("enable");
+	                        }
+
+	                    }
+	                }
+	            });
+	        }
          $("#popup").popup("open");
              $("#default").page('destroy');
              $("#default").page();
@@ -191,19 +277,23 @@ if(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['result']
 			$("#need_f_booking").val($("#ret_need_f_booking").val());
 			$("#request_allowance").val($("#ret_request_allowance").val());
 			$("#function_allowance").val($("#ret_function_allowance").val());
+
 			$("#workflowSRF").prop("disabled", false);
+			$("#edms_autosave_attach").val($("#ret_edms_autosave_attach").val());
 
 			if ($("#ret_request_need_func").val() == "Y") {
                             $("#functionInput").addClass("required");
                             $("#functionRequired").show();
-                            $("#checkforWorkflow").trigger("click");
-
+			    //$("#checkforWorkflow").trigger("click");
+                            checkForWorkFlowSRF();
                         }
                         else {
                             $("#functionRequired").hide();
                             $("#functionInput").removeClass("required");
                             $("#ret_function_name_type").val($("#ret_request_name_type").val());
-                            $("#checkforWorkflow").trigger("click");
+                            //$("#checkforWorkflow").trigger("click");
+                            checkForWorkFlowSRF();
+
                         }
              if($("#ret_function_name").val().length > 0){
                  var nameVar = $("#ret_function_priority").val();

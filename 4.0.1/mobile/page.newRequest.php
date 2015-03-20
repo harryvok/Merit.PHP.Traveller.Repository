@@ -21,7 +21,7 @@ if(isset($_SESSION['user_id'])){
             </div>
             <form enctype='multipart/form-data' id='newrequest' name="newrequest" action='process.php' method='post'>
                 <input type="hidden" id="testing" value="" />
-                <input type="hidden" id="checkforWorkflow" value="" />
+                <input type="hidden" id="checkforWorkflow" value=""  />
                 <input type="hidden" id="mydetsclicked" value="N" />  
                 <input type="hidden" name="lookup_enabled" id="lookup_enabled" value="<?php echo $_SESSION['roleSecurity']->maint_name_match; ?>" />
                 <input type="hidden" name="countonly_bypass" id="countonly_bypass" value="<?php echo $_SESSION['meritIni']['COUNTONLY_BYPASS_MAND_UDF']; ?>" />
@@ -258,6 +258,33 @@ if(isset($_SESSION['user_id'])){
                     <a data-role="button" class="documentSearchButton" href="#">Search...</a>
 
                     <div id="searchResults"></div>
+                    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT"){?> 
+                        <hr />
+                     <script type="text/javascript">
+                         $(document).ready(function () {
+                             $("#newDocument").change(function () {
+
+                                 var currentdocuments = $("#documentsToLink").val();
+                                 if (currentdocuments != "") {
+                                     if (currentdocuments.indexOf(selectedDocument) >= 0) {
+                                         alert("You have already selected that document");
+                                     } else {
+                                         if (confirm("Click OK to link this document when request is saved")) {
+                                             $("#documentsToLink").val(currentdocuments + "-" + "_newDocument_" + $("#newDocument").val().split('\\').pop());
+                                         }
+                                     }
+                                 } else {
+                                     if (confirm("Click OK to link this document when request is saved")) {
+                                         $("#documentsToLink").val("_newDocument_" + $("#newDocument").val().split('\\').pop());
+                                     }
+                                 }
+                             });
+
+                         });
+                        </script>
+                        <label>New File</label>
+                        <input type="file" id="newDocument" name="newDocument[]" />
+                    <?php } ?>
                     <input type="hidden" name="selectedDocument" id="selectedDocument" />
                 </div>
                 <?php } ?>

@@ -57,6 +57,10 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
         var id = $(this).attr("id");
         $("#" + id + "Edit").toggle();
     });
+    $(".View").click(function () {
+        var link = $(this).attr("data-link");
+        window.open(link, '_blank');
+    });
     $(".Link").on(eventName, function () {
         var docid = $(this).attr("data-docid");
         $("#selectedDocument").val(docid);
@@ -110,10 +114,10 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
              <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
                  <a class="downloadButton DocumentOptionButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
              <?php }else{?>
-                <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+                <a class="View DocumentOptionButton" href="#" data-link="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <?php }?>
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
-             <a class="Link DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
+             <a class="Link DocumentOptionButton" href="#" data-docid="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
              <br/><br/><br/><br/>
              <a class="closeEdit " href="#" id="SearchDocument<?php echo $i; ?>Close">Close</a> 
             </p>
@@ -175,10 +179,10 @@ if(isset($GLOBALS['result']->doc_dets->document_details) && count($GLOBALS['resu
             <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
                  <a class="downloadButton DocumentOptionButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
              <?php }else{?>
-                <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+                <a class="View DocumentOptionButton" href="#" data-link="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <?php }?>
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="0" data-role="button" > Metadata</a>
-             <a class="Link DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
+             <a class="Link DocumentOptionButton" href="#" data-docid="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Link</a>
              <br/><br/><br/><br/>
              <a class="closeEdit" href="#" id="SearchDocument0Close">Close</a> 
             </p>

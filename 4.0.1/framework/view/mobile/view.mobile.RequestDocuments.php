@@ -14,6 +14,10 @@ if($GLOBALS['result']['errorConnecting']== false){
             var document_uri = $(this).attr("data-document_uri");
             DownloadEDMSDocument(document_uri);
         });
+        $(".View").click(function () {
+            var link = $(this).attr("data-link");
+            window.open(link, '_blank');
+        });
 
     });
 </script>
@@ -99,7 +103,7 @@ if($GLOBALS['result']['errorConnecting']== false){
              <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
                  <a class="downloadButton DocumentOptionButton" href="#" data-document_uri="<?php echo $document->document_uri; ?>"  data-role="button" > View</a>
              <?php }else{?>
-                <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+                <a class="View DocumentOptionButton" target="_blank"  href="#" data-link="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <?php }?>
 
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
@@ -165,7 +169,7 @@ if($GLOBALS['result']['errorConnecting']== false){
             <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
              <a class="downloadButton DocumentOptionButton" href="#" data-document_uri="<?php echo $document->document_uri; ?>"  data-role="button" > View</a>
              <?php }else{?>
-             <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+             <a class="View DocumentOptionButton" target="_blank"  href="#" data-link="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
              <?php }?>
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="0" data-role="button" > Metadata</a>
              <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php if (strtoupper ($_SESSION['EDMSName']) == 'TRIM'){echo $document->document_uri;}else{echo $document->document_id;} ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>

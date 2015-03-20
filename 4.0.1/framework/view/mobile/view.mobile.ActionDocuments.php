@@ -14,6 +14,10 @@ if($GLOBALS['result']['errorConnecting']== false){
             var document_uri = $(this).attr("data-document_uri");
             DownloadEDMSDocument(document_uri);
         });
+        $(".View").click(function () {
+            var link = $(this).attr("data-link");
+            window.open(link, '_blank');
+        });
     });
 </script>
 <?php if(strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
@@ -61,7 +65,7 @@ if($GLOBALS['result']['errorConnecting']== false){
     <a data-role="button" class="documentSearchButton" href="#">Search...</a>
     
     <div id="searchResults"></div>
-    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" ){?> 
+    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT"){?> 
     <hr />
     <label>New File</label>
     <input type="file" id="newDocument" name="newDocument" />
@@ -98,7 +102,7 @@ if($GLOBALS['result']['errorConnecting']== false){
             <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
                  <a class="downloadButton DocumentOptionButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
              <?php }else{?>
-                <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+                <a class="View DocumentOptionButton" target="_blank" data-link="<?php echo $document->document_url; ?>" href="#"  data-role="button" > View</a>
              <?php }?>
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="<?php echo $i; ?>" data-role="button" > Metadata</a>
              <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>
@@ -163,7 +167,7 @@ if($GLOBALS['result']['errorConnecting']== false){
              <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM"){?>
                  <a class="downloadButton DocumentOptionButton" data-document_uri="<?php echo $document->document_uri; ?>" href="#"  data-role="button" > View</a>
              <?php }else{?>
-                <a class="View DocumentOptionButton" href="<?php echo $document->document_url; ?>"  data-role="button" > View</a>
+                <a class="View DocumentOptionButton" target="_blank" data-link="<?php echo $document->document_url; ?>" href="#"  data-role="button" > View</a>
              <?php }?>
              <a class="Metadata DocumentOptionButton" href="#" data-rownum="0" data-role="button" > Metadata</a>
              <a class="Unlink DocumentOptionButton" href="#" data-docid="<?php echo $document->document_uri; ?>" data-reqid="<?php echo $_GET["id"] ?>"  data-role="button" > Unlink</a>

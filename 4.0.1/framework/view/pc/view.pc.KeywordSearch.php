@@ -252,7 +252,7 @@ elseif(isset($GLOBALS['result']->keyword_result_details) && count($GLOBALS['resu
 <input type="hidden" id="ret_need_f_booking" value="<?php if(isset($result_n_ar->function_count_ind)){ echo $result_n_ar->function_count_ind; } else { echo "N"; } ?>" />
 <input type="hidden" id="ret_request_allowance" value="<?php if(isset($result_n_ar->request_annual_allow_no)){ echo $result_n_ar->request_annual_allow_no; } else { echo 0; } ?>" />
 <input type="hidden" id="ret_function_allowance" value="<?php if(isset($result_n_ar->function_annual_allow_no)){ echo $result_n_ar->function_annual_allow_no; } else { echo 0; } ?>" />
-<input type="hidden" id="ret_edms_autosave_attach" value="<?php if(isset($result_n_ar->edms_autosave_attach)){ echo $result_n_ar->edms_autosave_attach; } else { echo "Nf"; } ?>" />
+<input type="hidden" id="ret_edms_autosave_attach" value="<?php if(isset($result_n_ar->edms_autosave_attach)){ echo $result_n_ar->edms_autosave_attach; } else { echo "N"; } ?>" />
 
 
 <script type="text/javascript">
