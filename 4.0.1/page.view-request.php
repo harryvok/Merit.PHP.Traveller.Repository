@@ -150,12 +150,15 @@ $parameters->user_id = $_SESSION['user_id'];
 $parameters->password = $_SESSION['password'];
 $parameters->action_id = $_GET['id'];
 $actionData= $model->WebService(MERIT_ACTION_FILE, "ws_get_action_details", $parameters);
+$_SESSION["current_action"] = $actionData;
 
 $parameters_r = new stdClass();
 $parameters_r->user_id = $_SESSION['user_id'];
 $parameters_r->password = $_SESSION['password'];
 $parameters_r->request_id = $_GET['id'];
 $requestData = $model->WebService(MERIT_REQUEST_FILE, "ws_get_request_details", $parameters_r);
+$_SESSION["current_request"] = $requestData;
+
 
 $addr_id = "";
 foreach ($requestData->address_det as $reqdata){

@@ -126,6 +126,7 @@ if($_SESSION['roleSecurity']->view_attachment == "Y" || $_SESSION['roleSecurity'
                     <input type="hidden" name="ref_page" value="view-request" />
                     <input type="hidden" name="action" value="Attachment" />
                     <input type="hidden" name="method" id="method" value="attachment" />
+                    <input type="hidden" name="edms_autosave_attach" id="edms_autosave_attach" value="<?php echo $_SESSION["current_request"]->edms_autosave_attach; ?>"/>
                 </form>
 
                 <script type="text/javascript">
