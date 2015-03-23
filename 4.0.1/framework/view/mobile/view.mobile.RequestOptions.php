@@ -3,9 +3,12 @@
 
         $(document).ready(function () {
 
-            $("#noteofficer").click(function () {
-                if (confirm("A Notification will be sent to the Inusrance Officer. Do you want to proceed?")) {
+            $("#noteofficer").on(eventName, function () {
+                if (confirm("A Notification will be sent to the Inusrance Officer. Do you want to proceed?") == true) {
                     notifyInsuranceOfficer();
+                    location.reload();
+                }
+                else {
                     location.reload();
                 }
             });
