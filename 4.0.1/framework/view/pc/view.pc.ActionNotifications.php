@@ -234,6 +234,7 @@
             <input type="hidden" name="action" value="SendNotification" />
             <input type="hidden" name="emailCount" id="emailCount" value="0"/>
             <input type="hidden" name="smsCount" id="smsCount" value="0"/>
+            <input type="hidden" name="edms_autosave_attach" id="edms_autosave_attach" value="<?php echo $_SESSION["current_action"]->edms_autosave_attach; ?>"/>
         </form>
         <?php $_SESSION['typecode'] = 0; ?>
         <script>

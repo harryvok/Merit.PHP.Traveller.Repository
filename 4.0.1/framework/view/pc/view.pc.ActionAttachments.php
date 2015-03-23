@@ -115,7 +115,7 @@
                     <input type="hidden" name="request_id" id="request_id" value="<?php echo $_SESSION['request_id']; ?>" />
                     <input type="hidden" name="ref_page" value="view-action" />
                     <input type="hidden" name="action" value="Attachment" />
-
+                    <input type="hidden" name="edms_autosave_attach" id="edms_autosave_attach" value="<?php echo $_SESSION["current_action"]->edms_autosave_attach; ?>"/>
                 </form>
 
                 <script type="text/javascript">

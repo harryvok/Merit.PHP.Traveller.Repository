@@ -15,6 +15,7 @@ if($_SESSION['roleSecurity']->view_attachment == "Y" || $_SESSION['roleSecurity'
           <input type="hidden" name="ref" value="<?php echo $_GET['id']; ?>" />
           <input type="hidden" name="ref_page" value="view-action" />
           <input type="hidden" name="action" value="Attachment" />
+          <input type="hidden" name="edms_autosave_attach" id="edms_autosave_attach" value="<?php echo $_SESSION["current_action"]->edms_autosave_attach; ?>"/>
           <label>Attachment</label>
           <input id="attachment" type="file" class="required" name="attachment"/></li>
           <label>Description:</label><input type="text"  id="desc" maxlength="50"  name="desc" /></li>

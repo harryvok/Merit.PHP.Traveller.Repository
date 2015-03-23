@@ -2279,31 +2279,30 @@ class Model {
                 $totalfiles=count($_FILES['attachment']['name']);
                 if($totalfiles > 1){
                     for ($i=0; $i< $totalfiles;$i++) {
+                        
+                        $name ="";
+                        if(strtoupper($_FILES['attachment']['name'][$i]) == "IMAGE.JPG"){
+                            $name = (string)rand(0,100000).".jpg";
+                        }else{
+                            $name = $_FILES['attachment']['name'][$i];
+                        }
+                        
                         if($_FILES['attachment']['name'][$i] !=""){
                             $attachment = array(
-                               'name' => $_FILES['attachment']['name'][$i],
+                               'name' => $name,
                                'type' => $_FILES['attachment']['type'][$i],
                                'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
                                'error' => $_FILES['attachment']['error'][$i],
                                'size' => $_FILES['attachment']['size'][$i]
                            
                       );
-                            $rand = rand(0,100);
-                            $d=0;
-                            $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand, $desciption);
-                            $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][$i]);
-                            array_push($filenamearray, $tempname);
-                            array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
-                            
-                            $_SESSION['filenameudf'][] = $tempname;
-                            
                             //if edms_autosave_attach == Y, link attachment
                             if(  $_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y"){
                                 $parameters = new stdClass();
                                 $parameters->user_id = $_SESSION['user_id'];
                                 $parameters->password = $_SESSION['password'];
                                 $parameters->request_id = $GLOBALS['request_id'];
-                                $parameters->file_name = $_FILES['attachment']['name'][$i];
+                                $parameters->file_name = $name;
                                 $parameters->base64_document = base64_encode(file_get_contents( $_FILES["attachment"]['tmp_name'][$i]));
                                 
                                 try {
@@ -2328,32 +2327,36 @@ class Model {
                                     $_SESSION['error_link_document'] = 1;
                                 }
                             }
+                            
+                            $rand = rand(0,100);
+                            $d=0;
+                            $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand, $desciption);
+                            $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$name);
+                            array_push($filenamearray, $tempname);
+                            array_push($filedescriptionarray,$_POST["attachDesc"][$i]);
+                            
+                            $_SESSION['filenameudf'][] = $tempname;
+ 
                         }
 
                     }
                 }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
-                    $attachment = array(
-                               'name' => $_FILES['attachment']['name'][0],
-                               'type' => $_FILES['attachment']['type'][0],
-                               'tmp_name' => $_FILES['attachment']['tmp_name'][0],
-                               'error' => $_FILES['attachment']['error'][0],
-                               'size' => $_FILES['attachment']['size'][0]
-                           
-                      );
-                    $rand = rand(0,100);
-                    $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand, $desciption);
-                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$_FILES['attachment']['name'][0]);
-                    array_push($filenamearray, $tempname);
-                    array_push($filedescriptionarray,$_POST["attachDesc"][0]);
-                    $_SESSION['filenameudf'][] = $tempname;
                     
-                    //if edms_autosave_attach == Y, link attachment
+                    $name ="";
+                    if(strtoupper($_FILES['attachment']['name'][0]) == "IMAGE.JPG"){
+                        $name = (string)rand(0,100000).".jpg";
+                    }else{
+                        $name = $_FILES['attachment']['name'][0];
+                    }
+                    
+                    //if edms_autosave_attach == Y, link attachment first. If we link after the function "processnewRequestAttachment" below, the base64 string will not be passed.
+                    //the reason for this is because move_uploaded_file method is called in processnewRequestAttachment and it removes the file after its copied it over.
                     if($_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){
                         $parameters = new stdClass();
                         $parameters->user_id = $_SESSION['user_id'];
                         $parameters->password = $_SESSION['password'];
                         $parameters->request_id = $GLOBALS['request_id'];
-                        $parameters->file_name = $_FILES['attachment']['name'][0];
+                        $parameters->file_name = $name;
                         $parameters->base64_document = base64_encode(file_get_contents( $_FILES["attachment"]['tmp_name'][0]));
                         
                         try {
@@ -2378,6 +2381,23 @@ class Model {
                             $_SESSION['error_link_document'] = 1;
                         }
                     }
+                    
+                    $attachment = array(
+                               'name' => $name,
+                               'type' => $_FILES['attachment']['type'][0],
+                               'tmp_name' => $_FILES['attachment']['tmp_name'][0],
+                               'error' => $_FILES['attachment']['error'][0],
+                               'size' => $_FILES['attachment']['size'][0]
+                           
+                      );
+                    $rand = rand(0,100);
+                    $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand, $desciption);
+                    $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$name);
+                    array_push($filenamearray, $tempname);
+                    array_push($filedescriptionarray,$_POST["attachDesc"][0]);
+                    $_SESSION['filenameudf'][] = $tempname;
+                    
+                    
                     
                 }
                 
@@ -2780,6 +2800,47 @@ class Model {
     }
 
     public function processDirectAttachment($attachment, $requestID, $description = ''){
+        
+        $name ="";
+        if(strtoupper($attachment['name']) == "IMAGE.JPG"){
+            $name = (string)rand(0,100000).".jpg";
+        }else{
+            $name = $_FILES['attachment']['name'][0];
+        }
+        
+        //if edms_autosave_attach == Y, link attachment
+        if(  $_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y"){
+            $parameters = new stdClass();
+            $parameters->user_id = $_SESSION['user_id'];
+            $parameters->password = $_SESSION['password'];
+            $parameters->request_id = $GLOBALS['request_id'];
+            $parameters->file_name = $name;
+            $parameters->base64_document = base64_encode(file_get_contents( $attachment['tmp_name']));
+            
+            try {
+                $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_link_new_document",$parameters);
+                if($result->ws_status == 0){
+                    $_SESSION['done'] = 1;
+                    $_SESSION['success'] = 1;
+                    $_SESSION['success_link_document'] = 1;
+                }else{
+                    $_SESSION['done'] = 1;
+                    $_SESSION['error']=1;
+                    $_SESSION['error_link_document'] = 1;
+                    $_SESSION['error_custom'] = 1;
+                    $_SESSION['custom_error'] = $result->ws_message;
+                }
+                
+            }
+            catch (Exception $e) {
+                echo $e -> getMessage ();
+                $_SESSION['done'] = 1;
+                $_SESSION['error'];
+                $_SESSION['error_link_document'] = 1;
+            }
+        }
+        
+        
         $testrandvar = 0;
         $rand = rand(0,100);
         $max_upload = (int)(ini_get('upload_max_filesize'));
@@ -4457,11 +4518,18 @@ class Model {
                 $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
             }
         }else{
+            $name ="";
+            if(strtoupper($_FILES["newDocument"]["name"]) == "IMAGE.JPG"){
+                $name = (string)rand(0,100000).".jpg";
+            }else{
+                $name = $_FILES["newDocument"]["name"];
+            }
+            
             $parameters = new stdClass();
             $parameters->user_id = $_SESSION['user_id'];
             $parameters->password = $_SESSION['password'];
             $parameters->request_id = $_SESSION['request_id'];
-            $parameters->file_name = $_FILES["newDocument"]["name"];
+            $parameters->file_name = $name;
             $parameters->base64_document = base64_encode(file_get_contents( $_FILES["newDocument"]['tmp_name']));
             
             try {
