@@ -20,7 +20,7 @@ if(isset($_GET['search'])){
                 $("#basic").css("display", "none");
                 $("#advanced").css("display", "block");
                 $("#action").val("RequestSearch");
-                $('#adv_search_query').css("display", "block");
+                //$('#adv_search_query').css("display", "block");
                 $('#search_query').css("display", "none");
             });
 
@@ -28,7 +28,7 @@ if(isset($_GET['search'])){
                 $("#basic").css("display", "block");
                 $("#advanced").css("display", "none");
                 $("#action").val("Search");
-                $('#adv_search_query').css("display", "none");
+                //$('#adv_search_query').css("display", "none");
                 $('#search_query').css("display", "block");
             });
 
@@ -129,13 +129,13 @@ if(isset($_GET['search'])){
             }
         }
     </script>
-    <div id="basic" <?php if(isset($_GET['d']) &&$_GET['d'] == "advanced") echo "style='display:none;'"; else echo "style='display:block;'"; ?>>
+    <div id="basic">
         This form will search the database for anything that you type in the below text box.<p>&nbsp;</p>
         <div id="basic_search" class="float-left">
             <input class="text" name='search' id="search" class="required" placeholder="Search..." value='<?php if(isset($_SESSION['search'])){ echo $_SESSION['search']; } ?>'>
         </div> 
     </div>
-    <div id="advanced" class="subPageContainer" <?php if(isset($_GET['d']) && $_GET['d'] == "advanced") echo "style='display:block;'"; else echo "style='display:none;'"; ?>>
+    <div id="advanced" class="subPageContainer" style="display:none;">
         <script src="inc/js/pages/js.search.js"></script>
         <div id="adv_search_query" style="display:none">
         </div>
@@ -281,7 +281,7 @@ if(isset($_GET['search'])){
                                     <div class="column r20">
                                         <label>Count Only</label>
                                         <select name="countOnly">
-                                             <option <?php if(isset($_SESSION['countOnly'])){if ($_SESSION['countOnly'] == "N") { echo "selected"; }} ?> value="N">No</option>
+                                            <option <?php if(isset($_SESSION['countOnly'])){if ($_SESSION['countOnly'] == "N") { echo "selected"; }} ?> value="N">No</option>
                                             <option <?php if(isset($_SESSION['countOnly'])){if ($_SESSION['countOnly'] == "Y") { echo "selected"; }} ?> value="Y">Yes</option>
                                             <option <?php if(isset($_SESSION['countOnly'])){if ($_SESSION['countOnly'] == "") { echo "selected"; }} ?> value="">All</option>
                                         </select>

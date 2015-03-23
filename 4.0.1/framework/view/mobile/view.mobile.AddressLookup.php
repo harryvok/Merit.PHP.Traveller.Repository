@@ -9,7 +9,7 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 		    $('#same').val('i');
 
             /* What to parse with regEx */
-                var tocheck = $('#ret_' + id + '_house_number').val();
+		    var tocheck = $('#ret_' + id + '_house_suffix').val();
 
                 /* Parse to variables */
                 var prefixOut = tocheck.match(/(\D{0,7})\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})\s?[/]?\s?(\d{0,5})\s?-?\s?(\d{0,5})\s?(\D{0,1})$/)[1];
@@ -72,7 +72,6 @@ if(isset($GLOBALS['result']->address_list->address_lookup_det) && count($GLOBALS
 
                 $('#prefixholder').val(prefixOut);
                 var poprefix = $('#prefixholder').val().toUpperCase();
-
                 /* Flat Number  */  $('#i_cfno').val(unitNumber);
                 /* Flat Code    */  $('#i_cfcode').val(unitCodeOut);
                 /* House Number */  $('#i_cno').val(streetNumber);
