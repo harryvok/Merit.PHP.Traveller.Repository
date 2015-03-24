@@ -254,7 +254,7 @@ if(isset($_SESSION['user_id'])){
                     <a data-role="button" class="documentSearchButton" href="#">Search...</a>
 
                     <div id="searchResults"></div>
-                    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT"){?> 
+                    <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT" || strtoupper($_SESSION['EDMSName']) == "OBJECTIVE"){?> 
                         <hr />
                      <script type="text/javascript">
                          $(document).ready(function () {

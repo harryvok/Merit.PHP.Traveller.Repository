@@ -31,7 +31,7 @@ if(!isset($_GET['d'])){
                 <input type="hidden" id="checkforWorkflow" value="" />
                 <input type="hidden" id="mydetsclicked" value="N" />           
                 <input type="button" id="workflowSRF" value="Show Workflow" disabled="disabled" style="margin-top: 23px;margin-left: -25px;"/>                
-                <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS"){ ?>
+                <?php if($_SESSION['EDMSAvailable'] == "Y" && $_SESSION['roleSecurity']->view_documents == "Y" && strtoupper($_SESSION['EDMSName']) != "DATAWORKS" ){ ?>
                 <input type="button" value="<?php echo $_SESSION['EDMSName'];?> Search" class="openDocumentPopup" id="Documents" style="margin-top: 23px;margin-left: 5px;"/>
                 
                 <script type="text/javascript">

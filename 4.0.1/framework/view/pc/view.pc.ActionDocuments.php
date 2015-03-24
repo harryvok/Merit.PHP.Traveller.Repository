@@ -207,7 +207,7 @@ if($GLOBALS['result']['errorConnecting']== false){
         ?>
 
         <input type="button" id="searchDocument" value="Search"/>
-        <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT"){?> 
+        <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT" || strtoupper($_SESSION['EDMSName']) == "OBJECTIVE"){?> 
           <div style="float:right">
               <b>Add new:</b>
               <input type="file" id="newDocument" name="newDocument" value="" style="width:200px;padding-bottom:23px;"/>

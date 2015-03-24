@@ -2280,7 +2280,9 @@ class Model {
                 if($totalfiles > 1){
                     for ($i=0; $i< $totalfiles;$i++) {
                         
+                        $rand = rand(0,100);
                         $name ="";
+                        
                         if(strtoupper($_FILES['attachment']['name'][$i]) == "IMAGE.JPG"){
                             $name = (string)rand(0,100000)."image.jpg";
                         }else{
@@ -2288,14 +2290,7 @@ class Model {
                         }
                         
                         if($_FILES['attachment']['name'][$i] !=""){
-                            $attachment = array(
-                               'name' => $name,
-                               'type' => $_FILES['attachment']['type'][$i],
-                               'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
-                               'error' => $_FILES['attachment']['error'][$i],
-                               'size' => $_FILES['attachment']['size'][$i]
-                           
-                      );
+                            
                             //if edms_autosave_attach == Y, link attachment
                             if(  $_SESSION['EDMSAvailable'] == "Y" && $_POST["edms_autosave_attach"]=="Y"){
                                 $parameters = new stdClass();
@@ -2328,7 +2323,14 @@ class Model {
                                 }
                             }
                             
-                            $rand = rand(0,100);
+                            $attachment = array(
+                               'name' => $name,
+                               'type' => $_FILES['attachment']['type'][$i],
+                               'tmp_name' => $_FILES['attachment']['tmp_name'][$i],
+                               'error' => $_FILES['attachment']['error'][$i],
+                               'size' => $_FILES['attachment']['size'][$i]
+                             );
+                            
                             $d=0;
                             $this->processnewRequestAttachment($attachment, $GLOBALS['request_id'],$rand, $desciption);
                             $tempname = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $GLOBALS['request_id']."-".$rand."-".$name);
@@ -2342,7 +2344,9 @@ class Model {
                     }
                 }else if($totalfiles == 1 && $_FILES['attachment']['name'][0] != "") {
                     
+                    $rand = rand(0,100);
                     $name ="";
+                    
                     if(strtoupper($_FILES['attachment']['name'][0]) == "IMAGE.JPG"){
                         $name = (string)rand(0,100000)."image.jpg";
                     }else{
@@ -2806,7 +2810,7 @@ class Model {
     }
 
     public function processDirectAttachment($attachment, $requestID, $description = ''){
-        
+        $rand = rand(0,100);
         $name ="";
         if(strtoupper($attachment['name']) == "IMAGE.JPG"){
             $name = (string)rand(0,100000)."image.jpg";
@@ -2819,7 +2823,7 @@ class Model {
             $parameters = new stdClass();
             $parameters->user_id = $_SESSION['user_id'];
             $parameters->password = $_SESSION['password'];
-            //$parameters->request_id = $GLOBALS['request_id'];
+
             $parameters->request_id = $GLOBALS['request_id'] == null ?  $_POST['request_id'] : $GLOBALS['request_id'];
             $parameters->file_name = $name;
             $parameters->base64_document = base64_encode(file_get_contents( $attachment['tmp_name']));
@@ -2849,7 +2853,7 @@ class Model {
         
         
         $testrandvar = 0;
-        $rand = rand(0,100);
+        
         $max_upload = (int)(ini_get('upload_max_filesize'));
         $max_post = (int)(ini_get('post_max_size'));
         $memory_limit = (int)(ini_get('memory_limit'));
@@ -2862,15 +2866,14 @@ class Model {
                 imagejpeg($attachment['tmp_name'], $attachment['tmp_name'], 75);
             }
         }
-        $var =  ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
         
-        if(move_uploaded_file($attachment['tmp_name'], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']))){
+        if(move_uploaded_file($attachment['tmp_name'], ATTACHMENT_FOLDER.str_ireplace(" ", "_", $requestID."-".$rand."-".$name))){
 
             $parameters_att = new stdClass();
             $parameters_att->user_id = $_SESSION['user_id'];
             $parameters_att->password = $_SESSION['password'];
             $parameters_att->request_id = $requestID;
-            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$attachment['name']);
+            $parameters_att->filename = str_ireplace('/', '\\', ATTACHMENT_FOLDER).str_ireplace(" ", "_", $requestID."-".$rand."-".$name);
             $parameters_att->description = $description;
             
             $_SESSION['filename'] = $parameters_att->filename;
@@ -4533,6 +4536,7 @@ class Model {
                 }
             }
         }else{
+            $rand = rand(0,100);
             $name ="";
             if(strtoupper($_FILES["newDocument"]["name"]) == "IMAGE.JPG"){
                 $name = (string)rand(0,100000)."image.jpg";
