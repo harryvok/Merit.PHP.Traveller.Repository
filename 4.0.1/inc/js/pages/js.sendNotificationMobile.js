@@ -262,6 +262,7 @@ $(document).ready(function () {
 
                     "<input id='emailText" + email + "OfficerCode' type='hidden'  value='' />" +
                     "<input id='emailText" + email + "Name' type='hidden'  value='' />" +
+                    "<input id='emailText" + email + "Type' type='hidden' value='' />" +
                     "<input id='emailText" + email + "Email' type='hidden'  value='' /> " +  
                     "<img id='emailTextDelete' onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png' style='padding-top:2px; margin-left:3%;'></div>");
                     // "<div data-role='button' onClick='decrementemail()' data-delete='emailText" + email + "List' data-shadow='true' data-iconshadow='true' data-wrapperels='span' data-theme='c' class='ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all' style='margin-left: 3% !important; margin-bottom:2% !important; width:30% !important; margin-right: 2% !important;display:inline-block !important;'>Cancel</div></div>")
@@ -300,7 +301,8 @@ $(document).ready(function () {
                                     $("#emailText" + email + "Officer").css("display", "none");
                                     $("#emailText" + email + "Name").attr("name", "email_name[]");
                                     $("#emailText" + email + "Email").attr("name", "email_to[]");
-                                    $("#emailText" + email + "Type").val("O");
+                                    $("#emailText" + email + "Type").css("display", "none").attr("name", "email_name_type[]");
+                                    $("#emailText" + email + "Type").val("P");
                                     $("#emailText" + email + "Add").remove();
                                     $("#emailAdd").show();
                                     $("#emailOfficerAdd").show();
