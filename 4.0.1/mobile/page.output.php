@@ -2,7 +2,6 @@
 if(isset($_SESSION['done']) && $_SESSION['done'] == 1){
 	unset($_SESSION['done']);
 	?>
-
 	<div id="messages">
 	<?php
 	if(isset($_SESSION['error']) && $_SESSION['error'] == 1){
@@ -47,7 +46,6 @@ if(isset($_SESSION['done']) && $_SESSION['done'] == 1){
 	}
 	?>
 	</div>
-
 	<?php
 }
 ?>
