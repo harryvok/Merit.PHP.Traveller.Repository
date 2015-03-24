@@ -211,6 +211,7 @@ $(document).ready(function () {
                     "<input id='emailText" + email + "Officer' type='text'  value='' />" +
                     "<input id='emailText" + email + "OfficerCode' type='hidden'  value='' />" +
                     "<input id='emailText" + email + "Name' type='hidden'  value='' />" +
+                    "<input id='emailText" + email + "Type' type='hidden' value='' />" +
                     "<input id='emailText" + email + "Email' type='hidden'  value='' /> " +
                     "<img onClick='decrementemail()' data-delete='emailText" + email + "List' src='images/delete-icon.png'><br /></span>");
 
@@ -248,7 +249,8 @@ $(document).ready(function () {
                                     $("#emailText" + email + "Officer").css("display", "none");
                                     $("#emailText" + email + "Name").attr("name", "email_name[]");
                                     $("#emailText" + email + "Email").attr("name", "email_to[]");
-                                    $("#emailText" + email + "Type").val("O");
+                                    $("#emailText" + email + "Type").css("display", "none").attr("name", "email_name_type[]");
+                                    $("#emailText" + email + "Type").val("P");
                                     $("#emailText" + email + "Add").remove();
                                     $("#emailAdd").show();
                                     $("#emailOfficerAdd").show();
