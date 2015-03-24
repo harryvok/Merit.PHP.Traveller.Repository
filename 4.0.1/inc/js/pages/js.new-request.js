@@ -1478,6 +1478,7 @@ $(document).ready(function () {
 
     /* */
     $("#reset").on(eventName, function (event) {
+        location.reload();
         clearCustomerAddress();
         clearLocationAddress();
         ClearHelpNotes();
