@@ -23,6 +23,8 @@ if($GLOBALS['result']['errorConnecting']== false){
             var document_uri = $(this).attr("data-document_uri");
             DownloadEDMSDocument(document_uri);
         });
+
+       
         
     });
 </script>
@@ -173,37 +175,37 @@ if($GLOBALS['result']['errorConnecting']== false){
                         $("#selectedDocument").val("");
                     }
                 });
+                $('form').submit(function () {
+                    $("#linkbutton").prop('disabled', 'disabled');
+                });
             });
         </script>
       <h1>Link Document <span class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
       <a title="Link Document"></a>
-     <?php 
-        $CustomerName = "";
-        $DocumentName = "";
-        $DocumentID = "";
-        $Company = "";
-        $FullText = "";
-            if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {
-                $CustomerName = "Author (surname,given)";
-                $DocumentName = "Title Word";
-                $DocumentID = "Record Number";
-                $Company = "Company"; 
-            } else { 
-                $CustomerName = "Correspondent (surname,given)";
-                $DocumentName = "Document Name/Description";
-                $DocumentID = "Document ID";
-                $Company = "Company"; 
-                $FullText = "Full text";
+      <form method="post" enctype="multipart/form-data" id="linkdocument" action="process.php">
+       <?php 
+            if (strtoupper ($_SESSION['EDMSName']) == 'TRIM') {?>
+                <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Author (surname,given)</b></label>&nbsp
+                <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Title Word</b></label>&nbsp
+                <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Record Number</b></label>&nbsp
+                <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b>Company</b></label>&nbsp
+            <?php 
+            }else if(strtoupper ($_SESSION['EDMSName']) == 'OBJECTIVE'){?>
+                <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Name ID</b></label>&nbsp
+                <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Address ID</b></label>&nbsp
+                <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Request ID</b></label>&nbsp
+            <?php 
+            }else { ?>
+                <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b>Correspondent (surname,given)</b></label>&nbsp
+                <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b>Document Name/Description</b></label>&nbsp
+                <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b>Document ID</b></label>&nbsp
+                <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b>Company</b></label>&nbsp
+                <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b>Full text</b></label>&nbsp
+            <?php 
             }
         ?>
-      <form method="post" enctype="multipart/form-data" id="linkdocument" action="process.php">
-       <input type="radio" id="search_type1" name="Search_type" checked value="CORRESPONDENT"><label for="search_type1"><b><?php echo $CustomerName;?></b></label>&nbsp
-        <input type="radio" id="search_type2" name="Search_type" value="DOCNAME"><label for="search_type2"><b><?php echo $DocumentName;?></b></label>&nbsp
-        <input type="radio" id="search_type3" name="Search_type" value="DOCID"><label for="search_type3"><b><?php echo $DocumentID;?></b></label>&nbsp
-        <input type="radio" id="search_type4" name="Search_type" value="COMPANY"><label for="search_type4"><b><?php echo $Company;?></b></label>&nbsp
-        <?php if(strtoupper($_SESSION['EDMSName']) != "TRIM"){?> 
-            <input type="radio" id="search_type5" name="Search_type" value="KEYWORD"><label for="search_type5"><b><?php echo $FullText;?></b></label>&nbsp
-        <?php } ?>
+
+
         <input type="button" id="searchDocument" value="Search"/>
         <?php if(strtoupper($_SESSION['EDMSName']) == "TRIM" || strtoupper($_SESSION['EDMSName']) == "INFOXPERT"){?> 
             <div style="float:right">

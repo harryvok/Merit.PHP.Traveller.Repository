@@ -218,7 +218,8 @@ $(document).ready(function () {
             else {
                 $("#functionRequired").hide();
                 $("#functionInput").removeClass("required");
-                $("#checkforWorkflow").trigger("click");
+                //$("#checkforWorkflow").trigger("click");
+                checkforWorkflow();
 
             }           
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
@@ -301,7 +302,8 @@ $(document).ready(function () {
             $("#edms_autosave_attach").val(edms_autosave_attach);
             if ($("#textareaissue").length) {
                 $("#textareaissue").focus();
-                $("#checkforWorkflow").trigger("click");
+                //$("#checkforWorkflow").trigger("click");
+                checkforWorkflow();
             } else {
                 $("#add-request-textarea").focus();
             }            
@@ -360,8 +362,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#checkforWorkflow").on(eventName, function () {
-    
+    function checkforWorkflow() {
         Load();
         $.ajax({
             url: 'inc/ajax/ajax.getWorkflowSRF.php',
@@ -375,16 +376,54 @@ $(document).ready(function () {
                 functionName: function () { return $("#functionInput").val() },
             },
             dataType: 'html',
-            success: function (data) {              
+            success: function (data) {
                 Unload();
- 
                 if (data == "None") {
 
                     $("#submit").prop('disabled', true).buttonState("disable");
                     $("#saveMore").prop('disabled', true).buttonState("disable");
-                    
+
                 }
-                else {                    
+                else {
+                    if (($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) && ($("#addressId").val() == 0 || $("#addressId").val() == "") && $("#property_no").val() == "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
+                        $("#submit").prop('disabled', true).buttonState("disable");
+                        $("#saveMore").prop('disabled', true).buttonState("disable");
+                    }
+                    else {
+                        $("#submit").prop('disabled', false);
+                        //Harry: why does the code below enable then disable the button? this disables the button in mobile but not pc which isnt right. so ive changed it
+                        //$("#submit").prop('disabled', false).buttonState("disable");
+                        $("#saveMore").prop('disabled', false).buttonState("enable");
+                    }
+
+                }
+            }
+        });
+    }
+
+    $("#checkforWorkflow").on(eventName, function () {
+        Load();
+        $.ajax({
+            url: 'inc/ajax/ajax.getWorkflowSRF.php',
+            type: 'get',
+            data: {
+                service_code: $("#service").val(),
+                request_code: $("#request").val(),
+                function_code: $("#function").val(),
+                serviceName: function () { return $("#serviceInput").val() },
+                requestName: function () { return $("#requestInput").val() },
+                functionName: function () { return $("#functionInput").val() },
+            },
+            dataType: 'html',
+            success: function (data) {
+                Unload();
+                if (data == "None") {
+
+                    $("#submit").prop('disabled', true).buttonState("disable");
+                    $("#saveMore").prop('disabled', true).buttonState("disable");
+
+                }
+                else {
                     if (($("#request_allowance").val() > 0 || $("#function_allowance").val() > 0) && ($("#addressId").val() == 0 || $("#addressId").val() == "") && $("#property_no").val() == "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "") {
                         $("#submit").prop('disabled', true).buttonState("disable");
                         $("#saveMore").prop('disabled', true).buttonState("disable");

@@ -2282,7 +2282,7 @@ class Model {
                         
                         $name ="";
                         if(strtoupper($_FILES['attachment']['name'][$i]) == "IMAGE.JPG"){
-                            $name = (string)rand(0,100000).".jpg";
+                            $name = (string)rand(0,100000)."image.jpg";
                         }else{
                             $name = $_FILES['attachment']['name'][$i];
                         }
@@ -2344,7 +2344,7 @@ class Model {
                     
                     $name ="";
                     if(strtoupper($_FILES['attachment']['name'][0]) == "IMAGE.JPG"){
-                        $name = (string)rand(0,100000).".jpg";
+                        $name = (string)rand(0,100000)."image.jpg";
                     }else{
                         $name = $_FILES['attachment']['name'][0];
                     }
@@ -2441,12 +2441,18 @@ class Model {
                     
                     for($i =0; $i< count($documents); $i++){
                         if(strpos($documents[$i],"_newDocument_") !== false){
+                            $name ="";
+                            if(strtoupper($_FILES['newDocument']['name'][0]) == "IMAGE.JPG"){
+                                $name = (string)rand(0,100000)."image.jpg";
+                            }else{
+                                $name = $_FILES['newDocument']['name'][0];
+                            }
                             $newDocumentName = str_replace("_newDocument_","",$documents[$i]);
                             $parameters = new stdClass();
                             $parameters->user_id = $_SESSION['user_id'];
                             $parameters->password = $_SESSION['password'];
                             $parameters->request_id = $GLOBALS['request_id'];
-                            $parameters->file_name = $_FILES['newDocument']['name'][0];
+                            $parameters->file_name = $name;
                             $parameters->base64_document = base64_encode(file_get_contents( $_FILES["newDocument"]['tmp_name'][0]));
                             
                             try {
@@ -2803,9 +2809,9 @@ class Model {
         
         $name ="";
         if(strtoupper($attachment['name']) == "IMAGE.JPG"){
-            $name = (string)rand(0,100000).".jpg";
+            $name = (string)rand(0,100000)."image.jpg";
         }else{
-            $name = $_FILES['attachment']['name'][0];
+            $name = $attachment['name'];
         }
         
         //if edms_autosave_attach == Y, link attachment
@@ -2813,7 +2819,8 @@ class Model {
             $parameters = new stdClass();
             $parameters->user_id = $_SESSION['user_id'];
             $parameters->password = $_SESSION['password'];
-            $parameters->request_id = $GLOBALS['request_id'];
+            //$parameters->request_id = $GLOBALS['request_id'];
+            $parameters->request_id = $GLOBALS['request_id'] == null ?  $_POST['request_id'] : $GLOBALS['request_id'];
             $parameters->file_name = $name;
             $parameters->base64_document = base64_encode(file_get_contents( $attachment['tmp_name']));
             
@@ -4502,11 +4509,15 @@ class Model {
                     $_SESSION['error_link_document'] = 1;
                     $_SESSION['error_custom'] = 1;
                     $_SESSION['custom_error'] = $result->ws_message;
-                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
                 }else{
                     $_SESSION['done'] = 1;
                     $_SESSION['success'] = 1;
                     $_SESSION['success_link_document'] = 1;
+                }
+                
+                if(isset($_POST["action_id"])){
+                    $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
+                }else{
                     $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
                 }
             }
@@ -4515,12 +4526,16 @@ class Model {
                 $_SESSION['done'] = 1;
                 $_SESSION['error']=1;
                 $_SESSION['error_link_document'] = 1;
-                $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                if(isset($_POST["action_id"])){
+                    $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
+                }else{
+                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                }
             }
         }else{
             $name ="";
             if(strtoupper($_FILES["newDocument"]["name"]) == "IMAGE.JPG"){
-                $name = (string)rand(0,100000).".jpg";
+                $name = (string)rand(0,100000)."image.jpg";
             }else{
                 $name = $_FILES["newDocument"]["name"];
             }
@@ -4557,7 +4572,11 @@ class Model {
                 $_SESSION['done'] = 1;
                 $_SESSION['error'];
                 $_SESSION['error_link_document'] = 1;
-                $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                if(isset($_POST["action_id"])){
+                    $_SESSION['redirect'] = "index.php?page=view-action&id=".$_POST['action_id']."&d=documents";
+                }else{
+                    $_SESSION['redirect'] = "index.php?page=view-request&id=".$_SESSION['request_id']."&d=documents";
+                }
             }
             
         }
