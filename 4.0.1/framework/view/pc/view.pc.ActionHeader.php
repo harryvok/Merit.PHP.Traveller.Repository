@@ -35,7 +35,6 @@ if(count($GLOBALS['result']['request']->request_actions_det->request_actions_det
     }
 }
 
-
 $_SESSION['sidebar_action_status'] = $GLOBALS['result']['action']->status_code;
 $GLOBALS['request_id'] = $GLOBALS['result']['action']->request_id;
 $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
