@@ -15,6 +15,14 @@
 </p>
 
 <?php
+if(count($GLOBALS['result']['request']->request_actions_det->request_actions_details) > 1){
+    $c = 0;
+    foreach($GLOBALS['result']['request']->request_actions_det->request_actions_details as $cnt){
+        if ($cnt->finalised_ind == "N"){
+            $c++;
+        }
+    }
+}
 $GLOBALS['request_id'] = $GLOBALS['result']['action']->request_id;
 $_SESSION['request_id'] = $GLOBALS['result']['action']->request_id;
 $GLOBALS['finalised_ind'] = $GLOBALS['result']['request']->finalised_ind;
@@ -22,7 +30,8 @@ $GLOBALS['act_finalised_ind'] = $GLOBALS['result']['action']->finalised_ind;
 $_SESSION['act_finalised_ind'] = $GLOBALS['result']['action']->finalised_ind;
 $_SESSION['assign_name'] = $GLOBALS['result']['action']->reason_assigned_name;
 $GLOBALS['assign_name'] = $GLOBALS['result']['action']->reason_assigned_name;
-$GLOBALS['action_count'] = count($GLOBALS['result']['request']->request_actions_det->request_actions_details);
+//$GLOBALS['action_count'] = count($GLOBALS['result']['request']->request_actions_det->request_actions_details);
+$GLOBALS['action_count'] = $c;
 $GLOBALS['audit_count'] = $GLOBALS['result']['action']->audit_count;
 ?>
 
