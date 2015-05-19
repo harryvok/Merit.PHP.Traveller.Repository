@@ -73,7 +73,7 @@ if(isset($_GET['search'])){
             });
         });
          function get_search() {
-             //alert($("#action").val());
+            //alert($("#action").val());
             Load();
             if ($("#action").val() == "Search") {
                 $.ajax({
@@ -112,6 +112,7 @@ if(isset($_GET['search'])){
                     type: 'POST',
                     timeout:60000,
                     success: function (data) {
+                        //alert(data);
                         Unload();
                         $('#adv_search_query').html(data);
                         window.scrollTo(0, 0);
@@ -137,7 +138,7 @@ if(isset($_GET['search'])){
     </div>
     <div id="advanced" class="subPageContainer" style="display:none;">
         <script src="inc/js/pages/js.search.js"></script>
-        <div id="adv_search_query" style="display:none">
+        <div id="adv_search_query">
         </div>
         <div id="form">
             <form id="advancedSearch">

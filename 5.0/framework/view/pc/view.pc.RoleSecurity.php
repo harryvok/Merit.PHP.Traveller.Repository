@@ -1,1 +1,0 @@
-<div class="float-left">You do not have permission to view section code: "<?php echo $GLOBALS['action']; ?>".</div>
