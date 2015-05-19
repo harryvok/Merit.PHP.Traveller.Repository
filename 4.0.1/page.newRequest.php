@@ -88,7 +88,7 @@ if(!isset($_GET['d'])){
                         <input class="text required" name='requestInput' disabled="disabled" id="requestInput" value='<?php if(isset($_SESSION['rem_requestInput'])){ echo $_SESSION['rem_requestInput']; } ?>'>
                         <input type="hidden" name='request' id="request">
                         <input type="hidden" id="request_allowance" name="request_allowance" value="0"/>
-                        <input type="hidden" id="Hidden1" name="need_r_booking" />
+                        <input type="hidden" id="need_r_booking" name="need_r_booking" />
                         <input type="hidden" id="request_helpText" />
                         <input type="hidden" id="request_helpURL" />
 

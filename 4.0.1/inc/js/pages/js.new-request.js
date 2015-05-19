@@ -220,7 +220,8 @@ $(document).ready(function () {
                 $("#functionInput").removeClass("required");
                 //$("#checkforWorkflow").trigger("click");
                 checkforWorkflow();
-
+                var date = new Date().toISOString();
+                GetBookingSummary(date);
             }           
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
             $("#functionInput").textInputState('enable');

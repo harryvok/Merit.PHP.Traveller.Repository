@@ -120,7 +120,7 @@ function GetAddressDetails() {
 }
 
 function getEventBookingDetails() {    
-    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {
+    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {  //
         if ($("#functionInput").val() == "Australia Day") {
             var serviceID = $("#service").val();
             var requestID = $("#request").val();
@@ -190,7 +190,7 @@ function GetBookingSummary(paramdate) {
         date = new Date().toISOString();
     else
         date = paramdate;
-    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "" && $("#functionInput").val() != "") {
+    if ($("#serviceInput").val() != "" && $("#lstreet").val() != "" && $("#ltype").val() != "" && $("#lsuburb").val() != "" && ($("#requestInput").val() != "" || $("#functionInput").val() != "")) {
         if ($("#need_r_booking").val() == "Y" || $("#need_f_booking").val() == "Y") {
             var serviceID = $("#service").val();
             var requestID = $("#request").val();

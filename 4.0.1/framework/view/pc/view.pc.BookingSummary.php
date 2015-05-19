@@ -7,8 +7,8 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
             $("#AddrBooking").removeAttr("disabled");
             $("#AddrBooking").removeAttr("style");
             $("#bookingService").html($("#serviceInput").val());
-            $("#bookingRequest").html($("#requestInput").val());
-            $("#bookingFunction").html($("#functionInput").val());
+            $("#bookingRequest").html(" / " + $("#requestInput").val());
+            if ($("#functionInput").val().length > 0) $("#bookingFunction").html(" / " + $("#functionInput").val());
             $("#from").datepicker({ dateFormat: "dd-M-yy" });
             $("#from").val("dd-mmm-yyyy");
             $("#selectedDate.html").html($("#from").val());
@@ -87,7 +87,7 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
 </script>
 <div class="summaryContainer">
     <h1>Booking Summary<span  class="closePopup"><img src="images/delete-icon.png" /> Close</span></h1>
-    <b>Service/Request/Function:</b> <span id="bookingService"></span> / <span id="bookingRequest"></span> / <span id="bookingFunction"></span> <br />
+    <b>Service/Request/Function:</b> <span id="bookingService"></span><span id="bookingRequest"></span><span id="bookingFunction"></span> <br />
 <!--    <b>Request:</b> <br />
     <b>Function:</b> <br />-->
     <b>Provider:</b> <span id="bookingProvider"><?php echo $GLOBALS['result']->provider;?></span><br />
