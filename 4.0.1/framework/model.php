@@ -1832,7 +1832,14 @@ class Model {
         $_SESSION['noteAttach'] = 1;
         
         // Attach File Call.
-        $this->processAttachment($parameters);
+
+        
+       
+        if (file_exists($_FILES['attachment']['tmp_name'])){
+            $this->processAttachment($parameters);
+        }
+
+        
         
          // Reset Variable.
         $_SESSION['noteAttach'] = 0;
