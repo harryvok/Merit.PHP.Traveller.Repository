@@ -120,8 +120,8 @@ function GetAddressDetails() {
 }
 
 function getEventBookingDetails() {    
-    if ($("#serviceInput").val() != "" && $("#requestInput").val() != "" && $("#functionInput").val() != "") {  //
-        if ($("#functionInput").val() == "Australia Day") {
+    if ($("#serviceInput").val() != "" && ($("#requestInput").val() != "" || $("#functionInput").val() != "")) {  //
+        if ($("#need_r_booking").val() == "E" || $("#need_f_booking").val() == "E") {
             var serviceID = $("#service").val();
             var requestID = $("#request").val();
             var functionID = $("#function").val();

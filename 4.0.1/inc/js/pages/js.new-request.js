@@ -220,8 +220,13 @@ $(document).ready(function () {
                 $("#functionInput").removeClass("required");
                 //$("#checkforWorkflow").trigger("click");
                 checkforWorkflow();
-                var date = new Date().toISOString();
-                GetBookingSummary(date);
+                if(booking_required == "Y"){
+                    var date = new Date().toISOString();
+                    GetBookingSummary(date);
+                }
+                else if (booking_required == "E") {
+                    getEventBookingDetails();
+                }
             }           
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
             $("#functionInput").textInputState('enable');
@@ -286,12 +291,16 @@ $(document).ready(function () {
             GetHelpNotes($("#function").val(), $("#request").val(), $("#service").val(), "N", "N", fauto, "N");
             // Perform count only check on full SRF
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), $("#function").val());
-            var date = new Date().toISOString();
-            getEventBookingDetails();
+            var date = new Date().toISOString();            
             var show = "N";
             $("#chk_showall").val("No");
-            getAllowanceDetails(show);
-            GetBookingSummary(date);
+            getAllowanceDetails(show);            
+            if (booking_required == "Y") {                
+                GetBookingSummary(date);
+            }
+            else if (booking_required == "E") {
+                getEventBookingDetails();
+            }
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
             getSRFRedText();
