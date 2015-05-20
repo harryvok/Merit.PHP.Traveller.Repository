@@ -202,6 +202,7 @@ $action_id = $GLOBALS['result']['action']->action_id;
         echo $loc_desc; 
                                                   ?>
         </p>
+        base64_decode($action_details->request_descripti
     </li>
     <?php
     }
