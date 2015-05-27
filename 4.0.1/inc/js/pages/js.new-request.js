@@ -227,10 +227,10 @@ $(document).ready(function () {
                 checkforWorkflow();
                 if(booking_required == "Y"){
                     var date = new Date().toISOString();
-                    GetBookingSummary(date);
+                    GetBookingSummary(date, "N");
                 }
                 else if (booking_required == "E") {
-                    getEventBookingDetails();
+                    getEventBookingDetails("N");
                 }
             }           
             $("#functionInput").val("").prop("disabled", false).prop("readonly", false).removeClass("ui-disabled");
@@ -269,8 +269,8 @@ $(document).ready(function () {
 
     function functionResponse(event, ui) {        
         var label = ""; var code = ""; var priority = ""; var count_only = ""; var function_note = ""; var fauto = ""; var function_name_type; var edms_autosave_attach = "";
-        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; function_name_type = ui.content[0].function_name_type; booking_required = ui.content[0].booking_required; function_allowance = ui.content[0].function_allowance; edms_autosave_attach = ui.content[0].edms_autosave_attach; }
-        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; function_name_type = ui.item.function_name_type; booking_required = ui.item.booking_required; function_allowance = ui.item.function_allowance; edms_autosave_attach = ui.item.edms_autosave_attach; }
+        if (typeof ui.content != "undefined" && ui.content.length === 1) { label = ui.content[0].label; code = ui.content[0].code; priority = ui.content[0].priority; count_only = ui.content[0].count_only; function_note = ui.content[0].function_note; fauto = ui.content[0].function_auto_help_notes; function_name_type = ui.content[0].function_name_type; booking_required = ui.content[0].booking_required; function_allowance = ui.content[0].function_allowance; edms_autosave_attach = ui.content[0].edms_autosave_attach; func_oride_ind = ui.content[0].oride_ind; }
+        else if (typeof ui.item != "undefined" && ui.item.label.length > 0) { label = ui.item.label; code = ui.item.code; priority = ui.item.priority; count_only = ui.item.count_only; function_note = ui.item.function_note; fauto = ui.item.function_auto_help_notes; function_name_type = ui.item.function_name_type; booking_required = ui.item.booking_required; function_allowance = ui.item.function_allowance; edms_autosave_attach = ui.item.edms_autosave_attach; func_oride_ind = ui.item.oride_ind; }
         if (label.length > 0 || code.length > 0) {
             $("#functionInput").removeClass("ui-autocomplete-loading");
             $("#function").val(code);
@@ -300,12 +300,12 @@ $(document).ready(function () {
             var show = "N";
             $("#chk_showall").val("No");
             getAllowanceDetails(show);            
-            if (booking_required == "Y") {                
-                GetBookingSummary(date);
-            }
-            else if (booking_required == "E") {
-                getEventBookingDetails();
-            }
+            //if (booking_required == "Y") {                
+                GetBookingSummary(date, func_oride_ind);
+            //}
+            //else if (booking_required == "E") {
+                getEventBookingDetails(func_oride_ind);
+            //}
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
             getSRFRedText();

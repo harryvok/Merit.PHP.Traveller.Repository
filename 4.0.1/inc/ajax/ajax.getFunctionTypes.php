@@ -11,7 +11,7 @@ if(isset($GLOBALS['result']->function_types_details) && count($GLOBALS['result']
 	if(count($GLOBALS['result']->function_types_details) >1){
 		foreach($GLOBALS['result']->function_types_details as $result){
             if($result->service_code == $_GET['service_code'] && $result->request_code == $_GET['request_code'] && $result->function_code != '' && $result->active_ind == "Y" && ($_SESSION['roleSecurity']->maint_exclude == "Y" && $result->count_only == "" || $result->count_only == "N" || $result->count_only == "S") || $result->service_code == $_GET['service_code'] && $result->request_code == $_GET['request_code'] && $result->function_code != '' && $result->active_ind == "Y" && $_SESSION['roleSecurity']->maint_exclude == "N"){
-                $array[$i] = array("code" => $result->function_code, "label" => $result->function_name, "priority" => $result->priority, "count_only" => $result->count_only,"function_note" =>$result->function_note, "function_auto_help_notes" => $result->function_auto_help_notes, "function_name_type" => $result->name_type, "booking_required" => $result->count_ind, "function_allowance" => $result->allowance_no, "edms_autosave_attach"=> $result->edms_autosave_attach);
+                $array[$i] = array("code" => $result->function_code, "label" => $result->function_name, "priority" => $result->priority, "count_only" => $result->count_only,"function_note" =>$result->function_note, "function_auto_help_notes" => $result->function_auto_help_notes, "function_name_type" => $result->name_type, "booking_required" => $result->count_ind, "function_allowance" => $result->allowance_no, "edms_autosave_attach"=> $result->edms_autosave_attach, "oride_ind" => $result->oride_ind);
                 $i = $i + 1;
             }
 		}
@@ -19,7 +19,7 @@ if(isset($GLOBALS['result']->function_types_details) && count($GLOBALS['result']
 	else{
 		$result = $GLOBALS['result']->function_types_details;
 		if($result->service_code == $_GET['service_code'] && $result->request_code == $_GET['request_code'] && $result->function_code != '' && $result->active_ind == "Y" && ($_SESSION['roleSecurity']->maint_exclude == "Y" && $result->count_only == "" || $result->count_only == "N" || $result->count_only == "S") || $result->service_code == $_GET['service_code'] && $result->request_code == $_GET['request_code'] && $result->function_code != '' && $result->active_ind == "Y" && $_SESSION['roleSecurity']->maint_exclude == "N"){
-            $array[$i] = array("code" => $result->function_code, "label" => $result->function_name, "priority" => $result->priority, "count_only" => $result->count_only,"function_note" =>$result->function_note, "function_auto_help_notes" => $result->function_auto_help_notes, "function_name_type" => $result->name_type, "booking_required" => $result->count_ind, "function_allowance" => $result->allowance_no , "edms_autosave_attach"=> $result->edms_autosave_attach);
+            $array[$i] = array("code" => $result->function_code, "label" => $result->function_name, "priority" => $result->priority, "count_only" => $result->count_only,"function_note" =>$result->function_note, "function_auto_help_notes" => $result->function_auto_help_notes, "function_name_type" => $result->name_type, "booking_required" => $result->count_ind, "function_allowance" => $result->allowance_no , "edms_autosave_attach"=> $result->edms_autosave_attach, "oride_ind" => $result->oride_ind);
             $i = $i + 1;
 		}
 	}
