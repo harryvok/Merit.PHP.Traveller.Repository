@@ -6,7 +6,7 @@ set_time_limit(60*60);
 //
 
 // Scripted by Jonathan Cleary.
-
+error_reporting(0);
 if(!file_exists("framework/settings.php")){
     
     $string = '<?php
