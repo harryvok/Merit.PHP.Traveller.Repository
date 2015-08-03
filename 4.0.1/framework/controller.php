@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_set_cookie_params(0);
 if(session_id() == '' || (function_exists("session_status") && session_status() == PHP_SESSION_NONE)) { session_start(); }
 include('settings.php');

@@ -1747,7 +1747,7 @@ class Model {
                 $_SESSION['available_ind'] = $result->available_ind;
                 $_SESSION['avail_from'] = $result->avail_from;
                 $_SESSION['avail_to'] = $result->avail_to;
-                $_SESSION['alternative_officer'] = $result->alternative_officer;
+                $_SESSION['alternative_officer'] = $result->alternate_officer;
                 $_SESSION['how_received_code'] = $result->how_received_code;
                 $_SESSION['centre_code'] = $result->centre_code;
                 $_SESSION['alternate_officer_name'] = $result->alternate_officer_name;

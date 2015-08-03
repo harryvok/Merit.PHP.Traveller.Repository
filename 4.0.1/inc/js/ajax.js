@@ -362,7 +362,7 @@ function GetCustomerAddressDetails() {
                 $("#o_cpropertynumber").val(data.property_no);
                 if (data.address_id != "0" || data.address_id != "" || data.address_id > 0) {
                     $("#CustAddSummary").removeAttr("disabled");
-                }
+                }               
             }
         });
     }

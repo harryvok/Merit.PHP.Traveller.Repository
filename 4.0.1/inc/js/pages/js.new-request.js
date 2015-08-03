@@ -1,8 +1,11 @@
 // New Request Common JS
  
 $(document).ready(function () {
+    $('#o_cstreet').val('not required');
+    $('#o_ctype').val('not required');
+    $('#o_csuburb').val('not required');
   
-     $('#newrequest').find('input,select').keydown(function (event) {
+    $('#newrequest').find('input,select').keydown(function (event) {
         if (event.keyCode == 13) {
             event.preventDefault();
         }
@@ -301,10 +304,10 @@ $(document).ready(function () {
             $("#chk_showall").val("No");
             getAllowanceDetails(show);            
             //if (booking_required == "Y") {                
-                GetBookingSummary(date, func_oride_ind);
+            GetBookingSummary(date, func_oride_ind);
             //}
             //else if (booking_required == "E") {
-                getEventBookingDetails(func_oride_ind);
+            getEventBookingDetails(func_oride_ind);
             //}
             $("#workflowSRF").prop("disabled", false);
             $("#functionInput").autocomplete("close");
@@ -337,7 +340,6 @@ $(document).ready(function () {
         if (data.length === 0) {
             $("#functionInput").val("");
             $("#functionInput").attr("readonly", true).attr("disabled", true).addClass("ui-disabled").textInputState('disable');
-
 
             // If function isn't entered, perform count only check
             CheckCountOnlyAjax($("#service").val(), $("#request").val(), '');
@@ -616,6 +618,10 @@ $(document).ready(function () {
         }
     }
 
+    //$("#facilityInput").on(eventName, function (event) {
+    //    $(this).trigger("click");
+    //});
+
     // Facility Name
     function facilityInit() {
         if ($("#facilityInput").attr("readonly") == 'readonly') {
@@ -631,17 +637,24 @@ $(document).ready(function () {
             $("#facilityInput").attr("readonly", false).val("");
         }
 
-
-        $.ui.autocomplete.filter = function (array, term) {
-            var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
-            return $.grep(array, function (value) {
-                return matcher.test(value.label || value.value || value);
-            });
+        //alert($("#facilityTypeInput").val());
+        if ($("#facilityTypeInput").val().length <= 0) {
+            $("#facilityInput").autoCompleteInit("inc/ajax/ajax.getFacilitiesLookup.php", { term: "" }, facilityResponse);
+            $(this).dblclick();
+            //window.clicked["facilityInput"] = true;
+        }
+        else {
+            $.ui.autocomplete.filter = function (array, term) {
+                var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i" );
+                return $.grep(array, function (value) {
+                    return matcher.test(value.label || value.value || value);
+                });
+            }
         }
 
 
         return $("#facilityTypeInput").val();
-    }
+    }    
 
     function facilityResponse(event, ui) {
         var label = "";
