@@ -16,7 +16,7 @@ define("EMAIL_SUBJECT_PREFIX", "Merit Technology Pty Ltd -"); // The Email Subje
 define("SITE_LINK", "http://traveller.merit.com.au/CRM/Dev/4.1.6/");
 define("WEBSITE", "http://traveller.merit.com.au/CRM/Dev/4.1.6/"); // Traveller website address, with a slash on the end.
 define("LOCAL_LINK", "C:/projects/Merit2013/Merit.PHP.Traveller/4.0/"); // Traveller website address, with a slash on the end.
-define("WEB_SERVICES_PATH", "http://192.168.0.88/merit_traveller/"); // Path to the webservices. With a slash on the end!
+define("WEB_SERVICES_PATH", "http://192.168.0.7/merit_traveller_test/"); // Path to the webservices. With a slash on the end!
 define("MERIT_ACTION_FILE", "ws_merit_action.asmx");
 define("MERIT_REQUEST_FILE", "ws_merit_request.asmx");
 define("MERIT_ADMIN_FILE", "ws_merit_admin.asmx");

@@ -762,7 +762,7 @@ $(document).ready(function () {
                 $("#ldesc").val("").attr("readonly", false);
                 $("#lno").val("").attr("readonly", false);
                 $("#lfno").val("").attr("readonly", false);
-                alert("No address found.");
+                //alert("No address found.");
             }
         }
     }
@@ -1267,7 +1267,7 @@ $(document).ready(function () {
                             }
                         }
                         else {
-                            check_adhoc(); //call if adhoc officer required
+                            check_adhoc(); //call if adhoc officer requiredsubm
                         }
                     }
                     else {

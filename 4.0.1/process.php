@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 
 // Backend of site. Deals with queries, inserts, updates and deletes.

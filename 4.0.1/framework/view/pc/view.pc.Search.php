@@ -103,7 +103,7 @@ if(isset($GLOBALS['result']->search_details)){
             ">
                 
                 <td><?php echo $result_search->result_type; ?></td>
-                <td><?php echo $result_search->description; ?></td>
+                <td><?php echo base64_decode($result_search->description); ?></td>
                 <td id="<?php echo $change; ?>"><?php if($result_search->result_type != "Officer") echo $result_search->key_id; ?></td>
             </tr>
             <?php
@@ -144,7 +144,7 @@ if(isset($GLOBALS['result']->search_details)){
         ">
             
             <td><?php echo $GLOBALS['result']->search_details->result_type; ?></td>
-            <td><?php echo $GLOBALS['result']->search_details->description; ?></td>
+            <td><?php echo base64_decode($GLOBALS['result']->search_details->description); ?></td>
             <td id="1"><?php if($GLOBALS['result']->search_details->result_type != "Officer") echo $GLOBALS['result']->search_details->key_id; ?></td>
         </tr>
         <?php

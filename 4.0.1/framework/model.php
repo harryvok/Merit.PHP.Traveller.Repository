@@ -2126,7 +2126,7 @@ class Model {
                                 ));
             }
         //only if customer address is present
-        else if((strlen($lstreet) == 0 || strlen($ltype) == 0 || strlen($lsuburb) == 0) && (strlen($cust_address_street) > 0 || strlen($cust_address_streettype) > 0 || strlen($cust_address_suburb) > 0)){
+        else if((strlen($lstreet) == 0 || strlen($ltype) == 0 || strlen($lsuburb) == 0 ) && (strlen($cust_address_street) > 0 || strlen($cust_address_streettype) > 0 || strlen($cust_address_suburb) > 0)){
                     $address_details =   array(array(
                                         "address_id" => $cust_address_id,
                                         "house_number" => $cust_address_number,
@@ -2154,7 +2154,8 @@ class Model {
                                         "street_id" => '',
                                         "facility_id" => 0
                                     ));
-                } else{
+                }        
+                else{
                 $address_details =   array(array(
                                    "address_id" => '',
                                    "house_number" => '',
@@ -2180,7 +2181,7 @@ class Model {
                                    "road_type" => '',
                                    "road_responsibility" => '',
                                    "street_id" => '',
-                                   "facility_id" => ''
+                                   "facility_id" => $facility_id
                                ));
         }
         if($_POST["due"] != ""){

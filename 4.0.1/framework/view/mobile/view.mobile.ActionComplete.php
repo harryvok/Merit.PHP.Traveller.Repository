@@ -154,7 +154,7 @@ if($_SESSION['roleSecurity']->maint_comp_action == "Y"){
                     <?php } ?>
   </select>
   <label>Comment<span id="indMand" style="color:red; display:none;">*</span></label>
-  <input spellcheck="true" type="text" id="desc" class="text" name="comment_act" />
+  <textarea spellcheck="true" id="desc" class="text" name="comment_act" style="min-height:70px;"></textarea>
   <div id="outcome-udfs">
     
   </div>
