@@ -248,7 +248,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
     <div>
         <span class="summaryColumnTitle">Request Description <?php if($_SESSION['roleSecurity']->maint_desc == "Y") { ?><a class="edit" id="EditDescription"><img src="images/modify-icon.png"></a><?php } ?></span>
         <div class="summaryColumn">
-            <div id="EditDescriptionLabel"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo base64_decode($GLOBALS['result']['request']->request_description); } ?></div>
+            <div id="EditDescriptionLabel"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo stripslashes(base64_decode($GLOBALS['result']['request']->request_description)); } ?></div>
             <div id="EditDescriptionEdit" class="editTextDiv">
                 <textarea spellcheck="true" name="EditDescriptionText" id="EditDescriptionTextVal" data-request-id="<?php echo $_GET['id']; ?>"><?php /* Display the description */  if(isset($GLOBALS['result']['request']->request_description)){ echo base64_decode($GLOBALS['result']['request']->request_description); } ?></textarea>
                 <input type="button" id="EditDescriptionSubmit" data-action="Request" value="Save" />
