@@ -34,9 +34,9 @@ $_SESSION['search'] = $search;
 	    var rowId = document.getElementById(id).innerHTML;
 	    window.location = "index.php?page=view-name&id=" + rowId + "&ex=1";
 	}
-	function change_off(id, rowId) {
+	function change_off(id, kid) {
 	    var rowId = document.getElementById(id).innerHTML;
-	    window.location = "index.php?page=view-officer&id=" + rowId;
+	    window.location = "index.php?page=view-officer&id=" + kid;
 	}
 	function change_ani(id){
 		var rowId = document.getElementById(id).innerHTML;
