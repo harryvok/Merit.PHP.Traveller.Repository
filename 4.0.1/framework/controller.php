@@ -145,59 +145,65 @@ class Controller {
      }   
 	 
 	 // Display Function
-  	 public function Display($action, $view, $params = NULL){
-           $GLOBALS['action'] = $action;
-		 if(isset($_SESSION['roleSecurityArray'][$action]) && is_array($_SESSION['roleSecurityArray'][$action])){
-			 $ok = 1;
-			 foreach($_SESSION['roleSecurityArray'][$action] as $var){
-				if($var == "N"){
-					$ok = 0;
-				}
-			 }
-			 if($ok == 1){
-				 $GLOBALS['result'] = $this->model->{"get".$action}($params);
-				include("view/".$this->device."/view.".$this->device.".".$view.".php"); 
-			 }
-			 else{
-				 if($this->device == "mobile"){
-					if(!in_array($action, $_SESSION['roleSecurityErrorArray'])){
-						if(!isset($GLOBALS['roleSecurityShown'])){
-							include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
-							$GLOBALS['roleSecurityShown'] = true;
-						}
-					}
-				}
-				else{
-					if(!isset($GLOBALS['roleSecurityShown'])){
-						include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
-						$GLOBALS['roleSecurityShown'] = true;
-					}
-				}
-			 }
-		 }
-		 else{
-             if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y"  || (!isset($_SESSION['roleSecurityArray'][$action]))){
-				$GLOBALS['result'] = $this->model->{"get".$action}($params);
-				include("view/".$this->device."/view.".$this->device.".".$view.".php"); 
-			}
-			else{
-				if($this->device == "mobile"){
-					if(!in_array($action, $_SESSION['roleSecurityErrorArray'])){
-						if(!isset($GLOBALS['roleSecurityShown'])){
-							include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
-							$GLOBALS['roleSecurityShown'] = true;
-						}
-					}
-				}
-				else{
-					if(!isset($GLOBALS['roleSecurityShown'])){
-						include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
-						$GLOBALS['roleSecurityShown'] = true;
-					}
-				}
-			}
-		 }
-	 }
+     public function Display($action, $view, $params = NULL){
+         if($action != ""){
+             $GLOBALS['action'] = $action;
+             if(isset($_SESSION['roleSecurityArray'][$action]) && is_array($_SESSION['roleSecurityArray'][$action])){
+                 $ok = 1;
+                 foreach($_SESSION['roleSecurityArray'][$action] as $var){
+                     if($var == "N"){
+                         $ok = 0;
+                     }
+                 }
+                 if($ok == 1){
+                     $GLOBALS['result'] = $this->model->{"get".$action}($params);
+                     include("view/".$this->device."/view.".$this->device.".".$view.".php"); 
+                 }
+                 else{
+                     if($this->device == "mobile"){
+                         if(!in_array($action, $_SESSION['roleSecurityErrorArray'])){
+                             if(!isset($GLOBALS['roleSecurityShown'])){
+                                 include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
+                                 $GLOBALS['roleSecurityShown'] = true;
+                             }
+                         }
+                     }
+                     else{
+                         if(!isset($GLOBALS['roleSecurityShown'])){
+                             include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
+                             $GLOBALS['roleSecurityShown'] = true;
+                         }
+                     }
+                 }
+             }
+             else{
+                 if(isset($_SESSION['roleSecurityArray'][$action]) && $_SESSION['roleSecurityArray'][$action] == "Y"  || (!isset($_SESSION['roleSecurityArray'][$action]))){
+                     $GLOBALS['result'] = $this->model->{"get".$action}($params);
+                     include("view/".$this->device."/view.".$this->device.".".$view.".php"); 
+                 }
+                 else{
+                     if($this->device == "mobile"){
+                         if(!in_array($action, $_SESSION['roleSecurityErrorArray'])){
+                             if(!isset($GLOBALS['roleSecurityShown'])){
+                                 include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
+                                 $GLOBALS['roleSecurityShown'] = true;
+                             }
+                         }
+                     }
+                     else{
+                         if(!isset($GLOBALS['roleSecurityShown'])){
+                             include("view/".$this->device."/view.".$this->device.".RoleSecurity.php"); 
+                             $GLOBALS['roleSecurityShown'] = true;
+                         }
+                     }
+                 }
+             }
+         }
+         else if($action == ""){
+             include("view/".$this->device."/view.".$this->device.".".$view.".php");
+        }
+     }
+     
        
 
 	 // Display Dropdown Function

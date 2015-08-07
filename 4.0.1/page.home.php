@@ -49,9 +49,6 @@
             ?><script src="inc/js/pcLOCompiled.js"></script><?php
         }
     }
-    ?>
-    
-    <?php
     /*if the URL parameter "page" is not set, it means that a user
      * has either just logged in, or been redirected. We need to determine
      * what filter to be displayed.*/
@@ -86,40 +83,59 @@
     <a name="topAnc" title="topAnc"></a>
 	<div id="loadingbar"><img width="46" height="46" src="images/ajax-loader.gif" /></div>
     <div id="popup"></div>
-    <?php if(!isset($user)){ ?>    
+    <?php if(!isset($user)){ ?> 
         <div id="header-container" align="center">
             <div id="header" align="center">
                 <a href="index.php?" class="logo" title="" rel="shadowbox"></a>
                 <span class="council-name"><?php  echo COUNCIL_NAME;  ?></span>
             </div>
-        </div>
+        </div>    
     <?php 
      }
      else{
      ?>
         <div id="header-container-li">
-             <div id="header-logged-in">
-                        <!--[if IE 8]>
-                        <a href="index.php" class="header-nav logo"><img src="images/pc/logo.png" height="30"></a>
-                        <![endif]-->
-                        <!--[if gt IE 8]>
-                        <a href="index.php" class="header-nav"><img src="images/pc/logo.png"></a>
-                        <![endif]-->
-                        <!--[if !IE]><!-->
-                        <a href="index.php" class="header-nav"><img src="images/pc/logo.png" width="53" height="48"></a>
-                        <!--<![endif]-->
-                         <?php if($_SESSION['roleSecurity']->allow_action == "Y") { ?><a class="header-nav" href="index.php?page=actions">ACTIONS</a><?php } ?>
-<?php if($_SESSION['roleSecurity']->allow_request == "Y") { ?><a class="header-nav" href="index.php?page=requests">REQUESTS</a><?php } ?>
-                        <?php if($_SESSION['roleSecurity']->maint_new_request == "Y") { ?> <a class="header-nav" href="index.php?page=newRequest">NEW REQUEST</a><?php } ?>
-                         <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?><a class="header-nav" href="index.php?page=search">SEARCH</a><?php } ?>
-                         <a class="header-nav" href="process.php?action=logout">LOGOUT</a>
-                         <!--<a class="header-nav" href="index.php?page=view-StoryBoard&id=619808">STORYBOARD</a>
-                         <a class="header-nav" href="index.php?page=view-Calender">CALENDER</a>-->
-                         <span class="council-name cname-logged-in"><?php  echo COUNCIL_NAME;  ?></span>
+            <div id="header-logged-in">
+                <input type="hidden" id="edms_login" name="edms_login" value="<?php echo $_SESSION["edms_login"]; ?>" />                
+                <!--[if IE 8]>
+                <a href="index.php" class="header-nav logo"><img src="images/pc/logo.png" height="30"></a>
+                <![endif]-->
+                <!--[if gt IE 8]>
+                <a href="index.php" class="header-nav"><img src="images/pc/logo.png"></a>
+                <![endif]-->
+                <!--[if !IE]><!-->
+                <a href="index.php" class="header-nav"><img src="images/pc/logo.png" width="53" height="48"></a>
+                <!--<![endif]-->
+                <?php if($_SESSION['roleSecurity']->allow_action == "Y") { ?><a class="header-nav" href="index.php?page=actions">ACTIONS</a><?php } ?>
+                <?php if($_SESSION['roleSecurity']->allow_request == "Y") { ?><a class="header-nav" href="index.php?page=requests">REQUESTS</a><?php } ?>
+                <?php if($_SESSION['roleSecurity']->maint_new_request == "Y") { ?> <a class="header-nav" href="index.php?page=newRequest">NEW REQUEST</a><?php } ?>
+                <?php if($_SESSION['roleSecurity']->allow_search == "Y") { ?><a class="header-nav" href="index.php?page=search">SEARCH</a><?php } ?>
+                <a class="header-nav" href="process.php?action=logout">LOGOUT</a>
+                <!--<a class="header-nav" href="index.php?page=view-StoryBoard&id=619808">STORYBOARD</a>
+                <a class="header-nav" href="index.php?page=view-Calender">CALENDER</a>-->
+                <span class="council-name cname-logged-in"><?php  echo COUNCIL_NAME;  ?></span>
               </div>
          </div>
-         
-         
+        <script>
+            debugger;
+            if ($("#edms_login").val() == -1) {
+                $.ajax({
+                    url: 'inc/ajax/ajax.inforExpertLoginUpdate.php',
+                    type: 'POST',
+                    success: function (data) {
+                        Unload();
+                        $('#popup').html("");
+                        $('#popup').css("margin", "auto");
+                        $('#popup').css("overflow", "hidden");
+                        $('#popup').css("width", "18%");
+                        if ($('#popup').css("display") == "none") {
+                            $('#popup').css("display", "block")
+                        }
+                        $('#popup').html(data);
+                    },
+                });
+            }
+        </script>
          <!--<div id="pageContainer"><h1 class="page"><?php echo $realNameArray[$data]; ?></h1>-->
          <!--<div id="pageContainer"><h1 class="page"><?php echo $realNameArray[$defaultpage]; ?></h1>-->
     <div id="pageContainer"><h1 class="page"><?php echo $defaultpage; ?></h1>
@@ -205,7 +221,7 @@
                       </div>
                      </div>
                 </div>
-            </div>
+            </div>            
         <?php
         }
         else{

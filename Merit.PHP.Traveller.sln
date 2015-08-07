@@ -7,8 +7,6 @@ Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "3.4.4", "3.4.2\3.4.4.phppro
 EndProject
 Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "4.0", "4.0.1\4.0.phpproj", "{6A34CB60-DF22-4520-8485-8FF93943AE50}"
 EndProject
-Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "5.0", "5.0\5.0.phpproj", "{EC165A3F-2D19-4947-8A94-6806FB61D474}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +26,6 @@ Global
 		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A34CB60-DF22-4520-8485-8FF93943AE50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC165A3F-2D19-4947-8A94-6806FB61D474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC165A3F-2D19-4947-8A94-6806FB61D474}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC165A3F-2D19-4947-8A94-6806FB61D474}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC165A3F-2D19-4947-8A94-6806FB61D474}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

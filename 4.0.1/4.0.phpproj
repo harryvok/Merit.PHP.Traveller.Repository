@@ -312,6 +312,7 @@
     <Compile Include="framework\view\pc\view.pc.AllowanceDetails.php" />
     <Compile Include="framework\view\pc\view.pc.DateFilter.php" />
     <Compile Include="framework\view\pc\view.pc.EventBookingDetails.php" />
+    <Compile Include="framework\view\pc\view.pc.InforExpertLoginUpdate.php" />
     <Compile Include="framework\view\pc\view.pc.NameAudit.php" />
     <Compile Include="framework\view\pc\view.pc.ChangeNameDetails.php" />
     <Compile Include="framework\view\pc\view.pc.BookingSummary.php" />
@@ -465,6 +466,9 @@
     <Compile Include="inc\ajax\ajax.getEventBookingDetails.php" />
     <Compile Include="inc\ajax\ajax.dateFilter.php" />
     <Compile Include="inc\ajax\ajax.getNextActions.php" />
+    <Compile Include="inc\ajax\ajax.inforExpertLoginCancel.php" />
+    <Compile Include="inc\ajax\ajax.inforExpertLoginSave.php" />
+    <Compile Include="inc\ajax\ajax.inforExpertLoginUpdate.php" />
     <Compile Include="inc\ajax\ajax.modifyDueDate.php" />
     <Compile Include="inc\ajax\ajax.modifyDueReqDate.php" />
     <Compile Include="inc\ajax\ajax.modifyNotifyCustomer.php" />

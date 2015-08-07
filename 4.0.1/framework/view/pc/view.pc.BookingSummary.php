@@ -131,12 +131,12 @@ if(isset($GLOBALS['result']->booking_dets->booking_details) && count($GLOBALS['r
                 <tr class="<?php echo $class; ?>" id="BookingDetails<?php echo $i; ?>ParentObject">
                     <input type="hidden" id="booking_date_BookingDetails<?php echo $i; ?>ParentObject" value="<?php echo $date; ?>" />
                     <input type="hidden" id="display_date_BookingDetails<?php echo $i; ?>ParentObject" value="<?php echo $formated; ?>" />
-                                 <td style="text-align:right"><?php echo $day." ".$formated; ?></td>
-                                 <td style="text-align:center"><?php echo $booking_detail->booked_count; ?></td>
-                                 <td style="text-align:center"><?php echo $booking_detail->available_count; ?></td>
-                                 <td><?php echo $booking_detail->service_stopped; ?></td>
-                                 <td><?php echo $booking_detail->reason; ?></td>
-                            </tr>
+                    <td style="text-align:right"><?php echo $day." ".$formated; ?></td>
+                    <td style="text-align:center"><?php echo $booking_detail->booked_count; ?></td>
+                    <td style="text-align:center"><?php echo $booking_detail->available_count; ?></td>
+                    <td><?php echo $booking_detail->service_stopped; ?></td>
+                    <td><?php echo $booking_detail->reason; ?></td>
+            </tr>
                 <?php
                       }
                  }

@@ -1754,6 +1754,7 @@ class Model {
                 $_SESSION['notify_insurance'] = $result->notify_insurance;
                 $_SESSION['div_name'] = $result->div_name;
                 $_SESSION['dept_name'] = $result->dept_name;
+                $_SESSION['edms_login'] = $result->edms_login;
                 
                 $parameters = new stdClass();
                 $parameters->user_id = $_SESSION["user_id"];
@@ -5047,6 +5048,25 @@ class Model {
             $result = false;
         }    
         return $result;
+    }
+
+    public function processinforExpertLoginCancel(){
+        $_SESSION["edms_login"] = "";
+    }
+
+    public function processinforExpertLoginSave(){
+        $parameters = new stdClass();
+        $parameters->user_id = $_SESSION['user_id'];
+        $parameters->password = $_SESSION['password'];
+        $parameters->edms_user_id = $_POST['edms_user_id'];
+        $parameters->edms_password = $_POST['edms_password'];
+        try {
+            $this->WebService(MERIT_ADMIN_FILE, "ws_update_edms_login", $parameters); 
+            $_SESSION["edms_login"] = "";
+        }
+        catch (Exception $e) {
+            echo $e -> getMessage ();
+        }   
     }
 }
 ?>
