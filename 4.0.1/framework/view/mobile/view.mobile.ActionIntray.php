@@ -9,7 +9,7 @@ if(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['result']-
 	$i = 0;
     foreach($GLOBALS['result']->action_intray_details as $action_details){
         ?>
-        <li id="<?php echo $action_details->request_id; ?>" class="<?php echo $action_details->in_time_ind == "Y" ? "intime" : ''; ?> <?php echo $action_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime($action_details->due_time) < time() ? "red" : ''; ?>">
+        <li id="<?php echo $action_details->request_id; ?>" class="<?php echo $action_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime($action_details->due_time) < time() ? "red" : ''; ?>">
             <a data-transition="slide" href="index.php?page=view-action&id=<?php echo $action_details->action_id; ?>&ref_page=actions&filter=<?php echo $filter; ?>">
         	<p><div class="status-code" style="display:inline">
 				  <?php 
@@ -45,7 +45,7 @@ elseif(isset($GLOBALS['result']->action_intray_details) && count($GLOBALS['resul
 	
     $action_details = $GLOBALS['result']->action_intray_details;
     ?>
-     <li id="<?php echo $action_details->request_id; ?>" class="<?php echo $action_details->in_time_ind == "Y" ? "intime" : ''; ?> <?php echo $action_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime($action_details->due_time) < time() ? "red" : ''; ?>">
+     <li id="<?php echo $action_details->request_id; ?>" class="<?php echo $action_details->escalated_ind == "Y" ? "purple" : ''; ?> <?php echo strtotime($action_details->due_time) < time() ? "red" : ''; ?>">
 		<a data-transition="slide" href="index.php?page=view-action&id=<?php echo $action_details->action_id; ?>&ref_page=actions&filter=<?php echo $filter; ?>">
         <p><div class="status-code" style="display:inline">
             <?php 

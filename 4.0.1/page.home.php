@@ -117,7 +117,6 @@
               </div>
          </div>
         <script>
-            debugger;
             if ($("#edms_login").val() == -1) {
                 $.ajax({
                     url: 'inc/ajax/ajax.inforExpertLoginUpdate.php',

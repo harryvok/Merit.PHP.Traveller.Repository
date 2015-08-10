@@ -212,7 +212,7 @@ elseif(isset($GLOBALS['result']['request']->address_det->address_details) && cou
         <p>
             <strong>Request Description:</strong>
             <br />
-            <div id="EditDescriptionLabel"><?php /* Display the description */  echo base64_decode($GLOBALS['result']['request']->request_description); ?></div>
+            <div id="EditDescriptionLabel"><?php /* Display the description */  echo stripslashes(base64_decode($GLOBALS['result']['request']->request_description)); ?></div>
         </p>
         <div><img src="images/modify-icon.png" width="16" height="16" title="Edit Description" class="edit" id="EditDescription" /></div>
         <div id="EditDescriptionEdit" class="editTextDiv">
