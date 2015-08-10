@@ -19,7 +19,7 @@
         <p>&nbsp;</p>
         <input type="button" id="EDMSlogin" name="EDMSlogin" value="Ok"/>
         <!-- <input type="button" value="Details"/> -->
-        <input type="button" id="EDMScancel" name="EDMScancel" value="Cancel"/>       
+        <!--<input type="button" id="EDMScancel" name="EDMScancel" value="Cancel"/>       -->
     </form>
     <script type="text/javascript">
         $("#EDMScancel").click(function () {            
