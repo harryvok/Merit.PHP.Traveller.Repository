@@ -1,5 +1,5 @@
 <div class="summaryContainer">
-    <h1>EDMS password reset</h1>
+    <h1>InfoXpert Login</h1>
     <!--<table style="background-color:none;">
         <tr>
             <td><label>Username:</label></td>
@@ -11,12 +11,13 @@
         </tr>
     </table>-->
     <form class="normal" action="process.php" id="edms_login" method="post">
-        <label class="titleLogin" for="user_id">User ID</label>
+        Please re-enter your InfoXpert user/pswd, authentication failed! 
+        <label class="titleLogin" for="edms_username">User Name</label>
         <input class="login required" type="text" id="edms_username" name="edms_username" maxlength='100' />
-        <label class="titleLogin" for="password">Password</label>
+        <label class="titleLogin" for="edms_password">Password</label>
         <input class="login required" type="password" id="edms_password"name="edms_password" maxlength='50' />
         <p>&nbsp;</p>
-        <input type="button" id="EDMSlogin" name="EDMSlogin" value="Login"/>
+        <input type="button" id="EDMSlogin" name="EDMSlogin" value="Ok"/>
         <!-- <input type="button" value="Details"/> -->
         <input type="button" id="EDMScancel" name="EDMScancel" value="Cancel"/>       
     </form>
@@ -35,6 +36,9 @@
             });
         });
         $("#EDMSlogin").click(function () {
+            Load();
+            $("#EDMSlogin").prop("disbaled", "disabled");
+            $("#EDMScancel").prop("disbaled", "disabled");
             $.ajax({
                 url: 'inc/ajax/ajax.inforExpertLoginSave.php',
                 type: 'POST',

@@ -5063,6 +5063,25 @@ class Model {
         try {
             $this->WebService(MERIT_ADMIN_FILE, "ws_update_edms_login", $parameters); 
             $_SESSION["edms_login"] = "";
+
+            $parameters = new stdClass();
+            $parameters->user_id = $_SESSION['user_id'];
+            $parameters->password = $_SESSION['password'];
+            $result = $this->WebService(MERIT_TRAVELLER_FILE, "ws_edms_available", $parameters);
+
+            if($result->ws_status == -1){
+                $_SESSION['EDMSAvailable'] = "N";
+                if($result->ws_message != "Integration not enabled"){
+                    $_SESSION['done'] = 1;
+                    $_SESSION['error'] = 1;
+                    $_SESSION['error_custom'] = 1;
+                    $_SESSION['custom_error'] = $result->ws_message;
+                }
+            }
+            else{
+                $_SESSION['EDMSAvailable'] = "Y";
+                $_SESSION['EDMSName'] = $result->ws_edms_system;
+            }
         }
         catch (Exception $e) {
             echo $e -> getMessage ();
