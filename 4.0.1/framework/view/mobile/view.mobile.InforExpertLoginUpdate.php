@@ -9,7 +9,7 @@
             </div>
              <label class="ui-input-text" for="edms_password" style="font-weight:bold">Password</label>
             <div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-c">
-                <input class="login ui-input-text ui-body-c" autocapitalize="none" type="text" id="edms_password" name="edms_password" maxlength="100">
+                <input class="login ui-input-text ui-body-c" autocapitalize="none" type="password" id="edms_password" name="edms_password" maxlength="100">
             </div>             
             <p>&nbsp;</p>
             <input type="button" id="EDMSlogin" name="EDMSlogin" value="Ok" class="ui-button ui-widget ui-state-default ui-corner-all" role="button" style="margin-left:80%;width:50px;margin-top:-20px;" aria-disabled="false">            

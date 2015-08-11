@@ -126,7 +126,7 @@
                         $('#popup').html("");
                         $('#popup').css("margin", "auto");
                         $('#popup').css("overflow", "hidden");
-                        $('#popup').css("width", "18%");
+                        $('#popup').css("width", "22%");
                         if ($('#popup').css("display") == "none") {
                             $('#popup').css("display", "block")
                         }

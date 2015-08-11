@@ -17,7 +17,7 @@
         <label class="titleLogin" for="edms_password">Password</label>
         <input class="login required" type="password" id="edms_password"name="edms_password" maxlength='50' />
         <p>&nbsp;</p>
-        <input type="button" id="EDMSlogin" name="EDMSlogin" value="Ok"/>
+        <input type="button" id="EDMSlogin" name="EDMSlogin" value="Ok" style="width:52px;margin-left:80%;"/>
         <!-- <input type="button" value="Details"/> -->
         <!--<input type="button" id="EDMScancel" name="EDMScancel" value="Cancel"/>       -->
     </form>
