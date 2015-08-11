@@ -5063,7 +5063,12 @@ class Model {
         $parameters->edms_password = $_POST['edms_password'];
         try {
             $this->WebService(MERIT_ADMIN_FILE, "ws_update_edms_login", $parameters); 
-            $_SESSION["edms_login"] = "";
+            if($result->ws_status == 0){
+                $_SESSION["edms_login"] = "";
+            }
+            else if($result->ws_status == -1){
+                $_SESSION["edms_login"] = "-1";
+            }
 
             $parameters = new stdClass();
             $parameters->user_id = $_SESSION['user_id'];
