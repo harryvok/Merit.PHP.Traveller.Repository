@@ -1790,12 +1790,17 @@ class Model {
                         $_SESSION['error'] = 1;
                         $_SESSION['error_custom'] = 1;
                         $_SESSION['custom_error'] = $result->ws_message;
-                        $_SESSION["edms_login"] = "-1";
+                        if($result->ws_edms_system == "INFOXPERT"){
+                            $_SESSION["edms_login"] = "-1";
+                        }
                     }
                 }
                 else{
                     $_SESSION['EDMSAvailable'] = "Y";
                     $_SESSION['EDMSName'] = $result->ws_edms_system;
+                    //if($result->ws_edms_system != "INFOXPERT"){
+                    //    $_SESSION["edms_login"] = "0";
+                    //}
                 }
                 
                 
